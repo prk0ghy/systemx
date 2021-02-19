@@ -1,0 +1,1 @@
+/* Hier kommt das JS rein was zur korrekten Funktion des contentTypes im FE benoetigt wird */
