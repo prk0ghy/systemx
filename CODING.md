@@ -24,3 +24,7 @@ others to look at your code and collaborate while still preserving you
 the ability to rewrite history at a later time without interfering with
 others work. This also means that you should **never** branch from someone
 elses private branch.
+
+## Indent with tabs, align using spaces
+The only correct way of indentation, if you editor supports EditorConfig
+your editor should do the right thing, including a single LF for line breaks.
