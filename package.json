@@ -6,12 +6,15 @@
 	"type": "module",
 	"scripts": {
 		"start": "node app.mjs",
+		"open": "node app.mjs --open-browser",
 		"mon": "nodemon --ignore web/ app.mjs",
 		"test": "echo \"Soon...\""
 	},
 	"author": "Digitale Lernwelten GmbH",
 	"dependencies": {
-		"nodemon": "^2.0.7"
+		"minimist": "^1.2.5",
+		"nodemon": "^2.0.7",
+		"opn": "^6.0.0"
 	},
 	"devDependencies": {},
 	"eslintConfig": {
