@@ -1,10 +1,6 @@
 import fs   from 'fs';
-import path from 'path';
-import util from 'util';
 
 const fsp = fs.promises;
-
-export default true;
 
 function fileExtension(filename){
 	return filename.substring(filename.lastIndexOf('.')+1, filename.length) || filename;
@@ -18,7 +14,7 @@ async function getFromPath(ext,contentType,prefix){
 		for(let k in names){
 			const name = names[k];
 			const filePath = prefix+name;
-			if(fileExtension(filePath).toLowerCase() != ext){continue;}
+			if(fileExtension(filePath).toLowerCase() !== ext){continue;}
 			try {
 				const tbuf = await fsp.readFile(filePath);
 				ret += "/* Source: /"+filePath+" */\n" + tbuf.toString();

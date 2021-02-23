@@ -1,13 +1,9 @@
 import fs   from 'fs';
-import path from 'path';
-import util from 'util';
 
 import * as css from './css.mjs';
 import * as js  from './js.mjs';
 
 const fsp = fs.promises;
-
-export default true;
 
 function fileExtension(filename){
 	return filename.substring(filename.lastIndexOf('.')+1, filename.length) || filename;
@@ -37,20 +33,23 @@ async function renderFile(source,destination,targetName){
 async function copyDir(source,destination,targetName){
 	const filenames = await fsp.readdir(source);
 	try { await fsp.mkdir(destination); } catch(e){}
+	let proms = [];
 
-	filenames.forEach(async (name) => {
+	for(let k in filenames){
+		const name = filenames[k];
 		const s = await fsp.stat(source+'/'+name);
 		if(s.isFile()){
 			const ext = fileExtension(source+'/'+name).toLowerCase();
-			if(ext == 'html'){
-				await renderFile(source+'/'+name,destination+'/'+name,targetName);
+			if(ext === 'html'){
+				proms.push(renderFile(source+'/'+name,destination+'/'+name,targetName));
 			}else{
-				await fsp.copyFile(source+'/'+name,destination+'/'+name);
+				proms.push(fsp.copyFile(source+'/'+name,destination+'/'+name));
 			}
 		}else if(s.isDirectory()){
-			await copyDir(source+'/'+name,destination+'/'+name,targetName);
+			proms.push(copyDir(source+'/'+name,destination+'/'+name,targetName));
 		} // Ignore everything else
-	});
+	}
+	return Promise.all(proms);
 }
 
 export async function build(targetName){
