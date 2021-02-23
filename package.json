@@ -1,0 +1,27 @@
+{
+	"name": "systemx",
+	"version": "0.0.1",
+	"description": "SSG with for Craft GraphQL",
+	"main": "app.mjs",
+	"type": "module",
+	"scripts": {
+		"start": "node app.mjs",
+		"mon": "nodemon --ignore web/ app.mjs",
+		"test": "echo \"Soon...\""
+	},
+	"author": "Digitale Lernwelten GmbH",
+	"dependencies": {
+		"nodemon": "^2.0.7"
+	},
+	"devDependencies": {},
+	"eslintConfig": {
+		"env": {
+			"browser": true,
+			"node": true
+		}
+	},
+	"nodemonConfig": {
+		"ext": "mjs,js,json,css,png,jpg,html",
+		"verbose": true
+	}
+}
