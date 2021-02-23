@@ -11,7 +11,7 @@ async function getFromPath(ext,contentType,prefix){
 		const names = await fsp.readdir(prefix);
 		let ret = '';
 
-		for(let k in names){
+		for(let k in names.sort()){
 			const name = names[k];
 			const filePath = prefix+name;
 			if(fileExtension(filePath).toLowerCase() !== ext){continue;}
@@ -41,7 +41,7 @@ async function getFromThemes(ext){
 	try {
 		const names = await fsp.readdir("themes/");
 		let ret = '';
-		for(let k in names){
+		for(let k in names){ 
 			const prefix = "themes/"+names[k]+"/fe/";
 			ret += await getFromPath(ext,names[k],prefix);
 		}

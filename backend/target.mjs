@@ -19,7 +19,7 @@ async function getHead(targetName){
 	await fsp.writeFile(jsFilename,jsContent);
 
 	let ret = "	<script type=\"text/javascript\" src=\"res/main.js\"></script>\n";
-	ret += "	<link rel=\"stylesheet\ type=\"text/css\" href=\"res/main.css\"/>\n";
+	ret += "	<link rel=\"stylesheet\" type=\"text/css\" href=\"res/main.css\"/>\n";
 	return ret;
 }
 

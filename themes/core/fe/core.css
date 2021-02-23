@@ -1,0 +1,27 @@
+:root {
+	--content-width: 950px;
+	--content-padding: 16px;
+}
+
+html, body {
+	color:#333;
+}
+
+img {
+	display:block;
+	width:100%;
+	height:auto;
+}
+
+body > aside {
+	display:none;
+}
+
+main > section {
+	width:100%;
+	max-width:var(--content-width);
+	padding:0px var(--content-padding);
+	box-sizing:border-box;
+	margin:0px auto 2em;
+}
+
