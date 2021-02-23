@@ -1,20 +1,21 @@
 :root {
 	--content-width: 950px;
 	--content-padding: 16px;
+	--font-headlines: Jura;
+	--font-content: Montserrat;
+	--text-color: #333;
+	--background-color: #fff;
 }
 
 html, body {
 	color:#333;
+	font-family:var(--font-content);
 }
 
 img {
 	display:block;
 	width:100%;
 	height:auto;
-}
-
-body > aside {
-	display:none;
 }
 
 main > section {

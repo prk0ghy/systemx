@@ -1,3 +1,8 @@
 .dialogtext {
 	color:#257DA7;
+    text-align: left;
+	
+	font-style:italic;
+	font-size:2em;
+	font-family:Montserrat;
 }

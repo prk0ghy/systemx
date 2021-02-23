@@ -1,6 +1,10 @@
 /* Das CSS an dieser Stelle sollte fuer jedes Design brauchbar sein, also
  * vorallem Abstaende / Positionierung / Schriftgroessen. */
 
+h1,h2,h3,h4,h5,h6 {
+	font-family:var(--font-headlines);
+}
+
 h1 {
 	font-size:3em;
 }

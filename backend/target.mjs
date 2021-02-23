@@ -18,7 +18,7 @@ async function getHead(targetName){
 	const jsFilename = "web/"+targetName+"/res/main.js";
 	await fsp.writeFile(jsFilename,jsContent);
 
-	let ret = "	<script type=\"text/javascript\" src=\"res/main.js\"></script>\n";
+	let ret = "	<script defer type=\"text/javascript\" src=\"res/main.js\"></script>\n";
 	ret += "	<link rel=\"stylesheet\" type=\"text/css\" href=\"res/main.css\"/>\n";
 	return ret;
 }
