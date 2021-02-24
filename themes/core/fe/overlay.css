@@ -12,5 +12,8 @@
 
 #overlay.active {
 	opacity:0.5;
-	z-index:1;
+	z-index:100;
+}
+#overlay.fadingOut {
+	z-index:100;
 }

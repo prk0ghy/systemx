@@ -1,12 +1,22 @@
 let overlayElement;
+let overlayFadeOutCB;
 let overlayCloseHandler = [];
 
 function showOverlay(){
+	if(overlayFadeOutCB !== undefined){
+		clearTimeout(overlayFadeOutCB);
+	}
+	overlayElement.classList.remove('fadingOut');
 	overlayElement.classList.add('active');
 }
 
 function hideOverlay(){
+	overlayElement.classList.add('fadingOut');
 	overlayElement.classList.remove('active');
+	overlayFadeOutCB = setTimeout(()=>{
+		overlayElement.classList.remove('fadingOut');
+		overlayFadeOutCB = undefined;
+	},350)
 	overlayCloseHandler.forEach( (cb) => { cb(); });
 }
 

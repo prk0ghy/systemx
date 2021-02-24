@@ -8,7 +8,7 @@ body > aside {
 	color:var(--text-color);
 	transform:translateX(-100%);
 	transition:transform 300ms;
-	z-index:100;
+	z-index:200;
 }
 @media only screen and (max-width: 600px) {
 	body > aside {
@@ -24,28 +24,77 @@ body > aside.active {
 	content:'Nav';
 }
 
-body > aside > nav > ul {
+body > aside > nav {
 	padding:48px 0px;
 	height:100%;
-	position:absolute;
+}
+
+body > aside > nav > ul {
+	height:100%;
 	overflow-y:scroll;
 }
 
+nav li {
+	position:relative;
+}
 nav li a {
 	display:block;
 	width:100%;
-	padding:16px 16px;
+	padding:16px 48px;
 	color:var(--text-color);
 	text-decoration:none;
 	font-size:1.8em;
 }
 nav li li a {
-	padding:16px 32px;
+	padding:16px 78px;
 }
 nav li a:hover {
 	background-color: rgba(0,0,0,0.05);
 }
-nav li a.active {
+nav li.active > a {
 	background-color:var(--highlight-color);
 	color:#fff;
+}
+
+nav .nav-toggle:after {
+	content:'>';
+}
+nav .nav-toggle {
+	display:block;
+	font-size:2.8em;
+	width:1em;
+	height:1em;
+	position:absolute;
+	left:4px;
+	top:4px;
+	text-align:center;
+	cursor:pointer;
+	color:var(--highlight-color);
+	transform:rotate(0deg);
+	transition:transform 300ms;
+	transform-origin: 50% 50%;
+}
+nav .nav-toggle.active {
+	transform:rotate(90deg);
+}
+nav li.active > .nav-toggle {
+	color:#fff;
+}
+nav ul.hidden {
+	display:none;
+}
+
+#nav-close-button {
+	position:absolute;
+	left:50%;
+	bottom:0px;
+	margin-left:-0.5em;
+	width:1em;
+	height:1em;
+	text-align:center;
+	cursor:pointer;
+	font-size:2em;
+}
+#nav-close-button::after {
+	content:'\2716';
 }

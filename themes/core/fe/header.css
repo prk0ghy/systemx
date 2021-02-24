@@ -1,0 +1,9 @@
+header {
+	position:fixed;
+	left:0px;
+	top:0px;
+	height:3em;
+	width:100%;
+	background:var(--background-accent);
+	z-index:10;
+}
