@@ -1,14 +1,20 @@
 import * as target  from './backend/target.mjs';
 import * as options from './backend/options.mjs';
+import * as server from './backend/server.mjs';
 import opn from 'opn';
 
 (async()=>{
 	await options.parse(process.argv.slice(2));
 	const cTarget = "lasub";
 	await target.build(cTarget);
+	if(options.startServer){
+			server.start('./web/'+cTarget);
+	}
 	if(options.openBrowser){
-		const path = "file://"+process.cwd()+"/web/"+cTarget+"/instrumentalisierung.html";
-		console.log("Opening "+path);
-		opn(path);
+		if(options.startServer){
+			opn("http://localhost:8080/");
+		}else{
+			opn("file://"+process.cwd()+"/web/"+cTarget+"/index.html");
+		}
 	}
 })();

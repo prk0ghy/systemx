@@ -5,16 +5,18 @@
 	"main": "app.mjs",
 	"type": "module",
 	"scripts": {
-		"start": "node app.mjs",
+		"start": "node app.mjs --start-server --open-browser",
 		"open": "node app.mjs --open-browser",
-		"mon": "nodemon --ignore web/ app.mjs",
+		"mon": "nodemon --ignore web/ app.mjs --start-server",
 		"test": "echo \"Soon...\""
 	},
 	"author": "Digitale Lernwelten GmbH",
 	"dependencies": {
+		"finalhandler": "^1.1.2",
 		"minimist": "^1.2.5",
 		"nodemon": "^2.0.7",
-		"opn": "^6.0.0"
+		"opn": "^6.0.0",
+		"serve-static": "^1.14.1"
 	},
 	"devDependencies": {},
 	"eslintConfig": {
