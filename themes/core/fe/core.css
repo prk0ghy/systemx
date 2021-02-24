@@ -5,6 +5,8 @@
 	--font-content: Montserrat;
 	--text-color: #333;
 	--background-color: #fff;
+	--background-color-modal: rgba(255,255,255,0.8);
+	--highlight-color: rgb(0, 77, 113);
 }
 
 html, body {
