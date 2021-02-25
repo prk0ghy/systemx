@@ -1,16 +1,18 @@
+/*global showOverlay,hideOverlay,overlayCloseHandler */
+
 function initNavBar(){
 	const navBar = document.querySelector('body > aside');
 	const navButton = document.querySelector('#button-navigation');
-	
+
 	const navCloseButton = document.createElement("div");
 	navCloseButton.id = "nav-close-button";
 	navBar.append(navCloseButton);
-	navCloseButton.addEventListener('click',(e)=>{
+	navCloseButton.addEventListener('click',()=>{
 		navBar.classList.remove('active');
 		hideOverlay();
 	})
-	
-	navButton.addEventListener('click',(e) => {
+
+	navButton.addEventListener('click',() => {
 		if(navBar.classList.contains('active')){
 			navBar.classList.remove('active');
 			hideOverlay();
@@ -37,12 +39,12 @@ function initNavigation(){
 		toggle.classList.add('nav-toggle');
 		parentLi.prepend(toggle);
 
-		toggle.addEventListener('click',(e) => {
+		toggle.addEventListener('click',() => {
 			ele.classList.toggle('hidden');
 			toggle.classList.toggle('active');
 		});
 	});
-	
+
 	overlayCloseHandler.push(() => {
 		navUl.forEach((ele) => {
 			ele.classList.remove('hidden');

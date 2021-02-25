@@ -5,9 +5,9 @@
 	"main": "app.mjs",
 	"type": "module",
 	"scripts": {
-		"start": "node app.mjs --start-server --open-browser",
-		"open": "node app.mjs --open-browser",
-		"mon": "nodemon --ignore web/ app.mjs --start-server",
+		"start": "node backend/app.mjs --start-server --open-browser",
+		"open": "node backend/app.mjs --open-browser",
+		"mon": "nodemon --ignore web/ backend/app.mjs --start-server",
 		"test": "echo \"Soon...\""
 	},
 	"author": "Digitale Lernwelten GmbH",
@@ -18,7 +18,9 @@
 		"opn": "^6.0.0",
 		"serve-static": "^1.14.1"
 	},
-	"devDependencies": {},
+	"devDependencies": {
+		"eslint": "^7.20.0"
+	},
 	"eslintConfig": {
 		"env": {
 			"browser": true,

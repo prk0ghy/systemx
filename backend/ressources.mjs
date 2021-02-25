@@ -20,17 +20,16 @@ async function getFromPath(ext,contentType,prefix){
 				ret += "/* Source: /"+filePath+" */\n" + tbuf.toString();
 			} catch(e){console.log(e);}
 		}
-
 		return ret;
 	} catch(e){return "";}
 }
 
 async function getFromContentTypes(ext){
 	try {
-		const names = await fsp.readdir("content-types/");
+		const names = await fsp.readdir("frontend/content-types/");
 		let ret = '';
 		for(let k in names){
-			const prefix = "content-types/"+names[k]+"/fe/";
+			const prefix = "frontend/content-types/"+names[k]+"/";
 			ret += await getFromPath(ext,names[k],prefix);
 		}
 		return ret;
@@ -39,10 +38,10 @@ async function getFromContentTypes(ext){
 
 async function getFromThemes(ext){
 	try {
-		const names = await fsp.readdir("themes/");
+		const names = await fsp.readdir("frontend/themes/");
 		let ret = '';
-		for(let k in names){ 
-			const prefix = "themes/"+names[k]+"/fe/";
+		for(let k in names){
+			const prefix = "frontend/themes/"+names[k]+"/";
 			ret += await getFromPath(ext,names[k],prefix);
 		}
 		return ret;
@@ -50,7 +49,7 @@ async function getFromThemes(ext){
 }
 
 export async function get(extension,targetName){
-	const theme = await getFromThemes(extension);
+	const theme       = await getFromThemes(extension);
 	const contentType = await getFromContentTypes(extension);
 	return theme + contentType;
 }

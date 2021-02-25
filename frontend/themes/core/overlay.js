@@ -1,3 +1,5 @@
+/* exported showOverlay,hideOverlay */
+
 let overlayElement;
 let overlayFadeOutCB;
 let overlayCloseHandler = [];
@@ -26,7 +28,7 @@ function initOverlay(){
 
 	const body = document.querySelector('body');
 	body.appendChild(overlayElement);
-	overlayElement.addEventListener('click',(e) => {
+	overlayElement.addEventListener('click',() => {
 		hideOverlay();
 	});
 }

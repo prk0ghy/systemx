@@ -1,6 +1,6 @@
-import * as target  from './backend/target.mjs';
-import * as options from './backend/options.mjs';
-import * as server from './backend/server.mjs';
+import * as target  from './target.mjs';
+import * as options from './options.mjs';
+import * as server from './server.mjs';
 import opn from 'opn';
 
 (async()=>{
