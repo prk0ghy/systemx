@@ -6,7 +6,7 @@ function fileExtension(filename){
 	return filename.substring(filename.lastIndexOf('.')+1, filename.length) || filename;
 }
 
-async function getFromPath(ext,contentType,prefix){
+async function getFromPath(ext,prefix){
 	try {
 		const names = await fsp.readdir(prefix);
 		let ret = '';
@@ -30,7 +30,7 @@ async function getFromContentTypes(ext){
 		let ret = '';
 		for(let k in names){
 			const prefix = "frontend/content-types/"+names[k]+"/";
-			ret += await getFromPath(ext,names[k],prefix);
+			ret += await getFromPath(ext,prefix);
 		}
 		return ret;
 	} catch(e){ return "";}
@@ -42,13 +42,13 @@ async function getFromThemes(ext){
 		let ret = '';
 		for(let k in names){
 			const prefix = "frontend/themes/"+names[k]+"/";
-			ret += await getFromPath(ext,names[k],prefix);
+			ret += await getFromPath(ext,prefix);
 		}
 		return ret;
 	} catch(e){ return "";}
 }
 
-export async function get(extension,targetName){
+export async function get(extension){
 	const theme       = await getFromThemes(extension);
 	const contentType = await getFromContentTypes(extension);
 	return theme + contentType;

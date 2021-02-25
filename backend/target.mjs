@@ -10,11 +10,11 @@ function fileExtension(filename){
 }
 
 async function getHead(targetName){
-	const cssContent = await css.get(targetName);
+	const cssContent = await css.get();
 	const cssFilename = "web/"+targetName+"/res/main.css";
 	await fsp.writeFile(cssFilename,cssContent);
 
-	const jsContent  = await js.get(targetName);
+	const jsContent  = await js.get();
 	const jsFilename = "web/"+targetName+"/res/main.js";
 	await fsp.writeFile(jsFilename,jsContent);
 
@@ -31,30 +31,35 @@ async function renderFile(source,destination,targetName){
 }
 
 async function copyDir(source,destination,targetName){
+	try { await fsp.mkdir(destination); } catch(e){/* Fails if dir already exists */}
 	const filenames = await fsp.readdir(source);
-	try { await fsp.mkdir(destination); } catch(e){}
 	let proms = [];
 
 	for(let k in filenames){
 		const name = filenames[k];
-		const s = await fsp.stat(source+'/'+name);
-		if(s.isFile()){
-			const ext = fileExtension(source+'/'+name).toLowerCase();
-			if(ext === 'html'){
-				proms.push(renderFile(source+'/'+name,destination+'/'+name,targetName));
-			}else{
-				proms.push(fsp.copyFile(source+'/'+name,destination+'/'+name));
-			}
-		}else if(s.isDirectory()){
-			proms.push(copyDir(source+'/'+name,destination+'/'+name,targetName));
-		} // Ignore everything else
+		try {
+			const s = await fsp.stat(source+'/'+name);
+			if(s.isFile()){
+				const ext = fileExtension(source+'/'+name).toLowerCase();
+				if(ext === 'html'){
+					proms.push(renderFile(source+'/'+name,destination+'/'+name,targetName));
+				}else{
+					proms.push(fsp.copyFile(source+'/'+name,destination+'/'+name));
+				}
+			}else if(s.isDirectory()){
+				proms.push(copyDir(source+'/'+name,destination+'/'+name,targetName));
+			} // Ignore everything else
+		}catch(e){/* If we can't stat then just skip */}
 	}
 	return Promise.all(proms);
 }
 
 export async function build(targetName){
-	try { fs.mkdirSync("web");                   }catch(e){}
-	try { fs.mkdirSync("web/"+targetName);       }catch(e){}
-	try { fs.mkdirSync("web/"+targetName+'/res');}catch(e){}
+	try { fs.mkdirSync("web");                   }catch(e){/* Fails if dir already exists */}
+	try { fs.mkdirSync("web/"+targetName);       }catch(e){/* Fails if dir already exists */}
+	try { fs.mkdirSync("web/"+targetName+'/res');}catch(e){/* Fails if dir already exists */}
+	/* If any of those fail for other reasons, then we will catch that later when we
+	 * actually try and write out some files.
+	 */
 	await copyDir("tests/instrumentalisierung","web/"+targetName,targetName);
 }

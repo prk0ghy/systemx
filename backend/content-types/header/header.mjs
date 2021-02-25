@@ -1,1 +1,1 @@
-/* Hier kommt das JS rein was im BE genutzt wird um aus den strukturierten Daten das HTML zu erzeugen */
+/* Placeholder file that will be used later to generate the html for a header cType */

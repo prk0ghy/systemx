@@ -1,5 +1,5 @@
 import * as res from './ressources.mjs';
 
-export async function get(targetName){
-	return res.get('css',targetName);
+export async function get(){
+	return res.get('css');
 }
