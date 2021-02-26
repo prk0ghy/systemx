@@ -28,7 +28,6 @@ function initNavBar(){
 }
 setTimeout(initNavBar,0);
 
-
 function initNavigation(){
 	const navUl = document.querySelectorAll('nav > ul ul');
 	navUl.forEach((ele) => {

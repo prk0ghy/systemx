@@ -29,9 +29,9 @@ main > section.hero figure.heroimage figcaption p {
 	margin:0px auto;
 	display:block;
 	max-width:var(--content-width);
-	padding:0px var(--content-padding);
-	font-size:1.5em;
-	line-height:2em;
+	padding:0.5em var(--content-padding);
+	font-size:1.9em;
+	line-height:1.5em;
 }
 /* .big and .small should be automatically set by the backend
  * depending on length of text

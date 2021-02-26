@@ -7,12 +7,19 @@
 	--background-color: #fff;
 	--background-accent: #e3fbff;
 	--background-color-modal: rgba(255,255,255,0.8);
-	--highlight-color: rgb(0, 77, 113);
+	--highlight-color: 0, 77, 113;
+	--headerbar-color: #1D89AF;
 }
 
 html, body {
 	color:#333;
 	font-family:var(--font-content);
+}
+
+p {
+	font-family: var(--font-content);
+	font-weight: 400;
+	font-size: 1em;
 }
 
 img {
