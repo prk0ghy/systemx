@@ -2,6 +2,7 @@ import fs   from 'fs';
 
 import * as css from './css.mjs';
 import * as js  from './js.mjs';
+import * as ressources from './ressources.mjs';
 
 const fsp = fs.promises;
 
@@ -18,8 +19,11 @@ async function getHead(targetName){
 	const jsFilename = "web/"+targetName+"/res/main.js";
 	await fsp.writeFile(jsFilename,jsContent);
 
-	let ret = "	<script defer type=\"text/javascript\" src=\"res/main.js\"></script>\n";
+	let ret = '';
+	ret += "	<style>\n"+(await css.getInline())+"\n	</style>\n";
 	ret += "	<link rel=\"stylesheet\" type=\"text/css\" href=\"res/main.css\"/>\n";
+	ret += "	<script defer type=\"text/javascript\" src=\"res/main.js\"></script>\n";
+
 	return ret;
 }
 
@@ -54,6 +58,15 @@ async function copyDir(source,destination,targetName){
 	return Promise.all(proms);
 }
 
+async function copyAssets(destination){
+	const assetDirs = await ressources.getAssetDirectories();
+	let proms = [];
+	assetDirs.forEach((dir) => {
+		proms.push(copyDir(dir,destination));
+	})
+	return Promise.all(proms);
+}
+
 export async function build(targetName){
 	try { fs.mkdirSync("web");                   }catch(e){/* Fails if dir already exists */}
 	try { fs.mkdirSync("web/"+targetName);       }catch(e){/* Fails if dir already exists */}
@@ -62,4 +75,5 @@ export async function build(targetName){
 	 * actually try and write out some files.
 	 */
 	await copyDir("tests/instrumentalisierung","web/"+targetName,targetName);
+	await copyAssets("web/"+targetName+'/res');
 }
