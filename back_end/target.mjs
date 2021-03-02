@@ -63,7 +63,7 @@ async function copyAssets(destination){
 	let proms = [];
 	assetDirs.forEach((dir) => {
 		proms.push(copyDir(dir,destination));
-	})
+	});
 	return Promise.all(proms);
 }
 

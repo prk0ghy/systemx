@@ -30,10 +30,10 @@ async function getFromPath(ext,prefix,inline){
 
 async function getFromContentTypes(ext,inline){
 	try {
-		const names = await fsp.readdir("frontend/content-types/");
+		const names = await fsp.readdir("front_end/content-types/");
 		let ret = '';
 		for(let k in names){
-			const prefix = "frontend/content-types/"+names[k]+"/";
+			const prefix = "front_end/content-types/"+names[k]+"/";
 			ret += await getFromPath(ext,prefix,inline);
 		}
 		return ret;
@@ -42,10 +42,10 @@ async function getFromContentTypes(ext,inline){
 
 async function getFromThemes(ext,inline){
 	try {
-		const names = await fsp.readdir("frontend/themes/");
+		const names = await fsp.readdir("front_end/themes/");
 		let ret = '';
 		for(let k in names){
-			const prefix = "frontend/themes/"+names[k]+"/";
+			const prefix = "front_end/themes/"+names[k]+"/";
 			ret += await getFromPath(ext,prefix,inline);
 		}
 		return ret;
@@ -56,17 +56,17 @@ export async function getAssetDirectories(){
 	let ret = [];
 
 	try {
-		const names = await fsp.readdir("frontend/themes/");
+		const names = await fsp.readdir("front_end/themes/");
 		for(let k in names){
-			const prefix = "frontend/themes/"+names[k]+"/";
+			const prefix = "front_end/themes/"+names[k]+"/";
 			ret.push(prefix);
 		}
 		return ret;
 	} catch(e){ /* Skip if no themes available */ }
 	try {
-		const names = await fsp.readdir("frontend/content-types/");
+		const names = await fsp.readdir("front_end/content-types/");
 		for(let k in names){
-			const prefix = "frontend/content-types/"+names[k]+"/";
+			const prefix = "front_end/content-types/"+names[k]+"/";
 			ret.push(prefix);
 		}
 		return ret;
