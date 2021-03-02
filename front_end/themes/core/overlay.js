@@ -19,9 +19,7 @@ function hideOverlay() {
 		overlayElement.classList.remove("fadingOut");
 		overlayFadeOutCBTimer = undefined;
 	}, 350);
-	overlayCloseHandlers.forEach(cb => {
-		cb();
-	});
+	overlayCloseHandlers.forEach(cb => cb());
 }
 
 /* Don't pollute the global scope if avoidable */
