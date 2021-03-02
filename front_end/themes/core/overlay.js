@@ -1,8 +1,8 @@
-/* global showOverlay,hideOverlay,overlayCloseHandlers */
+/* exported showOverlay,hideOverlay,overlayCloseHandlers */
 
 let overlayElement;
 let overlayFadeOutCB;
-let overlayCloseHandler = [];
+const overlayCloseHandler = [];
 
 function showOverlay() {
 	if (overlayFadeOutCB !== undefined) {

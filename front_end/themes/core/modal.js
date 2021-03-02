@@ -29,7 +29,10 @@ function hideModal() {
 	});
 }
 
-function initModal(){
-	overlayCloseHandler.push(hideModal);
-}
-setTimeout(initModal, 0);
+/* Don't pollute the global scope if avoidable */
+(() => {
+	function initModal(){
+		overlayCloseHandler.push(hideModal);
+	}
+	setTimeout(initModal, 0);
+})();
