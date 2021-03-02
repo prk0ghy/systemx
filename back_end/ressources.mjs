@@ -32,9 +32,7 @@ async function getFromPath(ext, prefix, inline) {
 		}
 		return ret;
 	}
-	catch (e) {
-		return "";
-	}
+	catch (e) { return ""; }
 }
 
 async function getFromContentTypes(ext, inline) {
@@ -47,9 +45,7 @@ async function getFromContentTypes(ext, inline) {
 		}
 		return ret;
 	}
-	catch (e) {
-		return "";
-	}
+	catch (e) { return ""; }
 }
 
 async function getFromThemes(ext, inline) {
@@ -62,9 +58,7 @@ async function getFromThemes(ext, inline) {
 		}
 		return ret;
 	}
-	catch (e) {
-		return "";
-	}
+	catch (e) { return ""; }
 }
 
 export async function getAssetDirectories() {

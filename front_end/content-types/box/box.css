@@ -1,5 +1,5 @@
 section.box {
-    color: #fff;
+    color: black;
     line-height: 2.6em;
     cursor: pointer;
 }
@@ -27,12 +27,15 @@ section.box > details > summary::after {
     font-size: 4em;
     right: 70px;
     top: 35px;
+    color: #fff;
 }
 section.box > details > summary > h3 {
     font-size: 2.5em;
+    color: #fff;
 }
 section.box > details > summary > p {
     font-size: 1.2em;
+    color: #fff;
 }
 section.box.quelle > details > summary {
     background-color: #A4247C;

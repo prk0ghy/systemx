@@ -12,4 +12,7 @@ export async function parse(args) {
 	if (argv["start-server"] !== undefined) {
 		startServer = true;
 	}
+	if (argv["http-port"] !== undefined) {
+		httpPort = argv["http-port"] | 0;
+	}
 }

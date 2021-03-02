@@ -59,9 +59,6 @@
 			"after": true
 		}],
 		"linebreak-style": [2, "unix"],
-		"max-statements-per-line": [2, {
-			"max": 1
-		}],
 		"multiline-ternary": 2,
 		"new-parens": 2,
 		"newline-per-chained-call": 2,
@@ -97,7 +94,6 @@
 			"maxEOF": 1
 		}],
 		"no-negated-in-lhs": 2,
-		"no-multi-spaces": 2,
 		"no-multi-str": 2,
 		"no-native-reassign": 2,
 		"no-new-func": 2,
@@ -168,9 +164,6 @@
 		}],
 		"radix": [2, "as-needed"],
 		"semi": [2, "always"],
-		"sort-imports": [2, {
-			"ignoreCase": true
-		}],
 		"sort-keys": [2, "asc", {
 			"caseSensitive": false,
 			"natural": true
