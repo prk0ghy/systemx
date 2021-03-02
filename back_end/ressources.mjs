@@ -6,7 +6,7 @@ function fileExtension(filename) {
 	return filename.substring(filename.lastIndexOf(".") + 1, filename.length) || filename;
 }
 function isInline(filename) {
-	return filename.indexOf(".inline.") != -1;
+	return filename.indexOf(".inline.") !== -1;
 }
 
 async function getFromPath(ext, prefix, inline) {
@@ -14,13 +14,12 @@ async function getFromPath(ext, prefix, inline) {
 		const names = await fsp.readdir(prefix);
 		let ret = "";
 
-		for (const k in names.sort()) {
-			const name = names[k];
+		for (const name of names.sort()) {
 			const filePath = prefix + name;
 			if (fileExtension(filePath).toLowerCase() !== ext) {
 				continue;
 			}
-			if (isInline(name) != inline) {
+			if (isInline(name) !== inline) {
 				continue;
 			}
 			try {
@@ -42,8 +41,8 @@ async function getFromContentTypes(ext, inline) {
 	try {
 		const names = await fsp.readdir("front_end/content-types/");
 		let ret = "";
-		for (const k in names) {
-			const prefix = "front_end/content-types/" + names[k] + "/";
+		for (const name of names) {
+			const prefix = "front_end/content-types/" + name + "/";
 			ret += await getFromPath(ext, prefix, inline);
 		}
 		return ret;
@@ -57,8 +56,8 @@ async function getFromThemes(ext, inline) {
 	try {
 		const names = await fsp.readdir("front_end/themes/");
 		let ret = "";
-		for (const k in names) {
-			const prefix = "front_end/themes/" + names[k] + "/";
+		for (const name of names) {
+			const prefix = "front_end/themes/" + name + "/";
 			ret += await getFromPath(ext, prefix, inline);
 		}
 		return ret;
@@ -73,8 +72,8 @@ export async function getAssetDirectories() {
 
 	try {
 		const names = await fsp.readdir("front_end/themes/");
-		for (const k in names) {
-			const prefix = "front_end/themes/" + names[k] + "/";
+		for (const name of names) {
+			const prefix = "front_end/themes/" + name + "/";
 			ret.push(prefix);
 		}
 		return ret;
@@ -82,8 +81,8 @@ export async function getAssetDirectories() {
 	catch (e) { /* Skip if no themes available */ }
 	try {
 		const names = await fsp.readdir("front_end/content-types/");
-		for (const k in names) {
-			const prefix = "front_end/content-types/" + names[k] + "/";
+		for (const name of names) {
+			const prefix = "front_end/content-types/" + name + "/";
 			ret.push(prefix);
 		}
 		return ret;
@@ -93,10 +92,7 @@ export async function getAssetDirectories() {
 	return ret;
 }
 
-export async function get(extension, inline) {
-	if (inline === undefined) {
-		inline = false;
-	}
+export async function get(extension, inline = false) {
 	const theme = await getFromThemes(extension, inline);
 	const contentType = await getFromContentTypes(extension, inline);
 	return theme + contentType;

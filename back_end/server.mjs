@@ -1,5 +1,5 @@
-import http from "http";
 import finalhandler from "finalhandler";
+import http from "http";
 import serveStatic from "serve-static";
 
 export function start(staticBasePath) {
@@ -10,5 +10,5 @@ export function start(staticBasePath) {
 		const done = finalhandler(req, res);
 		serve(req, res, done);
 	});
-	server.listen(8080);
+	server.listen(8081);
 }

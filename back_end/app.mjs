@@ -1,8 +1,7 @@
-import * as target from "./target.mjs";
 import * as options from "./options.mjs";
 import * as server from "./server.mjs";
+import * as target from "./target.mjs";
 import opn from "opn";
-
 (async () => {
 	await options.parse(process.argv.slice(2));
 	const cTarget = "lasub";

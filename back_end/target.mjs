@@ -1,8 +1,7 @@
-import fs from "fs";
-
 import * as css from "./css.mjs";
 import * as js from "./js.mjs";
 import * as ressources from "./ressources.mjs";
+import fs from "fs";
 
 const fsp = fs.promises;
 
@@ -39,38 +38,33 @@ async function copyDir(source, destination, targetName) {
 		await fsp.mkdir(destination);
 	}
 	catch (e) {/* Fails if dir already exists */}
-	const filenames = await fsp.readdir(source);
-	const proms = [];
+	const fileNames = await fsp.readdir(source);
+	const promises = [];
 
-	for (const k in filenames) {
-		const name = filenames[k];
+	for (const fileName of fileNames) {
 		try {
-			const s = await fsp.stat(source + "/" + name);
+			const s = await fsp.stat(source + "/" + fileName);
 			if (s.isFile()) {
-				const ext = fileExtension(source + "/" + name).toLowerCase();
+				const ext = fileExtension(source + "/" + fileName).toLowerCase();
 				if (ext === "html") {
-					proms.push(renderFile(source + "/" + name, destination + "/" + name, targetName));
+					promises.push(renderFile(source + "/" + fileName, destination + "/" + fileName, targetName));
 				}
 				else {
-					proms.push(fsp.copyFile(source + "/" + name, destination + "/" + name));
+					promises.push(fsp.copyFile(source + "/" + fileName, destination + "/" + fileName));
 				}
 			}
 			else if (s.isDirectory()) {
-				proms.push(copyDir(source + "/" + name, destination + "/" + name, targetName));
+				promises.push(copyDir(source + "/" + fileName, destination + "/" + fileName, targetName));
 			} // Ignore everything else
 		}
 		catch (e) {/* If we can't stat then just skip */}
 	}
-	return Promise.all(proms);
+	return Promise.all(promises);
 }
 
 async function copyAssets(destination) {
-	const assetDirs = await ressources.getAssetDirectories();
-	const proms = [];
-	assetDirs.forEach(dir => {
-		proms.push(copyDir(dir, destination));
-	});
-	return Promise.all(proms);
+	const assetDirectories = await ressources.getAssetDirectories();
+	return Promise.all(assetDirectories.map(directory => copyDir(directory, destination)));
 }
 
 export async function build(targetName) {
