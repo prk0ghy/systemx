@@ -5,10 +5,10 @@
 	"main": "app.mjs",
 	"type": "module",
 	"scripts": {
-		"start": "node backend/app.mjs --start-server --open-browser",
-		"open": "node backend/app.mjs --open-browser",
-		"mon": "nodemon --ignore web/ backend/app.mjs --start-server",
-		"test": "echo \"Soon...\""
+		"lint": "eslint back_end/**/*.mjs front_end/**/*.js",
+		"start": "node back_end/app.mjs --start-server --open-browser",
+		"open": "node back_end/app.mjs --open-browser",
+		"mon": "nodemon --ignore web/ back_end/app.mjs --start-server"
 	},
 	"author": "Digitale Lernwelten GmbH",
 	"dependencies": {
@@ -20,12 +20,6 @@
 	},
 	"devDependencies": {
 		"eslint": "^7.20.0"
-	},
-	"eslintConfig": {
-		"env": {
-			"browser": true,
-			"node": true
-		}
 	},
 	"nodemonConfig": {
 		"ext": "mjs,js,json,css,png,jpg,html",
