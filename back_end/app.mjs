@@ -1,6 +1,7 @@
 import * as options from "./options.mjs";
 import * as server from "./server.mjs";
 import * as target from "./target.mjs";
+import { httpPort } from "./options.mjs";
 import opn from "opn";
 (async () => {
 	await options.parse(process.argv.slice(2));
@@ -11,9 +12,8 @@ import opn from "opn";
 	}
 	if (options.openBrowser) {
 		if (options.startServer) {
-			opn("http://localhost:8080/");
-		}
-		else {
+			opn("http://localhost:"+httpPort+"/");
+		} else {
 			opn("file://" + process.cwd() + "/web/" + cTarget + "/index.html");
 		}
 	}
