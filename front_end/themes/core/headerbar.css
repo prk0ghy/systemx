@@ -46,9 +46,8 @@ header button {
 header button::after {
 	font-family:icomoon;
 }
-
 #button-navigation::after {
-	content: "\E9BD";
+	content: "\E907";
 }
 #button-settings::after {
 	content: "\e904";

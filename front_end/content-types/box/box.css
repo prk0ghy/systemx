@@ -7,8 +7,10 @@ section.box > details {
     position: relative;
 }
 section.box > details > summary{
-    position: relative;
-    padding: 15px 150px 15px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px 15px 50px;
     box-shadow: 0px 3px 6px #0000006E;
     outline: none;
 }
@@ -21,19 +23,17 @@ section.box > details > summary::-webkit-details-marker {
     display: none;
 }
 section.box > details > summary::after {
-    position: absolute;
     font-family: icomoon;
     content: "\e903";
     font-size: 4em;
     right: 70px;
-    top: 35px;
     color: #fff;
 }
-section.box > details > summary > h3 {
+section.box > details > summary > .box-caption > h3 {
     font-size: 2.5em;
     color: #fff;
 }
-section.box > details > summary > p {
+section.box > details > summary > .box-caption > p {
     font-size: 1.2em;
     color: #fff;
 }
@@ -43,5 +43,13 @@ section.box.quelle > details > summary {
 section.box.darstellung > details > summary {
     background-color: #77952E;
 }
-
-
+.box-caption {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.box-content {
+    opacity:0;
+    transform:translateX(-50%) scale(0.5);
+}

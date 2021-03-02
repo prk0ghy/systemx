@@ -2,7 +2,7 @@
 
 let overlayElement;
 let overlayFadeOutCB;
-const overlayCloseHandler = [];
+let overlayCloseHandler = [];
 
 function showOverlay() {
 	if (overlayFadeOutCB !== undefined) {
@@ -19,7 +19,7 @@ function hideOverlay() {
 		overlayElement.classList.remove("fadingOut");
 		overlayFadeOutCB = undefined;
 	}, 350);
-	overlayCloseHandlers.forEach(cb => {
+	overlayCloseHandler.forEach(cb => {
 		cb();
 	});
 }

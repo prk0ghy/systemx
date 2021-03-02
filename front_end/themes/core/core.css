@@ -9,6 +9,12 @@
 	--background-color-modal: rgba(255,255,255,0.8);
 	--highlight-color: 0, 77, 113;
 	--headerbar-color: #1D89AF;
+	--box-pink: #A4247C;
+	--box-green: #77952E;
+	--box-blue: #22526C;
+	--box-lightblue: #0F99A6;
+	--box-grey: #6E7474;
+	--task-red:#5B184A;
 }
 
 html, body {
