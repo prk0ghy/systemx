@@ -21,12 +21,6 @@
 	"devDependencies": {
 		"eslint": "^7.20.0"
 	},
-	"eslintConfig": {
-		"env": {
-			"browser": true,
-			"node": true
-		}
-	},
 	"nodemonConfig": {
 		"ext": "mjs,js,json,css,png,jpg,html",
 		"verbose": true
