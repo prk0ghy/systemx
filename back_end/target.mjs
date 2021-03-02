@@ -1,6 +1,6 @@
 import * as css from "./css.mjs";
 import * as js from "./js.mjs";
-import * as ressources from "./ressources.mjs";
+import * as resources from "./resources.mjs";
 import fs from "fs";
 
 const fsp = fs.promises;
@@ -63,7 +63,7 @@ async function copyDir(source, destination, targetName) {
 }
 
 async function copyAssets(destination) {
-	const assetDirectories = await ressources.getAssetDirectories();
+	const assetDirectories = await resources.getAssetDirectories();
 	return Promise.all(assetDirectories.map(directory => copyDir(directory, destination)));
 }
 
