@@ -8,6 +8,7 @@
 	opacity:0;
 	transition:opacity 300ms;
 	z-index:-1;
+	cursor:pointer;
 }
 
 #overlay.active {
