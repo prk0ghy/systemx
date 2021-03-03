@@ -38,9 +38,9 @@ async function getHead(targetName) {
 	await fsp.writeFile(jsFilename, jsContent);
 
 	let ret = "";
-	ret += "<style>" + (await css.getInline()) + "</style>";
-	ret += "<link rel=\"stylesheet\" type=\"text/css\" href=\"" + resourceDirectoryName + "/main.css\"/>";
-	ret += "<script defer type=\"text/javascript\" src=\"" + resourceDirectoryName + "/main.js\"></script>";
+	ret += `<style>${await css.getInline()}</style>`;
+	ret += `<link rel="stylesheet" type="text/css" href="${resourceDirectoryName}/main.css"/>`;
+	ret += `<script defer type="text/javascript" src="${resourceDirectoryName}/main.js"></script>`;
 
 	return ret;
 }
