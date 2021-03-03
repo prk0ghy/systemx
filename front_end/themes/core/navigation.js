@@ -1,4 +1,4 @@
-/* global showOverlay,hideOverlay,overlayCloseHandler */
+/* global showOverlay,hideOverlay,overlayCloseHandlers */
 
 function initNavBar() {
 	const navBar = document.querySelector("body > aside");
@@ -21,7 +21,7 @@ function initNavBar() {
 			showOverlay();
 		}
 	});
-	overlayCloseHandler.push(() => {
+	overlayCloseHandlers.push(() => {
 		navBar.classList.remove("active");
 	});
 }
@@ -60,7 +60,7 @@ setTimeout(initNavBar, 0);
 			});
 		});
 
-		overlayCloseHandler.push(() => {
+		overlayCloseHandlers.push(() => {
 			refreshNavigationList();
 		});
 	}
