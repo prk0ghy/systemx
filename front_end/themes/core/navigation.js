@@ -16,13 +16,11 @@ function initNavBar() {
 		if (navBar.classList.contains("active")) {
 			navBar.classList.remove("active");
 			hideOverlay();
-		}
-		else {
+		} else {
 			navBar.classList.add("active");
 			showOverlay();
 		}
 	});
-
 	overlayCloseHandler.push(() => {
 		navBar.classList.remove("active");
 	});
@@ -33,24 +31,37 @@ setTimeout(initNavBar, 0);
 (() => {
 	function initNavigation() {
 		const navUl = document.querySelectorAll("nav > ul ul");
-		navUl.forEach(ele => {
-			ele.classList.add("hidden");
 
+		function refreshNavigationList(){
+			navUl.forEach(ele => {
+				if(ele.parentElement.classList.contains("active")){
+					ele.classList.remove("hidden");
+				}else{
+					ele.classList.add("hidden");
+				}
+			});
+		}
+
+		refreshNavigationList();
+		navUl.forEach(ele => {
 			const parentLi = ele.parentElement;
 			const toggle = document.createElement("div");
 			toggle.classList.add("nav-toggle");
 			parentLi.prepend(toggle);
 
 			toggle.addEventListener("click", () => {
-				ele.classList.toggle("hidden");
-				toggle.classList.toggle("active");
+				if(ele.classList.contains("hidden")){
+					ele.classList.remove("hidden");
+					toggle.classList.add("active");
+				} else {
+					ele.classList.add("hidden");
+					toggle.classList.remove("active");
+				}
 			});
 		});
 
 		overlayCloseHandler.push(() => {
-			navUl.forEach(ele => {
-				ele.classList.remove("hidden");
-			});
+			refreshNavigationList();
 		});
 	}
 	setTimeout(initNavigation, 0);

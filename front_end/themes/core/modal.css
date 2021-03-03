@@ -29,6 +29,7 @@ html .visible {
 	right:0.5em;
 	top:0.5em;
 	font-size:2em;
+	z-index:10;
 }
 .close-modal::after {
 	content: '\2716';

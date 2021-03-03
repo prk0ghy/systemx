@@ -1,4 +1,3 @@
-
 /* Don't pollute the global scope if avoidable */
 (() => {
 	function initRights() {
