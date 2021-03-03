@@ -37,10 +37,10 @@ async function getFromPath(ext, prefix, inline) {
 
 async function getFromContentTypes(ext, inline) {
 	try {
-		const names = await fsp.readdir("front_end/content-types/");
+		const names = await fsp.readdir("front_end/content_types/");
 		let ret = "";
 		for (const name of names) {
-			const prefix = "front_end/content-types/" + name + "/";
+			const prefix = "front_end/content_types/" + name + "/";
 			ret += await getFromPath(ext, prefix, inline);
 		}
 		return ret;
@@ -74,9 +74,9 @@ export async function getAssetDirectories() {
 	}
 	catch (e) { /* Skip if no themes available */ }
 	try {
-		const names = await fsp.readdir("front_end/content-types/");
+		const names = await fsp.readdir("front_end/content_types/");
 		for (const name of names) {
-			const prefix = "front_end/content-types/" + name + "/";
+			const prefix = "front_end/content_types/" + name + "/";
 			ret.push(prefix);
 		}
 		return ret;
