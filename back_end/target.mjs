@@ -38,9 +38,9 @@ async function getHead(targetName) {
 	await fsp.writeFile(jsFilename, jsContent);
 
 	let ret = "";
-	ret += "	<style>\n" + (await css.getInline()) + "\n	</style>\n";
-	ret += "	<link rel=\"stylesheet\" type=\"text/css\" href=\"" + resourceDirectoryName + "/main.css\"/>\n";
-	ret += "	<script defer type=\"text/javascript\" src=\"" + resourceDirectoryName + "/main.js\"></script>\n";
+	ret += "<style>" + (await css.getInline()) + "</style>";
+	ret += "<link rel=\"stylesheet\" type=\"text/css\" href=\"" + resourceDirectoryName + "/main.css\"/>";
+	ret += "<script defer type=\"text/javascript\" src=\"" + resourceDirectoryName + "/main.js\"></script>";
 
 	return ret;
 }
@@ -48,7 +48,7 @@ async function getHead(targetName) {
 async function renderFile(source, destination, targetName) {
 	const fileContent = await fsp.readFile(source, "utf-8");
 	const head = await getHead(targetName);
-	const html = fileContent.replace("</head>", head + "\n</head>");
+	const html = fileContent.replace("</head>", head + "</head>");
 	await fsp.writeFile(destination, html);
 }
 
