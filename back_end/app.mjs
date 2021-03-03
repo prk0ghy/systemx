@@ -3,6 +3,7 @@ import * as server  from "./server.mjs";
 import * as target  from "./target.mjs";
 import { httpPort } from "./options.mjs";
 import opn from "opn";
+import "./cms.mjs";
 (async () => {
 	await options.parse(process.argv.slice(2));
 	const cTarget = "lasub";

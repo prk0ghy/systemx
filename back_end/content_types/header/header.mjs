@@ -1,1 +1,0 @@
-/* Placeholder file that will be used later to generate the html for a header cType */
