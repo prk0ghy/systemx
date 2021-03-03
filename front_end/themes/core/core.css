@@ -1,15 +1,15 @@
 :root {
 	--content-width: 950px;
 	--content-padding: 16px;
-	--font-headlines: Jura;
-	--font-content: Montserrat;
+	--font-headlines: jura, serif;
+	--font-content: montserrat, sans-serif;
 	--text-color: #333;
 	--background-color: #fff;
 	--background-accent: #e3fbff;
-	--background-color-modal: rgba(255,255,255,0.8);
+	--background-color-modal: rgba(255, 255, 255, 0.8);
 	--highlight-color: 0, 77, 113;
 	--headerbar-color: #1D89AF;
-	--headerbar-background: rgba(255,255,255,0.8);
+	--headerbar-background: rgba(255, 255, 255, 0.8);
 	--box-magenta: #A4247C;
 	--box-green: #77952E;
 	--box-blue: #22526C;
@@ -45,9 +45,9 @@ img {
 main > section {
 	width:100%;
 	max-width:var(--content-width);
-	padding:0px var(--content-padding);
+	padding:0 var(--content-padding);
 	box-sizing:border-box;
-	margin:0px auto 2em;
+	margin:0 auto 2em;
 }
 
 figure {

@@ -1,21 +1,21 @@
 main ul > li {
-    position: relative;
-    list-style-type: none;
-    padding-left: 2em;
-    margin-bottom:1em;
+	position: relative;
+	list-style-type: none;
+	padding-left: 2em;
+	margin-bottom:1em;
 }
 
 main ul > li::before {
-    position: absolute;
-    top: 0.25em;
-    left: 0.1em;
-    content: "";
-    display: block;
-    width: 10px;
-    height: 10px;
-    background-color: var(--dlw-blue);
+	position: absolute;
+	top: 0.25em;
+	left: 0.1em;
+	content: "";
+	display: block;
+	width: 10px;
+	height: 10px;
+	background-color: var(--dlw-blue);
 }
 
 main ul > li ul > li::before {
-    border-radius:50%;
+	border-radius:50%;
 }

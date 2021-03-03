@@ -1,10 +1,11 @@
 .dialogtext {
 	color:#257DA7;
-    text-align: left;
+	text-align: left;
 	font-style:italic;
 	font-size:1.9em;
-	font-family:Montserrat;
+	font-family:var(--font-content);
 }
+
 section.textpic .picture.right {
 	float: right;
 	max-width: 30%;
@@ -13,6 +14,7 @@ section.textpic .picture.right {
 	z-index: 1;
 	position: relative;
 }
+
 section.textpic .picture.left {
 	float: left;
 	max-width: 30%;
@@ -21,11 +23,13 @@ section.textpic .picture.left {
 	z-index: 1;
 	position: relative;
 }
+
 section.textpic p::after {
 	clear: both;
 }
+
 section.textpic figcaption {
-	font-family: Jura;
+	font-family: var(--font-headlines);
 	font-weight: 400;
 	font-size: 0.8em;
 	line-height: 1.5em;

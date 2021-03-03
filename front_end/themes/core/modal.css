@@ -2,25 +2,22 @@ html .show-modal {
 	position:fixed;
 	display:block;
 	z-index:2000;
-
 	left:50%;
 	transform:translateX(-50%) scale(0.5);
 	width: 100%;
 	max-width: var(--content-width);
-
 	top:64px;
 	height:calc(100% - 128px);
-	
 	padding: var(--content-padding);
 	background: var(--background-color);
 	overflow-y:scroll;
-
 	opacity:0;
 	transition: opacity 300ms, transform 300ms;
 }
+
 html .visible {
 	opacity:1;
-	transform:translateX(-50%) scale(1.0);
+	transform:translateX(-50%) scale(1);
 }
 
 .close-modal {
@@ -31,7 +28,8 @@ html .visible {
 	font-size:2em;
 	z-index:10;
 }
+
 .close-modal::after {
 	content: '\2716';
-	text-shadow:0px 0px 3px #fff;
+	text-shadow:0 0 3px #fff;
 }
