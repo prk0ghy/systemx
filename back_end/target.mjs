@@ -68,18 +68,9 @@ async function copyAssets(destination) {
 }
 
 export async function build(targetName) {
-	try {
-		fs.mkdirSync("web");
-	}
-	catch (e) {/* Fails if dir already exists */}
-	try {
-		fs.mkdirSync("web/" + targetName);
-	}
-	catch (e) {/* Fails if dir already exists */}
-	try {
-		fs.mkdirSync("web/" + targetName + "/res");
-	}
-	catch (e) {/* Fails if dir already exists */}
+	try { fs.mkdirSync("web");}                         catch (e) {/* Fails if dir already exists */}
+	try { fs.mkdirSync("web/" + targetName); }          catch (e) {/* Fails if dir already exists */}
+	try { fs.mkdirSync("web/" + targetName + "/res"); } catch (e) {/* Fails if dir already exists */}
 	/* If any of those fail for other reasons, then we will catch that later when we
 	 * actually try and write out some files.
 	 */

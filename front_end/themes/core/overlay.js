@@ -1,4 +1,4 @@
-/* global showOverlay,hideOverlay,overlayCloseHandlers */
+/* exported showOverlay,hideOverlay,overlayCloseHandlers */
 
 let overlayElement;
 let overlayFadeOutCB;
@@ -19,7 +19,7 @@ function hideOverlay() {
 		overlayElement.classList.remove("fadingOut");
 		overlayFadeOutCB = undefined;
 	}, 350);
-	overlayCloseHandlers.forEach(cb => {
+	overlayCloseHandler.forEach(cb => {
 		cb();
 	});
 }

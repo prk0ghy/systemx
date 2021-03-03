@@ -29,26 +29,29 @@ function initNavBar() {
 }
 setTimeout(initNavBar, 0);
 
-function initNavigation() {
-	const navUl = document.querySelectorAll("nav > ul ul");
-	navUl.forEach(ele => {
-		ele.classList.add("hidden");
-
-		const parentLi = ele.parentElement;
-		const toggle = document.createElement("div");
-		toggle.classList.add("nav-toggle");
-		parentLi.prepend(toggle);
-
-		toggle.addEventListener("click", () => {
-			ele.classList.toggle("hidden");
-			toggle.classList.toggle("active");
-		});
-	});
-
-	overlayCloseHandler.push(() => {
+/* Don't pollute the global scope if avoidable */
+(() => {
+	function initNavigation() {
+		const navUl = document.querySelectorAll("nav > ul ul");
 		navUl.forEach(ele => {
-			ele.classList.remove("hidden");
+			ele.classList.add("hidden");
+
+			const parentLi = ele.parentElement;
+			const toggle = document.createElement("div");
+			toggle.classList.add("nav-toggle");
+			parentLi.prepend(toggle);
+
+			toggle.addEventListener("click", () => {
+				ele.classList.toggle("hidden");
+				toggle.classList.toggle("active");
+			});
 		});
-	});
-}
-setTimeout(initNavigation, 0);
+
+		overlayCloseHandler.push(() => {
+			navUl.forEach(ele => {
+				ele.classList.remove("hidden");
+			});
+		});
+	}
+	setTimeout(initNavigation, 0);
+})();
