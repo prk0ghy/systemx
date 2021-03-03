@@ -5,3 +5,35 @@
 	font-size:1.9em;
 	font-family:Montserrat;
 }
+section.textpic .picture.right {
+	float: right;
+	max-width: 30%;
+	margin-left: 1em;
+	margin-bottom: 1em;
+	z-index: 1;
+	position: relative;
+}
+section.textpic .picture.left {
+	float: left;
+	max-width: 30%;
+	margin-right: 1em;
+	margin-bottom: 1em;
+	z-index: 1;
+	position: relative;
+}
+section.textpic p::after {
+	clear: both;
+}
+section.textpic figcaption {
+	font-family: Jura;
+	font-weight: 400;
+	font-size: 0.8em;
+	line-height: 1.5em;
+	margin-top: 0.5em;
+}
+
+section.textpic::after {
+	content:'';
+	display:block;
+	clear:both;
+}

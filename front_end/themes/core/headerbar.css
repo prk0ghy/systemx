@@ -5,7 +5,7 @@ header {
 	height:4.9em;
 	width:100%;
 	color: var(--headerbar-color);
-	background:var(--background-accent);
+	background:var(--headerbar-background);
 	z-index:10;
 	display: flex;
 	justify-content: space-between;

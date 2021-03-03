@@ -53,23 +53,23 @@ nav li.active > a {
 	color:#fff;
 }
 
-nav .nav-toggle:after {
-	content:'>';
-}
 nav .nav-toggle {
+	content:'';
 	display:block;
-	font-size:2.8em;
-	width:1em;
-	height:1em;
+	font-size:1.4em;
 	position:absolute;
-	left:4px;
-	top:4px;
+	left:0.5em;
+	top:0.65em;
 	text-align:center;
 	cursor:pointer;
 	color:rgb(var(--highlight-color));
 	transform:rotate(0deg);
 	transition:transform 300ms;
 	transform-origin: 50% 50%;
+
+	border-left:solid 1em rgb(var(--highlight-color));
+	border-top:solid 0.5em transparent;
+	border-bottom:solid 0.5em transparent;
 }
 nav .nav-toggle.active {
 	transform:rotate(90deg);

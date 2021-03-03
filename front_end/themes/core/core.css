@@ -9,12 +9,14 @@
 	--background-color-modal: rgba(255,255,255,0.8);
 	--highlight-color: 0, 77, 113;
 	--headerbar-color: #1D89AF;
-	--box-pink: #A4247C;
+	--headerbar-background: rgba(255,255,255,0.8);
+	--box-magenta: #A4247C;
 	--box-green: #77952E;
 	--box-blue: #22526C;
-	--box-lightblue: #0F99A6;
+	--box-teal: #0F99A6;
 	--box-grey: #6E7474;
-	--task-red:#5B184A;
+	--task-red: #5B184A;
+	--dlw-blue: #257DA7;
 }
 
 html, body {
@@ -22,10 +24,16 @@ html, body {
 	font-family:var(--font-content);
 }
 
+body {
+	line-height:1.25em;
+}
+
 p {
 	font-family: var(--font-content);
 	font-weight: 400;
 	font-size: 1em;
+	line-height:1.25em;
+	margin-bottom:1em;
 }
 
 img {
@@ -42,3 +50,6 @@ main > section {
 	margin:0px auto 2em;
 }
 
+figure {
+	position:relative;
+}
