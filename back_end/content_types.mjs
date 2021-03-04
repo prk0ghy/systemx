@@ -41,6 +41,6 @@ export const render = contentType => {
 		alreadyWarnedTypes.add(type);
 	}
 	return `
-		<div>Unsupported content type: ${type}</div>
+		<section content-type="error"><div class="inner-content">Unsupported content type: ${type}</div></section>
 	`;
 };

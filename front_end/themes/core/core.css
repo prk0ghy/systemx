@@ -55,3 +55,15 @@ main > section > .inner-content {
 figure {
 	position:relative;
 }
+
+main > section:first-child {
+	margin-top:2.5em;
+}
+
+main > section.hero:first-child {
+	margin-top:0;
+}
+
+section {
+	position:relative;
+}
