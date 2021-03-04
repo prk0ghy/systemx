@@ -1,676 +1,557 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-	<meta charset="utf-8" />
-	<title>Instrumentalisierung der Vergangenheit</title>
-</head>
-<body>
+<section id="c1" class="hero">
+	<div class="inner-content">
+		<figure class="heroimage">
+			<img src="img/hero.jpg" width="1920" height="1280"/>
+			<figcaption><p>So viele unterschiedliche Möglichkeiten eine Geschichte zu erzählen.</p></figcaption>
+		</figure>
+	</div>
+</section>
 
-	<header>
-		<div id="header-left">
-			<button id="button-navigation"></button>
+<section id="c2" class="header">
+	<div class="inner-content">
+		<h1>Instrumentalisierung der Vergangenheit</h1>
+	</div>
+</section>
+
+<section id="c3" class="textpic">
+	<div class="inner-content">
+		<span class="dialogtext">
+			<p>
+				Quellen stammen aus der Vergangenheit, Darstellungen erzählen auf Grundlage dieser Quellen Geschichte.<br/>
+				Diese Geschichten werden von Menschen erzählt. Was erzählt wird und wie es erzählt wird, hängt stark von den Sichtweisen und Absichten dieser erzählenden Menschen ab. Damit ist klar: Es können sehr unterschiedliche Erzählungen über das gleiche Ereignis der Vergangenheit entstehen. Verunsichert dich das?  Ich hoffen nicht, denn mit dieser Erkenntnis kann man viel über Vergangenheit, die Gegenwart und sogar die Zukunft lernen.
+			</p>
+		</span>
+	</div>
+</section>
+
+<section id="c4" class="header">
+	<div class="inner-content">
+		<h2>1.1 Wiederholung: Vergangenheit und Geschichte, Quellen und Darstellungen</h2>
+	</div>
+</section>
+
+<section id="c5" class="audio">
+	<div class="inner-content">
+		<audio src="media/le-nord-oust.mp4" controls/>
+		<div class="audio-text">
+			<p>Test</p>
 		</div>
-		<div id="header-center">
-			<button id="button-previous"></button>
-			<h3>mPublish Lasub</h3>
-			<!-- Welche h hier am besten, ueberhaupt ein header? -->
-			<button id="button-next"></button>
-		</div>
-		<div id="header-right">
-			<button id="button-settings"></button>
-		</dif>
-	</header>
+	</div>
+</section>
 
-	<aside id="navigation" style="display:none;"><nav><ul>
-		<li>
-			<a href="#">Start</a>
-		</li>
-		<li>
-			<a href="#">Geschichte 1 - Die Stadt im Mittelalter</a>
-			<ul>
-				<li><a href="#">St&auml;dteboom im Mittelalter</a></li>
-				<li><a href="#">Spurensuche mit Satellit: Was ist eine Stadt im Mittelalter?</a></li>
-				<li><a href="#">Leben in der Stadt</a></li>
-				<li><a href="#">Macht und Herrschaft in den mittelalterlichen St&auml;dten</a></li>
-			</ul>
-		</li>
-		<li>
-			<a href="#">Geschichte 2 - Industrialisierung und soziale Frage</a>
-			<ul>
-				<li><a href="#">St&auml;dteboom im Mittelalter</a></li>
-				<li><a href="#">Macht und Herrschaft in den mittelalterlichen St&auml;dten</a></li>
-			</ul>
-		</li>
-		<li class="active">
-			<a href="#">Geschichte 3 - Instrumentalisierung der Vergangenheit</a>
-			<ul>
-				<li><a href="#">St&auml;dteboom im Mittelalter</a></li>
-				<li><a href="#">Spurensuche mit Satellit: Was ist eine Stadt im Mittelalter?</a></li>
-			</ul>
-		</li>
-		<li>
-			<a href="#">Geschichte 4 - Migration</a>
-			<ul>
-				<li><a href="#">St&auml;dteboom im Mittelalter</a></li>
-				<li><a href="#">Spurensuche mit Satellit: Was ist eine Stadt im Mittelalter?</a></li>
-			</ul>
-		</li>
-		<li>
-			<a href="#">Physik - Bewegung von K&ouml;rpern</a>
-			<ul>
-				<li><a href="#">St&auml;dteboom im Mittelalter</a></li>
-				<li><a href="#">Spurensuche mit Satellit: Was ist eine Stadt im Mittelalter?</a></li>
-			</ul>
-		</li>
-		<li>
-			<a href="#">Physik - Temperatur und der Zustand von K&ouml;rpern</a>
-			<ul>
-				<li><a href="#">St&auml;dteboom im Mittelalter</a></li>
-				<li><a href="#">Spurensuche mit Satellit: Was ist eine Stadt im Mittelalter?</a></li>
-			</ul>
-		</li>
-		<li>
-			<a href="#">Mathe 1 - Zuordnung in der Umwelt</a>
-			<ul>
-				<li><a href="#">St&auml;dteboom im Mittelalter</a></li>
-				<li><a href="#">Spurensuche mit Satellit: Was ist eine Stadt im Mittelalter?</a></li>
-			</ul>
-		</li>
-		<li>
-			<a href="#">Mathe 2 - Geometrie in der Ebene</a>
-			<ul>
-				<li><a href="#">St&auml;dteboom im Mittelalter</a></li>
-				<li><a href="#">Spurensuche mit Satellit: Was ist eine Stadt im Mittelalter?</a></li>
-			</ul>
-		</li>
-		<li>
-			<a href="#">Kunst 1 - Die Anf&auml;nge der bildnerischen Darstellung</a>
-			<ul>
-				<li><a href="#">St&auml;dteboom im Mittelalter</a></li>
-				<li><a href="#">Macht und Herrschaft in den mittelalterlichen St&auml;dten</a></li>
-			</ul>
-		</li>
-		<li>
-			<a href="#">Kunst 2 - Farbe</a>
-			<ul>
-				<li><a href="#">Leben in der Stadt</a></li>
-				<li><a href="#">Macht und Herrschaft in den mittelalterlichen St&auml;dten</a></li>
-			</ul>
-		</li>
-		<li>
-			<a href="#">Franz&ouml;sisch 1</a>
-			<ul>
-				<li><a href="#">St&auml;dteboom im Mittelalter</a></li>
-				<li><a href="#">Spurensuche mit Satellit: Was ist eine Stadt im Mittelalter?</a></li>
-			</ul>
-		</li>
-		<li>
-			<a href="#">Franz&oumlsisch 2</a>
-			<ul>
-				<li><a href="#">Leben in der Stadt</a></li>
-				<li><a href="#">Macht und Herrschaft in den mittelalterlichen St&auml;dten</a></li>
-			</ul>
-		</li>
-	</ul></nav></aside>
+<section id="c6" class="textpic">
+	<div class="inner-content">
+		<span class="dialogtext">
+			<p>Wir starten zunächst mit einer kleinen Wiederholung. Die Unterscheidung zwischen Vergangenheit und Geschichte und von Quellen und Darstellungen. Falls dir das alles noch völlig klar ist, kannst du direkt mit Kapitel 1.2 weiter machen.</p>
+		</span>
+	</div>
+</section>
 
-	<main>
-		<section id="c1" class="hero">
-			<div class="inner-content">
-				<figure class="heroimage">
-					<img src="img/hero.jpg" width="1920" height="1280"/>
-					<figcaption><p>So viele unterschiedliche Möglichkeiten eine Geschichte zu erzählen.</p></figcaption>
-				</figure>
-			</div>
-		</section>
-
-		<section id="c2" class="header">
-			<div class="inner-content">
-				<h1>Instrumentalisierung der Vergangenheit</h1>
-			</div>
-		</section>
-
-		<section id="c3" class="textpic">
-			<div class="inner-content">
-				<span class="dialogtext">
-					<p>
-						Quellen stammen aus der Vergangenheit, Darstellungen erzählen auf Grundlage dieser Quellen Geschichte.<br/>
-						Diese Geschichten werden von Menschen erzählt. Was erzählt wird und wie es erzählt wird, hängt stark von den Sichtweisen und Absichten dieser erzählenden Menschen ab. Damit ist klar: Es können sehr unterschiedliche Erzählungen über das gleiche Ereignis der Vergangenheit entstehen. Verunsichert dich das?  Ich hoffen nicht, denn mit dieser Erkenntnis kann man viel über Vergangenheit, die Gegenwart und sogar die Zukunft lernen.
-					</p>
-				</span>
-			</div>
-		</section>
-
-		<section id="c4" class="header">
-			<div class="inner-content">
-				<h2>1.1 Wiederholung: Vergangenheit und Geschichte, Quellen und Darstellungen</h2>
-			</div>
-		</section>
-
-		<section id="c5" class="audio">
-			<div class="inner-content">
-				<audio src="media/le-nord-oust.mp4" controls/>
-				<div class="audio-text">
-					<p>Test</p>
+<section id="c7" class="box quelle">
+	<div class="inner-content">
+		<details>
+			<summary>
+				<div class="box-caption">
+				<h3>Wiederholung</h3>
+				<p>Vergangenheit und Geschichte</p>
 				</div>
-			</div>
-		</section>
-
-		<section id="c6" class="textpic">
-			<div class="inner-content">
-				<span class="dialogtext">
-					<p>Wir starten zunächst mit einer kleinen Wiederholung. Die Unterscheidung zwischen Vergangenheit und Geschichte und von Quellen und Darstellungen. Falls dir das alles noch völlig klar ist, kannst du direkt mit Kapitel 1.2 weiter machen.</p>
-				</span>
-			</div>
-		</section>
-
-		<section id="c7" class="box quelle">
-			<div class="inner-content">
-				<details>
-					<summary>
-						<div class="box-caption">
-						<h3>Wiederholung</h3>
-						<p>Vergangenheit und Geschichte</p>
-						</div>
-					</summary>
-					<div class="box-content">
-						<section id="c8" class="textpic">
-							<div class="inner-content">
-								<figure class="picture right">
-									<img src="img/Lara_Stoll-1548.jpg" width="1200" height="1801"/>
-									<details class="license">
-										<summary>&sect;</summary>
-										<div class="license-content"> <a href="https://www.youtube.com/watch?v=GwzfjtYKXhw">https://www.youtube.com/watch?v=GwzfjtYKXhw</a></div>
-									</details>
-									<figcaption>Menschen erzählen sich Geschichten über die Vergangenheit. Sie tun das mit unterschiedlichen Absichten, Hintergründen, Wissenständen und in unterschiedlichen Medien, z.B. in Liedern.</figcaption>
-								</figure>
-								<p>Geschichten über die Vergangenheit stellen niemals genau das vergangene Geschehen dar. Sie nähren sich dieser Vergangenheit an. Jeder kann solche Geschichten erzählen. Und viele tun das auch. Dabei muss man auf Folgendes achten:</p>
-								<ul><li>
-									<strong>die Quellen, mit deren Informationen Geschichte erzählt wird</strong><br/>
-									Sie sind geprägt von der Entstehungszeit, der Entstehungssituation und der Absicht der Autoren. (Perspektivität)
-								</li><li>
-									<strong>die sonstigen Informationen, die der Erzähler über die Vergangenheit hat</strong><br>
-									<!-- Hier waere eine Liste natuerlich nett, ist aber so im BE eingetragen wurden, sollte also anstaendig ausschauen. -->
-									- Benutzt er tatsächlich alle Quellen, die das vergangene Ereignis beschreiben? <br>
-									- Sind entscheidende Informationen verloren gegangen? <br>
-									- Sind alle Sichtweisen auf das Ereignis überliefert? <br>
-									- Entsprechen die Informationen in den verwendeten Quellen tatsächlich der Wahrheit? (Partialität)
-								</li><li>
-									<strong>die Zeit, in der der Erzähler der Geschichte lebt und aus der er zurückblickt in die Vergangenheit</strong><br>
-									- Es prägt den Erzähler, dass er immer 'nur' aus seiner eigenen Zeit zurückschauen kann. Die Einstellungen und Ideen seiner Zeit prägen ihn nämlich. Er kann nicht mit dem Kopf eines Königs oder Bauern aus dem Mittelalter denen. <br>
-									- Er weiß auch, wie die danach Geschichte weiterging. Er hat Wissen, das die Menschen der Vergangenheit nicht hatten. Dieses Wissen und seine Prägungen überträgt er bewusst oder unbewusst auf die Vergangenheit und damit auch in seine Geschichte. (Partialität)
-								</li><li>
-									<strong>Der Erzähler stellt Fragen an die Vergangenheit aus, die ihm in seiner Gegenwart wichtig erscheinen</strong><br>
-									Damit lässt er bewusst oder unbewusst Informationen weg, die nicht zu seiner Fragestellung passen. (Selektivität)
-								</li></ul>
-							</div>
-						</section>
-						<footer>test</footer>
-					</div>
-				</details>
-			</div>
-		</section>
-
-		<section id="c9" class="textpic">
-			<div class="inner-content">
-				<figure class="picture top">
-					<img src="img/Vergangenheit-zu-Gegenwart.png" width="1200" height="675"/>
-				</figure>
-				<p>Die Grafik zeigt weitere <a href="https://lasub.test-dilewe.de/glossar/faktor">Faktoren</a>, die eine Erzählung über ein vergangenes Ereignis beeinflussen. Hättest du noch andere Faktoren mit aufgenommen?</p>
-			</div>
-		</section>
-
-		<section id="c10" class="gallery">
-			<div class="inner-content">
-				<details>
-					<summary>
-					<figure class="picture gallery">
-						<img src="img/martin-sattler-mBz6QjRZKvc-unsplash.jpg" width="1920" height="1068"/>
-						<details class="license">
-							<summary>&sect;</summary>
-							<div class="license-content"><a href="https://www.youtube.com/watch?v=GwzfjtYKXhw">https://www.youtube.com/watch?v=GwzfjtYKXhw</a></div>
-						</details>
-						<figcaption>Noch nicht ganz klar, wie das mit Vergangenheit und Geschichte zusammenhängt? Vielleicht helfen dir diese Bilder weiter ...</figcaption>
-					</figure>
-					</summary>
-
-					<figure class="picture gallery">
-						<img src="img/martin-sattler-mBz6QjRZKvc-unsplash.jpg" width="1920" height="1068"/>
-						<details class="license">
-							<summary>&sect;</summary>
-							<div class="license-content"><a href="https://www.youtube.com/watch?v=GwzfjtYKXhw">https://www.youtube.com/watch?v=GwzfjtYKXhw</a></div>
-						</details>
-						<figcaption>Der Blick zurück in die Vergangenheit ist wie der Strahl einer Taschenlampe in die Unendlichkeit. Nur ein sehr kleiner Teil des Gesamten kann beleuchtet und damit erkannt werden.</figcaption>
-					</figure>
-					<figure class="picture gallery">
-						<img src="img/Lego-Steine-Metapher-Konstrutkion-Geschichte.jpg" width="1920" height="1440"/>
-						<details class="license">
-							<summary>&sect;</summary>
-							<div class="license-content"><a href="https://www.youtube.com/watch?v=GwzfjtYKXhw">https://www.youtube.com/watch?v=GwzfjtYKXhw</a></div>
-						</details>
-						<figcaption>Was würdest du aus diesen Materialien bauen? Würden deine Mitschüler das Gleiche bauen?</figcaption>
-					</figure>
-					<figure class="picture gallery">
-						<img src="img/Kochen-als-Metapher-fuer-Geschichte-erzaehlen.jpg" width="1920" height="1281"/>
-						<details class="license">
-							<summary>&sect;</summary>
-							<div class="license-content"><a href="https://www.youtube.com/watch?v=GwzfjtYKXhw">https://www.youtube.com/watch?v=GwzfjtYKXhw</a></div>
-						</details>
-						<figcaption>Wie viele unterschiedliche Gerichte man wohl aus diesen Zutaten kochen könnte?</figcaption>
-					</figure>
-					<figure class="picture gallery">
-						<img src="img/Geschichte-Hochlager-als-Metapher.jpg" width="1920" height="1225"/>
-						<details class="license">
-							<summary>&sect;</summary>
-							<div class="license-content"><a href="https://www.youtube.com/watch?v=GwzfjtYKXhw">https://www.youtube.com/watch?v=GwzfjtYKXhw</a></div>
-						</details>
-						<figcaption>Würdest du alle Kisten untersuchen, wenn du den Auftrag hättest herauszufinden, was in diesem Lagerhaus aufbewahrt wird?</figcaption>
-					</figure>
-				</details>
-			</div>
-		</section>
-
-		<section id="c11" class="box darstellung">
-			<div class="inner-content">
-				<details>
-					<summary>
-						<div class="box-caption">
-						<h3>Darstellung 1</h3>
-						<p>Vertiefung: Der Historiker Yuval Harari über die Rolle von Geschichten</p>
-						</div>
-					</summary>
-					<div class="box-content">
-						<section id="c12" class="textpic">
-							<div class="inner-content">
-								<p>Wie schaffte [der Mensch] es, Städte mit Zehntausenden Einwohnern und Riesenreiche mit Millionen von Untertanen zu gründen? Sein Erfolgsgeheimnis war die fiktive Sprache. Eine große Zahl von wildfremden Menschen kann effektiv zusammenarbeiten, wenn alle an gemeinsame Mythen glauben. Jede großangelegte menschliche Unternehmung – angefangen von einem archaischen Stamm über eine antike Stadt bis zu einer mittelalterlichen Kirche oder einem modernen Staat – ist fest in gemeinsamen Geschichten verwurzelt, die nur in den Köpfen der Menschen existieren. Glaubensgemeinschaften basieren auf diesen kollektiven Mythen.</p>
-								<p>Zwei Katholiken, die einander nie zuvor begegnet sind, verstehen einander ohne lange Erklärungen, weil beide glauben, dass es einen Gott gibt, der seinen Sohn auf die Erde geschickt hat, und dass dieser sich kreuzigen ließ, um die Menschheit von ihren Sünden zu erlösen. [...] Konzerne basieren auf gemeinsamen wirtschaftlichen Mythen: Zwei Mitarbeiter von Google, die einander noch nie gesehen haben, können um den halben Erdball hinweg zusammenarbeiten, weil sie an die Existenz von Google, Aktien und Dollars glauben. Rechtsstaaten fußen auf gemeinsamen juristischen Mythen: Zwei wildfremde Anwälte können effektiv kooperieren, weil sie an die Existenz von Recht, Gesetz und Menschenrechten glauben. Diese Dinge existieren jedoch nur in den Geschichten, die wir Menschen erfinden und einander erzählen. Götter, Nationen, Geld, Menschenrechte und Gesetze gibt es gar nicht – sie existieren nur in unserer kollektiven Vorstellungswelt. Dass »primitive Stämme« ihre Gesellschaft zusammenhalten, indem sie an Geister glauben und bei Vollmond um ein Feuer herumtanzen, verstehen wir sofort. Dabei übersehen wir gern, dass die fortschrittlichen Institutionen unserer modernen Gesellschaft keinen Deut anders funktionieren.</p>
-							</div>
-						</section>
-						<footer>Harari, Yuval Noah. Eine kurze Geschichte der Menschheit (German Edition), Deutsche Verlags-Anstalt, S.41. Kindle-Version.</footer>
-					</div>
-				</details>
-			</div>
-		</section>
-
-		<section id="c13" class="box darstellung">
-			<div class="inner-content">
-				<details>
-					<summary>
-						<div class="box-caption">
-						<h3>Darstellung 2</h3>
-						<p>Vertiefung: Der Historiker Yuval Harari in einem TED-Videovortrag über die Rolle von Geschichten (Original mit Untertiteln)</p>
-						</div>
-					</summary>
-					<div class="box-content">
-						<section id="c14" class="embed">
-							<div class="inner-content">
-								<figure class="embedfigure">
-									<!-- kein direktes embedding, stattdessen verlinkung aufs video und local gecachetes thumbnail, erzeugung des iframes nach klick -->
-									<a href="https://www.youtube.com/watch?v=nzj7Wg4DAbs" class="embedlink">
-										<img src="img/ytthumb.jpg" alt="Why humans run the world | Yuval Noah Harari" width="480" height="360"/>
-									</a>
-									<details class="license">
-										<summary>&sect;</summary>
-										<div class="license-content"><a href="https://www.youtube.com/watch?v=GwzfjtYKXhw">https://www.youtube.com/watch?v=GwzfjtYKXhw</a></div>
-									</details>
-									<figcaption>In den Eistellungen kannst du dir englische oder deutsche Untertitel einblenden lassen</figcaption>
-								</figure>
-							</div>
-						</section>
-					</div>
-				</details>
-			</div>
-		</section>
-
-		<section id="c15" class="tabbox">
-			<div class="inner-content">
-			<!-- Tabkaesten sind einfach nur eine Liste von <details>, dadurch gibt es selbst ohne JS einen aehnlichen Effekt -->
-				<details>
-					<summary>
-						<h3>Video historische Quellen</h3>
-					</summary>
-					<section id="c16" class="embed">
-						<div class="inner-content">
-							<figure class="embedfigure">
-								<!-- kein direktes embedding, stattdessen verlinkung aufs video und local gecachetes thumbnail, erzeugung des iframes nach klick -->
-								<a href="https://www.youtube.com/watch?v=nzj7Wg4DAbs" class="embedlink">
-									<img src="img/ytthumb.jpg" alt="Why humans run the world | Yuval Noah Harari" width="480" height="360"/>
-								</a>
-								<details class="license">
-									<summary>&sect;</summary>
-									<div class="license-content"><a href="https://www.youtube.com/watch?v=GwzfjtYKXhw">https://www.youtube.com/watch?v=GwzfjtYKXhw</a></div>
-								</details>
-								<figcaption>Video über die Eigenheiten von Quellen</figcaption>
-							</figure>
-						</div>
-					</section>
-				</details>
-				<details>
-					<summary>
-						<h3>Video historische Darstellungen</h3>
-					</summary>
-					<section id="c17" class="embed">
-						<div class="inner-content">
-							<figure class="embedfigure">
-								<!-- kein direktes embedding, stattdessen verlinkung aufs video und local gecachetes thumbnail, erzeugung des iframes nach klick -->
-								<a href="https://www.youtube.com/watch?v=nzj7Wg4DAbs" class="embedlink">
-									<img src="img/ytthumb.jpg" alt="Why humans run the world | Yuval Noah Harari" width="480" height="360"/>
-								</a>
-								<details class="license">
-									<summary>&sect;</summary>
-									<div class="license-content"><a href="https://www.youtube.com/watch?v=GwzfjtYKXhw">https://www.youtube.com/watch?v=GwzfjtYKXhw</a></div>
-								</details>
-								<figcaption>Video über die Kennzeichen von Darstellungen</figcaption>
-							</figure>
-						</div>
-					</section>
-				</details>
-			</div>
-		</section>
-
-		<section id="c18" class="textpic">
-			<div class="inner-content">
-				<figure class="picture left">
-					<img src="img/1934_Protocols_Patriotic_Pub.jpg" width="1200" height="1862"/>
-					<details class="license">
-						<summary>&sect;</summary>
-						<div class="license-content"><a href="https://www.youtube.com/watch?v=GwzfjtYKXhw">https://www.youtube.com/watch?v=GwzfjtYKXhw</a></div>
-					</details>
-					<figcaption><a href="https://lasub.test-dilewe.de/glossar/protokolle-der-weisen-von-zion">Die Protokolle der Weisen von Zion</a> sind eine gefälschte Quelle. Obwohl inzwischen schon lange bewiesen ist, dass sie eine Fälschung sind, dienen sie bis heute antisemitischen Verschwörungsgläubigen als Grundlage. In den Protokollen werden angebliche Treffen jüdischer Weltverschwörer dargestellt.</figcaption>
-				</figure>
-				<p>Quellen sind alles, was aus der Vergangenheit überliefert wurde: Urkunden, Briefe, Zeitungen, Bilder, ja sogar Kleider, Haushaltsgegegenstände und Gebäude. Aber was wissen wir über die Vergangenheit, wenn wir einen Brief aus dem 18., Jahrhundert in der Hand halten oder einen alten Wasserkrug? Genau: Zunächst recht wenig. Daher müssen wir die Quellen befragen, sie untersuchen. Wir müssen Methoden anwenden, um herauszubekommen, was Quellen uns berichten können. Man unterscheidet bei der Quellenanalyse die äußere und die innere Analyse:</p>
-				<p><b>Äußere Quellenanalyse:</b> Hier fragst du nach allem, was das Äußere der Quelle ausmacht, bis hin zur Art des Papiers und dem Ort, wo die Quelle gefunden oder gelagert wurde.</p>
-				<p><b>Innere Quellenanalyse:</b>  Hier fragst du nach dem Inhalt der Quelle, also danach, welche Informationen, Argumente und Meinungen die Quelle enthält.</p>
-			</div>
-		</section>
-
-		<section id="c19" class="header">
-			<div class="inner-content">
-				<h2>1.2 Wie Darstellungen von ihrer Entstehungszeit abhängen: die sogenannte Dolchstoßlegende</h2>
-			</div>
-		</section>
-
-		<section id="c20" class="textpic">
-			<div class="inner-content">
-				<figure class="picture right">
-					<img src="img/Dolchstosslegende.jpg" width="1200" height="1824"/>
-					<details class="license">
-						<summary>&sect;</summary>
-						<div class="license-content"><a href="https://www.youtube.com/watch?v=GwzfjtYKXhw">https://www.youtube.com/watch?v=GwzfjtYKXhw</a></div>
-					</details>
-					<figcaption>Wahlplakat der Deutschnationalen Volkspartei aus dem Jahr 1924</figcaption>
-				</figure>
-				<p>Die Dolchstoßlegende war eine von der deutschen Armeeführung am Ende des Ersten Weltkrieges erfundene Verschwörungserzählung, die den (sozial)demokratische Politikern und dem „bolschewistischen Judentum“ die Schuld an der Niederlage gab. Laut Armeeführung waren die Truppen „im Felde unbesiegt“ geblieben und hatten erst durch oppositionelle Zivilisten aus der Heimat einen „Dolchstoß von hinten“ erhalten. Diese Erzählung wurde zudem häufig mit dem „internationalen Judentum“ verbunden.</p>
-			</div>
-		</section>
-
-		<section id="c21" class="embed">
-			<div class="inner-content">
-				<figure class="embedfigure">
-					<!-- kein direktes embedding, stattdessen verlinkung aufs video und local gecachetes thumbnail, erzeugung des iframes nach klick -->
-					<a href="https://www.youtube.com/watch?v=nzj7Wg4DAbs" class="embedlink">
-						<img src="img/ytthumb.jpg" alt="Why humans run the world | Yuval Noah Harari" width="480" height="360"/>
-					</a>
-					<details class="license">
-						<summary>&sect;</summary>
-						<div class="license-content"><a href="https://www.youtube.com/watch?v=GwzfjtYKXhw">https://www.youtube.com/watch?v=GwzfjtYKXhw</a></div>
-					</details>
-					<figcaption>In diesem Video findest du die historischen Hintergründe um die Dolchstoßlegende. Ab 12:13 wird konkret auf diese Verschwörungserzählung eingegangen.</figcaption>
-				</figure>
-			</div>
-		</section>
-
-		<section id="c22" class="textpic">
-			<div class="inner-content">
-				<span class="dialogtext">
-					<p>Nachdem du dich mit den Inhalten und dem Hintergrund der Dolchstoßlegende beschäftigt hast, kannst du dir jetzt ansehen, wie sie dargestellt und damit im Verlauf der Zeit interpretiert wurde. Im Folgenden findest du vier Ausschnitte aus Schulbüchern. Gleiches Ereignis, unterschiedliche Erzählzeiten. Spannend, oder?</p>
-				</span>
-			</div>
-		</section>
-
-		<section id="c23" class="tabbox">
-			<div class="inner-content">
-			<!-- Tabkaesten sind einfach nur eine Liste von <details>, dadurch gibt es selbst ohne JS einen aehnlichen Effekt -->
-				<details>
-					<summary>Version von 1929</summary>
-					<section id="c24" class="textpic">
-						<div class="inner-content">
-							<h4>Otto Schnitzer, Deutsche Geschichte fürs deutsche Volk (1929)</h4>
-							<p>Und nun ging’s zum Abschluss des Waffenstilstands, den die deutschen Unterhändler im Walde von Compiègne mit Marschall Foch abschlossen. Während sie unterwegs waren, brach in Deutschland die Revolution aus. So standen sie vollends wehrlos dem Feinde gegenüber; dieser konnte seine Forderungen so hoch schrauben als er wollte. Sie waren auch barbarisch hart.</p>
-							<p><em>Otto Schnitzer, Deutsche Geschichte fürs deutsche Volk. Stuttgart 1929, S. 463.</em></p>
-						</div>
-					</section>
-				</details>
-			
-				<details>
-					<summary>Version von 1943</summary>
-					<section id="c25" class="textpic">
-						<div class="inner-content">
-							<h4>Geschichtsbuch für die deutsche Jugend (1943)</h4>
-							<p>Am 7. November [1918] wird in München, am 9. in Berlin die Republik ausgerufen. Ohne auch nur Widerstand zu versuchen, treten die deutschen Fürsten ab. Der oberste Kriegsherr, der letzte Kaiser aus dem großen Geschlecht der Hohenzollern, verlässt flüchtend die Soldaten. An seine Stelle treten Marxisten. Sie lassen den Umsturz weiter um sich greifen. Munition und Verpflegung kommen nicht mehr an die Front. Nun erst muss sich Hindenburg den wahnwitzigen Bedingungen des Waffenstillstandes fügen. [...] Das deutsche Volk ist wehrlos! Jetzt können Haß und Vernichtungswille mit uns machen, was sie wollen.</p>
-							<p><em>B. Kumsteller/U. Haacke/B. Schneider, Geschichtsbuch für die deutsche Jugend. Volksschulausgabe, Klasse 6-8, Leipzig 1943, S. 198f.</em></p>
-						</div>
-					</section>
-				</details>
-				
-				<details>
-					<summary>Version von 1984</summary>
-					<section id="c26" class="textpic">
-						<div class="inner-content">
-							<h4>Geschichtslehrbuch für die 9. Klasse (DDR, 1984)</h4>
-							<p>Das deutsche Heer war erschöpft, kriegsmüde und begann sich zu zersetzen. Am 29. September [1918] musste die Oberste Heeresleitung erklären, dass der Krieg verloren sei und die verzweifelte Lage des Heeres sofortigen Waffenstillstand erfordere. Damit endete nach mehr als vierjährigem Völkermorden der Versuch des deutschen Imperialismus, Europa zu beherrschen und die Welt zu seinen Gunsten neu aufzuteilen, mit einer militärischen Niederlage.</p>
-							<p><em>Wolfgang Bleyer u.a., Geschichte. Lehrbuch für die Klasse 9, Berlin 1984, S. 42.</em></p>
-						</div>
-					</section>
-				</details>
-
-				<details>
-					<summary>Version von 1996</summary>
-					<section id="c27" class="textpic">
-						<div class="inner-content">
-							<h4>Geschichte und Geschehen (Geschichtslehrbuch für die Sekundarstufe I, 1996)</h4>
-							<p>Seit dem Sommer 1918 änderte sich die militärische Lage. Die deutschen Truppen mussten vor den Alliierten immer weiter zurückweichen. Die Verbündeten Österreich-Ungarn, Bulgarien und die Türkei standen ebenfalls am Rande des Zusammenbruchs. Die Oberste Heeresleitung forderte daher Ende September den baldigen Abschluss eines Waffenstillstands. Dieser sollte zu einem für das Deutsche Reich maßvollen Frieden führen.</p>
-							<p><em>Ludwig Bernlocher u.a., Geschichte und Geschehen. D4, Geschichtliches Unterrichtswerk für die Sekundarstufe I, Leipzig/Stuttgart/Düsseldorf 1996, S. 779.</em></p>
-						</div>
-					</section>
-				</details>
-			</div>
-		</section>
-
-		<section id="c28" class="task">
-			<div class="inner-content">
-				<section id="c29" class="textpic">
+			</summary>
+			<div class="box-content">
+				<section id="c8" class="textpic">
 					<div class="inner-content">
-						<h3>Aufgabe 2</h3>
-						<ol><li>
-							Trage die historischen Hintergründe zur sogenannten „Dolchstoßlegende" zusammen.
+						<figure class="picture right">
+							<img src="img/Lara_Stoll-1548.jpg" width="1200" height="1801"/>
+							<details class="license">
+								<summary>&sect;</summary>
+								<div class="license-content"> <a href="https://www.youtube.com/watch?v=GwzfjtYKXhw">https://www.youtube.com/watch?v=GwzfjtYKXhw</a></div>
+							</details>
+							<figcaption>Menschen erzählen sich Geschichten über die Vergangenheit. Sie tun das mit unterschiedlichen Absichten, Hintergründen, Wissenständen und in unterschiedlichen Medien, z.B. in Liedern.</figcaption>
+						</figure>
+						<p>Geschichten über die Vergangenheit stellen niemals genau das vergangene Geschehen dar. Sie nähren sich dieser Vergangenheit an. Jeder kann solche Geschichten erzählen. Und viele tun das auch. Dabei muss man auf Folgendes achten:</p>
+						<ul><li>
+							<strong>die Quellen, mit deren Informationen Geschichte erzählt wird</strong><br/>
+							Sie sind geprägt von der Entstehungszeit, der Entstehungssituation und der Absicht der Autoren. (Perspektivität)
 						</li><li>
-							Beschreibe die Absichten, die du hinter den vier Schulbuchtexten oben vermutest. Beachte dabei die Zeit, in der sie entstanden sind. Stelle deine Erarbeitungen übersichtlich in einer Tabelle dar.
+							<strong>die sonstigen Informationen, die der Erzähler über die Vergangenheit hat</strong><br>
+							<!-- Hier waere eine Liste natuerlich nett, ist aber so im BE eingetragen wurden, sollte also anstaendig ausschauen. -->
+							- Benutzt er tatsächlich alle Quellen, die das vergangene Ereignis beschreiben? <br>
+							- Sind entscheidende Informationen verloren gegangen? <br>
+							- Sind alle Sichtweisen auf das Ereignis überliefert? <br>
+							- Entsprechen die Informationen in den verwendeten Quellen tatsächlich der Wahrheit? (Partialität)
 						</li><li>
-							Stelle ein aktuelles Thema dar, das du für ähnlich kontrovers hältst wie die „Dolchstoßlegende".
-						</li></ol>
+							<strong>die Zeit, in der der Erzähler der Geschichte lebt und aus der er zurückblickt in die Vergangenheit</strong><br>
+							- Es prägt den Erzähler, dass er immer 'nur' aus seiner eigenen Zeit zurückschauen kann. Die Einstellungen und Ideen seiner Zeit prägen ihn nämlich. Er kann nicht mit dem Kopf eines Königs oder Bauern aus dem Mittelalter denen. <br>
+							- Er weiß auch, wie die danach Geschichte weiterging. Er hat Wissen, das die Menschen der Vergangenheit nicht hatten. Dieses Wissen und seine Prägungen überträgt er bewusst oder unbewusst auf die Vergangenheit und damit auch in seine Geschichte. (Partialität)
+						</li><li>
+							<strong>Der Erzähler stellt Fragen an die Vergangenheit aus, die ihm in seiner Gegenwart wichtig erscheinen</strong><br>
+							Damit lässt er bewusst oder unbewusst Informationen weg, die nicht zu seiner Fragestellung passen. (Selektivität)
+						</li></ul>
 					</div>
 				</section>
-				<textarea class="tasktext"></textarea>
-				<!-- textarea sollte per JS durch einen fancy editor ersetzt werden -->
+				<footer>test</footer>
 			</div>
-		</section>
+		</details>
+	</div>
+</section>
 
-		<section id="c30" class="header">
-			<div class="inner-content">
-				<h2>Wie aus Vergangenheit Geschichte erzählt wird</h2>
-			</div>
-		</section>
+<section id="c9" class="textpic">
+	<div class="inner-content">
+		<figure class="picture top">
+			<img src="img/Vergangenheit-zu-Gegenwart.png" width="1200" height="675"/>
+		</figure>
+		<p>Die Grafik zeigt weitere <a href="https://lasub.test-dilewe.de/glossar/faktor">Faktoren</a>, die eine Erzählung über ein vergangenes Ereignis beeinflussen. Hättest du noch andere Faktoren mit aufgenommen?</p>
+	</div>
+</section>
 
-		<section id="c31" class="textpic">
-			<div class="inner-content">
-				<span class="dialogtext">
-					<p>Um zu verstehen, wie Geschichten wirken können, musst du verstehen, mit welchen Mitteln sie erzählt werden. Die erzählerischen Mittel sind dabei stark abhängig vom Medium, mit dem sie erzählt werden: Text, Film, Fotografie ...<br/>
-					In diesem Kapitel erkunden wir die erzählerischen Mittel am Beispiel des Films. Viele hier gewonnene Erkenntnisse kannst du auf andere Erzählformen übertragen.</p>
-				</span>
-			</div>
-		</section>
-
-		<section id="c32" class="tabbox">
-			<div class="inner-content">
-				<details>
-					<summary>Szene 1</summary>
-					<section id="c33" class="embed">
-						<div class="inner-content">
-							<figure class="embedfigure">
-								<lazy-iframe src="https://h5p.test-dilewe.de/wp-admin/admin-ajax.php?action=h5p_embed&id=93" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
-								<figcaption></figcaption>
-								<!-- H5P kann direkt embedded werden, erstmal ohne lazy loading -->
-							</figure>
-						</div>
-					</section>
+<section id="c10" class="gallery">
+	<div class="inner-content">
+		<details>
+			<summary>
+			<figure class="picture gallery">
+				<img src="img/martin-sattler-mBz6QjRZKvc-unsplash.jpg" width="1920" height="1068"/>
+				<details class="license">
+					<summary>&sect;</summary>
+					<div class="license-content"><a href="https://www.youtube.com/watch?v=GwzfjtYKXhw">https://www.youtube.com/watch?v=GwzfjtYKXhw</a></div>
 				</details>
-					
-				<details>
-					<summary>Szene 2</summary>
-					<section id="c34" class="embed">
-						<div class="inner-content">
-							<figure class="embedfigure">
-								<lazy-iframe src="https://h5p.test-dilewe.de/wp-admin/admin-ajax.php?action=h5p_embed&id=97" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
-								<figcaption></figcaption>
-							</figure>
-						</div>
-					</section>
-				</details>
+				<figcaption>Noch nicht ganz klar, wie das mit Vergangenheit und Geschichte zusammenhängt? Vielleicht helfen dir diese Bilder weiter ...</figcaption>
+			</figure>
+			</summary>
 
-				<details>
-					<summary>Szene 3</summary>
-					<section id="c35" class="embed">
-						<div class="inner-content">
-							<figure class="embedfigure">
-								<lazy-iframe src="https://h5p.test-dilewe.de/wp-admin/admin-ajax.php?action=h5p_embed&id=102" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
-								<figcaption></figcaption>
-							</figure>
-						</div>
-					</section>
+			<figure class="picture gallery">
+				<img src="img/martin-sattler-mBz6QjRZKvc-unsplash.jpg" width="1920" height="1068"/>
+				<details class="license">
+					<summary>&sect;</summary>
+					<div class="license-content"><a href="https://www.youtube.com/watch?v=GwzfjtYKXhw">https://www.youtube.com/watch?v=GwzfjtYKXhw</a></div>
 				</details>
-			</div>
-		</section>
+				<figcaption>Der Blick zurück in die Vergangenheit ist wie der Strahl einer Taschenlampe in die Unendlichkeit. Nur ein sehr kleiner Teil des Gesamten kann beleuchtet und damit erkannt werden.</figcaption>
+			</figure>
+			<figure class="picture gallery">
+				<img src="img/Lego-Steine-Metapher-Konstrutkion-Geschichte.jpg" width="1920" height="1440"/>
+				<details class="license">
+					<summary>&sect;</summary>
+					<div class="license-content"><a href="https://www.youtube.com/watch?v=GwzfjtYKXhw">https://www.youtube.com/watch?v=GwzfjtYKXhw</a></div>
+				</details>
+				<figcaption>Was würdest du aus diesen Materialien bauen? Würden deine Mitschüler das Gleiche bauen?</figcaption>
+			</figure>
+			<figure class="picture gallery">
+				<img src="img/Kochen-als-Metapher-fuer-Geschichte-erzaehlen.jpg" width="1920" height="1281"/>
+				<details class="license">
+					<summary>&sect;</summary>
+					<div class="license-content"><a href="https://www.youtube.com/watch?v=GwzfjtYKXhw">https://www.youtube.com/watch?v=GwzfjtYKXhw</a></div>
+				</details>
+				<figcaption>Wie viele unterschiedliche Gerichte man wohl aus diesen Zutaten kochen könnte?</figcaption>
+			</figure>
+			<figure class="picture gallery">
+				<img src="img/Geschichte-Hochlager-als-Metapher.jpg" width="1920" height="1225"/>
+				<details class="license">
+					<summary>&sect;</summary>
+					<div class="license-content"><a href="https://www.youtube.com/watch?v=GwzfjtYKXhw">https://www.youtube.com/watch?v=GwzfjtYKXhw</a></div>
+				</details>
+				<figcaption>Würdest du alle Kisten untersuchen, wenn du den Auftrag hättest herauszufinden, was in diesem Lagerhaus aufbewahrt wird?</figcaption>
+			</figure>
+		</details>
+	</div>
+</section>
 
-		<section id="c36" class="task">
-			<div class="inner-content">
-				<section id="c37" class="textpic">
+<section id="c11" class="box darstellung">
+	<div class="inner-content">
+		<details>
+			<summary>
+				<div class="box-caption">
+				<h3>Darstellung 1</h3>
+				<p>Vertiefung: Der Historiker Yuval Harari über die Rolle von Geschichten</p>
+				</div>
+			</summary>
+			<div class="box-content">
+				<section id="c12" class="textpic">
 					<div class="inner-content">
-						<h3>Aufgabe 3</h3>
-						<ol><li>
-							Sieh dir die zwei Kurzgeschichten in jeweils drei Filmbildern (Szene 1 – Szene 3) an. Sie sind einerseits sehr ähnlich, anderseits sehr unterschiedlich.
-						</li><li>
-							Arbeite die Gründe für die unterschiedlichen Wirkungen heraus.<br/>
-							Achte dabei auf die Kleidung, die Farbgebung, das Licht, die Position der Kamera und die Ausstattung.
-						</li></ol>
-					</section>
-					<textarea class="tasktext"></textarea>
-				<!-- textarea sollte per JS durch einen fancy editor ersetzt werden -->
-				</div>
-			</div>
-		</section>
-
-		<section id="c38" class="tabbox">
-			<div class="inner-content">
-				<details>
-					<summary>Einstellungsgr&ouml;sse</summary>
-					<section id="c39" class="embed">
-						<div class="inner-content">
-							<figure class="embedfigure">
-								<lazy-iframe src="https://h5p.test-dilewe.de/wp-admin/admin-ajax.php?action=h5p_embed&id=73" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
-								<figcaption></figcaption>
-							</figure>
-						</div>
-					</section>
-				</details>
-			
-				<details>
-					<summary>Ton und Musik</summary>
-					<section id="c40" class="video">
-						<div class="inner-content">
-							<figure class="videofigure">
-								<video controls>
-									<source src="https://s3.eu-central-1.amazonaws.com/lasub/craft/videos/Nosferatu_-_Eine_Symphonie_des_Grauens.mp4?mtime=20201006140156&amp;focal=none" type="video/mp4"/>
-								</video>
-								<details class="license">
-									<summary>&sect;</summary>
-									<div class="license-content"><a href="https://www.youtube.com/watch?v=GwzfjtYKXhw">https://www.youtube.com/watch?v=GwzfjtYKXhw</a></div>
-								</details>
-								<figcaption>Ausschnitt aus „Nosferatu – Eine Symphonie des Grauens" (1922). Einmal mit Originalmusik, einmal mit veränderter Tonspur.</figcaption>
-							</figure>
-						</div>
-					</section>
-				</details>
-			</div>
-		</section>
-
-		<section id="c41" class="header">
-			<div class="inner-content">
-				<h2>Zum Üben ideal: erzählerische Mittel im Propaganda-Film</h2>
-			</div>
-		</section>
-
-		<section id="c42" class="embed">
-			<div class="inner-content">
-				<figure class="embedfigure">
-					<lazy-iframe src="https://h5p.test-dilewe.de/wp-admin/admin-ajax.php?action=h5p_embed&id=60" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
-					<figcaption></figcaption>
-				</figure>
-			</div>
-		</section>
-
-		<section id="c43" class="box darstellung">
-			<div class="inner-content">
-			<details>
-				<summary>
-					<div class="box-caption">
-					<h3>Darstellung 3</h3>
-					<p>Hintergründe zum Film „Ernst Thälmann – Führer seiner Klasse" (DDR, 1955)</p>
+						<p>Wie schaffte [der Mensch] es, Städte mit Zehntausenden Einwohnern und Riesenreiche mit Millionen von Untertanen zu gründen? Sein Erfolgsgeheimnis war die fiktive Sprache. Eine große Zahl von wildfremden Menschen kann effektiv zusammenarbeiten, wenn alle an gemeinsame Mythen glauben. Jede großangelegte menschliche Unternehmung – angefangen von einem archaischen Stamm über eine antike Stadt bis zu einer mittelalterlichen Kirche oder einem modernen Staat – ist fest in gemeinsamen Geschichten verwurzelt, die nur in den Köpfen der Menschen existieren. Glaubensgemeinschaften basieren auf diesen kollektiven Mythen.</p>
+						<p>Zwei Katholiken, die einander nie zuvor begegnet sind, verstehen einander ohne lange Erklärungen, weil beide glauben, dass es einen Gott gibt, der seinen Sohn auf die Erde geschickt hat, und dass dieser sich kreuzigen ließ, um die Menschheit von ihren Sünden zu erlösen. [...] Konzerne basieren auf gemeinsamen wirtschaftlichen Mythen: Zwei Mitarbeiter von Google, die einander noch nie gesehen haben, können um den halben Erdball hinweg zusammenarbeiten, weil sie an die Existenz von Google, Aktien und Dollars glauben. Rechtsstaaten fußen auf gemeinsamen juristischen Mythen: Zwei wildfremde Anwälte können effektiv kooperieren, weil sie an die Existenz von Recht, Gesetz und Menschenrechten glauben. Diese Dinge existieren jedoch nur in den Geschichten, die wir Menschen erfinden und einander erzählen. Götter, Nationen, Geld, Menschenrechte und Gesetze gibt es gar nicht – sie existieren nur in unserer kollektiven Vorstellungswelt. Dass »primitive Stämme« ihre Gesellschaft zusammenhalten, indem sie an Geister glauben und bei Vollmond um ein Feuer herumtanzen, verstehen wir sofort. Dabei übersehen wir gern, dass die fortschrittlichen Institutionen unserer modernen Gesellschaft keinen Deut anders funktionieren.</p>
 					</div>
-				</summary>
-				<div class="box-content">
-					<p><strong>Zur Person</strong><br>Der Film 'Ernst Thälmann – Führer seiner Klasse' ist ein Film aus der DDR und wurde im&nbsp;Jahr 1955 produziert. <br>Er gilt als einer der wichtigsten Propagandafilme der DDR. <br>Ernst Thälmann (1886-1944) wurde in Hamburg geboren und 1944&nbsp;im Konzentrationslager Buchenwald ermordet.&nbsp;Er war einer der bekanntesten Führer der Kommunisten in Deutschland.&nbsp;Von 1924 bis 1933 war er&nbsp;Mitglied des Reichstages sowie von 1925 bis 1933 Vorsitzender der Kommunistischen Partei Deutschlands (KPD). Er wurde 1933 verhaftet nach elf Jahren Isolationshaft auf Befehl Adolf Hitlers erschossen.</p>
-					<p><strong>Handlung des Films</strong><br>Durch die 1929 beginnende&nbsp;Weltwirtschaftskrise kommt es bei den Arbeitern zu drastischen Lohnkürzungen. Ernst Thälmann führt daher mehrere Streiks an. Er verliert die Reichspräsidentenwahlen im Jahr 1932, setzt seinen Kampf für die Rechte der Arbeiter und gegen den Faschismus auch nach dem Machtabtritts Hitlers fort. Aus diesem Grund wird er verhaftet und erträgt elf Jahre Isolationshaft aufrecht und heldenhaft. 1944 wird er hingerichtet. </p>
-					<p>Der Ausschnitt oben zeigt das Ende des Films: Thälmanns Gang zur Hinrichtung.<br></p>
-				</div>
-			</details>
+				</section>
+				<footer>Harari, Yuval Noah. Eine kurze Geschichte der Menschheit (German Edition), Deutsche Verlags-Anstalt, S.41. Kindle-Version.</footer>
 			</div>
-		</section>
+		</details>
+	</div>
+</section>
 
-		<section id="c44" class="task">
-			<div class="inner-content">
-			<section id="c45" class="textpic">
+<section id="c13" class="box darstellung">
+	<div class="inner-content">
+		<details>
+			<summary>
+				<div class="box-caption">
+				<h3>Darstellung 2</h3>
+				<p>Vertiefung: Der Historiker Yuval Harari in einem TED-Videovortrag über die Rolle von Geschichten (Original mit Untertiteln)</p>
+				</div>
+			</summary>
+			<div class="box-content">
+				<section id="c14" class="embed">
+					<div class="inner-content">
+						<figure class="embedfigure">
+							<!-- kein direktes embedding, stattdessen verlinkung aufs video und local gecachetes thumbnail, erzeugung des iframes nach klick -->
+							<a href="https://www.youtube.com/watch?v=nzj7Wg4DAbs" class="embedlink">
+								<img src="img/ytthumb.jpg" alt="Why humans run the world | Yuval Noah Harari" width="480" height="360"/>
+							</a>
+							<details class="license">
+								<summary>&sect;</summary>
+								<div class="license-content"><a href="https://www.youtube.com/watch?v=GwzfjtYKXhw">https://www.youtube.com/watch?v=GwzfjtYKXhw</a></div>
+							</details>
+							<figcaption>In den Eistellungen kannst du dir englische oder deutsche Untertitel einblenden lassen</figcaption>
+						</figure>
+					</div>
+				</section>
+			</div>
+		</details>
+	</div>
+</section>
+
+<section id="c15" class="tabbox">
+	<div class="inner-content">
+	<!-- Tabkaesten sind einfach nur eine Liste von <details>, dadurch gibt es selbst ohne JS einen aehnlichen Effekt -->
+		<details>
+			<summary>
+				<h3>Video historische Quellen</h3>
+			</summary>
+			<section id="c16" class="embed">
 				<div class="inner-content">
-				<h3>Aufgabe 4</h3>
-				<p>Untersuchung filmischer Mittel bei einem Film</p>
-				<ol><li>
-					Nenne die drei für dich wichtigsten filmischen Mittel in diesem Ausschnitt. Begründe deine Auswahl.
-				</li><li>
-					Arbeite die beabsichtigte Wirkung dieser Mittel heraus. Nutze dafür auch die Informationen aus der Darstellung 3.
-				</li><li>
-					Diskutiere in deiner Lerngruppe, ob derartige Mittel auch in aktuellen Filmproduktionen verwendet werden.
-				</li></ol>
+					<figure class="embedfigure">
+						<!-- kein direktes embedding, stattdessen verlinkung aufs video und local gecachetes thumbnail, erzeugung des iframes nach klick -->
+						<a href="https://www.youtube.com/watch?v=nzj7Wg4DAbs" class="embedlink">
+							<img src="img/ytthumb.jpg" alt="Why humans run the world | Yuval Noah Harari" width="480" height="360"/>
+						</a>
+						<details class="license">
+							<summary>&sect;</summary>
+							<div class="license-content"><a href="https://www.youtube.com/watch?v=GwzfjtYKXhw">https://www.youtube.com/watch?v=GwzfjtYKXhw</a></div>
+						</details>
+						<figcaption>Video über die Eigenheiten von Quellen</figcaption>
+					</figure>
 				</div>
 			</section>
-			<textarea class="tasktext"></textarea>
-			</div>
-			<!-- textarea sollte per JS durch einen fancy editor ersetzt werden -->
-		</section>
+		</details>
+		<details>
+			<summary>
+				<h3>Video historische Darstellungen</h3>
+			</summary>
+			<section id="c17" class="embed">
+				<div class="inner-content">
+					<figure class="embedfigure">
+						<!-- kein direktes embedding, stattdessen verlinkung aufs video und local gecachetes thumbnail, erzeugung des iframes nach klick -->
+						<a href="https://www.youtube.com/watch?v=nzj7Wg4DAbs" class="embedlink">
+							<img src="img/ytthumb.jpg" alt="Why humans run the world | Yuval Noah Harari" width="480" height="360"/>
+						</a>
+						<details class="license">
+							<summary>&sect;</summary>
+							<div class="license-content"><a href="https://www.youtube.com/watch?v=GwzfjtYKXhw">https://www.youtube.com/watch?v=GwzfjtYKXhw</a></div>
+						</details>
+						<figcaption>Video über die Kennzeichen von Darstellungen</figcaption>
+					</figure>
+				</div>
+			</section>
+		</details>
+	</div>
+</section>
 
-		<section id="c45" class="embed">
+<section id="c18" class="textpic">
+	<div class="inner-content">
+		<figure class="picture left">
+			<img src="img/1934_Protocols_Patriotic_Pub.jpg" width="1200" height="1862"/>
+			<details class="license">
+				<summary>&sect;</summary>
+				<div class="license-content"><a href="https://www.youtube.com/watch?v=GwzfjtYKXhw">https://www.youtube.com/watch?v=GwzfjtYKXhw</a></div>
+			</details>
+			<figcaption><a href="https://lasub.test-dilewe.de/glossar/protokolle-der-weisen-von-zion">Die Protokolle der Weisen von Zion</a> sind eine gefälschte Quelle. Obwohl inzwischen schon lange bewiesen ist, dass sie eine Fälschung sind, dienen sie bis heute antisemitischen Verschwörungsgläubigen als Grundlage. In den Protokollen werden angebliche Treffen jüdischer Weltverschwörer dargestellt.</figcaption>
+		</figure>
+		<p>Quellen sind alles, was aus der Vergangenheit überliefert wurde: Urkunden, Briefe, Zeitungen, Bilder, ja sogar Kleider, Haushaltsgegegenstände und Gebäude. Aber was wissen wir über die Vergangenheit, wenn wir einen Brief aus dem 18., Jahrhundert in der Hand halten oder einen alten Wasserkrug? Genau: Zunächst recht wenig. Daher müssen wir die Quellen befragen, sie untersuchen. Wir müssen Methoden anwenden, um herauszubekommen, was Quellen uns berichten können. Man unterscheidet bei der Quellenanalyse die äußere und die innere Analyse:</p>
+		<p><b>Äußere Quellenanalyse:</b> Hier fragst du nach allem, was das Äußere der Quelle ausmacht, bis hin zur Art des Papiers und dem Ort, wo die Quelle gefunden oder gelagert wurde.</p>
+		<p><b>Innere Quellenanalyse:</b>  Hier fragst du nach dem Inhalt der Quelle, also danach, welche Informationen, Argumente und Meinungen die Quelle enthält.</p>
+	</div>
+</section>
+
+<section id="c19" class="header">
+	<div class="inner-content">
+		<h2>1.2 Wie Darstellungen von ihrer Entstehungszeit abhängen: die sogenannte Dolchstoßlegende</h2>
+	</div>
+</section>
+
+<section id="c20" class="textpic">
+	<div class="inner-content">
+		<figure class="picture right">
+			<img src="img/Dolchstosslegende.jpg" width="1200" height="1824"/>
+			<details class="license">
+				<summary>&sect;</summary>
+				<div class="license-content"><a href="https://www.youtube.com/watch?v=GwzfjtYKXhw">https://www.youtube.com/watch?v=GwzfjtYKXhw</a></div>
+			</details>
+			<figcaption>Wahlplakat der Deutschnationalen Volkspartei aus dem Jahr 1924</figcaption>
+		</figure>
+		<p>Die Dolchstoßlegende war eine von der deutschen Armeeführung am Ende des Ersten Weltkrieges erfundene Verschwörungserzählung, die den (sozial)demokratische Politikern und dem „bolschewistischen Judentum“ die Schuld an der Niederlage gab. Laut Armeeführung waren die Truppen „im Felde unbesiegt“ geblieben und hatten erst durch oppositionelle Zivilisten aus der Heimat einen „Dolchstoß von hinten“ erhalten. Diese Erzählung wurde zudem häufig mit dem „internationalen Judentum“ verbunden.</p>
+	</div>
+</section>
+
+<section id="c21" class="embed">
+	<div class="inner-content">
+		<figure class="embedfigure">
+			<!-- kein direktes embedding, stattdessen verlinkung aufs video und local gecachetes thumbnail, erzeugung des iframes nach klick -->
+			<a href="https://www.youtube.com/watch?v=nzj7Wg4DAbs" class="embedlink">
+				<img src="img/ytthumb.jpg" alt="Why humans run the world | Yuval Noah Harari" width="480" height="360"/>
+			</a>
+			<details class="license">
+				<summary>&sect;</summary>
+				<div class="license-content"><a href="https://www.youtube.com/watch?v=GwzfjtYKXhw">https://www.youtube.com/watch?v=GwzfjtYKXhw</a></div>
+			</details>
+			<figcaption>In diesem Video findest du die historischen Hintergründe um die Dolchstoßlegende. Ab 12:13 wird konkret auf diese Verschwörungserzählung eingegangen.</figcaption>
+		</figure>
+	</div>
+</section>
+
+<section id="c22" class="textpic">
+	<div class="inner-content">
+		<span class="dialogtext">
+			<p>Nachdem du dich mit den Inhalten und dem Hintergrund der Dolchstoßlegende beschäftigt hast, kannst du dir jetzt ansehen, wie sie dargestellt und damit im Verlauf der Zeit interpretiert wurde. Im Folgenden findest du vier Ausschnitte aus Schulbüchern. Gleiches Ereignis, unterschiedliche Erzählzeiten. Spannend, oder?</p>
+		</span>
+	</div>
+</section>
+
+<section id="c23" class="tabbox">
+	<div class="inner-content">
+	<!-- Tabkaesten sind einfach nur eine Liste von <details>, dadurch gibt es selbst ohne JS einen aehnlichen Effekt -->
+		<details>
+			<summary>Version von 1929</summary>
+			<section id="c24" class="textpic">
+				<div class="inner-content">
+					<h4>Otto Schnitzer, Deutsche Geschichte fürs deutsche Volk (1929)</h4>
+					<p>Und nun ging’s zum Abschluss des Waffenstilstands, den die deutschen Unterhändler im Walde von Compiègne mit Marschall Foch abschlossen. Während sie unterwegs waren, brach in Deutschland die Revolution aus. So standen sie vollends wehrlos dem Feinde gegenüber; dieser konnte seine Forderungen so hoch schrauben als er wollte. Sie waren auch barbarisch hart.</p>
+					<p><em>Otto Schnitzer, Deutsche Geschichte fürs deutsche Volk. Stuttgart 1929, S. 463.</em></p>
+				</div>
+			</section>
+		</details>
+
+		<details>
+			<summary>Version von 1943</summary>
+			<section id="c25" class="textpic">
+				<div class="inner-content">
+					<h4>Geschichtsbuch für die deutsche Jugend (1943)</h4>
+					<p>Am 7. November [1918] wird in München, am 9. in Berlin die Republik ausgerufen. Ohne auch nur Widerstand zu versuchen, treten die deutschen Fürsten ab. Der oberste Kriegsherr, der letzte Kaiser aus dem großen Geschlecht der Hohenzollern, verlässt flüchtend die Soldaten. An seine Stelle treten Marxisten. Sie lassen den Umsturz weiter um sich greifen. Munition und Verpflegung kommen nicht mehr an die Front. Nun erst muss sich Hindenburg den wahnwitzigen Bedingungen des Waffenstillstandes fügen. [...] Das deutsche Volk ist wehrlos! Jetzt können Haß und Vernichtungswille mit uns machen, was sie wollen.</p>
+					<p><em>B. Kumsteller/U. Haacke/B. Schneider, Geschichtsbuch für die deutsche Jugend. Volksschulausgabe, Klasse 6-8, Leipzig 1943, S. 198f.</em></p>
+				</div>
+			</section>
+		</details>
+
+		<details>
+			<summary>Version von 1984</summary>
+			<section id="c26" class="textpic">
+				<div class="inner-content">
+					<h4>Geschichtslehrbuch für die 9. Klasse (DDR, 1984)</h4>
+					<p>Das deutsche Heer war erschöpft, kriegsmüde und begann sich zu zersetzen. Am 29. September [1918] musste die Oberste Heeresleitung erklären, dass der Krieg verloren sei und die verzweifelte Lage des Heeres sofortigen Waffenstillstand erfordere. Damit endete nach mehr als vierjährigem Völkermorden der Versuch des deutschen Imperialismus, Europa zu beherrschen und die Welt zu seinen Gunsten neu aufzuteilen, mit einer militärischen Niederlage.</p>
+					<p><em>Wolfgang Bleyer u.a., Geschichte. Lehrbuch für die Klasse 9, Berlin 1984, S. 42.</em></p>
+				</div>
+			</section>
+		</details>
+
+		<details>
+			<summary>Version von 1996</summary>
+			<section id="c27" class="textpic">
+				<div class="inner-content">
+					<h4>Geschichte und Geschehen (Geschichtslehrbuch für die Sekundarstufe I, 1996)</h4>
+					<p>Seit dem Sommer 1918 änderte sich die militärische Lage. Die deutschen Truppen mussten vor den Alliierten immer weiter zurückweichen. Die Verbündeten Österreich-Ungarn, Bulgarien und die Türkei standen ebenfalls am Rande des Zusammenbruchs. Die Oberste Heeresleitung forderte daher Ende September den baldigen Abschluss eines Waffenstillstands. Dieser sollte zu einem für das Deutsche Reich maßvollen Frieden führen.</p>
+					<p><em>Ludwig Bernlocher u.a., Geschichte und Geschehen. D4, Geschichtliches Unterrichtswerk für die Sekundarstufe I, Leipzig/Stuttgart/Düsseldorf 1996, S. 779.</em></p>
+				</div>
+			</section>
+		</details>
+	</div>
+</section>
+
+<section id="c28" class="task">
+	<div class="inner-content">
+		<section id="c29" class="textpic">
 			<div class="inner-content">
-				<figure class="embedfigure">
-					<!-- kein direktes embedding, stattdessen verlinkung aufs video und local gecachetes thumbnail, erzeugung des iframes nach klick -->
-					<a href="https://www.youtube.com/watch?v=nzj7Wg4DAbs" class="embedlink">
-						<img src="img/ytthumb.jpg" alt="Why humans run the world | Yuval Noah Harari" width="480" height="360"/>
-					</a>
-					<details class="license">
-						<summary>&sect;</summary>
-						<div class="license-content"><a href="https://www.youtube.com/watch?v=GwzfjtYKXhw">https://www.youtube.com/watch?v=GwzfjtYKXhw</a></div>
-					</details>
-					<figcaption>Trailer „Midway - für die Freiheit" (2019)</figcaption>
-				</figure>
+				<h3>Aufgabe 2</h3>
+				<ol><li>
+					Trage die historischen Hintergründe zur sogenannten „Dolchstoßlegende" zusammen.
+				</li><li>
+					Beschreibe die Absichten, die du hinter den vier Schulbuchtexten oben vermutest. Beachte dabei die Zeit, in der sie entstanden sind. Stelle deine Erarbeitungen übersichtlich in einer Tabelle dar.
+				</li><li>
+					Stelle ein aktuelles Thema dar, das du für ähnlich kontrovers hältst wie die „Dolchstoßlegende".
+				</li></ol>
 			</div>
 		</section>
-	</main>
-</body>
-</html>
+		<textarea class="tasktext"></textarea>
+		<!-- textarea sollte per JS durch einen fancy editor ersetzt werden -->
+	</div>
+</section>
+
+<section id="c30" class="header">
+	<div class="inner-content">
+		<h2>Wie aus Vergangenheit Geschichte erzählt wird</h2>
+	</div>
+</section>
+
+<section id="c31" class="textpic">
+	<div class="inner-content">
+		<span class="dialogtext">
+			<p>Um zu verstehen, wie Geschichten wirken können, musst du verstehen, mit welchen Mitteln sie erzählt werden. Die erzählerischen Mittel sind dabei stark abhängig vom Medium, mit dem sie erzählt werden: Text, Film, Fotografie ...<br/>
+			In diesem Kapitel erkunden wir die erzählerischen Mittel am Beispiel des Films. Viele hier gewonnene Erkenntnisse kannst du auf andere Erzählformen übertragen.</p>
+		</span>
+	</div>
+</section>
+
+<section id="c32" class="tabbox">
+	<div class="inner-content">
+		<details>
+			<summary>Szene 1</summary>
+			<section id="c33" class="embed">
+				<div class="inner-content">
+					<figure class="embedfigure">
+						<lazy-iframe src="https://h5p.test-dilewe.de/wp-admin/admin-ajax.php?action=h5p_embed&id=93" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+						<figcaption></figcaption>
+						<!-- H5P kann direkt embedded werden, erstmal ohne lazy loading -->
+					</figure>
+				</div>
+			</section>
+		</details>
+
+		<details>
+			<summary>Szene 2</summary>
+			<section id="c34" class="embed">
+				<div class="inner-content">
+					<figure class="embedfigure">
+						<lazy-iframe src="https://h5p.test-dilewe.de/wp-admin/admin-ajax.php?action=h5p_embed&id=97" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+						<figcaption></figcaption>
+					</figure>
+				</div>
+			</section>
+		</details>
+
+		<details>
+			<summary>Szene 3</summary>
+			<section id="c35" class="embed">
+				<div class="inner-content">
+					<figure class="embedfigure">
+						<lazy-iframe src="https://h5p.test-dilewe.de/wp-admin/admin-ajax.php?action=h5p_embed&id=102" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+						<figcaption></figcaption>
+					</figure>
+				</div>
+			</section>
+		</details>
+	</div>
+</section>
+
+<section id="c36" class="task">
+	<div class="inner-content">
+		<section id="c37" class="textpic">
+			<div class="inner-content">
+				<h3>Aufgabe 3</h3>
+				<ol><li>
+					Sieh dir die zwei Kurzgeschichten in jeweils drei Filmbildern (Szene 1 – Szene 3) an. Sie sind einerseits sehr ähnlich, anderseits sehr unterschiedlich.
+				</li><li>
+					Arbeite die Gründe für die unterschiedlichen Wirkungen heraus.<br/>
+					Achte dabei auf die Kleidung, die Farbgebung, das Licht, die Position der Kamera und die Ausstattung.
+				</li></ol>
+			</section>
+			<textarea class="tasktext"></textarea>
+		<!-- textarea sollte per JS durch einen fancy editor ersetzt werden -->
+		</div>
+	</div>
+</section>
+
+<section id="c38" class="tabbox">
+	<div class="inner-content">
+		<details>
+			<summary>Einstellungsgr&ouml;sse</summary>
+			<section id="c39" class="embed">
+				<div class="inner-content">
+					<figure class="embedfigure">
+						<lazy-iframe src="https://h5p.test-dilewe.de/wp-admin/admin-ajax.php?action=h5p_embed&id=73" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+						<figcaption></figcaption>
+					</figure>
+				</div>
+			</section>
+		</details>
+
+		<details>
+			<summary>Ton und Musik</summary>
+			<section id="c40" class="video">
+				<div class="inner-content">
+					<figure class="videofigure">
+						<video controls>
+							<source src="https://s3.eu-central-1.amazonaws.com/lasub/craft/videos/Nosferatu_-_Eine_Symphonie_des_Grauens.mp4?mtime=20201006140156&amp;focal=none" type="video/mp4"/>
+						</video>
+						<details class="license">
+							<summary>&sect;</summary>
+							<div class="license-content"><a href="https://www.youtube.com/watch?v=GwzfjtYKXhw">https://www.youtube.com/watch?v=GwzfjtYKXhw</a></div>
+						</details>
+						<figcaption>Ausschnitt aus „Nosferatu – Eine Symphonie des Grauens" (1922). Einmal mit Originalmusik, einmal mit veränderter Tonspur.</figcaption>
+					</figure>
+				</div>
+			</section>
+		</details>
+	</div>
+</section>
+
+<section id="c41" class="header">
+	<div class="inner-content">
+		<h2>Zum Üben ideal: erzählerische Mittel im Propaganda-Film</h2>
+	</div>
+</section>
+
+<section id="c42" class="embed">
+	<div class="inner-content">
+		<figure class="embedfigure">
+			<lazy-iframe src="https://h5p.test-dilewe.de/wp-admin/admin-ajax.php?action=h5p_embed&id=60" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+			<figcaption></figcaption>
+		</figure>
+	</div>
+</section>
+
+<section id="c43" class="box darstellung">
+	<div class="inner-content">
+	<details>
+		<summary>
+			<div class="box-caption">
+				<h3>Darstellung 3</h3>
+				<p>Hintergründe zum Film „Ernst Thälmann – Führer seiner Klasse" (DDR, 1955)</p>
+			</div>
+		</summary>
+		<div class="box-content">
+			<p><strong>Zur Person</strong><br>Der Film 'Ernst Thälmann – Führer seiner Klasse' ist ein Film aus der DDR und wurde im&nbsp;Jahr 1955 produziert. <br>Er gilt als einer der wichtigsten Propagandafilme der DDR. <br>Ernst Thälmann (1886-1944) wurde in Hamburg geboren und 1944&nbsp;im Konzentrationslager Buchenwald ermordet.&nbsp;Er war einer der bekanntesten Führer der Kommunisten in Deutschland.&nbsp;Von 1924 bis 1933 war er&nbsp;Mitglied des Reichstages sowie von 1925 bis 1933 Vorsitzender der Kommunistischen Partei Deutschlands (KPD). Er wurde 1933 verhaftet nach elf Jahren Isolationshaft auf Befehl Adolf Hitlers erschossen.</p>
+			<p><strong>Handlung des Films</strong><br>Durch die 1929 beginnende&nbsp;Weltwirtschaftskrise kommt es bei den Arbeitern zu drastischen Lohnkürzungen. Ernst Thälmann führt daher mehrere Streiks an. Er verliert die Reichspräsidentenwahlen im Jahr 1932, setzt seinen Kampf für die Rechte der Arbeiter und gegen den Faschismus auch nach dem Machtabtritts Hitlers fort. Aus diesem Grund wird er verhaftet und erträgt elf Jahre Isolationshaft aufrecht und heldenhaft. 1944 wird er hingerichtet. </p>
+			<p>Der Ausschnitt oben zeigt das Ende des Films: Thälmanns Gang zur Hinrichtung.<br></p>
+		</div>
+	</details>
+	</div>
+</section>
+
+<section id="c44" class="task">
+	<div class="inner-content">
+	<section id="c45" class="textpic">
+		<div class="inner-content">
+		<h3>Aufgabe 4</h3>
+		<p>Untersuchung filmischer Mittel bei einem Film</p>
+		<ol><li>
+			Nenne die drei für dich wichtigsten filmischen Mittel in diesem Ausschnitt. Begründe deine Auswahl.
+		</li><li>
+			Arbeite die beabsichtigte Wirkung dieser Mittel heraus. Nutze dafür auch die Informationen aus der Darstellung 3.
+		</li><li>
+			Diskutiere in deiner Lerngruppe, ob derartige Mittel auch in aktuellen Filmproduktionen verwendet werden.
+		</li></ol>
+		</div>
+	</section>
+	<textarea class="tasktext"></textarea>
+	</div>
+	<!-- textarea sollte per JS durch einen fancy editor ersetzt werden -->
+</section>
+
+<section id="c46" class="embed">
+	<div class="inner-content">
+		<figure class="embedfigure">
+			<!-- kein direktes embedding, stattdessen verlinkung aufs video und local gecachetes thumbnail, erzeugung des iframes nach klick -->
+			<a href="https://www.youtube.com/watch?v=nzj7Wg4DAbs" class="embedlink">
+				<img src="img/ytthumb.jpg" alt="Why humans run the world | Yuval Noah Harari" width="480" height="360"/>
+			</a>
+			<details class="license">
+				<summary>&sect;</summary>
+				<div class="license-content"><a href="https://www.youtube.com/watch?v=GwzfjtYKXhw">https://www.youtube.com/watch?v=GwzfjtYKXhw</a></div>
+			</details>
+			<figcaption>Trailer „Midway - für die Freiheit" (2019)</figcaption>
+		</figure>
+	</div>
+</section>

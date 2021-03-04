@@ -1,14 +1,13 @@
-import * as css from "./css.mjs";
-import * as js from "./js.mjs";
 import * as resources from "./resources.mjs";
 import beautify from "js-beautify";
 import fs from "fs";
 import path from "path";
 import query from "./cms.mjs";
+import bodyWrap from "./page.mjs";
 import { render } from "./content_types.mjs";
 
 const fsp = fs.promises;
-const resourceDirectoryName = "res";
+export const resourceDirectoryName = "res";
 
 async function mkdirp(...pathParts) {
 	const joinedPath = path.join(...pathParts);
@@ -24,26 +23,8 @@ function getTargetPath(targetName) {
 	return path.join("web", targetName);
 }
 
-function getResourcePath(targetName) {
+export function getResourcePath(targetName) {
 	return path.join(getTargetPath(targetName), resourceDirectoryName);
-}
-
-async function getHead(targetName) {
-	const resourcePath = getResourcePath(targetName);
-	const cssContent = await css.get();
-	const cssFilename = path.join(resourcePath, "main.css");
-	await fsp.writeFile(cssFilename, cssContent);
-
-	const jsContent = await js.get();
-	const jsFilename = path.join(resourcePath, "main.js");
-	await fsp.writeFile(jsFilename, jsContent);
-
-	let head = "";
-	head += `<style>${await css.getInline()}</style>`;
-	head += `<link rel="stylesheet" type="text/css" href="/${resourceDirectoryName}/main.css"/>`;
-	head += `<script defer type="text/javascript" src="/${resourceDirectoryName}/main.js"></script>`;
-
-	return head;
 }
 
 async function copyDirectory(source, destination, targetName) {
@@ -79,8 +60,7 @@ async function copyAssets(destination) {
 
 async function renderFile(source, destination, targetName) {
 	const fileContent = await fsp.readFile(source, "utf-8");
-	const head = await getHead(targetName);
-	const html = fileContent.replace("</head>", head + "</head>");
+	const html = await bodyWrap(targetName, "Instrumentalisierung der Vergangenheit", fileContent);
 	return fsp.writeFile(destination, html);
 }
 
