@@ -22,17 +22,22 @@ const contentTypes = await (async () => {
 			return accumulator;
 		}, {});
 })();
-const typeHandleMap = new Map([
+const rendererMap = new Map([
 	["inhalt_inhalt_Entry", contentTypes.content],
 	["inhaltsbausteine_videoDatei_BlockType", contentTypes.video]
 ]);
+const alreadyWarnedTypes = new Set();
 export const render = contentType => {
-	const { __typename: handle } = contentType;
-	if (typeHandleMap.has(handle)) {
-		return typeHandleMap.get(handle).render(contentType, render);
+	const { __typename: type } = contentType;
+	const renderer = rendererMap.get(type);
+	if (renderer) {
+		return renderer.render(contentType, render);
 	}
-	console.warn(`Content type "${handle}" is currently not supported.`);
+	if (!alreadyWarnedTypes.has(type)) {
+		console.warn(`Content type "${type}" is currently not supported.`);
+		alreadyWarnedTypes.add(type);
+	}
 	return `
-		<div>Unsupported content type: ${handle}</div>
+		<div>Unsupported content type: ${type}</div>
 	`;
 };
