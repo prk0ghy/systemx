@@ -39,7 +39,7 @@ nav li {
 nav li a {
 	display:block;
 	width:100%;
-	padding:16px 48px;
+	padding:0.5em 2em;
 	color:var(--text-color);
 	text-decoration:none;
 	font-family: var(--font-headlines);
@@ -47,7 +47,7 @@ nav li a {
 }
 
 nav li li a {
-	padding:16px 78px;
+	padding:0.5em 3em;
 }
 
 nav li a:hover {
@@ -62,10 +62,10 @@ nav li.active > a {
 nav .nav-toggle {
 	content:'';
 	display:block;
-	font-size:1.4em;
+	font-size:1em;
 	position:absolute;
-	left:0.5em;
-	top:0.65em;
+	left:0.75em;
+	top:0.85em;
 	text-align:center;
 	cursor:pointer;
 	color:rgb(var(--highlight-color));
@@ -77,12 +77,13 @@ nav .nav-toggle {
 	border-bottom:solid 0.5em transparent;
 }
 
-nav .nav-toggle.active {
-	transform:rotate(90deg);
-}
-
 nav li.active > .nav-toggle {
 	color:#fff;
+	border-left-color:#fff;
+}
+
+nav .nav-toggle.active {
+	transform:rotate(90deg);
 }
 
 nav ul.hidden {

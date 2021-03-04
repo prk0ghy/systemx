@@ -3,11 +3,11 @@ section.box {
 	cursor: pointer;
 }
 
-section.box > details {
+section.box > .inner-content > details {
 	position: relative;
 }
 
-section.box > details > summary {
+section.box > .inner-content > details > summary {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -17,39 +17,40 @@ section.box > details > summary {
 	line-height: 2.6em;
 }
 
-section.box > details > summary::marker {
+section.box > .inner-content > details > summary::marker {
 	content: '';
 	display: none;
 }
 
-section.box > details > summary::-webkit-details-marker {
+section.box > .inner-content > details > summary::-webkit-details-marker {
 	content: '';
 	display: none;
 }
 
-section.box > details > summary::after {
+section.box > .inner-content > details > summary::after {
 	font-family: icomoon, sans-serif;
 	content: "\e903";
-	font-size: 4em;
+	font-size: 2.5em;
 	right: 70px;
 	color: #fff;
 }
 
-section.box > details > summary > .box-caption h3 {
-	font-size: 2.5em;
+section.box > .inner-content > details > summary > .box-caption h3 {
+	font-size: 1.4em;
 	color: #fff;
 }
 
-section.box > details > summary > .box-caption p {
-	font-size: 1.2em;
+section.box > .inner-content > details > summary > .box-caption p {
+	font-size: 1em;
 	color: #fff;
+	margin:0;
 }
 
-section.box.quelle > details > summary {
+section.box.quelle > .inner-content > details > summary {
 	background-color: #A4247C;
 }
 
-section.box.darstellung > details > summary {
+section.box.darstellung > .inner-content > details > summary {
 	background-color: #77952E;
 }
 
