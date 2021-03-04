@@ -12,6 +12,9 @@ export default async ({
 					...on inhaltsbausteine_videoDatei_BlockType {
 						${scope.video}
 					}
+					...on inhaltsbausteine_ueberschrift_BlockType {
+						${scope.header}
+					}
 				}
 			}
 		}

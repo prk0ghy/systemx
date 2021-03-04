@@ -26,7 +26,8 @@ const contentTypes = await (async () => {
 
 const rendererMap = new Map([
 	["inhalt_inhalt_Entry", contentTypes.content],
-	["inhaltsbausteine_videoDatei_BlockType", contentTypes.video]
+	["inhaltsbausteine_videoDatei_BlockType", contentTypes.video],
+	["inhaltsbausteine_ueberschrift_BlockType", contentTypes.header]
 ]);
 
 const alreadyWarnedTypes = new Set();

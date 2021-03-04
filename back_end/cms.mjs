@@ -18,6 +18,11 @@ const scope = {
 		poster: posterbild {
 			url
 		}
+	`,
+	header: `
+		__typename
+		headline: ueberschrift
+		isNumbered: nummerierung
 	`
 };
 export default queryFunction => request("https://lasub-dev.test-dilewe.de/api", gql([
