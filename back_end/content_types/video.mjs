@@ -7,7 +7,8 @@ export default ({
 	poster
 }) => {
 	const src = files[0]?.url;
-	return `
-		<video src="${src}"></video>
+	return `<section content-type="video"><div class="inner-content">
+		<video controls src="${src}"></video>
+	</div></section>
 	`;
 };

@@ -67,3 +67,9 @@ main > section.hero:first-child {
 section {
 	position:relative;
 }
+
+video {
+	display:block;
+	width:100%;
+	height:auto;
+}
