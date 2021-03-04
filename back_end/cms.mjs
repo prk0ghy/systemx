@@ -6,7 +6,7 @@ const scope = {
 		uri
 	`
 };
-export default queryFunction => request("https://lasub.test-dilewe.de/api", gql([
+export default queryFunction => request("https://lasub-dev.test-dilewe.de/api", gql([
 	`{ ${queryFunction(scope)} }`
 		.replace(/[\t]/g, "")
 		.replace(/[\n]/g, " ")
