@@ -24,8 +24,8 @@ const contentTypes = await (async () => {
 })();
 const rendererMap = new Map([
 	["inhalt_inhalt_Entry", contentTypes.content],
-	["inhaltsbausteine_videoDatei_BlockType", contentTypes.video],
-	["inhaltsbausteine_ueberschrift_BlockType", contentTypes.header]
+	["inhaltsbausteine_ueberschrift_BlockType", contentTypes.header],
+	["inhaltsbausteine_videoDatei_BlockType", contentTypes.video]
 ]);
 const alreadyWarnedTypes = new Set();
 export const render = async contentType => {
@@ -34,7 +34,9 @@ export const render = async contentType => {
 	if (renderer) {
 		return `
 			<section content-type="${ type }">
-				${await renderer.render(contentType, render)}
+				<div class="inner-content">
+					${await renderer.render(contentType, render)}
+				</div>
 			</section>
 		`;
 	}

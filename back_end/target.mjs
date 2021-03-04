@@ -82,7 +82,7 @@ export const buildEntries = async targetName => {
 		const wrappedHTML = await wrapWithApplicationShell(targetName, entry.title, html);
 		await fsp.writeFile(outputFilePath, formatHTML(wrappedHTML));
 	}));
-}
+};
 
 export async function build(targetName, doBuildEntries) {
 	const resourcePath = getResourcePath(targetName);

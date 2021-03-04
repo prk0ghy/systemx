@@ -8,8 +8,6 @@ export default ({
 }) => {
 	const src = files[0]?.url;
 	return `
-		<div class="inner-content">
-			<video controls src="${src}"></video>
-		</div>
+		<video controls src="${src}"></video>
 	`;
 };
