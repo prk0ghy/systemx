@@ -1,7 +1,6 @@
 import fs from "fs";
 import getPackageDirectory from "pkg-dir";
 import path from "path";
-
 const contentTypes = await (async () => {
 	const root = await getPackageDirectory();
 	const directory = path.join(root, "back_end", "content_types");
@@ -23,25 +22,29 @@ const contentTypes = await (async () => {
 			return accumulator;
 		}, {});
 })();
-
 const rendererMap = new Map([
 	["inhalt_inhalt_Entry", contentTypes.content],
 	["inhaltsbausteine_videoDatei_BlockType", contentTypes.video],
 	["inhaltsbausteine_ueberschrift_BlockType", contentTypes.header]
 ]);
-
 const alreadyWarnedTypes = new Set();
-export const render = contentType => {
+export const render = async contentType => {
 	const { __typename: type } = contentType;
 	const renderer = rendererMap.get(type);
 	if (renderer) {
-		return renderer.render(contentType, render);
+		return `
+			<section content-type="${ type }">
+				${await renderer.render(contentType, render)}
+			</section>
+		`;
 	}
 	if (!alreadyWarnedTypes.has(type)) {
 		console.warn(`Content type "${type}" is currently not supported.`);
 		alreadyWarnedTypes.add(type);
 	}
 	return `
-		<section content-type="error"><div class="inner-content">Unsupported content type: ${type}</div></section>
+		<section content-type="error">
+			<div class="inner-content">Unsupported content type: ${type}</div>
+		</section>
 	`;
 };

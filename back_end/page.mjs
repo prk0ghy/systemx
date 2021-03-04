@@ -5,9 +5,9 @@ import fs from "fs";
 import path from "path";
 
 const fsp = fs.promises;
-const targetsBuilt = [];
+const targetsBuilt = new Set();
 async function getHead(targetName, pageTitle) {
-	if(targetsBuilt[targetName] === undefined){
+	if (!targetsBuilt.has(targetName)) {
 		const resourcePath = getResourcePath(targetName);
 		const cssContent = await css.get();
 		const cssFilename = path.join(resourcePath, "main.css");
@@ -16,35 +16,35 @@ async function getHead(targetName, pageTitle) {
 		const jsContent = await js.get();
 		const jsFilename = path.join(resourcePath, "main.js");
 		await fsp.writeFile(jsFilename, jsContent);
-		targetsBuilt[targetName] = true;
+		targetsBuilt.add(targetName);
 	}
-
-	return `<meta charset="utf-8" />
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>${pageTitle}</title>
-	<style>${await css.getInline()}</style>
-	<link rel="stylesheet" type="text/css" href="/${resourceDirectoryName}/main.css"/>
-	<script defer type="text/javascript" src="/${resourceDirectoryName}/main.js"></script>
-`;
+	return `
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>${pageTitle}</title>
+		<style>${await css.getInline()}</style>
+		<link rel="stylesheet" type="text/css" href="/${resourceDirectoryName}/main.css"/>
+		<script defer type="text/javascript" src="/${resourceDirectoryName}/main.js"></script>
+	`;
 }
 
 async function getHeader(){
-	return `<header>
-	<div id="header-left">
-		<button id="button-navigation"></button>
-	</div>
-	<div id="header-center">
-		<button id="button-previous"></button>
-		<h3>mPublish Lasub</h3>
-		<button id="button-next"></button>
-	</div>
-	<div id="header-right">
-		<button id="button-settings"></button>
-	</dif>
-</header>
-
-`;
+	return `
+		<header>
+			<div id="header-left">
+				<button id="button-navigation"></button>
+			</div>
+			<div id="header-center">
+				<button id="button-previous"></button>
+				<h3>mPublish Lasub</h3>
+				<button id="button-next"></button>
+			</div>
+			<div id="header-right">
+				<button id="button-settings"></button>
+			</dif>
+		</header>
+	`;
 }
 
 async function getNavigationAside(){
@@ -141,19 +141,17 @@ async function getNavigationAside(){
 </ul></nav></aside>`;
 }
 
-export default async function bodyWrap(targetName, pageTitle, content){
+export default async function wrapWithApplicationShell(targetName, pageTitle, content) {
 	const head = await getHead(targetName, pageTitle);
-	return `<!DOCTYPE html>
-<html lang="de">
-<head>
-	${head}
-</head>
-<body>
-	${await getHeader()}
-	${await getNavigationAside()}
-	<main>
-		${content}
-	</main>
-</body>
-</html>`;
+	return `
+		<!DOCTYPE html>
+		<html lang="de">
+			<head>${head}</head>
+			<body>
+				${await getHeader()}
+				${await getNavigationAside()}
+				<main>${content}</main>
+			</body>
+		</html>
+	`;
 }

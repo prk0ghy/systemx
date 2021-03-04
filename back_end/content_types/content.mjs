@@ -1,5 +1,4 @@
 import query from "../cms.mjs";
-import bodyWrap from "../page.mjs";
 export default async ({
 	id,
 	title
@@ -19,5 +18,5 @@ export default async ({
 			}
 		}
 	`);
-	return await bodyWrap("lasub","Test",content.entry.inhaltsbausteine.map(render).join(""));
+	return (await Promise.all(content.entry.inhaltsbausteine.map(render))).join("");
 }
