@@ -5,7 +5,7 @@
 	function initBoxes() {
 		const boxes = document.querySelectorAll(".box");
 		boxes.forEach(box => {
-			const boxDetails = box.firstElementChild;
+			const boxDetails = box.firstElementChild.firstElementChild;
 			const boxHeader  = boxDetails.querySelector("summary");
 			const boxContent = boxDetails.querySelector(".box-content");
 			boxHeader.addEventListener("click", e => {

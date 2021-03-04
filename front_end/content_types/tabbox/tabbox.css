@@ -1,0 +1,97 @@
+.tabbox > .inner-content > details {
+	border-top: 2px solid var(--dlw-blue);
+	border-bottom: 2px solid var(--dlw-blue);
+	box-shadow: 0 3px 6px #00000029;
+}
+
+.tabbox > .inner-content > details:first-child {
+	border-top-width:4px;
+}
+
+.tabbox > .inner-content > details:last-child {
+	border-bottom-width:4px;
+}
+
+.tabbox > .inner-content > details > summary {
+	outline: none;
+	font-size: 0.8em;
+	background-color: var(--background-blue);
+	cursor:pointer;
+	padding: 0.2em 1.9em;
+	user-select:none;
+	transition:color 300ms, background-color 300ms;
+}
+
+.tabbox > .inner-content > details > summary::marker {
+	content: '';
+	display: none;
+}
+
+.tabbox > .inner-content > details > summary::-webkit-details-marker {
+	content: '';
+	display: none;
+}
+
+.tabbox > .inner-content > details[open] > summary {
+	background-color: var(--dlw-blue);
+	color: white;
+}
+
+.tabbox > .inner-content > details > section {
+	padding: 1em 1.5em 0;
+}
+
+.tabbox > .inner-content > details > section > h4 {
+	font-weight: 600;
+}
+
+.tabbox > .inner-content > details > section > p {
+	padding-top: 1em;
+}
+
+.tabbox-content-wrap {
+	border-top: 0.5em solid var(--dlw-blue);
+	border-bottom: 0.5em solid var(--dlw-blue);
+	box-shadow: 1px 3px 6px 1px #00000089;
+	position:relative;
+	z-index:1;
+}
+
+.tabbox-content {
+	display:none;
+	padding:1em;
+}
+
+.tabbox-content.active {
+	display:block;
+}
+
+.tabbox-header-wrap {
+	text-align:left;
+}
+
+.tabbox-header {
+	display:inline-block;
+	background: var(--background-blue);
+	color: var(--dlw-blue);
+	font-size:0.6em;
+	margin:0 0.5em;
+	padding:0.5em 1em;
+	transition: background-color 300ms, color 300ms, box-shadow 300ms;
+	cursor:pointer;
+	user-select:none;
+}
+
+.tabbox-header:first-child {
+	margin-left:0;
+}
+
+.tabbox-header:last-child {
+	margin-right:0;
+}
+
+.tabbox-header.active {
+	background-color: var(--dlw-blue);
+	color: #fff;
+	box-shadow: 1px 3px 6px 1px #00000089;
+}

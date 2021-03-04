@@ -7,15 +7,12 @@ main ul > li {
 
 main ul > li::before {
 	position: absolute;
-	top: 0.25em;
+	top: 0.35em;
 	left: 0.1em;
 	content: "";
 	display: block;
-	width: 10px;
-	height: 10px;
-	background-color: var(--dlw-blue);
-}
-
-main ul > li ul > li::before {
+	width: 0.6em;
+	height: 0.6em;
 	border-radius:50%;
+	background-color: var(--dlw-blue);
 }

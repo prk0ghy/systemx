@@ -2,7 +2,7 @@ header {
 	position:fixed;
 	left:0;
 	top:0;
-	height:4.9em;
+	height:2.4em;
 	width:100%;
 	color: var(--headerbar-color);
 	background:var(--headerbar-background);
@@ -15,21 +15,22 @@ header {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	flex-shrink: 2;
 }
 
 #button-previous {
-	margin-right: 1.5em;
+	margin-right: 2em;
 }
 
 #button-next {
-	margin-left: 1.5em;
+	margin-left: 2em;
 }
 
 #header-left {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin-left: 3em;
+	margin-left: 1.5em;
 }
 
 #header-right {
@@ -40,12 +41,14 @@ header {
 }
 
 header button {
-	display:block;
+	display:flex;
+	justify-content: center;
+	align-items: center;
 	appearance:none;
 	border:none;
 	background:none;
 	cursor:pointer;
-	font-size:3em;
+	font-size:1.6em;
 	color: inherit;
 }
 
@@ -54,11 +57,22 @@ header button::after {
 }
 
 #button-navigation::after {
-	content: "\E907";
+	content: "\E904";
+}
+
+#button-previous,
+#button-next {
+	font-weight:bold;
+}
+
+#button-previous,
+#button-next,
+#button-settings {
+	font-size:1.3em;
 }
 
 #button-settings::after {
-	content: "\e904";
+	content: "\e994";
 }
 
 #button-previous::after {
@@ -78,5 +92,5 @@ header button::after {
 header h3 {
 	font-family: var(--font-headlines);
 	font-weight: 600;
-	font-size: 2em;
+	font-size: 1.2em;
 }

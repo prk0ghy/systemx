@@ -1,6 +1,6 @@
 :root {
 	--content-width: 950px;
-	--content-padding: 16px;
+	--content-padding: 40px;
 	--font-headlines: jura, serif;
 	--font-content: montserrat, sans-serif;
 	--text-color: #333;
@@ -17,6 +17,7 @@
 	--box-grey: #6E7474;
 	--task-red: #5B184A;
 	--dlw-blue: #257DA7;
+	--background-blue: #CFE2EC;
 }
 
 html, body {
@@ -26,6 +27,7 @@ html, body {
 
 body {
 	line-height:1.25em;
+	font-size:1.85em;
 }
 
 p {
@@ -42,7 +44,7 @@ img {
 	height:auto;
 }
 
-main > section {
+main > section > .inner-content {
 	width:100%;
 	max-width:var(--content-width);
 	padding:0 var(--content-padding);
