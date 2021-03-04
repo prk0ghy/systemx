@@ -1,10 +1,10 @@
 import * as resources from "./resources.mjs";
-import beautify from "js-beautify";
+import { formatHTML } from "./format.mjs";
 import fs from "fs";
 import path from "path";
 import query from "./cms.mjs";
-import wrapWithApplicationShell from "./page.mjs";
 import { render } from "./content_types.mjs";
+import wrapWithApplicationShell from "./page.mjs";
 
 const fsp = fs.promises;
 export const resourceDirectoryName = "res";
@@ -79,26 +79,8 @@ export const buildEntries = async targetName => {
 		const html = await render(entry);
 		const directory = await mkdirp(targetPath, entry.uri);
 		const outputFilePath = path.join(directory, "index.html");
-		const wrappedHTML = await wrapWithApplicationShell("lasub", "Test", html);
-		await fsp.writeFile(outputFilePath, beautify.html(wrappedHTML, {
-			indent_size: "1",
-			indent_char: "\t",
-			max_preserve_newlines: "-1",
-			preserve_newlines: false,
-			keep_array_indentation: true,
-			break_chained_methods: false,
-			indent_scripts: "normal",
-			brace_style: "collapse",
-			space_before_conditional: true,
-			unescape_strings: false,
-			jslint_happy: true,
-			end_with_newline: false,
-			wrap_line_length: "0",
-			indent_inner_html: true,
-			comma_first: false,
-			e4x: false,
-			indent_empty_lines: false
-		}));
+		const wrappedHTML = await wrapWithApplicationShell(targetName, entry.title, html);
+		await fsp.writeFile(outputFilePath, formatHTML(wrappedHTML));
 	}));
 }
 
