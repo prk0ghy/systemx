@@ -21,7 +21,7 @@ export const render = contentType => {
 		case "inhalt": {
 			return `
 				<title>${contentType.title}</title>
-				${contentTypes.header.render()}
+				${contentTypes.navigation.render()}
 			`;
 		}
 		default: {

@@ -1,6 +1,7 @@
 import * as css from "./css.mjs";
 import * as js from "./js.mjs";
 import * as resources from "./resources.mjs";
+import beautify from "js-beautify";
 import fs from "fs";
 import path from "path";
 import query from "./cms.mjs";
@@ -100,7 +101,7 @@ export const buildEntries = async targetName => {
 		const html = await render(entry);
 		const directory = await mkdirp(targetPath, entry.uri);
 		const outputFilePath = path.join(directory, "index.html");
-		await fsp.writeFile(outputFilePath, html);
+		await fsp.writeFile(outputFilePath, beautify.html(html));
 	}));
 }
 
