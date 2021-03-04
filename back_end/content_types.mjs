@@ -1,6 +1,7 @@
 import fs from "fs";
 import getPackageDirectory from "pkg-dir";
 import path from "path";
+
 const contentTypes = await (async () => {
 	const root = await getPackageDirectory();
 	const directory = path.join(root, "back_end", "content_types");
@@ -22,10 +23,12 @@ const contentTypes = await (async () => {
 			return accumulator;
 		}, {});
 })();
+
 const rendererMap = new Map([
 	["inhalt_inhalt_Entry", contentTypes.content],
 	["inhaltsbausteine_videoDatei_BlockType", contentTypes.video]
 ]);
+
 const alreadyWarnedTypes = new Set();
 export const render = contentType => {
 	const { __typename: type } = contentType;

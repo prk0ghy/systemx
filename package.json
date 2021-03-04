@@ -8,7 +8,7 @@
 		"lint": "eslint back_end/**/*.mjs front_end/**/*.js",
 		"start": "node back_end/app.mjs --start-server --open-browser",
 		"open": "node back_end/app.mjs --open-browser",
-		"mon": "nodemon --ignore web/ back_end/app.mjs --start-server"
+		"mon": "nodemon --ignore web/ back_end/app.mjs --start-server --only-test-page"
 	},
 	"author": "Digitale Lernwelten GmbH",
 	"dependencies": {

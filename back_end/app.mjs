@@ -4,10 +4,11 @@ import * as target  from "./target.mjs";
 import { httpPort } from "./options.mjs";
 import opn from "opn";
 import "./cms.mjs";
+
 (async () => {
 	await options.parse(process.argv.slice(2));
 	const cTarget = "lasub";
-	await target.build(cTarget);
+	await target.build(cTarget,!options.onlyTestPage);
 	if (options.startServer) {
 		server.start("./web/" + cTarget);
 	}

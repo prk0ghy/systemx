@@ -1,8 +1,9 @@
 import minimist from "minimist";
 
-export let openBrowser = false;
-export let startServer = false;
-export let httpPort    = 8042;
+export let onlyTestPage = false;
+export let openBrowser  = false;
+export let startServer  = false;
+export let httpPort     = 8042;
 
 export async function parse(args) {
 	const argv = minimist(args);
@@ -11,6 +12,9 @@ export async function parse(args) {
 	}
 	if (argv["start-server"] !== undefined) {
 		startServer = true;
+	}
+	if (argv["only-test-page"] !== undefined) {
+		onlyTestPage = true;
 	}
 	if (argv["http-port"] !== undefined) {
 		httpPort = argv["http-port"] | 0;

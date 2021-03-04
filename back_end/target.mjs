@@ -13,14 +13,11 @@ const resourceDirectoryName = "res";
 async function mkdirp(...pathParts) {
 	const joinedPath = path.join(...pathParts);
 	try {
-		await fs.mkdirSync(joinedPath, {
-			recursive: true
-		});
-		return joinedPath;
-	}
-	catch (error) {
+		await fs.mkdirSync(joinedPath, { recursive: true });
+	} catch (error) {
 		console.error("Directory creation has failed.", error);
 	}
+	return joinedPath;
 }
 
 function getTargetPath(targetName) {
@@ -103,12 +100,14 @@ export const buildEntries = async targetName => {
 		const outputFilePath = path.join(directory, "index.html");
 		await fsp.writeFile(outputFilePath, beautify.html(html));
 	}));
-}
+};
 
-export async function build(targetName) {
+export async function build(targetName, doBuildEntries) {
 	const resourcePath = getResourcePath(targetName);
 	mkdirp(resourcePath);
 	await copyDirectory(path.join("tests", "instrumentalisierung"), getTargetPath(targetName), targetName);
 	await copyAssets(resourcePath);
-	await buildEntries(targetName);
+	if(doBuildEntries){
+		await buildEntries(targetName);
+	}
 }
