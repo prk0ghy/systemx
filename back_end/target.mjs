@@ -1,79 +1,91 @@
 import * as css from "./css.mjs";
 import * as js from "./js.mjs";
-import * as ressources from "./ressources.mjs";
+import * as resources from "./resources.mjs";
 import fs from "fs";
+import path from "path";
 
 const fsp = fs.promises;
+const resourceDirectoryName = "res";
 
-function fileExtension(filename) {
-	return filename.substring(filename.lastIndexOf(".") + 1, filename.length) || filename;
+async function mkdirp(...pathParts) {
+	const joinedPath = path.join(...pathParts);
+	try {
+		await fs.mkdirSync(joinedPath, {
+			recursive: true
+		});
+	}
+	catch (error) {
+		console.error("Directory creation has failed.", error);
+	}
+}
+
+function getTargetPath(targetName) {
+	return path.join("web", targetName);
+}
+
+function getResourcePath(targetName) {
+	return path.join(getTargetPath(targetName), resourceDirectoryName);
 }
 
 async function getHead(targetName) {
+	const resourcePath = getResourcePath(targetName);
 	const cssContent = await css.get();
-	const cssFilename = "web/" + targetName + "/res/main.css";
+	const cssFilename = path.join(resourcePath, "main.css");
 	await fsp.writeFile(cssFilename, cssContent);
 
 	const jsContent = await js.get();
-	const jsFilename = "web/" + targetName + "/res/main.js";
+	const jsFilename = path.join(resourcePath, "main.js");
 	await fsp.writeFile(jsFilename, jsContent);
 
 	let ret = "";
-	ret += "	<style>\n" + (await css.getInline()) + "\n	</style>\n";
-	ret += "	<link rel=\"stylesheet\" type=\"text/css\" href=\"res/main.css\"/>\n";
-	ret += "	<script defer type=\"text/javascript\" src=\"res/main.js\"></script>\n";
+	ret += `<style>${await css.getInline()}</style>`;
+	ret += `<link rel="stylesheet" type="text/css" href="/${resourceDirectoryName}/main.css"/>`;
+	ret += `<script defer type="text/javascript" src="/${resourceDirectoryName}/main.js"></script>`;
 
 	return ret;
 }
 
 async function renderFile(source, destination, targetName) {
-	const tbuf = await fsp.readFile(source);
+	const fileContent = await fsp.readFile(source, "utf-8");
 	const head = await getHead(targetName);
-	const html = tbuf.toString().replace("</head>", head + "\n</head>");
+	const html = fileContent.replace("</head>", head + "</head>");
 	await fsp.writeFile(destination, html);
 }
 
-async function copyDir(source, destination, targetName) {
-	try {
-		await fsp.mkdir(destination);
-	}
-	catch (e) {/* Fails if dir already exists */}
+async function copyDirectory(source, destination, targetName) {
+	await mkdirp(destination);
 	const fileNames = await fsp.readdir(source);
 	const promises = [];
-
 	for (const fileName of fileNames) {
 		try {
-			const s = await fsp.stat(source + "/" + fileName);
-			if (s.isFile()) {
-				const ext = fileExtension(source + "/" + fileName).toLowerCase();
-				if (ext === "html") {
-					promises.push(renderFile(source + "/" + fileName, destination + "/" + fileName, targetName));
+			const sourcePath = path.join(source, fileName);
+			const targetPath = path.join(destination, fileName);
+			const stat = await fsp.stat(sourcePath);
+			if (stat.isFile()) {
+				if (path.extname(sourcePath) === ".html") {
+					promises.push(renderFile(sourcePath, targetPath, targetName));
 				}
 				else {
-					promises.push(fsp.copyFile(source + "/" + fileName, destination + "/" + fileName));
+					promises.push(fsp.copyFile(sourcePath, targetPath));
 				}
 			}
-			else if (s.isDirectory()) {
-				promises.push(copyDir(source + "/" + fileName, destination + "/" + fileName, targetName));
+			else if (stat.isDirectory()) {
+				promises.push(copyDirectory(sourcePath, targetPath, targetName));
 			} // Ignore everything else
 		}
-		catch (e) {/* If we can't stat then just skip */}
+		catch {/* If we can't stat then just skip */}
 	}
 	return Promise.all(promises);
 }
 
 async function copyAssets(destination) {
-	const assetDirectories = await ressources.getAssetDirectories();
-	return Promise.all(assetDirectories.map(directory => copyDir(directory, destination)));
+	const assetDirectories = await resources.getAssetDirectories();
+	return Promise.all(assetDirectories.map(directory => copyDirectory(directory, destination)));
 }
 
 export async function build(targetName) {
-	try { fs.mkdirSync("web");}                         catch (e) {/* Fails if dir already exists */}
-	try { fs.mkdirSync("web/" + targetName); }          catch (e) {/* Fails if dir already exists */}
-	try { fs.mkdirSync("web/" + targetName + "/res"); } catch (e) {/* Fails if dir already exists */}
-	/* If any of those fail for other reasons, then we will catch that later when we
-	 * actually try and write out some files.
-	 */
-	await copyDir("tests/instrumentalisierung", "web/" + targetName, targetName);
-	await copyAssets("web/" + targetName + "/res");
+	const resourcePath = getResourcePath(targetName);
+	mkdirp(resourcePath);
+	await copyDirectory(path.join("tests", "instrumentalisierung"), getTargetPath(targetName), targetName);
+	await copyAssets(resourcePath);
 }

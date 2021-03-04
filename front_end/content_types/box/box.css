@@ -1,0 +1,66 @@
+section.box {
+	color: black;
+	cursor: pointer;
+}
+
+section.box > details {
+	position: relative;
+}
+
+section.box > details > summary {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 15px 50px 15px 50px;
+	box-shadow: 0 3px 6px #0000006E;
+	outline: none;
+	line-height: 2.6em;
+}
+
+section.box > details > summary::marker {
+	content: '';
+	display: none;
+}
+
+section.box > details > summary::-webkit-details-marker {
+	content: '';
+	display: none;
+}
+
+section.box > details > summary::after {
+	font-family: icomoon, sans-serif;
+	content: "\e903";
+	font-size: 4em;
+	right: 70px;
+	color: #fff;
+}
+
+section.box > details > summary > .box-caption h3 {
+	font-size: 2.5em;
+	color: #fff;
+}
+
+section.box > details > summary > .box-caption p {
+	font-size: 1.2em;
+	color: #fff;
+}
+
+section.box.quelle > details > summary {
+	background-color: #A4247C;
+}
+
+section.box.darstellung > details > summary {
+	background-color: #77952E;
+}
+
+.box-caption {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+.box-content {
+	opacity:0;
+	transform:translateX(-50%) scale(0.5);
+}

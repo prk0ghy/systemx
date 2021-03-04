@@ -1,7 +1,7 @@
-body > aside {
+aside#navigation {
 	position:fixed;
-	left:0px;
-	top:0px;
+	left:0;
+	top:0;
 	width:50%;
 	height:100%;
 	background:var(--background-color-modal);
@@ -9,23 +9,25 @@ body > aside {
 	transform:translateX(-100%);
 	transition:transform 300ms;
 	z-index:200;
+	display:block !important; /* To override the inline style */
 }
+
 @media only screen and (max-width: 600px) {
-	body > aside {
+	aside#navigation {
 		width:100%;
 	}
 }
 
-body > aside.active {
-	transform:translateX(0px);
+aside#navigation.active {
+	transform:translateX(0);
 }
 
-body > aside > nav {
-	padding:48px 0px;
+aside#navigation > nav {
+	padding:48px 0;
 	height:100%;
 }
 
-body > aside > nav > ul {
+aside#navigation > nav > ul {
 	height:100%;
 	overflow-y:scroll;
 }
@@ -33,6 +35,7 @@ body > aside > nav > ul {
 nav li {
 	position:relative;
 }
+
 nav li a {
 	display:block;
 	width:100%;
@@ -42,41 +45,46 @@ nav li a {
 	font-family: var(--font-headlines);
 	font-size:1.3em;
 }
+
 nav li li a {
 	padding:16px 78px;
 }
+
 nav li a:hover {
-	background-color: rgba(0,0,0,0.05);
+	background-color: rgba(0, 0, 0, 0.05);
 }
+
 nav li.active > a {
 	background-color: rgba(var(--highlight-color), 0.7);
 	color:#fff;
 }
 
-nav .nav-toggle:after {
-	content:'>';
-}
 nav .nav-toggle {
+	content:'';
 	display:block;
-	font-size:2.8em;
-	width:1em;
-	height:1em;
+	font-size:1.4em;
 	position:absolute;
-	left:4px;
-	top:4px;
+	left:0.5em;
+	top:0.65em;
 	text-align:center;
 	cursor:pointer;
 	color:rgb(var(--highlight-color));
 	transform:rotate(0deg);
 	transition:transform 300ms;
 	transform-origin: 50% 50%;
+	border-left:solid 1em rgb(var(--highlight-color));
+	border-top:solid 0.5em transparent;
+	border-bottom:solid 0.5em transparent;
 }
+
 nav .nav-toggle.active {
 	transform:rotate(90deg);
 }
+
 nav li.active > .nav-toggle {
 	color:#fff;
 }
+
 nav ul.hidden {
 	display:none;
 }
@@ -84,7 +92,7 @@ nav ul.hidden {
 #nav-close-button {
 	position:absolute;
 	left:50%;
-	bottom:0px;
+	bottom:0;
 	margin-left:-0.5em;
 	width:1em;
 	height:1em;
@@ -92,6 +100,7 @@ nav ul.hidden {
 	cursor:pointer;
 	font-size:2em;
 }
+
 #nav-close-button::after {
 	content:'\2716';
 }

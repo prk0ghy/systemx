@@ -1,4 +1,4 @@
-import * as res from "./ressources.mjs";
+import * as res from "./resources.mjs";
 
 export async function get() {
 	return res.get("css", false);

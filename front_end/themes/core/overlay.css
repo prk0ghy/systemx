@@ -1,7 +1,7 @@
 #overlay {
 	position:fixed;
-	top:0px;
-	left:0px;
+	top:0;
+	left:0;
 	width:100%;
 	height:100%;
 	background:#000;
@@ -14,6 +14,7 @@
 	opacity:0.5;
 	z-index:100;
 }
+
 #overlay.fadingOut {
 	z-index:100;
 }

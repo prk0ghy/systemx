@@ -1,36 +1,41 @@
 header {
 	position:fixed;
-	left:0px;
-	top:0px;
+	left:0;
+	top:0;
 	height:4.9em;
 	width:100%;
 	color: var(--headerbar-color);
-	background:var(--background-accent);
+	background:var(--headerbar-background);
 	z-index:10;
 	display: flex;
 	justify-content: space-between;
 }
+
 #header-center {
 	display: flex;
-    align-items: center;
-    justify-content: center
+	align-items: center;
+	justify-content: center;
 }
+
 #button-previous {
 	margin-right: 1.5em;
 }
+
 #button-next {
 	margin-left: 1.5em;
 }
+
 #header-left {
 	display: flex;
-    align-items: center;
-    justify-content: center;
+	align-items: center;
+	justify-content: center;
 	margin-left: 3em;
 }
+
 #header-right {
 	display: flex;
-    align-items: center;
-    justify-content: center;
+	align-items: center;
+	justify-content: center;
 	margin-right: 1.5em;
 }
 
@@ -43,29 +48,35 @@ header button {
 	font-size:3em;
 	color: inherit;
 }
+
 header button::after {
-	font-family:icomoon;
+	font-family:icomoon, sans-serif;
 }
+
 #button-navigation::after {
 	content: "\E907";
 }
+
 #button-settings::after {
 	content: "\e904";
 }
+
 #button-previous::after {
 	content: "\e902";
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
+
 #button-next::after {
 	content: "\e901";
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
+
 header h3 {
-	font-family: Jura;
+	font-family: var(--font-headlines);
 	font-weight: 600;
 	font-size: 2em;
 }

@@ -3,33 +3,37 @@
 	src: url("/res/fonts/Jura-Light.woff");
 	font-weight: 200;
 }
+
 @font-face {
 	font-family: Jura;
 	src: url("/res/fonts/Jura-Regular.woff");
 	font-weight: 400;
 }
+
 @font-face {
 	font-family: Jura;
 	src: url("/res/fonts/Jura-Medium.woff");
 	font-weight: 500;
 }
+
 @font-face {
 	font-family: Jura;
 	src: url("/res/fonts/Jura-SemiBold.woff");
 	font-weight: 600;
 }
+
 @font-face {
 	font-family: Jura;
 	src: url("/res/fonts/Jura-Bold.woff");
 	font-weight: 700;
 }
 
-
 @font-face {
 	font-family: Montserrat;
 	src: url("/res/fonts/Montserrat-Thin.woff");
 	font-weight: 100;
 }
+
 @font-face {
 	font-family: Montserrat;
 	src: url("/res/fonts/Montserrat-ThinItalic.woff");
@@ -42,6 +46,7 @@
 	src: url("/res/fonts/Montserrat-Light.woff");
 	font-weight: 200;
 }
+
 @font-face {
 	font-family: Montserrat;
 	src: url("/res/fonts/Montserrat-LightItalic.woff");
@@ -54,6 +59,7 @@
 	src: url("/res/fonts/Montserrat-Regular.woff");
 	font-weight: 400;
 }
+
 @font-face {
 	font-family: Montserrat;
 	src: url("/res/fonts/Montserrat-Italic.woff");
@@ -66,6 +72,7 @@
 	src: url("/res/fonts/Montserrat-Medium.woff");
 	font-weight: 500;
 }
+
 @font-face {
 	font-family: Montserrat;
 	src: url("/res/fonts/Montserrat-MediumITalic.woff");
@@ -78,6 +85,7 @@
 	src: url("/res/fonts/Montserrat-SemiBold.woff");
 	font-weight: 600;
 }
+
 @font-face {
 	font-family: Montserrat;
 	src: url("/res/fonts/Montserrat-SemiBoldItalic.woff");
@@ -90,6 +98,7 @@
 	src: url("/res/fonts/Montserrat-Bold.woff");
 	font-weight: 700;
 }
+
 @font-face {
 	font-family: Montserrat;
 	src: url("/res/fonts/Montserrat-BoldItalic.woff");
@@ -102,6 +111,7 @@
 	src: url("/res/fonts/Montserrat-ExtraBold.woff");
 	font-weight: 800;
 }
+
 @font-face {
 	font-family: Montserrat;
 	src: url("/res/fonts/Montserrat-ExtraBoldItalic.woff");
@@ -113,6 +123,7 @@
 	src: url("/res/fonts/Montserrat-Black.woff");
 	font-weight: 900;
 }
+
 @font-face {
 	font-family: Montserrat;
 	src: url("/res/fonts/Montserrat-BlackItalic.woff");
@@ -124,13 +135,13 @@
 	font-family: 'icomoon';
 	src:  url('/res/fonts/icomoon.eot?txhqb6');
 	src:  url('/res/fonts/icomoon.eot?txhqb6#iefix') format('embedded-opentype'),
-	  url('/res/fonts/icomoon.ttf?txhqb6') format('truetype'),
-	  url('/res/fonts/icomoon.woff?txhqb6') format('woff'),
-	  url('/res/fonts/icomoon.svg?txhqb6#icomoon') format('svg');
+		url('/res/fonts/icomoon.ttf?txhqb6') format('truetype'),
+		url('/res/fonts/icomoon.woff?txhqb6') format('woff'),
+		url('/res/fonts/icomoon.svg?txhqb6#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 	font-display: block;
-  }
+}
 
 /* Just as a reminder for the codepoints used
 .icon-fullscreen:before {

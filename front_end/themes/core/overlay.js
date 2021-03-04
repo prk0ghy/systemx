@@ -1,12 +1,12 @@
 /* exported showOverlay,hideOverlay,overlayCloseHandlers */
 
 let overlayElement;
-let overlayFadeOutCB;
-const overlayCloseHandler = [];
+let overlayFadeOutCBTimer;
+const overlayCloseHandlers = [];
 
 function showOverlay() {
-	if (overlayFadeOutCB !== undefined) {
-		clearTimeout(overlayFadeOutCB);
+	if (overlayFadeOutCBTimer !== undefined) {
+		clearTimeout(overlayFadeOutCBTimer);
 	}
 	overlayElement.classList.remove("fadingOut");
 	overlayElement.classList.add("active");
@@ -15,13 +15,11 @@ function showOverlay() {
 function hideOverlay() {
 	overlayElement.classList.add("fadingOut");
 	overlayElement.classList.remove("active");
-	overlayFadeOutCB = setTimeout(() => {
+	overlayFadeOutCBTimer = setTimeout(() => {
 		overlayElement.classList.remove("fadingOut");
-		overlayFadeOutCB = undefined;
+		overlayFadeOutCBTimer = undefined;
 	}, 350);
-	overlayCloseHandler.forEach(cb => {
-		cb();
-	});
+	overlayCloseHandlers.forEach(cb => cb());
 }
 
 /* Don't pollute the global scope if avoidable */

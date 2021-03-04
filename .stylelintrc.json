@@ -1,0 +1,11 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+	"color-hex-case": null,
+	"no-empty-source": null,
+	"selector-list-comma-newline-after": null,
+    "declaration-colon-space-after": null,
+	"declaration-colon-newline-after": null,
+    "indentation": ["tab"]
+  }
+}

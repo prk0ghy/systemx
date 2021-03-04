@@ -1,5 +1,5 @@
 /* exported showModal,hideModal */
-/* global showOverlay,hideOverlay,overlayCloseHandler */
+/* global showOverlay,hideOverlay,overlayCloseHandlers */
 
 function showModal(content) {
 	content.classList.add("show-modal");
@@ -32,7 +32,7 @@ function hideModal() {
 /* Don't pollute the global scope if avoidable */
 (() => {
 	function initModal(){
-		overlayCloseHandler.push(hideModal);
+		overlayCloseHandlers.push(hideModal);
 	}
 	setTimeout(initModal, 0);
 })();

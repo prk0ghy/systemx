@@ -1,9 +1,9 @@
 main > section.hero {
 	max-width:none;
-	padding-left:0px;
-	padding-right:0px;
-	margin-left:0px;
-	margin-right:0px;
+	padding-left:0;
+	padding-right:0;
+	margin-left:0;
+	margin-right:0;
 	overflow:hidden;
 	position:relative;
 }
@@ -15,30 +15,32 @@ main > section.hero figure.heroimage img {
 
 main > section.hero figure.heroimage figcaption {
 	position:absolute;
-	left:0px;
-	bottom:0px;
+	left:0;
+	bottom:0;
 	width:100%;
-	background: #FFFFFF99 0% 0% no-repeat padding-box;
-	box-shadow: 0px 3px 6px #00000029;
+	background: #FFF9 0% 0% no-repeat padding-box;
+	box-shadow: 0 3px 6px #00000029;
 	opacity: 1;
 	backdrop-filter: blur(30px);
 }
 
 main > section.hero figure.heroimage figcaption p {
 	width:100%;
-	margin:0px auto;
+	margin:0 auto;
 	display:block;
 	max-width:var(--content-width);
 	padding:0.5em var(--content-padding);
 	font-size:1.9em;
 	line-height:1.5em;
 }
+
 /* .big and .small should be automatically set by the backend
  * depending on length of text
  */
 main > section.hero figure.heroimage figcaption.big p {
 	font-size:1.8em;
 }
+
 main > section.hero figure.heroimage figcaption.small p {
 	font-size:1.35em;
 }
