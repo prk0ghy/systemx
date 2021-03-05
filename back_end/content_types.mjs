@@ -11,8 +11,14 @@ const contentTypes = await (async () => {
 			return null;
 		}
 		const name = path.basename(fileName, moduleExtension);
-		const { default: render } = await import(path.join(directory, fileName));
-		return [name, render];
+		try {
+			const { default: render } = await import(path.join(directory, fileName));
+			return [name, render];
+		} catch {
+			console.error("Couldn't load content-type module at " + path.join(directory, fileName));
+			return null;
+		}
+		
 	})))
 		.filter(Boolean)
 		.reduce((accumulator, [name, render]) => {
