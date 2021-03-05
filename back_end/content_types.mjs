@@ -12,7 +12,8 @@ const contentTypes = await (async () => {
 		}
 		const name = path.basename(fileName, moduleExtension);
 		try {
-			const { default: render } = await import(path.join(directory, fileName));
+			const modulePath = "file:///"+path.join(directory, fileName);
+			const { default: render } = await import(modulePath);
 			return [name, render];
 		} catch {
 			console.error("Couldn't load content-type module at " + path.join(directory, fileName));
