@@ -3,6 +3,10 @@ export default ({
 	isNumbered
 }) => {
 	return `
-		<h3>${headline}</h3>
+		<section content-type="header">
+			<div class="inner-content">
+				<h3>${headline}</h3>
+			</div>
+		</section>
 	`;
 };

@@ -40,11 +40,7 @@ export const render = async contentType => {
 	const renderer = rendererMap.get(type);
 	if (renderer) {
 		return `
-			<section content-type="${ type }">
-				<div class="inner-content">
-					${await renderer.render(contentType, render)}
-				</div>
-			</section>
+			${await renderer.render(contentType, render)}
 		`;
 	}
 	if (!alreadyWarnedTypes.has(type)) {
