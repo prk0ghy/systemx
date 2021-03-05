@@ -4,6 +4,11 @@
 	"description": "SSG with for Craft GraphQL",
 	"main": "app.mjs",
 	"type": "module",
+	"repository": {
+		"type": "git",
+		"url": "git@bitbucket.org:idlgbr/systemx.git"
+	},
+	"license": "GPL-2.0-only",
 	"scripts": {
 		"lint": "eslint back_end/**/*.mjs front_end/**/*.js",
 		"start": "node back_end/app.mjs --start-server --open-browser",
@@ -24,7 +29,6 @@
 	},
 	"devDependencies": {
 		"eslint": "^7.21.0",
-		"nodemon": "^2.0.7",
 		"stylelint": "^13.11.0",
 		"stylelint-config-standard": "^20.0.0"
 	},
