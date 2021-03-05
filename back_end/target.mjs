@@ -1,13 +1,16 @@
 import * as resources from "./resources.mjs";
+import cache, {
+	hash,
+	save as saveCache
+} from "./cache.mjs";
 import { formatHTML } from "./format.mjs";
 import fs from "fs";
 import path from "path";
 import query from "./cms.mjs";
 import { render } from "./content_types.mjs";
 import wrapWithApplicationShell from "./page.mjs";
-
-const fsp = fs.promises;
 export const resourceDirectoryName = "res";
+const fsp = fs.promises;
 
 async function mkdirp(...pathParts) {
 	const joinedPath = path.join(...pathParts);
@@ -76,7 +79,18 @@ export const buildEntries = async targetName => {
 	`);
 	const targetPath = getTargetPath(targetName);
 	return Promise.all(result.entries.map(async entry => {
+		if (cache.entryDateUpdated[entry.uid] === entry.dateUpdated) {
+			/* Don't generate HTML, since the GraphQL response will be the same. */
+			return;
+		}
+		cache.entryDateUpdated[entry.uid] = entry.dateUpdated;
 		const html = await render(entry);
+		const hashedHTML = hash(html);
+		if (cache.entryResultHashes[entry.uid] === hashedHTML) {
+			/* Don't write the file, since the content will be the same. */
+			return;
+		}
+		cache.entryResultHashes[entry.uid] = hashedHTML;
 		const directory = await mkdirp(targetPath, entry.uri);
 		const outputFilePath = path.join(directory, "index.html");
 		const wrappedHTML = await wrapWithApplicationShell(targetName, entry.title, html);
@@ -84,14 +98,13 @@ export const buildEntries = async targetName => {
 	}));
 };
 
-export async function build(targetName, doBuildEntries) {
+export async function build(targetName) {
 	const resourcePath = getResourcePath(targetName);
 	mkdirp(resourcePath);
 	await copyDirectory(path.join("tests", "instrumentalisierung"), getTargetPath(targetName), targetName);
 	await copyAssets(resourcePath);
-	if (doBuildEntries) {
-		console.time("target#buildEntries");
-		await buildEntries(targetName);
-		console.timeEnd("target#buildEntries");
-	}
+	console.time("target#buildEntries");
+	await buildEntries(targetName);
+	console.timeEnd("target#buildEntries");
+	await saveCache();
 }

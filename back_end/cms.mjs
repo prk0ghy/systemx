@@ -2,8 +2,10 @@ import { request, gql } from "graphql-request";
 const scope = {
 	entry: `
 		__typename
+		dateUpdated
 		id
 		title
+		uid
 		uri
 	`,
 	video: `

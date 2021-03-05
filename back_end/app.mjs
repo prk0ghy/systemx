@@ -8,7 +8,7 @@ import "./cms.mjs";
 (async () => {
 	await options.parse(process.argv.slice(2));
 	const cTarget = "lasub";
-	await target.build(cTarget,!options.onlyTestPage);
+	await target.build(cTarget);
 	if (options.startServer) {
 		server.start("./web/" + cTarget);
 	}

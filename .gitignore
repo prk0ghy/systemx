@@ -4,6 +4,7 @@
 #     https://www.atlassian.com/git/tutorials/saving-changes/gitignore
 
 #systemx specific stuff
+.cache.json
 web/
 
 # Node artifact files
