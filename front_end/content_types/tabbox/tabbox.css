@@ -1,18 +1,18 @@
-.tabbox > .inner-content > details {
+[content-type="tabbox"] > .inner-content > details {
 	border-top: 2px solid var(--dlw-blue);
 	border-bottom: 2px solid var(--dlw-blue);
 	box-shadow: 0 3px 6px #00000029;
 }
 
-.tabbox > .inner-content > details:first-child {
+[content-type="tabbox"] > .inner-content > details:first-child {
 	border-top-width:4px;
 }
 
-.tabbox > .inner-content > details:last-child {
+[content-type="tabbox"] > .inner-content > details:last-child {
 	border-bottom-width:4px;
 }
 
-.tabbox > .inner-content > details > summary {
+[content-type="tabbox"] > .inner-content > details > summary {
 	outline: none;
 	font-size: 0.8em;
 	background-color: var(--background-blue);
@@ -22,37 +22,37 @@
 	transition:color 300ms, background-color 300ms;
 }
 
-.tabbox > .inner-content > details > summary::marker {
+[content-type="tabbox"] > .inner-content > details > summary::marker {
 	content: '';
 	display: none;
 }
 
-.tabbox > .inner-content > details > summary::-webkit-details-marker {
+[content-type="tabbox"] > .inner-content > details > summary::-webkit-details-marker {
 	content: '';
 	display: none;
 }
 
-.tabbox > .inner-content > details[open] > summary {
+[content-type="tabbox"] > .inner-content > details[open] > summary {
 	background-color: var(--dlw-blue);
 	color: white;
 }
 
-.tabbox > .inner-content > details > section {
+[content-type="tabbox"] > .inner-content > details > section {
 	padding: 1em 1.5em 0;
 }
 
-.tabbox > .inner-content > details > section > h4 {
+[content-type="tabbox"] > .inner-content > details > section > h4 {
 	font-weight: 600;
 }
 
-.tabbox > .inner-content > details > section > p {
+[content-type="tabbox"] > .inner-content > details > section > p {
 	padding-top: 1em;
 }
 
 .tabbox-content-wrap {
 	border-top: 0.5em solid var(--dlw-blue);
 	border-bottom: 0.5em solid var(--dlw-blue);
-	box-shadow: 1px 3px 6px 1px #00000089;
+	box-shadow: 1px 6px 6px 1px #00000089;
 	position:relative;
 	z-index:1;
 }

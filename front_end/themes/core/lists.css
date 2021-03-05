@@ -16,3 +16,15 @@ main ul > li::before {
 	border-radius:50%;
 	background-color: var(--dlw-blue);
 }
+
+main ol > li {
+	position: relative;
+	margin-bottom:1em;
+	padding-left: 2em;
+}
+
+main ol > li > .ol-numerator {
+	position: absolute;
+	color: var(--task-red);
+	left: 0;
+}

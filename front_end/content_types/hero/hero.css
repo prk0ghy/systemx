@@ -1,4 +1,4 @@
-main > section.hero {
+main > section[content-type="hero"] {
 	max-width:none;
 	padding-left:0;
 	padding-right:0;
@@ -8,12 +8,16 @@ main > section.hero {
 	position:relative;
 }
 
-main > section.hero figure.heroimage img {
+main > section[content-type="hero"]:first-child {
+	margin-top:0;
+}
+
+main > section[content-type="hero"] figure.heroimage img {
 	max-height:500px;
 	object-fit:cover;
 }
 
-main > section.hero figure.heroimage figcaption {
+main > section[content-type="hero"] figure.heroimage figcaption {
 	position:absolute;
 	left:0;
 	bottom:0;
@@ -24,7 +28,7 @@ main > section.hero figure.heroimage figcaption {
 	backdrop-filter: blur(30px);
 }
 
-main > section.hero figure.heroimage figcaption p {
+main > section[content-type="hero"] figure.heroimage figcaption p {
 	width:100%;
 	margin:0 auto;
 	display:block;
@@ -37,15 +41,15 @@ main > section.hero figure.heroimage figcaption p {
 /* .big and .small should be automatically set by the backend
  * depending on length of text
  */
-main > section.hero figure.heroimage figcaption.big p {
+main > section[content-type="hero"] figure.heroimage figcaption.big p {
 	font-size:1em;
 }
 
-main > section.hero figure.heroimage figcaption.small p {
+main > section[content-type="hero"] figure.heroimage figcaption.small p {
 	font-size:0.5em;
 }
 
-section.hero > .inner-content {
+section[content-type="hero"] > .inner-content {
 	max-width:none;
 	padding-left:0;
 	padding-right:0;

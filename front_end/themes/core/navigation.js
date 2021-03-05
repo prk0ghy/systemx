@@ -35,6 +35,7 @@ setTimeout(initNavBar, 0);
 		function refreshNavigationList(){
 			navUl.forEach(ele => {
 				if(ele.parentElement.classList.contains("active")){
+					ele.parentElement.firstElementChild.classList.add('active');
 					ele.classList.remove("hidden");
 				}else{
 					ele.classList.add("hidden");
@@ -42,7 +43,6 @@ setTimeout(initNavBar, 0);
 			});
 		}
 
-		refreshNavigationList();
 		navUl.forEach(ele => {
 			const parentLi = ele.parentElement;
 			const toggle = document.createElement("div");
@@ -59,6 +59,7 @@ setTimeout(initNavBar, 0);
 				}
 			});
 		});
+		setTimeout(refreshNavigationList,0);
 
 		overlayCloseHandlers.push(() => {
 			refreshNavigationList();

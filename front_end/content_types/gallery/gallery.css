@@ -1,14 +1,14 @@
-section.gallery > .inner-content > details > summary::marker {
+section[content-type="gallery"] > .inner-content > details > summary::marker {
 	content: '';
 	display: none;
 }
 
-section.gallery > .inner-content > details > summary::-webkit-details-marker {
+section[content-type="gallery"] > .inner-content > details > summary::-webkit-details-marker {
 	content: '';
 	display: none;
 }
 
-section.gallery figcaption {
+section[content-type="gallery"] figcaption {
 	font-family: var(--font-headlines);
 	font-weight: 400;
 	font-size: 1em;
@@ -16,11 +16,11 @@ section.gallery figcaption {
 	margin-top: 0.5em;
 }
 
-section.gallery {
+section[content-type="gallery"] {
 	position:relative;
 }
 
-section.gallery::after {
+main > section[content-type="gallery"]::after {
 	content:'';
 	display:block;
 	position:absolute;
@@ -32,7 +32,7 @@ section.gallery::after {
 	z-index:0;
 }
 
-section.gallery > .inner-content {
+section[content-type="gallery"] > .inner-content {
 	position:relative;
 	z-index:1;
 }

@@ -3,7 +3,7 @@
 /* Don't pollute the global scope if avoidable */
 (() => {
 	function initBoxes() {
-		const boxes = document.querySelectorAll(".box");
+		const boxes = document.querySelectorAll('section[content-type="box"]');
 		boxes.forEach(box => {
 			const boxDetails = box.firstElementChild.firstElementChild;
 			const boxHeader  = boxDetails.querySelector("summary");

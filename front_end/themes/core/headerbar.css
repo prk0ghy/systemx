@@ -15,7 +15,6 @@ header {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	flex-shrink: 2;
 }
 
 #button-previous {
@@ -93,4 +92,5 @@ header h3 {
 	font-family: var(--font-headlines);
 	font-weight: 600;
 	font-size: 1.2em;
+	margin: 0;
 }

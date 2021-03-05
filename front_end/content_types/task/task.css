@@ -1,0 +1,48 @@
+section[content-type="task"] .task-content {
+	box-shadow: 0 3px 6px #00000063;
+	border-top: 0.5em solid var(--task-red);
+	border-bottom: 0.5em solid var(--task-red);
+	background: #fff;
+}
+
+.task-content .inner-content {
+	padding: 2em;
+}
+
+.task-content .inner-content > h3 {
+	font-size: 1.35em;
+	color: var(--task-red);
+	font-weight: 600;
+	margin-bottom:1em;
+}
+
+.tasktext {
+	width:calc(100% - 2em);
+	font-size:1em;
+	height:5em;
+	display:block;
+	font-family:var(--font-content);
+	margin:0 auto 1em;
+	border: 2px solid var(--task-red);
+}
+
+section[content-type="task"] {
+	position:relative;
+}
+
+main > section[content-type="task"]::after {
+	content:'';
+	display:block;
+	position:absolute;
+	left:0;
+	bottom:0;
+	width:100%;
+	height:50%;
+	background: var(--background-red);
+	z-index:0;
+}
+
+section[content-type="task"] > .inner-content {
+	position:relative;
+	z-index:1;
+}

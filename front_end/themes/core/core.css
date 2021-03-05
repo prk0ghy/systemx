@@ -18,6 +18,8 @@
 	--task-red: #5B184A;
 	--dlw-blue: #257DA7;
 	--background-blue: #CFE2EC;
+	--background-green: #77952E3D;
+	--background-red: #D8C7D3B8;
 }
 
 html, body {
@@ -60,16 +62,6 @@ main > section:first-child {
 	margin-top:2.5em;
 }
 
-main > section.hero:first-child {
-	margin-top:0;
-}
-
 section {
 	position:relative;
-}
-
-video {
-	display:block;
-	width:100%;
-	height:auto;
 }

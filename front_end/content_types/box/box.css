@@ -1,13 +1,13 @@
-section.box {
+section[content-type="box"] {
 	color: black;
 	cursor: pointer;
 }
 
-section.box > .inner-content > details {
+section[content-type="box"] > .inner-content > details {
 	position: relative;
 }
 
-section.box > .inner-content > details > summary {
+section[content-type="box"] > .inner-content > details > summary {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -17,17 +17,17 @@ section.box > .inner-content > details > summary {
 	line-height: 2.6em;
 }
 
-section.box > .inner-content > details > summary::marker {
+section[content-type="box"] > .inner-content > details > summary::marker {
 	content: '';
 	display: none;
 }
 
-section.box > .inner-content > details > summary::-webkit-details-marker {
+section[content-type="box"] > .inner-content > details > summary::-webkit-details-marker {
 	content: '';
 	display: none;
 }
 
-section.box > .inner-content > details > summary::after {
+section[content-type="box"] > .inner-content > details > summary::after {
 	font-family: icomoon, sans-serif;
 	content: "\e903";
 	font-size: 2.5em;
@@ -35,23 +35,40 @@ section.box > .inner-content > details > summary::after {
 	color: #fff;
 }
 
-section.box > .inner-content > details > summary > .box-caption h3 {
+section[content-type="box"] > .inner-content > details > summary > .box-caption h3 {
 	font-size: 1.4em;
 	color: #fff;
+	margin-bottom:0;
 }
 
-section.box > .inner-content > details > summary > .box-caption p {
-	font-size: 1em;
+section[content-type="box"] > .inner-content > details > summary > .box-caption p {
+	font-size: 0.8em;
 	color: #fff;
-	margin:0;
+	margin:0.25em 0 0;
 }
 
-section.box.quelle > .inner-content > details > summary {
-	background-color: #A4247C;
+section[content-type="box"][box-type="magenta"] > .inner-content > details > summary {
+	background-color: var(--box-magenta);
 }
 
-section.box.darstellung > .inner-content > details > summary {
-	background-color: #77952E;
+section[content-type="box"][box-type="green"] > .inner-content > details > summary {
+	background-color: var(--box-green);
+}
+
+section[content-type="box"][box-type="grey"] > .inner-content > details > summary {
+	background-color: var(--box-grey);
+}
+
+section[content-type="box"][box-type="blue"] > .inner-content > details > summary {
+	background-color: var(--box-blue);
+}
+
+section[content-type="box"][box-type="teal"] > .inner-content > details > summary {
+	background-color: var(--box-teal);
+}
+
+section[content-type="box"][box-type="red"] > .inner-content > details > summary {
+	background-color: var(--task-red);
 }
 
 .box-caption {
