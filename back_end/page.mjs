@@ -9,7 +9,7 @@ const targetsBuilt = new Set();
 async function getHead(targetName, pageTitle) {
 	if (!targetsBuilt.has(targetName)) {
 		const resourcePath = getResourcePath(targetName);
-		const cssContent = await css.get();
+		const cssContent = await css.getProcessed();
 		const cssFilename = path.join(resourcePath, "main.css");
 		await fsp.writeFile(cssFilename, cssContent);
 
