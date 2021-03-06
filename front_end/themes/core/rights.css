@@ -19,6 +19,7 @@ details.license > summary {
 	cursor: pointer;
 	box-shadow: 0 3px 6px #00000029;
 	transition:background-color 300ms, color 300ms;
+	z-index: 1;
 }
 
 details.license > summary::marker {
