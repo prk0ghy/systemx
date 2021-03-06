@@ -11,5 +11,9 @@ export async function getInline() {
 }
 
 async function processCSS(css) {
-	return postcss([ autoprefixer ]).process(css).css;
+	const result = postcss([ autoprefixer ]).process(css);
+	result.warnings().forEach(warn => {
+		console.warn(warn.toString());
+	});
+	return result.css;
 }
