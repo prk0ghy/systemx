@@ -14,8 +14,6 @@ const scope = {
 		files: datei {
 			url
 		}
-		isAutoPlay: autoplay
-		isFree: freiesVideo
 		isNumbered: nummerierung
 		poster: posterbild {
 			url

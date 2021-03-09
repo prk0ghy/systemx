@@ -1,8 +1,6 @@
 export default ({
 	caption,
 	files,
-	isAutoPlay,
-	isFree,
 	isNumbered,
 	poster
 }) => {
