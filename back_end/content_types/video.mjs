@@ -8,10 +8,10 @@ export default ({
 }) => {
 	const src = files[0]?.url;
 	return `
-	<section content-type="video">
-		<div class="inner-content">
-			<video controls src="${src}"></video>
-		</div>
-	</section>
+		<section content-type="video">
+			<div class="inner-content">
+				<video controls src="${src}"></video>
+			</div>
+		</section>
 	`;
 };

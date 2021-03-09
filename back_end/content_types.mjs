@@ -1,7 +1,9 @@
 import fs from "fs";
 import getPackageDirectory from "pkg-dir";
+import { hash as computeHash } from "./crypto.mjs";
 import path from "path";
-const contentTypes = await (async () => {
+import URL from "url";
+const contentTypePaths = Object.fromEntries(await (async () => {
 	const root = await getPackageDirectory();
 	const directory = path.join(root, "back_end", "content_types");
 	const fileList = await fs.promises.readdir(directory);
@@ -11,37 +13,52 @@ const contentTypes = await (async () => {
 			return null;
 		}
 		const name = path.basename(fileName, moduleExtension);
+		const modulePath = path.join(directory, fileName);
+		return [
+			name,
+			URL.pathToFileURL(modulePath)
+		];
+	})))
+		.filter(Boolean);
+})());
+const contentTypes = (await (async () => {
+	return Promise.all(Object.entries(contentTypePaths).map(async ([name, contentTypePath]) => {
 		try {
-			const modulePath = "file:///"+path.join(directory, fileName);
-			const { default: render } = await import(modulePath);
+			const { default: render } = await import(contentTypePath);
 			return [name, render];
-		} catch {
-			console.error("Couldn't load content-type module at " + path.join(directory, fileName));
+		}
+		catch (error) {
+			console.error(`Couldn't load content-type module at ${contentTypePath}`);
+			console.error(error);
 			return null;
 		}
-		
-	})))
-		.filter(Boolean)
-		.reduce((accumulator, [name, render]) => {
-			accumulator[name] = {
-				render
-			};
-			return accumulator;
-		}, {});
-})();
+	}));
+})())
+	.reduce((accumulator, [name, render]) => {
+		accumulator[name] = {
+			render
+		};
+		return accumulator;
+	}, {});
 const rendererMap = new Map([
 	["inhalt_inhalt_Entry", contentTypes.content],
 	["inhaltsbausteine_ueberschrift_BlockType", contentTypes.header],
 	["inhaltsbausteine_videoDatei_BlockType", contentTypes.video]
 ]);
 const alreadyWarnedTypes = new Set();
+export const hash = await (async () => {
+	const hashInput = (await Promise.all(Object.entries(contentTypePaths).map(async ([name, path]) => {
+		const fileContent = await fs.promises.readFile(path, "utf-8");
+		return `${name}-${computeHash(fileContent)}`;
+	})))
+		.join("|");
+	return computeHash(hashInput);
+})();
 export const render = async contentType => {
 	const { __typename: type } = contentType;
 	const renderer = rendererMap.get(type);
 	if (renderer) {
-		return `
-			${await renderer.render(contentType, render)}
-		`;
+		return renderer.render(contentType, render);
 	}
 	if (!alreadyWarnedTypes.has(type)) {
 		console.warn(`Content type "${type}" is currently not supported.`);

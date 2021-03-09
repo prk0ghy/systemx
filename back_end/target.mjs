@@ -1,13 +1,14 @@
 import * as resources from "./resources.mjs";
-import cache, {
-	hash,
-	save as saveCache
-} from "./cache.mjs";
+import cache, { save as saveCache } from "./cache.mjs";
+import {
+	hash as contentTypeHash,
+	render
+} from "./content_types.mjs";
 import { formatHTML } from "./format.mjs";
 import fs from "fs";
+import { hash } from "./crypto.mjs";
 import path from "path";
 import query from "./cms.mjs";
-import { render } from "./content_types.mjs";
 import wrapWithApplicationShell from "./page.mjs";
 export const resourceDirectoryName = "res";
 const fsp = fs.promises;
@@ -77,16 +78,17 @@ export const buildEntries = async targetName => {
 			}
 		}
 	`);
+	const mustInvalidateCache = cache.contentTypeHash !== contentTypeHash;
 	const targetPath = getTargetPath(targetName);
-	return Promise.all(result.entries.map(async entry => {
-		if (cache.entryDateUpdated[entry.uid] === entry.dateUpdated) {
+	await Promise.all(result.entries.map(async entry => {
+		if (!mustInvalidateCache && cache.entryDateUpdated[entry.uid] === entry.dateUpdated) {
 			/* Don't generate HTML, since the GraphQL response will be the same. */
 			return;
 		}
 		cache.entryDateUpdated[entry.uid] = entry.dateUpdated;
 		const html = await render(entry);
 		const hashedHTML = hash(html);
-		if (cache.entryResultHashes[entry.uid] === hashedHTML) {
+		if (!mustInvalidateCache && cache.entryResultHashes[entry.uid] === hashedHTML) {
 			/* Don't write the file, since the content will be the same. */
 			return;
 		}
@@ -96,6 +98,9 @@ export const buildEntries = async targetName => {
 		const wrappedHTML = await wrapWithApplicationShell(targetName, entry.title, html);
 		await fsp.writeFile(outputFilePath, formatHTML(wrappedHTML));
 	}));
+	if (mustInvalidateCache) {
+		cache.contentTypeHash = contentTypeHash;
+	}
 };
 
 export async function build(targetName) {

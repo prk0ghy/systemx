@@ -1,8 +1,8 @@
-import { createHash } from "crypto";
 import fs from "fs";
 const cachePath = ".cache.json";
-const schemaVersion = 1;
+const schemaVersion = 2;
 const defaultCache = {
+	contentTypeHash: null,
 	entryDateUpdated: {},
 	entryResultHashes: {},
 	schemaVersion
@@ -30,5 +30,4 @@ const cache = await (async () => {
 	}
 })();
 export default cache;
-export const hash = content => createHash("md5").update(content).digest("hex");
 export const save = () => fs.promises.writeFile(cachePath, JSON.stringify(cache));
