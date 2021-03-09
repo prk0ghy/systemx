@@ -8,10 +8,14 @@ const fsp = fs.promises;
 const targetsBuilt = new Set();
 async function getHead(targetName, pageTitle) {
 	if (!targetsBuilt.has(targetName)) {
+		console.log(targetName);
 		const resourcePath = getResourcePath(targetName);
 		const cssContent = await css.get();
 		const cssFilename = path.join(resourcePath, "main.css");
 		await fsp.writeFile(cssFilename, cssContent);
+
+		await fsp.copyFile(path.join("node_modules","quill","dist","quill.min.js"),path.join(resourcePath,"quill.min.js"));
+		await fsp.copyFile(path.join("node_modules","quill","dist","quill.snow.css"),path.join(resourcePath,"quill.snow.css"));
 
 		const jsContent = await js.get();
 		const jsFilename = path.join(resourcePath, "main.js");
@@ -24,6 +28,9 @@ async function getHead(targetName, pageTitle) {
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>${pageTitle}</title>
 		<style>${await css.getInline()}</style>
+		<link rel="stylesheet" type="text/css" href="/${resourceDirectoryName}/quill.snow.css"/>
+		<script defer type="text/javascript" src="/${resourceDirectoryName}/quill.min.js"></script>
+
 		<link rel="stylesheet" type="text/css" href="/${resourceDirectoryName}/main.css"/>
 		<script defer type="text/javascript" src="/${resourceDirectoryName}/main.js"></script>
 	`;
