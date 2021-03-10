@@ -1,5 +1,6 @@
 /* exported showOverlay,hideOverlay,overlayCloseHandlers */
 
+let overlayActive = false;
 let overlayElement;
 let overlayFadeOutCBTimer;
 const overlayCloseHandlers = [];
@@ -10,6 +11,7 @@ function showOverlay() {
 	}
 	overlayElement.classList.remove("fadingOut");
 	overlayElement.classList.add("active");
+	overlayActive = true;
 }
 
 function hideOverlay() {
@@ -20,6 +22,7 @@ function hideOverlay() {
 		overlayFadeOutCBTimer = undefined;
 	}, 350);
 	overlayCloseHandlers.forEach(cb => cb());
+	overlayActive = false;
 }
 
 /* Don't pollute the global scope if avoidable */
@@ -31,6 +34,12 @@ function hideOverlay() {
 		const body = document.querySelector("body");
 		body.appendChild(overlayElement);
 		overlayElement.addEventListener("click", window.hideOverlay);
+
+		document.addEventListener('scroll', (e) => {
+			if(overlayActive){
+				hideOverlay();
+			}
+		});
 	}
 	setTimeout(initOverlay, 0);
-})();
+})(); 

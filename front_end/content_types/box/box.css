@@ -11,7 +11,7 @@ section[content-type="box"] > .inner-content > details > summary {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 15px 50px 15px 50px;
+	padding: 16px 48px 16px 48px;
 	box-shadow: 0 3px 6px #0000006E;
 	outline: none;
 	line-height: 2.6em;
@@ -27,12 +27,17 @@ section[content-type="box"] > .inner-content > details > summary::-webkit-detail
 	display: none;
 }
 
+section[content-type="box"] > .inner-content > details > summary::before,
 section[content-type="box"] > .inner-content > details > summary::after {
 	font-family: icomoon, sans-serif;
 	content: "\e903";
+	position:absolute;
 	font-size: 2.5em;
+	top:16px;
 	right: 70px;
 	color: #fff;
+	transition:transform 500ms, top 500ms;
+	transition-timing-function: ease-in-out;
 }
 
 section[content-type="box"] > .inner-content > details > summary > .box-caption h3 {
@@ -72,13 +77,46 @@ section[content-type="box"][box-type="red"] > .inner-content > details > summary
 }
 
 .box-caption {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: flex-start;
+	position:relative;
+	user-select:none;
+	padding-right:112px;
 }
 
 .box-content {
-	opacity:0;
-	transform:translateX(-50%) scale(0.5);
+	display:none;
+	max-height:0px;
+}
+
+section[content-type="box"] > .inner-content > .box-wrap {
+	position:relative;
+	transition:top 200ms;
+	transition-timing-function: ease-in-out;
+}
+
+section[content-type="box"] > .inner-content > .box-wrap.active {
+	z-index:2000;
+	position:fixed;
+	top:16px;
+	width:calc(var(--content-width) - (var(--content-padding) * 2));
+	box-sizing:border-box;
+}
+
+section[content-type="box"] > .inner-content > .box-wrap.active > .box-content {
+	display:block;
+	max-height:0px;
+	transition:max-height 300ms;
+	transition-timing-function: ease-in-out;
+	background:var(--background-color);
+	box-sizing:border-box;
+	padding:24px 48px;
+	overflow-y:auto;
+}
+
+section[content-type="box"] > .inner-content > .box-wrap.active > summary::before {
+	transform:translate(0,40%) rotate3d(1,0,0,180deg);
+}
+
+section[content-type="box"] > .inner-content > .box-wrap.active > summary::before,
+section[content-type="box"] > .inner-content > .box-wrap.active > summary::after {
+	top:6px;
 }
