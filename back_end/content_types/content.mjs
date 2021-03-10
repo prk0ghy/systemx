@@ -19,4 +19,4 @@ export default async ({
 		}
 	`);
 	return (await Promise.all(content.entry.inhaltsbausteine.map(render))).join("");
-}
+};

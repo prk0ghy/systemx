@@ -1,3 +1,4 @@
+import { make as makeMarker } from "./marker.mjs";
 export default ({
 	caption,
 	files,
@@ -8,6 +9,7 @@ export default ({
 	return `
 		<section content-type="video">
 			<div class="inner-content">
+				${makeMarker(isNumbered)}
 				<video controls src="${src}"></video>
 			</div>
 		</section>

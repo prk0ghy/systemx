@@ -54,7 +54,7 @@ export const hash = await (async () => {
 		.join("|");
 	return computeHash(hashInput);
 })();
-export const render = async contentType => {
+export const render = contentType => {
 	const { __typename: type } = contentType;
 	const renderer = rendererMap.get(type);
 	if (renderer) {

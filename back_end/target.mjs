@@ -4,6 +4,7 @@ import {
 	hash as contentTypeHash,
 	render
 } from "./content_types.mjs";
+import { fill as fillMarkers } from "./content_types/marker.mjs";
 import { formatHTML } from "./format.mjs";
 import fs from "fs";
 import { hash } from "./crypto.mjs";
@@ -96,7 +97,8 @@ export const buildEntries = async targetName => {
 		const directory = await mkdirp(targetPath, entry.uri);
 		const outputFilePath = path.join(directory, "index.html");
 		const wrappedHTML = await wrapWithApplicationShell(targetName, entry.title, html);
-		await fsp.writeFile(outputFilePath, formatHTML(wrappedHTML));
+		const finalHTML = fillMarkers(wrappedHTML);
+		await fsp.writeFile(outputFilePath, formatHTML(finalHTML));
 	}));
 	if (mustInvalidateCache) {
 		cache.contentTypeHash = contentTypeHash;
