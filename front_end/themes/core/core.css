@@ -52,6 +52,9 @@ u {
 s, strike {
 	text-decoration:line-through;
 }
+a {
+	color:rgb(var(--highlight-color));
+}
 
 img {
 	display:block;

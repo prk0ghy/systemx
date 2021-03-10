@@ -1,20 +1,26 @@
 section[content-type="box"] {
 	color: black;
-	cursor: pointer;
+}
+
+section[content-type="box"] > .inner-content {
+	box-sizing:border-box;
 }
 
 section[content-type="box"] > .inner-content > details {
 	position: relative;
+	border-bottom:solid 8px #257DA7;
+	box-shadow: 0 3px 6px #0000006E;
 }
 
 section[content-type="box"] > .inner-content > details > summary {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 16px 48px 16px 48px;
-	box-shadow: 0 3px 6px #0000006E;
+	padding: 16px 48px 8px 48px;
 	outline: none;
 	line-height: 2.6em;
+	background-color: #257DA7;
+	cursor: pointer;
 }
 
 section[content-type="box"] > .inner-content > details > summary::marker {
@@ -34,7 +40,7 @@ section[content-type="box"] > .inner-content > details > summary::after {
 	position:absolute;
 	font-size: 2.5em;
 	top:16px;
-	right: 70px;
+	right: 62px;
 	color: #fff;
 	transition:transform 500ms, top 500ms;
 	transition-timing-function: ease-in-out;
@@ -56,24 +62,48 @@ section[content-type="box"][box-type="magenta"] > .inner-content > details > sum
 	background-color: var(--box-magenta);
 }
 
+section[content-type="box"][box-type="magenta"] > .inner-content > details {
+	border-bottom-color: var(--box-magenta);
+}
+
 section[content-type="box"][box-type="green"] > .inner-content > details > summary {
 	background-color: var(--box-green);
+}
+
+section[content-type="box"][box-type="green"] > .inner-content > details {
+	border-bottom-color:var(--box-green);
 }
 
 section[content-type="box"][box-type="grey"] > .inner-content > details > summary {
 	background-color: var(--box-grey);
 }
 
+section[content-type="box"][box-type="grey"] > .inner-content > details {
+	border-bottom-color: var(--box-grey);
+}
+
 section[content-type="box"][box-type="blue"] > .inner-content > details > summary {
 	background-color: var(--box-blue);
+}
+
+section[content-type="box"][box-type="blue"] > .inner-content > details {
+	border-bottom-color: var(--box-blue);
 }
 
 section[content-type="box"][box-type="teal"] > .inner-content > details > summary {
 	background-color: var(--box-teal);
 }
 
+section[content-type="box"][box-type="teal"] > .inner-content > details {
+	border-bottom-color: var(--box-teal);
+}
+
 section[content-type="box"][box-type="red"] > .inner-content > details > summary {
 	background-color: var(--task-red);
+}
+
+section[content-type="box"][box-type="red"] > .inner-content > details {
+	border-bottom-color: var(--task-red);
 }
 
 .box-caption {
@@ -89,7 +119,7 @@ section[content-type="box"][box-type="red"] > .inner-content > details > summary
 
 section[content-type="box"] > .inner-content > .box-wrap {
 	position:relative;
-	transition:top 200ms;
+	transition:top 250ms;
 	transition-timing-function: ease-in-out;
 }
 
@@ -104,12 +134,15 @@ section[content-type="box"] > .inner-content > .box-wrap.active {
 section[content-type="box"] > .inner-content > .box-wrap.active > .box-content {
 	display:block;
 	max-height:0px;
-	transition:max-height 300ms;
-	transition-timing-function: ease-in-out;
+	transition:max-height 400ms;
 	background:var(--background-color);
 	box-sizing:border-box;
-	padding:24px 48px;
+	padding:0px;
 	overflow-y:auto;
+}
+
+section[content-type="box"] > .inner-content > .box-wrap.active > .box-content > section {
+	padding:24px 48px;
 }
 
 section[content-type="box"] > .inner-content > .box-wrap.active > summary::before {

@@ -25,7 +25,7 @@ let overlayHideBoxCallback = undefined;
 			function showBox(){
 				boxVisible = true;
 				const rect = boxHeader.getBoundingClientRect();
-				boxDetails.parentElement.style.height = (rect.height|0) + "px";
+				boxDetails.parentElement.style.height = ((rect.height|0)+8) + "px";
 				boxDetails.style.top = (rect.top|0) + "px";
 				boxDetails.classList.add("active");
 				boxDetails.getBoundingClientRect();
@@ -53,7 +53,7 @@ let overlayHideBoxCallback = undefined;
 						boxDetails.parentElement.style.height = "";
 						boxDetails.style.top = "";
 						boxContent.style.maxHeight = "";
-					},300);
+					},410);
 				}
 				//const rect = boxDetails.getBoundingClientRect();
 				const prect = boxDetails.parentElement.getBoundingClientRect();
