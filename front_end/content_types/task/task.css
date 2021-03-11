@@ -46,3 +46,8 @@ section[content-type="task"] > .inner-content {
 	position:relative;
 	z-index:1;
 }
+
+/* height of blank space from quill */
+.fancy-task-editor.ql-container.ql-snow .ql-editor {
+	min-height: 12em;
+}
