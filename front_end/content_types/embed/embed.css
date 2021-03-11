@@ -33,5 +33,5 @@ section[content-type="embed"] figcaption {
 	font-family: var(--font-headlines);
 	font-weight: 400;
 	font-size: 0.8em;
-	padding:0.5em;
+	padding:0.5em 0;
 }

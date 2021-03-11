@@ -43,4 +43,5 @@ table {
 
 * {
 	box-sizing:border-box;
+	hyphens: auto;
 }
