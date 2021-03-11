@@ -58,3 +58,11 @@ figure.gallery > img {
 	font-family:var(--font-content);
 	max-width: var(--content-width);
 }
+
+section[content-type="gallery"] > .inner-content {
+	max-width: calc(var(--content-width) + 24px);
+}
+
+section[content-type="gallery"] figcaption {
+	padding:0.5em 12px;
+}
