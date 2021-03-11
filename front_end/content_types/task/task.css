@@ -35,7 +35,7 @@ main > section[content-type="task"]::after {
 	display:block;
 	position:absolute;
 	left:0;
-	bottom:0;
+	bottom:-1em;
 	width:100%;
 	height:50%;
 	background: var(--background-red);

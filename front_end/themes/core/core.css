@@ -24,6 +24,7 @@
 
 html, body {
 	color:#333;
+	font-weight: 400;
 	font-family:var(--font-content);
 }
 
@@ -33,13 +34,9 @@ body {
 }
 
 p {
-	font-family: var(--font-content);
-	font-weight: 400;
-	font-size: 1em;
-	line-height:1.25em;
 	margin-bottom:1em;
+	line-height:1.25em;
 }
-
 b, strong {
 	font-weight:bold;
 }
