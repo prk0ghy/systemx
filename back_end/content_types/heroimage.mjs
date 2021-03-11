@@ -1,9 +1,9 @@
 export default ({
-					id,
-					uid,
-					images,
-				}) => {
-	const image = images[0]
+	id,
+	uid,
+	images
+}) => {
+	const image = images[0];
 	return `
 		<section id="${id}" content-type="heroimage">
 			<div class="inner-content">

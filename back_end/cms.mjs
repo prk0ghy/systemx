@@ -3,6 +3,9 @@ import {request, gql} from "graphql-request";
 const scope = {
 	get content() {
 		return `
+			heroimage {
+				url
+			}
 			elements: inhaltsbausteine {
 				__typename
 				...on inhaltsbausteine_textMitOhneBild_BlockType {

@@ -1,7 +1,8 @@
 import query from "../cms.mjs";
 export default async ({
 	id,
-	title
+	title,
+	heroimage
 }, {
 	render
 }) => {
@@ -13,7 +14,13 @@ export default async ({
 		}
 	`);
 	const children = await Promise.all(content.entry.elements.map(render));
+	const heroImageUrl = heroimage === undefined ? "" : `
+	<section content-type="heroimage">
+		<img src="${heroimage.url}"/>
+	</section>`;
+
 	return `
+		${heroImageUrl}
 		<h1 class="content-title inner-content">${content.entry.titleOverride || title}</h1>
 		${children.join("")}
 	`;

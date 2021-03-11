@@ -70,6 +70,9 @@ export const hash = await (async () => {
 export const render = (contentType, context = null) => {
 	const { __typename: type } = contentType;
 	const renderer = rendererMap.get(type);
+	if(type === "inhalt_inhalt_Entry"){
+		console.log(contentType);
+	}
 	if (renderer) {
 		return renderer.render(contentType, {
 			context,
