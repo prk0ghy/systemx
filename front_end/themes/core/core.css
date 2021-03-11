@@ -83,3 +83,16 @@ section {
 main > section:first-child {
 	margin-top:2.5em;
 }
+
+.marker {
+	position: absolute;
+	left: 50%;
+	margin-left: calc((var(--content-width) * -0.5) - 32px);
+	background: transparent;
+	color: #BFBFBF;
+	border-radius: 50%;
+	border: solid 2px #BFBFBF;
+	width: 2em;
+	line-height: 2em;
+	text-align: center;
+}
