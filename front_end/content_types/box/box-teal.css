@@ -1,0 +1,20 @@
+section[content-type="box"][box-type="teal"] > .inner-content > details > summary {
+	background-color: var(--box-teal);
+}
+
+section[content-type="box"][box-type="teal"] > .inner-content > details {
+	border-bottom-color: var(--box-teal);
+}
+
+section[box-type="teal"] ol > li > .ol-numerator {
+	color: var(--box-teal);
+}
+
+section[box-type="teal"] ul > li::before {
+	background-color: var(--box-teal);
+}
+
+section[box-type="teal"] ul ul > li::before {
+	background-color: transparent;
+	border-color: var(--box-teal);
+}

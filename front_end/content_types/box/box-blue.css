@@ -1,0 +1,20 @@
+section[content-type="box"][box-type="blue"] > .inner-content > details > summary {
+	background-color: var(--box-blue);
+}
+
+section[content-type="box"][box-type="blue"] > .inner-content > details {
+	border-bottom-color: var(--box-blue);
+}
+
+section[box-type="blue"] ol > li > .ol-numerator {
+	color: var(--box-blue);
+}
+
+section[box-type="blue"] ul > li::before {
+	background-color: var(--box-blue);
+}
+
+section[box-type="blue"] ul ul > li::before {
+	background-color:transparent;
+	border-color: var(--box-blue);
+}

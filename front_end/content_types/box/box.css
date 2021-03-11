@@ -40,7 +40,7 @@ section[content-type="box"] > .inner-content > details > summary::after {
 	position:absolute;
 	font-size: 2.5em;
 	top:16px;
-	right: 62px;
+	right: 44px;
 	color: #fff;
 	transition:transform 500ms, top 500ms;
 	transition-timing-function: ease-in-out;
@@ -56,54 +56,6 @@ section[content-type="box"] > .inner-content > details > summary > .box-caption 
 	font-size: 0.8em;
 	color: #fff;
 	margin:0.25em 0 0;
-}
-
-section[content-type="box"][box-type="magenta"] > .inner-content > details > summary {
-	background-color: var(--box-magenta);
-}
-
-section[content-type="box"][box-type="magenta"] > .inner-content > details {
-	border-bottom-color: var(--box-magenta);
-}
-
-section[content-type="box"][box-type="green"] > .inner-content > details > summary {
-	background-color: var(--box-green);
-}
-
-section[content-type="box"][box-type="green"] > .inner-content > details {
-	border-bottom-color:var(--box-green);
-}
-
-section[content-type="box"][box-type="grey"] > .inner-content > details > summary {
-	background-color: var(--box-grey);
-}
-
-section[content-type="box"][box-type="grey"] > .inner-content > details {
-	border-bottom-color: var(--box-grey);
-}
-
-section[content-type="box"][box-type="blue"] > .inner-content > details > summary {
-	background-color: var(--box-blue);
-}
-
-section[content-type="box"][box-type="blue"] > .inner-content > details {
-	border-bottom-color: var(--box-blue);
-}
-
-section[content-type="box"][box-type="teal"] > .inner-content > details > summary {
-	background-color: var(--box-teal);
-}
-
-section[content-type="box"][box-type="teal"] > .inner-content > details {
-	border-bottom-color: var(--box-teal);
-}
-
-section[content-type="box"][box-type="red"] > .inner-content > details > summary {
-	background-color: var(--task-red);
-}
-
-section[content-type="box"][box-type="red"] > .inner-content > details {
-	border-bottom-color: var(--task-red);
 }
 
 .box-caption {
@@ -158,5 +110,5 @@ section[content-type="box"] > .inner-content > .box-wrap.active > summary::after
 	font-style:italic;
 	font-size:0.8em;
 	font-weight:500;
-	color:rgba(var(--highlight-color), 0.8);
+	color:var(--background-grey);
 }

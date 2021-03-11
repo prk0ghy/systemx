@@ -35,3 +35,13 @@ section[content-type="embed"] figcaption {
 	font-size: 0.8em;
 	padding:0.5em 0;
 }
+
+section[content-type="embed"] > .inner-content > figure > lazy-iframe,
+section[content-type="embed"] > .inner-content > figure > iframe {
+	width:100%;
+	height:600px;
+}
+
+section[content-type="embed"] > .inner-content > figure > lazy-iframe {
+	background:#666;
+}

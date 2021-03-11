@@ -3,17 +3,21 @@ video {
 	width:100%;
 	height:auto;
 }
+
 section[content-type="video"] > .inner-content > details > summary::marker {
 	content: '';
 	display: none;
 }
+
 section[content-type="video"] {
 	position:relative;
 }
+
 section[content-type="video"] > .inner-content > details > summary::-webkit-details-marker {
 	content: '';
 	display: none;
 }
+
 main > section[content-type="video"]::after {
 	content:'';
 	display:block;
@@ -25,7 +29,14 @@ main > section[content-type="video"]::after {
 	background: var(--background-blue);
 	z-index:0;
 }
+
 section[content-type="video"] > .inner-content {
 	position:relative;
 	z-index:1;
+}
+
+figure.videofigure > figcaption {
+	padding:0.5em 0 0;
+	font-size:0.8em;
+	font-style:italic;
 }

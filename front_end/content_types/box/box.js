@@ -31,6 +31,7 @@ let overlayHideBoxCallback = undefined;
 				boxDetails.getBoundingClientRect();
 				boxDetails.style.top = "32px";
 				boxDetails.getBoundingClientRect();
+				showEmbedSections(boxContent);
 
 				showOverlay();
 				overlayHideBoxCallback = hideBox;
