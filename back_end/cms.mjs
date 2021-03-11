@@ -1,4 +1,5 @@
-import { request, gql } from "graphql-request";
+import {request, gql} from "graphql-request";
+
 const scope = {
 	get content() {
 		return `
@@ -12,6 +13,9 @@ const scope = {
 				}
 				...on inhaltsbausteine_videoDatei_BlockType {
 					${scope.video}
+				}
+				...on inhaltsbausteine_heroimage_BlockType {
+					${scope.heroimage}
 				}
 			}
 			titleOverride: title_override
@@ -41,7 +45,7 @@ const scope = {
 				url
 			}
 			caption: bildunterschrift
-		`;
+			`;
 	},
 	get textAndImage() {
 		return `
@@ -73,7 +77,21 @@ const scope = {
 				url
 			}
 		`;
-	}
+	},
+	get heroimage() {
+		return `
+			id
+			uid
+			images: bild {
+				__typename
+				id
+				uid
+				filename
+				url
+				title
+			}
+		`;
+	},
 };
 export default queryFunction => request("https://lasub-dev.test-dilewe.de/api", gql([
 	`{ ${queryFunction(scope)} }`

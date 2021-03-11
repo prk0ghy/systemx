@@ -44,7 +44,8 @@ const rendererMap = new Map([
 	["inhalt_inhalt_Entry", contentTypes.content],
 	["inhaltsbausteine_textMitOhneBild_BlockType", contentTypes.textAndImage],
 	["inhaltsbausteine_ueberschrift_BlockType", contentTypes.header],
-	["inhaltsbausteine_videoDatei_BlockType", contentTypes.video]
+	["inhaltsbausteine_videoDatei_BlockType", contentTypes.video],
+	["inhaltsbausteine_heroimage_BlockType", contentTypes.heroimage],
 ]);
 const alreadyWarnedTypes = new Set();
 export const getName = typeName => {

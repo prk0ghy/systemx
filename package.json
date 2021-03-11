@@ -13,6 +13,7 @@
 		"lint": "eslint back_end/**/*.mjs front_end/**/*.js",
 		"start": "node back_end/app.mjs --start-server --open-browser",
 		"open": "node back_end/app.mjs --open-browser",
+	  	"build": "node back_end/app.mjs",
 		"mon": "nodemon --ignore web/ back_end/app.mjs --start-server"
 	},
 	"author": "Digitale Lernwelten GmbH",
