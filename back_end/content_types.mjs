@@ -42,10 +42,22 @@ const contentTypes = (await (async () => {
 	}, {});
 const rendererMap = new Map([
 	["inhalt_inhalt_Entry", contentTypes.content],
+	["inhaltsbausteine_textMitOhneBild_BlockType", contentTypes.textAndImage],
 	["inhaltsbausteine_ueberschrift_BlockType", contentTypes.header],
 	["inhaltsbausteine_videoDatei_BlockType", contentTypes.video]
 ]);
 const alreadyWarnedTypes = new Set();
+export const getName = typeName => {
+	if (!rendererMap.has(typeName)) {
+		return "unhandled-typename";
+	}
+	const renderer = rendererMap.get(typeName);
+	for (const [key, value] of Object.entries(contentTypes)) {
+		if (value === renderer) {
+			return key;
+		}
+	}
+};
 export const hash = await (async () => {
 	const hashInput = (await Promise.all(Object.entries(contentTypePaths).map(async ([name, path]) => {
 		const fileContent = await fs.promises.readFile(path, "utf-8");
@@ -54,11 +66,14 @@ export const hash = await (async () => {
 		.join("|");
 	return computeHash(hashInput);
 })();
-export const render = contentType => {
+export const render = (contentType, context = null) => {
 	const { __typename: type } = contentType;
 	const renderer = rendererMap.get(type);
 	if (renderer) {
-		return renderer.render(contentType, render);
+		return renderer.render(contentType, {
+			context,
+			render
+		});
 	}
 	if (!alreadyWarnedTypes.has(type)) {
 		console.warn(`Content type "${type}" is currently not supported.`);

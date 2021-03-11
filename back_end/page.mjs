@@ -8,30 +8,29 @@ const fsp = fs.promises;
 const targetsBuilt = new Set();
 async function getHead(targetName, pageTitle) {
 	if (!targetsBuilt.has(targetName)) {
-		const proms = [];
-		console.log(targetName);
+		const promises = [];
 		const resourcePath = getResourcePath(targetName);
 		const cssContent = await css.get();
 		const cssFilename = path.join(resourcePath, "main.css");
-		proms.push(fsp.writeFile(cssFilename, cssContent));
+		promises.push(fsp.writeFile(cssFilename, cssContent));
 
-		proms.push(fsp.copyFile(path.join("node_modules","quill","dist","quill.min.js"),path.join(resourcePath,"quill.min.js")));
-		proms.push(fsp.copyFile(path.join("node_modules","quill","dist","quill.snow.css"),path.join(resourcePath,"quill.snow.css")));
+		promises.push(fsp.copyFile(path.join("node_modules","quill","dist","quill.min.js"),path.join(resourcePath,"quill.min.js")));
+		promises.push(fsp.copyFile(path.join("node_modules","quill","dist","quill.snow.css"),path.join(resourcePath,"quill.snow.css")));
 
-		proms.push(fsp.copyFile(path.join("node_modules","photoswipe","dist","photoswipe-ui-default.min.js"),path.join(resourcePath,"photoswipe-ui-default.min.js")));
-		proms.push(fsp.copyFile(path.join("node_modules","photoswipe","dist","photoswipe.min.js"),path.join(resourcePath,"photoswipe.min.js")));
-		proms.push(fsp.copyFile(path.join("node_modules","photoswipe","dist","photoswipe.css"),path.join(resourcePath,"photoswipe.css")));
+		promises.push(fsp.copyFile(path.join("node_modules","photoswipe","dist","photoswipe-ui-default.min.js"),path.join(resourcePath,"photoswipe-ui-default.min.js")));
+		promises.push(fsp.copyFile(path.join("node_modules","photoswipe","dist","photoswipe.min.js"),path.join(resourcePath,"photoswipe.min.js")));
+		promises.push(fsp.copyFile(path.join("node_modules","photoswipe","dist","photoswipe.css"),path.join(resourcePath,"photoswipe.css")));
 
-		proms.push(fsp.copyFile(path.join("node_modules","photoswipe","dist","default-skin","default-skin.css"),path.join(resourcePath,"default-skin.css")));
-		proms.push(fsp.copyFile(path.join("node_modules","photoswipe","dist","default-skin","default-skin.svg"),path.join(resourcePath,"default-skin.svg")));
-		proms.push(fsp.copyFile(path.join("node_modules","photoswipe","dist","default-skin","default-skin.png"),path.join(resourcePath,"default-skin.png")));
-		proms.push(fsp.copyFile(path.join("node_modules","photoswipe","dist","default-skin","preloader.gif"),path.join(resourcePath,"preloader.gif")));
+		promises.push(fsp.copyFile(path.join("node_modules","photoswipe","dist","default-skin","default-skin.css"),path.join(resourcePath,"default-skin.css")));
+		promises.push(fsp.copyFile(path.join("node_modules","photoswipe","dist","default-skin","default-skin.svg"),path.join(resourcePath,"default-skin.svg")));
+		promises.push(fsp.copyFile(path.join("node_modules","photoswipe","dist","default-skin","default-skin.png"),path.join(resourcePath,"default-skin.png")));
+		promises.push(fsp.copyFile(path.join("node_modules","photoswipe","dist","default-skin","preloader.gif"),path.join(resourcePath,"preloader.gif")));
 
 		const jsContent = await js.get();
 		const jsFilename = path.join(resourcePath, "main.js");
-		proms.push(fsp.writeFile(jsFilename, jsContent));
+		promises.push(fsp.writeFile(jsFilename, jsContent));
 
-		await Promise.all(proms);
+		await Promise.all(promises);
 		targetsBuilt.add(targetName);
 	}
 	return `
@@ -166,7 +165,11 @@ async function getNavigationAside(){
 </ul></nav></aside>`;
 }
 
-export default async function wrapWithApplicationShell(targetName, pageTitle, content) {
+export default async function wrapWithApplicationShell(targetName, {
+	pageTitle,
+	pageType,
+	content
+}) {
 	const head = await getHead(targetName, pageTitle);
 	return `
 		<!DOCTYPE html>
@@ -175,7 +178,7 @@ export default async function wrapWithApplicationShell(targetName, pageTitle, co
 			<body>
 				${await getHeader()}
 				${await getNavigationAside()}
-				<main>${content}</main>
+				<main content-type="${pageType}">${content}</main>
 			</body>
 		</html>
 	`;

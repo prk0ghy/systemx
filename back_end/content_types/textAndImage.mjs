@@ -1,16 +1,19 @@
 import makeMarker from "./marker.mjs";
 export default ({
-	caption,
-	files,
+	images,
+	imageWidth,
+	imageBorder,
+	imagePosition,
+	galleryIntroductionText,
 	isNumbered,
-	poster
+	text,
+	useFlex
 }) => {
-	const src = files[0]?.url;
 	return `
-		<section content-type="video">
+		<section content-type="text-and-image">
 			<div class="inner-content">
 				${makeMarker(isNumbered)}
-				<video controls src="${src}"></video>
+				${text}
 			</div>
 		</section>
 	`;

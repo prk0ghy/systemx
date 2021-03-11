@@ -2,21 +2,19 @@ import query from "../cms.mjs";
 export default async ({
 	id,
 	title
-}, render) => {
+}, {
+	render
+}) => {
 	const content = await query(scope => `
 		entry(id: ${id}) {
 			 ...on inhalt_inhalt_Entry {
-				inhaltsbausteine {
-					__typename
-					...on inhaltsbausteine_videoDatei_BlockType {
-						${scope.video}
-					}
-					...on inhaltsbausteine_ueberschrift_BlockType {
-						${scope.header}
-					}
-				}
-			}
+				${scope.content}
+			 }
 		}
 	`);
-	return (await Promise.all(content.entry.inhaltsbausteine.map(render))).join("");
+	const children = await Promise.all(content.entry.elements.map(render));
+	return `
+		<h1 class="content-title inner-content">${content.entry.titleOverride || title}</h1>
+		${children.join("")}
+	`;
 };

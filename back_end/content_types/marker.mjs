@@ -8,7 +8,7 @@ export const fill = html => {
 		.attr("id", getNumber);
 	return $.html();
 };
-export const make = isNumbered => isNumbered
+export default ({ isNumbered }) => isNumbered
 	? String()
 	: `
 		<a class="${className}"></a>

@@ -1,6 +1,7 @@
 import * as resources from "./resources.mjs";
 import cache, { save as saveCache } from "./cache.mjs";
 import {
+	getName as getContentTypeName,
 	hash as contentTypeHash,
 	render
 } from "./content_types.mjs";
@@ -66,7 +67,11 @@ async function copyAssets(destination) {
 
 async function renderFile(source, destination, targetName) {
 	const fileContent = await fsp.readFile(source, "utf-8");
-	const html = await wrapWithApplicationShell(targetName, "Instrumentalisierung der Vergangenheit", fileContent);
+	const html = await wrapWithApplicationShell(targetName, {
+		content: fileContent,
+		pageTitle: "Instrumentalisierung der Vergangenheit",
+		pageType: getContentTypeName("inhalt_inhalt_Entry")
+	});
 	return fsp.writeFile(destination, html);
 }
 
@@ -96,7 +101,11 @@ export const buildEntries = async targetName => {
 		cache.entryResultHashes[entry.uid] = hashedHTML;
 		const directory = await mkdirp(targetPath, entry.uri);
 		const outputFilePath = path.join(directory, "index.html");
-		const wrappedHTML = await wrapWithApplicationShell(targetName, entry.title, html);
+		const wrappedHTML = await wrapWithApplicationShell(targetName, {
+			content: html,
+			pageTitle: entry.title,
+			pageType: getContentTypeName(entry.__typename)
+		});
 		const finalHTML = fillMarkers(wrappedHTML);
 		await fsp.writeFile(outputFilePath, formatHTML(finalHTML));
 	}));
