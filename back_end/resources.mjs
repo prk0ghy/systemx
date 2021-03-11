@@ -15,6 +15,7 @@ async function getFromPath(ext, prefix, inline) {
 		let ret = "";
 
 		for (const name of names.sort()) {
+			if(name.substr(0,1) === "."){continue;}
 			const filePath = prefix + name;
 			if (fileExtension(filePath).toLowerCase() !== ext) {
 				continue;
@@ -40,6 +41,7 @@ async function getFromContentTypes(ext, inline) {
 		const names = await fsp.readdir("front_end/content_types/");
 		let ret = "";
 		for (const name of names) {
+			if(name.substr(0,1) === "."){continue;}
 			const prefix = "front_end/content_types/" + name + "/";
 			ret += await getFromPath(ext, prefix, inline);
 		}
@@ -53,6 +55,7 @@ async function getFromThemes(ext, inline) {
 		const names = await fsp.readdir("front_end/themes/");
 		let ret = "";
 		for (const name of names) {
+			if(name.substr(0,1) === "."){continue;}
 			const prefix = "front_end/themes/" + name + "/";
 			ret += await getFromPath(ext, prefix, inline);
 		}
@@ -67,6 +70,7 @@ export async function getAssetDirectories() {
 	try {
 		const names = await fsp.readdir("front_end/themes/");
 		for (const name of names) {
+			if(name.substr(0,1) === "."){continue;}
 			const prefix = "front_end/themes/" + name + "/";
 			ret.push(prefix);
 		}
@@ -76,6 +80,7 @@ export async function getAssetDirectories() {
 	try {
 		const names = await fsp.readdir("front_end/content_types/");
 		for (const name of names) {
+			if(name.substr(0,1) === "."){continue;}
 			const prefix = "front_end/content_types/" + name + "/";
 			ret.push(prefix);
 		}
