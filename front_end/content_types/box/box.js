@@ -1,4 +1,4 @@
-/* global showOverlay */
+/* global showOverlay,hideOverlay,overlayCloseHandlers */
 let overlayHideBoxCallback = undefined;
 
 /* Don't pollute the global scope if avoidable */
@@ -29,10 +29,8 @@ let overlayHideBoxCallback = undefined;
 				boxDetails.style.top = (rect.top|0) + "px";
 				boxDetails.classList.add("active");
 				boxDetails.getBoundingClientRect();
-				requestAnimationFrame(()=>{
-					boxDetails.style.top = "32px";
-					boxDetails.getBoundingClientRect();
-				})
+				boxDetails.style.top = "32px";
+				boxDetails.getBoundingClientRect();
 
 				showOverlay();
 				overlayHideBoxCallback = hideBox;

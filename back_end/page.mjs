@@ -8,18 +8,30 @@ const fsp = fs.promises;
 const targetsBuilt = new Set();
 async function getHead(targetName, pageTitle) {
 	if (!targetsBuilt.has(targetName)) {
+		const proms = [];
 		console.log(targetName);
 		const resourcePath = getResourcePath(targetName);
 		const cssContent = await css.get();
 		const cssFilename = path.join(resourcePath, "main.css");
-		await fsp.writeFile(cssFilename, cssContent);
+		proms.push(fsp.writeFile(cssFilename, cssContent));
 
-		await fsp.copyFile(path.join("node_modules","quill","dist","quill.min.js"),path.join(resourcePath,"quill.min.js"));
-		await fsp.copyFile(path.join("node_modules","quill","dist","quill.snow.css"),path.join(resourcePath,"quill.snow.css"));
+		proms.push(fsp.copyFile(path.join("node_modules","quill","dist","quill.min.js"),path.join(resourcePath,"quill.min.js")));
+		proms.push(fsp.copyFile(path.join("node_modules","quill","dist","quill.snow.css"),path.join(resourcePath,"quill.snow.css")));
+
+		proms.push(fsp.copyFile(path.join("node_modules","photoswipe","dist","photoswipe-ui-default.min.js"),path.join(resourcePath,"photoswipe-ui-default.min.js")));
+		proms.push(fsp.copyFile(path.join("node_modules","photoswipe","dist","photoswipe.min.js"),path.join(resourcePath,"photoswipe.min.js")));
+		proms.push(fsp.copyFile(path.join("node_modules","photoswipe","dist","photoswipe.css"),path.join(resourcePath,"photoswipe.css")));
+
+		proms.push(fsp.copyFile(path.join("node_modules","photoswipe","dist","default-skin","default-skin.css"),path.join(resourcePath,"default-skin.css")));
+		proms.push(fsp.copyFile(path.join("node_modules","photoswipe","dist","default-skin","default-skin.svg"),path.join(resourcePath,"default-skin.svg")));
+		proms.push(fsp.copyFile(path.join("node_modules","photoswipe","dist","default-skin","default-skin.png"),path.join(resourcePath,"default-skin.png")));
+		proms.push(fsp.copyFile(path.join("node_modules","photoswipe","dist","default-skin","preloader.gif"),path.join(resourcePath,"preloader.gif")));
 
 		const jsContent = await js.get();
 		const jsFilename = path.join(resourcePath, "main.js");
-		await fsp.writeFile(jsFilename, jsContent);
+		proms.push(fsp.writeFile(jsFilename, jsContent));
+
+		await Promise.all(proms);
 		targetsBuilt.add(targetName);
 	}
 	return `
@@ -28,8 +40,14 @@ async function getHead(targetName, pageTitle) {
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>${pageTitle}</title>
 		<style>${await css.getInline()}</style>
+
 		<link rel="stylesheet" type="text/css" href="/${resourceDirectoryName}/quill.snow.css"/>
 		<script defer type="text/javascript" src="/${resourceDirectoryName}/quill.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="/${resourceDirectoryName}/photoswipe.css"/>
+		<link rel="stylesheet" type="text/css" href="/${resourceDirectoryName}/default-skin.css"/>
+		<script defer type="text/javascript" src="/${resourceDirectoryName}/photoswipe.min.js"></script>
+		<script defer type="text/javascript" src="/${resourceDirectoryName}/photoswipe-ui-default.min.js"></script>
 
 		<link rel="stylesheet" type="text/css" href="/${resourceDirectoryName}/main.css"/>
 		<script defer type="text/javascript" src="/${resourceDirectoryName}/main.js"></script>

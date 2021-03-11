@@ -37,18 +37,23 @@ p {
 	margin-bottom:1em;
 	line-height:1.25em;
 }
+
 b, strong {
 	font-weight:bold;
 }
+
 i, em {
 	font-style:italic;
 }
+
 u {
 	text-decoration:underline;
 }
+
 s, strike {
 	text-decoration:line-through;
 }
+
 a {
 	color:rgb(var(--highlight-color));
 }
@@ -71,10 +76,10 @@ figure {
 	position:relative;
 }
 
-main > section:first-child {
-	margin-top:2.5em;
-}
-
 section {
 	position:relative;
+}
+
+main > section:first-child {
+	margin-top:2.5em;
 }

@@ -35,11 +35,11 @@ function hideOverlay() {
 		body.appendChild(overlayElement);
 		overlayElement.addEventListener("click", window.hideOverlay);
 
-		document.addEventListener('scroll', (e) => {
+		document.addEventListener('scroll', () => {
 			if(overlayActive){
 				hideOverlay();
 			}
 		});
 	}
 	setTimeout(initOverlay, 0);
-})(); 
+})();

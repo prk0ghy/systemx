@@ -1,3 +1,13 @@
+figure.gallery > details.license > summary {
+	right:1em;
+	margin-top:-2.3em;
+}
+
+section[content-type="gallery"] > .inner-content > details > summary {
+	cursor:pointer;
+	outline:none;
+}
+
 section[content-type="gallery"] > .inner-content > details > summary::marker {
 	content: '';
 	display: none;
@@ -10,10 +20,8 @@ section[content-type="gallery"] > .inner-content > details > summary::-webkit-de
 
 section[content-type="gallery"] figcaption {
 	font-family: var(--font-headlines);
-	font-weight: 400;
-	font-size: 1em;
-	line-height: 1.5em;
-	margin-top: 0.5em;
+	line-height: 1.35em;
+	padding:0.5em 0;
 }
 
 section[content-type="gallery"] {
@@ -35,4 +43,18 @@ main > section[content-type="gallery"]::after {
 section[content-type="gallery"] > .inner-content {
 	position:relative;
 	z-index:1;
+}
+
+figure.gallery > img {
+	border:solid 12px var(--background-color);
+	background:var(--background-color);
+}
+
+.pswp__caption__center {
+	color:#fff;
+	font-weight: 400;
+	font-size:0.8em;
+	line-height:1.25em;
+	font-family:var(--font-content);
+	max-width: var(--content-width);
 }
