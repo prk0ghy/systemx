@@ -1,8 +1,7 @@
 import query from "../cms.mjs";
 export default async ({
 	id,
-	title,
-	heroimage
+	title
 }, {
 	render
 }) => {
@@ -14,14 +13,30 @@ export default async ({
 		}
 	`);
 	const children = await Promise.all(content.entry.elements.map(render));
-	const heroImageUrl = heroimage === undefined ? "" : `
+
+	const heroimageCaption = (content.entry.heroimageCaption === undefined) || (content.entry.heroimageCaption === null) ? "" : `
+	<figcaption>
+		${content.entry.heroimageCaption}
+	</figcaption>
+	`;
+
+	const heroImageUrl = (content.entry.heroimages === undefined) || (content.entry.heroimages.length === 0) ? "" : `
 	<section content-type="heroimage">
-		<img src="${heroimage.url}"/>
+		<div class="inner-content">
+			<figure class="heroimage">
+				<img src="${content.entry.heroimages[0].url}"/>
+				${heroimageCaption}
+			</figure>
+		</div>
 	</section>`;
 
 	return `
 		${heroImageUrl}
-		<h1 class="content-title inner-content">${content.entry.titleOverride || title}</h1>
+		<section content-type="header">
+			<div class="inner-content">
+				<h1 class="content-title inner-content">${content.entry.titleOverride || title}</h1>
+			</div>
+		</section>
 		${children.join("")}
 	`;
 };

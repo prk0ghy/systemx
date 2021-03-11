@@ -22,6 +22,10 @@ const scope = {
 				}
 			}
 			titleOverride: title_override
+			heroimageCaption: bildunterschrift
+			heroimages: heroimage  {
+				url
+			}
 		`;
 	},
 	get entry() {
