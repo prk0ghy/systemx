@@ -98,7 +98,7 @@ const scope = {
 				title
 			}
 		`;
-	},
+	}
 };
 export default queryFunction => request("https://lasub-dev.test-dilewe.de/api", gql([
 	`{ ${queryFunction(scope)} }`

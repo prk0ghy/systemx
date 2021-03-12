@@ -7,34 +7,7 @@
 	font-family:var(--font-content);
 }
 
-section[content-type="text-and-image"] .picture.right {
-	float: right;
-	max-width: 30%;
-	margin-left: 1em;
-	margin-bottom: 1em;
-	z-index: 1;
-	position: relative;
-}
-
-section[content-type="text-and-image"] .picture.left {
-	float: left;
-	max-width: 30%;
-	margin-right: 1em;
-	margin-bottom: 1em;
-	z-index: 1;
-	position: relative;
-}
-
-section[content-type="text-and-image"] .picture.top {
-	width: 100%;
-	margin-right: auto;
-	margin-left: auto;
-	margin-bottom: 1em;
-	z-index: 1;
-	position: relative;
-}
-
-section[content-type="text-and-image"] p::after {
+section[content-type="text-and-image"]::after {
 	clear: both;
 }
 
