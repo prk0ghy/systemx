@@ -1,35 +1,29 @@
-figure[figure-width="30"] {
-	width:30%;
+figure,
+figure[figure-width="100"] {
+	width:100%;
 }
 
 figure[figure-width="50"] {
 	width:50%;
 }
 
-figure[figure-width="100"] {
-	width:100%;
+figure[figure-width="30"] {
+	width:30%;
+}
+
+figure,
+figure[figure-position="top"] {
+	margin: 0 auto 1em;
+	z-index: 1;
+	position: relative;
 }
 
 figure[figure-position="right"] {
 	float: right;
-	margin-left: 1em;
-	margin-bottom: 1em;
-	z-index: 1;
-	position: relative;
+	margin:0 0 1em 1em;
 }
 
 figure[figure-position="left"] {
 	float: left;
-	margin-right: 1em;
-	margin-bottom: 1em;
-	z-index: 1;
-	position: relative;
-}
-
-figure[figure-position="top"] {
-	margin-right: auto;
-	margin-left: auto;
-	margin-bottom: 1em;
-	z-index: 1;
-	position: relative;
+	margin:0 1em 1em 0;
 }

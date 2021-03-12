@@ -5,6 +5,7 @@ const fsp = fs.promises;
 function fileExtension(filename) {
 	return filename.substring(filename.lastIndexOf(".") + 1, filename.length) || filename;
 }
+
 function isInline(filename) {
 	return filename.indexOf(".inline.") !== -1;
 }

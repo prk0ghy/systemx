@@ -12,12 +12,13 @@ main > section[content-type="heroimage"]:first-child {
 	margin-top:0;
 }
 
-main > section[content-type="heroimage"] figure.heroimage img {
+
+figure[figure-type="heroimage"] img {
 	max-height:500px;
 	object-fit:cover;
 }
 
-main > section[content-type="heroimage"] figure.heroimage figcaption {
+figure[figure-type="heroimage"] figcaption {
 	position:absolute;
 	left:0;
 	bottom:0;
@@ -28,7 +29,7 @@ main > section[content-type="heroimage"] figure.heroimage figcaption {
 	backdrop-filter: blur(30px);
 }
 
-main > section[content-type="heroimage"] figure.heroimage figcaption p {
+figure[figure-type="heroimage"] figcaption p {
 	width:100%;
 	margin:0 auto;
 	display:block;
@@ -41,11 +42,12 @@ main > section[content-type="heroimage"] figure.heroimage figcaption p {
 /* .big and .small should be automatically set by the backend
  * depending on length of text
  */
-main > section[content-type="heroimage"] figure.heroimage figcaption.big p {
+
+figure[figure-type="heroimage"] figcaption.big p {
 	font-size:1em;
 }
 
-main > section[content-type="heroimage"] figure.heroimage figcaption.small p {
+figure[figure-type="heroimage"] figcaption.small p {
 	font-size:0.5em;
 }
 

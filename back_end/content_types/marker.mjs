@@ -1,15 +1,18 @@
 import cheerio from "cheerio";
-const className = "marker";
-const getNumber = index => String(index + 1);
-export const fill = html => {
+
+export function getRenderer() {
+	return [];
+}
+
+export function fill(html) {
 	const $ = cheerio.load(html);
-	$(`.${className}`)
-		.text(getNumber)
-		.attr("id", getNumber);
+	const getNumber = index => String(index + 1);
+
+	$(".marker").text(getNumber).attr("id", getNumber);
+
 	return $.html();
-};
-export default ({ isNumbered }) => isNumbered
-	? String()
-	: `
-		<a class="${className}"></a>
-	`;
+}
+
+export async function render({ isNumbered }) {
+	return isNumbered ? String() : `<a class="marker"></a>`;
+}

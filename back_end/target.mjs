@@ -1,17 +1,12 @@
 import * as resources from "./resources.mjs";
-import cache, { save as saveCache } from "./cache.mjs";
-import {
-	getName as getContentTypeName,
-	hash as contentTypeHash,
-	render
-} from "./content_types.mjs";
+import { getName as getContentTypeName, render} from "./content_types.mjs";
 import { fill as fillMarkers } from "./content_types/marker.mjs";
 import { formatHTML } from "./format.mjs";
 import fs from "fs";
-import { hash } from "./crypto.mjs";
 import path from "path";
 import query from "./cms.mjs";
 import wrapWithApplicationShell from "./page.mjs";
+
 export const resourceDirectoryName = "res";
 const fsp = fs.promises;
 
@@ -84,21 +79,24 @@ export const buildEntries = async targetName => {
 			}
 		}
 	`);
-	const mustInvalidateCache = cache.contentTypeHash !== contentTypeHash;
 	const targetPath = getTargetPath(targetName);
 	await Promise.all(result.entries.map(async entry => {
+		/*
 		if (!mustInvalidateCache && cache.entryDateUpdated[entry.uid] === entry.dateUpdated) {
-			/* Don't generate HTML, since the GraphQL response will be the same. */
+			// Don't generate HTML, since the GraphQL response will be the same.
 			return;
 		}
-		cache.entryDateUpdated[entry.uid] = entry.dateUpdated;
+		*/
+		// cache.entryDateUpdated[entry.uid] = entry.dateUpdated;
 		const html = await render(entry);
+		/*
 		const hashedHTML = hash(html);
 		if (!mustInvalidateCache && cache.entryResultHashes[entry.uid] === hashedHTML) {
-			/* Don't write the file, since the content will be the same. */
+			// Don't write the file, since the content will be the same.
 			return;
 		}
 		cache.entryResultHashes[entry.uid] = hashedHTML;
+		*/
 		const directory = await mkdirp(targetPath, entry.uri);
 		const outputFilePath = path.join(directory, "index.html");
 		const wrappedHTML = await wrapWithApplicationShell(targetName, {
@@ -109,9 +107,6 @@ export const buildEntries = async targetName => {
 		const finalHTML = fillMarkers(wrappedHTML);
 		await fsp.writeFile(outputFilePath, formatHTML(finalHTML));
 	}));
-	if (mustInvalidateCache) {
-		cache.contentTypeHash = contentTypeHash;
-	}
 };
 
 export async function build(targetName) {
@@ -122,5 +117,4 @@ export async function build(targetName) {
 	console.time("target#buildEntries");
 	await buildEntries(targetName);
 	console.timeEnd("target#buildEntries");
-	await saveCache();
 }

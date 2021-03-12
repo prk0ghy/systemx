@@ -100,6 +100,7 @@ const scope = {
 		`;
 	}
 };
+
 export default queryFunction => request("https://lasub-dev.test-dilewe.de/api", gql([
 	`{ ${queryFunction(scope)} }`
 		.replace(/[\t]/g, "")

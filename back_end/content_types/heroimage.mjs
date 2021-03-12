@@ -1,8 +1,9 @@
-export default ({
-	id,
-	uid,
-	images
-}) => {
+export function getRenderer() {
+	return ["inhaltsbausteine_heroimage_BlockType"];
+}
+
+export async function render({id, uid, images}) {
+	uid; // NOP so eslint won't complain, remove ASAP
 	const image = images[0];
 	return `
 		<section id="${id}" content-type="heroimage">

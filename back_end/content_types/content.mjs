@@ -1,10 +1,10 @@
 import query from "../cms.mjs";
-export default async ({
-	id,
-	title
-}, {
-	render
-}) => {
+
+export function getRenderer() {
+	return ["inhalt_inhalt_Entry"];
+}
+
+export async function render({id, title}, {render}) {
 	const content = await query(scope => `
 		entry(id: ${id}) {
 			 ...on inhalt_inhalt_Entry {

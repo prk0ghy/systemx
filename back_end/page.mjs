@@ -165,11 +165,7 @@ async function getNavigationAside(){
 </ul></nav></aside>`;
 }
 
-export default async function wrapWithApplicationShell(targetName, {
-	pageTitle,
-	pageType,
-	content
-}) {
+export default async function wrapWithApplicationShell(targetName, {pageTitle, pageType, content}) {
 	const head = await getHead(targetName, pageTitle);
 	return `
 		<!DOCTYPE html>
