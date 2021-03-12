@@ -51,3 +51,16 @@ section[content-type="task"] > .inner-content {
 .fancy-task-editor.ql-container.ql-snow .ql-editor {
 	min-height: 12em;
 }
+
+section[content-type="task"] ol > li > .ol-numerator {
+	color: var(--task-red);
+}
+
+section[content-type="task"] ul > li::before {
+	background-color: var(--task-red);
+}
+
+section[content-type="task"] ul ul > li::before {
+	background-color:transparent;
+	border-color: var(--task-red);
+}
