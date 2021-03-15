@@ -14,7 +14,7 @@
 		"start": "node back_end/app.mjs --start-server --open-browser",
 		"open": "node back_end/app.mjs --open-browser",
 		"build": "node back_end/app.mjs",
-		"mon": "nodemon --ignore web/ back_end/app.mjs --start-server"
+		"mon": "nodemon --ignore web/ back_end/app.mjs --start-server --only-local"
 	},
 	"author": "Digitale Lernwelten GmbH",
 	"dependencies": {

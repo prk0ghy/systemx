@@ -16,9 +16,16 @@ function showEmbedSections(container){
 	}
 }
 
+function showEmbedSectionsAll(containers){
+	for(const curContainer of containers){
+		showEmbedSections(curContainer);
+	}
+}
+
 (()=>{
 	function initLazyIframes(){
 		showEmbedSections(document.querySelector("main"));
+		showEmbedSectionsAll(document.querySelectorAll("main > section[content-type=\"task\"] > .inner-content > .task-content"));
 	}
 	setTimeout(initLazyIframes,0);
 })();

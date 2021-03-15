@@ -20,7 +20,6 @@
 			const button = gallery.firstElementChild;
 			const items = [];
 			for(const img of gallery.children){
-				if(img.tagName.toUpperCase() === "SUMMARY"){continue;}
 				const imgTag = img.querySelector("img");
 				if(imgTag === null){continue;}
 				const src   = imgTag.src;

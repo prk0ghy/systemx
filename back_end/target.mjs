@@ -1,4 +1,5 @@
 import * as resources from "./resources.mjs";
+import * as options from "./options.mjs";
 import { getName as getContentTypeName, render} from "./content_types.mjs";
 import { fill as fillMarkers } from "./content_types/marker.mjs";
 import { formatHTML } from "./format.mjs";
@@ -6,6 +7,7 @@ import fs from "fs";
 import path from "path";
 import query from "./cms.mjs";
 import wrapWithApplicationShell from "./page.mjs";
+import { formatWithOptions } from "util";
 
 export const resourceDirectoryName = "res";
 const fsp = fs.promises;
@@ -114,7 +116,9 @@ export async function build(targetName) {
 	mkdirp(resourcePath);
 	await copyDirectory(path.join("tests", "instrumentalisierung"), getTargetPath(targetName), targetName);
 	await copyAssets(resourcePath);
-	console.time("target#buildEntries");
-	await buildEntries(targetName);
-	console.timeEnd("target#buildEntries");
+	if(!options.onlyLocal){
+		console.time("target#buildEntries");
+		await buildEntries(targetName);
+		console.timeEnd("target#buildEntries");
+	}
 }

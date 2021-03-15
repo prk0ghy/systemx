@@ -76,6 +76,23 @@ async function getNavigationAside(){
 	<li>
 		<a href="#">Start</a>
 	</li>
+	<li class="active">
+		<a href="#">Testkapitel</a>
+		<ul>
+			<li><a href="/index.html">Geschichte - Instrumentalisierung der Vergangenheit</a>
+				<ul><li><a href="/index.html">1. Instrumentalisierung der Vergangenheit</a></li></ul>
+			</li>
+			<li><a href="/farbkontraste.html">Kunst - Die Welt der Farben</a>
+				<ul><li><a href="/farbkontraste.html">2. Farbkontraste</a></li></ul>
+			</li>
+			<li><a href="/besserleser.html">Deutsch - Sachtexte rund ums Internet besser verstehen</a>
+				<ul><li><a href="/besserleser.html">1. Anleitung f&uuml;r Besserleser</a></li></ul>
+			</li>
+			<li><a href="/bewegung.html">Physik - Bewegungen von Körpern</a>
+				<ul><li><a href="/bewegung.html">1. Beurteilen von Bewegungen</a></li></ul>
+			</li>
+		</ul>
+	</li>
 	<li>
 		<a href="#">Geschichte 1 - Die Stadt im Mittelalter</a>
 		<ul>
@@ -92,7 +109,7 @@ async function getNavigationAside(){
 			<li><a href="#">Macht und Herrschaft in den mittelalterlichen St&auml;dten</a></li>
 		</ul>
 	</li>
-	<li class="active">
+	<li>
 		<a href="#">Geschichte 3 - Instrumentalisierung der Vergangenheit</a>
 		<ul>
 			<li><a href="#">St&auml;dteboom im Mittelalter</a></li>
