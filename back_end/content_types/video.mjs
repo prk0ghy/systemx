@@ -12,7 +12,7 @@ export async function render({caption, files, isNumbered, poster}) {
 	return `
 		<section content-type="video">
 			<div class="inner-content">
-				${marker.render(isNumbered)}
+				${await marker.render(isNumbered)}
 				<video controls src="${src}"></video>
 			</div>
 		</section>

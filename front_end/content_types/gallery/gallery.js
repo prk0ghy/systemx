@@ -22,7 +22,7 @@
 			for(const img of gallery.children){
 				if(img.tagName.toUpperCase() === "SUMMARY"){continue;}
 				const imgTag = img.querySelector("img");
-				if(imgTag === null){return;}
+				if(imgTag === null){continue;}
 				const src   = imgTag.src;
 				const w     = imgTag.getAttribute("width")|0;
 				const h     = imgTag.getAttribute("height")|0;
@@ -36,7 +36,7 @@
 				getThumbBoundsFn:()=>{
 					const rect = button.getBoundingClientRect();
 					const ret = {
-						x:rect.x|0,
+						x: rect.x|0,
 						y:(rect.y|0) + (document.children[0].scrollTop),
 						w:rect.width|0
 					};
@@ -45,7 +45,7 @@
 			};
 			button.addEventListener("click",(e)=>{
 				e.preventDefault();
-				let gal = new PhotoSwipe(pswpElement,PhotoSwipeUI_Default,items,options);
+				const gal = new PhotoSwipe(pswpElement,PhotoSwipeUI_Default,items,options);
 				gal.init();
 			});
 		});

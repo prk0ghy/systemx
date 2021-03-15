@@ -7,6 +7,7 @@
 			license.addEventListener('click',(e) => {
 				e.preventDefault();
 				license.parentElement.classList.toggle("active");
+				e.stopPropagation();
 			});
 		});
 	}

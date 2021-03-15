@@ -20,7 +20,6 @@ section[content-type="box"] > .inner-content > details > summary {
 	outline: none;
 	line-height: 2.6em;
 	background-color: #257DA7;
-	cursor: pointer;
 }
 
 section[content-type="box"] > .inner-content > details > summary::marker {

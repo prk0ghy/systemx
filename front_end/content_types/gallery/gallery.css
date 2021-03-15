@@ -1,11 +1,6 @@
-figure.gallery > details.license > summary {
+figure[figure-type="gallery"] > details.license > summary {
 	right:1em;
 	margin-top:-2.3em;
-}
-
-section[content-type="gallery"] > .inner-content > details > summary {
-	cursor:pointer;
-	outline:none;
 }
 
 section[content-type="gallery"] > .inner-content > details > summary::marker {
@@ -46,7 +41,7 @@ section[content-type="gallery"] > .inner-content {
 	z-index:1;
 }
 
-figure.gallery > img {
+figure[figure-type="gallery"] > img {
 	border:solid 12px var(--background-color);
 	background:var(--background-color);
 }
