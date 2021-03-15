@@ -16,8 +16,7 @@ async function mkdirp(...pathParts) {
 	const joinedPath = path.join(...pathParts);
 	try {
 		await fs.mkdirSync(joinedPath, { recursive: true });
-	}
-	catch (error) {
+	} catch (error) {
 		console.error("Directory creation has failed.", error);
 	}
 	return joinedPath;
@@ -83,24 +82,18 @@ export const buildEntries = async targetName => {
 	`);
 	const targetPath = getTargetPath(targetName);
 	await Promise.all(result.entries.map(async entry => {
-		/*
-		if (!mustInvalidateCache && cache.entryDateUpdated[entry.uid] === entry.dateUpdated) {
-			// Don't generate HTML, since the GraphQL response will be the same.
-			return;
-		}
-		*/
-		// cache.entryDateUpdated[entry.uid] = entry.dateUpdated;
-		const html = await render(entry);
-		/*
-		const hashedHTML = hash(html);
-		if (!mustInvalidateCache && cache.entryResultHashes[entry.uid] === hashedHTML) {
-			// Don't write the file, since the content will be the same.
-			return;
-		}
-		cache.entryResultHashes[entry.uid] = hashedHTML;
-		*/
 		const directory = await mkdirp(targetPath, entry.uri);
 		const outputFilePath = path.join(directory, "index.html");
+		try {
+			const stat = await fsp.stat(outputFilePath);
+			if(Date.parse(stat.mtime) > Date.parse(entry.dateUpdated)){
+				return;
+			}
+		} catch {
+			/* Doesn't matter if it fails, we just render a new file */
+		}
+		const html = await render(entry);
+
 		const wrappedHTML = await wrapWithApplicationShell(targetName, {
 			content: html,
 			pageTitle: entry.title,
