@@ -1,4 +1,5 @@
-import * as resources from "./resources.mjs";
+import * as resources from "./page_elements/resources.mjs";
+import {genNavigation} from "./page_elements/navigation.mjs";
 import * as options from "./options.mjs";
 import { getName as getContentTypeName, render} from "./content_types.mjs";
 import { fill as fillMarkers } from "./content_types/marker.mjs";
@@ -7,7 +8,6 @@ import fs from "fs";
 import path from "path";
 import query from "./cms.mjs";
 import wrapWithApplicationShell from "./page.mjs";
-import { formatWithOptions } from "util";
 
 export const resourceDirectoryName = "res";
 const fsp = fs.promises;
@@ -46,8 +46,7 @@ async function copyDirectory(source, destination, targetName) {
 				else {
 					promises.push(fsp.copyFile(sourcePath, targetPath));
 				}
-			}
-			else if (stat.isDirectory()) {
+			} else if (stat.isDirectory()) {
 				promises.push(copyDirectory(sourcePath, targetPath, targetName));
 			} // Ignore everything else
 		}
@@ -66,7 +65,7 @@ async function renderFile(source, destination, targetName) {
 	const html = await wrapWithApplicationShell(targetName, {
 		content: fileContent,
 		pageTitle: "Instrumentalisierung der Vergangenheit",
-		pageType: getContentTypeName("inhalt_inhalt_Entry")
+		pageType: "testpage"
 	});
 	return fsp.writeFile(destination, html);
 }
@@ -75,9 +74,6 @@ export const buildEntries = async targetName => {
 	const result = await query(scope => `
 		entries {
 			${scope.entry}
-			children {
-				${scope.entry}
-			}
 		}
 	`);
 	const targetPath = getTargetPath(targetName);
@@ -111,6 +107,7 @@ export async function build(targetName) {
 	await copyAssets(resourcePath);
 	if(!options.onlyLocal){
 		console.time("target#buildEntries");
+		await genNavigation(targetName);
 		await buildEntries(targetName);
 		console.timeEnd("target#buildEntries");
 	}
