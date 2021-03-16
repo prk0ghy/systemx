@@ -3,10 +3,28 @@ section[content-type="task"] .task-content {
 	border-top: 0.5em solid var(--task-red);
 	border-bottom: 0.5em solid var(--task-red);
 	background: #fff;
+	padding: 2em;
 }
 
-.task-content .inner-content {
-	padding: 2em;
+section[content-type="tabbox"] section[content-type="task"] .task-content {
+	padding:0;
+}
+
+section[content-type="box"] section[content-type="task"] {
+	padding-left:0 !important;
+	padding-right:0 !important;
+	box-shadow:none;
+}
+
+section[content-type="box"] section[content-type="task"] .task-content {
+	border:none;
+	padding-top:0;
+	padding-bottom:1em;
+	box-shadow:none;
+}
+
+section[content-type="box"] section[content-type="task"]:last-of-type {
+	margin-bottom:0 !important;
 }
 
 .task-content .inner-content > h3 {

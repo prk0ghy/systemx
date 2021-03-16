@@ -1,4 +1,4 @@
-/* global showOverlay,hideOverlay,overlayCloseHandlers */
+/* global showOverlay,hideOverlay,overlayCloseHandlers,showEmbedSections */
 let overlayHideBoxCallback = undefined;
 
 /* Don't pollute the global scope if avoidable */
@@ -54,7 +54,6 @@ let overlayHideBoxCallback = undefined;
 						boxContent.style.maxHeight = "";
 					},410);
 				}
-				//const rect = boxDetails.getBoundingClientRect();
 				const prect = boxDetails.parentElement.getBoundingClientRect();
 				boxDetails.style.top = (prect.top|0)+"px";
 				calcHeights();
@@ -76,7 +75,6 @@ let overlayHideBoxCallback = undefined;
 			if(overlayHideBoxCallback === undefined){return;}
 			overlayHideBoxCallback();
 		}
-
 		overlayCloseHandlers.push(hideCurBox);
 	}
 	setTimeout(initBoxes, 0);

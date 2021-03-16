@@ -19,3 +19,8 @@
 #overlay.fadingOut {
 	z-index:100;
 }
+
+body.modal-active {
+	position:fixed;
+	overflow-y:scroll;
+}

@@ -1,0 +1,39 @@
+section[content-type="download"] > .inner-content .download {
+	display: flex;
+	font-size: 0.8em;
+	align-items: center;
+	box-shadow: 0 3px 6px #00000063;
+	transition: box-shadow 0.5s;
+}
+
+
+
+section[content-type="download"] > .inner-content .download:hover {
+	box-shadow: 0 6px 12px #00000063;
+}
+
+section[content-type="download"] > .inner-content .download p {
+	margin: 0.7em;
+}
+
+section[content-type="download"] > .inner-content .download .download-text {
+	flex: 1 1 70%;
+	display: flex;
+	align-items: center;
+	background: var(--dlw-grey-100);
+}
+
+section[content-type="download"] > .inner-content .download .download-icon {
+	flex: 1 1 30%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: capitalize;
+	background: var(--dlw-blue);
+	color: white;
+}
+section[content-type="download"] > .inner-content .download .download-icon p {
+	color: white;
+    text-decoration: none !important;
+}
+

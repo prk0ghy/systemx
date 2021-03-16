@@ -1,6 +1,6 @@
 /* exported showOverlay,hideOverlay,overlayCloseHandlers */
 
-let overlayActive = false;
+let oldScrollTop = 0;
 let overlayElement;
 let overlayFadeOutCBTimer;
 const overlayCloseHandlers = [];
@@ -11,7 +11,9 @@ function showOverlay() {
 	}
 	overlayElement.classList.remove("fadingOut");
 	overlayElement.classList.add("active");
-	overlayActive = true;
+	oldScrollTop = document.documentElement.scrollTop;
+	document.body.style.top = (-oldScrollTop)+"px";
+	document.body.classList.add("modal-active");
 }
 
 function hideOverlay() {
@@ -22,10 +24,11 @@ function hideOverlay() {
 		overlayFadeOutCBTimer = undefined;
 	}, 350);
 	overlayCloseHandlers.forEach(cb => cb());
-	overlayActive = false;
+	document.body.classList.remove("modal-active");
+	document.documentElement.scrollTop = oldScrollTop;
+	document.body.style.top = undefined;
 }
 
-/* Don't pollute the global scope if avoidable */
 (() => {
 	function initOverlay() {
 		overlayElement = document.createElement("div");
@@ -34,12 +37,6 @@ function hideOverlay() {
 		const body = document.querySelector("body");
 		body.appendChild(overlayElement);
 		overlayElement.addEventListener("click", window.hideOverlay);
-
-		document.addEventListener('scroll', () => {
-			if(overlayActive){
-				hideOverlay();
-			}
-		});
 	}
 	setTimeout(initOverlay, 0);
 })();

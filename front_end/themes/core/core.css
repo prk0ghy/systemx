@@ -17,16 +17,22 @@
 	--box-grey: #6E7474;
 	--task-red: #5B184A;
 	--dlw-blue: #257DA7;
+	--dlw-grey-100: #f9fbfc;
 	--background-blue: #CFE2EC;
 	--background-green: #77952E3D;
 	--background-red: #D8C7D3B8;
 	--background-grey: #8F96A0;
+	--table-color: #222428;
+	--table-background-header: #1E3E51;
+	--table-background-content: #CFE2EC9C;
 }
 
 html, body {
 	color:#333;
 	font-weight: 400;
 	font-family:var(--font-content);
+	width:100%;
+	min-height:100%;
 }
 
 body {
@@ -63,6 +69,10 @@ img {
 	display:block;
 	width:100%;
 	height:auto;
+}
+
+iframe {
+	background:#000;
 }
 
 main > section > .inner-content {

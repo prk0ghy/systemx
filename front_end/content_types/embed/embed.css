@@ -45,3 +45,70 @@ section[content-type="embed"] > .inner-content > figure > iframe {
 section[content-type="embed"] > .inner-content > figure > lazy-iframe {
 	background:#666;
 }
+
+[figure-type="embed"] details.license > summary {
+	margin-top:0.5em;
+}
+
+[figure-type="embed"] > figcaption {
+	padding-right:2.5em !important;
+}
+
+[embed-target="youtube"] {
+	display:block;
+	position:relative;
+}
+
+[embed-target="youtube"]::before {
+	content:'';
+	position:absolute;
+	left:50%;
+	top:50%;
+	margin-left:-48px;
+	margin-top:-32px;
+	width:96px;
+	height:64px;
+	background:red;
+	z-index:2;
+	border-radius:8px;
+	opacity:0;
+	transform:scale(2.0);
+	transition:opacity 250ms, transform 400ms;
+}
+
+[embed-target="youtube"]::after {
+	content:'';
+	display:block;
+	width:0;
+	height:0;
+	border-left:solid 16px white;
+	border-top:solid 8px transparent;
+	border-bottom:solid 8px transparent;
+	position:absolute;
+	left:50%;
+	top:50%;
+	margin-left:-8px;
+	margin-top:-8px;
+	z-index:3;
+	opacity:0;
+	transform:scale(2);
+	transition:opacity 250ms, transform 400ms;
+}
+
+[embed-target="youtube"]:active::before,
+[embed-target="youtube"]:hover::before,
+[embed-target="youtube"]:focus::before {
+	opacity:0.7;
+	transform:scale(1);
+}
+
+[embed-target="youtube"]:active::after,
+[embed-target="youtube"]:hover::after,
+[embed-target="youtube"]:focus::after {
+	opacity:1;
+	transform:scale(1);
+}
+
+.h5p-iframe {
+	background: var(--background-color);
+}
