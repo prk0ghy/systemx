@@ -1,6 +1,7 @@
 main li ol,
 main li ul {
 	padding-top:1em;
+	margin-bottom:1em;
 }
 
 main ul > li {

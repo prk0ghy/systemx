@@ -1,7 +1,7 @@
 section[content-type="task"] .task-content {
 	box-shadow: 0 3px 6px #00000063;
-	border-top: 0.5em solid var(--task-red);
-	border-bottom: 0.5em solid var(--task-red);
+	border-top:12px solid var(--task-red);
+	border-bottom: 12px solid var(--task-red);
 	background: #fff;
 	padding: 2em;
 }
@@ -57,12 +57,11 @@ main > section[content-type="task"]::after {
 	width:100%;
 	height:50%;
 	background: var(--background-red);
-	z-index:0;
+	z-index:-1;
 }
 
 section[content-type="task"] > .inner-content {
 	position:relative;
-	z-index:1;
 }
 
 /* height of blank space from quill */

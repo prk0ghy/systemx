@@ -1,11 +1,31 @@
 help-video {
 	position:absolute;
-	right:-2em;
+	background:#fff;
+	margin-top:1em;
+	left:calc(100% + 1em);
 	width:2em;
 	height:2em;
 	border-radius:50%;
+	cursor:pointer;
+	overflow:hidden;
+	transform:translate(-50%, -50%);
 	box-shadow:1px 2px 4px 2px rgba(0, 0, 0, 0.5);
-	
+}
+
+help-video.active {
+	position:fixed;
+	z-index:2000;
+}
+
+help-video video {
+	background:#fff;
+	display:block;
+	position:fixed;
+	left:50%;
+	top:50%;
+	transform:translate(-50%, -50%);
+	opacity:0;
+	transition:opacity 600ms;
 }
 
 help-video-button {
@@ -22,6 +42,12 @@ help-video-button {
 	font-family:var(--font-headlines);
 	vertical-align:middle;
 	line-height:1em;
-	cursor:pointer;
 	user-select:none;
+	opacity:1;
+	transition:opacity 600ms, font-size 600ms;
+}
+
+help-video[open] help-video-button {
+	opacity:0;
+	font-size:16em;
 }

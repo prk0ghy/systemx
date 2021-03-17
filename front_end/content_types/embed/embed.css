@@ -50,8 +50,9 @@ section[content-type="embed"] > .inner-content > figure > lazy-iframe {
 	margin-top:0.5em;
 }
 
-[figure-type="embed"] > figcaption {
+section[content-type="embed"] [figure-type="embed"] > figcaption {
 	padding-right:2.5em !important;
+	padding-left: 2em;
 }
 
 [embed-target="youtube"] {

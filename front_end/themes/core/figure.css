@@ -4,11 +4,11 @@ figure[figure-width="100"] {
 }
 
 figure[figure-width="50"] {
-	width:50%;
+	width:46%;
 }
 
 figure[figure-width="30"] {
-	width:30%;
+	width:33%;
 }
 
 figure,
@@ -26,4 +26,8 @@ figure[figure-position="right"] {
 figure[figure-position="left"] {
 	float: left;
 	margin:0 1em 1em 0;
+}
+
+figure:last-child {
+	margin-bottom:0;
 }

@@ -11,7 +11,7 @@ function showOverlay() {
 	}
 	overlayElement.classList.remove("fadingOut");
 	overlayElement.classList.add("active");
-	oldScrollTop = document.documentElement.scrollTop;
+	oldScrollTop = document.documentElement.scrollTop|0;
 	document.body.style.top = (-oldScrollTop)+"px";
 	document.body.classList.add("modal-active");
 }
@@ -37,6 +37,7 @@ function hideOverlay() {
 		const body = document.querySelector("body");
 		body.appendChild(overlayElement);
 		overlayElement.addEventListener("click", window.hideOverlay);
+		addEventListener("beforeunload",hideOverlay);
 	}
 	setTimeout(initOverlay, 0);
 })();

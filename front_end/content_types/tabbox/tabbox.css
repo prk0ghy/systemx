@@ -50,8 +50,8 @@
 }
 
 .tabbox-content-wrap {
-	border-top: 0.5em solid var(--dlw-blue);
-	border-bottom: 0.5em solid var(--dlw-blue);
+	border-top: 12px solid var(--dlw-blue);
+	border-bottom: 12px solid var(--dlw-blue);
 	box-shadow: 1px 6px 6px 1px #00000089;
 	position:relative;
 	z-index:1;
@@ -78,7 +78,7 @@
 	background: var(--background-blue);
 	color: var(--dlw-blue);
 	font-size:0.6em;
-	margin:0 0.5em;
+	margin:0 6px;
 	padding:0.5em 1em;
 	transition: background-color 300ms, color 300ms, box-shadow 300ms;
 	cursor:pointer;
@@ -114,8 +114,8 @@
 }
 
 [tabbox-type="task"] > .inner-content > .tabbox-content-wrap {
-	border-top: 0.5em solid var(--task-red);
-	border-bottom: 0.5em solid var(--task-red);
+	border-top-color: var(--task-red);
+	border-bottom-color: var(--task-red);
 	z-index: 2;
 	background: var(--background-color);
 }
@@ -141,4 +141,7 @@ main > section[tabbox-type="task"]::after {
 	height:50%;
 	background: var(--background-red);
 	z-index:0;
+}
+main > section[content-type="tabbox"] section[content-type="embed"] {
+	padding: 0;
 }
