@@ -9,10 +9,10 @@
 			const editor = new Quill(fancyEditor,{
 				modules: {
 					toolbar: [
+						[{ 'header': 1 }, { 'header': 2 }],               // custom button values
 						['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-						[{ 'list': 'ordered'}, { 'list': 'bullet' }],
-						[{ 'header': [1, 2, false] }],
 						[{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+						[{ 'list': 'ordered'}, { 'list': 'bullet' }],
 					  ]
 				},
 				theme: 'snow'

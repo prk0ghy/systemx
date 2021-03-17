@@ -1,0 +1,53 @@
+html body .ql-toolbar.ql-snow {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 1em;
+}
+
+html body .ql-snow .ql-editor p {
+    font-family: var(--font-content);
+	line-height:1.25em;
+    font-weight: 400;
+    font-size:1.85em;
+}
+
+html body .ql-snow .ql-editor h1 {
+    font-family: var(--font-headlines);
+    font-size:2.6em;
+	font-weight: 700;
+    line-height:1.2em;
+	margin-bottom:0.5em;
+}
+
+html body .ql-snow .ql-editor h2 {
+    font-family: var(--font-headlines);
+    font-size: 2.1em;
+	font-weight: 600;
+    line-height:1.2em;
+	margin-bottom:0.5em;
+}
+
+html body main .ql-snow .ql-editor ul > li::before {
+    position: absolute;
+    top: 0.35em;
+    left: 0;
+    content: "";
+    display: block;
+    width: 0.6em;
+    height: 0.6em;
+    border-radius: 50%;
+    background-color: var(--dlw-blue);
+}
+
+html body .ql-toolbar.ql-snow .ql-formats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+html body .ql-toolbar.ql-snow .ql-picker-label {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}

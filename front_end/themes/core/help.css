@@ -1,0 +1,27 @@
+help-video {
+	position:absolute;
+	right:-2em;
+	width:2em;
+	height:2em;
+	border-radius:50%;
+	box-shadow:1px 2px 4px 2px rgba(0, 0, 0, 0.5);
+	
+}
+
+help-video-button {
+	color:#D69834;
+	width:1em;
+	height:1em;
+	font-size:2em;
+	position:absolute;
+	left:50%;
+	top:50%;
+	text-align:center;
+	margin-left:-0.5em;
+	margin-top:-0.5em;
+	font-family:var(--font-headlines);
+	vertical-align:middle;
+	line-height:1em;
+	cursor:pointer;
+	user-select:none;
+}

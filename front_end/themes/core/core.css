@@ -81,6 +81,7 @@ main > section > .inner-content {
 	padding:0 var(--content-padding);
 	box-sizing:border-box;
 	margin:0 auto 2em;
+	position:relative;
 }
 
 figure {
@@ -97,8 +98,7 @@ main > section:first-child {
 
 .marker {
 	position: absolute;
-	left: 50%;
-	margin-left: calc((var(--content-width) * -0.5) - 32px);
+	left: -2em;
 	background: transparent;
 	color: #BFBFBF;
 	border-radius: 50%;

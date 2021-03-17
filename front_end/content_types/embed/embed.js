@@ -4,7 +4,7 @@ function showLazyIframe(ele){
 	newEle.setAttribute("allowfullscreen","allowfullscreen");
 	newEle.setAttribute("src",ele.getAttribute("src"));
 	newEle.classList.add("h5p-iframe");
-	ele.parentElement.append(newEle);
+	ele.parentElement.insertBefore(newEle,ele);
 	ele.remove();
 }
 

@@ -14,20 +14,20 @@ section[content-type="gallery"] > .inner-content > details > summary::-webkit-de
 }
 
 section[content-type="gallery"] figcaption {
-	font-family: var(--font-headlines);
-	line-height: 1.35em;
-	padding:0.5em 12px;
-	color: var(--dlw-blue);
-	font-size: 1.2em;
-	font-weight: 600;
-}
-
-section[content-type="gallery"] .gallery-text {
-	padding:0.5em 12px;
+	padding:0.5em 12px 1em;
 	font-family: var(--font-headlines);
 	font-weight: 400;
 	font-size: 0.8em;
 	line-height: 1.5em;
+}
+
+section[content-type="gallery"] .gallery-text {
+	font-family: var(--font-headlines);
+	line-height: 1.35em;
+	padding:0 12px 0 12px;
+	color: var(--dlw-blue);
+	font-size: 1.2em;
+	font-weight: 600;
 }
 
 section[content-type="gallery"] {
@@ -66,10 +66,10 @@ figure[figure-type="gallery"] > img {
 	max-width: var(--content-width);
 }
 
-figure[figure-type="gallery"]{
+figure[figure-type="gallery"] {
 	margin-bottom:0;
 }
 
-figure[figure-type="gallery"] figcaption {
-	padding-bottom:0;
+section[content-type="gallery"] .gallery-text > p {
+	margin-bottom:0;
 }

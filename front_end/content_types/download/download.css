@@ -9,7 +9,7 @@ section[content-type="download"] > .inner-content .download {
 
 
 section[content-type="download"] > .inner-content .download:hover {
-	box-shadow: 0 6px 12px #00000063;
+	box-shadow: 0 12px 24px #00000063;
 }
 
 section[content-type="download"] > .inner-content .download p {
@@ -32,7 +32,7 @@ section[content-type="download"] > .inner-content .download .download-icon {
 	background: var(--dlw-blue);
 	color: white;
 }
-section[content-type="download"] > .inner-content .download .download-icon p {
+section[content-type="download"] > .inner-content .download .download-icon a {
 	color: white;
     text-decoration: none !important;
 }
