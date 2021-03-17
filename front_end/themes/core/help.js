@@ -12,7 +12,7 @@
 
 		function hideHelpVideo(){
 			videoWrap.removeAttribute("open");
-			videoWrap.style.transition = "left 600ms, top 600ms, width 500ms, height 500ms";
+			videoWrap.style.transition = "left 600ms, top 400ms, width 500ms, height 500ms";
 			videoWrap.style.left       = oldX+30+"px";
 			videoWrap.style.top        = oldY+"px";
 			videoWrap.style.width      = "2em";
@@ -33,12 +33,17 @@
 		}
 
 		function showHelpVideo(){
+			if(hideHelpVideoCallback !== undefined){
+				hideOverlay();
+				return;
+			}
 			if(video === undefined){
 				video = document.createElement("VIDEO");
 				video.setAttribute("src",videoSrc);
 				video.setAttribute("muted","muted");
 				videoWrap.append(video);
 				video.addEventListener("ended",hideOverlay);
+				video.addEventListener("click",hideOverlay);
 			}
 			video.style.display = "block";
 			video.style.width = (window.innerWidth|0)+"px";
@@ -57,7 +62,7 @@
 
 			videoWrap.setAttribute("open","open");
 			videoWrap.classList.add("active");
-			videoWrap.style.transition = "left 300ms, top 300ms, width 1200ms, height 1200ms";
+			videoWrap.style.transition = "left 400ms, top 250ms, width 1200ms, height 1200ms";
 			videoWrap.style.left       = (window.innerWidth/2)+"px";
 			videoWrap.style.top        = (window.innerHeight/2)+"px";
 

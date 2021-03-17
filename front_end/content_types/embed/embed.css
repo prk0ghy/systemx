@@ -55,6 +55,10 @@ section[content-type="embed"] [figure-type="embed"] > figcaption {
 	padding-left: 2em;
 }
 
+section[content-type="task"] section[content-type="embed"] [figure-type="embed"] > figcaption {
+	padding-left:0;
+}
+
 [embed-target="youtube"] {
 	display:block;
 	position:relative;

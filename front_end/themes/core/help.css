@@ -20,7 +20,7 @@ help-video.active {
 help-video video {
 	background:#fff;
 	display:block;
-	position:fixed;
+	position:absolute;
 	left:50%;
 	top:50%;
 	transform:translate(-50%, -50%);
@@ -44,10 +44,11 @@ help-video-button {
 	line-height:1em;
 	user-select:none;
 	opacity:1;
-	transition:opacity 600ms, font-size 600ms;
+	transition:opacity 600ms, font-size 500ms;
+	z-index:1;
 }
 
 help-video[open] help-video-button {
 	opacity:0;
-	font-size:16em;
+	font-size:28em;
 }
