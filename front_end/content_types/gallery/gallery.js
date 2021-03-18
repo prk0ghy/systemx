@@ -32,6 +32,7 @@
 			const options = {
 				index:0,
 				bgOpacity: 0.5,
+				closeOnScroll: false,
 				getThumbBoundsFn:()=>{
 					const rect = button.getBoundingClientRect();
 					const ret = {
