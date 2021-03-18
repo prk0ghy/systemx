@@ -6,7 +6,7 @@ section[content-type="box"][box-type="teal"] > .inner-content > details {
 	border-bottom-color: var(--box-teal);
 }
 
-section[box-type="teal"] ol > li > .ol-numerator {
+section[box-type="teal"] ol > li > ol-num {
 	color: var(--box-teal);
 }
 

@@ -29,10 +29,7 @@ function hideModal() {
 	});
 }
 
-/* Don't pollute the global scope if avoidable */
-(() => {
-	function initModal(){
-		overlayCloseHandlers.push(hideModal);
-	}
-	setTimeout(initModal, 0);
-})();
+setTimeout(() => {
+	overlayCloseHandlers.push(hideModal);
+}, 0);
+

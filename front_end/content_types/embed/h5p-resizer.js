@@ -29,12 +29,6 @@
 		iframe.style.height = data.scrollHeight + 'px';
 	};
 
-	const escape = (event) => {
-		if (event.keyCode === 27) {
-			exitFullScreen();
-		}
-	};
-
 	window.addEventListener('message', (event) => {
 		if (event.data.context !== 'h5p') {
 			return;

@@ -54,4 +54,4 @@ export async function render(contentType, context = null) {
 			<div class="inner-content">Unsupported content type: ${type}</div>
 		</section>
 	`;
-};
+}

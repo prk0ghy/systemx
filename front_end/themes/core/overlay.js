@@ -2,14 +2,10 @@
 
 let oldScrollTop = 0;
 let overlayElement;
-let overlayFadeOutCBTimer;
 const overlayCloseHandlers = [];
 
 function showOverlay() {
-	if (overlayFadeOutCBTimer !== undefined) {
-		clearTimeout(overlayFadeOutCBTimer);
-	}
-	overlayElement.classList.remove("fadingOut");
+	overlayElement.setAttribute("open","open");
 	overlayElement.classList.add("active");
 	oldScrollTop = document.documentElement.scrollTop|0;
 	document.body.style.top = (-oldScrollTop)+"px";
@@ -17,12 +13,7 @@ function showOverlay() {
 }
 
 function hideOverlay() {
-	overlayElement.classList.add("fadingOut");
-	overlayElement.classList.remove("active");
-	overlayFadeOutCBTimer = setTimeout(() => {
-		overlayElement.classList.remove("fadingOut");
-		overlayFadeOutCBTimer = undefined;
-	}, 350);
+	overlayElement.removeAttribute("open","open");
 	overlayCloseHandlers.forEach(cb => cb());
 	document.body.classList.remove("modal-active");
 	document.documentElement.scrollTop = oldScrollTop;
@@ -31,13 +22,20 @@ function hideOverlay() {
 
 (() => {
 	function initOverlay() {
-		overlayElement = document.createElement("div");
-		overlayElement.id = "overlay";
+		overlayElement = document.createElement("PAGE-OVERLAY");
 
 		const body = document.querySelector("body");
 		body.appendChild(overlayElement);
 		overlayElement.addEventListener("click", window.hideOverlay);
+		// This is important so we can set scrollTop before leaving the site
+		// because most browsers save the scrollTop position and restore it when using the history
 		addEventListener("beforeunload",hideOverlay);
+
+		overlayElement.addEventListener("transitionend",(e) => {
+			if(e.propertyName !== 'opacity')                 {return;}
+			if(overlayElement.getAttribute("open") !== null) {return;}
+			overlayElement.classList.remove("active");
+		});
 	}
 	setTimeout(initOverlay, 0);
 })();

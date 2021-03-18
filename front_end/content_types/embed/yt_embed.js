@@ -43,7 +43,7 @@
 		if(m === null){return null;}
 		const vid = m[1];
 		const ret = document.createElement("IFRAME");
-		ret.setAttribute("src",`https://player.vimeo.com/video/${vid}${autoplay ? "?autoplay=1" : ""}`);``
+		ret.setAttribute("src",`https://player.vimeo.com/video/${vid}${autoplay ? "?autoplay=1" : ""}`);
 		return ret;
 	}
 

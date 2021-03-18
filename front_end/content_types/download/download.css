@@ -32,8 +32,9 @@ section[content-type="download"] > .inner-content .download .download-icon {
 	background: var(--dlw-blue);
 	color: white;
 }
+
 section[content-type="download"] > .inner-content .download .download-icon a {
 	color: white;
-    text-decoration: none !important;
+	text-decoration: none !important;
 }
 

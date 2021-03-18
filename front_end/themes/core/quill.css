@@ -66,25 +66,26 @@ html body main .ql-snow .ql-editor ol > li {
 	font-size:1.85em;
 }
 
-html body .ql-toolbar.ql-snow .ql-formats {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-html body .ql-snow.ql-toolbar button, .ql-snow .ql-toolbar button {
+.ql-snow .ql-toolbar button,
+html body .ql-snow.ql-toolbar button {
 	background: none;
 	border: none;
 	cursor: pointer;
-	display: inline-block;
+	display: block;
 	float: left;
 	height: 2.5em;
 	padding: 3px 5px;
 	width: 3em;
 }
 
+html body .ql-toolbar.ql-snow .ql-formats {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 html body .ql-toolbar.ql-snow .ql-picker-label {
-	display: flex; 
+	display: flex;
 	justify-content: center;
 	align-items: center;
 }

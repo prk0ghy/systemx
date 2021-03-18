@@ -44,10 +44,6 @@ section[content-type="box"] section[content-type="task"]:last-of-type {
 	border: 2px solid var(--task-red);
 }
 
-section[content-type="task"] {
-	position:relative;
-}
-
 main > section[content-type="task"]::after {
 	content:'';
 	display:block;
@@ -69,7 +65,7 @@ section[content-type="task"] > .inner-content {
 	min-height: 12em;
 }
 
-section[content-type="task"] ol > li > .ol-numerator {
+section[content-type="task"] ol > li > ol-num {
 	color: var(--task-red);
 }
 

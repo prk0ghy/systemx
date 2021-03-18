@@ -1,4 +1,4 @@
-#overlay {
+page-overlay {
 	position:fixed;
 	top:0;
 	left:0;
@@ -11,13 +11,12 @@
 	cursor:pointer;
 }
 
-#overlay.active {
-	opacity:0.5;
+page-overlay.active {
 	z-index:100;
 }
 
-#overlay.fadingOut {
-	z-index:100;
+page-overlay[open] {
+	opacity:0.5;
 }
 
 body.modal-active {

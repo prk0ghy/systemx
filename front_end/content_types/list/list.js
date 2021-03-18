@@ -4,20 +4,21 @@
 		default:
 			return String(i);
 		case "a":
-			return String.fromCharCode(97+i-1);
+			return String.fromCharCode(97+i-1); // 97 == a in ASCII
 		case "A":
-			return String.fromCharCode(65+i-1);
+			return String.fromCharCode(65+i-1); // 65 == A in ASCII
 		}
 	}
 
 	function initOrderedLists() {
-		const taskLists = document.querySelectorAll(".task-content ol");
-		for(const list of taskLists){
+		// Set all task OLs to use lower case alphabetical letters. might not be needed in the future
+		for(const list of document.querySelectorAll(".task-content ol")){
 			list.setAttribute("type","a");
 		}
 
-		const lists = document.querySelectorAll("main ol");
-		for(const list of lists){
+		// This should pretty much have the same functionality as normale OLs, only that we have
+		// separate elements which help with styling
+		for(const list of document.querySelectorAll("main ol")){
 			const items = list.children;
 			const start = list.getAttribute("start");
 			const type  = list.getAttribute("type");
@@ -26,8 +27,7 @@
 			let i = start === null ? 1 : start | 0;
 
 			for(const item of items){
-				const numerator = document.createElement("div");
-				numerator.classList.add("ol-numerator");
+				const numerator = document.createElement("OL-NUM");
 				const itemValue = item.getAttribute("value");
 				if(itemValue !== null){i = itemValue | 0;}
 				numerator.innerText = getNumerator(lType,i);

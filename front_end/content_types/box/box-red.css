@@ -6,8 +6,8 @@ section[content-type="box"][box-type="red"] > .inner-content > details {
 	border-bottom-color: var(--task-red);
 }
 
-section[box-type="red"] ol > li > .ol-numerator {
-	color: var(--box-teal);
+section[box-type="red"] ol > li > ol-num {
+	color: var(--task-red);
 }
 
 section[box-type="red"] ul > li::before {

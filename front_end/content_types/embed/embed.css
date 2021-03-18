@@ -7,6 +7,10 @@ section[content-type="embed"] {
 	position:relative;
 }
 
+[figure-type="embed"] details.license > summary {
+	margin-top:0.5em;
+}
+
 section[content-type="embed"] > .inner-content > details > summary::-webkit-details-marker {
 	content: '';
 	display: none;
@@ -46,10 +50,6 @@ section[content-type="embed"] > .inner-content > figure > lazy-iframe {
 	background:#666;
 }
 
-[figure-type="embed"] details.license > summary {
-	margin-top:0.5em;
-}
-
 section[content-type="embed"] [figure-type="embed"] > figcaption {
 	padding-right:2.5em !important;
 	padding-left: 2em;
@@ -77,7 +77,7 @@ section[content-type="task"] section[content-type="embed"] [figure-type="embed"]
 	z-index:2;
 	border-radius:8px;
 	opacity:0;
-	transform:scale(2.0);
+	transform:scale(2);
 	transition:opacity 250ms, transform 400ms;
 }
 
