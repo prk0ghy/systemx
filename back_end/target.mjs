@@ -1,3 +1,4 @@
+import { buildHead } from "./page_elements/head.mjs";
 import * as resources from "./page_elements/resources.mjs";
 import {genNavigation} from "./page_elements/navigation.mjs";
 import * as options from "./options.mjs";
@@ -103,6 +104,7 @@ export const buildEntries = async targetName => {
 export async function build(targetName) {
 	const resourcePath = getResourcePath(targetName);
 	mkdirp(resourcePath);
+	await buildHead(targetName);
 	await copyDirectory(path.join("tests", "instrumentalisierung"), getTargetPath(targetName), targetName);
 	await copyAssets(resourcePath);
 	if(!options.onlyLocal){

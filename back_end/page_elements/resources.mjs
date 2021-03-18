@@ -78,6 +78,7 @@ export async function getAssetDirectories() {
 		return ret;
 	}
 	catch (e) { /* Skip if no themes available */ }
+
 	try {
 		const names = await fsp.readdir("front_end/content_types/");
 		for (const name of names) {

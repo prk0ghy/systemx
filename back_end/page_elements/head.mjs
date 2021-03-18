@@ -1,3 +1,4 @@
+import crypto from "crypto";
 import * as css from "./css.mjs";
 import * as js from "./js.mjs";
 import { getResourcePath, resourceDirectoryName } from "../target.mjs";
@@ -5,51 +6,97 @@ import fs from "fs";
 import path from "path";
 
 const fsp = fs.promises;
-const targetsBuilt = new Set();
+const resourceNamedHashes = new Map();
+const headResources       = new Map();
+
+
+function dateTimeToUnixTime(d){
+	return (new Date(d).getTime()/1000)|0;
+}
+
+function md5(data){
+	const secret = "λの秘密";
+	return crypto.createHmac("md5", secret).update(data).digest("hex");
+}
+
+async function copyResource(sourceDir,destDir,filename){
+	const sourcePath = path.join(sourceDir,filename);
+	const destPath   = path.join(destDir  ,filename);
+	const stats      = await fsp.stat(sourcePath);
+	const hash       = dateTimeToUnixTime(stats.mtime);
+
+	resourceNamedHashes.set(filename,hash);
+
+	return fsp.copyFile(sourcePath,destPath);
+}
+
+function resourceTag(filename){
+	const ext   = filename.split('.').pop().toLowerCase();
+	const query = resourceNamedHashes.has(filename) ? `?ver=${resourceNamedHashes.get(filename)}` : "";
+	const href  = `/${resourceDirectoryName}/${filename}${query}`;
+	if(ext === 'js'){
+		return `		<script defer type=text/javascript src="${href}"></script>`;
+	}else if(ext === 'css'){
+		return `		<link rel=stylesheet type=text/css href="${href}"></link>`;
+	}
+	return ''; // Ignore the rest
+}
+
+export async function buildHead(targetName){
+	if (headResources.has(targetName)) {return;}
+
+	const promises = [];
+	const resourcePath = getResourcePath(targetName);
+
+	promises.push(copyResource(path.join("node_modules","quill","dist"),resourcePath,"quill.min.js"));
+	promises.push(copyResource(path.join("node_modules","quill","dist"),resourcePath,"quill.snow.css"));
+	promises.push(copyResource(path.join("node_modules","photoswipe","dist"),resourcePath,"photoswipe-ui-default.min.js"));
+	promises.push(copyResource(path.join("node_modules","photoswipe","dist"),resourcePath,"photoswipe.min.js"));
+	promises.push(copyResource(path.join("node_modules","photoswipe","dist"),resourcePath,"photoswipe.css"));
+	promises.push(copyResource(path.join("node_modules","photoswipe","dist","default-skin"),resourcePath,"default-skin.css"));
+	promises.push(copyResource(path.join("node_modules","photoswipe","dist","default-skin"),resourcePath,"default-skin.svg"));
+	promises.push(copyResource(path.join("node_modules","photoswipe","dist","default-skin"),resourcePath,"default-skin.png"));
+	promises.push(copyResource(path.join("node_modules","photoswipe","dist","default-skin"),resourcePath,"preloader.gif"));
+
+	const cssInline = await css.getInline();
+	const cssContent = await css.get();
+	const cssFilename = path.join(resourcePath, "main.css");
+	resourceNamedHashes.set("main.css",md5(cssContent));
+	promises.push(fsp.writeFile(cssFilename, cssContent));
+
+	const jsContent = await js.get();
+	const jsFilename = path.join(resourcePath, "main.js");
+	resourceNamedHashes.set("main.js",md5(jsContent));
+	promises.push(fsp.writeFile(jsFilename, jsContent));
+
+	await Promise.all(promises);
+	let curHead = '';
+	curHead += `		<style>${cssInline}</style>`;
+	curHead += resourceTag('quill.min.js');
+	curHead += resourceTag('quill.snow.css');
+
+	curHead += resourceTag('photoswipe-ui-default.min.js');
+	curHead += resourceTag('photoswipe.min.js');
+	curHead += resourceTag('photoswipe.css');
+	curHead += resourceTag('default-skin.css');
+
+	curHead += resourceTag('main.css');
+	curHead += resourceTag('main.js');
+
+	headResources.set(targetName,curHead);
+}
 
 export default async function(targetName, pageTitle) {
-	if (!targetsBuilt.has(targetName)) {
-		const promises = [];
-		const resourcePath = getResourcePath(targetName);
-		const cssContent = await css.get();
-		const cssFilename = path.join(resourcePath, "main.css");
-		promises.push(fsp.writeFile(cssFilename, cssContent));
-
-		promises.push(fsp.copyFile(path.join("node_modules","quill","dist","quill.min.js"),path.join(resourcePath,"quill.min.js")));
-		promises.push(fsp.copyFile(path.join("node_modules","quill","dist","quill.snow.css"),path.join(resourcePath,"quill.snow.css")));
-
-		promises.push(fsp.copyFile(path.join("node_modules","photoswipe","dist","photoswipe-ui-default.min.js"),path.join(resourcePath,"photoswipe-ui-default.min.js")));
-		promises.push(fsp.copyFile(path.join("node_modules","photoswipe","dist","photoswipe.min.js"),path.join(resourcePath,"photoswipe.min.js")));
-		promises.push(fsp.copyFile(path.join("node_modules","photoswipe","dist","photoswipe.css"),path.join(resourcePath,"photoswipe.css")));
-
-		promises.push(fsp.copyFile(path.join("node_modules","photoswipe","dist","default-skin","default-skin.css"),path.join(resourcePath,"default-skin.css")));
-		promises.push(fsp.copyFile(path.join("node_modules","photoswipe","dist","default-skin","default-skin.svg"),path.join(resourcePath,"default-skin.svg")));
-		promises.push(fsp.copyFile(path.join("node_modules","photoswipe","dist","default-skin","default-skin.png"),path.join(resourcePath,"default-skin.png")));
-		promises.push(fsp.copyFile(path.join("node_modules","photoswipe","dist","default-skin","preloader.gif"),path.join(resourcePath,"preloader.gif")));
-
-		const jsContent = await js.get();
-		const jsFilename = path.join(resourcePath, "main.js");
-		promises.push(fsp.writeFile(jsFilename, jsContent));
-
-		await Promise.all(promises);
-		targetsBuilt.add(targetName);
+	if(!headResources.has(targetName)){
+		console.error("Trying to build pages before the head could be properly built");
+		console.log(headResources);
+		return '';
 	}
 	return `
 		<meta charset="utf-8">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>${pageTitle}</title>
-		<style>${await css.getInline()}</style>
-
-		<link rel="stylesheet" type="text/css" href="/${resourceDirectoryName}/quill.snow.css"/>
-		<script defer type="text/javascript" src="/${resourceDirectoryName}/quill.min.js"></script>
-
-		<link rel="stylesheet" type="text/css" href="/${resourceDirectoryName}/photoswipe.css"/>
-		<link rel="stylesheet" type="text/css" href="/${resourceDirectoryName}/default-skin.css"/>
-		<script defer type="text/javascript" src="/${resourceDirectoryName}/photoswipe.min.js"></script>
-		<script defer type="text/javascript" src="/${resourceDirectoryName}/photoswipe-ui-default.min.js"></script>
-
-		<link rel="stylesheet" type="text/css" href="/${resourceDirectoryName}/main.css"/>
-		<script defer type="text/javascript" src="/${resourceDirectoryName}/main.js"></script>
+		${headResources.get(targetName)}
 	`;
 }
