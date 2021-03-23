@@ -40,3 +40,34 @@ figure.videofigure > figcaption {
 	font-size:0.8em;
 	font-style:italic;
 }
+
+.av-play-button {
+	position: relative;
+	width: 1em;
+	height: 1em;
+}
+
+.av-play-button::before {
+	position: absolute;
+	font-family: icomoon;
+	content: "\ea1c";
+	color: var(--dlw-blue);
+	opacity: 1;
+	transition: opacity 300ms;
+}
+.av-play-button.active::before {
+	opacity: 0;
+}
+
+.av-play-button::after {
+	position: absolute;
+	font-family: icomoon;
+	content: "\ea1d";
+	color: var(--dlw-blue);
+	opacity: 0;
+	transition: opacity 300ms;
+}
+
+.av-play-button.active::after {
+	opacity: 1;
+}

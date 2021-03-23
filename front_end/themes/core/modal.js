@@ -1,13 +1,13 @@
 /* exported showModal,hideModal */
 /* global showOverlay,hideOverlay,overlayCloseHandlers */
 
-function showModal(content) {
+function showModal(content){
 	content.classList.add("show-modal");
 	content.oddsetTop; // Sync CSS <-> JS
 	content.classList.add("visible");
 	content.firstElementChild.focus();
 	if(content.querySelector(".close-modal") === null){
-		const buttonCloseModal = document.createElement("div");
+		const buttonCloseModal = document.createElement("DIV");
 		buttonCloseModal.classList.add("close-modal");
 		buttonCloseModal.addEventListener("click",hideOverlay);
 		content.prepend(buttonCloseModal);
