@@ -3,12 +3,11 @@
 
 function showModal(content){
 	content.classList.add("show-modal");
-	content.oddsetTop; // Sync CSS <-> JS
+	content.offsetTop; // Sync CSS <-> JS
 	content.classList.add("visible");
-	content.firstElementChild.focus();
-	if(content.querySelector(".close-modal") === null){
-		const buttonCloseModal = document.createElement("DIV");
-		buttonCloseModal.classList.add("close-modal");
+	if(content.querySelector("MODAL-CLOSE") === null){ // Only add a new button of there currently is no button
+		const buttonCloseModal = document.createElement("MODAL-CLOSE");
+		buttonCloseModal.classList.add("MODAL-CLOSE");
 		buttonCloseModal.addEventListener("click",hideOverlay);
 		content.prepend(buttonCloseModal);
 	}
@@ -25,7 +24,7 @@ function hideModal() {
 				parent.removeAttribute("open");
 			}
 			modal.classList.remove("show-modal");
-		}, 310);
+		}, 510);
 	});
 }
 

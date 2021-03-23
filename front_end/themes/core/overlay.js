@@ -23,7 +23,7 @@ function hideOverlay() {
 	// Now it needs to be first, because otherwise there is nowhere to scroll to
 	document.body.classList.remove("modal-active");
 	document.documentElement.scrollTop = oldScrollTop;
-	document.body.style.top = undefined;
+	document.body.style.top = "";
 }
 
 (() => {

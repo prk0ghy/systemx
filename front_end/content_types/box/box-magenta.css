@@ -11,10 +11,10 @@ section[box-type="magenta"] ol > li > ol-num {
 }
 
 section[box-type="magenta"] ul > li::before {
-	background-color: var(--box-magenta);
+	background-color:transparent;
+	border-color: var(--box-magenta);
 }
 
 section[box-type="magenta"] ul ul > li::before {
-	background-color:transparent;
-	border-color: var(--box-magenta);
+	background-color: var(--box-magenta);
 }

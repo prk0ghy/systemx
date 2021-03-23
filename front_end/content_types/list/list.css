@@ -1,7 +1,11 @@
+main ol,
+main ul {
+	margin-bottom:1em;
+}
+
 main li ol,
 main li ul {
 	padding-top:1em;
-	margin-bottom:1em;
 }
 
 main ol > li,
@@ -23,10 +27,11 @@ main ul > li::before {
 	left: 0;
 	content: "";
 	display: block;
-	width: 0.6em;
-	height: 0.6em;
+	width: 0.4em;
+	height: 0.4em;
+	border: 0.15em solid var(--dlw-blue);
 	border-radius:50%;
-	background-color: var(--dlw-blue);
+	background: transparent;
 }
 
 main ul ul > li::before {
@@ -35,10 +40,10 @@ main ul ul > li::before {
 	left: 0;
 	content: "";
 	display: block;
-	width: 0.4em;
-	height: 0.4em;
-	border: 0.15em solid var(--dlw-blue);
-	background: transparent;
+	width: 0.6em;
+	height: 0.6em;
+	border-radius:50%;
+	background-color: var(--dlw-blue);
 }
 
 main ul ul ul > li::before {

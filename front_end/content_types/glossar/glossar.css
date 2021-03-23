@@ -1,0 +1,23 @@
+glossar-entry {
+	display:none;
+	box-sizing:border-box;
+	border-right:solid 8px var(--box-green);
+}
+
+glossar-entry > modal-close {
+	color:var(--box-green);
+}
+
+glossar-entry-content {
+	width: 100%;
+	max-width: var(--content-width);
+	margin:0 0 0 auto;
+	display:block;
+	border-left:solid 8px var(--background-color);
+	padding: var(--content-padding);
+}
+
+.glossar-link {
+	color:var(--box-green);
+}
+

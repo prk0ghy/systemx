@@ -68,6 +68,12 @@
 .tabbox-content > section {
 	padding:2em;
 }
+.tabbox-content > section[content-type="video"]{
+	padding:0;
+}
+.tabbox-content > section[content-type="video"] figcaption {
+	padding: 0.5em 2em 0.5em 2em;
+}
 
 .tabbox-header-wrap {
 	text-align:left;

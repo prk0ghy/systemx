@@ -52,7 +52,10 @@ section[content-type="embed"] > .inner-content > figure > lazy-iframe {
 
 section[content-type="embed"] [figure-type="embed"] > figcaption {
 	padding-right:2.5em !important;
-	padding-left: 2em;
+}
+
+section section[content-type="embed"] [figure-type="embed"] > figcaption {
+	padding-left:2em;
 }
 
 section[content-type="task"] section[content-type="embed"] [figure-type="embed"] > figcaption {

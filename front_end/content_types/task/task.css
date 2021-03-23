@@ -70,10 +70,10 @@ section[content-type="task"] ol > li > ol-num {
 }
 
 section[content-type="task"] ul > li::before {
-	background-color: var(--task-red);
+	background-color:transparent;
+	border-color: var(--task-red);
 }
 
 section[content-type="task"] ul ul > li::before {
-	background-color:transparent;
-	border-color: var(--task-red);
+	background-color: var(--task-red);
 }

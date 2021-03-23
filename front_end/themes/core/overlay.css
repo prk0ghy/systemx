@@ -16,10 +16,11 @@ page-overlay.active {
 }
 
 page-overlay[open] {
-	opacity:0.5;
+	opacity:0.3;
 }
 
 body.modal-active {
 	position:fixed;
 	overflow-y:scroll;
+	transition:top 300ms;
 }
