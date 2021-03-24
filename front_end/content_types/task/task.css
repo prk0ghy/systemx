@@ -150,8 +150,8 @@ html body main .ql-snow .ql-editor ol {
 
 html body main .ql-snow .ql-editor ul > li::before {
 	position: absolute;
-	top: 0.35em;
-	left: 0;
+	top: 0.1em;
+	left: 1.5em;
 	content: "";
 	display: block;
 	width: 0.4em;
