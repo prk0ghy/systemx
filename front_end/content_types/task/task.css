@@ -27,7 +27,7 @@ section[content-type="box"] section[content-type="task"]:last-of-type {
 	margin-bottom:0 !important;
 }
 
-.task-content .inner-content > h3 {
+.task-content inner-content > h3 {
 	font-size: 1.35em;
 	color: var(--task-red);
 	font-weight: 600;
@@ -56,7 +56,7 @@ main > section[content-type="task"]::after {
 	z-index:-1;
 }
 
-section[content-type="task"] > .inner-content {
+section[content-type="task"] > inner-content {
 	position:relative;
 }
 
@@ -76,4 +76,131 @@ section[content-type="task"] ul > li::before {
 
 section[content-type="task"] ul ul > li::before {
 	background-color: var(--task-red);
+}
+
+/* Upload Button */
+
+upload-section {
+	position: relative;
+	display: block;
+}
+
+upload-button {
+	border: 2px solid var(--task-red);
+	color: var(--task-red);
+	background-color: white;
+	padding: 8px 20px;
+	border-radius: 8px;
+	font-size: 20px;
+	font-weight: bold;
+	cursor:pointer;
+	transition: 500ms background-color, 300ms color;
+}
+
+upload-button:active,
+upload-button:focus,
+upload-button:hover {
+	background-color: var(--task-red);
+	color: white;
+}
+
+upload-section input[type=file]{
+	display:none;
+}
+
+/* Text-Editor Quill Styling */
+
+html body .ql-toolbar.ql-snow {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	margin-top: 1em;
+}
+
+html body .ql-snow .ql-editor p {
+	font-family: var(--font-content);
+	line-height:1.25em;
+	font-weight: 400;
+	font-size:1.85em;
+}
+
+html body .ql-snow .ql-editor h1 {
+	font-family: var(--font-headlines);
+	font-size:2.6em;
+	font-weight: 700;
+	line-height:1.2em;
+	margin-bottom:0.5em;
+}
+
+html body .ql-snow .ql-editor h2 {
+	font-family: var(--font-headlines);
+	font-size: 2.1em;
+	font-weight: 600;
+	line-height:1.2em;
+	margin-bottom:0.5em;
+}
+
+html body main .ql-snow .ql-editor ul {
+	margin-bottom: 2em;
+}
+
+html body main .ql-snow .ql-editor ol {
+	margin-bottom: 2em;
+}
+
+html body main .ql-snow .ql-editor ul > li::before {
+	position: absolute;
+	top: 0.35em;
+	left: 0;
+	content: "";
+	display: block;
+	width: 0.4em;
+	height: 0.4em;
+	border: 0.15em solid var(--task-red);
+	border-radius: 50%;
+	background: transparent;
+}
+
+html body main .ql-snow .ql-editor ul > li {
+	font-family: var(--font-content);
+	line-height:0.7em;
+	font-weight: 400;
+	font-size:1.85em;
+}
+
+html body main .ql-snow .ql-editor ol > li::before {
+	color: var(--box-magenta);
+	position: absolute;
+	left: 1em;
+}
+
+html body main .ql-snow .ql-editor ol > li {
+	font-family: var(--font-content);
+	line-height:0.7em;
+	font-weight: 400;
+	font-size:1.85em;
+}
+
+.ql-snow .ql-toolbar button,
+html body .ql-snow.ql-toolbar button {
+	background: none;
+	border: none;
+	cursor: pointer;
+	display: block;
+	float: left;
+	height: 2.5em;
+	padding: 3px 5px;
+	width: 3em;
+}
+
+html body .ql-toolbar.ql-snow .ql-formats {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+html body .ql-toolbar.ql-snow .ql-picker-label {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }

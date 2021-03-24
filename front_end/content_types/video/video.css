@@ -4,7 +4,7 @@ video {
 	height:auto;
 }
 
-section[content-type="video"] > .inner-content > details > summary::marker {
+section[content-type="video"] > inner-content > details > summary::marker {
 	content: '';
 	display: none;
 }
@@ -13,7 +13,7 @@ section[content-type="video"] {
 	position:relative;
 }
 
-section[content-type="video"] > .inner-content > details > summary::-webkit-details-marker {
+section[content-type="video"] > inner-content > details > summary::-webkit-details-marker {
 	content: '';
 	display: none;
 }
@@ -30,7 +30,7 @@ main > section[content-type="video"]::after {
 	z-index:0;
 }
 
-section[content-type="video"] > .inner-content {
+section[content-type="video"] > inner-content {
 	position:relative;
 	z-index:1;
 }
@@ -41,33 +41,111 @@ figure.videofigure > figcaption {
 	font-style:italic;
 }
 
-.av-play-button {
+av-play-pause {
 	position: relative;
 	width: 1em;
 	height: 1em;
+	cursor:pointer;
 }
 
-.av-play-button::before {
+av-play-pause::before {
 	position: absolute;
 	font-family: icomoon;
 	content: "\ea1c";
-	color: var(--dlw-blue);
+	color: white;
 	opacity: 1;
 	transition: opacity 300ms;
 }
-.av-play-button.active::before {
+av-play-pause.active::before {
 	opacity: 0;
 }
 
-.av-play-button::after {
+av-play-pause::after {
 	position: absolute;
 	font-family: icomoon;
 	content: "\ea1d";
-	color: var(--dlw-blue);
+	color: white;
 	opacity: 0;
 	transition: opacity 300ms;
 }
 
-.av-play-button.active::after {
+av-play-pause.active::after {
 	opacity: 1;
+}
+
+av-wrap {
+	position: relative;
+	display:block;
+}
+
+av-controls {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+av-controls::after {
+	content:'';
+	clear:both;
+	position:relative;
+	display:block;
+}
+
+av-controls-left {
+	float:left;
+	text-align:left;
+}
+
+av-controls-right {
+	float:right;
+	text-align:right;
+}
+
+av-controls-left > *,
+av-controls-right > * {
+	display:inline-block;
+}
+
+av-fullscreen::before {
+	position: relative;
+	width: 1em;
+	height: 1em;
+	font-family: icomoon;
+	content: "\e906";
+	color: white;
+	cursor: pointer;
+}
+
+av-fullscreen.active::before{
+	position: relative;
+	width: 1em;
+	height: 1em;
+	font-family: icomoon;
+	content: "\e907";
+	cursor:pointer;
+
+}
+
+[figure-type="video"] details.license > summary {
+    margin-top: 0.5em;
+} 
+
+av-volume-button::before{
+	position: relative; 
+	width: 1em;
+	height: 1em;
+	font-family: icomoon;
+	content: "\ea26";
+	color: white;
+	cursor: pointer;
+}
+
+av-volume-button.active::before{
+	position: relative; 
+	width: 1em;
+	height: 1em;
+	font-family: icomoon;
+	content: "\ea29";
+	color: white;
+	cursor: pointer;
 }

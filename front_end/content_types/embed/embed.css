@@ -1,4 +1,4 @@
-section[content-type="embed"] > .inner-content > details > summary::marker {
+section[content-type="embed"] > inner-content > details > summary::marker {
 	content: '';
 	display: none;
 }
@@ -11,7 +11,7 @@ section[content-type="embed"] {
 	margin-top:0.5em;
 }
 
-section[content-type="embed"] > .inner-content > details > summary::-webkit-details-marker {
+section[content-type="embed"] > inner-content > details > summary::-webkit-details-marker {
 	content: '';
 	display: none;
 }
@@ -28,7 +28,7 @@ main > section[content-type="embed"]::after {
 	z-index:0;
 }
 
-section[content-type="embed"] > .inner-content {
+section[content-type="embed"] > inner-content {
 	position:relative;
 	z-index:1;
 }
@@ -40,14 +40,11 @@ section[content-type="embed"] figcaption {
 	padding:0.5em 0;
 }
 
-section[content-type="embed"] > .inner-content > figure > lazy-iframe,
-section[content-type="embed"] > .inner-content > figure > iframe {
+section[content-type="embed"] > inner-content > figure > lazy-iframe,
+section[content-type="embed"] > inner-content > figure > iframe {
+	background:#666;
 	width:100%;
 	height:600px;
-}
-
-section[content-type="embed"] > .inner-content > figure > lazy-iframe {
-	background:#666;
 }
 
 section[content-type="embed"] [figure-type="embed"] > figcaption {

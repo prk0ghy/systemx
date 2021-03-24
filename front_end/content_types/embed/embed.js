@@ -26,7 +26,7 @@ function showEmbedSectionsAll(containers){
 (()=>{
 	function initLazyIframes(){
 		showEmbedSections(document.querySelector("main"));
-		showEmbedSectionsAll(document.querySelectorAll("main > section[content-type=\"task\"] > .inner-content > .task-content"));
+		showEmbedSectionsAll(document.querySelectorAll("main > section[content-type=\"task\"] > inner-content > .task-content"));
 	}
 	setTimeout(initLazyIframes,0);
 })();

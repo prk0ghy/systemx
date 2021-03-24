@@ -2,17 +2,17 @@ section[content-type="box"] {
 	color: black;
 }
 
-section[content-type="box"] > .inner-content {
+section[content-type="box"] > inner-content {
 	box-sizing:border-box;
 }
 
-section[content-type="box"] > .inner-content > details {
+section[content-type="box"] > inner-content > details {
 	position: relative;
 	border-bottom:solid 8px #257DA7;
 	box-shadow: 0 3px 6px #0000006E;
 }
 
-section[content-type="box"] > .inner-content > details > summary {
+section[content-type="box"] > inner-content > details > summary {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -22,18 +22,18 @@ section[content-type="box"] > .inner-content > details > summary {
 	background-color: #257DA7;
 }
 
-section[content-type="box"] > .inner-content > details > summary::marker {
+section[content-type="box"] > inner-content > details > summary::marker {
 	content: '';
 	display: none;
 }
 
-section[content-type="box"] > .inner-content > details > summary::-webkit-details-marker {
+section[content-type="box"] > inner-content > details > summary::-webkit-details-marker {
 	content: '';
 	display: none;
 }
 
-section[content-type="box"] > .inner-content > details > summary::before,
-section[content-type="box"] > .inner-content > details > summary::after {
+section[content-type="box"] > inner-content > details > summary::before,
+section[content-type="box"] > inner-content > details > summary::after {
 	font-family: icomoon, sans-serif;
 	content: "\e903";
 	position:absolute;
@@ -45,13 +45,13 @@ section[content-type="box"] > .inner-content > details > summary::after {
 	transition-timing-function: ease-in-out;
 }
 
-section[content-type="box"] > .inner-content > details > summary > .box-caption h3 {
+section[content-type="box"] > inner-content > details > summary > .box-caption h3 {
 	font-size: 1.4em;
 	color: #fff;
 	margin-bottom:0;
 }
 
-section[content-type="box"] > .inner-content > details > summary > .box-caption p {
+section[content-type="box"] > inner-content > details > summary > .box-caption p {
 	font-size: 0.8em;
 	color: #fff;
 	margin:0.25em 0 0;
@@ -68,12 +68,12 @@ section[content-type="box"] > .inner-content > details > summary > .box-caption 
 	max-height:0;
 }
 
-section[content-type="box"] > .inner-content > .box-wrap {
+section[content-type="box"] > inner-content > .box-wrap {
 	position:relative;
 	transition:top 250ms;
 }
 
-section[content-type="box"] > .inner-content > .box-wrap.active {
+section[content-type="box"] > inner-content > .box-wrap.active {
 	z-index:2000;
 	position:fixed;
 	top:16px;
@@ -81,7 +81,7 @@ section[content-type="box"] > .inner-content > .box-wrap.active {
 	box-sizing:border-box;
 }
 
-section[content-type="box"] > .inner-content > .box-wrap.active > .box-content {
+section[content-type="box"] > inner-content > .box-wrap.active > .box-content {
 	display:block;
 	max-height:0;
 	transition:max-height 400ms;
@@ -91,16 +91,16 @@ section[content-type="box"] > .inner-content > .box-wrap.active > .box-content {
 	overflow-y:scroll;
 }
 
-section[content-type="box"] > .inner-content > .box-wrap.active > .box-content > section {
+section[content-type="box"] > inner-content > .box-wrap.active > .box-content > section {
 	padding:24px 48px;
 }
 
-section[content-type="box"] > .inner-content > .box-wrap.active > summary::before {
+section[content-type="box"] > inner-content > .box-wrap.active > summary::before {
 	transform:translate(0, 40%) rotate3d(1, 0, 0, 180deg);
 }
 
-section[content-type="box"] > .inner-content > .box-wrap.active > summary::before,
-section[content-type="box"] > .inner-content > .box-wrap.active > summary::after {
+section[content-type="box"] > inner-content > .box-wrap.active > summary::before,
+section[content-type="box"] > inner-content > .box-wrap.active > summary::after {
 	top:6px;
 }
 

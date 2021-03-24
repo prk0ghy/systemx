@@ -15,7 +15,7 @@
 
 	function initGallery(){
 		const pswpElement = document.getElementById("pswp");
-		const galleries = document.querySelectorAll('section[content-type="gallery"] > .inner-content > details');
+		const galleries = document.querySelectorAll('section[content-type="gallery"] > inner-content > details');
 		galleries.forEach(gallery => {
 			const button = gallery.firstElementChild;
 			const items = [];

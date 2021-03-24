@@ -1,8 +1,8 @@
-section[content-type="box"][box-type="red"] > .inner-content > details > summary {
+section[content-type="box"][box-type="red"] > inner-content > details > summary {
 	background-color: var(--task-red);
 }
 
-section[content-type="box"][box-type="red"] > .inner-content > details {
+section[content-type="box"][box-type="red"] > inner-content > details {
 	border-bottom-color: var(--task-red);
 }
 

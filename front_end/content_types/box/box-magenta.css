@@ -1,8 +1,8 @@
-section[content-type="box"][box-type="magenta"] > .inner-content > details > summary {
+section[content-type="box"][box-type="magenta"] > inner-content > details > summary {
 	background-color: var(--box-magenta);
 }
 
-section[content-type="box"][box-type="magenta"] > .inner-content > details {
+section[content-type="box"][box-type="magenta"] > inner-content > details {
 	border-bottom-color: var(--box-magenta);
 }
 

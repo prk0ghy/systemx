@@ -1,8 +1,7 @@
 (function() {
-	if (!window.postMessage || !window.addEventListener || window.h5pResizerInitialized) {
-		return;
-	}
+	if (!window.postMessage || !window.addEventListener || window.h5pResizerInitialized) {return;}
 	window.h5pResizerInitialized = true;
+
 	const actionHandlers = {};
 	actionHandlers.hello = function(iframe, data, respond) {
 		iframe.style.width = '100%';
@@ -41,9 +40,7 @@
 				break;
 			}
 		}
-		if (!iframe) {
-			return;
-		}
+		if (!iframe) {return;}
 		if (actionHandlers[event.data.action]) {
 			actionHandlers[event.data.action](iframe, event.data, (action, data) => {
 				data = data === undefined ? {} : data;

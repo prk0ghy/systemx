@@ -1,8 +1,8 @@
-section[content-type="box"][box-type="green"] > .inner-content > details > summary {
+section[content-type="box"][box-type="green"] > inner-content > details > summary {
 	background-color: var(--box-green);
 }
 
-section[content-type="box"][box-type="green"] > .inner-content > details {
+section[content-type="box"][box-type="green"] > inner-content > details {
 	border-bottom-color:var(--box-green);
 }
 

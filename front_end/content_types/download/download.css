@@ -1,4 +1,4 @@
-section[content-type="download"] > .inner-content .download {
+section[content-type="download"] > inner-content .download {
 	display: flex;
 	font-size: 0.8em;
 	align-items: center;
@@ -8,22 +8,22 @@ section[content-type="download"] > .inner-content .download {
 
 
 
-section[content-type="download"] > .inner-content .download:hover {
+section[content-type="download"] > inner-content .download:hover {
 	box-shadow: 0 12px 24px #00000063;
 }
 
-section[content-type="download"] > .inner-content .download p {
+section[content-type="download"] > inner-content .download p {
 	margin: 0.7em;
 }
 
-section[content-type="download"] > .inner-content .download .download-text {
+section[content-type="download"] > inner-content .download .download-text {
 	flex: 1 1 70%;
 	display: flex;
 	align-items: center;
 	background: var(--dlw-grey-100);
 }
 
-section[content-type="download"] > .inner-content .download .download-icon {
+section[content-type="download"] > inner-content .download .download-icon {
 	flex: 1 1 30%;
 	display: flex;
 	align-items: center;
@@ -33,7 +33,7 @@ section[content-type="download"] > .inner-content .download .download-icon {
 	color: white;
 }
 
-section[content-type="download"] > .inner-content .download .download-icon a {
+section[content-type="download"] > inner-content .download .download-icon a {
 	color: white;
 	text-decoration: none !important;
 }

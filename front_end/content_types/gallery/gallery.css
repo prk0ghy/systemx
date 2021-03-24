@@ -3,12 +3,12 @@ figure[figure-type="gallery"] > details.license > summary {
 	margin-top:-2.3em;
 }
 
-section[content-type="gallery"] > .inner-content > details > summary::marker {
+section[content-type="gallery"] > inner-content > details > summary::marker {
 	content: '';
 	display: none;
 }
 
-section[content-type="gallery"] > .inner-content > details > summary::-webkit-details-marker {
+section[content-type="gallery"] > inner-content > details > summary::-webkit-details-marker {
 	content: '';
 	display: none;
 }
@@ -46,7 +46,7 @@ main > section[content-type="gallery"]::after {
 	z-index:0;
 }
 
-section[content-type="gallery"] > .inner-content {
+section[content-type="gallery"] > inner-content {
 	max-width: calc(var(--content-width) + 24px);
 	position:relative;
 	z-index:1;

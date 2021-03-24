@@ -4,7 +4,7 @@ audio {
 	height:2em;
 }
 
-section[content-type="audio"] > .inner-content > details > summary::marker {
+section[content-type="audio"] > inner-content > details > summary::marker {
 	content: '';
 	display: none;
 }
@@ -13,7 +13,7 @@ section[content-type="audio"] {
 	position:relative;
 }
 
-section[content-type="audio"] > .inner-content > details > summary::-webkit-details-marker {
+section[content-type="audio"] > inner-content > details > summary::-webkit-details-marker {
 	content: '';
 	display: none;
 }
@@ -30,7 +30,7 @@ main > section[content-type="audio"]::after {
 	z-index:0;
 }
 
-section[content-type="audio"] > .inner-content {
+section[content-type="audio"] > inner-content {
 	position:relative;
 	z-index:1;
 }

@@ -40,8 +40,8 @@ main ul ul > li::before {
 	left: 0;
 	content: "";
 	display: block;
-	width: 0.6em;
-	height: 0.6em;
+	width: 0.4em;
+	height: 0.4em;
 	border-radius:50%;
 	background-color: var(--dlw-blue);
 }

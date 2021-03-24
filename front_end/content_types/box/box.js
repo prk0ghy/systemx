@@ -4,7 +4,7 @@ let overlayHideBoxCallback = undefined;
 /* Don't pollute the global scope if avoidable */
 (() => {
 	function initBoxes() {
-		const boxes = document.querySelectorAll('section[content-type="box"] > .inner-content > details');
+		const boxes = document.querySelectorAll('section[content-type="box"] > inner-content > details');
 		boxes.forEach(boxDetails => {
 			boxDetails.classList.add("box-wrap");
 			const boxHeader  = boxDetails.querySelector("summary");

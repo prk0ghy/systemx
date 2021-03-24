@@ -1,4 +1,4 @@
-section[content-type="error"] .inner-content {
+section[content-type="error"] inner-content {
 	color:#e33;
 	background:#eee;
 	border-radius:8px;

@@ -6,17 +6,24 @@
 	}
 
 	async function loadGlossarEntry(rawHref){
-		const getGlossar   = await fetch(rawHref);
-		const parser       = new DOMParser();
-		const htmlDocument = parser.parseFromString(await getGlossar.text(), "text/html");
-		const main         = htmlDocument.documentElement.querySelector("main");
-		if(main !== null){
-			const glossarEntry = document.createElement("GLOSSAR-ENTRY");
-			glossarEntry.setAttribute("entry-href",getLinkPath(rawHref));
-			glossarEntry.innerHTML = `<glossar-entry-content>${main.innerHTML}</glossar-entry-content>`;
-			document.querySelector("main").appendChild(glossarEntry);
-			showModal(glossarEntry);
-		}
+		let glossarHTML = `<section content-type="error"><inner-content><h3>Der Glossareintrag konnte nicht geladen werden</h3></inner-content></section>`;
+		try {
+			const getGlossar = await fetch(rawHref);
+			if(getGlossar.ok){
+				const parser       = new DOMParser();
+				const htmlDocument = parser.parseFromString(await getGlossar.text(), "text/html");
+				const main         = htmlDocument.documentElement.querySelector("main");
+				if(main !== null){
+					glossarHTML = main.innerHTML;
+				}
+			}
+		} catch(e){}
+
+		const glossarEntry = document.createElement("GLOSSAR-ENTRY");
+		glossarEntry.setAttribute("entry-href",getLinkPath(rawHref));
+		glossarEntry.innerHTML = `<glossar-entry-content>${glossarHTML}</glossar-entry-content>`;
+		document.querySelector("main").appendChild(glossarEntry);
+		showModal(glossarEntry);
 	}
 
 	function initGlossarLink(a){

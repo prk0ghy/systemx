@@ -144,52 +144,22 @@
 }
 
 /* Just as a reminder for the codepoints used
-.icon-fullscreen:before {
-	content: "\e906";
-  }
-  .icon-chevrons-down:before {
-	content: "\e905";
-  }
-  .icon-chevron-thin-up:before {
-	content: "\e900";
-  }
-  .icon-chevron-thin-right:before {
-	content: "\e901";
-  }
-  .icon-chevron-thin-left:before {
-	content: "\e902";
-  }
-  .icon-chevron-thin-down:before {
-	content: "\e903";
-  }
-  .icon-cog:before {
-	content: "\e904";
-  }
-  .icon-gear:before {
-	content: "\e904";
-  }
-  .icon-menu:before {
-    content: "\e907";
-  }
-  .icon-play3:before {
-	content: "\ea1c";
-  }
-  .icon-pause2:before {
-	content: "\ea1d";
-  }
-  .icon-volume-high:before {
-	content: "\ea26";
-  }
-  .icon-volume-medium:before {
-	content: "\ea27";
-  }
-  .icon-volume-low:before {
-	content: "\ea28";
-  }
-  .icon-volume-mute:before {
-	content: "\ea29";
-  }
-  .icon-volume-mute2:before {
-	content: "\ea2a";
-  }
+.icon-fullscreen_exit:before    {content: "\e907";}
+.icon-menu:before               {content: "\e904";}
+.icon-fullscreen:before         {content: "\e906";}
+.icon-chevrons-down:before      {content: "\e905";}
+.icon-chevron-thin-up:before    {content: "\e900";}
+.icon-chevron-thin-right:before {content: "\e901";}
+.icon-chevron-thin-left:before  {content: "\e902";}
+.icon-chevron-thin-down:before  {content: "\e903";}
+.icon-cog:before                {content: "\e904";}
+.icon-gear:before               {content: "\e904";}
+.icon-menu:before               {content: "\e907";}
+.icon-play3:before              {content: "\ea1c";}
+.icon-pause2:before             {content: "\ea1d";}
+.icon-volume-high:before        {content: "\ea26";}
+.icon-volume-medium:before      {content: "\ea27";}
+.icon-volume-low:before         {content: "\ea28";}
+.icon-volume-mute:before        {content: "\ea29";}
+.icon-volume-mute2:before       {content: "\ea2a";}
   */

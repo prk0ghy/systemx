@@ -51,7 +51,7 @@ figure[figure-type="heroimage"] figcaption.small p {
 	font-size:0.5em;
 }
 
-section[content-type="heroimage"] > .inner-content {
+section[content-type="heroimage"] > inner-content {
 	max-width:none;
 	padding-left:0;
 	padding-right:0;
