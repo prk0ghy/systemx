@@ -110,12 +110,7 @@ upload-section input[type=file]{
 
 /* Text-Editor Quill Styling */
 
-html body .ql-toolbar.ql-snow {
-	display: flex;
-	align-items: center;
-	flex-direction: row;
-	margin-top: 1em;
-}
+/* Styling for Textelements  */
 
 html body .ql-snow .ql-editor p {
 	font-family: var(--font-content);
@@ -142,10 +137,12 @@ html body .ql-snow .ql-editor h2 {
 
 html body main .ql-snow .ql-editor ul {
 	margin-bottom: 2em;
+	margin-top: 2em;
 }
 
 html body main .ql-snow .ql-editor ol {
 	margin-bottom: 2em;
+	margin-top: 2em;
 }
 
 html body main .ql-snow .ql-editor ul > li::before {
@@ -181,6 +178,31 @@ html body main .ql-snow .ql-editor ol > li {
 	font-size:1.85em;
 }
 
+/* Toolbar Styling */
+
+html body .ql-toolbar.ql-snow {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	margin-top: 1em;
+	margin-right: -8%;
+	margin-left: -8%;
+	border: none;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	padding-left: 2em;
+}
+
+html body .ql-toolbar.ql-snow .ql-formats:nth-of-type(2) {
+	margin-left: 0.5em;
+	margin-right: 0.7em;
+}
+
+html body .ql-toolbar.ql-snow .ql-formats:nth-of-type(3) {
+	margin-right: 2em;
+	padding-top: 0.1em;
+}
+
 .ql-snow .ql-toolbar button,
 html body .ql-snow.ql-toolbar button {
 	background: none;
@@ -189,8 +211,20 @@ html body .ql-snow.ql-toolbar button {
 	display: block;
 	float: left;
 	height: 2.5em;
-	padding: 3px 5px;
-	width: 3em;
+	width: 3.5em;
+	padding: 0;
+}
+
+.ql-italic, .ql-underline, .ql-strike {
+	margin-right: -0.5em;
+}
+
+.ql-bold {
+	margin-right: -1em;
+}
+
+.ql-underline {
+	margin-top: 0.3em;
 }
 
 html body .ql-toolbar.ql-snow .ql-formats {
@@ -203,4 +237,33 @@ html body .ql-toolbar.ql-snow .ql-picker-label {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	width: 3em;
+}
+
+html body .ql-picker .ql-color-picker {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0 1em 0 2em;
+}
+
+span .ql-color {
+	margin-right: 0.7em;
+}
+
+/* Text Container Styling */
+
+html body .ql-container.ql-snow {
+	border: none;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	margin-left: -8%;
+	margin-right: -8%;
+	padding-left: 2em;
+	padding-right: 2em;
+}
+
+html body .ql-snow .ql-editor {
+	padding-top: 1.5em;
+	padding-bottom: 1.5em;
 }
