@@ -8,37 +8,35 @@ function buildNavigationEntry(entry,pageURL){
 			ul = `<ul>${ul}</ul>`;
 		}
 	}
-	return `<li${pageURL === `${entry.uri}` ? ' class="active"' : ''}><a href="${entry.uri}" page-url="${pageURL}">${entry.title}</a>${ul}</li>`;
+	return `<li${pageURL === entry.uri ? ` class="active"` : ""}><a href="${entry.uri}" page-url="${pageURL}">${entry.title}</a>${ul}</li>`;
 }
 
 const navCache = new Map();
 export async function loadNavigation(target){
 	const result = await request("https://lasub-dev.test-dilewe.de/api", gql([`
-	query navigationQuery {
-		entries(typeId: 10, status: "live", level: 1) {
-			...recurseEntries
-		  }
-		}
-
-		fragment recurseEntries on inhalt_inhalt_Entry {
-		  ...entriesFields
-		  children(status: "live", level: 2 ){
-			...entriesFields
-			children(status: "live", level: 3){
-			  ...entriesFields
-			  children(status: "live", level: 4){
-				...entriesFields
-				children(status: "live", level: 5){
-				  ...entriesFields
-				}
-			  }
-			}
-		  }
-		}
-
 		fragment entriesFields on inhalt_inhalt_Entry {
-		  title
-		  uri
+			title
+			uri
+		}
+		fragment recurseEntries on inhalt_inhalt_Entry {
+			...entriesFields
+			children(status: "live", level: 2 ) {
+				...entriesFields
+				children(status: "live", level: 3) {
+					...entriesFields
+					children(status: "live", level: 4) {
+						...entriesFields
+						children(status: "live", level: 5) {
+							...entriesFields
+						}
+					}
+				}
+			}
+		}
+		query {
+			entries(typeId: 10, status: "live", level: 1) {
+				...recurseEntries
+			}
 		}
 	`]));
 
@@ -95,14 +93,32 @@ const testNavigationData = [
 ];
 
 async function genTestNavigation(pageURL) {
-	const nav = testNavigationData.map((e) => {return buildNavigationEntry(e,`${pageURL}`)}).join("");
-	return `<aside id="navigation" style="display:none;"><nav><ul>${nav}</ul></aside>`;
+	const nav = testNavigationData.map(entry => {
+		return buildNavigationEntry(entry, `${pageURL}`);
+	}).join("");
+	return `
+		<aside id="navigation" style="display:none;">
+			<nav>
+				<ul>${nav}</ul>
+			</nav>
+		</aside>
+	`;
 }
 
 async function genNavigation(target,pageURL){
-	if(!navCache.has(target)){ return `<h1>Error loading Navigation</h1>`; }
-	const nav = navCache.get(target).map((e) => {return buildNavigationEntry(e,`${pageURL}`)}).join("");
-	return `<aside id="navigation" style="display:none;"><nav><ul>${nav}</ul></aside>`;
+	if (!navCache.has(target)) {
+		return `<h1>Error loading Navigation</h1>`;
+	}
+	const nav = navCache.get(target).map(entry => {
+		return buildNavigationEntry(entry,`${pageURL}`);
+	}).join("");
+	return `
+		<aside id="navigation" style="display:none;">
+			<nav>
+				<ul>${nav}</ul>
+			</nav>
+		</aside>
+	`;
 }
 
 function getPageDataFlat(data){
@@ -159,11 +175,11 @@ export async function getNavigationHeader(target,pageType,pageURL){
 	const prevURL   = d.prev?.uri;
 	const nextTitle = d.next?.title;
 	const nextURL   = d.next?.uri;
-	const prevTag   = d.prev === null ? 'button': "a";
-	const nextTag   = d.next === null ? 'button': "a";
+	const prevTag   = d.prev === null ? "button": "a";
+	const nextTag   = d.next === null ? "button": "a";
 	return `
-		<${prevTag} id="button-previous" title="${prevTitle ? prevTitle : ""}" ${prevURL ? `href="${prevURL}"` : ''}></${prevTag}>
+		<${prevTag} id="button-previous" title="${prevTitle ? prevTitle : ""}" ${prevURL ? `href="${prevURL}"` : ""}></${prevTag}>
 		<h3>${title}</h3>
-		<${nextTag} id="button-next" title="${nextTitle ? nextTitle : ""}" ${nextURL ? `href="${nextURL}"` : ''}></${nextTag}>
+		<${nextTag} id="button-next" title="${nextTitle ? nextTitle : ""}" ${nextURL ? `href="${nextURL}"` : ""}></${nextTag}>
 	`;
 }

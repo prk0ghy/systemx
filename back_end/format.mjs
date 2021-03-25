@@ -1,5 +1,4 @@
 import beautify from "js-beautify";
-
 export const formatHTML = html => beautify.html(html, {
 	indent_size: "1",
 	indent_char: "\t",

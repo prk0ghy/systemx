@@ -25,13 +25,13 @@ tabbox-content > section:last-child {
 
 tabbox-content > section[content-type="task"],
 tabbox-content > section[content-type="audio"],
-tabbox-content > section[content-type="embed"],
+tabbox-content > section[content-type="embedding"],
 tabbox-content > section[content-type="video"] {
 	padding:0;
 }
 
 /* tabbox-content > section[content-type="audio"] figcaption,
-tabbox-content > section[content-type="embed"] figcaption,
+tabbox-content > section[content-type="embedding"] figcaption,
 tabbox-content > section[content-type="video"] figcaption {
 	padding: var(--content-padding-quarter) var(--content-padding);
 } */
@@ -113,7 +113,7 @@ main > section[tabbox-type="task"]::after {
 	z-index:0;
 }
 
-main > section[content-type="tabbox"] section[content-type="embed"] {
+main > section[content-type="tabbox"] section[content-type="embedding"] {
 	padding: 0;
 }
 

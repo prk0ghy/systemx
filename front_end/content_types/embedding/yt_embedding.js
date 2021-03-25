@@ -73,7 +73,7 @@
 		return ret;
 	}
 
-	function textToEmbed(href,autoplay){
+	function textToEmbedding(href,autoplay){
 		if(autoplay === undefined){autoplay = false;}
 		if(href === undefined){return false;}
 		const ret = tagesschauToIFrame(href,autoplay);
@@ -86,20 +86,20 @@
 		return ret;
 	}
 
-	function initEmbedlinks(){
-		const embedlinks = document.querySelectorAll(".embedlink");
-		for(const link of embedlinks){
-			link.setAttribute("embed-target","youtube"); // Should actually check the href in the future
+	function initEmbeddingLinks(){
+		const embeddingLinks = document.querySelectorAll(".embedding-link");
+		for(const link of embeddingLinks){
+			link.setAttribute("embedding-target","youtube"); // Should actually check the href in the future
 			link.addEventListener("click",(e) => {
-				const embedIframe = textToEmbed(link.href,true);
-				if(embedIframe !== null){
+				const embeddingIframe = textToEmbedding(link.href,true);
+				if(embeddingIframe !== null){
 					e.preventDefault();
-					link.parentElement.insertBefore(embedIframe,link);
+					link.parentElement.insertBefore(embeddingIframe,link);
 					link.remove();
 				}
 			});
 
 		}
 	}
-	setTimeout(initEmbedlinks,0);
+	setTimeout(initEmbeddingLinks,0);
 })();

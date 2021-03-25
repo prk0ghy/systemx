@@ -1,4 +1,4 @@
-main > section[content-type="heroimage"] {
+main > section[content-type="hero-image"] {
 	max-width:none;
 	padding-left:0;
 	padding-right:0;
@@ -7,17 +7,17 @@ main > section[content-type="heroimage"] {
 	position:relative;
 }
 
-main > section[content-type="heroimage"]:first-child {
+main > section[content-type="hero-image"]:first-child {
 	margin-top:0;
 }
 
 
-figure[figure-type="heroimage"] img {
+figure[figure-type="hero-image"] img {
 	max-height:500px;
 	object-fit:cover;
 }
 
-figure[figure-type="heroimage"] figcaption {
+figure[figure-type="hero-image"] figcaption {
 	position:absolute;
 	left:0;
 	bottom:0;
@@ -29,7 +29,7 @@ figure[figure-type="heroimage"] figcaption {
 	padding-left:64px;
 }
 
-figure[figure-type="heroimage"] figcaption p {
+figure[figure-type="hero-image"] figcaption p {
 	width:100%;
 	margin:0 auto;
 	display:block;
@@ -38,7 +38,7 @@ figure[figure-type="heroimage"] figcaption p {
 	padding: 0 var(--content-padding);
 }
 
-section[content-type="heroimage"] details.license > license-content {
+section[content-type="hero-image"] details.license > license-content {
 	width:100%;
 	margin:0 auto;
 	display:block;
@@ -47,23 +47,23 @@ section[content-type="heroimage"] details.license > license-content {
 	left:calc(50% - var(--content-width) / 2);
 }
 
-section[content-type="heroimage"] details.license > summary {
+section[content-type="hero-image"] details.license > summary {
 	margin-top: -45px;
 }
 
-/* .big and .small should be automatically set by the backend
+/* .big and .small should be automatically set by the back end
  * depending on length of text
  */
 
-figure[figure-type="heroimage"] figcaption.big p {
+figure[figure-type="hero-image"] figcaption.big p {
 	font-size:1em;
 }
 
-figure[figure-type="heroimage"] figcaption.small p {
+figure[figure-type="hero-image"] figcaption.small p {
 	font-size:0.5em;
 }
 
-section[content-type="heroimage"] > inner-content {
+section[content-type="hero-image"] > inner-content {
 	max-width:none;
 	padding-left:0;
 	padding-right:0;

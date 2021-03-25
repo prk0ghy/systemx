@@ -6,7 +6,7 @@ section[content-type="box"][box-type="magenta"] > inner-content > details {
 	border-bottom-color: var(--box-magenta);
 }
 
-section[box-type="magenta"] ol > li > ol-num {
+section[box-type="magenta"] ol > li > ol-number {
 	color: var(--box-magenta);
 }
 

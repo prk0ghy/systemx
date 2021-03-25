@@ -1,22 +1,16 @@
 import minimist from "minimist";
-
-export let openBrowser  = false;
-export let startServer  = false;
-export let httpPort     = 8042;
-export let onlyLocal    = false;
-
-export async function parse(args) {
-	const argv = minimist(args);
-	if (argv["open-browser"] !== undefined) {
-		openBrowser = true;
-	}
-	if (argv["start-server"] !== undefined) {
-		startServer = true;
-	}
-	if (argv["only-local"] !== undefined) {
-		onlyLocal = true;
-	}
-	if (argv["http-port"] !== undefined) {
-		httpPort = argv["http-port"] | 0;
+const argv = minimist(process.argv.slice(2));
+const options = {
+	httpPort: 8042,
+	openBrowser: false,
+	skipNetwork: false,
+	startServer: false,
+	useCache: false
+}
+for (const key in options) {
+	const optionName = key.replace(/[A-Z]+/g, $1 => `-${$1.toLowerCase()}`);
+	if (argv.hasOwnProperty(optionName)) {
+		options[key] = argv[optionName];
 	}
 }
+export default options;

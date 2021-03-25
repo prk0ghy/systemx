@@ -1,44 +1,45 @@
 {
-	"name": "systemx",
-	"version": "0.0.1",
-	"description": "SSG with for Craft GraphQL",
-	"main": "app.mjs",
-	"type": "module",
-	"repository": {
-		"type": "git",
-		"url": "git@bitbucket.org:idlgbr/systemx.git"
-	},
-	"license": "GPL-2.0-only",
-	"scripts": {
-		"lint": "eslint back_end/**/*.mjs front_end/**/*.js",
-		"start": "node back_end/app.mjs --start-server --open-browser",
-		"open": "node back_end/app.mjs --open-browser",
-		"build": "node back_end/app.mjs",
-		"mon": "nodemon --ignore web/ back_end/app.mjs --start-server --only-local"
-	},
 	"author": "Digitale Lernwelten GmbH",
 	"dependencies": {
-		"autoprefixer": "^9.8.6",
+		"autoprefixer": "^10.2.5",
 		"finalhandler": "^1.1.2",
 		"graphql": "^15.5.0",
 		"graphql-request": "^3.4.0",
 		"js-beautify": "^1.13.5",
 		"minimist": "^1.2.5",
 		"nodemon": "^2.0.7",
-		"opn": "^6.0.0",
+		"open": "^8.0.5",
 		"photoswipe": "^4.1.3",
 		"pkg-dir": "^5.0.0",
 		"postcss": "^8.2.9",
 		"quill": "^1.3.7",
 		"serve-static": "^1.14.1"
 	},
+	"description": "SSG with for Craft GraphQL",
 	"devDependencies": {
 		"eslint": "^7.23.0",
-		"stylelint": "^13.11.0",
-		"stylelint-config-standard": "^20.0.0"
+		"stylelint": "^13.12.0",
+		"stylelint-config-standard": "^21.0.0"
 	},
+	"license": "GPL-2.0-only",
+	"main": "back_end/index.mjs",
+	"name": "systemx",
 	"nodemonConfig": {
-		"ext": "mjs,js,json,css,png,jpg,html",
+		"ext": "css,html,jpg,js,json,mjs,png",
 		"verbose": true
-	}
+	},
+	"repository": {
+		"type": "git",
+		"url": "git@bitbucket.org:idlgbr/systemx.git"
+	},
+	"scripts": {
+		"build": "node back_end/index.mjs",
+		"dev": "nodemon --ignore web/ back_end/index.mjs --quiet --start-server",
+		"lint": "eslint back_end/**/*.mjs front_end/**/*.js",
+		"mon": "nodemon --ignore web/ back_end/index.mjs --skip-network --start-server",
+		"start": "node back_end/index.mjs --open-browser --start-server",
+		"open": "node back_end/index.mjs --open-browser"
+	},
+	"type": "module",
+	"version": "0.0.1"
 }

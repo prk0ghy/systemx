@@ -65,17 +65,17 @@ main ul ul ul ul > li::before {
 	background: transparent !important;
 }
 
-main ol-num {
+main ol-number {
 	font-weight:500;
 }
 
-main ol > li > ol-num {
+main ol > li > ol-number {
 	position: absolute;
 	color: var(--dlw-blue);
 	left: 0;
 }
 
-main ol ol > li > ol-num {
+main ol ol > li > ol-number {
 	position: absolute;
 	color: var(--background-grey) !important;
 	left: 0;

@@ -1,22 +1,22 @@
-section[content-type="embed"] > inner-content > details > summary::marker {
+section[content-type="embedding"] > inner-content > details > summary::marker {
 	content: '';
 	display: none;
 }
 
-section[content-type="embed"] {
+section[content-type="embedding"] {
 	position:relative;
 }
 
-section[content-type="embed"] > inner-content > details > summary::-webkit-details-marker {
+section[content-type="embedding"] > inner-content > details > summary::-webkit-details-marker {
 	content: '';
 	display: none;
 }
 
-[figure-type="embed"] details.license > summary {
+[figure-type="embedding"] details.license > summary {
 	margin-top:var(--content-padding-quarter);
 }
 
-main > section[content-type="embed"]::after {
+main > section[content-type="embedding"]::after {
 	content:'';
 	display:block;
 	position:absolute;
@@ -28,25 +28,25 @@ main > section[content-type="embed"]::after {
 	z-index:0;
 }
 
-section[content-type="embed"] > inner-content {
+section[content-type="embedding"] > inner-content {
 	position:relative;
 	z-index:1;
 }
 
-section[content-type="embed"] > inner-content > figure > lazy-iframe,
-section[content-type="embed"] > inner-content > figure > iframe {
+section[content-type="embedding"] > inner-content > figure > lazy-iframe,
+section[content-type="embedding"] > inner-content > figure > iframe {
 	display: block;
 	background:#666;
 	width:100%;
 	height:600px;
 }
 
-[embed-target="youtube"] {
+[embedding-target="youtube"] {
 	display:block;
 	position:relative;
 }
 
-[embed-target="youtube"]::before {
+[embedding-target="youtube"]::before {
 	content:'';
 	position:absolute;
 	left:50%;
@@ -63,7 +63,7 @@ section[content-type="embed"] > inner-content > figure > iframe {
 	transition:opacity 250ms, transform 400ms;
 }
 
-[embed-target="youtube"]::after {
+[embedding-target="youtube"]::after {
 	content:'';
 	display:block;
 	width:0;
@@ -82,16 +82,16 @@ section[content-type="embed"] > inner-content > figure > iframe {
 	transition:opacity 250ms, transform 400ms;
 }
 
-[embed-target="youtube"]:active::before,
-[embed-target="youtube"]:hover::before,
-[embed-target="youtube"]:focus::before {
+[embedding-target="youtube"]:active::before,
+[embedding-target="youtube"]:hover::before,
+[embedding-target="youtube"]:focus::before {
 	opacity:0.7;
 	transform:scale(1);
 }
 
-[embed-target="youtube"]:active::after,
-[embed-target="youtube"]:hover::after,
-[embed-target="youtube"]:focus::after {
+[embedding-target="youtube"]:active::after,
+[embedding-target="youtube"]:hover::after,
+[embedding-target="youtube"]:focus::after {
 	opacity:1;
 	transform:scale(1);
 }
@@ -99,4 +99,3 @@ section[content-type="embed"] > inner-content > figure > iframe {
 .h5p-iframe {
 	background: var(--background-color) !important;
 }
-

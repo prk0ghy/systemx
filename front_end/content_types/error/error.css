@@ -1,15 +1,37 @@
 section[content-type="error"] inner-content {
-	color:#e33;
-	background:#eee;
+	--vertical-padding: 1rem;
+	color:#505050;
+	background-color: white;
 	border-radius:8px;
-	border:solid 2px #e33;
+	border:solid 2px #cfcfcf;
 	z-index:1;
+	padding-top: var(--vertical-padding);
+	padding-bottom: var(--vertical-padding);
 	position:relative;
+}
+
+section[content-type="error"] .message,
+section[content-type="error"] .type {
+	font-size: large;
+}
+section[content-type="error"] .message,
+section[content-type="error"] .title {
+	margin: 0;
+}
+section[content-type="error"] .type {
+	background-color: #ff9aad;
+	color: #4c3434;
+	font-family: monospace;
+	margin: var(--vertical-padding) calc(-1 * var(--content-padding));
+	padding: 0.5rem calc(var(--content-padding) + 0.5rem);
+}
+section[content-type="error"] .type::before {
+	content: "Type: ";
 }
 
 section[content-type="error"]::after {
 	content:'';
-	background:#e334;
+	background:#f0f0f0;
 	position:absolute;
 	left:0;
 	bottom:0;

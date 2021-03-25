@@ -1,15 +1,14 @@
-import { buildHead } from "./page_elements/head.mjs";
 import * as resources from "./page_elements/resources.mjs";
-import {loadNavigation} from "./page_elements/navigation.mjs";
-import * as options from "./options.mjs";
-import { getName as getContentTypeName, render} from "./content_types.mjs";
-import { fill as fillMarkers } from "./content_types/marker.mjs";
+import { buildHead } from "./page_elements/head.mjs";
 import { formatHTML } from "./format.mjs";
 import fs from "fs";
+import { loadNavigation } from "./page_elements/navigation.mjs";
+import Marker from "./types/helper/Marker.mjs";
+import options from "./options.mjs";
 import path from "path";
 import query from "./cms.mjs";
+import { render } from "./renderer.mjs";
 import wrapWithApplicationShell from "./page.mjs";
-
 export const resourceDirectoryName = "res";
 const fsp = fs.promises;
 
@@ -17,7 +16,8 @@ async function mkdirp(...pathParts) {
 	const joinedPath = path.join(...pathParts);
 	try {
 		await fs.mkdirSync(joinedPath, { recursive: true });
-	} catch (error) {
+	}
+	catch (error) {
 		console.error("Directory creation has failed.", error);
 	}
 	return joinedPath;
@@ -51,7 +51,7 @@ async function copyDirectory(source, destination, targetName) {
 				promises.push(copyDirectory(sourcePath, targetPath, targetName));
 			} // Ignore everything else
 		}
-		catch {/* If we can't stat, then just skip */}
+		catch { /* If we can't stat, then just skip */ }
 	}
 	return Promise.all(promises);
 }
@@ -62,11 +62,9 @@ async function copyAssets(destination) {
 }
 
 async function renderFile(source, destination, targetName) {
-	const targetPath = getTargetPath(targetName);
 	const fileContent = await fsp.readFile(source, "utf-8");
 	const html = await wrapWithApplicationShell(targetName, {
 		content: fileContent,
-		pageURL: destination.substr(targetPath.length).replace("\\","/"),
 		pageTitle: "Instrumentalisierung der Vergangenheit",
 		pageType: "testpage"
 	});
@@ -74,9 +72,9 @@ async function renderFile(source, destination, targetName) {
 }
 
 export const buildEntries = async targetName => {
-	const result = await query(scope => `
+	const result = await query(types => `
 		entries {
-			${scope.entry}
+			${types.Entry}
 		}
 	`);
 	const targetPath = getTargetPath(targetName);
@@ -84,23 +82,26 @@ export const buildEntries = async targetName => {
 		const directory = await mkdirp(targetPath, entry.uri);
 		const outputFilePath = path.join(directory, "index.html");
 		try {
-			const stat = await fsp.stat(outputFilePath);
-			if(Date.parse(stat.mtime) > Date.parse(entry.dateUpdated)){
+			const { mtime } = await fsp.stat(outputFilePath);
+			if (Date.parse(mtime) > Date.parse(entry.dateUpdated)) {
 				return;
 			}
-		} catch {
+		}
+		catch {
 			/* Doesn't matter if it fails, we just render a new file */
 		}
 		const html = await render(entry);
-		const url = outputFilePath.substr(targetPath.length).replace(/\\/g,"/"); // Removed target prefix and in case of windows replace blackslashes with forward slashes
-
+		/* Remove target prefix and in case of Windows, replace blackslashes with forward slashes */
+		const url = outputFilePath.substr(targetPath.length).replace(/\\/g,"/");
 		const wrappedHTML = await wrapWithApplicationShell(targetName, {
 			content: html,
-			pageURL: url,
 			pageTitle: entry.title,
-			pageType: getContentTypeName(entry.__typename)
+			pageType: entry.__typename === "inhalt_inhalt_Entry"
+				? "content"
+				: "unhandled-typename",
+			pageURL: url
 		});
-		const finalHTML = fillMarkers(wrappedHTML);
+		const finalHTML = Marker.fill(wrappedHTML);
 		await fsp.writeFile(outputFilePath, formatHTML(finalHTML));
 	}));
 };
@@ -111,7 +112,7 @@ export async function build(targetName) {
 	await buildHead(targetName);
 	await copyDirectory(path.join("tests", "instrumentalisierung"), getTargetPath(targetName), targetName);
 	await copyAssets(resourcePath);
-	if(!options.onlyLocal){
+	if (!options.skipNetwork) {
 		console.time("target#buildEntries");
 		await loadNavigation(targetName);
 		await buildEntries(targetName);

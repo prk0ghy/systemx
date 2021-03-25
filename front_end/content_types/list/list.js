@@ -27,7 +27,7 @@
 			let i = start === null ? 1 : start | 0;
 
 			for(const item of items){
-				const numerator = document.createElement("OL-NUM");
+				const numerator = document.createElement("OL-NUMBER");
 				const itemValue = item.getAttribute("value");
 				if(itemValue !== null){i = itemValue | 0;}
 				numerator.innerText = getNumerator(lType,i);

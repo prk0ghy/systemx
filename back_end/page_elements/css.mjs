@@ -1,19 +1,19 @@
-import * as res from "./resources.mjs";
-import postcss from "postcss";
+import * as resources from "./resources.mjs";
 import autoprefixer from "autoprefixer";
+import postCSS from "postcss";
 
 export async function get() {
-	return processCSS(await res.get("css", false));
+	return processCSS(await resources.get("css", false));
 }
 
 export async function getInline() {
-	return res.get("css", true);
+	return resources.get("css", true);
 }
 
 async function processCSS(css) {
-	const result = postcss([ autoprefixer ]).process(css);
-	result.warnings().forEach(warn => {
-		console.warn(warn.toString());
+	const result = postCSS([ autoprefixer ]).process(css);
+	result.warnings().forEach(warning => {
+		console.warn(warning.toString());
 	});
 	return result.css;
 }

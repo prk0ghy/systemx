@@ -1,15 +1,8 @@
 import getHead from "./page_elements/head.mjs";
-import {getNavigationAside,getNavigationHeader} from "./page_elements/navigation.mjs";
-
-async function getHeader(){
-	return `
-
-	`;
-}
-
+import { getNavigationAside, getNavigationHeader } from "./page_elements/navigation.mjs";
 export default async function wrapWithApplicationShell(targetName, {pageTitle, pageType, pageURL, content}) {
 	return `
-		<!DOCTYPE html>
+		<!doctype html>
 		<html lang="de">
 			<head>${await getHead(targetName, pageTitle)}</head>
 			<body>

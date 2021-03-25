@@ -1,34 +1,19 @@
-import {request, gql} from "graphql-request";
-
-const scope = {
-	get content() {
-		return `
-			heroimage {
-				url
-			}
-			elements: inhaltsbausteine {
-				__typename
-				...on inhaltsbausteine_textMitOhneBild_BlockType {
-					${scope.textAndImage}
-				}
-				...on inhaltsbausteine_ueberschrift_BlockType {
-					${scope.header}
-				}
-				...on inhaltsbausteine_videoDatei_BlockType {
-					${scope.video}
-				}
-				...on inhaltsbausteine_heroimage_BlockType {
-					${scope.heroimage}
-				}
-			}
-			titleOverride: title_override
-			heroimageCaption: bildunterschrift
-			heroimages: heroimage  {
-				url
-			}
-		`;
-	},
-	get entry() {
+import { gql, request } from "graphql-request";
+import { loadContentTypes } from "./types.mjs";
+const globalFragments = {
+	asset: `
+		height
+		url
+		width
+		...on s3_Asset {
+			creativeCommonsTerms: rechtemodule
+			license: lizenzart
+			source: quelle
+		}
+	`
+};
+const globalTypes = {
+	get Entry() {
 		return `
 			__typename
 			dateUpdated
@@ -37,72 +22,33 @@ const scope = {
 			uid
 			uri
 		`;
-	},
-	get header() {
-		return `
-			__typename
-			headline: ueberschrift
-			isNumbered: nummerierung
-		`;
-	},
-	get image() {
-		return `
-			__typename
-			image: datei {
-				url
-			}
-			caption: bildunterschrift
-			`;
-	},
-	get textAndImage() {
-		return `
-			__typename
-			images: bilder {
-				__typename
-				...on bilder_BlockType {
-					${scope.image}
-				}
-			}
-			imageWidth: bildbreite
-			imageBorder: bilderrahmen
-			imagePosition: bildposition
-			galleryIntroductionText: einleitungstextGallerie
-			isNumbered: nummerierung
-			text
-			useFlex: flex
-		`;
-	},
-	get video() {
-		return `
-			__typename
-			caption: videoUnterschrift
-			files: datei {
-				url
-			}
-			isNumbered: nummerierung
-			poster: posterbild {
-				url
-			}
-		`;
-	},
-	get heroimage() {
-		return `
-			id
-			uid
-			images: bild {
-				__typename
-				id
-				uid
-				filename
-				url
-				title
-			}
-		`;
 	}
 };
-
-export default queryFunction => request("https://lasub-dev.test-dilewe.de/api", gql([
-	`{ ${queryFunction(scope)} }`
+export const getContext = async () => {
+	const contentTypes = await loadContentTypes();
+	const cms = {
+		fragments: globalFragments,
+		types: globalTypes
+	};
+	for (const [name, module] of contentTypes.entries()) {
+		for (const [key, getValue] of module.default.queries) {
+			if (cms.types.hasOwnProperty(key)) {
+				continue;
+			}
+			Object.defineProperty(cms.types, key, {
+				get: () => getValue(cms)
+			});
+		}
+	}
+	return cms;
+};
+const maybeWrap = (query, enabled) => enabled
+	? `{ ${query} }`
+	: query;
+export default (queryFunction, {
+	raw
+} = {}) => request("https://lasub-dev.test-dilewe.de/api", gql([
+	maybeWrap(queryFunction(globalTypes, globalFragments), !raw)
 		.replace(/[\t]/g, "")
 		.replace(/[\n]/g, " ")
 		.trim()

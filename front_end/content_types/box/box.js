@@ -1,4 +1,4 @@
-/* global showOverlay,hideOverlay,overlayCloseHandlers,showEmbedSections */
+/* global showOverlay,hideOverlay,overlayCloseHandlers,showEmbeddingSections */
 let overlayHideBoxCallback = undefined;
 
 /* Don't pollute the global scope if avoidable */
@@ -31,7 +31,7 @@ let overlayHideBoxCallback = undefined;
 				boxDetails.getBoundingClientRect();
 				boxDetails.style.top = "32px";
 				boxDetails.getBoundingClientRect();
-				showEmbedSections(boxContent);
+				showEmbeddingSections(boxContent);
 
 				showOverlay();
 				overlayHideBoxCallback = hideBox;

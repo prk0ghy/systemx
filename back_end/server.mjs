@@ -1,15 +1,14 @@
-import finalhandler from "finalhandler";
+import finalHandler from "finalhandler";
 import http from "http";
+import options from "./options.mjs";
 import serveStatic from "serve-static";
-import { httpPort } from "./options.mjs";
-
 export function start(staticBasePath) {
 	const serve = serveStatic(staticBasePath, {
 		"index": "index.html"
 	});
-	const server = http.createServer((req, res) => {
-		const done = finalhandler(req, res);
-		serve(req, res, done);
+	const server = http.createServer((request, response) => {
+		const done = finalHandler(request, response);
+		serve(request, response, done);
 	});
-	server.listen(httpPort);
+	server.listen(options.httpPort);
 }
