@@ -8,7 +8,7 @@ let overlayHideBoxCallback = undefined;
 		boxes.forEach(boxDetails => {
 			boxDetails.classList.add("box-wrap");
 			const boxHeader  = boxDetails.querySelector("summary");
-			const boxContent = boxDetails.querySelector(".box-content");
+			const boxContent = boxDetails.querySelector("box-content");
 			let boxVisible = false;
 			let classRemoverTimer = undefined;
 

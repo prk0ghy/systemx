@@ -3,7 +3,22 @@ section[content-type="task"] .task-content {
 	border-top:12px solid var(--task-red);
 	border-bottom: 12px solid var(--task-red);
 	background: #fff;
+}
+
+section[content-type="task"] .task-content > section {
 	padding: 2em;
+}
+
+/* Padding-adjustment of a task inside a pop-up box */
+
+section[content-type="box"] > inner-content > .box-wrap.active > box-content > section[content-type"task"] {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+section[content-type="box"] > inner-content > .box-wrap.active > box-content > section[content-type="task"] .task-content section {
+	padding-top: 0;
+	padding-bottom: 0;
 }
 
 section[content-type="tabbox"] section[content-type="task"] .task-content {
@@ -13,7 +28,6 @@ section[content-type="tabbox"] section[content-type="task"] .task-content {
 section[content-type="box"] section[content-type="task"] {
 	padding-left:0 !important;
 	padding-right:0 !important;
-	box-shadow:none;
 }
 
 section[content-type="box"] section[content-type="task"] .task-content {
@@ -60,24 +74,6 @@ section[content-type="task"] > inner-content {
 	position:relative;
 }
 
-/* height of blank space from quill */
-.fancy-task-editor.ql-container.ql-snow .ql-editor {
-	min-height: 12em;
-}
-
-section[content-type="task"] ol > li > ol-num {
-	color: var(--task-red);
-}
-
-section[content-type="task"] ul > li::before {
-	background-color:transparent;
-	border-color: var(--task-red);
-}
-
-section[content-type="task"] ul ul > li::before {
-	background-color: var(--task-red);
-}
-
 /* Upload Button */
 
 upload-section {
@@ -109,6 +105,25 @@ upload-section input[type=file]{
 }
 
 /* Text-Editor Quill Styling */
+
+/* height of blank space from quill */
+
+.fancy-task-editor.ql-container.ql-snow .ql-editor {
+	min-height: 15em;
+}
+
+section[content-type="task"] ol > li > ol-num {
+	color: var(--task-red);
+}
+
+section[content-type="task"] ul > li::before {
+	background-color:transparent;
+	border-color: var(--task-red);
+}
+
+section[content-type="task"] ul ul > li::before {
+	background-color: var(--task-red);
+}
 
 /* Styling for Textelements  */
 
@@ -185,8 +200,6 @@ html body .ql-toolbar.ql-snow {
 	align-items: center;
 	flex-direction: row;
 	margin-top: 1em;
-	margin-right: -8%;
-	margin-left: -8%;
 	border: none;
 	border-top: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
@@ -248,7 +261,17 @@ html body .ql-picker .ql-color-picker {
 }
 
 span .ql-color {
-	margin-right: 0.7em;
+	margin-right: 1em;
+}
+
+html body .ql-snow .ql-color-picker .ql-picker-options {
+	width: 278px;
+}
+
+html body .ql-snow .ql-color-picker .ql-picker-item {
+	height: 30px;
+	width: 30px;
+	margin: 4px;
 }
 
 /* Text Container Styling */
@@ -257,8 +280,6 @@ html body .ql-container.ql-snow {
 	border: none;
 	border-top: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
-	margin-left: -8%;
-	margin-right: -8%;
 	padding-left: 2em;
 	padding-right: 2em;
 }

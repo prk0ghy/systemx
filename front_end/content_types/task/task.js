@@ -8,7 +8,7 @@
 			fancyEditor.classList.add("fancy-task-editor");
 			area.parentElement.append(fancyEditor);
 			area.parentElement.removeChild(area);
-			new Quill(fancyEditor,{
+			const editor = new Quill(fancyEditor,{
 				modules: {
 					toolbar: [
 						[{ 'header': 1 }, { 'header': 2 }],               // custom button values
@@ -18,6 +18,10 @@
 					]
 				},
 				theme: 'snow'
+			});
+
+			editor.on('text-change', function(delta, source) {
+				console.log(editor.getContents());
 			});
 		}
 	}

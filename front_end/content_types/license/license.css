@@ -37,7 +37,7 @@ details.license.active > summary {
 	background-color: var(--dlw-blue);
 }
 
-details.license > .license-content {
+details.license > license-content {
 	font-size: 0.5em;
 	font-weight: 400;
 	box-shadow: 0 3px 6px #00000029;
@@ -54,7 +54,7 @@ details.license > .license-content {
 	transition:transform 300ms, opacity 300ms;
 }
 
-details.license.active > .license-content {
+details.license.active > license-content {
 	opacity:1;
 	transform:scaleY(1);
 }

@@ -16,7 +16,7 @@ section[content-type="box"] > inner-content > details > summary {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 16px 48px 8px 48px;
+	padding: 16px 2em 8px 2em;
 	outline: none;
 	line-height: 2.6em;
 	background-color: #257DA7;
@@ -45,44 +45,26 @@ section[content-type="box"] > inner-content > details > summary::after {
 	transition-timing-function: ease-in-out;
 }
 
-section[content-type="box"] > inner-content > details > summary > .box-caption h3 {
+box-caption h3 {
 	font-size: 1.4em;
 	color: #fff;
 	margin-bottom:0;
 }
 
-section[content-type="box"] > inner-content > details > summary > .box-caption p {
+box-caption p {
 	font-size: 0.8em;
 	color: #fff;
 	margin:0.25em 0 0;
 }
 
-.box-caption {
+box-caption {
 	position:relative;
 	user-select:none;
 	padding-right:112px;
 }
 
-.box-content {
+box-content {
 	display:none;
-	max-height:0;
-}
-
-section[content-type="box"] > inner-content > .box-wrap {
-	position:relative;
-	transition:top 250ms;
-}
-
-section[content-type="box"] > inner-content > .box-wrap.active {
-	z-index:2000;
-	position:fixed;
-	top:16px;
-	width:calc(var(--content-width) - (var(--content-padding) * 2));
-	box-sizing:border-box;
-}
-
-section[content-type="box"] > inner-content > .box-wrap.active > .box-content {
-	display:block;
 	max-height:0;
 	transition:max-height 400ms;
 	background:var(--background-color);
@@ -91,23 +73,40 @@ section[content-type="box"] > inner-content > .box-wrap.active > .box-content {
 	overflow-y:scroll;
 }
 
-section[content-type="box"] > inner-content > .box-wrap.active > .box-content > section {
-	padding:24px 48px;
+box-content > section {
+	padding:1em 2em;
 }
 
-section[content-type="box"] > inner-content > .box-wrap.active > summary::before {
-	transform:translate(0, 40%) rotate3d(1, 0, 0, 180deg);
-}
-
-section[content-type="box"] > inner-content > .box-wrap.active > summary::before,
-section[content-type="box"] > inner-content > .box-wrap.active > summary::after {
-	top:6px;
-}
-
-.box-content > footer {
+box-content > footer {
 	padding: 24px 48px;
 	font-style:italic;
 	font-size:0.8em;
 	font-weight:500;
 	color:var(--background-grey);
+}
+
+.box-wrap.active box-content {
+	display:block;
+}
+
+.box-wrap {
+	position:relative;
+	transition:top 250ms;
+}
+
+.box-wrap.active {
+	z-index:2000;
+	position:fixed;
+	top:16px;
+	width:calc(var(--content-width) - (var(--content-padding) * 2));
+	box-sizing:border-box;
+}
+
+.box-wrap.active > summary::before {
+	transform:translate(0, 40%) rotate3d(1, 0, 0, 180deg);
+}
+
+.box-wrap.active > summary::before,
+.box-wrap.active > summary::after {
+	top:6px;
 }
