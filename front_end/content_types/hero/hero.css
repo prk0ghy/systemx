@@ -39,6 +39,14 @@ figure[figure-type="heroimage"] figcaption p {
 	line-height:1.5em;
 }
 
+section[content-type="heroimage"] details.license > license-content {
+	width:100%;
+	margin:0 auto;
+	display:block;
+	max-width:var(--content-width);
+	padding:0.5em var(--content-padding);
+	left:calc(50% - var(--content-width)/2);
+}
 /* .big and .small should be automatically set by the backend
  * depending on length of text
  */

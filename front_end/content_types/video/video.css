@@ -43,7 +43,7 @@ figure.videofigure > figcaption {
 
 av-play-pause {
 	position: relative;
-	width: 1em;
+	width: 1.25em;
 	height: 1em;
 	cursor:pointer;
 }
@@ -108,7 +108,7 @@ av-controls-right > * {
 
 av-fullscreen::before {
 	position: relative;
-	width: 1em;
+	width: 1.25em;
 	height: 1em;
 	font-family: icomoon;
 	content: "\e906";
@@ -118,22 +118,23 @@ av-fullscreen::before {
 
 av-fullscreen.active::before{
 	position: relative;
-	width: 1em;
+	width: 1.25em;
 	height: 1em;
 	font-family: icomoon;
 	content: "\e907";
 	cursor:pointer;
-
 }
 
 [figure-type="video"] details.license > summary {
     margin-top: 0.5em;
 } 
 
+av-volume-button {
+	width:1.25em;
+}
+
 av-volume-button::before{
-	position: relative; 
-	width: 1em;
-	height: 1em;
+	position: relative;
 	font-family: icomoon;
 	content: "\ea26";
 	color: white;
@@ -142,10 +143,144 @@ av-volume-button::before{
 
 av-volume-button.active::before{
 	position: relative; 
-	width: 1em;
-	height: 1em;
 	font-family: icomoon;
 	content: "\ea29";
 	color: white;
 	cursor: pointer;
+}
+
+av-volume-slider {
+	position: relative;
+	height: 24px;
+	width: 100px;
+	cursor: pointer;
+	overflow:visible;
+}
+
+av-volume-slider::before {
+	position: absolute;
+	left:0;
+	display:block;
+	height: 10px;
+	width: 100%;
+	content: '';
+	background-color:rgba(255,255,255,0.5);
+	top: 50%;
+	margin-top: -5px;
+}
+
+av-volume-slider-mark {
+	position: absolute;
+	left:0;
+	display:block;
+	height: 10px;
+	width: 100%;
+	background-color:white;
+	top: 50%;
+	margin-top: -5px;
+}
+
+av-volume-slider-mark::after {
+	content:'';
+	display:block;
+	position: absolute;
+	left: 100%;
+	top: 50%;
+	margin-left:-8px;
+	margin-top: -8px;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	background-color:white;
+}
+
+av-volume-button[volume-level="1"]::before{
+	position: relative; 
+	font-family: icomoon;
+	content: "\ea28";
+	color: white;
+	cursor: pointer;
+}
+
+av-volume-button[volume-level="2"]::before{
+	position: relative; 
+	font-family: icomoon;
+	content: "\ea27";
+	color: white;
+	cursor: pointer;
+}
+av-volume-button[volume-level="4"]::before{
+	position: relative; 
+	font-family: icomoon;
+	content: "\ea26";
+	color: white;
+	cursor: pointer;
+}
+av-timestamp-wrapper{
+	margin-left: 20px;
+}
+av-timestamp{
+	color: white;
+	font-size: 0.5em;
+	width: 1.25em;
+	user-selection: none;
+}
+av-timestamp::after{
+	content:'/';
+	color: white;
+	user-selection: none;
+}
+
+av-duration {
+	color: white;
+	font-size: 0.5em;
+	width: 1.25em;
+	user-selection: none;
+}
+
+av-seekbar {
+	display:block;
+	position: relative;
+	height: 24px;
+	width: calc(100% - 16px);
+	cursor: pointer;
+	overflow:visible;
+	left: 8px;
+}
+
+av-seekbar::before {
+	position: absolute;
+	left:0;
+	display:block;
+	height: 10px;
+	width: 100%;
+	content: '';
+	background-color:rgba(255,255,255,0.5);
+	top: 50%;
+	margin-top: -5px;
+}
+
+av-seekbar-mark {
+	position: absolute;
+	left:0;
+	display:block;
+	height: 10px;
+	width: 0%;
+	background-color:var(--dlw-blue);
+	top: 50%;
+	margin-top: -5px;
+}
+
+av-seekbar-mark::after {
+	content:'';
+	display:block;
+	position: absolute;
+	left: 100%;
+	top: 50%;
+	margin-left:-8px;
+	margin-top: -8px;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	background-color:var(--dlw-blue);
 }
