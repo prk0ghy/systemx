@@ -17,7 +17,7 @@
 					glossarHTML = main.innerHTML;
 				}
 			}
-		} catch(e){}
+		} catch(e){ /* Doesn't matter */ }
 
 		const glossarEntry = document.createElement("GLOSSAR-ENTRY");
 		glossarEntry.setAttribute("entry-href",getLinkPath(rawHref));

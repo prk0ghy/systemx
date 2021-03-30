@@ -1,14 +1,14 @@
+section[content-type="gallery"] > inner-content > details > summary::-webkit-details-marker {
+	content: '';
+	display: none;
+}
+
 figure[figure-type="gallery"] > details.license > summary {
 	right:1em;
 	margin-top:-2.3em;
 }
 
 section[content-type="gallery"] > inner-content > details > summary::marker {
-	content: '';
-	display: none;
-}
-
-section[content-type="gallery"] > inner-content > details > summary::-webkit-details-marker {
 	content: '';
 	display: none;
 }

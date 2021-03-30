@@ -9,18 +9,6 @@ section[content-type="task"] .task-content > section {
 	padding: 2em;
 }
 
-/* Padding-adjustment of a task inside a pop-up box */
-
-section[content-type="box"] > inner-content > .box-wrap.active > box-content > section[content-type"task"] {
-	padding-top: 0;
-	padding-bottom: 0;
-}
-
-section[content-type="box"] > inner-content > .box-wrap.active > box-content > section[content-type="task"] .task-content section {
-	padding-top: 0;
-	padding-bottom: 0;
-}
-
 section[content-type="tabbox"] section[content-type="task"] .task-content {
 	padding:0;
 }
@@ -39,6 +27,19 @@ section[content-type="box"] section[content-type="task"] .task-content {
 
 section[content-type="box"] section[content-type="task"]:last-of-type {
 	margin-bottom:0 !important;
+}
+
+
+/* Padding-adjustment of a task inside a pop-up box */
+
+section[content-type="box"] > inner-content > .box-wrap.active > box-content > section[content-type="task"] {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+section[content-type="box"] > inner-content > .box-wrap.active > box-content > section[content-type="task"] .task-content section {
+	padding-top: 0;
+	padding-bottom: 0;
 }
 
 .task-content inner-content > h3 {
@@ -100,7 +101,7 @@ upload-button:hover {
 	color: white;
 }
 
-upload-section input[type=file]{
+upload-section input[type=file] {
 	display:none;
 }
 
@@ -108,7 +109,9 @@ upload-section input[type=file]{
 
 /* height of blank space from quill */
 
-.fancy-task-editor.ql-container.ql-snow .ql-editor {
+html body .ql-snow .ql-editor {
+	padding-top: 1.5em;
+	padding-bottom: 1.5em;
 	min-height: 15em;
 }
 
@@ -206,16 +209,6 @@ html body .ql-toolbar.ql-snow {
 	padding-left: 2em;
 }
 
-html body .ql-toolbar.ql-snow .ql-formats:nth-of-type(2) {
-	margin-left: 0.5em;
-	margin-right: 0.7em;
-}
-
-html body .ql-toolbar.ql-snow .ql-formats:nth-of-type(3) {
-	margin-right: 2em;
-	padding-top: 0.1em;
-}
-
 .ql-snow .ql-toolbar button,
 html body .ql-snow.ql-toolbar button {
 	background: none;
@@ -279,13 +272,16 @@ html body .ql-snow .ql-color-picker .ql-picker-item {
 html body .ql-container.ql-snow {
 	border: none;
 	border-top: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
 	padding-left: 2em;
 	padding-right: 2em;
 }
 
-html body .ql-snow .ql-editor {
-	padding-top: 1.5em;
-	padding-bottom: 1.5em;
+html body .ql-toolbar.ql-snow .ql-formats:nth-of-type(2) {
+	margin-left: 0.5em;
+	margin-right: 0.7em;
 }
 
+html body .ql-toolbar.ql-snow .ql-formats:nth-of-type(3) {
+	margin-right: 2em;
+	padding-top: 0.1em;
+}

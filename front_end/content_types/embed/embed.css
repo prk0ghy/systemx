@@ -7,13 +7,13 @@ section[content-type="embed"] {
 	position:relative;
 }
 
-[figure-type="embed"] details.license > summary {
-	margin-top:0.5em;
-}
-
 section[content-type="embed"] > inner-content > details > summary::-webkit-details-marker {
 	content: '';
 	display: none;
+}
+
+[figure-type="embed"] details.license > summary {
+	margin-top:0.5em;
 }
 
 main > section[content-type="embed"]::after {

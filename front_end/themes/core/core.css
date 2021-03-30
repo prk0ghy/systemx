@@ -62,3 +62,7 @@ details > summary {
 	cursor:pointer;
 	outline:none;
 }
+
+#button-settings {
+	display:none;
+}

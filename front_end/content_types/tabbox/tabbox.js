@@ -1,4 +1,4 @@
-/* globals showEmbedSections */ 
+/* globals showEmbedSections */
 
 (() => {
 	function initTabboxes() {

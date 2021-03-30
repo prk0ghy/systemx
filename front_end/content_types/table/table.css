@@ -1,7 +1,7 @@
 .table-wrap {
 	overflow:auto;
 	display:block;
-	width:100%;;
+	width:100%;
 }
 
 table {
@@ -40,8 +40,9 @@ table tr:last-child th {
 table tr td:first-child,
 table tr th:first-child {
 	border-left: 0;
-  }
-  table tr td:last-child,
-  table tr th:last-child {
+}
+
+table tr td:last-child,
+table tr th:last-child {
 	border-right: 0;
-  }
+}

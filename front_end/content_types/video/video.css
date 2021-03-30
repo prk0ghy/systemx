@@ -56,6 +56,7 @@ av-play-pause::before {
 	opacity: 1;
 	transition: opacity 300ms;
 }
+
 av-play-pause.active::before {
 	opacity: 0;
 }
@@ -116,7 +117,7 @@ av-fullscreen::before {
 	cursor: pointer;
 }
 
-av-fullscreen.active::before{
+av-fullscreen.active::before {
 	position: relative;
 	width: 1.25em;
 	height: 1em;
@@ -126,14 +127,14 @@ av-fullscreen.active::before{
 }
 
 [figure-type="video"] details.license > summary {
-    margin-top: 0.5em;
-} 
+	margin-top: 0.5em;
+}
 
 av-volume-button {
 	width:1.25em;
 }
 
-av-volume-button::before{
+av-volume-button::before {
 	position: relative;
 	font-family: icomoon;
 	content: "\ea26";
@@ -141,8 +142,8 @@ av-volume-button::before{
 	cursor: pointer;
 }
 
-av-volume-button.active::before{
-	position: relative; 
+av-volume-button.active::before {
+	position: relative;
 	font-family: icomoon;
 	content: "\ea29";
 	color: white;
@@ -164,7 +165,7 @@ av-volume-slider::before {
 	height: 10px;
 	width: 100%;
 	content: '';
-	background-color:rgba(255,255,255,0.5);
+	background-color:rgba(255, 255, 255, 0.5);
 	top: 50%;
 	margin-top: -5px;
 }
@@ -194,48 +195,52 @@ av-volume-slider-mark::after {
 	background-color:white;
 }
 
-av-volume-button[volume-level="1"]::before{
-	position: relative; 
+av-volume-button[volume-level="1"]::before {
+	position: relative;
 	font-family: icomoon;
 	content: "\ea28";
 	color: white;
 	cursor: pointer;
 }
 
-av-volume-button[volume-level="2"]::before{
-	position: relative; 
+av-volume-button[volume-level="2"]::before {
+	position: relative;
 	font-family: icomoon;
 	content: "\ea27";
 	color: white;
 	cursor: pointer;
 }
-av-volume-button[volume-level="4"]::before{
-	position: relative; 
+
+av-volume-button[volume-level="4"]::before {
+	position: relative;
 	font-family: icomoon;
 	content: "\ea26";
 	color: white;
 	cursor: pointer;
 }
-av-timestamp-wrapper{
+
+av-timestamp-wrapper {
 	margin-left: 20px;
 }
-av-timestamp{
+
+av-timestamp {
 	color: white;
 	font-size: 0.5em;
 	width: 1.25em;
-	user-selection: none;
+	user-select: none;
 }
-av-timestamp::after{
+
+av-timestamp::after {
 	content:'/';
 	color: white;
-	user-selection: none;
+	user-select: none;
 }
 
 av-duration {
 	color: white;
 	font-size: 0.5em;
 	width: 1.25em;
-	user-selection: none;
+	user-select: none;
 }
 
 av-seekbar {
@@ -255,7 +260,7 @@ av-seekbar::before {
 	height: 10px;
 	width: 100%;
 	content: '';
-	background-color:rgba(255,255,255,0.5);
+	background-color:rgba(255, 255, 255, 0.5);
 	top: 50%;
 	margin-top: -5px;
 }

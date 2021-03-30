@@ -1,8 +1,8 @@
 (() => {
 
 	function initVideo(video) {
-		video.removeAttribute('controls');
-		video.volume = 1.0;
+		video.removeAttribute('controls'); // Remove Browser based controls via JS, so we have them as a fallback when JS is disabled
+		video.volume = 1.0; // Force volume to 100% on init
 
 		const wrapper = document.createElement("AV-WRAP");
 		video.parentElement.insertBefore(wrapper,video);
@@ -82,9 +82,9 @@
 		}
 
 		function volumeMouseHandler(e){
-			if(e.buttons === 0){return;}
+			if(e.buttons !== 1){return;}
 			const rect = volumeSlider.getBoundingClientRect();
-			const volume = Math.min(1,(e.x-rect.x)/rect.width);
+			const volume = Math.max(0.01,Math.min(1,(e.x-rect.x)/rect.width));
 			volumeSliderMark.style.width = (volume*100.0)+"%";
 			video.volume = volume;
 			if(volume <= 0.02){
