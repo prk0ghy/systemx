@@ -16,10 +16,11 @@ section[content-type="box"] > inner-content > details > summary {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 16px 2em 8px 2em;
+	padding: var(--content-padding-quarter) var(--content-padding);
 	outline: none;
 	line-height: 2.6em;
 	background-color: #257DA7;
+	padding-right: 130px;
 }
 
 section[content-type="box"] > inner-content > details > summary::marker {
@@ -38,8 +39,8 @@ section[content-type="box"] > inner-content > details > summary::after {
 	content: "\e903";
 	position:absolute;
 	font-size: 2.5em;
-	top:16px;
-	right: 44px;
+	/* top:16px; */
+	right: 30px;
 	color: #fff;
 	transition:transform 500ms, top 500ms;
 	transition-timing-function: ease-in-out;
@@ -60,7 +61,6 @@ box-caption p {
 box-caption {
 	position:relative;
 	user-select:none;
-	padding-right:112px;
 }
 
 box-content {
@@ -74,11 +74,11 @@ box-content {
 }
 
 box-content > section {
-	padding:1em 2em;
+	padding:var(--content-padding-half) var(--content-padding);
 }
 
 box-content > footer {
-	padding: 24px 48px;
+	padding: var(--content-padding-half) var(--content-padding);
 	font-style:italic;
 	font-size:0.8em;
 	font-weight:500;
@@ -109,4 +109,82 @@ box-content > footer {
 .box-wrap.active > summary::before,
 .box-wrap.active > summary::after {
 	top:6px;
+}
+/* Breaking Points i made before looking at font size
+
+@media screen and (max-width: 600px) {
+	section[content-type="box"] > inner-content > details > summary {
+		padding: 12px 75px 6px 25px;
+	}
+
+	section[content-type="box"] > inner-content > details > summary::before,
+	section[content-type="box"] > inner-content > details > summary::after {
+		right: 25px;
+	}
+}
+
+@media screen and (max-width: 530px) {
+	section[content-type="box"] > inner-content > details > summary {
+		padding: 12px 58px 6px 12px;
+	}
+
+	section[content-type="box"] > inner-content > details > summary::before,
+	section[content-type="box"] > inner-content > details > summary::after {
+		right: 12px;
+	}
+}
+
+@media screen and (max-width: 460px) {
+
+}
+*/
+
+@media screen and (max-width: 950px) {
+	section[content-type="box"] > inner-content > details > summary::before,
+	section[content-type="box"] > inner-content > details > summary::after {
+		right: 35px;
+	}
+
+	.box-wrap.active {
+		width:100%;
+		max-width:calc(100% - (var(--content-padding) * 2));
+	}
+}
+
+@media screen and (max-width: 850px) {
+	section[content-type="box"] > inner-content > details > summary::before,
+	section[content-type="box"] > inner-content > details > summary::after {
+		right: 40px;
+	}
+}
+
+@media screen and (max-width: 750px) {
+	section[content-type="box"] > inner-content > details > summary{
+		padding: var(--content-padding-quarter) var(--content-padding);
+		padding-right: 100px;
+	}
+
+	section[content-type="box"] > inner-content > details > summary::before,
+	section[content-type="box"] > inner-content > details > summary::after {
+		right: 24px;
+	}
+}
+
+@media screen and (max-width: 650px) {
+	section[content-type="box"] > inner-content > details > summary::before,
+	section[content-type="box"] > inner-content > details > summary::after {
+		right: 30px;
+	}
+}
+
+@media screen and (max-width: 550px) {
+
+}
+
+@media screen and (max-width: 450px) {
+
+}
+
+@media screen and (max-width: 400px) {
+
 }

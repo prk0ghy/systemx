@@ -13,7 +13,7 @@ section[content-type="embed"] > inner-content > details > summary::-webkit-detai
 }
 
 [figure-type="embed"] details.license > summary {
-	margin-top:0.5em;
+	margin-top:var(--content-padding-quarter);
 }
 
 main > section[content-type="embed"]::after {
@@ -37,7 +37,7 @@ section[content-type="embed"] figcaption {
 	font-family: var(--font-headlines);
 	font-weight: 400;
 	font-size: 0.8em;
-	padding:0.5em 0;
+	padding:var(--content-padding-quarter) 0;
 }
 
 section[content-type="embed"] > inner-content > figure > lazy-iframe,
@@ -48,11 +48,11 @@ section[content-type="embed"] > inner-content > figure > iframe {
 }
 
 section[content-type="embed"] [figure-type="embed"] > figcaption {
-	padding-right:2.5em !important;
+	padding-right:64px !important;
 }
 
 section section[content-type="embed"] [figure-type="embed"] > figcaption {
-	padding-left:2em;
+	padding-left:var(--content-padding);
 }
 
 section[content-type="task"] section[content-type="embed"] [figure-type="embed"] > figcaption {
@@ -115,6 +115,6 @@ section[content-type="task"] section[content-type="embed"] [figure-type="embed"]
 }
 
 .h5p-iframe {
-	background: var(--background-color);
+	background: var(--background-color) !important;
 }
 

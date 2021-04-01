@@ -1,6 +1,9 @@
 :root {
 	--content-width: 950px;
-	--content-padding: 40px;
+	--content-padding: 48px;
+	--content-padding-half: 24px;
+	--content-padding-quarter: 12px;
+	--content-padding-eight: 6px;
 	--font-headlines: jura, serif;
 	--font-content: montserrat, sans-serif;
 	--text-color: #333;
@@ -25,4 +28,22 @@
 	--table-color: #222428;
 	--table-background-header: #1E3E51;
 	--table-background-content: #CFE2EC9C;
+}
+
+@media screen and (max-width: 650px) {
+	:root {
+		--content-padding: 32px;
+		--content-padding-half: 16px;
+		--content-padding-quarter: 8px;
+		--content-padding-eight: 4px;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	:root {
+		--content-padding: 24px;
+		--content-padding-half: 12px;
+		--content-padding-quarter: 6px;
+		--content-padding-eight: 3px;
+	}
 }

@@ -30,7 +30,7 @@ main > section > inner-content {
 	max-width:var(--content-width);
 	padding:0 var(--content-padding);
 	box-sizing:border-box;
-	margin:0 auto 2em;
+	margin:0 auto var(--content-padding);
 	position:relative;
 }
 
@@ -63,6 +63,30 @@ details > summary {
 	outline:none;
 }
 
-#button-settings {
-	display:none;
+@media screen and (max-width: 950px) {
+	body { font-size:1.6em; }
+}
+
+@media screen and (max-width: 850px) {
+	body { font-size:1.5em; }
+}
+
+@media screen and (max-width: 750px) {
+	body { font-size:1.4em; }
+}
+
+@media screen and (max-width: 650px) {
+	body { font-size:1.3em; }
+}
+
+@media screen and (max-width: 550px) {
+	body { font-size:1.2em; }
+}
+
+@media screen and (max-width: 450px) {
+	body { font-size:1.1em; }
+}
+
+@media screen and (max-width: 400px) {
+	body { font-size:1em; }
 }

@@ -1,19 +1,19 @@
 main ol,
 main ul {
-	margin-bottom:1em;
+	margin-bottom:var(--content-padding-half);
 }
 
 main li ol,
 main li ul {
-	padding-top:1em;
+	padding-top:var(--content-padding-half);
 }
 
 main ol > li,
 main ul > li {
 	position: relative;
 	list-style-type: none;
-	padding-left: 1.5em;
-	margin-bottom:1em;
+	padding-left: var(--content-padding);
+	margin-bottom:var(--content-padding-half);
 }
 
 main ol > li:last-child,

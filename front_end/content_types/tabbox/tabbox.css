@@ -15,19 +15,30 @@
 }
 
 .tabbox-content > section {
-	padding:0;
+	padding:var(--content-padding-half) var(--content-padding);
 }
 
+.tabbox-content > section:last-child {
+	padding-bottom:0;
+}
+
+.tabbox-content > section[content-type="task"],
+.tabbox-content > section[content-type="audio"],
+.tabbox-content > section[content-type="embed"],
 .tabbox-content > section[content-type="video"] {
 	padding:0;
 }
 
+.tabbox-content > section[content-type="audio"] figcaption,
+.tabbox-content > section[content-type="embed"] figcaption,
 .tabbox-content > section[content-type="video"] figcaption {
-	padding: 0.5em 2em 0.5em 2em;
+	padding: var(--content-padding-quarter) var(--content-padding);
 }
 
 .tabbox-header-wrap {
 	text-align:left;
+	overflow-x:auto;
+	white-space:nowrap;
 }
 
 .tabbox-header {
@@ -36,7 +47,7 @@
 	color: var(--dlw-blue);
 	font-size:0.6em;
 	margin:0 6px;
-	padding:0.5em 1em;
+	padding:var(--content-padding-quarter) var(--content-padding-half);
 	transition: background-color 300ms, color 300ms, box-shadow 300ms;
 	cursor:pointer;
 	user-select:none;
@@ -64,7 +75,7 @@
 	font-family: var(--font-headlines);
 	font-weight:600;
 	margin:0 8px;
-	padding:12px 0;
+	padding:var(--content-padding-quarter) 0;
 	background-color: var(--background-red);
 	color: var(--task-red);
 	box-shadow: 1px 3px 6px 1px #00000089;
@@ -144,7 +155,7 @@ main > section[content-type="tabbox"] section[content-type="embed"] {
 }
 
 [content-type="tabbox"] > inner-content > details > section {
-	padding: 1em 1.5em 0;
+	padding: var(--content-padding-half) var(--content-padding) 0;
 }
 
 [content-type="tabbox"] > inner-content > details > section > h4 {
@@ -152,5 +163,5 @@ main > section[content-type="tabbox"] section[content-type="embed"] {
 }
 
 [content-type="tabbox"] > inner-content > details > section > p {
-	padding-top: 1em;
+	padding-top: var(--content-padding-half);
 }

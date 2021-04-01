@@ -1,7 +1,7 @@
 glossar-entry {
 	display:none;
 	box-sizing:border-box;
-	border-right:solid 8px var(--box-green);
+	border-right:solid var(--content-padding-quarter) var(--box-green);
 }
 
 glossar-entry > modal-close {
@@ -13,7 +13,7 @@ glossar-entry-content {
 	max-width: var(--content-width);
 	margin:0 0 0 auto;
 	display:block;
-	border-left:solid 8px var(--background-color);
+	border-left:solid var(--content-padding-quarter) var(--background-color);
 	padding: var(--content-padding);
 }
 

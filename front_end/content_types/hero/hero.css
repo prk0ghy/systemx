@@ -34,7 +34,7 @@ figure[figure-type="heroimage"] figcaption p {
 	margin:0 auto;
 	display:block;
 	max-width:var(--content-width);
-	padding:0.5em var(--content-padding);
+	padding:var(--content-padding-quarter) var(--content-padding);
 	font-size:0.8em;
 	line-height:1.5em;
 }
@@ -44,7 +44,7 @@ section[content-type="heroimage"] details.license > license-content {
 	margin:0 auto;
 	display:block;
 	max-width:var(--content-width);
-	padding:0.5em var(--content-padding);
+	padding:var(--content-padding-quarter) var(--content-padding);
 	left:calc(50% - var(--content-width) / 2);
 }
 

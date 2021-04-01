@@ -10,6 +10,10 @@ function showLazyIframe(ele){
 
 function showEmbedSections(container){
 	for(const child of container.children){
+		if(child.tagName !== "SECTION"){continue;}
+		if(child.getAttribute("content-type") === "task"){
+			showEmbedSections(child.querySelector("div.task-content"));
+		}
 		if(child.getAttribute("content-type") !== "embed"){continue;}
 		for(const lazyIframe of child.querySelectorAll("lazy-iframe")){
 			showLazyIframe(lazyIframe);

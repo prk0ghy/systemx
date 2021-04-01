@@ -39,7 +39,6 @@ function getFirstParentSection(ele){
 					const contentJSON = JSON.stringify(editor.getContents());
 					localStorage.setItem(localStorageKey,contentJSON);
 				},200); // Only write to localStorage after 200ms of inactivity
-				console.log(editor.parentNode);
 			});
 
 			const loadedContentJSON = localStorage.getItem(localStorageKey);

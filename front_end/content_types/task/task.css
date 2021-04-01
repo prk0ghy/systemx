@@ -1,12 +1,22 @@
+
+
 section[content-type="task"] .task-content {
 	box-shadow: 0 3px 6px #00000063;
-	border-top:12px solid var(--task-red);
-	border-bottom: 12px solid var(--task-red);
+	border-top:var(--content-padding-quarter) solid var(--task-red);
+	border-bottom: var(--content-padding-quarter) solid var(--task-red);
 	background: #fff;
 }
 
+section[content-type="task"] > inner-content {
+	position:relative;
+}
+
 section[content-type="task"] .task-content > section {
-	padding: 2em;
+	padding: var(--content-padding-half) var(--content-padding);
+}
+
+section[content-type="tabbox"] section[content-type="task"] > inner-content {
+	padding:0;
 }
 
 section[content-type="tabbox"] section[content-type="task"] .task-content {
@@ -50,7 +60,7 @@ section[content-type="box"] > inner-content > .box-wrap.active > box-content > s
 }
 
 .tasktext {
-	width:calc(100% - 2em);
+	width:calc(100% - var(--content-padding));
 	font-size:1em;
 	height:5em;
 	display:block;
@@ -71,15 +81,12 @@ main > section[content-type="task"]::after {
 	z-index:-1;
 }
 
-section[content-type="task"] > inner-content {
-	position:relative;
-}
-
 /* Upload Button */
 
 upload-section {
 	position: relative;
 	display: block;
+	padding:var(--content-padding-half) var(--content-padding);
 }
 
 upload-button {
@@ -109,10 +116,162 @@ upload-section input[type=file] {
 
 /* height of blank space from quill */
 
-html body .ql-snow .ql-editor {
-	padding-top: 1.5em;
-	padding-bottom: 1.5em;
-	min-height: 15em;
+.ql-container {
+	font-size:inherit;
+}
+
+.ql-editor {
+	padding: var(--content-padding-quarter) 0;
+	min-height: 10em;
+}
+
+/* Styling for Textelements  */
+
+.ql-editor p {
+	font-family: var(--font-content);
+	line-height:1.25em;
+	font-weight: 400;
+}
+
+.ql-editor h1 {
+	font-family: var(--font-headlines);
+	font-size:1.6em;
+	font-weight: 500;
+	line-height:1.2em;
+	margin-bottom:0;
+}
+
+.ql-editor h2 {
+	font-family: var(--font-headlines);
+	font-size: 1.3em;
+	font-weight: 500;
+	line-height:1.2em;
+	margin-bottom:0;
+}
+
+.ql-editor ul {
+	margin-bottom: 2em;
+	margin-top: 2em;
+}
+
+.ql-editor ol {
+	margin-bottom: var(--content-padding);
+	margin-top: var(--content-padding);
+}
+
+.ql-editor ul > li::before {
+	position: absolute;
+	top: 0.1em;
+	left: 1.5em;
+	content: "";
+	display: block;
+	width: 0.4em;
+	height: 0.4em;
+	border: 0.15em solid var(--task-red);
+	border-radius: 50%;
+	background: transparent;
+}
+
+.ql-editor ul > li {
+	font-family: var(--font-content);
+	line-height:0.7em;
+	font-weight: 400;
+	font-size:1.85em;
+}
+
+.ql-editor ol > li::before {
+	color: var(--box-magenta);
+	position: absolute;
+	left: var(--content-padding-half);
+}
+
+.ql-editor ol > li {
+	font-family: var(--font-content);
+	line-height:0.7em;
+	font-weight: 400;
+	font-size:1.85em;
+}
+
+/* Toolbar Styling */
+
+.ql-toolbar.ql-snow {
+	display: block;
+	text-align:left;
+	margin-top: 1em;
+	border: none;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	padding: var(--content-padding-quarter) var(--content-padding);
+}
+
+.ql-toolbar.ql-snow .ql-formats {
+	display: inline-block;
+}
+
+.ql-snow.ql-toolbar button {
+	background: none;
+	border: none;
+	cursor: pointer;
+	display: inline-block;
+	height: 2.5em;
+	width: 3.5em;
+	padding: 0;
+	vertical-align:bottom;
+}
+
+.ql-italic, .ql-underline, .ql-strike {
+	margin-right: -0.5em;
+}
+
+.ql-bold {
+	margin-right: -1em;
+}
+
+.ql-toolbar.ql-snow .ql-picker-label {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 3em;
+}
+
+.ql-picker .ql-color-picker {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0 1em 0 2em;
+}
+
+.ql-color {
+	margin-right: 1em;
+}
+
+.ql-snow .ql-color-picker .ql-picker-options {
+	width: 278px;
+}
+
+.ql-snow .ql-color-picker .ql-picker-item {
+	height: 30px;
+	width: 30px;
+	margin: 4px;
+}
+
+/* Text Container Styling */
+
+.ql-container.ql-snow {
+	border: none;
+	border-top: 1px solid #ccc;
+	padding-left: 48px;
+	padding-right: 48px;
+}
+
+.ql-toolbar.ql-snow .ql-formats:nth-of-type(2) {
+	margin-left: 0.5em;
+	margin-right: 0.7em;
+}
+
+.ql-toolbar.ql-snow .ql-formats:nth-of-type(3) {
+	margin-right: 2em;
+	padding-top: 0.1em;
 }
 
 section[content-type="task"] ol > li > ol-num {
@@ -126,162 +285,4 @@ section[content-type="task"] ul > li::before {
 
 section[content-type="task"] ul ul > li::before {
 	background-color: var(--task-red);
-}
-
-/* Styling for Textelements  */
-
-html body .ql-snow .ql-editor p {
-	font-family: var(--font-content);
-	line-height:1.25em;
-	font-weight: 400;
-	font-size:1.85em;
-}
-
-html body .ql-snow .ql-editor h1 {
-	font-family: var(--font-headlines);
-	font-size:2.6em;
-	font-weight: 700;
-	line-height:1.2em;
-	margin-bottom:0.5em;
-}
-
-html body .ql-snow .ql-editor h2 {
-	font-family: var(--font-headlines);
-	font-size: 2.1em;
-	font-weight: 600;
-	line-height:1.2em;
-	margin-bottom:0.5em;
-}
-
-html body main .ql-snow .ql-editor ul {
-	margin-bottom: 2em;
-	margin-top: 2em;
-}
-
-html body main .ql-snow .ql-editor ol {
-	margin-bottom: 2em;
-	margin-top: 2em;
-}
-
-html body main .ql-snow .ql-editor ul > li::before {
-	position: absolute;
-	top: 0.1em;
-	left: 1.5em;
-	content: "";
-	display: block;
-	width: 0.4em;
-	height: 0.4em;
-	border: 0.15em solid var(--task-red);
-	border-radius: 50%;
-	background: transparent;
-}
-
-html body main .ql-snow .ql-editor ul > li {
-	font-family: var(--font-content);
-	line-height:0.7em;
-	font-weight: 400;
-	font-size:1.85em;
-}
-
-html body main .ql-snow .ql-editor ol > li::before {
-	color: var(--box-magenta);
-	position: absolute;
-	left: 1em;
-}
-
-html body main .ql-snow .ql-editor ol > li {
-	font-family: var(--font-content);
-	line-height:0.7em;
-	font-weight: 400;
-	font-size:1.85em;
-}
-
-/* Toolbar Styling */
-
-html body .ql-toolbar.ql-snow {
-	display: flex;
-	align-items: center;
-	flex-direction: row;
-	margin-top: 1em;
-	border: none;
-	border-top: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
-	padding-left: 2em;
-}
-
-.ql-snow .ql-toolbar button,
-html body .ql-snow.ql-toolbar button {
-	background: none;
-	border: none;
-	cursor: pointer;
-	display: block;
-	float: left;
-	height: 2.5em;
-	width: 3.5em;
-	padding: 0;
-}
-
-.ql-italic, .ql-underline, .ql-strike {
-	margin-right: -0.5em;
-}
-
-.ql-bold {
-	margin-right: -1em;
-}
-
-.ql-underline {
-	margin-top: 0.3em;
-}
-
-html body .ql-toolbar.ql-snow .ql-formats {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-html body .ql-toolbar.ql-snow .ql-picker-label {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 3em;
-}
-
-html body .ql-picker .ql-color-picker {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin: 0 1em 0 2em;
-}
-
-span .ql-color {
-	margin-right: 1em;
-}
-
-html body .ql-snow .ql-color-picker .ql-picker-options {
-	width: 278px;
-}
-
-html body .ql-snow .ql-color-picker .ql-picker-item {
-	height: 30px;
-	width: 30px;
-	margin: 4px;
-}
-
-/* Text Container Styling */
-
-html body .ql-container.ql-snow {
-	border: none;
-	border-top: 1px solid #ccc;
-	padding-left: 2em;
-	padding-right: 2em;
-}
-
-html body .ql-toolbar.ql-snow .ql-formats:nth-of-type(2) {
-	margin-left: 0.5em;
-	margin-right: 0.7em;
-}
-
-html body .ql-toolbar.ql-snow .ql-formats:nth-of-type(3) {
-	margin-right: 2em;
-	padding-top: 0.1em;
 }

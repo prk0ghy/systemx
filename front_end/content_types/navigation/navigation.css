@@ -23,7 +23,7 @@ aside#navigation.active {
 }
 
 aside#navigation > nav {
-	padding:48px 0;
+	padding:var(--content-padding) 0;
 	height:100%;
 }
 
@@ -39,16 +39,16 @@ nav li {
 nav li a {
 	display:block;
 	width:100%;
-	padding:0.5em 2em;
+	padding:var(--content-padding-quarter) var(--content-padding);
 	color:var(--text-color);
 	text-decoration:none;
 	font-family: var(--font-headlines);
 	font-size:1.3em;
 }
 
-nav li li a {
-	padding:0.5em 3em;
-}
+nav li a { padding-left:calc(var(--content-padding) * 1); }
+nav li li a { padding-left:calc(var(--content-padding) * 2); }
+nav li li li a { padding-left:calc(var(--content-padding) * 3); }
 
 nav li a:hover {
 	background-color: rgba(0, 0, 0, 0.05);
@@ -64,17 +64,19 @@ nav .nav-toggle {
 	display:block;
 	font-size:1em;
 	position:absolute;
-	left:0.75em;
-	top:0.85em;
+	left:0.25em;
+	top:0.5em;
+	font-family:icomoon;
 	text-align:center;
 	cursor:pointer;
 	color:rgb(var(--highlight-color));
 	transform:rotate(0deg);
 	transition:transform 300ms;
 	transform-origin: 50% 50%;
-	border-left:solid 1em rgb(var(--highlight-color));
-	border-top:solid 0.5em transparent;
-	border-bottom:solid 0.5em transparent;
+}
+
+nav .nav-toggle::before {
+	content:"\e909";
 }
 
 nav li.active > .nav-toggle {

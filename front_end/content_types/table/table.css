@@ -15,7 +15,7 @@ th, td {
 	text-align: center;
 	height: 50px;
 	width: auto;
-	padding:0.5em 1em;
+	padding:var(--content-padding-quarter) var(--content-padding-half);
 	background: var(--table-background-content);
 	color: var(--text-color);
 	border: 10px solid var(--background-color);

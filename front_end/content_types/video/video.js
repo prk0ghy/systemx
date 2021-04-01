@@ -1,43 +1,69 @@
 (() => {
+	function initMedia(media) {
+		media.removeAttribute('controls'); // Remove Browser based controls via JS, so we have them as a fallback when JS is disabled
+		media.volume = 1.0; // Force volume to 100% on init
 
-	function initVideo(video) {
-		video.removeAttribute('controls'); // Remove Browser based controls via JS, so we have them as a fallback when JS is disabled
-		video.volume = 1.0; // Force volume to 100% on init
+		media.removeAttribute('controls');
 
-		const wrapper = document.createElement("AV-WRAP");
-		video.parentElement.insertBefore(wrapper,video);
-		wrapper.appendChild(video);
+		const wrapper = document.createElement("MEDIA-WRAP");
+		media.parentElement.insertBefore(wrapper,media);
+		wrapper.appendChild(media);
+		if(media.tagName === "AUDIO"){
+			wrapper.setAttribute("media-type","audio");
+		}else{
+			wrapper.setAttribute("media-type","video");
+		}
 
-		const controlsWrapper = document.createElement("AV-CONTROLS");
+		const controlsWrapper = document.createElement("MEDIA-CONTROLS");
 		wrapper.appendChild(controlsWrapper);
 
-		const seekbar = document.createElement("AV-SEEKBAR");
+		const seekbar = document.createElement("MEDIA-SEEKBAR");
 		controlsWrapper.appendChild(seekbar);
 
-		const seekbarMark = document.createElement("AV-SEEKBAR-MARK");
+		const seekbarMark = document.createElement("MEDIA-SEEKBAR-MARK");
 		seekbar.appendChild(seekbarMark);
 
-		const controlsWrapperLeft = document.createElement("AV-CONTROLS-LEFT");
+		const controlsWrapperLeft = document.createElement("MEDIA-CONTROLS-LEFT");
 		controlsWrapper.appendChild(controlsWrapperLeft);
 
-		const controlsWrapperRight = document.createElement("AV-CONTROLS-RIGHT");
+		const controlsWrapperRight = document.createElement("MEDIA-CONTROLS-RIGHT");
 		controlsWrapper.appendChild(controlsWrapperRight);
 
-		const playPauseButton = document.createElement("AV-PLAY-PAUSE");
+		const playPauseButton = document.createElement("MEDIA-PLAY-PAUSE");
 		controlsWrapperLeft.appendChild(playPauseButton);
+
+		function showStatusIcon(iconName){
+			const statusIcon = document.createElement("MEDIA-STATUS-ICON");
+			statusIcon.setAttribute('icon-name',iconName);
+			wrapper.appendChild(statusIcon);
+			statusIcon.offsetTop; // Sync
+			statusIcon.classList.add('fading-out');
+
+			statusIcon.addEventListener("transitionend", (e) => {
+				//statusIcon.remove();
+			});
+		}
+
+		media.addEventListener("click", (e) => {
+			e.preventDefault();
+			playPauseButton.click();
+		});
 
 		playPauseButton.addEventListener("click",(e) => {
 			e.preventDefault();
-			if(video.paused){
+			if(media.paused){
 				playPauseButton.classList.add('active');
-				video.play();
+				media.play();
+				showStatusIcon('play');
 			} else {
 				playPauseButton.classList.remove('active');
-				video.pause();
+				media.pause();
+				showStatusIcon('pause');
 			}
 		});
 
-		const fullscreenButton = document.createElement("AV-FULLSCREEN");
+
+		const fullscreenButton = document.createElement("MEDIA-FULLSCREEN");
 		controlsWrapperRight.appendChild(fullscreenButton);
 
 		fullscreenButton.addEventListener("click", (e) => {
@@ -50,26 +76,33 @@
 				document.exitFullscreen();
 			}
 		});
+		document.addEventListener('fullscreenchange', (e) => {
+			if (document.fullscreenElement === wrapper) {
+				fullscreenButton.classList.add('active');
+			} else{
+				fullscreenButton.classList.remove('active');
+			}
+		});
 
-		const volumeButton = document.createElement("AV-VOLUME-BUTTON");
+		const volumeButton = document.createElement("MEDIA-VOLUME-BUTTON");
 		controlsWrapperLeft.appendChild(volumeButton);
 
-		const volumeSlider = document.createElement("AV-VOLUME-SLIDER");
+		const volumeSlider = document.createElement("MEDIA-VOLUME-SLIDER");
 		controlsWrapperLeft.appendChild(volumeSlider);
 
-		const volumeSliderMark = document.createElement("AV-VOLUME-SLIDER-MARK");
+		const volumeSliderMark = document.createElement("MEDIA-VOLUME-SLIDER-MARK");
 		volumeSlider.appendChild(volumeSliderMark);
 
 		volumeButton.addEventListener("click", (e) => {
 			e.preventDefault();
-			if(!video.muted){
+			if(!media.muted){
 				volumeButton.classList.add('active');
-				video.muted = true;
+				media.muted = true;
 				volumeSliderMark.style.width = "0%";
 			} else{
 				volumeButton.classList.remove('active');
-				video.muted = false;
-				volumeSliderMark.style.width = (video.volume*100.00) +"%";
+				media.muted = false;
+				volumeSliderMark.style.width = (media.volume*100.00) +"%";
 			}
 		});
 
@@ -86,13 +119,13 @@
 			const rect = volumeSlider.getBoundingClientRect();
 			const volume = Math.max(0.01,Math.min(1,(e.x-rect.x)/rect.width));
 			volumeSliderMark.style.width = (volume*100.0)+"%";
-			video.volume = volume;
+			media.volume = volume;
 			if(volume <= 0.02){
-				video.muted = true;
+				media.muted = true;
 				volumeButton.classList.add('active');
 				volumeButton.setAttribute("volume-level",0);
 			}else{
-				video.muted = false;
+				media.muted = false;
 				volumeButton.classList.remove('active');
 				volumeButton.setAttribute("volume-level",0|((volume/0.33)+1));
 			}
@@ -100,27 +133,27 @@
 		volumeSlider.addEventListener("mousedown", volumeMouseHandler);
 		volumeSlider.addEventListener("mousemove", volumeMouseHandler);
 
-		const timestampWrapper = document.createElement("AV-TIMESTAMP-WRAPPER");
+		const timestampWrapper = document.createElement("MEDIA-TIMESTAMP-WRAPPER");
 		controlsWrapperLeft.appendChild(timestampWrapper);
 
-		const timestamp = document.createElement("AV-TIMESTAMP");
+		const timestamp = document.createElement("MEDIA-TIMESTAMP");
 		timestampWrapper.appendChild(timestamp);
 
-		const duration = document.createElement("AV-DURATION");
+		const duration = document.createElement("MEDIA-DURATION");
 		timestampWrapper.appendChild(duration);
 
 		timestamp.innerText = secondsToTimestamp(0);
-		duration.innerText = secondsToTimestamp(video.duration);
+		duration.innerText = secondsToTimestamp(media.duration);
 
 		function seekbarUpdate(){
-			const curPos = (video.currentTime/video.duration);
+			const curPos = (media.currentTime/media.duration);
 			seekbarMark.style.width = (curPos*100.0)+"%";
-			timestamp.innerText = secondsToTimestamp(video.currentTime);
+			timestamp.innerText = secondsToTimestamp(media.currentTime);
 		}
 
-		video.addEventListener('timeupdate',seekbarUpdate);
-		video.addEventListener('durationchange', () => {
-			duration.innerText= secondsToTimestamp(video.duration);
+		media.addEventListener('timeupdate',seekbarUpdate);
+		media.addEventListener('durationchange', () => {
+			duration.innerText= secondsToTimestamp(media.duration);
 		});
 
 		function seekbarHandler(e){
@@ -128,18 +161,23 @@
 			const rect = seekbar.getBoundingClientRect();
 			const curPos = Math.min(1,(e.x-rect.x)/rect.width);
 			seekbarMark.style.width = (curPos*100.0)+"%";
-			video.currentTime = (curPos*video.duration)|0;
+			media.currentTime = (curPos*media.duration)|0;
 			seekbarUpdate();
 		}
 		seekbar.addEventListener("mousedown", seekbarHandler);
 		seekbar.addEventListener("mousemove", seekbarHandler);
 	}
 
-	function initAllVideos() {
+	function initAllMedia() {
 		const getVideos = document.querySelectorAll('video');
 		for (const video of getVideos){
-			initVideo(video);
+			initMedia(video);
+		}
+
+		const getAudios = document.querySelectorAll('audio');
+		for (const audio of getAudios){
+			initMedia(audio);
 		}
 	}
-	setTimeout(initAllVideos,0);
+	setTimeout(initAllMedia,0);
 })();
