@@ -1,17 +1,18 @@
 
 
-section[content-type="task"] .task-content {
+task-content {
 	box-shadow: 0 3px 6px #00000063;
 	border-top:var(--content-padding-quarter) solid var(--task-red);
 	border-bottom: var(--content-padding-quarter) solid var(--task-red);
 	background: #fff;
+	display:block;
 }
 
 section[content-type="task"] > inner-content {
 	position:relative;
 }
 
-section[content-type="task"] .task-content > section {
+section[content-type="task"] task-content > section {
 	padding: var(--content-padding-half) var(--content-padding);
 }
 
@@ -19,7 +20,7 @@ section[content-type="tabbox"] section[content-type="task"] > inner-content {
 	padding:0;
 }
 
-section[content-type="tabbox"] section[content-type="task"] .task-content {
+section[content-type="tabbox"] section[content-type="task"] task-content {
 	padding:0;
 }
 
@@ -28,7 +29,7 @@ section[content-type="box"] section[content-type="task"] {
 	padding-right:0 !important;
 }
 
-section[content-type="box"] section[content-type="task"] .task-content {
+section[content-type="box"] section[content-type="task"] task-content {
 	border:none;
 	padding-top:0;
 	padding-bottom:1em;
@@ -47,12 +48,12 @@ section[content-type="box"] > inner-content > .box-wrap.active > box-content > s
 	padding-bottom: 0;
 }
 
-section[content-type="box"] > inner-content > .box-wrap.active > box-content > section[content-type="task"] .task-content section {
+section[content-type="box"] > inner-content > .box-wrap.active > box-content > section[content-type="task"] task-content section {
 	padding-top: 0;
 	padding-bottom: 0;
 }
 
-.task-content inner-content > h3 {
+task-content inner-content > h3 {
 	font-size: 1.35em;
 	color: var(--task-red);
 	font-weight: 600;
@@ -110,6 +111,10 @@ upload-button:hover {
 
 upload-section input[type=file] {
 	display:none;
+}
+
+fancy-task-editor {
+	display:block;
 }
 
 /* Text-Editor Quill Styling */
@@ -195,24 +200,19 @@ upload-section input[type=file] {
 /* Toolbar Styling */
 
 .ql-toolbar.ql-snow {
-	display: block;
-	text-align:left;
 	margin-top: 1em;
 	border: none;
 	border-top: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
 	padding: var(--content-padding-quarter) var(--content-padding);
-}
-
-.ql-toolbar.ql-snow .ql-formats {
-	display: inline-block;
+	align-content: center;
 }
 
 .ql-snow.ql-toolbar button {
 	background: none;
 	border: none;
 	cursor: pointer;
-	display: inline-block;
+	display: flex;
 	height: 2.5em;
 	width: 3.5em;
 	padding: 0;
@@ -249,12 +249,6 @@ upload-section input[type=file] {
 	width: 278px;
 }
 
-.ql-snow .ql-color-picker .ql-picker-item {
-	height: 30px;
-	width: 30px;
-	margin: 4px;
-}
-
 /* Text Container Styling */
 
 .ql-container.ql-snow {
@@ -265,7 +259,7 @@ upload-section input[type=file] {
 }
 
 .ql-toolbar.ql-snow .ql-formats:nth-of-type(2) {
-	margin-left: 0.5em;
+	margin-left: 0.2em;
 	margin-right: 0.7em;
 }
 
@@ -285,4 +279,73 @@ section[content-type="task"] ul > li::before {
 
 section[content-type="task"] ul ul > li::before {
 	background-color: var(--task-red);
+}
+
+/* Mobile Styling */
+
+@media screen and (max-width: 575px) {
+	.ql-toolbar.ql-snow .ql-formats:nth-of-type(4) {
+		padding-top: 4px;
+	}
+}
+
+@media screen and (max-width: 720px) {
+	.ql-toolbar.ql-snow .ql-formats {
+		display:block;
+	}
+	.ql-toolbar.ql-snow .ql-formats:nth-of-type(2n+1) {
+		clear:both;
+		float:left;
+		margin-left:0;
+		margin-bottom:0.5em;
+	}
+	.ql-toolbar.ql-snow .ql-formats:nth-of-type(2n) {
+		float:right;
+		margin-right:0;
+	}
+}
+
+@media screen and (max-width: 472px) {
+	.ql-toolbar.ql-snow .ql-formats:nth-of-type(3) {
+		padding-top: 7px;
+	}
+
+	.ql-snow .ql-picker {
+		left: -10px;
+	}
+
+	.ql-toolbar.ql-snow .ql-formats:nth-of-type(2) {
+		margin-left: 0.6em;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.ql-snow.ql-toolbar button {
+		height: 2.2em;
+	}
+
+	.ql-toolbar.ql-snow .ql-picker-label {
+		width: 2.7em;
+	}
+
+	.ql-toolbar.ql-snow .ql-formats:nth-of-type(2) {
+		margin-left: 0.45em;
+	}
+}
+
+@media screen and (max-width: 332px) {
+	.ql-toolbar.ql-snow .ql-formats:nth-of-type(2) {
+		margin-right: 0;
+		margin-left: 0.5em;
+	}
+}
+
+@media screen and (max-width: 323px) {
+	.ql-toolbar.ql-snow .ql-formats:nth-of-type(2) {
+		margin-left: -4px;
+	}
+
+	.ql-toolbar.ql-snow .ql-formats:nth-of-type(4) {
+		margin-left: -12px;
+	}
 }

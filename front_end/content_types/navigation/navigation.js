@@ -4,8 +4,7 @@ function initNavBar() {
 	const navBar = document.querySelector("body > aside");
 	const navButton = document.querySelector("#button-navigation");
 
-	const navCloseButton = document.createElement("div");
-	navCloseButton.id = "nav-close-button";
+	const navCloseButton = document.createElement("NAV-CLOSE-BUTTON");
 	navBar.append(navCloseButton);
 	navCloseButton.addEventListener("click", () => {
 		navBar.classList.remove("active");
@@ -32,21 +31,30 @@ setTimeout(initNavBar, 0);
 	function initNavigation() {
 		const navUl = document.querySelectorAll("nav > ul ul");
 
-		function refreshNavigationList(){
-			navUl.forEach(ele => {
-				if(ele.parentElement.classList.contains("active")){
-					ele.parentElement.firstElementChild.classList.add('active');
-					ele.classList.remove("hidden");
-				}else{
-					ele.classList.add("hidden");
-				}
-			});
+		function showNavigationActive(ele){
+			if((ele == null) || ((ele.tagName !== "UL") && (ele.tagName !== "LI"))){return;}
+			if(ele.tagName === "UL"){
+				ele.classList.remove("hidden");
+			}else{
+				ele.firstChild.classList.add("active");
+			}
+			showNavigationActive(ele.parentElement);
 		}
+
+		function refreshNavigationList(){
+			for(ele of document.querySelectorAll("nav ul")){
+				ele.classList.add("hidden");
+			}
+			for(ele of document.querySelectorAll("nav-toggle.active")){
+				ele.classList.remove("active");
+			}
+			showNavigationActive(document.querySelector("nav li.active"));
+		}
+
 
 		navUl.forEach(ele => {
 			const parentLi = ele.parentElement;
-			const toggle = document.createElement("div");
-			toggle.classList.add("nav-toggle");
+			const toggle = document.createElement("NAV-TOGGLE");
 			parentLi.prepend(toggle);
 
 			toggle.addEventListener("click", () => {
@@ -59,7 +67,8 @@ setTimeout(initNavBar, 0);
 				}
 			});
 		});
-		setTimeout(refreshNavigationList,0);
+		refreshNavigationList();
+
 
 		overlayCloseHandlers.push(() => {
 			refreshNavigationList();

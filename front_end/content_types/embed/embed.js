@@ -9,10 +9,11 @@ function showLazyIframe(ele){
 }
 
 function showEmbedSections(container){
+	if(container === null){return;}
 	for(const child of container.children){
 		if(child.tagName !== "SECTION"){continue;}
 		if(child.getAttribute("content-type") === "task"){
-			showEmbedSections(child.querySelector("div.task-content"));
+			showEmbedSections(child.querySelector("task-content"));
 		}
 		if(child.getAttribute("content-type") !== "embed"){continue;}
 		for(const lazyIframe of child.querySelectorAll("lazy-iframe")){
@@ -30,7 +31,7 @@ function showEmbedSectionsAll(containers){
 (()=>{
 	function initLazyIframes(){
 		showEmbedSections(document.querySelector("main"));
-		showEmbedSectionsAll(document.querySelectorAll("main > section[content-type=\"task\"] > inner-content > .task-content"));
+		showEmbedSectionsAll(document.querySelectorAll("task-content"));
 	}
 	setTimeout(initLazyIframes,0);
 })();

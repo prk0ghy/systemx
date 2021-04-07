@@ -19,14 +19,14 @@ async function getHeader(){
 	`;
 }
 
-export default async function wrapWithApplicationShell(targetName, {pageTitle, pageType, content}) {
+export default async function wrapWithApplicationShell(targetName, {pageTitle, pageType, pageURL, content}) {
 	return `
 		<!DOCTYPE html>
 		<html lang="de">
 			<head>${await getHead(targetName, pageTitle)}</head>
 			<body>
 				${await getHeader()}
-				${await getNavigationAside(targetName,pageType)}
+				${await getNavigationAside(targetName,pageType,pageURL)}
 				<main content-type="${pageType}">${content}</main>
 			</body>
 		</html>

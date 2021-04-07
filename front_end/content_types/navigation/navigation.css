@@ -59,7 +59,7 @@ nav li.active > a {
 	color:#fff;
 }
 
-nav .nav-toggle {
+nav nav-toggle {
 	content:'';
 	display:block;
 	font-size:1em;
@@ -75,16 +75,16 @@ nav .nav-toggle {
 	transform-origin: 50% 50%;
 }
 
-nav .nav-toggle::before {
+nav nav-toggle::before {
 	content:"\e909";
 }
 
-nav li.active > .nav-toggle {
+nav li.active > nav-toggle {
 	color:#fff;
 	border-left-color:#fff;
 }
 
-nav .nav-toggle.active {
+nav nav-toggle.active {
 	transform:rotate(90deg);
 }
 
@@ -92,7 +92,7 @@ nav ul.hidden {
 	display:none;
 }
 
-#nav-close-button {
+nav-close-button {
 	position:absolute;
 	left:50%;
 	bottom:0;
@@ -104,6 +104,6 @@ nav ul.hidden {
 	font-size:2em;
 }
 
-#nav-close-button::after {
+nav-close-button::after {
 	content:'\2716';
 }

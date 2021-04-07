@@ -51,8 +51,9 @@
 <section id="c52" content-type="audio">
 	<inner-content>
 		<figure figure-type="audio">
+			<img class="audio-bild" src="/img/icon-5974828_1280.jpg"/>
 			<audio controls>
-				<source src = "https://s3.eu-central-1.amazonaws.com/lasub/craft/audios/1.-Kapitel-Sachtexte.wav?mtime=20210323174524&focal=none type=" audio/mp3"/>
+				<source src="https://s3.eu-central-1.amazonaws.com/lasub/craft/audios/1.-Kapitel-Sachtexte.wav?mtime=20210323174524&focal=none type=" audio/mp3"/>
 			</audio>
 			<details class="license">
 				<summary>&sect;</summary>
@@ -136,14 +137,14 @@
 <section id="c12" content-type="tabbox">
 	<inner-content>
 		<a class="marker" id="6">6</a>
-		<div class="tabbox-header-wrap">
-			<div class="tabbox-header active" tab-index="1">Vor dem Lesen</div>
-			<div class="tabbox-header" tab-index="2">Während des Lesens</div>
-			<div class="tabbox-header" tab-index="3">Nach dem Lesen</div>
-		</div>
+		<tabbox-header-wrap>
+			<tabbox-header class="active" tab-index="1">Vor dem Lesen</tabbox-header>
+			<tabbox-header tab-index="2">Während des Lesens</tabbox-header>
+			<tabbox-header tab-index="3">Nach dem Lesen</tabbox-header>
+		</tabbox-header-wrap>
 
-		<div class="tabbox-content-wrap">
-			<div class="tabbox-content active" tab-index="1">
+		<tabbox-content-wrap>
+			<tabbox-content class="active" tab-index="1">
 				<section id="c13" content-type="embed" embed-type="video">
 					<inner-content>
 						<figure figure-type="embed">
@@ -152,8 +153,8 @@
 						</figure>
 					</inner-content>
 				</section>
-			</div>
-			<div class="tabbox-content" tab-index="2">
+			</tabbox-content>
+			<tabbox-content tab-index="2">
 				<section id="c14" content-type="embed" embed-type="video">
 					<inner-content>
 						<figure figure-type="embed">
@@ -161,8 +162,8 @@
 						</figure>
 					</inner-content>
 				</section>
-			</div>
-			<div class="tabbox-content" tab-index="3">
+			</tabbox-content>
+			<tabbox-content tab-index="3">
 				<section id="c15" content-type="embed" embed-type="video">
 					<inner-content>
 						<figure figure-type="embed">
@@ -170,8 +171,8 @@
 						</figure>
 					</inner-content>
 				</section>
-			</div>
-		</div>
+			</tabbox-content>
+		</tabbox-content-wrap>
 	</inner-content>
 </section>
 
@@ -192,7 +193,6 @@
 		<a class="marker" id="7">7</a>
 		<figure figure-type="embed">
 			<lazy-iframe src="https://h5p.test-dilewe.de/wp-admin/admin-ajax.php?action=h5p_embed&id=442"></lazy-iframe>
-			<!-- H5P kann direkt embedded werden, erstmal ohne lazy loading -->
 		</figure>
 	</inner-content>
 </section>
@@ -200,13 +200,13 @@
 <section id="c19" content-type="download">
 	<inner-content>
 		<a class="marker" id="8">8</a>
-		<div class="download">
-			<div class="download-text">
+		<download-wrap>
+			<download-text>
 				<p>Hier findest du den Lesetext zum Ausdrucken.</p>
-			</div>
-			<div class="download-icon">
+			</download-text>
+			<download-icon>
 				<a href="https://s3.eu-central-1.amazonaws.com/lasub/craft/downloads/Text_Gurkensalat_und_Partyfotos.pdf?mtime=20210205130106&focal=none" target="blank"><p>DOWNLOAD</p></a>
-			</div>
+			</download-icon>
 		</div>
 	</inner-content>
 </section>
@@ -220,7 +220,7 @@
 <section id="c21" content-type="task">
 	<inner-content>
 		<a class="marker" id="9">9</a>
-		<div class="task-content">
+		<task-content>
 			<section id="c22" content-type="text-and-image">
 				<inner-content>
 					<h3>Aufgabe - Triff eine gute Entscheidung</h3>
@@ -237,6 +237,6 @@
 				</inner-content>
 			</section>
 			<textarea class="tasktext"></textarea>
-		</div>
+		</task-content>
 	</inner-content>
 </section>

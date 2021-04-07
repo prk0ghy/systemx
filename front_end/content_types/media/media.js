@@ -8,11 +8,7 @@
 		const wrapper = document.createElement("MEDIA-WRAP");
 		media.parentElement.insertBefore(wrapper,media);
 		wrapper.appendChild(media);
-		if(media.tagName === "AUDIO"){
-			wrapper.setAttribute("media-type","audio");
-		}else{
-			wrapper.setAttribute("media-type","video");
-		}
+		wrapper.setAttribute("media-type",media.tagName === "AUDIO" ? "audio" : "video");
 
 		const controlsWrapper = document.createElement("MEDIA-CONTROLS");
 		wrapper.appendChild(controlsWrapper);

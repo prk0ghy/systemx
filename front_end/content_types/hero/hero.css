@@ -4,7 +4,6 @@ main > section[content-type="heroimage"] {
 	padding-right:0;
 	margin-left:0;
 	margin-right:0;
-	overflow:hidden;
 	position:relative;
 }
 

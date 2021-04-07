@@ -5,9 +5,9 @@
 		const boxes = document.querySelectorAll('section[content-type="tabbox"]');
 		boxes.forEach(box => {
 			const innerContent = box.firstElementChild;
-			const tabHeader  = innerContent.querySelectorAll(".tabbox-header");
-			const tabContent = innerContent.querySelectorAll(".tabbox-content");
-			showEmbedSections(innerContent.querySelector(".tabbox-content.active"));
+			const tabHeader  = innerContent.querySelectorAll("tabbox-header");
+			const tabContent = innerContent.querySelectorAll("tabbox-content");
+			showEmbedSections(innerContent.querySelector("tabbox-content.active"));
 
 			tabHeader.forEach((header => {
 				const curIndex = header.getAttribute('tab-index') | 0;

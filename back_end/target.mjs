@@ -1,6 +1,6 @@
 import { buildHead } from "./page_elements/head.mjs";
 import * as resources from "./page_elements/resources.mjs";
-import {genNavigation} from "./page_elements/navigation.mjs";
+import {loadNavigation} from "./page_elements/navigation.mjs";
 import * as options from "./options.mjs";
 import { getName as getContentTypeName, render} from "./content_types.mjs";
 import { fill as fillMarkers } from "./content_types/marker.mjs";
@@ -62,9 +62,11 @@ async function copyAssets(destination) {
 }
 
 async function renderFile(source, destination, targetName) {
+	const targetPath = getTargetPath(targetName);
 	const fileContent = await fsp.readFile(source, "utf-8");
 	const html = await wrapWithApplicationShell(targetName, {
 		content: fileContent,
+		pageURL: destination.substr(targetPath.length).replace("\\","/"),
 		pageTitle: "Instrumentalisierung der Vergangenheit",
 		pageType: "testpage"
 	});
@@ -90,9 +92,11 @@ export const buildEntries = async targetName => {
 			/* Doesn't matter if it fails, we just render a new file */
 		}
 		const html = await render(entry);
+		const url = outputFilePath.substr(targetPath.length).replace(/\\/g,"/"); // Removed target prefix and in case of windows replace blackslashes with forward slashes
 
 		const wrappedHTML = await wrapWithApplicationShell(targetName, {
 			content: html,
+			pageURL: url,
 			pageTitle: entry.title,
 			pageType: getContentTypeName(entry.__typename)
 		});
@@ -109,7 +113,7 @@ export async function build(targetName) {
 	await copyAssets(resourcePath);
 	if(!options.onlyLocal){
 		console.time("target#buildEntries");
-		await genNavigation(targetName);
+		await loadNavigation(targetName);
 		await buildEntries(targetName);
 		console.timeEnd("target#buildEntries");
 	}

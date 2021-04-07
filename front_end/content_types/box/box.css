@@ -39,7 +39,6 @@ section[content-type="box"] > inner-content > details > summary::after {
 	content: "\e903";
 	position:absolute;
 	font-size: 2.5em;
-	/* top:16px; */
 	right: 30px;
 	color: #fff;
 	transition:transform 500ms, top 500ms;
@@ -110,34 +109,6 @@ box-content > footer {
 .box-wrap.active > summary::after {
 	top:6px;
 }
-/* Breaking Points i made before looking at font size
-
-@media screen and (max-width: 600px) {
-	section[content-type="box"] > inner-content > details > summary {
-		padding: 12px 75px 6px 25px;
-	}
-
-	section[content-type="box"] > inner-content > details > summary::before,
-	section[content-type="box"] > inner-content > details > summary::after {
-		right: 25px;
-	}
-}
-
-@media screen and (max-width: 530px) {
-	section[content-type="box"] > inner-content > details > summary {
-		padding: 12px 58px 6px 12px;
-	}
-
-	section[content-type="box"] > inner-content > details > summary::before,
-	section[content-type="box"] > inner-content > details > summary::after {
-		right: 12px;
-	}
-}
-
-@media screen and (max-width: 460px) {
-
-}
-*/
 
 @media screen and (max-width: 950px) {
 	section[content-type="box"] > inner-content > details > summary::before,
@@ -159,14 +130,14 @@ box-content > footer {
 }
 
 @media screen and (max-width: 750px) {
-	section[content-type="box"] > inner-content > details > summary{
+	section[content-type="box"] > inner-content > details > summary {
 		padding: var(--content-padding-quarter) var(--content-padding);
-		padding-right: 100px;
+		padding-right: 105px;
 	}
 
 	section[content-type="box"] > inner-content > details > summary::before,
 	section[content-type="box"] > inner-content > details > summary::after {
-		right: 24px;
+		right: 35px;
 	}
 }
 
@@ -178,13 +149,23 @@ box-content > footer {
 }
 
 @media screen and (max-width: 550px) {
+	section[content-type="box"] > inner-content > details > summary::before,
+	section[content-type="box"] > inner-content > details > summary::after {
+		right: 15px;
+	}
 
+	section[content-type="box"] > inner-content > details > summary {
+		padding-right: 65px;
+	}
 }
 
 @media screen and (max-width: 450px) {
+	section[content-type="box"] > inner-content > details > summary {
+		padding-right: 71px;
+	}
 
-}
-
-@media screen and (max-width: 400px) {
-
+	section[content-type="box"] > inner-content > details > summary::before,
+	section[content-type="box"] > inner-content > details > summary::after {
+		right: 20px;
+	}
 }

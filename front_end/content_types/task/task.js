@@ -13,8 +13,7 @@ function getFirstParentSection(ele){
 			const section = getFirstParentSection(area);
 			const id = section !== null ? section.id : "undefined";
 			const localStorageKey = `quill-${id}`;
-			const fancyEditor = document.createElement("DIV");
-			fancyEditor.classList.add("fancy-task-editor");
+			const fancyEditor = document.createElement("FANCY-TASK-EDITOR");
 			area.parentElement.append(fancyEditor);
 			area.parentElement.removeChild(area);
 			const editor = new Quill(fancyEditor,{
