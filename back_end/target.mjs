@@ -62,9 +62,11 @@ async function copyAssets(destination) {
 }
 
 async function renderFile(source, destination, targetName) {
+	const targetPath = getTargetPath(targetName);
 	const fileContent = await fsp.readFile(source, "utf-8");
 	const html = await wrapWithApplicationShell(targetName, {
 		content: fileContent,
+		pageURL: destination.substr(targetPath.length).replace("\\","/"),
 		pageTitle: "Instrumentalisierung der Vergangenheit",
 		pageType: "testpage"
 	});
