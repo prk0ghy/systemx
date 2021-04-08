@@ -11,10 +11,10 @@ export async function render({caption, files, isNumbered, poster}) {
 	const src = files[0]?.url;
 	return `
 		<section content-type="video">
-			<div class="inner-content">
+			<inner-content>
 				${await marker.render(isNumbered)}
 				<video controls src="${src}"></video>
-			</div>
+			</inner-content>
 		</section>
 	`;
 };

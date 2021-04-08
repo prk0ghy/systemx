@@ -23,10 +23,10 @@ export async function render({
 
 	return `
 		<section content-type="text-and-image">
-			<div class="inner-content">
+			<inner-content>
 				${await marker.render(isNumbered)}
 				${text}
-			</div>
+			</inner-content>
 		</section>
 	`;
 }

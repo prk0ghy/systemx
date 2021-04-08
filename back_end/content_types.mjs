@@ -51,7 +51,7 @@ export async function render(contentType, context = null) {
 	}
 	return `
 		<section content-type="error">
-			<div class="inner-content">Unsupported content type: ${type}</div>
+			<inner-content>Unsupported content type: ${type}</inner-content>
 		</section>
 	`;
 }
