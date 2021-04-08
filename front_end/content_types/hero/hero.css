@@ -26,6 +26,7 @@ figure[figure-type="heroimage"] figcaption {
 	box-shadow: 0 3px 6px #00000029;
 	opacity: 1;
 	backdrop-filter: blur(30px);
+	padding-left:64px;
 }
 
 figure[figure-type="heroimage"] figcaption p {
@@ -33,9 +34,8 @@ figure[figure-type="heroimage"] figcaption p {
 	margin:0 auto;
 	display:block;
 	max-width:var(--content-width);
-	padding:var(--content-padding-quarter) var(--content-padding);
-	font-size:0.8em;
 	line-height:1.5em;
+	padding: 0 var(--content-padding);
 }
 
 section[content-type="heroimage"] details.license > license-content {
@@ -45,6 +45,10 @@ section[content-type="heroimage"] details.license > license-content {
 	max-width:var(--content-width);
 	padding:var(--content-padding-quarter) var(--content-padding);
 	left:calc(50% - var(--content-width) / 2);
+}
+
+section[content-type="heroimage"] details.license > summary {
+	margin-top: -45px;
 }
 
 /* .big and .small should be automatically set by the backend

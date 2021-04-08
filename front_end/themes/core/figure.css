@@ -32,6 +32,17 @@ figure:last-child {
 	margin-bottom:0;
 }
 
+figcaption {
+	font-family: var(--font-headlines);
+	font-weight: 400;
+	font-size: 0.8em;
+	padding:var(--content-padding-quarter);
+	padding-right:64px;
+}
+
+figcaption p:last-child {
+	margin-bottom:0;
+}
 
 @media only screen and (max-width: 800px) {
 	figure[figure-width="50"],

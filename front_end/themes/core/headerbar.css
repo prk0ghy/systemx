@@ -38,7 +38,9 @@ header::after {
 #header-left { float:left; }
 #header-right { float:right; }
 
-header button {
+#button-navigation,
+#button-previous,
+#button-next {
 	text-align:center;
 	vertical-align:middle;
 	appearance:none;
@@ -47,18 +49,19 @@ header button {
 	cursor:pointer;
 	color: inherit;
 	font-family:icomoon, sans-serif;
-	font-size:1.6em;
-}
-
-#button-previous,
-#button-next {
 	font-size:1.3em;
+	text-decoration: none;
 }
 
 #button-navigation::after { content: "\e904"; }
 #button-settings::after { content: "\e994"; }
 #button-previous::after { content: "\e902"; }
-#button-next::after { content: "\e901"; }
+#button-next::after {content: "\e901"; }
+
+button#button-previous,
+button#button-next {
+	display:none;
+}
 
 header h3 {
 	font-family: var(--font-headlines);

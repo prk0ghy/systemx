@@ -36,10 +36,16 @@
 			statusIcon.classList.add('fading-out');
 
 			statusIcon.addEventListener("transitionend", (e) => {
-				//statusIcon.remove();
+				statusIcon.remove();
 			});
 		}
 
+		if(media?.parentElement?.parentElement?.firstElementChild?.tagName === 'IMG'){
+			media.parentElement.parentElement.firstElementChild.addEventListener("click", (e) => {
+				e.preventDefault();
+				playPauseButton.click();
+			});
+		}
 		media.addEventListener("click", (e) => {
 			e.preventDefault();
 			playPauseButton.click();
@@ -57,7 +63,6 @@
 				showStatusIcon('pause');
 			}
 		});
-
 
 		const fullscreenButton = document.createElement("MEDIA-FULLSCREEN");
 		controlsWrapperRight.appendChild(fullscreenButton);

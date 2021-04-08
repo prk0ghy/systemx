@@ -40,6 +40,19 @@ section[content-type="box"] section[content-type="task"]:last-of-type {
 	margin-bottom:0 !important;
 }
 
+section[content-type="task"] ol > li > ol-num {
+	color: var(--task-red);
+}
+
+section[content-type="task"] ul > li::before {
+	background-color:transparent;
+	border-color: var(--task-red);
+}
+
+section[content-type="task"] ul ul > li::before {
+	background-color: var(--task-red);
+}
+
 
 /* Padding-adjustment of a task inside a pop-up box */
 
@@ -58,6 +71,10 @@ task-content inner-content > h3 {
 	color: var(--task-red);
 	font-weight: 600;
 	margin-bottom:1em;
+}
+
+task-content inner-content > ol > li > ol-num {
+	color: var(--task-red);
 }
 
 .tasktext {
@@ -113,11 +130,11 @@ upload-section input[type=file] {
 	display:none;
 }
 
+/* Text-Editor Quill Styling */
+
 fancy-task-editor {
 	display:block;
 }
-
-/* Text-Editor Quill Styling */
 
 /* height of blank space from quill */
 
@@ -181,11 +198,10 @@ fancy-task-editor {
 	font-family: var(--font-content);
 	line-height:0.7em;
 	font-weight: 400;
-	font-size:1.85em;
 }
 
 .ql-editor ol > li::before {
-	color: var(--box-magenta);
+	color: var(--task-red);
 	position: absolute;
 	left: var(--content-padding-half);
 }
@@ -194,7 +210,6 @@ fancy-task-editor {
 	font-family: var(--font-content);
 	line-height:0.7em;
 	font-weight: 400;
-	font-size:1.85em;
 }
 
 /* Toolbar Styling */
@@ -212,11 +227,19 @@ fancy-task-editor {
 	background: none;
 	border: none;
 	cursor: pointer;
-	display: flex;
 	height: 2.5em;
 	width: 3.5em;
 	padding: 0;
 	vertical-align:bottom;
+}
+
+.ql-toolbar.ql-snow .ql-formats:nth-of-type(2) {
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+.ql-toolbar.ql-snow .ql-formats:nth-of-type(3) {
+	margin-right: 10%;
 }
 
 .ql-italic, .ql-underline, .ql-strike {
@@ -227,26 +250,39 @@ fancy-task-editor {
 	margin-right: -1em;
 }
 
-.ql-toolbar.ql-snow .ql-picker-label {
+ html body .ql-toolbar.ql-snow .ql-formats {
+	margin: 0;
+}
+
+html body .ql-toolbar.ql-snow .ql-picker-label {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 3em;
+	width: 2.5em;
+	padding: 0;
 }
 
-.ql-picker .ql-color-picker {
+html body .ql-picker .ql-color-picker {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	margin: 0 1em 0 2em;
 }
 
-.ql-color {
+html body .ql-color {
 	margin-right: 1em;
 }
 
 .ql-snow .ql-color-picker .ql-picker-options {
-	width: 278px;
+	width: 306px;
+	position: absolute;
+    left: -131px;
+}
+
+html body .ql-snow .ql-color-picker .ql-picker-item {
+	height: 34px;
+	width: 34px;
+	margin: 4px;
 }
 
 /* Text Container Styling */
@@ -258,16 +294,7 @@ fancy-task-editor {
 	padding-right: 48px;
 }
 
-.ql-toolbar.ql-snow .ql-formats:nth-of-type(2) {
-	margin-left: 0.2em;
-	margin-right: 0.7em;
-}
-
-.ql-toolbar.ql-snow .ql-formats:nth-of-type(3) {
-	margin-right: 2em;
-	padding-top: 0.1em;
-}
-
+/*
 section[content-type="task"] ol > li > ol-num {
 	color: var(--task-red);
 }
@@ -280,8 +307,86 @@ section[content-type="task"] ul > li::before {
 section[content-type="task"] ul ul > li::before {
 	background-color: var(--task-red);
 }
+*/
 
 /* Mobile Styling */
+
+@media screen and (max-width: 745px) {
+	.ql-snow.ql-toolbar button {
+		width: 2.9em;
+	}
+
+	html body .ql-color {
+		margin-right: 0.5em;
+	}
+}
+
+@media screen and (max-width: 650px) {
+	.ql-snow.ql-toolbar button {
+		height: 2em;
+	}
+	html body .ql-toolbar.ql-snow .ql-picker-label {
+		width: 2em;
+	}
+}
+
+@media screen and (max-width: 560px) {
+	.ql-snow.ql-toolbar button {
+		width: 2.3em;
+	}
+
+	html body .ql-color {
+		margin-right: 0.3em;
+	}
+/*
+	.ql-italic {
+		margin: 0;
+	}
+
+	.ql-underline {
+		margin: 0;
+	} */
+
+	.ql-bold {
+		margin-right: -0.7em;
+	}
+}
+
+@media screen and (max-width: 475px) {
+	.ql-snow.ql-toolbar button {
+		height: 1.7em;
+		width: 2em;
+	}
+
+	html body .ql-toolbar.ql-snow .ql-picker-label {
+		width: 1.7em;
+	}
+
+	html body .ql-color {
+		margin: 0;
+	}
+
+	.ql-toolbar.ql-snow .ql-formats:nth-of-type(3) {
+		margin-right: 5%;
+	}
+}
+
+@media screen and (max-width: 415px) {
+	.ql-snow.ql-toolbar button {
+		height: 1.4em;
+		width: 1.7em;
+	}
+
+	html body .ql-toolbar.ql-snow .ql-picker-label {
+		width: 1.6em;
+	}
+
+	.ql-snow .ql-color-picker, .ql-snow .ql-icon-picker {
+		width: auto;
+	}
+}
+
+/*
 
 @media screen and (max-width: 575px) {
 	.ql-toolbar.ql-snow .ql-formats:nth-of-type(4) {
@@ -348,4 +453,4 @@ section[content-type="task"] ul ul > li::before {
 	.ql-toolbar.ql-snow .ql-formats:nth-of-type(4) {
 		margin-left: -12px;
 	}
-}
+} */

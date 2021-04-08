@@ -14,11 +14,8 @@ section[content-type="gallery"] > inner-content > details > summary::marker {
 }
 
 section[content-type="gallery"] figcaption {
-	padding:0.5em 12px 1em;
-	font-family: var(--font-headlines);
-	font-weight: 400;
-	font-size: 0.8em;
-	line-height: 1.5em;
+	padding-right: var(--content-padding-quarter);
+	line-height: 1.3em;
 }
 
 gallery-text {

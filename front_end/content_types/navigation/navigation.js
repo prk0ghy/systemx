@@ -36,7 +36,12 @@ setTimeout(initNavBar, 0);
 			if(ele.tagName === "UL"){
 				ele.classList.remove("hidden");
 			}else{
-				ele.firstChild.classList.add("active");
+				ele.firstElementChild.classList.add("active");
+			}
+			for(chi of ele.children){
+				if(chi.tagName === "UL"){
+					chi.classList.remove("hidden");
+				}
 			}
 			showNavigationActive(ele.parentElement);
 		}
@@ -44,6 +49,11 @@ setTimeout(initNavBar, 0);
 		function refreshNavigationList(){
 			for(ele of document.querySelectorAll("nav ul")){
 				ele.classList.add("hidden");
+			}
+			for(ele of document.querySelectorAll("nav")){
+				if(ele.firstElementChild){
+					ele.firstElementChild.classList.remove("hidden");
+				}
 			}
 			for(ele of document.querySelectorAll("nav-toggle.active")){
 				ele.classList.remove("active");

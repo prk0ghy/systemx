@@ -30,11 +30,11 @@ tabbox-content > section[content-type="video"] {
 	padding:0;
 }
 
-tabbox-content > section[content-type="audio"] figcaption,
+/* tabbox-content > section[content-type="audio"] figcaption,
 tabbox-content > section[content-type="embed"] figcaption,
 tabbox-content > section[content-type="video"] figcaption {
 	padding: var(--content-padding-quarter) var(--content-padding);
-}
+} */
 
 tabbox-header-wrap {
 	text-align:left;
@@ -73,7 +73,7 @@ tabbox-header.active {
 	font-size:1.45em;
 	width:1.5em;
 	text-align:center;
-	text-transform:lowercase;
+	text-transform:uppercase;
 	font-family: var(--font-headlines);
 	font-weight:600;
 	margin:0 8px;

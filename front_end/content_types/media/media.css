@@ -275,10 +275,10 @@ media-status-icon {
 	top: 50%;
 	width: 50px;
 	height: 50px;
-	margin-top:-25px;
+	margin-top:-50px;
 	margin-left:-25px;
 	font-family: icomoon;
-	text-shadow:0px 0px 4px rgba(0, 0, 0, 0.3);
+	text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
 	opacity: 1;
 	transform: scale(1);
 	transform-origin: center;
@@ -302,12 +302,15 @@ media-status-icon.fading-out {
 	transform: scale(4);
 }
 
-media-play-pause:hover, media-volume-button:hover, media-fullscreen:hover {
+media-play-pause:hover,
+media-volume-button:hover,
+media-fullscreen:hover {
 	color: var(--dlw-blue);
 	transition: 100ms;
 }
 
-media-volume-slider-mark:hover, media-volume-slider-mark:hover::after {
+media-volume-slider-mark:hover,
+media-volume-slider-mark:hover::after {
 	background-color: var(--dlw-blue);
 	transition: 100ms;
 }
@@ -349,10 +352,16 @@ section[content-type="audio"] > inner-content {
 	z-index:1;
 }
 
+.audio-bild {
+	border: solid 12px var(--background-color);
+	border-bottom: 0;
+}
+
 media-wrap[media-type="audio"] > media-controls {
 	display: block;
 	position: relative;
-	border: solid 12px var(--background-color);
+	border: 0 12px 0 12px;
+	border: solid var(--background-color);
 	background-color: white;
 }
 
@@ -360,3 +369,37 @@ media-wrap[media-type="audio"] {
 	color: var(--dlw-blue);
 }
 
+media-wrap[media-type="audio"] media-volume-slider-mark,
+media-wrap[media-type="audio"] media-volume-slider-mark::after {
+	background-color:var(--dlw-blue);
+}
+
+media-wrap[media-type="audio"] media-seekbar::before,
+media-wrap[media-type="audio"] media-volume-slider::before {
+	background-color:var(--dlw-blue-light);
+}
+
+media-wrap[media-type="audio"] media-play-pause:hover,
+media-wrap[media-type="audio"] media-volume-button:hover {
+	color: var(--dlw-blue-dark);
+	transition: 100ms;
+}
+
+media-wrap[media-type="audio"] media-volume-slider-mark:hover,
+media-wrap[media-type="audio"] media-volume-slider-mark:hover::after {
+	background-color: var(--dlw-blue-dark);
+	transition: 100ms;
+}
+
+figure[figure-type="audio"] details.license > summary {
+	margin-top: -2em;
+	right: 0.9em;
+}
+
+figure[figure-type="audio"] media-status-icon {
+	margin-top: -215px;
+}
+
+figure[figure-type="audio"] img {
+	cursor: pointer;
+}

@@ -28,6 +28,8 @@
 	--table-color: #222428;
 	--table-background-header: #1E3E51;
 	--table-background-content: #CFE2EC9C;
+	--dlw-blue-light: #7BA6C4;
+	--dlw-blue-dark: #1E3E51;
 }
 
 @media screen and (max-width: 650px) {
