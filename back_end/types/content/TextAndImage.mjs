@@ -33,30 +33,49 @@ export default {
 			Marker
 		}
 	}) {
-		const image = images?.[0]?.image?.[0] ?? null;
-		const galleryImages = image
-			? images
-			: null;
-		const imageHTML = images
-			? images.map(({ image: [image] }) => Image.render({
-				asset: image
-			})).join("")
-			: "";
+		function mapWidth(width){
+			switch(width){
+			case "38.2":
+				return "30";
+			case "61.8":
+				return "50";
+			case "100":
+			default:
+				return "100";
+			}
+		}
+
+		function mapPosition(position){
+			switch(position){
+			case "linksImText":
+			default:
+				return "left";
+			case "rechtsImText":
+				return "right";
+			}
+		}
+
+		function renderImageFigure(singleImage, imageWidth, imagePosition, displayInOneLine){
+			const figcaption = singleImage.caption ? `<figcaption>${singleImage.caption}</figcaption>` : "";
+			return `
+				<figure figure-position="${imagePosition}" figure-type="picture" figure-width="${imageWidth}" one-line="${displayInOneLine}">
+					${Image.render({asset: singleImage?.image?.[0]})}
+					${figcaption}
+				</figure>
+			`;
+		}
+		const mappedImageWidth = mapWidth(imageWidth);
+		const mappedImagePosition = mapPosition(imagePosition);
+		const imageHTML = images.map((i) => renderImageFigure(i, mappedImageWidth, mappedImagePosition, displayInOneLine)).join("");
+		const galleryIntroductionHTML = galleryIntroductionText ? `<gallery-introduction-text>${galleryIntroductionText}</gallery-introduction-text>` : "";
+
 		return `
 			<section content-type="text-and-image">
 				<inner-content>
 					${Marker.render({ isNumbered })}
-					<figure figure-position="${imagePosition}" figure-type="picture" figure-width="${imageWidth}" one-line="${displayInOneLine}">
-						${imageHTML}
-						${text
-							? `<figcaption>${text}</figcaption>`
-							: ""
-						}
-						${galleryIntroductionText
-							? `<gallery-introduction-text>${galleryIntroductionText}</gallery-introduction-text>`
-							: ""
-						}
-					</figure>
+					${imageHTML}
+					${galleryIntroductionHTML}
+					${text ? text : ""}
 				</inner-content>
 			</section>
 		`;

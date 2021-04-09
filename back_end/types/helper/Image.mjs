@@ -2,8 +2,8 @@ export default {
 	render({
 		asset
 	}) {
-		return `
+		return asset ?`
 			<img height=${asset.height} src=${asset.url} width=${asset.width}>
-		`;
+		` : "";
 	}
 };
