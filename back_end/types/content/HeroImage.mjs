@@ -30,21 +30,15 @@ export default {
 				title: "Image missing"
 			});
 		}
-		const license = License.render({
-			asset: image
-		});
+		const licenseHTML = License.render({ asset: image });
+		const captionHTML =- caption ? `<figcaption>${caption}</figcaption>` : "";
 		return `
 			<section content-type="hero-image">
 				<inner-content>
 					<figure figure-type="hero-image">
-						${Image.render({
-							asset: image
-						})}
-						${license}
-						${caption
-							? `<figcaption>${caption}</figcaption>`
-							: ""
-						}
+						${Image.render({ asset: image })}
+						${licenseHTML}
+						${captionHTML}
 					</figure>
 				</inner-content>
 			</section>
