@@ -24,6 +24,9 @@ export default {
 					...on inhaltDesKastens_BlockType {
 						elements: elemente {
 							__typename
+							...on elemente_audioDatei_BlockType {
+								${types.elemente_audioDatei_BlockType}
+							}
 							...on elemente_galerie_BlockType {
 								${types.elemente_galerie_BlockType}
 							}

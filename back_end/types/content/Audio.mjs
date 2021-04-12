@@ -1,5 +1,14 @@
 export default {
 	queries: new Map([
+		["elemente_audioDatei_BlockType", {
+			fetch: cms => `
+				__typename
+				audioFiles: audiodatei {
+					${cms.fragments.asset}
+				}
+				caption: audiounterschrift
+			`
+		}],
 		["inhaltsbausteine_audioDatei_BlockType", {
 			fetch: cms => `
 				__typename
@@ -27,7 +36,7 @@ export default {
 		}
 	}) {
 		const src = audioFiles[0]?.url;
-		const poster = posters.length
+		const poster = posters?.length
 			? Image.render({
 				asset: posters[0]
 			})
