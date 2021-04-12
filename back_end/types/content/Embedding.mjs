@@ -1,6 +1,6 @@
 export default {
 	queries: new Map([
-		["inhaltsbausteine_h5p_BlockType", cms => `
+		["inhaltsbausteine_h5p_BlockType", () => `
 			__typename
 			caption: unterschrift_h5p
 			isNumbered: nummerierung
@@ -16,16 +16,16 @@ export default {
 			Marker
 		}
 	}) {
+		const captionHTML = caption
+			? `<figcaption>${caption}</figcaption>`
+			: "";
 		return `
 			<section content-type="embedding" embedding-type="h5p">
 				<inner-content>
 					${Marker.render({ isNumbered })}
 					<figure figure-type="embedding">
 						${html}
-						${caption
-							? `<figcaption>${caption}</figcaption>`
-							: ""
-						}
+						${captionHTML}
 					</figure>
 				</inner-content>
 			</section>

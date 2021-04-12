@@ -6,10 +6,10 @@ const options = {
 	skipNetwork: false,
 	startServer: false,
 	useCache: false
-}
+};
 for (const key in options) {
 	const optionName = key.replace(/[A-Z]+/g, $1 => `-${$1.toLowerCase()}`);
-	if (argv.hasOwnProperty(optionName)) {
+	if (Object.hasOwnProperty.call(argv, optionName)) {
 		options[key] = argv[optionName];
 	}
 }

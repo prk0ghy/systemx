@@ -33,6 +33,9 @@ export default {
 		const license = License.render({
 			asset: audioFiles[0]
 		});
+		const captionHTML = caption
+			? `<figcaption>${caption}</figcaption>`
+			: "";
 		return `
 			<section content-type="audio">
 				<inner-content>
@@ -40,10 +43,7 @@ export default {
 					<figure figure-type="audio">
 						${poster}
 						<audio controls src="${src}"></audio>
-						${caption
-							? `<figcaption>${caption}</figcaption>`
-							: ""
-						}
+						${captionHTML}
 					</figure>
 					${license}
 				</inner-content>

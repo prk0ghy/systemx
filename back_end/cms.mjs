@@ -30,9 +30,9 @@ export const getContext = async () => {
 		fragments: globalFragments,
 		types: globalTypes
 	};
-	for (const [name, module] of contentTypes.entries()) {
+	for (const [, module] of contentTypes.entries()) {
 		for (const [key, getValue] of module.default.queries) {
-			if (cms.types.hasOwnProperty(key)) {
+			if (Object.hasOwnProperty.call(cms.types, key)) {
 				continue;
 			}
 			Object.defineProperty(cms.types, key, {

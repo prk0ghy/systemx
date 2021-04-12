@@ -130,7 +130,7 @@ async function genNavigation(target,pageURL){
 
 function getPageDataFlat(data){
 	const ret = [];
-	for(let c of data){
+	for(const c of data){
 		ret.push(c);
 		if(c.children){
 			ret.push(...getPageDataFlat(c.children));

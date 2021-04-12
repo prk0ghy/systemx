@@ -6,7 +6,7 @@ export default {
 	* Next, there's also `box-{0..10}`, for which I could not find any definition. Hence, it is up
 	* to the editor to use a correct class name. We'll just default to gray boxes if it contains a digit.
 	*
-	* In the long run, we'd want to fix that in CraftCMS. But for now, we'll do the mapping here.
+	* In the long run, we'd want to tackle that in CraftCMS. But for now, we'll do the mapping here.
 	*/
 	getBoxType(colorClassName) {
 		return /\d/.test(colorClassName)
@@ -16,7 +16,7 @@ export default {
 				.replace("grey", "gray");
 	},
 	queries: new Map([
-		["inhaltsbausteine_aufklappkasten_BlockType", cms => `
+		["inhaltsbausteine_aufklappkasten_BlockType", () => `
 			__typename
 			colorClassName: Farbe
 			content: inhaltDesKastens {
@@ -33,10 +33,9 @@ export default {
 		content,
 		colorClassName,
 		headline,
-		id,
 		isNumbered,
 		source,
-		summary,
+		summary
 	}, {
 		helpers: {
 			Marker

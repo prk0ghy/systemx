@@ -81,7 +81,12 @@
 		"no-var": 2,
 		"no-void": 2,
 		"no-warning-comments": [2, {
-			"terms": ["todo", "fixme", "fix", "bugfix"],
+			"terms": [
+				"bugfix",
+				"fix",
+				"fixme",
+				"todo"
+			],
 			"location": "anywhere"
 		}],
 		"no-with": 2,

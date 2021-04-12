@@ -25,21 +25,21 @@ export default {
 	}) {
 		const src = files[0]?.url;
 		const posterURL = posters[0]?.url || "";
-		const license = License.render({
+		const licenseHTML = License.render({
 			asset: files[0]
 		});
+		const captionHTML = caption
+			? `<figcaption>${caption}</figcaption>`
+			: "";
 		return `
 			<section content-type="video">
 				<inner-content>
 					${Marker.render({ isNumbered })}
 					<figure figure-type="video">
 						<video controls poster="${posterURL}" src="${src}"></video>
-						${caption
-							? `<figcaption>${caption}</figcaption>`
-							: ""
-						}
+						${captionHTML}
 					</figure>
-					${license}
+					${licenseHTML}
 				</inner-content>
 			</section>
 		`;

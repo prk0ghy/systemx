@@ -31,28 +31,26 @@ export default {
 				title: "Images missing"
 			});
 		}
-		const figures = images.map(image => `
-			<figure figure-type="gallery">
-				${Image.render({
-					asset: image.files[0]
-				})}
-				${License.render({
-					asset: image.files[0]
-				})}
-				${image.caption
-					? `<figcaption>${image.caption}</figcaption>`
-					: ""
-				}
-			</figure>`
-		);
+		const figures = images.map(image => {
+			const imageCaptionHTML = image.caption
+				? `<figcaption>${image.caption}</figcaption>`
+				: "";
+			return `
+				<figure figure-type="gallery">
+					${Image.render({ asset: image.files[0] })}
+					${License.render({ asset: image.files[0] })}
+					${imageCaptionHTML}
+				</figure>
+			`;
+		});
+		const galleryIntroductionTextHTML = galleryIntroductionText
+			? `<div class="gallery-text">${galleryIntroductionText}</div>`
+			: "";
 		return `
 			<section content-type="gallery">
 				<inner-content>
 					${Marker.render({ isNumbered })}
-					${galleryIntroductionText
-						? `<div class="gallery-text">${galleryIntroductionText}</div>`
-						: ""
-					}
+					${galleryIntroductionTextHTML}
 					<details>
 						<summary>${figures[0]}</summary>
 						${figures.slice(1)}
