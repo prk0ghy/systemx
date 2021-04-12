@@ -66,8 +66,8 @@ button#button-next {
 
 header h3 {
 	font-family: var(--font-headlines);
-	font-weight: 600;
-	font-size: 1.2em;
+	font-weight: 400;
+	font-size: 0.9em;
 	margin: 0 var(--content-padding);
 }
 

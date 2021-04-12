@@ -1,6 +1,6 @@
 task-content {
 	box-shadow: 0 3px 6px #00000063;
-	border-top:var(--content-padding-quarter) solid var(--task-red);
+	border-top: var(--content-padding-quarter) solid var(--task-red);
 	border-bottom: var(--content-padding-quarter) solid var(--task-red);
 	background: #fff;
 	display:block;
@@ -81,7 +81,7 @@ section[content-type="box"] > inner-content > .box-wrap.active > box-content > s
 task-content inner-content > h3 {
 	font-size: 1.35em;
 	color: var(--task-red);
-	font-weight: 600;
+	font-weight: 500;
 	margin-bottom:1em;
 }
 
@@ -159,6 +159,16 @@ fancy-task-editor {
 	min-height: 10em;
 }
 
+.ql-editor.ql-blank::before {
+	left:var(--content-padding);
+	color:var(--background-grey);
+	font-family:var(--font-content);
+	font-style:normal;
+	line-height: 1.1em;
+	font-weight: 300;
+	right:auto;
+}
+
 /* Styling for Textelements  */
 
 .ql-editor p {
@@ -229,10 +239,11 @@ fancy-task-editor {
 .ql-toolbar.ql-snow {
 	margin-top: 1em;
 	border: none;
-	border-top: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
-	padding: var(--content-padding-quarter) var(--content-padding);
+	padding: var(--content-padding-quarter) 0;
 	align-content: center;
+	width: calc(100% - var(--content-padding)*2);
+	margin-left:auto;
+	margin-right:auto;
 }
 
 .ql-snow.ql-toolbar button {
@@ -288,7 +299,7 @@ html body .ql-color {
 .ql-snow .ql-color-picker .ql-picker-options {
 	width: 306px;
 	position: absolute;
-    left: -131px;
+	left: -131px;
 }
 
 html body .ql-snow .ql-color-picker .ql-picker-item {
@@ -302,8 +313,8 @@ html body .ql-snow .ql-color-picker .ql-picker-item {
 .ql-container.ql-snow {
 	border: none;
 	border-top: 1px solid #ccc;
-	padding-left: 48px;
-	padding-right: 48px;
+	padding-left: var(--content-padding);
+	padding-right: var(--content-padding);
 }
 
 /* Mobile Styling */

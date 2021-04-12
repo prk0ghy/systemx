@@ -16,17 +16,22 @@ section[content-type="gallery"] > inner-content > details > summary::marker {
 section[content-type="gallery"] figcaption {
 	padding-left:12px;
 	padding-right: var(--content-padding-quarter);
-	padding-bottom: var(--content-padding-half);
+	padding-top: var(--content-padding-quarter);
+	padding-bottom: calc(var(--content-padding-quarter) * 1.5);
 	line-height: 1.3em;
+}
+
+box-caption h3 {
+	font-weight:300;
 }
 
 gallery-text {
 	font-family: var(--font-headlines);
 	line-height: 1.35em;
 	padding:0 12px 0 12px;
-	color: var(--dlw-blue);
+	color: #333;
 	font-size: 1em;
-	font-weight: 600;
+	font-weight: 300;
 	display:block;
 }
 

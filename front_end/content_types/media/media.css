@@ -48,8 +48,8 @@ media-play-pause {
 	width: 1.25em;
 	height: 1em;
 	cursor:pointer;
-	padding-left: var(--content-padding-quarter);
-	top: -2px;
+	padding-left: calc(var(--content-padding-quarter) * 0.75);
+	top: -1px;
 }
 
 media-play-pause::before {
@@ -135,7 +135,7 @@ media-wrap[media-type="video"] > media-fullscreen.active::before {
 media-volume-button {
 	font-family: icomoon;
 	width:1.25em;
-	padding-left: var(--content-padding-quarter);
+	padding-left: calc(var(--content-padding-quarter) * 1.35);
 	cursor: pointer;
 }
 
@@ -157,23 +157,23 @@ media-volume-slider::before {
 	position: absolute;
 	left:0;
 	display:block;
-	height: 5px;
+	height: 3px;
 	width: 100%;
 	content: '';
 	background-color:rgba(255, 255, 255, 0.5);
 	top: 50%;
-	margin-top: -5px;
+	margin-top: -3px;
 }
 
 media-volume-slider-mark {
 	position: absolute;
 	left:0;
 	display:block;
-	height: 5px;
+	height: 3px;
 	width: 100%;
 	background-color:white;
 	top: 50%;
-	margin-top: -5px;
+	margin-top: -3px;
 }
 
 media-volume-slider-mark::after {
@@ -197,8 +197,10 @@ media-volume-button.active::before {
 media-timestamp-wrapper {
 	position: relative;
 	margin-left: 24px;
-	top: -7px;
-	font-weight:bold;
+	top: -6px;
+	font-family:var(--font-content);
+	font-weight:300;
+	font-size:1.3em;
 	color: var(--background-grey);
 }
 
@@ -234,23 +236,23 @@ media-seekbar::before {
 	position: absolute;
 	left:0;
 	display:block;
-	height: 5px;
+	height: 3px;
 	width: 100%;
 	content: '';
 	background-color:rgba(255, 255, 255, 0.5);
 	top: 50%;
-	margin-top: -5px;
+	margin-top: -3px;
 }
 
 media-seekbar-mark {
 	position: absolute;
 	left:0;
 	display:block;
-	height: 5px;
+	height: 3px;
 	width: 0%;
 	background-color:var(--dlw-blue);
 	top: 50%;
-	margin-top: -5px;
+	margin-top: -3px;
 }
 
 media-seekbar-mark::after {

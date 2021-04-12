@@ -1,11 +1,11 @@
 glossar-entry {
 	display:none;
 	box-sizing:border-box;
-	border-right:solid var(--content-padding-quarter) var(--box-green);
+	border-right:solid var(--content-padding-quarter) var(--dlw-blue);
 }
 
 glossar-entry > modal-close {
-	color:var(--box-green);
+	color:var(--dlw-blue);
 }
 
 glossar-entry-content {
@@ -16,8 +16,3 @@ glossar-entry-content {
 	border-left:solid var(--content-padding-quarter) var(--background-color);
 	padding: var(--content-padding);
 }
-
-.glossar-link {
-	color:var(--box-green);
-}
-

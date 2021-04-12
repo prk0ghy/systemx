@@ -1,6 +1,6 @@
 tabbox-content-wrap {
 	border-top: 12px solid var(--dlw-blue);
-	border-bottom: 12px solid var(--dlw-blue);
+	border-bottom: 4px solid var(--dlw-blue);
 	box-shadow: 1px 6px 6px 1px #00000089;
 	position:relative;
 	z-index:1;
@@ -21,6 +21,15 @@ tabbox-content > section {
 
 tabbox-content > section:last-child {
 	padding-bottom:0;
+}
+
+tabbox-content > footer {
+	margin-top:-1.0em;
+	padding: 0 var(--content-padding) var(--content-padding-half);
+	font-size:0.8em;
+	line-height:1.1em;
+	font-weight:300;
+	color:var(--background-grey);
 }
 
 tabbox-content > section[content-type="task"],
@@ -47,7 +56,8 @@ tabbox-header {
 	display:inline-block;
 	background: var(--background-blue);
 	color: var(--dlw-blue);
-	font-size:0.6em;
+	font-size:0.75em;
+	font-weight:300;
 	margin:0 6px;
 	padding:var(--content-padding-quarter) var(--content-padding-half);
 	transition: background-color 300ms, color 300ms, box-shadow 300ms;

@@ -13,7 +13,7 @@ main > section[content-type="hero-image"]:first-child {
 
 
 figure[figure-type="hero-image"] img {
-	max-height:700px;
+	max-height:500px;
 	object-fit:cover;
 }
 
@@ -35,6 +35,7 @@ figure[figure-type="hero-image"] figcaption p {
 	max-width:var(--content-width);
 	line-height:1.5em;
 	padding: 0 var(--content-padding);
+	font-weight:200;
 }
 
 section[content-type="hero-image"] details.license > license-content {

@@ -46,7 +46,7 @@ details.license > license-content {
 	line-height: 1.5em;
 	position:absolute;
 	left:0;
-	background:#fff;
+	background:rgba(255,255,255,0.8);
 	width:100%;
 	opacity:0;
 	transform:scaleY(0);

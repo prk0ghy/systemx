@@ -19,13 +19,13 @@ function getFirstParentSection(ele){
 			const editor = new Quill(fancyEditor,{
 				modules: {
 					toolbar: [
-						[{ 'header': 1 }, { 'header': 2 }],               // custom button values
 						['bold', 'italic', 'underline', 'strike'],        // toggled buttons
 						[{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
 						[{ 'list': 'ordered'}, { 'list': 'bullet' }]
 					]
 				},
-				theme: 'snow'
+				theme: 'snow',
+				placeholder: 'Aufgabe beantworten'
 			});
 			let delayedWriteHandle = undefined;
 			editor.on('text-change', () => {
