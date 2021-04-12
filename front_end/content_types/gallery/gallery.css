@@ -14,7 +14,9 @@ section[content-type="gallery"] > inner-content > details > summary::marker {
 }
 
 section[content-type="gallery"] figcaption {
+	padding-left:12px;
 	padding-right: var(--content-padding-quarter);
+	padding-bottom: var(--content-padding-half);
 	line-height: 1.3em;
 }
 
@@ -25,6 +27,7 @@ gallery-text {
 	color: var(--dlw-blue);
 	font-size: 1em;
 	font-weight: 600;
+	display:block;
 }
 
 section[content-type="gallery"] {

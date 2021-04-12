@@ -35,9 +35,20 @@ figure:last-child {
 figcaption {
 	font-family: var(--font-headlines);
 	font-weight: 400;
-	font-size: 0.8em;
-	padding:var(--content-padding-quarter);
+	font-size: 0.85em;
+	line-height:1.35em;
+	padding:6px 0;
 	padding-right:64px;
+	text-align:justify;
+}
+
+figure[figure-width="50"] figcaption,
+figure[figure-width="30"] figcaption {
+	font-size: 0.6em;
+}
+
+tabbox-content figcaption {
+	padding-left:var(--content-padding-half);
 }
 
 figcaption p:last-child {

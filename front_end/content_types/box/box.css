@@ -46,13 +46,13 @@ section[content-type="box"] > inner-content > details > summary::after {
 }
 
 box-caption h3 {
-	font-size: 1.4em;
+	font-size: 1.3em;
 	color: #fff;
 	margin-bottom:0;
 }
 
 box-caption p {
-	font-size: 0.8em;
+	font-size: 0.75em;
 	color: #fff;
 	margin:0.25em 0 0;
 }
@@ -60,6 +60,7 @@ box-caption p {
 box-caption {
 	position:relative;
 	user-select:none;
+	min-height:3.1em;
 }
 
 box-content {
@@ -80,8 +81,10 @@ box-content > footer {
 	padding: var(--content-padding-half) var(--content-padding);
 	font-style:italic;
 	font-size:0.8em;
+	line-height:1.1em;
 	font-weight:500;
 	color:var(--background-grey);
+	text-align:justify;
 }
 
 .box-wrap.active box-content {

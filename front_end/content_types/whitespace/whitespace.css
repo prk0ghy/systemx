@@ -1,0 +1,8 @@
+section[content-type="whitespace"] {
+	display:block;
+	height:1em;
+}
+
+section[content-type="whitespace"][whitespace-size="big"] {
+	height:3em;
+}

@@ -157,7 +157,7 @@ media-volume-slider::before {
 	position: absolute;
 	left:0;
 	display:block;
-	height: 8px;
+	height: 5px;
 	width: 100%;
 	content: '';
 	background-color:rgba(255, 255, 255, 0.5);
@@ -169,7 +169,7 @@ media-volume-slider-mark {
 	position: absolute;
 	left:0;
 	display:block;
-	height: 8px;
+	height: 5px;
 	width: 100%;
 	background-color:white;
 	top: 50%;
@@ -197,7 +197,9 @@ media-volume-button.active::before {
 media-timestamp-wrapper {
 	position: relative;
 	margin-left: 24px;
-	top: -5px;
+	top: -7px;
+	font-weight:bold;
+	color: var(--background-grey);
 }
 
 media-timestamp {
@@ -221,11 +223,11 @@ media-duration {
 media-seekbar {
 	display:block;
 	position: relative;
-	height: 24px;
-	width: calc(100% - 18px);
+	height: 36px;
+	width: calc(100% - 40px);
 	cursor: pointer;
 	overflow:visible;
-	left: 9px;
+	left: 20px;
 }
 
 media-seekbar::before {
@@ -402,4 +404,8 @@ figure[figure-type="audio"] media-status-icon {
 
 figure[figure-type="audio"] img {
 	cursor: pointer;
+}
+
+section[content-type="audio"][audio-type="no-image"]{
+	margin-top:calc(var(--content-padding) * -1);
 }

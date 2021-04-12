@@ -33,6 +33,10 @@ section[content-type="embedding"] > inner-content {
 	z-index:1;
 }
 
+figure[figure-type="embedding"] > figcaption{
+	padding-bottom: var(--content-padding-half);
+}
+
 section[content-type="embedding"] > inner-content > figure > lazy-iframe,
 section[content-type="embedding"] > inner-content > figure > iframe {
 	display: block;

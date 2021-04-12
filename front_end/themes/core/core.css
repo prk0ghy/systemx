@@ -42,6 +42,11 @@ section {
 	position:relative;
 }
 
+main {
+	padding-top:2.2em;
+	padding-bottom:2.2em;
+}
+
 main > section:first-child {
 	margin-top:2.5em;
 }

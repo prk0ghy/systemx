@@ -1,0 +1,3 @@
+section[content-type="headline"] > inner-content {
+	margin-bottom:var(--content-padding-half);
+}

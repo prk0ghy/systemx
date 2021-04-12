@@ -6,8 +6,10 @@ task-content {
 	display:block;
 }
 
+section[content-type="tabbox"][tabbox-type="task"] > inner-content,
 section[content-type="task"] > inner-content {
 	position:relative;
+	margin-bottom:calc(var(--content-padding) * 1.75);
 }
 
 section[content-type="task"] task-content > section {
@@ -38,7 +40,7 @@ section[content-type="box"] section[content-type="task"]:last-of-type {
 	margin-bottom:0 !important;
 }
 
-section[content-type="task"] ol > li > ol-num {
+section[content-type="task"] ol > li > ol-number {
 	color: var(--task-red);
 }
 
@@ -49,6 +51,18 @@ section[content-type="task"] ul > li::before {
 
 section[content-type="task"] ul ul > li::before {
 	background-color: var(--task-red);
+}
+
+/* Gallery in Task */
+
+section[content-type="task"] gallery-text {
+	color: var(--task-red);
+	padding: 0;
+}
+
+section[content-type="task"] section[content-type="gallery"] {
+	color: var(--task-red);
+	padding-top: 0;
 }
 
 
@@ -291,21 +305,6 @@ html body .ql-snow .ql-color-picker .ql-picker-item {
 	padding-left: 48px;
 	padding-right: 48px;
 }
-
-/*
-section[content-type="task"] ol > li > ol-num {
-	color: var(--task-red);
-}
-
-section[content-type="task"] ul > li::before {
-	background-color:transparent;
-	border-color: var(--task-red);
-}
-
-section[content-type="task"] ul ul > li::before {
-	background-color: var(--task-red);
-}
-*/
 
 /* Mobile Styling */
 

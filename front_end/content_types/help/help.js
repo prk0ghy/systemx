@@ -42,10 +42,11 @@
 				video.addEventListener("ended",hideOverlay);
 				video.addEventListener("click",hideOverlay);
 			}
+			const max = Math.min(window.innerWidth,window.innerHeight) * 0.86;
 			// Set widht/height on every call, because the viewport size might have changed
 			video.style.display = "block";
-			video.style.width   = (window.innerWidth|0)+"px";
-			video.style.height  = (window.innerHeight|0)+"px";
+			video.style.width   = max*0.79+"px";
+			video.style.height  = max*0.79+"px";
 			video.style.opacity = 1;
 			video.currentTime   = 0;
 			video.play();
@@ -65,13 +66,12 @@
 			// a while longer and is mostly used for setting z-index/display.
 			videoWrap.setAttribute("open","open");
 			videoWrap.classList.add("active");
-			videoWrap.style.transition = "left 400ms, top 250ms, width 1200ms, height 1200ms";
-			videoWrap.style.left       = (window.innerWidth/2)+"px";
-			videoWrap.style.top        = (window.innerHeight/2)+"px";
+			videoWrap.style.transition = "left 400ms, top 250ms, width 650ms, height 650ms";
+			videoWrap.style.left       = ((document.body.clientWidth/2)|0)+"px";
+			videoWrap.style.top        = ((window.innerHeight/2)|0)+"px";
 
 			// We animate the size to a circle of max(width,height)*2, that way it should fill the screen
 			// and while animating always stay circular.
-			const max = Math.max(window.innerWidth*2,window.innerHeight*2);
 			videoWrap.style.width  = max+"px";
 			videoWrap.style.height = max+"px";
 			videoWrap.offsetTop;

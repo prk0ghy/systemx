@@ -14,5 +14,5 @@ section[content-type="text-and-image"]::after {
 }
 
 section[content-type="text-and-image"] figcaption {
-	padding-right: var(--content-padding-quarter);
+	padding-right: 0;
 }

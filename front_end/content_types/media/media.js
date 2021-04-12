@@ -95,6 +95,7 @@
 		volumeSlider.appendChild(volumeSliderMark);
 
 		volumeButton.addEventListener("click", (e) => {
+			if(e.buttons !== 1){return;}
 			e.preventDefault();
 			if(!media.muted){
 				volumeButton.classList.add('active');
@@ -158,7 +159,7 @@
 		});
 
 		function seekbarHandler(e){
-			if(e.buttons === 0){return;}
+			if(e.buttons !== 1){return;}
 			const rect = seekbar.getBoundingClientRect();
 			const curPos = Math.min(1,(e.x-rect.x)/rect.width);
 			seekbarMark.style.width = (curPos*100.0)+"%";
