@@ -35,7 +35,7 @@
 	"scripts": {
 		"build": "node back_end/index.mjs",
 		"dev": "nodemon --ignore web/ back_end/index.mjs --quiet --start-server",
-		"lint": "eslint back_end/**/*.mjs front_end/**/*.js",
+		"lint": "eslint 'back_end/**/*.mjs' 'front_end/**/*.js'",
 		"mon": "nodemon --ignore web/ back_end/index.mjs --skip-network --start-server",
 		"start": "node back_end/index.mjs --open-browser --start-server",
 		"open": "node back_end/index.mjs --open-browser"
