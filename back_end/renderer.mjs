@@ -59,7 +59,7 @@ const RenderingContext = class {
 		const context = new RenderingContext(model, this);
 		return render(model, context);
 	}
-}
+};
 /*
 * "Rendering" a content type means transforming it to HTML.
 * Usually, this function will be used by passing a CraftCMS model to it.
@@ -73,7 +73,7 @@ const RenderingContext = class {
 export const render = async (model, context = null) => {
 	const { __typename: type } = model;
 	const contentType = (() => {
-		for (const [key, contentType] of contentTypes) {
+		for (const [, contentType] of contentTypes) {
 			const prototype = contentType.default;
 			if ([...(prototype?.queries?.keys() || [])].includes(type)) {
 				return prototype;
