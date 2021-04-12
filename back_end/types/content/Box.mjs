@@ -16,11 +16,20 @@ export default {
 				.replace("grey", "gray");
 	},
 	queries: new Map([
-		["inhaltsbausteine_aufklappkasten_BlockType", () => `
+		["inhaltsbausteine_aufklappkasten_BlockType", ({
+			types
+		}) => `
 			__typename
 			colorClassName: Farbe
 			content: inhaltDesKastens {
-				__typename
+				...on inhaltDesKastens_BlockType {
+					elements: elemente {
+						__typename
+						...on elemente_ueberschrift_BlockType {
+							${types.elemente_ueberschrift_BlockType}
+						}
+					}
+				}
 			}
 			headline: boxHeader
 			id
@@ -30,7 +39,7 @@ export default {
 		`]
 	]),
 	async render({
-		content,
+		content: [content],
 		colorClassName,
 		headline,
 		isNumbered,
@@ -42,7 +51,7 @@ export default {
 		},
 		render
 	}) {
-		const contentHTML = await Promise.all(content.map(child => render(child)));
+		const contentHTML = (await Promise.all(content.elements.map(child => render(child)))).join("");
 		const footerHTML = source
 			? `<footer>${source}</footer>`
 			: "";

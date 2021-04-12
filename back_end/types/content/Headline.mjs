@@ -1,5 +1,10 @@
 export default {
 	queries: new Map([
+		["elemente_ueberschrift_BlockType", () => `
+			__typename
+			headline: ueberschrift
+			tag: groesse
+		`],
 		["inhaltsbausteine_ueberschrift_BlockType", () => `
 			__typename
 			headline: ueberschrift
@@ -8,7 +13,8 @@ export default {
 	]),
 	render({
 		headline,
-		isNumbered
+		isNumbered,
+		tag = "h3"
 	}, {
 		helpers: {
 			Marker
@@ -18,7 +24,7 @@ export default {
 			<section content-type="headline">
 				<inner-content>
 					${Marker.render({ isNumbered })}
-					<h3>${headline}</h3>
+					<${tag}>${headline}</${tag}>
 				</inner-content>
 			</section>
 		`;
