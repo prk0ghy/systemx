@@ -2,6 +2,7 @@
 .dialogtext {
 	color:#257DA7;
 	text-align: left;
+	font-weight:300;
 	font-style:italic;
 	font-size:1em;
 	font-family:var(--font-content);

@@ -13,19 +13,18 @@ main > section[content-type="hero-image"]:first-child {
 
 
 figure[figure-type="hero-image"] img {
-	max-height:500px;
+	max-height:700px;
 	object-fit:cover;
 }
 
 figure[figure-type="hero-image"] figcaption {
-	position:absolute;
+	position:relative;
 	left:0;
 	bottom:0;
 	width:100%;
-	background: #FFF9 0% 0% no-repeat padding-box;
-	box-shadow: 0 3px 6px #00000029;
 	opacity: 1;
-	backdrop-filter: blur(30px);
+	padding-top:0;
+	/* backdrop-filter: blur(30px); */
 	padding-left:64px;
 }
 
