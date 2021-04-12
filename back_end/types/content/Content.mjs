@@ -9,6 +9,9 @@ export default {
 				...on inhaltsbausteine_audioDatei_BlockType {
 					${types.inhaltsbausteine_audioDatei_BlockType}
 				}
+				...on inhaltsbausteine_aufklappkasten_BlockType {
+					${types.inhaltsbausteine_aufklappkasten_BlockType}
+				}
 				...on inhaltsbausteine_galerie_BlockType {
 					${types.inhaltsbausteine_galerie_BlockType}
 				}
