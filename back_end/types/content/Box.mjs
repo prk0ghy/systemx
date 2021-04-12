@@ -27,6 +27,9 @@ export default {
 							...on elemente_galerie_BlockType {
 								${types.elemente_galerie_BlockType}
 							}
+							...on elemente_textMitOhneBild_BlockType {
+								${types.elemente_textMitOhneBild_BlockType}
+							}
 							...on elemente_ueberschrift_BlockType {
 								${types.elemente_ueberschrift_BlockType}
 							}

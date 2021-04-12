@@ -20,6 +20,29 @@ export default {
 		}
 	},
 	queries: new Map([
+		["elemente_textMitOhneBild_BlockType", {
+			fetch: cms => `
+				__typename
+				images: bilder {
+					__typename
+					${cms.fragments.asset}
+				}
+				imageWidth: bildbreite
+				imagePosition: bildposition
+				galleryIntroductionText: bildunterschrift
+				text
+			`,
+			map: ({
+				images,
+				...rest
+			}) => ({
+				images: images.map(image => ({
+					caption: null,
+					files: [image]
+				})),
+				...rest
+			})
+		}],
 		["inhaltsbausteine_textMitOhneBild_BlockType", {
 			fetch: cms => `
 				__typename
@@ -28,7 +51,7 @@ export default {
 					__typename
 					...on bilder_BlockType {
 						caption: bildunterschrift
-						image: datei {
+						files: datei {
 							${cms.fragments.asset}
 						}
 					}
@@ -42,7 +65,7 @@ export default {
 		}]
 	]),
 	render({
-		displayInOneLine,
+		displayInOneLine = false,
 		images,
 		imageWidth,
 		imagePosition,
@@ -61,7 +84,7 @@ export default {
 			.map(image => this.renderFigure({
 				caption: image.caption,
 				displayInOneLine,
-				imageHTML: Image.render({ asset: image?.image?.[0] }),
+				imageHTML: Image.render({ asset: image?.files?.[0] }),
 				width: mappedImageWidth,
 				position: mappedImagePosition
 			})).join("");
