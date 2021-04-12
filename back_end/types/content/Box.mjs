@@ -36,6 +36,9 @@ export default {
 							...on elemente_ueberschrift_BlockType {
 								${types.elemente_ueberschrift_BlockType}
 							}
+							...on elemente_videoDatei_BlockType {
+								${types.elemente_videoDatei_BlockType}
+							}
 						}
 					}
 				}
