@@ -8,7 +8,7 @@ export default {
 	},
 	render({ isNumbered }) {
 		return isNumbered
-			? ""
-			: `<a class="marker"></a>`;
+			? `<a class="marker"></a>`
+			: "";
 	}
 };
