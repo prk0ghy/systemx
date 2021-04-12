@@ -25,10 +25,17 @@ const makeContextualizedContentTypes = context => Object.fromEntries([...content
 	.map(([name, module]) => {
 		const {
 			render,
+			queries,
 			...rest
 		} = module.default;
 		return [name, {
-			render: model => render.bind(module.default)(model, context),
+			render: model => {
+				const map = queries.get(model.__typename)?.map;
+				const mappedModel = map
+					? map(model)
+					: model;
+				return render.bind(module.default)(mappedModel, context);
+			},
 			...rest
 		}];
 	}));
@@ -82,10 +89,19 @@ export const render = async (model, context = null) => {
 		return null;
 	})();
 	if (contentType) {
+		const { map } = contentType.queries.get(type);
 		if (!contentType.cms) {
 			contentType.cms = cmsContext;
 		}
-		return contentType.render(model, new RenderingContext(context || model));
+		/*
+		* Nested content types may have structurally different models.
+		* Therefore, they can define a `map` function for each `__typename` in their `queries` section.
+		* This allows us to map the result of a query to a known structure prior to rendering it.
+		*/
+		const mappedModel = map
+			? map(model)
+			: model;
+		return contentType.render(mappedModel, new RenderingContext(context || model));
 	}
 	if (!warnedContentTypes.has(type)) {
 		console.warn(`Content type "${type}" is currently not supported.`);

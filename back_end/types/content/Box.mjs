@@ -16,27 +16,30 @@ export default {
 				.replace("grey", "gray");
 	},
 	queries: new Map([
-		["inhaltsbausteine_aufklappkasten_BlockType", ({
-			types
-		}) => `
-			__typename
-			colorClassName: Farbe
-			content: inhaltDesKastens {
-				...on inhaltDesKastens_BlockType {
-					elements: elemente {
-						__typename
-						...on elemente_ueberschrift_BlockType {
-							${types.elemente_ueberschrift_BlockType}
+		["inhaltsbausteine_aufklappkasten_BlockType", {
+			fetch: ({ types }) => `
+				__typename
+				colorClassName: Farbe
+				content: inhaltDesKastens {
+					...on inhaltDesKastens_BlockType {
+						elements: elemente {
+							__typename
+							...on elemente_galerie_BlockType {
+								${types.elemente_galerie_BlockType}
+							}
+							...on elemente_ueberschrift_BlockType {
+								${types.elemente_ueberschrift_BlockType}
+							}
 						}
 					}
 				}
-			}
-			headline: boxHeader
-			id
-			isNumbered: nummerierung
-			source: quellenangaben
-			summary: zusammenfassung
-		`]
+				headline: boxHeader
+				id
+				isNumbered: nummerierung
+				source: quellenangaben
+				summary: zusammenfassung
+			`
+		}]
 	]),
 	async render({
 		content: [content],

@@ -1,45 +1,47 @@
 export default {
 	queries: new Map([
-		["inhalt_inhalt_Entry", ({
-			fragments,
-			types
-		}) => `
-			elements: inhaltsbausteine {
-				__typename
-				...on inhaltsbausteine_audioDatei_BlockType {
-					${types.inhaltsbausteine_audioDatei_BlockType}
+		["inhalt_inhalt_Entry", {
+			fetch: ({
+				fragments,
+				types
+			}) => `
+				elements: inhaltsbausteine {
+					__typename
+					...on inhaltsbausteine_audioDatei_BlockType {
+						${types.inhaltsbausteine_audioDatei_BlockType}
+					}
+					...on inhaltsbausteine_aufklappkasten_BlockType {
+						${types.inhaltsbausteine_aufklappkasten_BlockType}
+					}
+					...on inhaltsbausteine_galerie_BlockType {
+						${types.inhaltsbausteine_galerie_BlockType}
+					}
+					...on inhaltsbausteine_h5p_BlockType {
+						${types.inhaltsbausteine_h5p_BlockType}
+					}
+					...on inhaltsbausteine_heroimage_BlockType {
+						${types.inhaltsbausteine_heroimage_BlockType}
+					}
+					...on inhaltsbausteine_textMitOhneBild_BlockType {
+						${types.inhaltsbausteine_textMitOhneBild_BlockType}
+					}
+					...on inhaltsbausteine_trennerbild_BlockType {
+						${types.inhaltsbausteine_trennerbild_BlockType}
+					}
+					...on inhaltsbausteine_ueberschrift_BlockType {
+						${types.inhaltsbausteine_ueberschrift_BlockType}
+					}
+					...on inhaltsbausteine_videoDatei_BlockType {
+						${types.inhaltsbausteine_videoDatei_BlockType}
+					}
 				}
-				...on inhaltsbausteine_aufklappkasten_BlockType {
-					${types.inhaltsbausteine_aufklappkasten_BlockType}
+				heroImageCaption: bildunterschrift
+				heroImages: heroimage {
+					${fragments.asset}
 				}
-				...on inhaltsbausteine_galerie_BlockType {
-					${types.inhaltsbausteine_galerie_BlockType}
-				}
-				...on inhaltsbausteine_h5p_BlockType {
-					${types.inhaltsbausteine_h5p_BlockType}
-				}
-				...on inhaltsbausteine_heroimage_BlockType {
-					${types.inhaltsbausteine_heroimage_BlockType}
-				}
-				...on inhaltsbausteine_textMitOhneBild_BlockType {
-					${types.inhaltsbausteine_textMitOhneBild_BlockType}
-				}
-				...on inhaltsbausteine_trennerbild_BlockType {
-					${types.inhaltsbausteine_trennerbild_BlockType}
-				}
-				...on inhaltsbausteine_ueberschrift_BlockType {
-					${types.inhaltsbausteine_ueberschrift_BlockType}
-				}
-				...on inhaltsbausteine_videoDatei_BlockType {
-					${types.inhaltsbausteine_videoDatei_BlockType}
-				}
-			}
-			heroImageCaption: bildunterschrift
-			heroImages: heroimage {
-				${fragments.asset}
-			}
-			titleOverride: title_override
-		`]
+				titleOverride: title_override
+			`
+		}]
 	]),
 	async render({
 		id,
@@ -56,7 +58,7 @@ export default {
 		const content = await query(() => `
 			entry(id: ${id}) {
 				...on ${type} {
-					${this.queries.get(type)(cms)}
+					${this.queries.get(type).fetch(cms)}
 				}
 			}
 		`);

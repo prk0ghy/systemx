@@ -1,18 +1,43 @@
 export default {
 	queries: new Map([
-		["inhaltsbausteine_galerie_BlockType", cms => `
-			__typename
-			galleryIntroductionText: einleitungstextGallerie
-			images: bilder {
-				...on bilder_BlockType {
-					caption: bildunterschrift
-					files: datei {
-						${cms.fragments.asset}
+		["elemente_galerie_BlockType", {
+			fetch: cms => `
+				__typename
+				captions: bildunterschriften {
+					text: col1
+				}
+				files: bilder {
+					${cms.fragments.asset}
+				}
+				galleryIntroductionText: galerietext
+			`,
+			map: ({
+				captions,
+				files,
+				...rest
+			}) => ({
+				images: files.map((file, index) => ({
+					caption: captions[index]?.text || null,
+					files: [file]
+				})),
+				...rest
+			})
+		}],
+		["inhaltsbausteine_galerie_BlockType", {
+			fetch: cms => `
+				__typename
+				galleryIntroductionText: einleitungstextGallerie
+				images: bilder {
+					...on bilder_BlockType {
+						caption: bildunterschrift
+						files: datei {
+							${cms.fragments.asset}
+						}
 					}
 				}
-			}
-			isNumbered: nummerierung
-		`]
+				isNumbered: nummerierung
+			`
+		}]
 	]),
 	async render({
 		galleryIntroductionText,

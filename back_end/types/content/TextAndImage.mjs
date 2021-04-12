@@ -20,24 +20,26 @@ export default {
 		}
 	},
 	queries: new Map([
-		["inhaltsbausteine_textMitOhneBild_BlockType", cms => `
-			__typename
-			displayInOneLine: flex
-			images: bilder {
+		["inhaltsbausteine_textMitOhneBild_BlockType", {
+			fetch: cms => `
 				__typename
-				...on bilder_BlockType {
-					caption: bildunterschrift
-					image: datei {
-						${cms.fragments.asset}
+				displayInOneLine: flex
+				images: bilder {
+					__typename
+					...on bilder_BlockType {
+						caption: bildunterschrift
+						image: datei {
+							${cms.fragments.asset}
+						}
 					}
 				}
-			}
-			imageWidth: bildbreite
-			imagePosition: bildposition
-			galleryIntroductionText: einleitungstextGallerie
-			isNumbered: nummerierung
-			text
-		`]
+				imageWidth: bildbreite
+				imagePosition: bildposition
+				galleryIntroductionText: einleitungstextGallerie
+				isNumbered: nummerierung
+				text
+			`
+		}]
 	]),
 	render({
 		displayInOneLine,

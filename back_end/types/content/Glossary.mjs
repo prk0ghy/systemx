@@ -1,28 +1,30 @@
 export default {
 	queries: new Map([
-		["glossar_glossar_Entry", ({
-			fragments,
-			types
-		}) => `
-			elements: inhaltsbausteine {
-				__typename
-				...on inhaltsbausteine_audioDatei_BlockType {
-					${types.inhaltsbausteine_audioDatei_BlockType}
+		["glossar_glossar_Entry", {
+			fetch: ({
+				fragments,
+				types
+			}) => `
+				elements: inhaltsbausteine {
+					__typename
+					...on inhaltsbausteine_audioDatei_BlockType {
+						${types.inhaltsbausteine_audioDatei_BlockType}
+					}
+					...on inhaltsbausteine_galerie_BlockType {
+						${types.inhaltsbausteine_galerie_BlockType}
+					}
+					...on inhaltsbausteine_textMitOhneBild_BlockType {
+						${types.inhaltsbausteine_textMitOhneBild_BlockType}
+					}
+					...on inhaltsbausteine_ueberschrift_BlockType {
+						${types.inhaltsbausteine_ueberschrift_BlockType}
+					}
+					...on inhaltsbausteine_videoDatei_BlockType {
+						${types.inhaltsbausteine_videoDatei_BlockType}
+					}
 				}
-				...on inhaltsbausteine_galerie_BlockType {
-					${types.inhaltsbausteine_galerie_BlockType}
-				}
-				...on inhaltsbausteine_textMitOhneBild_BlockType {
-					${types.inhaltsbausteine_textMitOhneBild_BlockType}
-				}
-				...on inhaltsbausteine_ueberschrift_BlockType {
-					${types.inhaltsbausteine_ueberschrift_BlockType}
-				}
-				...on inhaltsbausteine_videoDatei_BlockType {
-					${types.inhaltsbausteine_videoDatei_BlockType}
-				}
-			}
-		`]
+			`
+		}]
 	]),
 	async render({
 		id,

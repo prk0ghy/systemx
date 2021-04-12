@@ -31,12 +31,12 @@ export const getContext = async () => {
 		types: globalTypes
 	};
 	for (const [, module] of contentTypes.entries()) {
-		for (const [key, getValue] of module.default.queries) {
+		for (const [key, setup] of module.default.queries) {
 			if (Object.hasOwnProperty.call(cms.types, key)) {
 				continue;
 			}
 			Object.defineProperty(cms.types, key, {
-				get: () => getValue(cms)
+				get: () => setup.fetch(cms)
 			});
 		}
 	}

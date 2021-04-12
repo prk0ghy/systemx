@@ -1,16 +1,18 @@
 export default {
 	queries: new Map([
-		["inhaltsbausteine_videoDatei_BlockType", cms => `
-			__typename
-			caption: videoUnterschrift
-			files: datei {
-				${cms.fragments.asset}
-			}
-			isNumbered: nummerierung
-			posters: posterbild {
-				${cms.fragments.asset}
-			}
-		`]
+		["inhaltsbausteine_videoDatei_BlockType", {
+			fetch: cms => `
+				__typename
+				caption: videoUnterschrift
+				files: datei {
+					${cms.fragments.asset}
+				}
+				isNumbered: nummerierung
+				posters: posterbild {
+					${cms.fragments.asset}
+				}
+			`
+		}]
 	]),
 	async render({
 		caption,

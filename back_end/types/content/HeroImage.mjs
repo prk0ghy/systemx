@@ -1,17 +1,21 @@
 export default {
 	queries: new Map([
-		["inhaltsbausteine_heroimage_BlockType", cms => `
-			__typename
-			images: bild {
-				${cms.fragments.asset}
-			}
-		`],
-		["inhaltsbausteine_trennerbild_BlockType", cms => `
-			__typename
-			images: datei {
-				${cms.fragments.asset}
-			}
-		`]
+		["inhaltsbausteine_heroimage_BlockType", {
+			fetch: cms => `
+				__typename
+				images: bild {
+					${cms.fragments.asset}
+				}
+			`
+		}],
+		["inhaltsbausteine_trennerbild_BlockType", {
+			fetch: cms => `
+				__typename
+				images: datei {
+					${cms.fragments.asset}
+				}
+			`
+		}]
 	]),
 	render({
 		caption,

@@ -1,11 +1,13 @@
 export default {
 	queries: new Map([
-		["inhaltsbausteine_h5p_BlockType", () => `
-			__typename
-			caption: unterschrift_h5p
-			isNumbered: nummerierung
-			html: h5p
-		`]
+		["inhaltsbausteine_h5p_BlockType", {
+			fetch: () => `
+				__typename
+				caption: unterschrift_h5p
+				isNumbered: nummerierung
+				html: h5p
+			`
+		}]
 	]),
 	async render({
 		caption,

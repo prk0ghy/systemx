@@ -1,16 +1,18 @@
 export default {
 	queries: new Map([
-		["inhaltsbausteine_audioDatei_BlockType", cms => `
-			__typename
-			audioFiles: audio {
-				${cms.fragments.asset}
-			}
-			caption: audiotext
-			isNumbered: nummerierung
-			posters: audiobild {
-				${cms.fragments.asset}
-			}
-		`]
+		["inhaltsbausteine_audioDatei_BlockType", {
+			fetch: cms => `
+				__typename
+				audioFiles: audio {
+					${cms.fragments.asset}
+				}
+				caption: audiotext
+				isNumbered: nummerierung
+				posters: audiobild {
+					${cms.fragments.asset}
+				}
+			`
+		}]
 	]),
 	async render({
 		audioFiles,
