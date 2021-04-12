@@ -1,5 +1,12 @@
 export default {
 	queries: new Map([
+		["elemente_h5p_BlockType", {
+			fetch: () => `
+				__typename
+				caption: unterschrift_nested
+				html: h5p_slider
+			`
+		}],
 		["inhaltsbausteine_h5p_BlockType", {
 			fetch: () => `
 				__typename

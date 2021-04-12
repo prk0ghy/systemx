@@ -30,6 +30,9 @@ export default {
 							...on elemente_galerie_BlockType {
 								${types.elemente_galerie_BlockType}
 							}
+							...on elemente_h5p_BlockType {
+								${types.elemente_h5p_BlockType}
+							}
 							...on elemente_textMitOhneBild_BlockType {
 								${types.elemente_textMitOhneBild_BlockType}
 							}
