@@ -85,7 +85,7 @@ box-content > footer {
 	font-size:0.8em;
 	line-height:1.1em;
 	font-weight:300;
-	color:var(--background-grey);
+	color:var(--background-gray);
 }
 
 .box-wrap.active box-content {

@@ -53,7 +53,7 @@ main ul ul ul > li::before {
 	height: 0.6em;
 	border-radius:50%;
 	border: none !important;
-	background-color: var(--background-grey) !important;
+	background-color: var(--background-gray) !important;
 }
 
 main ul ul ul ul > li::before {
@@ -61,7 +61,7 @@ main ul ul ul ul > li::before {
 	display: block;
 	width: 0.4em;
 	height: 0.4em;
-	border: 0.15em solid var(--background-grey) !important;
+	border: 0.15em solid var(--background-gray) !important;
 	background: transparent !important;
 }
 
@@ -77,6 +77,6 @@ main ol > li > ol-number {
 
 main ol ol > li > ol-number {
 	position: absolute;
-	color: var(--background-grey) !important;
+	color: var(--background-gray) !important;
 	left: 0;
 }

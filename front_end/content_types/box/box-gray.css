@@ -1,0 +1,20 @@
+section[content-type="box"][box-type="gray"] > inner-content > details > summary {
+	background-color: var(--box-gray);
+}
+
+section[content-type="box"][box-type="gray"] > inner-content > details {
+	border-bottom-color: var(--box-gray);
+}
+
+section[box-type="gray"] ol > li > ol-number {
+	color: var(--box-gray);
+}
+
+section[box-type="gray"] ul > li::before {
+	background-color:transparent;
+	border-color: var(--box-gray);
+}
+
+section[box-type="gray"] ul ul > li::before {
+	background-color: var(--box-gray);
+}
