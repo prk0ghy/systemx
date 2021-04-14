@@ -30,7 +30,7 @@ main > section[content-type="embedding"]::after {
 
 section[content-type="embedding"] > inner-content {
 	position:relative;
-	z-index:1;
+	z-index:1000;
 }
 
 figure[figure-type="embedding"] > figcaption{
