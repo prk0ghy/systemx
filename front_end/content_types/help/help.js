@@ -23,6 +23,7 @@
 			videoWrap.offsetTop;
 			video.style.opacity = 0;
 			video.offsetTop;
+			if(video.playing){video.stop();}
 
 			hideHelpVideoCallback = undefined;
 		}

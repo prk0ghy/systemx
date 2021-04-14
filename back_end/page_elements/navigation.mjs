@@ -53,6 +53,7 @@ export async function loadNavigation(target){
 }
 
 const testNavigationData = [
+	/*
 	{
 		title: "Geschichte - Instrumentalisierung der Vergangenheit",
 		uri: "/index.html?v=1",
@@ -62,7 +63,13 @@ const testNavigationData = [
 			uri: "/index.html",
 			children: []
 		}]
-	},{
+	}, */
+	{
+		title: "Zurück zu allen Modulen",
+		uri: "/",
+		noPrevNextLink: true,
+		children: []
+	}, {
 		title: "Kunst - Die Welt der Farben",
 		uri: "/farbkontraste.html?v=1",
 		noPrevNextLink: true,
