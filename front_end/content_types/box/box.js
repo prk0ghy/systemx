@@ -13,10 +13,10 @@ let overlayHideBoxCallback = undefined;
 			let classRemoverTimer = undefined;
 
 			function calcHeights(){
-				const viewportHeight = window.innerHeight|0;
-				const headerHeight = boxHeader.clientHeight|0;
 				if(boxVisible){
-					boxContent.style.maxHeight = (viewportHeight - headerHeight - 78) + "px";
+					const viewportHeight = window.innerHeight|0;
+					const headerHeight   = boxHeader.clientHeight|0;
+					boxContent.style.maxHeight = (viewportHeight - headerHeight - 80) + "px"; // 80 == padding
 				}else{
 					boxContent.style.maxHeight = "";
 				}
@@ -25,12 +25,11 @@ let overlayHideBoxCallback = undefined;
 			function showBox(){
 				boxVisible = true;
 				const rect = boxHeader.getBoundingClientRect();
-				boxDetails.parentElement.style.height = ((rect.height|0)+8) + "px";
+				boxDetails.parentElement.style.height = ((rect.height|0)+8) + "px"; // Set a fixed height for the parent element, because as soon as we set position:fixed it will loose its height and would lead to content jumping aronud
 				boxDetails.style.top = (rect.top|0) + "px";
 				boxDetails.classList.add("active");
-				boxDetails.getBoundingClientRect();
+				boxDetails.getBoundingClientRect(); // Sync CSS <-> JS
 				boxDetails.style.top = "32px";
-				boxDetails.getBoundingClientRect();
 				showEmbeddingSections(boxContent);
 
 				showOverlay();
