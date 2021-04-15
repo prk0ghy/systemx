@@ -8,6 +8,10 @@ figure[figure-type="gallery"] > details.license > summary {
 	margin-top:-2.3em;
 }
 
+figure[figure-type="gallery"] > details.license > license-content {
+	padding-bottom: 2.4em;
+}
+
 section[content-type="gallery"] > inner-content > details > summary::marker {
 	content: '';
 	display: none;

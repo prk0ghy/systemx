@@ -21,6 +21,7 @@ section[content-type="box"] > inner-content > details > summary {
 	line-height: 2.6em;
 	background-color: #257DA7;
 	padding-right: 130px;
+	margin-bottom:-1px;
 }
 
 section[content-type="box"] > inner-content > details > summary::marker {
@@ -97,7 +98,7 @@ box-content > footer {
 }
 
 .box-wrap.active {
-	z-index:2000;
+	z-index:2600;
 	position:fixed;
 	top:16px;
 	width:calc(var(--content-width) - (var(--content-padding) * 2));

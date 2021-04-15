@@ -7,7 +7,7 @@ header {
 	color: var(--headerbar-color);
 	background:var(--headerbar-background);
 	border-bottom:solid 2px var(--headerbar-color);
-	z-index:10;
+	z-index:2600;
 	display: block;
 	padding:8px var(--content-padding);
 }

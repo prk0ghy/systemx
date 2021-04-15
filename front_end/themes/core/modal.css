@@ -1,7 +1,7 @@
 html .show-modal {
 	position:fixed;
 	display:block;
-	z-index:2000;
+	z-index:2600;
 	left:0%;
 	transform:translateX(-100%) translateY(-50%);
 	width: calc(50% + (var(--content-width) / 2));

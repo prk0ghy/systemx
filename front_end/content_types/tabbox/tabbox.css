@@ -177,3 +177,7 @@ main > section[content-type="tabbox"] section[content-type="embedding"] {
 [content-type="tabbox"] > inner-content > details > section > p {
 	padding-top: var(--content-padding-half);
 }
+
+tabbox-content > section:last-child > inner-content {
+	margin-bottom:0;
+}

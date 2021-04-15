@@ -64,26 +64,28 @@
 			}
 		});
 
-		const fullscreenButton = document.createElement("MEDIA-FULLSCREEN");
-		controlsWrapperRight.appendChild(fullscreenButton);
+		if(media.tagName === "VIDEO"){
+			const fullscreenButton = document.createElement("MEDIA-FULLSCREEN");
+			controlsWrapperRight.appendChild(fullscreenButton);
+			fullscreenButton.addEventListener("click", (e) => {
+				e.preventDefault();
+				if(document.fullscreenElement === null){
+					fullscreenButton.classList.add('active');
+					wrapper.requestFullscreen();
+				} else{
+					fullscreenButton.classList.remove('active');
+					document.exitFullscreen();
+				}
+			});
 
-		fullscreenButton.addEventListener("click", (e) => {
-			e.preventDefault();
-			if(document.fullscreenElement === null){
-				fullscreenButton.classList.add('active');
-				wrapper.requestFullscreen();
-			} else{
-				fullscreenButton.classList.remove('active');
-				document.exitFullscreen();
-			}
-		});
-		document.addEventListener('fullscreenchange', (e) => {
-			if (document.fullscreenElement === wrapper) {
-				fullscreenButton.classList.add('active');
-			} else{
-				fullscreenButton.classList.remove('active');
-			}
-		});
+			document.addEventListener('fullscreenchange', (e) => {
+				if (document.fullscreenElement === wrapper) {
+					fullscreenButton.classList.add('active');
+				} else{
+					fullscreenButton.classList.remove('active');
+				}
+			});
+		}
 
 		const volumeButton = document.createElement("MEDIA-VOLUME-BUTTON");
 		controlsWrapperLeft.appendChild(volumeButton);
@@ -95,7 +97,7 @@
 		volumeSlider.appendChild(volumeSliderMark);
 
 		volumeButton.addEventListener("click", (e) => {
-			if(e.buttons !== 1){return;}
+			if(e.buttons !== 0){return;}
 			e.preventDefault();
 			if(!media.muted){
 				volumeButton.classList.add('active');

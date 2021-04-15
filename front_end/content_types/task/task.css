@@ -13,7 +13,7 @@ section[content-type="task"] > inner-content {
 }
 
 section[content-type="task"] task-content > section {
-	padding: var(--content-padding-half) var(--content-padding);
+	padding: var(--content-padding-quarter) var(--content-padding);
 }
 
 section[content-type="tabbox"] section[content-type="task"] > inner-content {
@@ -53,19 +53,15 @@ section[content-type="task"] ul ul > li::before {
 	background-color: var(--task-red);
 }
 
-/* Gallery in Task */
-
-section[content-type="task"] gallery-text {
-	color: var(--task-red);
-	padding: 0;
+section[content-type="task"] section[content-type="gallery"] figcaption,
+section[content-type="task"] section[content-type="gallery"] gallery-text {
+	padding-left:0;
+	padding-right:0;
 }
 
-section[content-type="task"] section[content-type="gallery"] {
-	color: var(--task-red);
-	padding-top: 0;
+section[content-type="task"] section[content-type="gallery"] [figure-type="gallery"] > img {
+	border:none;
 }
-
-
 /* Padding-adjustment of a task inside a pop-up box */
 
 section[content-type="box"] > inner-content > .box-wrap.active > box-content > section[content-type="task"] {

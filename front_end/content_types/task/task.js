@@ -1,11 +1,5 @@
 /* globals Quill */
 
-function getFirstParentSection(ele){
-	if(!ele){return null;}
-	if(ele.tagName === 'SECTION'){return ele;}
-	return getFirstParentSection(ele.parentElement);
-}
-
 (() => {
 	function initTaskEditors(){
 		const textareas = document.querySelectorAll(".tasktext");

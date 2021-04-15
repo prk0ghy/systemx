@@ -38,9 +38,13 @@
 			if(video === undefined){
 				video = document.createElement("VIDEO");
 				video.setAttribute("src",videoSrc);
-				video.setAttribute("muted","muted");
+				video.muted = "muted";
+				video.volume = 0;
 				videoWrap.append(video);
-				video.addEventListener("ended",hideOverlay);
+				video.addEventListener("ended",(e) => {
+					if(video.currentTime < (video.duration-1)){return;}
+					hideOverlay();
+				});
 				video.addEventListener("click",hideOverlay);
 			}
 			const max = Math.min(window.innerWidth,window.innerHeight) * 0.86;

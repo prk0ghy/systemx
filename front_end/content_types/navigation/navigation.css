@@ -8,7 +8,7 @@ aside#navigation {
 	color:var(--text-color);
 	transform:translateX(-100%);
 	transition:transform 300ms;
-	z-index:200;
+	z-index:2001;
 	display:block !important; /* To override the inline style */
 }
 

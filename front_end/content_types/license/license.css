@@ -4,7 +4,7 @@ details.license > summary {
 	font-weight: 600;
 	position: absolute;
 	right:0.5em;
-	margin-top:-1.7em;
+	margin-top:-2em;
 	user-select: none;
 	outline: none;
 	display: inline-block;
@@ -19,7 +19,10 @@ details.license > summary {
 	cursor: pointer;
 	box-shadow: 0 3px 6px #00000029;
 	transition:background-color 300ms, color 300ms;
-	z-index: 1;
+	z-index: 2001;
+}
+summary.missing-attribution {
+	background-color: #FF4411 !important;
 }
 
 details.license > summary::marker {
@@ -37,24 +40,37 @@ details.license.active > summary {
 	background-color: var(--dlw-blue);
 }
 
-details.license > license-content {
+license-content {
 	font-size: 0.5em;
 	font-weight: 400;
 	box-shadow: 0 3px 6px #00000029;
 	padding: 0.8em;
-	margin-bottom: 10px;
+	margin-top: 1px;
 	line-height: 1.5em;
 	position:absolute;
 	left:0;
-	background:rgba(255,255,255,0.8);
+	background:rgba(255,255,255,0.95);
 	width:100%;
 	opacity:0;
-	transform:scaleY(0);
+	transform:translate(0,0%) scaleY(0);
 	transform-origin:50% 0%;
 	transition:transform 300ms, opacity 300ms;
+	z-index: 2000;
+}
+details.license > license-content a {
+	word-break: break-all;
+	padding-right: 64px;
+}
+
+details.license > license-content p {
+	padding-right: 64px;
 }
 
 details.license.active > license-content {
 	opacity:1;
-	transform:scaleY(1);
+	transform:translate(0,-100%) scaleY(1);
+}
+
+i.cc.cc-pd::before {
+	content:"Public Domain";
 }

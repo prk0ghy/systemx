@@ -108,7 +108,7 @@ media-controls-right > * {
 	display:inline-block;
 }
 
-media-wrap[media-type="video"] > media-fullscreen {
+media-fullscreen {
 	width: 1.25em;
 	height: 1em;
 	font-family: icomoon;
@@ -116,12 +116,12 @@ media-wrap[media-type="video"] > media-fullscreen {
 	margin-right: 15px;
 }
 
-media-wrap[media-type="video"] > media-fullscreen::before {
+media-fullscreen::before {
 	position: relative;
 	content: "\e906";
 }
 
-media-wrap[media-type="video"] > media-fullscreen.active::before {
+media-fullscreen.active::before {
 	position: relative;
 	width: 1.25em;
 	height: 1em;
