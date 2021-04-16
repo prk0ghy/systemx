@@ -1,4 +1,4 @@
-import { gql, request } from "graphql-request";
+import { gql,request } from "graphql-request";
 import { loadContentTypes } from "./types.mjs";
 const globalFragments = {
 	asset: `

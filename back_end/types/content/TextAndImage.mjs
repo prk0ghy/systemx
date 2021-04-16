@@ -81,7 +81,7 @@ export default {
 		const mappedImageWidth = this.getFigureWidth(imageWidth);
 		const mappedImagePosition = this.getFigurePosition(imagePosition);
 		const figureHTML = images
-			.map(image => this.renderFigure({
+			?.map(image => this.renderFigure({
 				caption: image.caption,
 				displayInOneLine,
 				imageHTML: Image.render({ asset: image?.files?.[0] }),
