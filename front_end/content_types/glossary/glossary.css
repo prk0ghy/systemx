@@ -16,3 +16,7 @@ glossary-entry-content {
 	border-left:solid var(--content-padding-quarter) var(--background-color);
 	padding: var(--content-padding);
 }
+
+glossary-entry-content a.marker {
+	display:none;
+}
