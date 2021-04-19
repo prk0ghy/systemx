@@ -1,14 +1,14 @@
-glossar-entry {
+glossary-entry {
 	display:none;
 	box-sizing:border-box;
 	border-right:solid var(--content-padding-quarter) var(--dlw-blue);
 }
 
-glossar-entry > modal-close {
+glossary-entry > modal-close {
 	color:var(--dlw-blue);
 }
 
-glossar-entry-content {
+glossary-entry-content {
 	width: 100%;
 	max-width: var(--content-width);
 	margin:0 0 0 auto;
