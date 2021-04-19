@@ -1,4 +1,5 @@
-import { gql,request } from "graphql-request";
+import { gql } from "graphql-request";
+import request from "./rateLimiting.mjs";
 import { loadContentTypes } from "./types.mjs";
 const globalFragments = {
 	asset: `
