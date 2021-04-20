@@ -1,4 +1,4 @@
-/* global showOverlay,hideOverlay,overlayCloseHandlers,showEmbeddingSections */
+/* global showOverlay,hideOverlay,overlayCloseHandlers,showEmbeddingSections,hideElementContentHandler */
 let overlayHideBoxCallback = undefined;
 
 /* Don't pollute the global scope if avoidable */
@@ -53,6 +53,7 @@ let overlayHideBoxCallback = undefined;
 						boxContent.style.maxHeight = "";
 					},410);
 				}
+				hideElementContentHandler(boxDetails);
 				const prect = boxDetails.parentElement.getBoundingClientRect();
 				boxDetails.style.top = (prect.top|0)+"px";
 				calcHeights();

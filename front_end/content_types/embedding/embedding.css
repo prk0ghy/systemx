@@ -94,3 +94,23 @@ section[content-type="embedding"] > inner-content > figure > iframe {
 .h5p-iframe {
 	background: var(--background-color) !important;
 }
+
+.hidden-yt-placeholder,
+.hidden-embedding-placeholder {
+	display:none !important;
+}
+
+iframe-wrap[iframe-type="youtube"] {
+	width:100%;
+	padding-top:56.25%;
+	position:relative;
+	display:block;
+}
+
+iframe-wrap[iframe-type="youtube"] > iframe {
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+}

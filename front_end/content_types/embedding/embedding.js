@@ -1,11 +1,14 @@
 function showLazyIframe(ele){
+	if(ele.classList.contains("hidden-embedding-placeholder")){return;}
+	const iframeWrapper = document.createElement("IFRAME-WRAPPER");
 	const newEle = document.createElement("IFRAME");
 	newEle.setAttribute("frameborder","0");
 	newEle.setAttribute("allowfullscreen","allowfullscreen");
 	newEle.setAttribute("src",ele.getAttribute("src"));
 	newEle.classList.add("h5p-iframe");
-	ele.parentElement.insertBefore(newEle,ele);
-	ele.remove();
+	iframeWrapper.append(newEle);
+	ele.parentElement.insertBefore(iframeWrapper,ele);
+	ele.classList.add("hidden-embedding-placeholder");
 }
 
 function showEmbeddingSections(container){

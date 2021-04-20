@@ -79,7 +79,7 @@
 		const ret = tagesschauToIFrame(href,autoplay);
 		if(ret !== null){
 			ret.setAttribute('width',"870");
-			ret.setAttribute('height',"653");
+			ret.setAttribute('height',"490");
 			ret.setAttribute('frameborder',"0");
 			ret.setAttribute("allow","autoplay; fullscreen");
 		}
@@ -88,14 +88,26 @@
 
 	function initEmbeddingLinks(){
 		const embeddingLinks = document.querySelectorAll(".embedding-link");
+		addHideElementContentHandler("hideIframes",ele => {
+			for(const e of ele.querySelectorAll('iframe-wrap[iframe-type="youtube"]')){
+				e.remove();
+			}
+			for(const e of ele.querySelectorAll(".hidden-yt-placeholder")){
+				e.classList.remove('hidden-yt-placeholder');
+			}
+		});
 		for(const link of embeddingLinks){
 			link.setAttribute("embedding-target","youtube"); // Should actually check the href in the future
 			link.addEventListener("click",(e) => {
 				const embeddingIframe = textToEmbedding(link.href,true);
 				if(embeddingIframe !== null){
 					e.preventDefault();
-					link.parentElement.insertBefore(embeddingIframe,link);
-					link.remove();
+					const wrap = document.createElement("IFRAME-WRAP");
+					wrap.setAttribute("iframe-type","youtube");
+					wrap.append(embeddingIframe);
+					link.parentElement.insertBefore(wrap,link);
+					embeddingIframe.classList.add("yt-iframe");
+					link.classList.add("hidden-yt-placeholder");
 				}
 			});
 
