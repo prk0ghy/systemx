@@ -9,19 +9,12 @@ const contentTypes = await loadContentTypes();
 const helperTypes = await loadHelperTypes();
 const warnedContentTypes = new Set();
 /*
-* Helpers are almost like content types.
-* The difference is that they don't appear in the back end.
-*/
-const helpers = Object.fromEntries([...helperTypes.entries()]
-	.map(([name, module]) => [name, module.default]));
-/*
-* Content types should be able to call `render` without providing their context,
+* Types should be able to call `render` without providing their context,
 * as it makes content types much easier to use.
 *
-* Hence, we bind all relevant information to the function such that content-type
-* modules become simpler.
+* Hence, we bind all relevant information to the function such that type modules become simpler.
 */
-const makeContextualizedContentTypes = context => Object.fromEntries([...contentTypes.entries()]
+const contextualize = types => context => Object.fromEntries([...types.entries()]
 	.map(([name, module]) => {
 		const {
 			render,
@@ -29,12 +22,12 @@ const makeContextualizedContentTypes = context => Object.fromEntries([...content
 			...rest
 		} = module.default;
 		return [name, {
-			render: model => {
-				const map = queries.get(model.__typename)?.map;
+			render: (model, hints) => {
+				const map = queries?.get(model.__typename)?.map;
 				const mappedModel = map
 					? map(model)
 					: model;
-				return render.bind(module.default)(mappedModel, context);
+				return render.bind(module.default)(mappedModel, context, hints);
 			},
 			...rest
 		}];
@@ -47,23 +40,26 @@ const makeContextualizedContentTypes = context => Object.fromEntries([...content
 */
 const RenderingContext = class {
 	cms = cmsContext;
-	contentTypes = makeContextualizedContentTypes(this);
+	contentTypes = contextualize(contentTypes)(this);
 	Error = {
 		render: ({ ...args }) => Error.render({
 			...args,
 			type: this.type
 		})
 	};
-	helpers = helpers;
+	helpers = contextualize(helperTypes)(this);
+	hints = null;
 	query = query;
 	type = null;
-	constructor(model, parentContext = null) {
+	constructor(model, parentContext = null, hints = {}) {
 		this.model = model;
+		this.hints = Object.assign({}, hints, parentContext?.hints);
 		this.parentContext = parentContext;
 		this.type = model.__typename;
+		this.render = this.render.bind(this);
 	}
-	render(model) {
-		const context = new RenderingContext(model, this);
+	render(model, hints) {
+		const context = new RenderingContext(model, this, hints);
 		return render(model, context);
 	}
 };
@@ -77,7 +73,7 @@ const RenderingContext = class {
 *
 * The rest of properties will be passed on to the corresponding `render` function.
 */
-export const render = async (model, context = null) => {
+export const render = async (model, context, hints) => {
 	const { __typename: type } = model;
 	const contentType = (() => {
 		for (const [, contentType] of contentTypes) {
@@ -101,7 +97,7 @@ export const render = async (model, context = null) => {
 		const mappedModel = map
 			? map(model)
 			: model;
-		return contentType.render(mappedModel, new RenderingContext(context || model));
+		return contentType.render(mappedModel, new RenderingContext(mappedModel, context, hints));
 	}
 	if (!warnedContentTypes.has(type)) {
 		console.warn(`Content type "${type}" is currently not supported.`);
