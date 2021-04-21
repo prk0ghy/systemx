@@ -12,11 +12,10 @@ export default {
 		}]
 	]),
 	async render({}, {
-		Error
+		EditorialError
 	}) {
-		return Error.render({
-			message: "This element used to describe interactive tables. We have decided to re-implement such elements via h5p.",
-			title: "Editorial action needed"
+		return EditorialError.render({
+			message: "This element used to describe interactive tables. We have decided to re-implement such elements via h5p."
 		});
 	}
 };

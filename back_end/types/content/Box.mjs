@@ -67,7 +67,7 @@ export default {
 		source,
 		summary
 	}, {
-		Error,
+		EditorialError,
 		helpers: {
 			Marker
 		},
@@ -82,9 +82,8 @@ export default {
 			: "";
 		const boxType = this.getBoxType(colorClassName);
 		const editorialWarning = boxType === "gray"
-			? Error.render({
-				message: "Please assign a color to this box.",
-				title: "Editorial action needed"
+			? EditorialError.render({
+				message: "Please assign a color to this box."
 			})
 			: "";
 		return `

@@ -41,6 +41,14 @@ const contextualize = types => context => Object.fromEntries([...types.entries()
 const RenderingContext = class {
 	cms = cmsContext;
 	contentTypes = contextualize(contentTypes)(this);
+	EditorialError = {
+		render: ({ ...args }) => Error.render({
+			...args,
+			isEditorial: true,
+			title: "Editorial action required",
+			type: this.type
+		})
+	};
 	Error = {
 		render: ({ ...args }) => Error.render({
 			...args,

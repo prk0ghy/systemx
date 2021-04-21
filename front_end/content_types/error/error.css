@@ -18,8 +18,13 @@ section[content-type="error"] .message,
 section[content-type="error"] .title {
 	margin: 0;
 }
-section[content-type="error"] .type {
+section[content-type="error"]:not([is-editorial]) .type {
+	background-color: #ffe89a;
+}
+section[content-type="error"][is-editorial] .type {
 	background-color: #ff9aad;
+}
+section[content-type="error"] .type {
 	color: #4c3434;
 	font-family: monospace;
 	margin: var(--vertical-padding) calc(-1 * var(--content-padding));
@@ -30,7 +35,7 @@ section[content-type="error"] .type::before {
 }
 
 section[content-type="error"]::after {
-	content:'';
+	content:"";
 	background:#f0f0f0;
 	position:absolute;
 	left:0;
