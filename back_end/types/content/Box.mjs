@@ -67,6 +67,7 @@ export default {
 		source,
 		summary
 	}, {
+		Error,
 		helpers: {
 			Marker
 		},
@@ -79,8 +80,16 @@ export default {
 		const summaryHTML = summary
 			? `<p>${summary}</p>`
 			: "";
+		const boxType = this.getBoxType(colorClassName);
+		const editorialWarning = boxType === "gray"
+			? Error.render({
+				message: "Please assign a color to this box.",
+				title: "Editorial action needed"
+			})
+			: "";
 		return `
-			<section box-type="${this.getBoxType(colorClassName)}" content-type="box">
+			${editorialWarning}
+			<section box-type="${boxType}" content-type="box">
 				<inner-content>
 					${Marker.render({ isNumbered })}
 					<details class="box-wrap">
