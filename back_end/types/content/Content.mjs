@@ -49,6 +49,7 @@ export default {
 	}, {
 		cms,
 		contentTypes: {
+			Headline,
 			HeroImage
 		},
 		query,
@@ -70,13 +71,13 @@ export default {
 				uid: `${id}-hero-image`
 			})
 			: "";
+		const headlineHTML = Headline.render({
+			headline: content.entry.titleOverride || title,
+			tag: "h1"
+		});
 		return `
 			${heroImageHTML}
-			<section content-type="headline">
-				<inner-content>
-					<h1 class="content-title inner-content">${content.entry.titleOverride || title}</h1>
-				</inner-content>
-			</section>
+			${headlineHTML}
 			${children.join("")}
 		`;
 	}
