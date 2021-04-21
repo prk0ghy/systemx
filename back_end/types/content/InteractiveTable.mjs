@@ -15,7 +15,7 @@ export default {
 		EditorialError
 	}) {
 		return EditorialError.render({
-			message: "This element used to describe interactive tables. We have decided to re-implement such elements via h5p."
+			message: "This element used to describe an interactive table. We have decided to re-implement such elements via h5p. Please change this element accordingly."
 		});
 	}
 };

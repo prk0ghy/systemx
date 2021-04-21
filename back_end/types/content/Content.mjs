@@ -16,6 +16,9 @@ export default {
 					...on inhaltsbausteine_download_BlockType {
 						${types.inhaltsbausteine_download_BlockType}
 					}
+					...on inhaltsbausteine_erkundung_BlockType {
+						${types.inhaltsbausteine_erkundung_BlockType}
+					}
 					...on inhaltsbausteine_galerie_BlockType {
 						${types.inhaltsbausteine_galerie_BlockType}
 					}
@@ -24,6 +27,9 @@ export default {
 					}
 					...on inhaltsbausteine_heroimage_BlockType {
 						${types.inhaltsbausteine_heroimage_BlockType}
+					}
+					...on inhaltsbausteine_sideBySide_BlockType {
+						${types.inhaltsbausteine_sideBySide_BlockType}
 					}
 					...on inhaltsbausteine_tabulator_BlockType {
 						${types.inhaltsbausteine_tabulator_BlockType}
