@@ -13,6 +13,9 @@ export default {
 					...on inhaltsbausteine_aufklappkasten_BlockType {
 						${types.inhaltsbausteine_aufklappkasten_BlockType}
 					}
+					...on inhaltsbausteine_download_BlockType {
+						${types.inhaltsbausteine_download_BlockType}
+					}
 					...on inhaltsbausteine_galerie_BlockType {
 						${types.inhaltsbausteine_galerie_BlockType}
 					}
