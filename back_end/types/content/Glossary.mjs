@@ -1,10 +1,7 @@
 export default {
 	queries: new Map([
 		["glossar_glossar_Entry", {
-			fetch: ({
-				fragments,
-				types
-			}) => `
+			fetch: ({ types }) => `
 				title
 				elements: inhaltsbausteine {
 					__typename
@@ -32,6 +29,9 @@ export default {
 		title
 	}, {
 		cms,
+		contentTypes: {
+			Headline
+		},
 		query,
 		render,
 		type
@@ -43,13 +43,15 @@ export default {
 				}
 			}
 		`);
-		const children = await Promise.all(content.entry.elements.map(element => render(element)));
+		const children = await Promise.all(content.entry.elements.map(element => render(element, {
+			renderMarkers: false
+		})));
+		const headlineHTML = Headline.render({
+			headline: title,
+			tag: "h1"
+		});
 		return `
-			<section content-type="headline">
-				<inner-content>
-					<h1 class="content-title inner-content">${title}</h1>
-				</inner-content>
-			</section>
+			${headlineHTML}
 			${children.join("")}
 		`;
 	}

@@ -6,8 +6,12 @@ export default {
 			return `<a class="marker" id="${i}">${i}</a>`;
 		});
 	},
-	render({ isNumbered }) {
-		return isNumbered
+	render({ isNumbered }, {
+		hints: {
+			renderMarkers = true
+		}
+	}) {
+		return isNumbered && renderMarkers
 			? `<a class="marker"></a>`
 			: "";
 	}
