@@ -29,6 +29,7 @@ export default {
 		isNumbered,
 		posters
 	}, {
+		EditorialError,
 		helpers: {
 			Image,
 			License,
@@ -47,6 +48,11 @@ export default {
 		const captionHTML = caption
 			? `<figcaption>${caption}</figcaption>`
 			: "";
+		if (!src) {
+			return EditorialError.render({
+				message: "This element is missing a file."
+			});
+		}
 		return `
 			<section content-type="audio">
 				<inner-content>
