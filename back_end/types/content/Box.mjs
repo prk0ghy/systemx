@@ -30,6 +30,9 @@ export default {
 							...on elemente_download_BlockType {
 								${types.elemente_download_BlockType}
 							}
+							...on elemente_tabulator_BlockType {
+								${types.elemente_tabulator_BlockType}
+							}
 							...on elemente_galerie_BlockType {
 								${types.elemente_galerie_BlockType}
 							}

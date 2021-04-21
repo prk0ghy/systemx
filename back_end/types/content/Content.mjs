@@ -25,6 +25,9 @@ export default {
 					...on inhaltsbausteine_heroimage_BlockType {
 						${types.inhaltsbausteine_heroimage_BlockType}
 					}
+					...on inhaltsbausteine_tabulator_BlockType {
+						${types.inhaltsbausteine_tabulator_BlockType}
+					}
 					...on inhaltsbausteine_textMitOhneBild_BlockType {
 						${types.inhaltsbausteine_textMitOhneBild_BlockType}
 					}
