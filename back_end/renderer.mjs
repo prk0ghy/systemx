@@ -39,6 +39,9 @@ const contextualize = types => context => Object.fromEntries([...types.entries()
 * Lastly, the `Error.render` function allows you to log a stack trace in the front end.
 */
 const RenderingContext = class {
+	classIf = (condition, thenClassName, elseClassName = "") => condition
+		? `class="${thenClassName}"`
+		: elseClassName;
 	cms = cmsContext;
 	contentTypes = contextualize(contentTypes)(this);
 	EditorialError = {

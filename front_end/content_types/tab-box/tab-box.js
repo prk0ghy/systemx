@@ -1,17 +1,16 @@
 /* globals showEmbeddingSections */
 
 (() => {
-	function initTabboxes() {
-		const boxes = document.querySelectorAll('section[content-type="tabbox"]');
+	function initTabBoxes() {
+		const boxes = document.querySelectorAll('section[content-type="tab-box"]');
 		boxes.forEach(box => {
 			const innerContent = box.firstElementChild;
-			const tabHeader  = innerContent.querySelectorAll("tabbox-header");
-			const tabContent = innerContent.querySelectorAll("tabbox-content");
-			showEmbeddingSections(innerContent.querySelector("tabbox-content.active"));
+			const tabHeader  = innerContent.querySelectorAll("tab-box-header");
+			const tabContent = innerContent.querySelectorAll("tab-box-content");
+			showEmbeddingSections(innerContent.querySelector("tab-box-content.active"));
 
 			tabHeader.forEach((header => {
 				const curIndex = header.getAttribute('tab-index') | 0;
-				if(curIndex === 0){return;}
 				let curContent;
 				tabContent.forEach((cContent)=>{
 					const curContentIndex = cContent.getAttribute('tab-index') | 0;
@@ -29,6 +28,6 @@
 			}));
 		});
 	}
-	setTimeout(initTabboxes, 0);
+	setTimeout(initTabBoxes, 0);
 })();
 

@@ -45,6 +45,9 @@ const globalTypeCollections = {
 			...on inhaltsbausteine_heroimage_BlockType {
 				${types.inhaltsbausteine_heroimage_BlockType}
 			}
+			...on inhaltsbausteine_querslider_BlockType {
+				${types.inhaltsbausteine_querslider_BlockType}
+			}
 			...on inhaltsbausteine_tabulator_BlockType {
 				${types.inhaltsbausteine_tabulator_BlockType}
 			}

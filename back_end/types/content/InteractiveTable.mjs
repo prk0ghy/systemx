@@ -11,7 +11,7 @@ export default {
 			`
 		}]
 	]),
-	async render({}, {
+	async render(_, {
 		EditorialError
 	}) {
 		return EditorialError.render({

@@ -42,7 +42,7 @@ figcaption {
 	text-align:justify;
 }
 
-tabbox-content figcaption {
+tab-box-content figcaption {
 	padding-left:var(--content-padding-half);
 }
 

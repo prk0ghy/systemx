@@ -6,7 +6,7 @@ task-content {
 	display:block;
 }
 
-section[content-type="tabbox"][tabbox-type="task"] > inner-content,
+section[content-type="tab-box"][tab-box-type="task"] > inner-content,
 section[content-type="task"] > inner-content {
 	position:relative;
 	margin-bottom:calc(var(--content-padding) * 1.75);
@@ -16,11 +16,11 @@ section[content-type="task"] task-content > section {
 	padding: var(--content-padding-quarter) var(--content-padding);
 }
 
-section[content-type="tabbox"] section[content-type="task"] > inner-content {
+section[content-type="tab-box"] section[content-type="task"] > inner-content {
 	padding:0;
 }
 
-section[content-type="tabbox"] section[content-type="task"] task-content {
+section[content-type="tab-box"] section[content-type="task"] task-content {
 	padding:0;
 }
 
