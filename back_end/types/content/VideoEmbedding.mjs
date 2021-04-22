@@ -35,6 +35,20 @@ export default {
 				}
 			`
 		}],
+		["inhalt_embeddedVideoAudio_BlockType", {
+			fetch: () => `
+				caption: videoUnterschrift
+				end: ende
+				start
+				videoData: urlDesStreams {
+					imageHeight
+					imageURL: image
+					imageWidth
+					title
+					videoURL: url
+				}
+			`
+		}],
 		["inhaltsbausteine_embeddedVideoAudio_BlockType", {
 			fetch: () => `
 				__typename

@@ -14,6 +14,9 @@ export default {
 							...on inhalt_download_BlockType {
 								${types.inhalt_download_BlockType}
 							}
+							...on inhalt_embeddedVideoAudio_BlockType {
+								${types.inhalt_embeddedVideoAudio_BlockType}
+							}
 							...on inhalt_galerie_BlockType {
 								${types.inhalt_galerie_BlockType}
 							}
