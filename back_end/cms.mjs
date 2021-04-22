@@ -95,7 +95,7 @@ const maybeWrap = (query, enabled) => enabled
 	: query;
 export default (queryFunction, {
 	raw
-} = {}) => request("https://lasub-dev.test-dilewe.de/api", gql([
+} = {}) => request("https://module-sachsen.dilewe.de/api", gql([
 	maybeWrap(queryFunction(globalTypes, globalFragments), !raw)
 		.replace(/[\t]/g, "")
 		.replace(/[\n]/g, " ")
