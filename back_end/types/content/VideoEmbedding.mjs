@@ -21,6 +21,20 @@ export default {
 		return parameters.toString()
 	},
 	queries: new Map([
+		["elemente_embeddedVideoAudio_BlockType", {
+			fetch: () => `
+				caption: embedUnterschrift
+				end: ende
+				start
+				videoData: urlDesStreams {
+					imageHeight
+					imageURL: image
+					imageWidth
+					title
+					videoURL: url
+				}
+			`
+		}],
 		["inhaltsbausteine_embeddedVideoAudio_BlockType", {
 			fetch: () => `
 				__typename

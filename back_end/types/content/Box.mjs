@@ -30,6 +30,9 @@ export default {
 							...on elemente_download_BlockType {
 								${types.elemente_download_BlockType}
 							}
+							...on elemente_embeddedVideoAudio_BlockType {
+								${types.elemente_embeddedVideoAudio_BlockType}
+							}
 							...on elemente_tabulator_BlockType {
 								${types.elemente_tabulator_BlockType}
 							}
