@@ -9,6 +9,15 @@ export default {
 				caption: audiounterschrift
 			`
 		}],
+		["inhalt_audioDatei_BlockType", {
+			fetch: cms => `
+				__typename
+				audioFiles: audio {
+					${cms.fragments.asset}
+				}
+				caption: audiounterschrift
+			`
+		}],
 		["inhaltsbausteine_audioDatei_BlockType", {
 			fetch: cms => `
 				__typename
