@@ -96,11 +96,18 @@ export const getContext = async () => {
 const maybeWrap = (query, enabled) => enabled
 	? `{ ${query} }`
 	: query;
+const endPoint = new URL("https://module-sachsen.dilewe.de/api");
+/*
+* CraftCMS hard-codes the origin into all URLs which leads to funky behavior.
+* In order to fix this, we remove the origin from all URLs.
+*/
+const removeOriginFromURLs = response => JSON.parse(JSON.stringify(response).replaceAll(`${endPoint.origin}/`, "/"));
 export default (queryFunction, {
 	raw
-} = {}) => request("https://module-sachsen.dilewe.de/api", gql([
+} = {}) => request(endPoint, gql([
 	maybeWrap(queryFunction(globalTypes, globalFragments), !raw)
 		.replace(/[\t]/g, "")
 		.replace(/[\n]/g, " ")
 		.trim()
-]));
+]))
+	.then(removeOriginFromURLs);
