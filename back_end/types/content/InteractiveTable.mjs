@@ -5,6 +5,11 @@ export default {
 				__typename
 			`
 		}],
+		["inhalt_tabulator_BlockType", {
+			fetch: () => `
+				__typename
+			`
+		}],
 		["inhaltsbausteine_tabulator_BlockType", {
 			fetch: () => `
 				__typename

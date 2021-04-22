@@ -20,6 +20,9 @@ export default {
 							...on inhalt_h5p_BlockType {
 								${types.inhalt_h5p_BlockType}
 							}
+							...on inhalt_tabulator_BlockType {
+								${types.inhalt_tabulator_BlockType}
+							}
 							...on inhalt_textMitOhneBild_BlockType {
 								${types.inhalt_textMitOhneBild_BlockType}
 							}
