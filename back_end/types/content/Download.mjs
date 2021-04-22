@@ -17,6 +17,23 @@ export default {
 				...rest
 			})
 		}],
+		["inhalt_download_BlockType", {
+			fetch: ({ fragments }) => `
+				__typename
+				description: beschreibung
+				files: datei {
+					${fragments.asset}
+				}
+				url: urldownload
+			`,
+			map: ({
+				files,
+				...rest
+			}) => ({
+				file: files[0],
+				...rest
+			})
+		}],
 		["inhaltsbausteine_download_BlockType", {
 			fetch: ({ fragments }) => `
 				__typename

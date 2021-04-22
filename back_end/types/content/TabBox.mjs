@@ -11,6 +11,9 @@ export default {
 							...on inhalt_audioDatei_BlockType {
 								${types.inhalt_audioDatei_BlockType}
 							}
+							...on inhalt_download_BlockType {
+								${types.inhalt_download_BlockType}
+							}
 							...on inhalt_textMitOhneBild_BlockType {
 								${types.inhalt_textMitOhneBild_BlockType}
 							}
