@@ -36,6 +36,9 @@ const globalTypeCollections = {
 			...on inhaltsbausteine_download_BlockType {
 				${types.inhaltsbausteine_download_BlockType}
 			}
+			...on inhaltsbausteine_embeddedVideoAudio_BlockType  {
+				${types.inhaltsbausteine_embeddedVideoAudio_BlockType}
+			}
 			...on inhaltsbausteine_galerie_BlockType {
 				${types.inhaltsbausteine_galerie_BlockType}
 			}
@@ -99,7 +102,7 @@ const maybeWrap = (query, enabled) => enabled
 const endPoint = new URL("https://module-sachsen.dilewe.de/api");
 /*
 * CraftCMS hard-codes the origin into all URLs which leads to funky behavior.
-* In order to fix this, we remove the origin from all URLs.
+* In order to avoid this, we remove the origin from all URLs.
 */
 const removeOriginFromURLs = response => JSON.parse(JSON.stringify(response).replaceAll(`${endPoint.origin}/`, "/"));
 export default (queryFunction, {

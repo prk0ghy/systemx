@@ -10,7 +10,7 @@ export default {
 		if (asset.license) {
 			content += `<p>Lizenz: ${asset.license}</p>`;
 		}
-		if (asset.creativeCommonsTerms.length) {
+		if (asset.creativeCommonsTerms?.length) {
 			content += `<p>(CC ${asset.creativeCommonsTerms.sort().join("-")})</p>`;
 		}
 		return `
