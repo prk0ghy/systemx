@@ -8,6 +8,9 @@ export default {
 					...on tabs_BlockType {
 						contents: inhalt {
 							__typename
+							...on inhalt_textMitOhneBild_BlockType {
+								${types.inhalt_textMitOhneBild_BlockType}
+							}
 							...on inhalt_ueberschrift_BlockType {
 								${types.inhalt_ueberschrift_BlockType}
 							}
