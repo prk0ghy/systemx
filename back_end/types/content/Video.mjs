@@ -12,6 +12,18 @@ export default {
 				}
 			`
 		}],
+		["inhalt_videoDatei_BlockType", {
+			fetch: cms => `
+				__typename
+				caption: videoUnterschrift
+				files: datei {
+					${cms.fragments.asset}
+				}
+				posters: posterbild {
+					${cms.fragments.asset}
+				}
+			`
+		}],
 		["inhaltsbausteine_videoDatei_BlockType", {
 			fetch: cms => `
 				__typename

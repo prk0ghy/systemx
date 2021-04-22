@@ -14,6 +14,9 @@ export default {
 							...on inhalt_ueberschrift_BlockType {
 								${types.inhalt_ueberschrift_BlockType}
 							}
+							...on inhalt_videoDatei_BlockType {
+								${types.inhalt_videoDatei_BlockType}
+							}
 						}
 						title: bezeichnung
 					}
