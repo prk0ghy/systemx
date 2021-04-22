@@ -14,21 +14,60 @@ const globalFragments = {
 	`
 };
 const globalTypes = {
-	get Entry() {
-		return `
+	Entry: `
+		__typename
+		dateUpdated
+		id
+		title
+		uid
+		uri
+	`
+};
+const globalTypeCollections = {
+	elements: ({ types }) => `
+		inhaltsbausteine {
 			__typename
-			dateUpdated
-			id
-			title
-			uid
-			uri
-		`;
-	}
+			...on inhaltsbausteine_audioDatei_BlockType {
+				${types.inhaltsbausteine_audioDatei_BlockType}
+			}
+			...on inhaltsbausteine_aufklappkasten_BlockType {
+				${types.inhaltsbausteine_aufklappkasten_BlockType}
+			}
+			...on inhaltsbausteine_download_BlockType {
+				${types.inhaltsbausteine_download_BlockType}
+			}
+			...on inhaltsbausteine_galerie_BlockType {
+				${types.inhaltsbausteine_galerie_BlockType}
+			}
+			...on inhaltsbausteine_h5p_BlockType {
+				${types.inhaltsbausteine_h5p_BlockType}
+			}
+			...on inhaltsbausteine_heroimage_BlockType {
+				${types.inhaltsbausteine_heroimage_BlockType}
+			}
+			...on inhaltsbausteine_tabulator_BlockType {
+				${types.inhaltsbausteine_tabulator_BlockType}
+			}
+			...on inhaltsbausteine_textMitOhneBild_BlockType {
+				${types.inhaltsbausteine_textMitOhneBild_BlockType}
+			}
+			...on inhaltsbausteine_trennerbild_BlockType {
+				${types.inhaltsbausteine_trennerbild_BlockType}
+			}
+			...on inhaltsbausteine_ueberschrift_BlockType {
+				${types.inhaltsbausteine_ueberschrift_BlockType}
+			}
+			...on inhaltsbausteine_videoDatei_BlockType {
+				${types.inhaltsbausteine_videoDatei_BlockType}
+			}
+		}
+	`
 };
 export const getContext = async () => {
 	const contentTypes = await loadContentTypes();
 	const cms = {
 		fragments: globalFragments,
+		typeCollections: {},
 		types: globalTypes
 	};
 	for (const [, module] of contentTypes.entries()) {
@@ -40,6 +79,14 @@ export const getContext = async () => {
 				get: () => setup.fetch(cms)
 			});
 		}
+	}
+	for (const [key, value] of Object.entries(globalTypeCollections)) {
+		if (Object.hasOwnProperty.call(cms.typeCollections, key)) {
+			continue;
+		}
+		Object.defineProperty(cms.typeCollections, key, {
+			get: () => value(cms)
+		});
 	}
 	return cms;
 };

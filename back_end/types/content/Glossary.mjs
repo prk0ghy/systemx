@@ -1,26 +1,9 @@
 export default {
 	queries: new Map([
 		["glossar_glossar_Entry", {
-			fetch: ({ types }) => `
+			fetch: ({ typeCollections }) => `
 				title
-				elements: inhaltsbausteine {
-					__typename
-					...on inhaltsbausteine_ueberschrift_BlockType {
-						${types.inhaltsbausteine_ueberschrift_BlockType}
-					}
-					...on inhaltsbausteine_textMitOhneBild_BlockType {
-						${types.inhaltsbausteine_textMitOhneBild_BlockType}
-					}
-					...on inhaltsbausteine_audioDatei_BlockType {
-						${types.inhaltsbausteine_audioDatei_BlockType}
-					}
-					...on inhaltsbausteine_galerie_BlockType {
-						${types.inhaltsbausteine_galerie_BlockType}
-					}
-					...on inhaltsbausteine_videoDatei_BlockType {
-						${types.inhaltsbausteine_videoDatei_BlockType}
-					}
-				}
+				elements: ${typeCollections.elements}
 			`
 		}]
 	]),

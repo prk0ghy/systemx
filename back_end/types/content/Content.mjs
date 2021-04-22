@@ -3,50 +3,9 @@ export default {
 		["inhalt_inhalt_Entry", {
 			fetch: ({
 				fragments,
-				types
+				typeCollections
 			}) => `
-				elements: inhaltsbausteine {
-					__typename
-					...on inhaltsbausteine_audioDatei_BlockType {
-						${types.inhaltsbausteine_audioDatei_BlockType}
-					}
-					...on inhaltsbausteine_aufklappkasten_BlockType {
-						${types.inhaltsbausteine_aufklappkasten_BlockType}
-					}
-					...on inhaltsbausteine_download_BlockType {
-						${types.inhaltsbausteine_download_BlockType}
-					}
-					...on inhaltsbausteine_erkundung_BlockType {
-						${types.inhaltsbausteine_erkundung_BlockType}
-					}
-					...on inhaltsbausteine_galerie_BlockType {
-						${types.inhaltsbausteine_galerie_BlockType}
-					}
-					...on inhaltsbausteine_h5p_BlockType {
-						${types.inhaltsbausteine_h5p_BlockType}
-					}
-					...on inhaltsbausteine_heroimage_BlockType {
-						${types.inhaltsbausteine_heroimage_BlockType}
-					}
-					...on inhaltsbausteine_sideBySide_BlockType {
-						${types.inhaltsbausteine_sideBySide_BlockType}
-					}
-					...on inhaltsbausteine_tabulator_BlockType {
-						${types.inhaltsbausteine_tabulator_BlockType}
-					}
-					...on inhaltsbausteine_textMitOhneBild_BlockType {
-						${types.inhaltsbausteine_textMitOhneBild_BlockType}
-					}
-					...on inhaltsbausteine_trennerbild_BlockType {
-						${types.inhaltsbausteine_trennerbild_BlockType}
-					}
-					...on inhaltsbausteine_ueberschrift_BlockType {
-						${types.inhaltsbausteine_ueberschrift_BlockType}
-					}
-					...on inhaltsbausteine_videoDatei_BlockType {
-						${types.inhaltsbausteine_videoDatei_BlockType}
-					}
-				}
+				elements: ${typeCollections.elements}
 				heroImageCaption: bildunterschrift
 				heroImages: heroimage {
 					${fragments.asset}
