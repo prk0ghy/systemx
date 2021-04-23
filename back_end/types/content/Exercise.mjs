@@ -13,6 +13,19 @@ export default {
 				title: titelDerAufgabe
 			`
 		}],
+		["inhalt_aufgabe_BlockType", {
+			fetch: ({ fragments }) => `
+				__typename
+				content: inhalt {
+					...on inhalt_BlockType {
+						elements: ${fragments.exerciseElements}
+					}
+				}
+				inputType: benutzereingabe
+				textHTML: text
+				title: titelDerAufgabe
+			`
+		}],
 		["inhaltsbausteine_aufgabe_BlockType", {
 			fetch: ({ fragments }) => `
 				__typename
