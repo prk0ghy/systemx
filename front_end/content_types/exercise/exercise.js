@@ -1,13 +1,13 @@
 /* globals Quill */
 
 (() => {
-	function initTaskEditors(){
-		const textareas = document.querySelectorAll(".tasktext");
+	function initExerciseEditors(){
+		const textareas = document.querySelectorAll(".exercise-text");
 		for(const area of textareas){
 			const section = getFirstParentSection(area);
 			const id = section !== null ? section.id : "undefined";
 			const localStorageKey = `quill-${id}`;
-			const fancyEditor = document.createElement("FANCY-TASK-EDITOR");
+			const fancyEditor = document.createElement("FANCY-EXERCISE-EDITOR");
 			area.parentElement.append(fancyEditor);
 			area.parentElement.removeChild(area);
 			const editor = new Quill(fancyEditor,{
@@ -63,6 +63,6 @@
 			});
 		}
 	}
-	setTimeout(initTaskEditors,0);
+	setTimeout(initExerciseEditors,0);
 	setTimeout(initUploadSections,0);
 })();

@@ -32,7 +32,7 @@ tab-box-content > footer {
 	color:var(--background-grey);
 }
 
-tab-box-content > section[content-type="task"],
+tab-box-content > section[content-type="exercise"],
 tab-box-content > section[content-type="audio"],
 tab-box-content > section[content-type="embedding"],
 tab-box-content > section[content-type="video"] {
@@ -79,7 +79,7 @@ tab-box-header.active {
 	box-shadow: 1px 3px 6px 1px #00000089;
 }
 
-[tab-box-type="task"] tab-box-header {
+[tab-box-type="exercise"] tab-box-header {
 	font-size:1.45em;
 	width:1.5em;
 	text-align:center;
@@ -89,29 +89,29 @@ tab-box-header.active {
 	margin:0 8px;
 	padding:var(--content-padding-quarter) 0;
 	background-color: var(--background-red);
-	color: var(--task-red);
+	color: var(--exercise-red);
 	box-shadow: 1px 3px 6px 1px #00000089;
 }
 
-[tab-box-type="task"] > inner-content > tab-box-content-wrap {
-	border-top-color: var(--task-red);
-	border-bottom-color: var(--task-red);
+[tab-box-type="exercise"] > inner-content > tab-box-content-wrap {
+	border-top-color: var(--exercise-red);
+	border-bottom-color: var(--exercise-red);
 	z-index: 2;
 	background: var(--background-color);
 }
 
-[tab-box-type="task"] section[content-type="task"] task-content {
+[tab-box-type="exercise"] section[content-type="exercise"] exercise-content {
 	border: 0;
 	box-shadow: none;
 }
 
-[tab-box-type="task"] tab-box-header.active {
-	background-color: var(--task-red);
+[tab-box-type="exercise"] tab-box-header.active {
+	background-color: var(--exercise-red);
 	color: #fff;
 	box-shadow: 1px 3px 6px 1px #00000089;
 }
 
-main > section[tab-box-type="task"]::after {
+main > section[tab-box-type="exercise"]::after {
 	content:'';
 	display:block;
 	position:absolute;

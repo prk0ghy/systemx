@@ -11,8 +11,8 @@
 	}
 
 	function initOrderedLists() {
-		// Set all task OLs to use lower case alphabetical letters. might not be needed in the future
-		for(const list of document.querySelectorAll(".task-content ol")){
+		// Set all exercise OLs to use lower case alphabetical letters. might not be needed in the future
+		for(const list of document.querySelectorAll(".exercise-content ol")){
 			list.setAttribute("type","a");
 		}
 

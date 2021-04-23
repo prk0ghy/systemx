@@ -60,22 +60,22 @@ export default {
 			: "";
 		const input = (() => {
 			if (inputType === "texteingabe") {
-				return `<textarea class="tasktext"></textarea>`;
+				return `<textarea class="exercise-text"></textarea>`;
 			}
 			return "";
 		})();
 		const elementsHTML = (await Promise.all((content.elements || []).map(element => render(element)))).join("");
 		return `
-			<section content-type="task">
+			<section content-type="exercise">
 				<inner-content>
 					${Marker.render({ isNumbered })}
-					<task-content>
+					<exercise-content>
 						${titleHTML}
 						${textHTML ?? ""}
 						${elementsHTML}
 						${html ?? ""}
 						${input}
-					</task-content>
+					</exercise-content>
 				</inner-content>
 			</section>
 		`;

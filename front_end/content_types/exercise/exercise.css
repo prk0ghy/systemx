@@ -1,101 +1,101 @@
-task-content {
+exercise-content {
 	box-shadow: 0 3px 6px #00000063;
-	border-top: var(--content-padding-quarter) solid var(--task-red);
-	border-bottom: var(--content-padding-quarter) solid var(--task-red);
+	border-top: var(--content-padding-quarter) solid var(--exercise-red);
+	border-bottom: var(--content-padding-quarter) solid var(--exercise-red);
 	background: #fff;
 	display:block;
 }
 
-section[content-type="tab-box"][tab-box-type="task"] > inner-content,
-section[content-type="task"] > inner-content {
+section[content-type="tab-box"][tab-box-type="exercise"] > inner-content,
+section[content-type="exercise"] > inner-content {
 	position:relative;
 	margin-bottom:calc(var(--content-padding) * 1.75);
 }
 
-section[content-type="task"] task-content > section {
+section[content-type="exercise"] exercise-content > section {
 	padding: var(--content-padding-quarter) var(--content-padding);
 }
 
-section[content-type="tab-box"] section[content-type="task"] > inner-content {
+section[content-type="tab-box"] section[content-type="exercise"] > inner-content {
 	padding:0;
 }
 
-section[content-type="tab-box"] section[content-type="task"] task-content {
+section[content-type="tab-box"] section[content-type="exercise"] exercise-content {
 	padding:0;
 }
 
-section[content-type="box"] section[content-type="task"] {
+section[content-type="box"] section[content-type="exercise"] {
 	padding-left:0 !important;
 	padding-right:0 !important;
 }
 
-section[content-type="box"] section[content-type="task"] task-content {
+section[content-type="box"] section[content-type="exercise"] exercise-content {
 	border:none;
 	padding-top:0;
 	padding-bottom:1em;
 	box-shadow:none;
 }
 
-section[content-type="box"] section[content-type="task"]:last-of-type {
+section[content-type="box"] section[content-type="exercise"]:last-of-type {
 	margin-bottom:0 !important;
 }
 
-section[content-type="task"] ol > li > ol-number {
-	color: var(--task-red);
+section[content-type="exercise"] ol > li > ol-number {
+	color: var(--exercise-red);
 }
 
-section[content-type="task"] ul > li::before {
+section[content-type="exercise"] ul > li::before {
 	background-color:transparent;
-	border-color: var(--task-red);
+	border-color: var(--exercise-red);
 }
 
-section[content-type="task"] ul ul > li::before {
-	background-color: var(--task-red);
+section[content-type="exercise"] ul ul > li::before {
+	background-color: var(--exercise-red);
 }
 
-section[content-type="task"] section[content-type="gallery"] figcaption,
-section[content-type="task"] section[content-type="gallery"] gallery-text {
+section[content-type="exercise"] section[content-type="gallery"] figcaption,
+section[content-type="exercise"] section[content-type="gallery"] gallery-text {
 	padding-left:0;
 	padding-right:0;
 }
 
-section[content-type="task"] section[content-type="gallery"] [figure-type="gallery"] > img {
+section[content-type="exercise"] section[content-type="gallery"] [figure-type="gallery"] > img {
 	border:none;
 }
-/* Padding-adjustment of a task inside a pop-up box */
+/* Padding-adjustment of an exercise inside a pop-up box */
 
-section[content-type="box"] > inner-content > .box-wrap.active > box-content > section[content-type="task"] {
+section[content-type="box"] > inner-content > .box-wrap.active > box-content > section[content-type="exercise"] {
 	padding-top: 0;
 	padding-bottom: 0;
 }
 
-section[content-type="box"] > inner-content > .box-wrap.active > box-content > section[content-type="task"] task-content section {
+section[content-type="box"] > inner-content > .box-wrap.active > box-content > section[content-type="exercise"] exercise-content section {
 	padding-top: 0;
 	padding-bottom: 0;
 }
 
-task-content inner-content > h3 {
+exercise-content inner-content > h3 {
 	font-size: 1.35em;
-	color: var(--task-red);
+	color: var(--exercise-red);
 	font-weight: 500;
 	margin-bottom:1em;
 }
 
-task-content inner-content > ol > li > ol-num {
-	color: var(--task-red);
+exercise-content inner-content > ol > li > ol-num {
+	color: var(--exercise-red);
 }
 
-.tasktext {
+.exercise-text {
 	width:calc(100% - var(--content-padding));
 	font-size:1em;
 	height:5em;
 	display:block;
 	font-family:var(--font-content);
 	margin:0 auto 1em;
-	border: 2px solid var(--task-red);
+	border: 2px solid var(--exercise-red);
 }
 
-main > section[content-type="task"]::after {
+main > section[content-type="exercise"]::after {
 	content:'';
 	display:block;
 	position:absolute;
@@ -116,8 +116,8 @@ upload-section {
 }
 
 upload-button {
-	border: 2px solid var(--task-red);
-	color: var(--task-red);
+	border: 2px solid var(--exercise-red);
+	color: var(--exercise-red);
 	background-color: white;
 	padding: 8px 20px;
 	border-radius: 8px;
@@ -130,7 +130,7 @@ upload-button {
 upload-button:active,
 upload-button:focus,
 upload-button:hover {
-	background-color: var(--task-red);
+	background-color: var(--exercise-red);
 	color: white;
 }
 
@@ -140,7 +140,7 @@ upload-section input[type=file] {
 
 /* Text-Editor Quill Styling */
 
-fancy-task-editor {
+fancy-exercise-editor {
 	display:block;
 }
 
@@ -207,7 +207,7 @@ fancy-task-editor {
 	display: block;
 	width: 0.4em;
 	height: 0.4em;
-	border: 0.15em solid var(--task-red);
+	border: 0.15em solid var(--exercise-red);
 	border-radius: 50%;
 	background: transparent;
 }
@@ -219,7 +219,7 @@ fancy-task-editor {
 }
 
 .ql-editor ol > li::before {
-	color: var(--task-red);
+	color: var(--exercise-red);
 	position: absolute;
 	left: var(--content-padding-half);
 }
