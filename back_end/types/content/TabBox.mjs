@@ -26,6 +26,9 @@ export default {
 							...on inhalt_h5p_BlockType {
 								${types.inhalt_h5p_BlockType}
 							}
+							...on inhalt_tabellen_BlockType {
+								${types.inhalt_tabellen_BlockType}
+							}
 							...on inhalt_tabulator_BlockType {
 								${types.inhalt_tabulator_BlockType}
 							}

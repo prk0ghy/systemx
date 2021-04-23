@@ -6,6 +6,13 @@ export default {
 				tableDescriptor: tabelle
 			`
 		}],
+		["inhalt_tabellen_BlockType", {
+			fetch: () => `
+				__typename
+				caption: quelle
+				tableDescriptor: tabelle
+			`
+		}],
 		["inhaltsbausteine_tabelle_BlockType", {
 			fetch: () => `
 				__typename
