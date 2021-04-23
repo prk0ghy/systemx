@@ -23,6 +23,29 @@ export default {
 				...rest
 			})
 		}],
+		["elemente_nested_galerie_BlockType", {
+			fetch: cms => `
+				__typename
+				captions: bildunterschriften {
+					text: col1
+				}
+				files: bilder {
+					${cms.fragments.asset}
+				}
+				galleryIntroductionText: galerietext
+			`,
+			map: ({
+				captions,
+				files,
+				...rest
+			}) => ({
+				images: files.map((file, index) => ({
+					caption: captions[index]?.text || null,
+					files: [file]
+				})),
+				...rest
+			})
+		}],
 		["inhalt_galerie_BlockType", {
 			fetch: cms => `
 				__typename

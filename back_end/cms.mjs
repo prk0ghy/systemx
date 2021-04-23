@@ -64,6 +64,9 @@ const globalFragments = {
 			...on elemente_nested_embeddedVideoAudio_BlockType {
 				${types.elemente_nested_embeddedVideoAudio_BlockType}
 			}
+			...on elemente_nested_galerie_BlockType {
+				${types.elemente_nested_galerie_BlockType}
+			}
 			...on elemente_nested_textMitOhneBild_BlockType {
 				${types.elemente_nested_textMitOhneBild_BlockType}
 			}
