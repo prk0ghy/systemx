@@ -30,6 +30,9 @@ const globalTypeCollections = {
 			...on inhaltsbausteine_audioDatei_BlockType {
 				${types.inhaltsbausteine_audioDatei_BlockType}
 			}
+			...on inhaltsbausteine_aufgabe_BlockType {
+				${types.inhaltsbausteine_aufgabe_BlockType}
+			}
 			...on inhaltsbausteine_aufklappkasten_BlockType {
 				${types.inhaltsbausteine_aufklappkasten_BlockType}
 			}

@@ -18,7 +18,7 @@ export default {
 		if (endSeconds) {
 			parameters.set("end", endSeconds);
 		}
-		return parameters.toString()
+		return parameters.toString();
 	},
 	queries: new Map([
 		["elemente_embeddedVideoAudio_BlockType", {
