@@ -20,6 +20,29 @@ export default {
 		}
 	},
 	queries: new Map([
+		["elemente_nested_textMitOhneBild_BlockType", {
+			fetch: cms => `
+				__typename
+				images: bilder {
+					__typename
+					${cms.fragments.asset}
+				}
+				imageWidth: bildbreite
+				imagePosition: bildposition
+				galleryIntroductionText: bildunterschrift
+				text
+			`,
+			map: ({
+				images,
+				...rest
+			}) => ({
+				images: images.map(image => ({
+					caption: null,
+					files: [image]
+				})),
+				...rest
+			})
+		}],
 		["elemente_textMitOhneBild_BlockType", {
 			fetch: cms => `
 				__typename

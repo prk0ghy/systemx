@@ -27,6 +27,9 @@ export default {
 							...on elemente_audioDatei_BlockType {
 								${types.elemente_audioDatei_BlockType}
 							}
+							...on elemente_aufgabe_BlockType {
+								${types.elemente_aufgabe_BlockType}
+							}
 							...on elemente_download_BlockType {
 								${types.elemente_download_BlockType}
 							}
