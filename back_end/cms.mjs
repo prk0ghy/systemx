@@ -2,7 +2,7 @@ import { gql } from "graphql-request";
 import request from "./rateLimiting.mjs";
 import { loadContentTypes } from "./types.mjs";
 const globalFragments = {
-	asset: `
+	asset: () => `
 		height
 		url
 		width
@@ -11,19 +11,7 @@ const globalFragments = {
 			license: lizenzart
 			source: quelle
 		}
-	`
-};
-const globalTypes = {
-	Entry: `
-		__typename
-		dateUpdated
-		id
-		title
-		uid
-		uri
-	`
-};
-const globalTypeCollections = {
+	`,
 	elements: ({ types }) => `
 		inhaltsbausteine {
 			__typename
@@ -70,13 +58,29 @@ const globalTypeCollections = {
 				${types.inhaltsbausteine_videoDatei_BlockType}
 			}
 		}
+	`,
+	exerciseElements: ({ types }) => `
+		elemente_nested {
+			...on elemente_nested_textMitOhneBild_BlockType {
+				${types.elemente_nested_textMitOhneBild_BlockType}
+			}
+		}
+	`
+};
+const globalTypes = {
+	Entry: `
+		__typename
+		dateUpdated
+		id
+		title
+		uid
+		uri
 	`
 };
 export const getContext = async () => {
 	const contentTypes = await loadContentTypes();
 	const cms = {
-		fragments: globalFragments,
-		typeCollections: {},
+		fragments: {},
 		types: globalTypes
 	};
 	for (const [, module] of contentTypes.entries()) {
@@ -89,11 +93,11 @@ export const getContext = async () => {
 			});
 		}
 	}
-	for (const [key, value] of Object.entries(globalTypeCollections)) {
-		if (Object.hasOwnProperty.call(cms.typeCollections, key)) {
+	for (const [key, value] of Object.entries(globalFragments)) {
+		if (Object.hasOwnProperty.call(cms.fragments, key)) {
 			continue;
 		}
-		Object.defineProperty(cms.typeCollections, key, {
+		Object.defineProperty(cms.fragments, key, {
 			get: () => value(cms)
 		});
 	}

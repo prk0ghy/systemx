@@ -1,9 +1,9 @@
 export default {
 	queries: new Map([
 		["glossar_glossar_Entry", {
-			fetch: ({ typeCollections }) => `
+			fetch: ({ fragments }) => `
 				title
-				elements: ${typeCollections.elements}
+				elements: ${fragments.elements}
 			`
 		}]
 	]),

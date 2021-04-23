@@ -1,11 +1,8 @@
 export default {
 	queries: new Map([
 		["inhalt_inhalt_Entry", {
-			fetch: ({
-				fragments,
-				typeCollections
-			}) => `
-				elements: ${typeCollections.elements}
+			fetch: ({ fragments }) => `
+				elements: ${fragments.elements}
 				heroImageCaption: bildunterschrift
 				heroImages: heroimage {
 					${fragments.asset}

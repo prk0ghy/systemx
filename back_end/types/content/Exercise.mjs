@@ -1,15 +1,11 @@
 export default {
 	queries: new Map([
 		["elemente_aufgabe_BlockType", {
-			fetch: ({ types }) => `
+			fetch: ({ fragments }) => `
 				__typename
 				content: inhalt {
 					...on inhalt_BlockType {
-						elements: elemente_nested {
-							...on elemente_nested_textMitOhneBild_BlockType {
-								${types.elemente_nested_textMitOhneBild_BlockType}
-							}
-						}
+						elements: ${fragments.exerciseElements}
 					}
 				}
 				inputType: benutzereingabe
@@ -18,15 +14,11 @@ export default {
 			`
 		}],
 		["inhaltsbausteine_aufgabe_BlockType", {
-			fetch: ({ types }) => `
+			fetch: ({ fragments }) => `
 				__typename
 				content: inhalt {
 					...on inhalt_BlockType {
-						elements: elemente_nested {
-							...on elemente_nested_textMitOhneBild_BlockType {
-								${types.elemente_nested_textMitOhneBild_BlockType}
-							}
-						}
+						elements: ${fragments.exerciseElements}
 					}
 				}
 				html: h5p
