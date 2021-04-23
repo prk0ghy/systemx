@@ -1,5 +1,11 @@
 export default {
 	queries: new Map([
+		["elemente_tabellen_BlockType", {
+			fetch: () => `
+				__typename
+				tableDescriptor: tabelle
+			`
+		}],
 		["inhaltsbausteine_tabelle_BlockType", {
 			fetch: () => `
 				__typename

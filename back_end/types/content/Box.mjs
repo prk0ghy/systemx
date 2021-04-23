@@ -36,6 +36,9 @@ export default {
 							...on elemente_embeddedVideoAudio_BlockType {
 								${types.elemente_embeddedVideoAudio_BlockType}
 							}
+							...on elemente_tabellen_BlockType {
+								${types.elemente_tabellen_BlockType}
+							}
 							...on elemente_tabulator_BlockType {
 								${types.elemente_tabulator_BlockType}
 							}
