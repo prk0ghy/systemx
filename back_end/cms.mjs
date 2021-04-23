@@ -42,6 +42,9 @@ const globalFragments = {
 			...on inhaltsbausteine_querslider_BlockType {
 				${types.inhaltsbausteine_querslider_BlockType}
 			}
+			...on inhaltsbausteine_tabelle_BlockType {
+				${types.inhaltsbausteine_tabelle_BlockType}
+			}
 			...on inhaltsbausteine_tabulator_BlockType {
 				${types.inhaltsbausteine_tabulator_BlockType}
 			}

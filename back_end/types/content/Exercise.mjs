@@ -55,6 +55,9 @@ export default {
 		},
 		render
 	}) {
+		const titleHTML = title
+			? `<h3>${title}</h3>`
+			: "";
 		const input = (() => {
 			if (inputType === "texteingabe") {
 				return `<textarea class="tasktext"></textarea>`;
@@ -67,7 +70,7 @@ export default {
 				<inner-content>
 					${Marker.render({ isNumbered })}
 					<task-content>
-						<h3>${title}</h3>
+						${titleHTML}
 						${textHTML ?? ""}
 						${elementsHTML}
 						${html ?? ""}
