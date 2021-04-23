@@ -64,6 +64,9 @@ const globalFragments = {
 			...on elemente_nested_textMitOhneBild_BlockType {
 				${types.elemente_nested_textMitOhneBild_BlockType}
 			}
+			...on elemente_nested_videoDatei_BlockType {
+				${types.elemente_nested_videoDatei_BlockType}
+			}
 		}
 	`
 };

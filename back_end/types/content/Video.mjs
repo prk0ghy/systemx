@@ -1,5 +1,17 @@
 export default {
 	queries: new Map([
+		["elemente_nested_videoDatei_BlockType", {
+			fetch: cms => `
+				__typename
+				caption: videounterschrift
+				files: datei {
+					${cms.fragments.asset}
+				}
+				posters: posterbild {
+					${cms.fragments.asset}
+				}
+			`
+		}],
 		["elemente_videoDatei_BlockType", {
 			fetch: cms => `
 				__typename
