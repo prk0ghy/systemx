@@ -67,6 +67,9 @@ const globalFragments = {
 			...on elemente_nested_galerie_BlockType {
 				${types.elemente_nested_galerie_BlockType}
 			}
+			...on elemente_nested_h5p_BlockType {
+				${types.elemente_nested_h5p_BlockType}
+			}
 			...on elemente_nested_textMitOhneBild_BlockType {
 				${types.elemente_nested_textMitOhneBild_BlockType}
 			}

@@ -7,6 +7,13 @@ export default {
 				html: h5p_slider
 			`
 		}],
+		["elemente_nested_h5p_BlockType", {
+			fetch: () => `
+				__typename
+				caption: unterschrift
+				html: h5p
+			`
+		}],
 		["inhalt_h5p_BlockType", {
 			fetch: () => `
 				__typename
