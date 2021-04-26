@@ -170,6 +170,17 @@
 		}
 		seekbar.addEventListener("mousedown", seekbarHandler);
 		seekbar.addEventListener("mousemove", seekbarHandler);
+
+		document.addEventListener("keydown", (e) => {
+			const focusedVideo = document.querySelector("video:focus");
+			console.log(focusedVideo);
+			if(focusedVideo === null){return;}
+			if(e.key === ' ') {
+				e.preventDefault();
+				focusedVideo.playPauseButton.click();
+			};
+		});
+
 	}
 
 	function initAllMedia() {
