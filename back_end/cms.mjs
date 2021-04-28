@@ -126,7 +126,7 @@ const endPoint = new URL("https://module-sachsen.dilewe.de/api");
 * CraftCMS hard-codes the origin into all URLs which leads to funky behavior.
 * In order to avoid this, we remove the origin from all URLs.
 */
-const removeOriginFromURLs = response => JSON.parse(JSON.stringify(response).replaceAll(`${endPoint.origin}/`, "/"));
+const removeOriginFromURLs = response => JSON.parse(JSON.stringify(response).split(`${endPoint.origin}/`).join("/"));
 export default (queryFunction, {
 	raw
 } = {}) => request(endPoint, gql([
