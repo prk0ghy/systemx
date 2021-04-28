@@ -136,7 +136,7 @@
 			}else{
 				media.muted = false;
 				volumeButton.classList.remove('active');
-				volumeButton.setAttribute("volume-level",0|((volume/0.33)+1));
+				volumeButton.setAttribute("volume-level",0|((media.volume/0.33)+1));
 			}
 		}
 		volumeSlider.addEventListener("mousedown", volumeMouseHandler);
@@ -199,6 +199,34 @@
 				e.preventDefault();
 				media.volume = Math.max(0.0,media.volume - 0.05);
 				volumeMouseHandler();
+			} else if(e.key === 'ArrowRight'){
+				media.currentTime +=5;
+			} else if(e.key === 'ArrowLeft'){
+				media.currentTime -=5;
+			} else if(e.key === 'Home' || e.key === '0'){
+				e.preventDefault();
+				media.currentTime = 0;
+			} else if(e.key === 'End'){
+				e.preventDefault();
+				media.currentTime = media.duration;
+			} else if(e.key === '1'){
+				media.currentTime = (media.duration/100*10);
+			} else if(e.key === '2'){
+				media.currentTime = (media.duration/100*20);
+			} else if(e.key === '3'){
+				media.currentTime = (media.duration/100*30);
+			} else if(e.key === '4'){
+				media.currentTime = (media.duration/100*40);
+			} else if(e.key === '5'){
+				media.currentTime = (media.duration/100*50);
+			} else if(e.key === '6'){
+				media.currentTime = (media.duration/100*60);
+			} else if(e.key === '7'){
+				media.currentTime = (media.duration/100*70);
+			} else if(e.key === '8'){
+				media.currentTime = (media.duration/100*80);
+			} else if(e.key === '9'){
+				media.currentTime = (media.duration/100*90);
 			}
 		});
 

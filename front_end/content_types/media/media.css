@@ -3,6 +3,7 @@ video {
 	width:100%;
 	height:auto;
 	cursor:pointer;
+	outline: none;
 }
 
 section[content-type="video"] > inner-content > details > summary::marker {
