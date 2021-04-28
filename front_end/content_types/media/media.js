@@ -1,9 +1,12 @@
 (() => {
+	let tabindex = 100;
+
 	function initMedia(media) {
 		media.removeAttribute('controls'); // Remove Browser based controls via JS, so we have them as a fallback when JS is disabled
 		media.volume = 1.0; // Force volume to 100% on init
 
 		media.removeAttribute('controls');
+		media.setAttribute('tabindex',tabindex++);
 
 		const wrapper = document.createElement("MEDIA-WRAP");
 		media.parentElement.insertBefore(wrapper,media);
@@ -53,6 +56,7 @@
 
 		playPauseButton.addEventListener("click",(e) => {
 			e.preventDefault();
+			media.focus();
 			if(media.paused){
 				playPauseButton.classList.add('active');
 				media.play();
@@ -119,12 +123,13 @@
 		}
 
 		function volumeMouseHandler(e){
-			if(e.buttons !== 1){return;}
-			const rect = volumeSlider.getBoundingClientRect();
-			const volume = Math.max(0.01,Math.min(1,(e.x-rect.x)/rect.width));
-			volumeSliderMark.style.width = (volume*100.0)+"%";
-			media.volume = volume;
-			if(volume <= 0.02){
+			if((e !== undefined) && (e.buttons === 1)){
+				const rect = volumeSlider.getBoundingClientRect();
+				const volume = Math.max(0.01,Math.min(1,(e.x-rect.x)/rect.width));
+				media.volume = volume;
+			}
+			volumeSliderMark.style.width = (media.volume*100.0)+"%";
+			if(media.volume <= 0.02){
 				media.muted = true;
 				volumeButton.classList.add('active');
 				volumeButton.setAttribute("volume-level",0);
@@ -172,13 +177,29 @@
 		seekbar.addEventListener("mousemove", seekbarHandler);
 
 		document.addEventListener("keydown", (e) => {
-			const focusedVideo = document.querySelector("video:focus");
-			console.log(focusedVideo);
+			const focusedVideo = document.activeElement;
+			console.log(e.key);
 			if(focusedVideo === null){return;}
+			if(focusedVideo !== media){return;}
+
 			if(e.key === ' ') {
 				e.preventDefault();
-				focusedVideo.playPauseButton.click();
-			};
+				playPauseButton.click();
+			}
+			else if(e.key === 'm'){
+				volumeButton.click();
+			}
+			else if(e.key ==='ArrowUp' && media.volume < 1.0){
+				e.preventDefault();
+				media.volume = Math.min(1.0,media.volume + 0.05);
+				volumeMouseHandler();
+
+			}
+			else if(e.key === 'ArrowDown' && media.volume > 0.0){
+				e.preventDefault();
+				media.volume = Math.max(0.0,media.volume - 0.05);
+				volumeMouseHandler();
+			}
 		});
 
 	}

@@ -29,7 +29,7 @@ let overlayHideBoxCallback = undefined;
 				boxDetails.style.top = (rect.top|0) + "px";
 				boxDetails.classList.add("active");
 				boxDetails.getBoundingClientRect(); // Sync CSS <-> JS
-				boxDetails.style.top = "32px";
+				boxDetails.style.top = window.innerWidth > 800 ? "32px" : "16px";
 				showEmbeddingSections(boxContent);
 
 				showOverlay();

@@ -104,6 +104,11 @@ box-content > footer {
 	width:calc(var(--content-width) - (var(--content-padding) * 2));
 	box-sizing:border-box;
 }
+@media only screen and (max-width: 800px) {
+	.box-wrap.active {
+	 top: 0.5rem;
+	}
+}
 
 .box-wrap.active > summary::before {
 	transform:translate(0, 40%) rotate3d(1, 0, 0, 180deg);

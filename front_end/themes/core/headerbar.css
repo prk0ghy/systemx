@@ -82,11 +82,21 @@ header h3 {
 		top: auto;
 		bottom:0;
 	}
+
+	header h3 {
+		margin: 0;
+		margin-right: var(--content-padding);
+	}
+
 	main {
 		padding-top: 0;
 	}
+
 	#header-center { top:10px; }
-	#header-left { float:right; }
+	#header-left { 
+		float: right;
+		margin-right: -1rem;
+	}
 	#header-right { float:left; }
 }
 
