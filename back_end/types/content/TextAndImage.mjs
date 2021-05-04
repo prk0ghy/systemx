@@ -110,7 +110,7 @@ export default {
 			`
 		}]
 	]),
-	render({
+	async render({
 		displayInOneLine = false,
 		images,
 		imageWidth,
@@ -126,14 +126,14 @@ export default {
 	}) {
 		const mappedImageWidth = this.getFigureWidth(imageWidth);
 		const mappedImagePosition = this.getFigurePosition(imagePosition);
-		const figureHTML = images
-			?.map(image => this.renderFigure({
+		const figureHTML = (await Promise.all(images
+			?.map(async image => await this.renderFigure({
 				caption: image.caption,
 				displayInOneLine,
-				imageHTML: Image.render({ asset: image?.files?.[0] }),
+				imageHTML: await Image.render({ asset: image?.files?.[0] }),
 				width: mappedImageWidth,
 				position: mappedImagePosition
-			})).join("");
+			})))).join("");
 		const galleryIntroductionHTML = galleryIntroductionText
 			? `<gallery-introduction-text>${galleryIntroductionText}</gallery-introduction-text>`
 			: "";

@@ -1,11 +1,11 @@
 export default {
-	render({
+	async render({
 		asset
+	}, {
+		download
 	}) {
 		return asset
-			? `
-				<img height=${asset.height} src=${asset.url} width=${asset.width}>
-			`
+			? `<img height="${asset.height}" src="${await download(asset.url)}" width="${asset.width}">`
 			: "";
 	}
 };

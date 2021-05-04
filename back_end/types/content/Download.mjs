@@ -59,6 +59,7 @@ export default {
 		isNumbered,
 		url
 	}, {
+		download,
 		helpers: {
 			Marker
 		}
@@ -72,7 +73,7 @@ export default {
 							<p>${description}</p>
 						</download-text>
 						<download-icon>
-							<a href="${url || file.url}" target="blank">
+							<a href="${await download(url || file.url)}" target="blank">
 								<p>DOWNLOAD</p>
 							</a>
 						</download-icon>

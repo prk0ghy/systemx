@@ -38,6 +38,7 @@ export default {
 		isNumbered,
 		posters
 	}, {
+		download,
 		EditorialError,
 		helpers: {
 			Image,
@@ -47,7 +48,7 @@ export default {
 	}) {
 		const src = audioFiles[0]?.url;
 		const poster = posters?.length
-			? Image.render({
+			? await Image.render({
 				asset: posters[0]
 			})
 			: "";
@@ -68,7 +69,7 @@ export default {
 					${Marker.render({ isNumbered })}
 					<figure figure-type="audio">
 						${poster}
-						<audio controls src="${src}"></audio>
+						<audio controls src="${await download(src)}"></audio>
 						${captionHTML}
 					</figure>
 					${license}

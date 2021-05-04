@@ -56,6 +56,7 @@ export default {
 		isNumbered,
 		posters
 	}, {
+		download,
 		EditorialError,
 		helpers: {
 			License,
@@ -80,7 +81,7 @@ export default {
 				<inner-content>
 					${Marker.render({ isNumbered })}
 					<figure figure-type="video">
-						<video controls poster="${posterURL}" src="${src}"></video>
+						<video controls poster="${posterURL}" src="${await download(src)}"></video>
 						${captionHTML}
 					</figure>
 					${licenseHTML}

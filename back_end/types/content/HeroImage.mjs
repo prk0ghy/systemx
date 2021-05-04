@@ -17,7 +17,7 @@ export default {
 			`
 		}]
 	]),
-	render({
+	async render({
 		caption,
 		images
 	}, {
@@ -44,7 +44,7 @@ export default {
 			<section content-type="hero-image">
 				<inner-content>
 					<figure figure-type="hero-image">
-						${Image.render({ asset: image })}
+						${await Image.render({ asset: image })}
 						${licenseHTML}
 						${captionHTML}
 					</figure>

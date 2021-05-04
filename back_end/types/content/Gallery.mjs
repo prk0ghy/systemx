@@ -102,18 +102,18 @@ export default {
 				title: "Images missing"
 			});
 		}
-		const figures = images.map(image => {
+		const figures = await Promise.all(images.map(async image => {
 			const imageCaptionHTML = image.caption
 				? `<figcaption>${image.caption}</figcaption>`
 				: "";
 			return `
 				<figure figure-type="gallery">
-					${Image.render({ asset: image.files[0] })}
+					${await Image.render({ asset: image.files[0] })}
 					${License.render({ asset: image.files[0] })}
 					${imageCaptionHTML}
 				</figure>
 			`;
-		});
+		}));
 		const galleryIntroductionTextHTML = galleryIntroductionText
 			? `<div class="gallery-text">${galleryIntroductionText}</div>`
 			: "";
