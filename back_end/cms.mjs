@@ -1,6 +1,18 @@
 import { gql } from "graphql-request";
 import request from "./rateLimiting.mjs";
 import { loadContentTypes } from "./types.mjs";
+const memoize = fn => {
+	const cache = new Map();
+	return (...inputs) => {
+		const key = JSON.stringify(inputs);
+		if (cache.has(key)) {
+			return cache.get(key);
+		}
+		const result = fn(...inputs);
+		cache.set(key, result);
+		return result;
+	};
+};
 const globalFragments = {
 	asset: () => `
 		height
@@ -12,7 +24,7 @@ const globalFragments = {
 			source: quelle
 		}
 	`,
-	elements: ({ types }) => `
+	elements: memoize(({ types }) => `
 		inhaltsbausteine {
 			__typename
 			...on inhaltsbausteine_audioDatei_BlockType {
@@ -61,8 +73,8 @@ const globalFragments = {
 				${types.inhaltsbausteine_videoDatei_BlockType}
 			}
 		}
-	`,
-	exerciseElements: ({ types }) => `
+	`),
+	exerciseElements: memoize(({ types }) => `
 		elemente_nested {
 			...on elemente_nested_embeddedVideoAudio_BlockType {
 				${types.elemente_nested_embeddedVideoAudio_BlockType}
@@ -80,7 +92,7 @@ const globalFragments = {
 				${types.elemente_nested_videoDatei_BlockType}
 			}
 		}
-	`
+	`)
 };
 const globalTypes = {
 	Entry: `
@@ -104,7 +116,7 @@ export const getContext = async () => {
 				continue;
 			}
 			Object.defineProperty(cms.types, key, {
-				get: () => setup.fetch(cms)
+				get: memoize(() => setup.fetch(cms))
 			});
 		}
 	}
@@ -113,7 +125,7 @@ export const getContext = async () => {
 			continue;
 		}
 		Object.defineProperty(cms.fragments, key, {
-			get: () => value(cms)
+			get: memoize(() => value(cms))
 		});
 	}
 	return cms;
