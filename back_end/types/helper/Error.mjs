@@ -4,11 +4,11 @@ export default {
 		isEditorial,
 		title = "Error",
 		type
-	}) {
+	}, context) {
 		const editorialAttribute = isEditorial
 			? "is-editorial"
 			: "";
-		return `
+		const output = `
 			<section content-type="error" ${editorialAttribute}>
 				<inner-content>
 					<h6 class="title">${title}</h6>
@@ -17,5 +17,7 @@ export default {
 				</inner-content>
 			</section>
 		`;
+		context.hints.appendError(output, context);
+		return output;
 	}
 };

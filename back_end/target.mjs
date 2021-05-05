@@ -9,6 +9,7 @@ import options from "./options.mjs";
 import path from "path";
 import query from "./cms.mjs";
 import { render } from "./renderer.mjs";
+import RenderingContext from "./RenderingContext.mjs";
 import wrapWithApplicationShell from "./page.mjs";
 export const resourceDirectoryName = "resources";
 const fsp = fs.promises;
@@ -104,42 +105,60 @@ export const buildEntries = async targetName => {
 	const targetPath = getTargetPath(targetName);
 	const mediaPath = getMediaPath(targetName);
 	await mkdirp(mediaPath);
+	let warningHTML = "";
 	await Promise.all(result.entries.map(async entry => {
 		const directory = await mkdirp(targetPath, entry.uri);
 		const outputFilePath = path.join(directory, "index.html");
 		try {
 			const { mtime } = await fsp.stat(outputFilePath);
-			if (Date.parse(mtime) > Date.parse(entry.dateUpdated)) {
+			if (!options.forceRendering && Date.parse(mtime) > Date.parse(entry.dateUpdated)) {
 				return;
 			}
 		}
 		catch {
 			/* Doesn't matter if it fails, we just render a new file */
 		}
-		const html = await render(entry, null, {
-			/*
-			* Determines an absolute, target-specific path to wherever the media file `fileName` should be saved at.
-			*
-			* `callback` is executed once we know whether or not a download is necessary. The second argument denotes whether a download is necessary.
-			* The caller can use this to download the file to the path specified in the first argument of `callback`.
-			*
-			* This function returns a path to the media resource that can be put in HTML.
-			*/
-			handleMedia: async (fileName, modificationDate, callback) => {
-				const path = `${mediaPath}/${fileName}`;
-				try {
-					const { mtime } = await fsp.stat(path);
-					const needsDownload = modificationDate > mtime;
-					await callback(path, needsDownload);
+		const html = await render(entry, new RenderingContext({
+			globalRender: render,
+			hints: {
+				appendError: (() => {
+					let lastURI = null;
+					return (html, context) => {
+						if (context.type !== "root") {
+							if (lastURI !== entry.uri) {
+								warningHTML += `
+									<h1><a href="/${entry.uri}">${entry.uri}</a></h1>
+								`
+							}
+							lastURI = entry.uri;
+							warningHTML += html;
+						}
+					}
+				})(),
+				/*
+				* Determines an absolute, target-specific path to wherever the media file `fileName` should be saved at.
+				*
+				* `callback` is executed once we know whether or not a download is necessary. The second argument denotes whether a download is necessary.
+				* The caller can use this to download the file to the path specified in the first argument of `callback`.
+				*
+				* This function returns a path to the media resource that can be put in HTML.
+				*/
+				handleMedia: async (fileName, modificationDate, callback) => {
+					const filePath = path.join(mediaPath, fileName);
+					try {
+						const { mtime } = await fsp.stat(filePath);
+						const needsDownload = modificationDate > mtime;
+						await callback(filePath, needsDownload);
+					}
+					catch {
+						/* Doesn't matter if it fails, we just save a new medium */
+						await callback(filePath, true);
+					}
+					const htmlPath = filePath.replace(targetPath, "");
+					return htmlPath;
 				}
-				catch {
-					/* Doesn't matter if it fails, we just save a new medium */
-					await callback(path, true);
-				}
-				const htmlPath = path.replace(targetPath, "");
-				return htmlPath;
 			}
-		});
+		}));
 		/* Remove target prefix and in case of Windows, replace blackslashes with forward slashes */
 		const url = outputFilePath.substr(targetPath.length).replace(/\\/g,"/");
 		const wrappedHTML = await wrapWithApplicationShell(targetName, {
@@ -153,6 +172,14 @@ export const buildEntries = async targetName => {
 		const finalHTML = Marker.fill(wrappedHTML);
 		await fsp.writeFile(outputFilePath, formatHTML(finalHTML));
 	}));
+	if (options.forceRendering) {
+		const warningPath = path.join(targetPath, "warnings.html");
+		await fsp.writeFile(warningPath, await wrapWithApplicationShell(targetName, {
+			content: warningHTML || "<h1>No warnings<h1>",
+			pageTitle: "Render warnings",
+			pageType: "inhalt_inhalt_Entry"
+		}));
+	}
 };
 /*
 * Builds a target, given its name.
