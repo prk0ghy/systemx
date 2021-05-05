@@ -46,9 +46,22 @@ section[content-type="hero-image"] details.license > license-content {
 	left:calc(50% - var(--content-width) / 2);
 }
 
+@media only screen and (max-width: 952px) {
+	section[content-type="hero-image"] details.license > license-content {
+		left: 0;
+	}
+}
+
 section[content-type="hero-image"] details.license > summary {
 	margin-top: -45px;
 }
+
+@media only screen and (max-width: 952px) {
+	section[content-type="hero-image"] details.license > summary {
+		font-size: 1em;
+	}
+}
+
 
 /* .big and .small should be automatically set by the back end
  * depending on length of text
