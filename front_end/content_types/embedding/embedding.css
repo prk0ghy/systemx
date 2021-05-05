@@ -24,16 +24,8 @@ main > section[content-type="embedding"]::after {
 	z-index:0;
 }
 
-figure[figure-type="embedding"] > figcaption{
+figure[figure-type="embedding"] > figcaption {
 	padding-bottom: var(--content-padding-half);
-}
-
-section[content-type="embedding"] > inner-content > figure > lazy-iframe,
-section[content-type="embedding"] > inner-content > figure > iframe {
-	display: block;
-	background:#666;
-	width:100%;
-	height:600px;
 }
 
 [embedding-target="youtube"] {
@@ -113,4 +105,12 @@ iframe-wrap[iframe-type="youtube"] > iframe {
 	top:0;
 	width:100%;
 	height:100%;
+}
+
+section[content-type="embedding"] > inner-content > figure > lazy-iframe,
+section[content-type="embedding"] > inner-content > figure > iframe {
+	display: block;
+	background:#666;
+	width:100%;
+	height:600px;
 }

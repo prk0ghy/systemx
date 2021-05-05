@@ -1,4 +1,4 @@
-/* globals Quill */
+/* globals Quill,getFirstParentSection */
 
 (() => {
 	function initExerciseEditors(){

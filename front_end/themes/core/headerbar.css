@@ -57,7 +57,7 @@ header::after {
 #button-navigation::after { content: "\e904"; }
 #button-settings::after { content: "\e994"; }
 #button-previous::after { content: "\e902"; }
-#button-next::after {content: "\e901"; }
+#button-next::after { content: "\e901"; }
 
 button#button-previous,
 button#button-next {
@@ -93,7 +93,8 @@ header h3 {
 	}
 
 	#header-center { top:10px; }
-	#header-left { 
+
+	#header-left {
 		float: right;
 		margin-right: -1rem;
 	}

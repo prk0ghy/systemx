@@ -24,7 +24,7 @@ tab-box-content > section:last-child {
 }
 
 tab-box-content > footer {
-	margin-top:-1.0em;
+	margin-top:-1em;
 	padding: 0 var(--content-padding) var(--content-padding-half);
 	font-size:0.8em;
 	line-height:1.1em;

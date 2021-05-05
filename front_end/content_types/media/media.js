@@ -38,17 +38,27 @@
 			statusIcon.offsetTop; // Sync
 			statusIcon.classList.add('fading-out');
 
-			statusIcon.addEventListener("transitionend", (e) => {
+			statusIcon.addEventListener("transitionend", () => {
 				statusIcon.remove();
 			});
 		}
 
-		if(media?.parentElement?.parentElement?.firstElementChild?.tagName === 'IMG'){
-			media.parentElement.parentElement.firstElementChild.addEventListener("click", (e) => {
-				e.preventDefault();
-				playPauseButton.click();
-			});
+		if(media){
+			const mp = media.parentElement;
+			if(mp){
+				const mpp = mp.parentElement;
+				if(mpp){
+					const mppfc = mpp.firstElementChild;
+					if(mppfc && mppfc.targName === 'IMG'){
+						media.parentElement.parentElement.firstElementChild.addEventListener("click", (e) => {
+							e.preventDefault();
+							playPauseButton.click();
+						});
+					}
+				}
+			}
 		}
+
 		media.addEventListener("click", (e) => {
 			e.preventDefault();
 			playPauseButton.click();
@@ -82,7 +92,7 @@
 				}
 			});
 
-			document.addEventListener('fullscreenchange', (e) => {
+			document.addEventListener('fullscreenchange', () => {
 				if (document.fullscreenElement === wrapper) {
 					fullscreenButton.classList.add('active');
 				} else{

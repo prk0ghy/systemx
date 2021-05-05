@@ -41,7 +41,7 @@
 				video.muted = "muted";
 				video.volume = 0;
 				videoWrap.append(video);
-				video.addEventListener("ended",(e) => {
+				video.addEventListener("ended",() => {
 					if(video.currentTime < (video.duration-1)){return;}
 					hideOverlay();
 				});

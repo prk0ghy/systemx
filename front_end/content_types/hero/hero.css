@@ -24,7 +24,6 @@ figure[figure-type="hero-image"] figcaption {
 	width:100%;
 	opacity: 1;
 	padding-top:0;
-	/* backdrop-filter: blur(30px); */
 	padding-left:64px;
 }
 

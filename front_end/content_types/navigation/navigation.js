@@ -32,13 +32,13 @@ setTimeout(initNavBar, 0);
 		const navUl = document.querySelectorAll("nav > ul ul");
 
 		function showNavigationActive(ele){
-			if((ele == null) || ((ele.tagName !== "UL") && (ele.tagName !== "LI"))){return;}
+			if((ele === null) || ((ele.tagName !== "UL") && (ele.tagName !== "LI"))){return;}
 			if(ele.tagName === "UL"){
 				ele.classList.remove("hidden");
 			}else{
 				ele.firstElementChild.classList.add("active");
 			}
-			for(chi of ele.children){
+			for(const chi of ele.children){
 				if(chi.tagName === "UL"){
 					chi.classList.remove("hidden");
 				}
@@ -47,15 +47,15 @@ setTimeout(initNavBar, 0);
 		}
 
 		function refreshNavigationList(){
-			for(ele of document.querySelectorAll("nav ul")){
+			for(const ele of document.querySelectorAll("nav ul")){
 				ele.classList.add("hidden");
 			}
-			for(ele of document.querySelectorAll("nav")){
+			for(const ele of document.querySelectorAll("nav")){
 				if(ele.firstElementChild){
 					ele.firstElementChild.classList.remove("hidden");
 				}
 			}
-			for(ele of document.querySelectorAll("nav-toggle.active")){
+			for(const ele of document.querySelectorAll("nav-toggle.active")){
 				ele.classList.remove("active");
 			}
 			showNavigationActive(document.querySelector("nav li.active"));

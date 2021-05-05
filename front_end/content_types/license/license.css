@@ -21,8 +21,9 @@ details.license > summary {
 	transition:background-color 300ms, color 300ms;
 	z-index: 2001;
 }
+
 summary.missing-attribution {
-	background-color: #FF4411 !important;
+	background-color: #F41 !important;
 }
 
 details.license > summary::marker {
@@ -49,14 +50,15 @@ license-content {
 	line-height: 1.5em;
 	position:absolute;
 	left:0;
-	background:rgba(255,255,255,0.95);
+	background:rgba(255, 255, 255, 0.95);
 	width:100%;
 	opacity:0;
-	transform:translate(0,0%) scaleY(0);
+	transform:translate(0, 0%) scaleY(0);
 	transform-origin:50% 0%;
 	transition:transform 300ms, opacity 300ms;
 	z-index: 2000;
 }
+
 details.license > license-content a {
 	word-break: break-all;
 	padding-right: 64px;
@@ -68,7 +70,7 @@ details.license > license-content p {
 
 details.license.active > license-content {
 	opacity:1;
-	transform:translate(0,-100%) scaleY(1);
+	transform:translate(0, -100%) scaleY(1);
 }
 
 i.cc.cc-pd::before {

@@ -44,9 +44,8 @@ nav li a {
 	text-decoration:none;
 	font-family: var(--font-headlines);
 	font-size:1.3em;
+	padding-left:calc(var(--content-padding) * 1);
 }
-
-nav li a { padding-left:calc(var(--content-padding) * 1); }
 nav li li a { padding-left:calc(var(--content-padding) * 2); }
 nav li li li a { padding-left:calc(var(--content-padding) * 3); }
 

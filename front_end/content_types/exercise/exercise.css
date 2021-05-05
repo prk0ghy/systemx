@@ -6,8 +6,8 @@ exercise-content {
 	display:block;
 }
 
-section[content-type="tab-box"][tab-box-type="exercise"] > inner-content,
-section[content-type="exercise"] > inner-content {
+section[content-type="exercise"] > inner-content,
+section[content-type="tab-box"][tab-box-type="exercise"] > inner-content {
 	position:relative;
 	margin-bottom:calc(var(--content-padding) * 1.75);
 }
@@ -44,6 +44,25 @@ section[content-type="exercise"] ol > li > ol-number {
 	color: var(--exercise-red);
 }
 
+.ql-editor ul > li::before {
+	position: absolute;
+	top: 0.1em;
+	left: 1.5em;
+	content: "";
+	display: block;
+	width: 0.4em;
+	height: 0.4em;
+	border: 0.15em solid var(--exercise-red);
+	border-radius: 50%;
+	background: transparent;
+}
+
+.ql-editor ol > li::before {
+	color: var(--exercise-red);
+	position: absolute;
+	left: var(--content-padding-half);
+}
+
 section[content-type="exercise"] ul > li::before {
 	background-color:transparent;
 	border-color: var(--exercise-red);
@@ -62,6 +81,7 @@ section[content-type="exercise"] section[content-type="gallery"] gallery-text {
 section[content-type="exercise"] section[content-type="gallery"] [figure-type="gallery"] > img {
 	border:none;
 }
+
 /* Padding-adjustment of an exercise inside a pop-up box */
 
 section[content-type="box"] > inner-content > .box-wrap.active > box-content > section[content-type="exercise"] {
@@ -199,29 +219,10 @@ fancy-exercise-editor {
 	margin-top: var(--content-padding);
 }
 
-.ql-editor ul > li::before {
-	position: absolute;
-	top: 0.1em;
-	left: 1.5em;
-	content: "";
-	display: block;
-	width: 0.4em;
-	height: 0.4em;
-	border: 0.15em solid var(--exercise-red);
-	border-radius: 50%;
-	background: transparent;
-}
-
 .ql-editor ul > li {
 	font-family: var(--font-content);
 	line-height:0.7em;
 	font-weight: 400;
-}
-
-.ql-editor ol > li::before {
-	color: var(--exercise-red);
-	position: absolute;
-	left: var(--content-padding-half);
 }
 
 .ql-editor ol > li {
@@ -237,7 +238,7 @@ fancy-exercise-editor {
 	border: none;
 	padding: var(--content-padding-quarter) 0;
 	align-content: center;
-	width: calc(100% - var(--content-padding)*2);
+	width: calc(100% - var(--content-padding) * 2);
 	margin-left:auto;
 	margin-right:auto;
 }
@@ -250,6 +251,10 @@ fancy-exercise-editor {
 	width: 3.5em;
 	padding: 0;
 	vertical-align:bottom;
+}
+
+html body .ql-toolbar.ql-snow .ql-formats {
+	margin: 0;
 }
 
 .ql-toolbar.ql-snow .ql-formats:nth-of-type(2) {
@@ -267,10 +272,6 @@ fancy-exercise-editor {
 
 .ql-bold {
 	margin-right: -1em;
-}
-
- html body .ql-toolbar.ql-snow .ql-formats {
-	margin: 0;
 }
 
 html body .ql-toolbar.ql-snow .ql-picker-label {
@@ -329,6 +330,7 @@ html body .ql-snow .ql-color-picker .ql-picker-item {
 	.ql-snow.ql-toolbar button {
 		height: 2em;
 	}
+
 	html body .ql-toolbar.ql-snow .ql-picker-label {
 		width: 2em;
 	}
@@ -342,14 +344,6 @@ html body .ql-snow .ql-color-picker .ql-picker-item {
 	html body .ql-color {
 		margin-right: 0.3em;
 	}
-/*
-	.ql-italic {
-		margin: 0;
-	}
-
-	.ql-underline {
-		margin: 0;
-	} */
 
 	.ql-bold {
 		margin-right: -0.7em;
@@ -389,72 +383,3 @@ html body .ql-snow .ql-color-picker .ql-picker-item {
 		width: auto;
 	}
 }
-
-/*
-
-@media screen and (max-width: 575px) {
-	.ql-toolbar.ql-snow .ql-formats:nth-of-type(4) {
-		padding-top: 4px;
-	}
-}
-
-@media screen and (max-width: 720px) {
-	.ql-toolbar.ql-snow .ql-formats {
-		display:block;
-	}
-	.ql-toolbar.ql-snow .ql-formats:nth-of-type(2n+1) {
-		clear:both;
-		float:left;
-		margin-left:0;
-		margin-bottom:0.5em;
-	}
-	.ql-toolbar.ql-snow .ql-formats:nth-of-type(2n) {
-		float:right;
-		margin-right:0;
-	}
-}
-
-@media screen and (max-width: 472px) {
-	.ql-toolbar.ql-snow .ql-formats:nth-of-type(3) {
-		padding-top: 7px;
-	}
-
-	.ql-snow .ql-picker {
-		left: -10px;
-	}
-
-	.ql-toolbar.ql-snow .ql-formats:nth-of-type(2) {
-		margin-left: 0.6em;
-	}
-}
-
-@media screen and (max-width: 400px) {
-	.ql-snow.ql-toolbar button {
-		height: 2.2em;
-	}
-
-	.ql-toolbar.ql-snow .ql-picker-label {
-		width: 2.7em;
-	}
-
-	.ql-toolbar.ql-snow .ql-formats:nth-of-type(2) {
-		margin-left: 0.45em;
-	}
-}
-
-@media screen and (max-width: 332px) {
-	.ql-toolbar.ql-snow .ql-formats:nth-of-type(2) {
-		margin-right: 0;
-		margin-left: 0.5em;
-	}
-}
-
-@media screen and (max-width: 323px) {
-	.ql-toolbar.ql-snow .ql-formats:nth-of-type(2) {
-		margin-left: -4px;
-	}
-
-	.ql-toolbar.ql-snow .ql-formats:nth-of-type(4) {
-		margin-left: -12px;
-	}
-} */

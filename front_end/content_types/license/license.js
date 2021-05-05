@@ -4,7 +4,7 @@
 		const licenseButtons = document.querySelectorAll("details.license > summary");
 		for(const license of licenseButtons){
 			const licenseContent = license.parentElement.lastElementChild;
-			if((licenseContent === null) || (licenseContent.innerHTML.trim().length == 0)){
+			if((licenseContent === null) || (licenseContent.innerHTML.trim().length === 0)){
 				license.classList.add("missing-attribution");
 			}
 			license.parentElement.setAttribute("open","");

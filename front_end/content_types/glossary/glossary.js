@@ -17,7 +17,7 @@
 				}
 			}
 		} catch(e){ /* Doesn't matter */ }
-		return `<section content-type="error"><inner-content><h3>Der Glossareintrag konnte nicht geladen werden</h3></inner-content></section>`
+		return `<section content-type="error"><inner-content><h3>Der Glossareintrag konnte nicht geladen werden</h3></inner-content></section>`;
 	}
 
 	async function loadGlossaryEntry(rawHref){

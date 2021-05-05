@@ -1,3 +1,5 @@
+/* global addHideElementContentHandler */
+
 (()=>{
 	function decodeParam(g){
 		return decodeURIComponent(g).replace(/\+/g,' ');
