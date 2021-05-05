@@ -71,6 +71,7 @@ details.license > license-content p {
 @media only screen and (max-width: 952px) {
 	details.license > license-content a,
 	details.license > license-content p {
+		font-size: 1.1em;
 		padding-right: 18px;
 	}
 }
