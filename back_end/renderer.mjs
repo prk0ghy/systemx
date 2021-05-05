@@ -96,31 +96,37 @@ const RenderingContext = class {
 			return callback();
 		};
 		return new Promise((fulfill, reject) => {
-			const request = https.request(url, {
-				agent
-			}, async response => {
-				if (response.statusCode < 200 || response.statusCode >= 300) {
-					printStatus(reject, new Error("Bad status code"));
-					return;
-				}
-				currentDownload.size = Number(response.headers["content-length"]);
-				let hasDownloadRun = false;
-				const htmlPath = await this.hints.handleMedia(fileName, modificationDate, path => {
+			(async () => {
+				let wasDownloadNeeded = false;
+				const htmlPath = await this.hints.handleMedia(fileName, modificationDate, (path, needsDownload) => {
+					wasDownloadNeeded = needsDownload;
 					return new Promise(fulfill => {
-						hasDownloadRun = true;
-						const stream = fs.createWriteStream(path);
-						currentDownload.stream = stream;
-						response.pipe(stream);
-						stream.on("finish", () => {
-							stream.close();
+						if (!needsDownload) {
 							fulfill();
+							return;
+						}
+						const request = https.request(url, {
+							agent
+						}, async response => {
+							if (response.statusCode < 200 || response.statusCode >= 300) {
+								printStatus(reject, new Error("Bad status code"));
+								return;
+							}
+							currentDownload.size = Number(response.headers["content-length"]);
+							const stream = fs.createWriteStream(path);
+							currentDownload.stream = stream;
+							response.pipe(stream);
+							stream.on("finish", () => {
+								stream.close();
+								fulfill();
+							});
 						});
+						request.on("error", console.error);
+						request.end();
 					});
 				});
-				printStatus(() => fulfill(htmlPath), null, hasDownloadRun);
-			});
-			request.on("error", console.error);
-			request.end();
+				printStatus(() => fulfill(htmlPath), null, wasDownloadNeeded);
+			})();
 		});
 	};
 	EditorialError = {

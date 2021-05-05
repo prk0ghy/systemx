@@ -120,8 +120,8 @@ export const buildEntries = async targetName => {
 			/*
 			* Determines an absolute, target-specific path to wherever the media file `fileName` should be saved at.
 			*
-			* If the file at `fileName` already exists and the server-side file isn't newer, `callback` is executed.
-			* The caller can use this to download the file to the path.
+			* `callback` is executed once we know whether or not a download is necessary. The second argument denotes whether a download is necessary.
+			* The caller can use this to download the file to the path specified in the first argument of `callback`.
 			*
 			* This function returns a path to the media resource that can be put in HTML.
 			*/
@@ -129,13 +129,12 @@ export const buildEntries = async targetName => {
 				const path = `${mediaPath}/${fileName}`;
 				try {
 					const { mtime } = await fsp.stat(path);
-					if (modificationDate > mtime) {
-						await callback(path);
-					}
+					const needsDownload = modificationDate > mtime;
+					await callback(path, needsDownload);
 				}
 				catch {
 					/* Doesn't matter if it fails, we just save a new medium */
-					await callback(path);
+					await callback(path, true);
 				}
 				const htmlPath = path.replace(targetPath, "");
 				return htmlPath;
