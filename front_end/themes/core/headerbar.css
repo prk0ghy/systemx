@@ -54,6 +54,13 @@ header::after {
 	text-decoration: none;
 }
 
+@media only screen and (max-width: 572px) {
+	#button-navigation {
+		font-size: 1.8em;
+		margin-top: -0.2em;
+	}
+}
+
 #button-navigation::after { content: "\e904"; }
 #button-settings::after { content: "\e994"; }
 #button-previous::after { content: "\e902"; }
