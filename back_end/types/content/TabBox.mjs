@@ -1,4 +1,9 @@
 export default {
+	getType(type) {
+		return type === "aufgabenkasten"
+			? "exercise"
+			: "mixed";
+	},
 	queries: new Map([
 		["inhaltsbausteine_querslider_BlockType", {
 			fetch: ({ types }) => `
@@ -45,12 +50,14 @@ export default {
 						title: bezeichnung
 					}
 				}
+				type: kastentyp
 			`
 		}]
 	]),
 	async render({
 		isNumbered,
-		tabs
+		tabs,
+		type
 	}, {
 		classIf,
 		helpers: {
@@ -71,8 +78,9 @@ export default {
 				</tab-box-content>
 			`;
 		}))).join("");
+		const boxType = this.getType(type);
 		return `
-			<section content-type="tab-box">
+			<section content-type="tab-box" tab-box-type="${boxType}">
 				<inner-content>
 					${Marker.render({ isNumbered })}
 					<tab-box-header-wrap>
