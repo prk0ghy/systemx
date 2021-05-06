@@ -106,3 +106,9 @@ nav-close-button {
 nav-close-button::after {
 	content:'\2716';
 }
+
+@media only screen and (max-width: 800px) {
+	nav-close-button {
+		bottom:1em;
+	}
+}
