@@ -14,6 +14,12 @@ import wrapWithApplicationShell from "./page.mjs";
 export const resourceDirectoryName = "resources";
 const fsp = fs.promises;
 /*
+* Should actually do a GraphQL query to figure out what contents
+* need to be displayed, but since there is only a single target right
+* now I took the shortcut of just hardcoding the startpage.
+*/
+const getStartpage = async targetName => "inhalt/f-a-q-und-hilfe";
+/*
 * Every project is a "target".
 * Every target will be output into its own directory.
 *
@@ -93,6 +99,48 @@ const renderAssets = async destination => {
 	return Promise.all(assetDirectories.map(directory => renderDirectory(directory, destination)));
 };
 /*
+* This functions renders a single entry and returns the complete HTML for it, including all warnings at the top.
+*
+* Should only be used as a preview for authors, production releases should use buildEntries instead
+*/
+export const renderSingleEntry = async (targetName,uri) => {
+	const navPromise = loadNavigation(targetName);
+	if(uri == ""){
+		uri = await getStartpage(targetName);
+	}
+	const result = await query(types => `
+		entry (uri: "${uri}") {
+			${types.Entry}
+		}
+	`);
+	const entry = result.entry;
+	if(entry === null){
+		console.log(`404 - ${uri}`);
+		return "";
+	}
+	const targetPath = getTargetPath(targetName);
+	const html = await render(entry, new RenderingContext({
+		globalRender: render,
+		download: (uri) => uri,
+		hints: {
+			appendError: (html, context) => {},
+		}
+	}));
+	/* Remove target prefix and in case of Windows, replace blackslashes with forward slashes */
+	const url = `/${uri}/index.html`;
+	await navPromise;
+	const wrappedHTML = await wrapWithApplicationShell(targetName, {
+		content: html,
+		pageTitle: entry.title,
+		pageType: entry.__typename === "inhalt_inhalt_Entry"
+			? "content"
+			: "unhandled-typename",
+		pageURL: url
+	});
+	const finalHTML = Marker.fill(wrappedHTML);
+	return finalHTML;
+};
+/*
 * This function fetches and then renders all "entries", which is CraftCMS-speak for pages.
 * Essentially, this is the heart of systemx.
 */
@@ -128,12 +176,12 @@ export const buildEntries = async targetName => {
 							if (lastURI !== entry.uri) {
 								warningHTML += `
 									<h1><a href="/${entry.uri}">${entry.uri}</a></h1>
-								`
+								`;
 							}
 							lastURI = entry.uri;
 							warningHTML += html;
 						}
-					}
+					};
 				})(),
 				/*
 				* Determines an absolute, target-specific path to wherever the media file `fileName` should be saved at.
@@ -188,7 +236,6 @@ export const build = async targetName => {
 	const resourcePath = getResourcePath(targetName);
 	mkdirp(resourcePath);
 	await buildHead(targetName);
-	await renderDirectory(path.join("tests", "instrumentalisierung"), getTargetPath(targetName), targetName);
 	await renderAssets(resourcePath);
 	if (!options.skipNetwork) {
 		console.time("target#buildEntries");

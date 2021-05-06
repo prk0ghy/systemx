@@ -146,6 +146,7 @@ export default class {
 	constructor({
 		globalRender,
 		hints = {},
+		download = undefined,
 		model = {
 			__typename: "root"
 		},
@@ -157,6 +158,7 @@ export default class {
 		this.type = model.__typename;
 		this.render = this.render.bind(this);
 		this.globalRender = globalRender || parentContext.globalRender;
+		this.download = download || parentContext?.download || this.download;
 	}
 	render(model, hints) {
 		const context = new this.constructor({

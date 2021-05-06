@@ -5,7 +5,7 @@ import options from "./options.mjs";
 const cTarget = "lasub";
 await target.build(cTarget);
 if (options.startServer) {
-	server.start("./web/" + cTarget);
+	server.start(cTarget);
 }
 if (options.openBrowser) {
 	open(options.startServer
