@@ -2,6 +2,7 @@ exercise-content {
 	box-shadow: 0 3px 6px #00000063;
 	border-top: var(--content-padding-quarter) solid var(--exercise-red);
 	border-bottom: var(--content-padding-quarter) solid var(--exercise-red);
+	padding: var(--content-padding-quarter) var(--content-padding);
 	background: #fff;
 	display:block;
 }
@@ -60,7 +61,7 @@ section[content-type="exercise"] ol > li > ol-number {
 .ql-editor ol > li::before {
 	color: var(--exercise-red);
 	position: absolute;
-	left: var(--content-padding-half);
+	left: 0;
 }
 
 section[content-type="exercise"] ul > li::before {
@@ -238,7 +239,7 @@ fancy-exercise-editor {
 	border: none;
 	padding: var(--content-padding-quarter) 0;
 	align-content: center;
-	width: calc(100% - var(--content-padding) * 2);
+	width: 100%;
 	margin-left:auto;
 	margin-right:auto;
 }
@@ -310,8 +311,6 @@ html body .ql-snow .ql-color-picker .ql-picker-item {
 .ql-container.ql-snow {
 	border: none;
 	border-top: 1px solid #ccc;
-	padding-left: var(--content-padding);
-	padding-right: var(--content-padding);
 }
 
 /* Mobile Styling */
