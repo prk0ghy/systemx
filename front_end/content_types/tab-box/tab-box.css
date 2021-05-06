@@ -181,3 +181,23 @@ main > section[content-type="tab-box"] section[content-type="embedding"] {
 tab-box-content > section:last-child > inner-content {
 	margin-bottom:0;
 }
+
+@media only screen and (max-width: 1062px) {
+	help-video {
+		left: calc(100% - 3.5em);
+	}
+
+	a.marker {
+		position: relative;
+		display: inline-block;
+		left: 0;
+		margin-top: 0;
+		margin-bottom: 1em;
+	}
+}
+
+@media only screen and (max-width: 650px) {
+	help-video {
+		left: calc(100% - 2.8em);
+	}
+}
