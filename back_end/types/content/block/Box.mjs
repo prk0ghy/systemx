@@ -94,7 +94,7 @@ export default {
 		const boxType = this.getBoxType(colorClassName);
 		const editorialWarning = boxType === "gray"
 			? EditorialError.render({
-				message: "Please assign a color to this box."
+				message: "Please assign a color to the box below."
 			})
 			: "";
 		return `
