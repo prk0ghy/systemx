@@ -13,8 +13,7 @@ export default {
 			? "gray"
 			: colorClassName
 				.replace(/^box-/, "")
-				/* German names are considered deprecated */
-				.replace("blau", "gray")
+				.replace("blau", "blue")
 				.replace("grey", "gray");
 	},
 	queries: new Map([
