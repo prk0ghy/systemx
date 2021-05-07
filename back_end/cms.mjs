@@ -133,7 +133,7 @@ export const getContext = async () => {
 const maybeWrap = (query, enabled) => enabled
 	? `{ ${query} }`
 	: query;
-const endPoint = new URL("https://module-sachsen.dilewe.de/api");
+const endPoint = new URL("https://lasub.dilewe.de/api");
 /*
 * CraftCMS hard-codes the origin into all URLs which leads to funky behavior.
 * In order to avoid this, we remove the origin from all URLs.
