@@ -119,6 +119,9 @@ export default {
 		isNumbered,
 		text
 	}, {
+		contentTypes: {
+			Gallery
+		},
 		helpers: {
 			Image,
 			Marker
@@ -126,14 +129,20 @@ export default {
 	}) {
 		const mappedImageWidth = this.getFigureWidth(imageWidth);
 		const mappedImagePosition = this.getFigurePosition(imagePosition);
-		const figureHTML = (await Promise.all(images
-			?.map(async image => await this.renderFigure({
-				caption: image.caption,
-				displayInOneLine,
-				imageHTML: await Image.render({ asset: image?.files?.[0] }),
-				width: mappedImageWidth,
-				position: mappedImagePosition
-			})))).join("");
+		const figureHTML = displayInOneLine || images?.length && images.length <= 1
+			? (await Promise.all(
+				images?.map(async image => await this.renderFigure({
+					caption: image.caption,
+					imageHTML: await Image.render({ asset: image?.files?.[0] }),
+					position: mappedImagePosition,
+					width: mappedImageWidth
+				})))
+			).join("")
+			: images?.length && images.length >= 2
+				? await Gallery.render({
+					images
+				})
+				: "";
 		const galleryIntroductionHTML = galleryIntroductionText
 			? `<gallery-introduction-text>${galleryIntroductionText}</gallery-introduction-text>`
 			: "";
@@ -150,7 +159,6 @@ export default {
 	},
 	renderFigure({
 		caption,
-		displayInOneLine,
 		imageHTML,
 		position,
 		width
@@ -159,7 +167,7 @@ export default {
 			? `<figcaption>${caption}</figcaption>`
 			: "";
 		return `
-			<figure figure-position="${position}" figure-type="picture" figure-width="${width}" one-line="${displayInOneLine}">
+			<figure figure-position="${position}" figure-type="picture" figure-width="${width}" one-line="true">
 				${imageHTML}
 				${captionHTML}
 			</figure>

@@ -90,6 +90,7 @@ export default {
 		images,
 		isNumbered
 	}, {
+		Error,
 		helpers: {
 			Image,
 			License,
