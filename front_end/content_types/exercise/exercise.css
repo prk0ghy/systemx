@@ -177,13 +177,12 @@ fancy-exercise-editor {
 }
 
 .ql-editor.ql-blank::before {
-	left:var(--content-padding);
-	color:var(--background-grey);
 	font-family:var(--font-content);
 	font-style:normal;
 	line-height: 1.1em;
 	font-weight: 300;
 	right:auto;
+	left: 0;
 }
 
 /* Styling for Textelements  */
