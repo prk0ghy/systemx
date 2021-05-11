@@ -8,7 +8,7 @@
 	font-family:var(--font-content);
 }
 
-section[content-type="text-and-image"]::after {
+section[content-type="text-and-image"] > inner-content::after {
 	content:'';
 	display:block;
 	clear:both;

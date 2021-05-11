@@ -66,3 +66,23 @@ figcaption p:last-child {
 		margin:0 0 var(--content-padding-half) 0;
 	}
 }
+
+figure-row {
+	display:flex;
+	flex-wrap:wrap;
+}
+
+figure-row > figure {
+	flex:1 0 25%;
+	float:none !important;
+	width:auto !important;
+	margin:0 0.25em 0.5em !important;
+}
+
+figure-row > figure:first-child {
+	margin-left:0;
+}
+
+figure-row > figure:last-child {
+	margin-right:0;
+}

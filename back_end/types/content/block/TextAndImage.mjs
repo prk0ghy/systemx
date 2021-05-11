@@ -19,6 +19,32 @@ export default {
 			return "right";
 		}
 	},
+	splitIntoFigureRows(figures,cols){
+		const ret = [];
+		let start = 0;
+		if((figures.length > 4) && ((figures.length % cols) === 1)){
+			start = 2;
+			const fig = figures.slice(0,2).join("");
+			ret.push(`<figure-row figure-cols="2">${fig}</figure-row>`);
+		}
+		for(let i=start;i<figures.length;i+=cols){
+			const fig = figures.slice(i,i+cols).join("");
+			const ccols = i+cols >= figures.length ? figures.length - i : cols;
+			ret.push(`<figure-row figure-cols="${ccols}">${fig}</figure-row>`);
+		}
+		return ret;
+	},
+	splitFigureRows(figures){
+		switch(figures.length){
+		case 1:
+			return figures;
+		case 2:
+		case 4:
+			return this.splitIntoFigureRows(figures,2);
+		default:
+			return this.splitIntoFigureRows(figures,3);
+		}
+	},
 	queries: new Map([
 		["elemente_nested_textMitOhneBild_BlockType", {
 			fetch: cms => `
@@ -130,14 +156,14 @@ export default {
 		const mappedImageWidth = this.getFigureWidth(imageWidth);
 		const mappedImagePosition = this.getFigurePosition(imagePosition);
 		const figureHTML = displayInOneLine || images?.length && images.length <= 1
-			? (await Promise.all(
+			? this.splitFigureRows((await Promise.all(
 				images?.map(async image => await this.renderFigure({
 					caption: image.caption,
 					imageHTML: await Image.render({ asset: image?.files?.[0] }),
 					position: mappedImagePosition,
 					width: mappedImageWidth
 				})))
-			).join("")
+			)).join("")
 			: images?.length && images.length >= 2
 				? await Gallery.render({
 					images
