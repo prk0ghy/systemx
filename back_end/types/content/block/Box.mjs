@@ -10,7 +10,7 @@ export default {
 	*/
 	getBoxType(colorClassName) {
 		return /\d/.test(colorClassName)
-			? "gray"
+			? "invalid"
 			: colorClassName
 				.replace(/^box-/, "")
 				.replace("blau", "blue")
@@ -91,7 +91,7 @@ export default {
 			? `<p>${summary}</p>`
 			: "";
 		const boxType = this.getBoxType(colorClassName);
-		const editorialWarning = boxType === "gray"
+		const editorialWarning = boxType === "invalid"
 			? EditorialError.render({
 				message: "Please assign a color to the box below."
 			})
