@@ -193,7 +193,7 @@ export default {
 			? `<figcaption>${caption}</figcaption>`
 			: "";
 		return `
-			<figure figure-position="${position}" figure-type="picture" figure-width="${width}" one-line="true">
+			<figure figure-position="${position}" figure-type="picture" figure-width="${width}">
 				${imageHTML}
 				${captionHTML}
 			</figure>

@@ -80,9 +80,9 @@ figure-row > figure {
 }
 
 figure-row > figure:first-child {
-	margin-left:0;
+	margin-left:0 !important;
 }
 
 figure-row > figure:last-child {
-	margin-right:0;
+	margin-right:0 !important;
 }
