@@ -5,7 +5,8 @@ const options = {
 	httpPort: 8042,
 	openBrowser: false,
 	skipNetwork: false,
-	startServer: false
+	startServer: false,
+	graphqlEndpoint: "https://lasub.dilewe.de/api"
 };
 for (const key in options) {
 	const optionName = key.replace(/[A-Z]+/g, $1 => `-${$1.toLowerCase()}`);

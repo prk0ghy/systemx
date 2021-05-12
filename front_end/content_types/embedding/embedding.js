@@ -9,7 +9,8 @@ function showLazyIframe(ele){
 	iframeWrapper.append(newEle);
 	ele.parentElement.insertBefore(iframeWrapper,ele);
 	ele.classList.add("hidden-embedding-placeholder");
-}
+	newEle.contentWindow.postMessage({context: 'h5p', action: 'ready'}, '*');
+}	
 
 function showEmbeddingSections(container){
 	if(container === null){return;}
@@ -19,6 +20,9 @@ function showEmbeddingSections(container){
 			showEmbeddingSections(child.querySelector("exercise-content"));
 		}
 		if(child.getAttribute("content-type") !== "embedding"){continue;}
+		for(const iframe of child.querySelectorAll("iframe")){
+			iframe.contentWindow.postMessage({context: 'h5p', action: 'resize'}, '*');
+		}
 		for(const lazyIframe of child.querySelectorAll("lazy-iframe")){
 			showLazyIframe(lazyIframe);
 		}

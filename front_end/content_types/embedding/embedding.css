@@ -22,11 +22,12 @@ main > section[content-type="embedding"]::after {
 	height:50%;
 	background: var(--background-green);
 	z-index:0;
+	bottom: -1em;
 }
 
-figure[figure-type="embedding"] > figcaption {
+/* figure[figure-type="embedding"] > figcaption {
 	padding-bottom: var(--content-padding-half);
-}
+} */
 
 [embedding-target="youtube"] {
 	display:block;

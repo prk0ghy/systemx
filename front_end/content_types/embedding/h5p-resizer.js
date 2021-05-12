@@ -50,15 +50,4 @@
 			});
 		}
 	}, false);
-
-	const  iframes = document.getElementsByTagName('iframe');
-	const  ready = {
-		context: 'h5p',
-		action: 'ready'
-	};
-	for (let i = 0; i < iframes.length; i++) {
-		if (iframes[i].src.indexOf('h5p') !== -1) {
-			iframes[i].contentWindow.postMessage(ready, '*');
-		}
-	}
 })();

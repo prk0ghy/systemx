@@ -1,4 +1,5 @@
 import {request, gql} from "graphql-request";
+import options from "../options.mjs";
 
 function buildNavigationEntry(entry,pageURL){
 	let ul = "";
@@ -8,13 +9,14 @@ function buildNavigationEntry(entry,pageURL){
 			ul = `<ul>${ul}</ul>`;
 		}
 	}
-	return `<li${pageURL === entry.uri ? ` class="active"` : ""}><a href="${entry.uri}" page-url="${pageURL}">${entry.title}</a>${ul}</li>`;
+	return `<li${pageURL === entry.uri ? ` class="active"` : ""} page-id="${entry.id}"><a href="${entry.uri}" page-url="${pageURL}">${entry.title}</a>${ul}</li>`;
 }
 
 const navCache = new Map();
 export async function loadNavigation(target){
-	const result = await request("https://lasub-dev.test-dilewe.de/api", gql([`
+	const result = await request(options.graphqlEndpoint, gql([`
 		fragment entriesFields on inhalt_inhalt_Entry {
+			id
 			title
 			uri
 		}
@@ -50,59 +52,6 @@ export async function loadNavigation(target){
 	}
 
 	navCache.set(target,fixLinks(result.entries));
-}
-
-const testNavigationData = [
-	{
-		title: "Geschichte - Instrumentalisierung der Vergangenheit",
-		uri: "/index.html?v=1",
-		noPrevNextLink: true,
-		children: [{
-			title: "1. Instrumentalisierung der Vergangenheit",
-			uri: "/index.html",
-			children: []
-		}]
-	}, {
-		title: "Kunst - Die Welt der Farben",
-		uri: "/farbkontraste.html?v=1",
-		noPrevNextLink: true,
-		children: [{
-			title: "2. Farbkontraste",
-			uri: "/farbkontraste.html",
-			children: []
-		}]
-	},{
-		title: "Deutsch - Sachtexte rund ums Internet besser verstehen",
-		uri: "/besserleser.html?v=1",
-		noPrevNextLink: true,
-		children: [{
-			title: "1. Anleitung für Besserleser",
-			uri: "/besserleser.html",
-			children: []
-		}]
-	},{
-		title: "Physik - Bewegungen von Körpern",
-		uri: "/bewegung.html?v=1",
-		noPrevNextLink: true,
-		children: [{
-			title: "1. Beurteilen von Bewegungen",
-			uri: "/bewegung.html",
-			children: []
-		}]
-	}
-];
-
-async function genTestNavigation(pageURL) {
-	const nav = testNavigationData.map(entry => {
-		return buildNavigationEntry(entry, `${pageURL}`);
-	}).join("");
-	return `
-		<aside id="navigation" style="display:none;">
-			<nav>
-				<ul>${nav}</ul>
-			</nav>
-		</aside>
-	`;
 }
 
 async function genNavigation(target,pageURL){

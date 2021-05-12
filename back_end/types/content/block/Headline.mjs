@@ -19,6 +19,7 @@ export default {
 				__typename
 				headline: ueberschrift
 				isNumbered: nummerierung
+				tag: groesse
 			`
 		}]
 	]),

@@ -1,5 +1,6 @@
 import { gql } from "graphql-request";
 import request from "./rateLimiting.mjs";
+import options from "./options.mjs";
 import { loadContentTypes } from "./types.mjs";
 const memoize = fn => {
 	const cache = new Map();
@@ -133,7 +134,7 @@ export const getContext = async () => {
 const maybeWrap = (query, enabled) => enabled
 	? `{ ${query} }`
 	: query;
-const endPoint = new URL("https://lasub.dilewe.de/api");
+const endPoint = new URL(options.graphqlEndpoint);
 /*
 * CraftCMS hard-codes the origin into all URLs which leads to funky behavior.
 * In order to avoid this, we remove the origin from all URLs.

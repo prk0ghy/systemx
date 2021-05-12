@@ -16,11 +16,15 @@ function isContentURL(url){
 function transformURL(url){
 	const path = String(url).split("/");
 	const last = String(path[path.length-1]);
-	if((last === "") || (last.indexOf('.') < 0) || (last === "index.html") || (last === "index.htm")){
+	if((last === "") || (last === "index.html") || (last === "index.htm")){
 		const ret = path.slice(1,path.length-1).join("/");
 		return decodeURI(ret);
+	}else if(last.indexOf('.') < 0){
+		const ret = path.slice(1,path.length).join("/");
+		return decodeURI(ret);
+	}else{
+		return url;
 	}
-	return url;
 }
 
 export function start(targetName) {
