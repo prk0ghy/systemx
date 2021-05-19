@@ -2,6 +2,7 @@ import { loadContentTypes, loadHelperTypes } from "./types.mjs";
 import Error from "./types/helper/Error.mjs";
 import { formatBytes } from "./format.mjs";
 import fs from "fs";
+import options from "./options.mjs";
 import https from "https";
 import query, { getContext as getCMSContext } from "./cms.mjs";
 const cmsContext = await getCMSContext();
@@ -53,10 +54,7 @@ export default class {
 	cms = cmsContext;
 	contentTypes = contextualize(contentTypes)(this);
 	download = url => {
-		return url;
-		downloads.set(url, {
-			downloadedSize: 0
-		});
+		downloads.set(url, {});
 		const currentDownload = downloads.get(url);
 		const urlObject = new URL(url);
 		const fileName = decodeURIComponent(urlObject
@@ -149,7 +147,7 @@ export default class {
 	constructor({
 		globalRender,
 		hints = {},
-		download = undefined,
+		download,
 		model = {
 			__typename: "root"
 		},
@@ -161,7 +159,9 @@ export default class {
 		this.type = model.__typename;
 		this.render = this.render.bind(this);
 		this.globalRender = globalRender || parentContext.globalRender;
-		this.download = download || parentContext?.download || this.download;
+		this.download = options.downloadMedia
+			? parentContext?.download || this.download
+			: url => url;
 	}
 	render(model, hints) {
 		const context = new this.constructor({

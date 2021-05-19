@@ -115,8 +115,7 @@ export const renderSingleEntry = async (targetName, uri) => {
 		return "<h1>404</h1>";
 	}
 	const html = await render(entry, new RenderingContext({
-		globalRender: render,
-		download: uri => uri
+		globalRender: render
 	}));
 	/* Remove target prefix and in case of Windows, replace blackslashes with forward slashes */
 	const url = `/${effectiveURI}/index.html`;
