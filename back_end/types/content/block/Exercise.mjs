@@ -11,7 +11,14 @@ export default {
 				inputType: benutzereingabe
 				textHTML: text
 				title: titelDerAufgabe
-			`
+			`,
+			map: ({
+				content,
+				...rest
+			}) => ({
+				...rest,
+				content: content[0]
+			})
 		}],
 		["inhalt_aufgabe_BlockType", {
 			fetch: ({ fragments }) => `
@@ -24,7 +31,14 @@ export default {
 				inputType: benutzereingabe
 				textHTML: text
 				title: titelDerAufgabe
-			`
+			`,
+			map: ({
+				content,
+				...rest
+			}) => ({
+				...rest,
+				content: content[0]
+			})
 		}],
 		["inhaltsbausteine_aufgabe_BlockType", {
 			fetch: ({ fragments }) => `
@@ -39,7 +53,14 @@ export default {
 				isNumbered: nummerierung
 				textHTML: text
 				title: titelDerAufgabe
-			`
+			`,
+			map: ({
+				content,
+				...rest
+			}) => ({
+				...rest,
+				content: content[0]
+			})
 		}]
 	]),
 	async render({
