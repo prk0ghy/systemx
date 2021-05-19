@@ -73,10 +73,12 @@ export default {
 		content: [content],
 		colorClassName,
 		headline,
+		id,
 		isNumbered,
 		source,
 		summary
 	}, {
+		contentTypeIDIf,
 		EditorialError,
 		helpers: {
 			Marker
@@ -98,7 +100,7 @@ export default {
 			: "";
 		return `
 			${editorialWarning}
-			<section box-type="${boxType}" content-type="box">
+			<section box-type="${boxType}" content-type="box" ${contentTypeIDIf(id)}>
 				<inner-content>
 					${Marker.render({ isNumbered })}
 					<details class="box-wrap">

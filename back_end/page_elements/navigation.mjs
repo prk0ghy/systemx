@@ -1,19 +1,10 @@
-import {request, gql} from "graphql-request";
+import { request, gql } from "graphql-request";
 import options from "../options.mjs";
-
-function buildNavigationEntry(entry,pageURL){
-	let ul = "";
-	if(entry.children !== undefined){
-		ul = entry.children.map((e) => buildNavigationEntry(e,pageURL)).join("").trim();
-		if(ul.length > 0){
-			ul = `<ul>${ul}</ul>`;
-		}
-	}
-	return `<li${pageURL === entry.uri ? ` class="active"` : ""} page-id="${entry.id}"><a href="${entry.uri}" page-url="${pageURL}">${entry.title}</a>${ul}</li>`;
-}
-
-const navCache = new Map();
-export async function loadNavigation(target){
+const navigationCache = new Map();
+/*
+* Requests all data needed to build the navigation from the server, given a target.
+*/
+export const loadNavigation = async target => {
 	const result = await request(options.graphqlEndpoint, gql([`
 		fragment entriesFields on inhalt_inhalt_Entry {
 			id
@@ -41,95 +32,104 @@ export async function loadNavigation(target){
 			}
 		}
 	`]));
-
-	function fixLinks(e){
-		if(e === null){return null;}
-		for(const c of e){
-			if(c.uri){c.uri = `/${c.uri}/index.html`;}
-			fixLinks(c?.children);
+	const fixLinks = entries => {
+		if (entries === null) {
+			return null;
 		}
-		return e;
+		for (const child of entries) {
+			if (child.uri) {
+				child.uri = `/${child.uri}/index.html`;
+			}
+			fixLinks(child?.children);
+		}
+		return entries;
+	};
+	navigationCache.set(target, fixLinks(result.entries));
+};
+/*
+* Flattens the page tree into an array.
+*/
+const flattenData = data => {
+	const flattened = [];
+	for (const child of data) {
+		flattened.push(child);
+		if (child.children) {
+			flattened.push(...flattenData(child.children));
+		}
 	}
-
-	navCache.set(target,fixLinks(result.entries));
-}
-
-async function genNavigation(target,pageURL){
-	if (!navCache.has(target)) {
-		return `<h1>Error loading Navigation</h1>`;
+	return flattened;
+};
+/*
+* Retrieves information about the current, next and previous entry.
+*/
+const getPageData = (target, pageURL) => {
+	const data = navigationCache.get(target);
+	const flattened = flattenData(data);
+	const i = flattened.findIndex(page => page.uri === pageURL);
+	return {
+		current: flattened[i],
+		next: flattened[i + 1],
+		previous: flattened[i - 1]
+	};
+};
+/*
+* Returns the HTML for our navigation header.
+*/
+export const getNavigationHeader = async (target, pageURL) => {
+	const data = getPageData(target, pageURL);
+	const title = data.current?.title || "Lasub";
+	const previousTitle = data.previous?.title || "";
+	const previousURL = data.previous?.uri;
+	const nextTitle = data.next?.title || "";
+	const nextURL = data.next?.uri;
+	const previousTag = data.previous
+		? "a"
+		: "button";
+	const nextTag = data.next
+		? "a"
+		: "button";
+	return `
+		<${previousTag} id="button-previous" title="${previousTitle}" ${previousURL ? `href="${previousURL}"` : ""}></${previousTag}>
+		<h3>${title}</h3>
+		<${nextTag} id="button-next" title="${nextTitle}" ${nextURL ? `href="${nextURL}"` : ""}></${nextTag}>
+	`;
+};
+/*
+* Returns the HTML for a single entry for the navigation menu.
+*/
+const buildNavigationMenuEntry = (entry, pageURL) => {
+	const ulContent = entry.children
+		? entry.children
+			.map(entry => buildNavigationMenuEntry(entry, pageURL))
+			.join("")
+			.trim()
+		: "";
+	const childrenHTML = ulContent.length
+		? `<ul>${ulContent}</ul>`
+		: "";
+	return `
+		<li${pageURL === entry.uri ? ` class="active"` : ""} page-id="${entry.id}">
+			<a href="${entry.uri}" page-url="${pageURL}">${entry.title}</a>
+			${childrenHTML}
+		</li>
+	`;
+};
+/*
+* Returns the HTML four our navigation menu.
+*/
+export const getNavigationMenu = async (target, pageURL) => {
+	if (!navigationCache.has(target)) {
+		return `<h1>Error loading navigation</h1>`;
 	}
-	const nav = navCache.get(target).map(entry => {
-		return buildNavigationEntry(entry,`${pageURL}`);
-	}).join("");
+	const navigationContent = navigationCache
+		.get(target)
+		.map(entry => buildNavigationMenuEntry(entry, pageURL))
+		.join("");
 	return `
 		<aside id="navigation" style="display:none;">
 			<nav>
-				<ul>${nav}</ul>
+				<ul>${navigationContent}</ul>
 			</nav>
 		</aside>
 	`;
-}
-
-function getPageDataFlat(data){
-	const ret = [];
-	if(!data){return ret;}
-	for(const c of data){
-		ret.push(c);
-		if(c.children){
-			ret.push(...getPageDataFlat(c.children));
-		}
-	}
-	return ret;
-}
-
-function findPageURL(data,pageURL){
-	for(let i = 0;i<data.length;i++){
-		if(data[i].uri === pageURL){return i;}
-	}
-	return 0;
-}
-
-function findPrev(data,i){
-	while(--i >= 0){
-		if(!data[i]?.noPrevNextLink){return data[i];}
-	}
-	return null;
-}
-
-function findNext(data,i){
-	while(++i < data.length){
-		if(!data[i]?.noPrevNextLink){return data[i];}
-	}
-	return null;
-}
-
-function getPageData(target,pageType,pageURL){
-	const rawData = (pageType === "testpage") ? testNavigationData : navCache.get(target);
-	const data = getPageDataFlat(rawData);
-	const i = findPageURL(data,pageURL);
-	return {prev: findPrev(data,i), cur: data[i], next: findNext(data,i)};
-}
-
-export function getNavigationAside(target,pageType,pageURL){
-	if(pageType === "testpage"){
-		return genTestNavigation(pageURL);
-	}else{
-		return genNavigation(target,pageURL);
-	}
-}
-
-export async function getNavigationHeader(target,pageType,pageURL){
-	const d  = getPageData(target,pageType,pageURL);
-	const title     = d.cur?.title ? d?.cur?.title : "Lasub";
-	const prevTitle = d.prev?.title;
-	const prevURL   = d.prev?.uri;
-	const nextTitle = d.next?.title;
-	const nextURL   = d.next?.uri;
-	const prevTag   = d.prev === null ? "button": "a";
-	const nextTag   = d.next === null ? "button": "a";
-	return `
-		<${prevTag} id="button-previous" title="${prevTitle ? prevTitle : ""}" ${prevURL ? `href="${prevURL}"` : ""}></${prevTag}>
-		<h3>${title}</h3>
-		<${nextTag} id="button-next" title="${nextTitle ? nextTitle : ""}" ${nextURL ? `href="${nextURL}"` : ""}></${nextTag}>
-	`;
-}
+};

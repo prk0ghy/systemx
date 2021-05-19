@@ -17,7 +17,7 @@ export default {
 				</inner-content>
 			</section>
 		`;
-		context.hints.appendError(output, context);
+		context.hints.appendError?.(output, context);
 		return output;
 	}
 };

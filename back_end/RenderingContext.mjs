@@ -45,12 +45,15 @@ const downloads = new Map();
 export default class {
 	static completed = new Set();
 	static pending = new Set();
-	classIf = (condition, thenClassName, elseClassName = "") => condition
-		? `class="${thenClassName}"`
-		: elseClassName;
+	attributeIf = (attribute, condition, thenValue = condition, elseValue = "") => condition
+		? `${attribute}="${thenValue}"`
+		: elseValue;
+	contentTypeIDIf = ( ...rest) => this.attributeIf("content-type-id", ...rest);
+	classIf = (...rest) => this.attributeIf("class", ...rest);
 	cms = cmsContext;
 	contentTypes = contextualize(contentTypes)(this);
 	download = url => {
+		return url;
 		downloads.set(url, {
 			downloadedSize: 0
 		});

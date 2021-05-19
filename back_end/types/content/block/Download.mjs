@@ -7,6 +7,7 @@ export default {
 				files: datei {
 					${fragments.asset}
 				}
+				id
 				url: urldownload
 			`,
 			map: ({
@@ -24,6 +25,7 @@ export default {
 				files: datei {
 					${fragments.asset}
 				}
+				id
 				url: urldownload
 			`,
 			map: ({
@@ -41,6 +43,7 @@ export default {
 				files: datei {
 					${fragments.asset}
 				}
+				id
 				isNumbered: nummerierung
 				url: urldownload
 			`,
@@ -56,16 +59,18 @@ export default {
 	async render({
 		description,
 		file,
+		id,
 		isNumbered,
 		url
 	}, {
+		contentTypeIDIf,
 		download,
 		helpers: {
 			Marker
 		}
 	}) {
 		return `
-			<section content-type="download">
+			<section content-type="download" ${contentTypeIDIf(id)}>
 				<inner-content>
 					${Marker.render({ isNumbered })}
 					<download-wrap>

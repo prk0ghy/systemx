@@ -1,6 +1,10 @@
 import getHead from "./page_elements/head.mjs";
-import { getNavigationAside, getNavigationHeader } from "./page_elements/navigation.mjs";
-export default async function wrapWithApplicationShell(targetName, {pageTitle, pageType, pageURL, content}) {
+import { getNavigationHeader, getNavigationMenu } from "./page_elements/navigation.mjs";
+export default async function wrapWithApplicationShell(targetName, {
+	pageTitle,
+	pageURL,
+	content
+}) {
 	return `
 		<!doctype html>
 		<html lang="de">
@@ -11,14 +15,14 @@ export default async function wrapWithApplicationShell(targetName, {pageTitle, p
 						<button id="button-navigation"></button>
 					</div>
 					<div id="header-center">
-						${await getNavigationHeader(targetName,pageType,pageURL)}
+						${await getNavigationHeader(targetName, pageURL)}
 					</div>
 					<div id="header-right">
 						<button id="button-settings"></button>
 					</dif>
 				</header>
-				${await getNavigationAside(targetName,pageType,pageURL)}
-				<main content-type="${pageType}">${content}</main>
+				${await getNavigationMenu(targetName, pageURL)}
+				${content}
 			</body>
 		</html>
 	`;

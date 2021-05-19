@@ -3,6 +3,7 @@ export default {
 		["elemente_tabellen_BlockType", {
 			fetch: () => `
 				__typename
+				id
 				tableDescriptor: tabelle
 			`
 		}],
@@ -10,6 +11,7 @@ export default {
 			fetch: () => `
 				__typename
 				caption: quelle
+				id
 				tableDescriptor: tabelle
 			`
 		}],
@@ -17,6 +19,7 @@ export default {
 			fetch: () => `
 				__typename
 				caption: quelle
+				id
 				isNumbered: nummerierung
 				tableDescriptor: tabelle
 			`
@@ -24,9 +27,11 @@ export default {
 	]),
 	async render({
 		caption,
+		id,
 		isNumbered,
 		tableDescriptor
 	}, {
+		contentTypeIDIf,
 		helpers: {
 			Marker
 		}
@@ -36,7 +41,7 @@ export default {
 			? `<figcaption>${caption}</figcaption>`
 			: "";
 		return `
-			<section content-type="table">
+			<section content-type="table" ${contentTypeIDIf(id)}>
 				<inner-content>
 					${Marker.render({ isNumbered })}
 					<figure figure-type="table">

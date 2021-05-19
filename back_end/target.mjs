@@ -14,11 +14,10 @@ import wrapWithApplicationShell from "./page.mjs";
 export const resourceDirectoryName = "resources";
 const fsp = fs.promises;
 /*
-* Should actually do a GraphQL query to figure out what contents
-* need to be displayed, but since there is only a single target right
-* now I took the shortcut of just hardcoding the startpage.
+* Should actually execute a GraphQL query to figure out what contents need to be displayed,
+* but since there is only a single target right now, we're hardcoding the home page.
 */
-const getStartpage = async targetName => "inhalt/f-a-q-und-hilfe";
+const getHomePage = async () => "inhalt/f-a-q-und-hilfe";
 /*
 * Every project is a "target".
 * Every target will be output into its own directory.
@@ -49,7 +48,6 @@ const renderFile = async (source, destination, targetName) => {
 	const html = await wrapWithApplicationShell(targetName, {
 		content: fileContent,
 		pageTitle: "Instrumentalisierung der Vergangenheit",
-		pageType: "testpage",
 		pageURL: destination.substr(targetPath.length).replace("\\","/")
 	});
 	return fsp.writeFile(destination, html);
@@ -103,38 +101,29 @@ const renderAssets = async destination => {
 *
 * Should only be used as a preview for authors, production releases should use buildEntries instead
 */
-export const renderSingleEntry = async (targetName,uri) => {
-	const navPromise = loadNavigation(targetName);
-	if(uri == ""){
-		uri = await getStartpage(targetName);
-	}
-	const result = await query(types => `
-		entry (uri: "${uri}") {
+export const renderSingleEntry = async (targetName, uri) => {
+	const loadNavigationPromise = loadNavigation(targetName);
+	const effectiveURI = uri || await getHomePage(targetName);
+	const result = await query(async types => `
+		entry (uri: "${await effectiveURI}") {
 			${types.Entry}
 		}
 	`);
 	const entry = result.entry;
-	if(entry === null){
-		console.log(`404 - ${uri}`);
-		return "";
+	if (entry === null) {
+		console.error(`404: ${effectiveURI}`);
+		return "<h1>404</h1>";
 	}
-	const targetPath = getTargetPath(targetName);
 	const html = await render(entry, new RenderingContext({
 		globalRender: render,
-		download: (uri) => uri,
-		hints: {
-			appendError: (html, context) => {},
-		}
+		download: uri => uri
 	}));
 	/* Remove target prefix and in case of Windows, replace blackslashes with forward slashes */
-	const url = `/${uri}/index.html`;
-	await navPromise;
+	const url = `/${effectiveURI}/index.html`;
+	await loadNavigationPromise;
 	const wrappedHTML = await wrapWithApplicationShell(targetName, {
 		content: html,
 		pageTitle: entry.title,
-		pageType: entry.__typename === "inhalt_inhalt_Entry"
-			? "content"
-			: "unhandled-typename",
 		pageURL: url
 	});
 	const finalHTML = Marker.fill(wrappedHTML);
@@ -212,9 +201,6 @@ export const buildEntries = async targetName => {
 		const wrappedHTML = await wrapWithApplicationShell(targetName, {
 			content: html,
 			pageTitle: entry.title,
-			pageType: entry.__typename === "inhalt_inhalt_Entry"
-				? "content"
-				: "unhandled-typename",
 			pageURL: url
 		});
 		const finalHTML = Marker.fill(wrappedHTML);
@@ -224,8 +210,7 @@ export const buildEntries = async targetName => {
 		const warningPath = path.join(targetPath, "warnings.html");
 		await fsp.writeFile(warningPath, await wrapWithApplicationShell(targetName, {
 			content: warningHTML || "<h1>No warnings<h1>",
-			pageTitle: "Render warnings",
-			pageType: "inhalt_inhalt_Entry"
+			pageTitle: "Render warnings"
 		}));
 	}
 };

@@ -8,6 +8,7 @@ export default {
 						elements: ${fragments.exerciseElements}
 					}
 				}
+				id
 				inputType: benutzereingabe
 				textHTML: text
 				title: titelDerAufgabe
@@ -28,6 +29,7 @@ export default {
 						elements: ${fragments.exerciseElements}
 					}
 				}
+				id
 				inputType: benutzereingabe
 				textHTML: text
 				title: titelDerAufgabe
@@ -49,6 +51,7 @@ export default {
 					}
 				}
 				html: h5p
+				id
 				inputType: benutzereingabe
 				isNumbered: nummerierung
 				textHTML: text
@@ -66,11 +69,13 @@ export default {
 	async render({
 		content,
 		html,
+		id,
 		inputType,
 		isNumbered,
 		textHTML,
 		title
 	}, {
+		contentTypeIDIf,
 		helpers: {
 			Marker
 		},
@@ -87,7 +92,7 @@ export default {
 		})();
 		const elementsHTML = (await Promise.all((content.elements || []).map(element => render(element)))).join("");
 		return `
-			<section content-type="exercise">
+			<section content-type="exercise" ${contentTypeIDIf(id)}>
 				<inner-content>
 					${Marker.render({ isNumbered })}
 					<exercise-content>

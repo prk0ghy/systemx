@@ -7,6 +7,7 @@ export default {
 					${cms.fragments.asset}
 				}
 				caption: audiounterschrift
+				id
 			`
 		}],
 		["inhalt_audioDatei_BlockType", {
@@ -16,6 +17,7 @@ export default {
 					${cms.fragments.asset}
 				}
 				caption: audiounterschrift
+				id
 			`
 		}],
 		["inhaltsbausteine_audioDatei_BlockType", {
@@ -25,6 +27,7 @@ export default {
 					${cms.fragments.asset}
 				}
 				caption: audiotext
+				id
 				isNumbered: nummerierung
 				posters: audiobild {
 					${cms.fragments.asset}
@@ -35,9 +38,11 @@ export default {
 	async render({
 		audioFiles,
 		caption,
+		id,
 		isNumbered,
 		posters
 	}, {
+		contentTypeIDIf,
 		download,
 		EditorialError,
 		helpers: {
@@ -64,7 +69,7 @@ export default {
 			});
 		}
 		return `
-			<section content-type="audio">
+			<section content-type="audio" ${contentTypeIDIf(id)}>
 				<inner-content>
 					${Marker.render({ isNumbered })}
 					<figure figure-type="audio">

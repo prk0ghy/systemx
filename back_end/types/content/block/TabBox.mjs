@@ -8,6 +8,7 @@ export default {
 		["inhaltsbausteine_querslider_BlockType", {
 			fetch: ({ types }) => `
 				__typename
+				id
 				isNumbered: nummerierung
 				tabs {
 					...on tabs_BlockType {
@@ -55,11 +56,13 @@ export default {
 		}]
 	]),
 	async render({
+		id,
 		isNumbered,
 		tabs,
 		type
 	}, {
 		classIf,
+		contentTypeIDIf,
 		helpers: {
 			Marker
 		},
@@ -80,7 +83,7 @@ export default {
 		}))).join("");
 		const boxType = this.getType(type);
 		return `
-			<section content-type="tab-box" tab-box-type="${boxType}">
+			<section content-type="tab-box" ${contentTypeIDIf(id)} tab-box-type="${boxType}">
 				<inner-content>
 					${Marker.render({ isNumbered })}
 					<tab-box-header-wrap>

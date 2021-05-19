@@ -25,6 +25,7 @@ export default {
 			fetch: () => `
 				caption: embedUnterschrift
 				end: ende
+				id
 				start
 				videoData: urlDesStreams {
 					imageHeight
@@ -39,6 +40,7 @@ export default {
 			fetch: () => `
 				caption: videoUnterschrift
 				end: ende
+				id
 				start
 				videoData: urlDesStreams {
 					imageHeight
@@ -53,6 +55,7 @@ export default {
 			fetch: () => `
 				caption: videoUnterschrift
 				end: ende
+				id
 				start
 				videoData: urlDesStreams {
 					imageHeight
@@ -68,6 +71,7 @@ export default {
 				__typename
 				caption: videoUnterschrift
 				end: ende
+				id
 				isNumbered: nummerierung
 				start
 				videoData: urlDesVideos {
@@ -83,6 +87,7 @@ export default {
 	async render({
 		caption,
 		end,
+		id,
 		isNumbered,
 		start,
 		videoData: {
@@ -93,6 +98,7 @@ export default {
 			videoURL
 		}
 	}, {
+		contentTypeIDIf,
 		helpers: {
 			License,
 			Marker
@@ -113,7 +119,7 @@ export default {
 			? `${videoURL}?${parameters}`
 			: videoURL;
 		return `
-			<section content-type="embedding" embedding-type="video">
+			<section content-type="embedding" ${contentTypeIDIf(id)} embedding-type="video">
 				<inner-content>
 					${Marker.render({ isNumbered })}
 					<figure figure-type="embedding">

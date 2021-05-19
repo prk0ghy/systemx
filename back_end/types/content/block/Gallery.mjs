@@ -9,6 +9,7 @@ export default {
 				files: bilder {
 					${cms.fragments.asset}
 				}
+				id
 				galleryIntroductionText: galerietext
 			`,
 			map: ({
@@ -32,6 +33,7 @@ export default {
 				files: bilder {
 					${cms.fragments.asset}
 				}
+				id
 				galleryIntroductionText: galerietext
 			`,
 			map: ({
@@ -55,6 +57,7 @@ export default {
 				files: bilder {
 					${cms.fragments.asset}
 				}
+				id
 				galleryIntroductionText: galerietext
 			`,
 			map: ({
@@ -73,6 +76,7 @@ export default {
 			fetch: cms => `
 				__typename
 				galleryIntroductionText: einleitungstextGallerie
+				id
 				images: bilder {
 					...on bilder_BlockType {
 						caption: bildunterschrift
@@ -87,10 +91,12 @@ export default {
 	]),
 	async render({
 		galleryIntroductionText,
+		id,
 		images,
 		isNumbered
 	}, {
 		Error,
+		contentTypeIDIf,
 		helpers: {
 			Image,
 			License,
@@ -119,7 +125,7 @@ export default {
 			? `<div class="gallery-text">${galleryIntroductionText}</div>`
 			: "";
 		return `
-			<section content-type="gallery">
+			<section content-type="gallery" ${contentTypeIDIf(id)}>
 				<inner-content>
 					${Marker.render({ isNumbered })}
 					${galleryIntroductionTextHTML}

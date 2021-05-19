@@ -3,6 +3,7 @@ export default {
 		["inhaltsbausteine_heroimage_BlockType", {
 			fetch: cms => `
 				__typename
+				id
 				images: bild {
 					${cms.fragments.asset}
 				}
@@ -11,6 +12,7 @@ export default {
 		["inhaltsbausteine_trennerbild_BlockType", {
 			fetch: cms => `
 				__typename
+				id
 				images: datei {
 					${cms.fragments.asset}
 				}
@@ -19,8 +21,10 @@ export default {
 	]),
 	async render({
 		caption,
+		id,
 		images
 	}, {
+		contentTypeIDIf,
 		Error,
 		helpers: {
 			Image,
@@ -41,7 +45,7 @@ export default {
 			? `<figcaption>${caption}</figcaption>`
 			: "";
 		return `
-			<section content-type="hero-image">
+			<section content-type="hero-image" ${contentTypeIDIf(id)}>
 				<inner-content>
 					<figure figure-type="hero-image">
 						${await Image.render({ asset: image })}

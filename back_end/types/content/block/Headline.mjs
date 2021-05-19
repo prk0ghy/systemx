@@ -4,6 +4,7 @@ export default {
 			fetch: () => `
 				__typename
 				headline: ueberschrift
+				id
 				tag: groesse
 			`
 		}],
@@ -11,6 +12,7 @@ export default {
 			fetch: () => `
 				__typename
 				headline: ueberschrift
+				id
 				tag: groesse
 			`
 		}],
@@ -18,6 +20,7 @@ export default {
 			fetch: () => `
 				__typename
 				headline: ueberschrift
+				id
 				isNumbered: nummerierung
 				tag: groesse
 			`
@@ -25,9 +28,11 @@ export default {
 	]),
 	render({
 		headline,
+		id,
 		isNumbered,
 		tag = "h3"
 	}, {
+		contentTypeIDIf,
 		EditorialError,
 		helpers: {
 			Marker
@@ -39,7 +44,7 @@ export default {
 			})
 			: "";
 		return `
-			<section content-type="headline">
+			<section content-type="headline" ${contentTypeIDIf(id)}>
 				<inner-content>
 					${Marker.render({ isNumbered })}
 					${embeddedTagError}

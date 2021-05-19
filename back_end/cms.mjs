@@ -140,10 +140,10 @@ const endPoint = new URL(options.graphqlEndpoint);
 * In order to avoid this, we remove the origin from all URLs.
 */
 const removeOriginFromURLs = response => JSON.parse(JSON.stringify(response).split(`${endPoint.origin}/`).join("/"));
-export default (queryFunction, {
+export default async (queryFunction, {
 	raw
 } = {}) => request(endPoint, gql([
-	maybeWrap(queryFunction(globalTypes, globalFragments), !raw)
+	maybeWrap(await queryFunction(globalTypes, globalFragments), !raw)
 		.replace(/[\t]/g, "")
 		.replace(/[\n]/g, " ")
 		.trim()

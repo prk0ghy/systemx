@@ -19,36 +19,39 @@ export default {
 			return "right";
 		}
 	},
-	splitIntoFigureRows(figures,cols){
-		const ret = [];
+	splitIntoFigureRows(figures, columns) {
+		const figureRows = [];
 		let start = 0;
-		if((figures.length > 4) && ((figures.length % cols) === 1)){
+		if (figures.length > 4 && figures.length % columns === 1) {
 			start = 2;
-			const fig = figures.slice(0,2).join("");
-			ret.push(`<figure-row figure-cols="2">${fig}</figure-row>`);
+			const figure = figures.slice(0, 2).join("");
+			figureRows.push(`<figure-row figure-cols="2">${figure}</figure-row>`);
 		}
-		for(let i=start;i<figures.length;i+=cols){
-			const fig = figures.slice(i,i+cols).join("");
-			const ccols = i+cols >= figures.length ? figures.length - i : cols;
-			ret.push(`<figure-row figure-cols="${ccols}">${fig}</figure-row>`);
+		for(let i = start; i < figures.length; i += columns) {
+			const figure = figures.slice(i, i + columns).join("");
+			const ccols = i + columns >= figures.length
+				? figures.length - i
+				: columns;
+			figureRows.push(`<figure-row figure-cols="${ccols}">${figure}</figure-row>`);
 		}
-		return ret;
+		return figureRows;
 	},
-	splitFigureRows(figures){
-		switch(figures.length){
+	splitFigureRows(figures) {
+		switch (figures.length) {
 		case 1:
 			return figures;
 		case 2:
 		case 4:
-			return this.splitIntoFigureRows(figures,2);
+			return this.splitIntoFigureRows(figures, 2);
 		default:
-			return this.splitIntoFigureRows(figures,3);
+			return this.splitIntoFigureRows(figures, 3);
 		}
 	},
 	queries: new Map([
 		["elemente_nested_textMitOhneBild_BlockType", {
 			fetch: cms => `
 				__typename
+				id
 				images: bilder {
 					__typename
 					${cms.fragments.asset}
@@ -72,6 +75,7 @@ export default {
 		["elemente_textMitOhneBild_BlockType", {
 			fetch: cms => `
 				__typename
+				id
 				images: bilder {
 					__typename
 					${cms.fragments.asset}
@@ -95,6 +99,7 @@ export default {
 		["inhalt_textMitOhneBild_BlockType", {
 			fetch: cms => `
 				__typename
+				id
 				images: bilder {
 					__typename
 					${cms.fragments.asset}
@@ -119,6 +124,7 @@ export default {
 			fetch: cms => `
 				__typename
 				displayInOneLine: flex
+				id
 				images: bilder {
 					__typename
 					...on bilder_BlockType {
@@ -138,6 +144,7 @@ export default {
 	]),
 	async render({
 		displayInOneLine = false,
+		id,
 		images,
 		imageWidth,
 		imagePosition,
@@ -145,6 +152,7 @@ export default {
 		isNumbered,
 		text
 	}, {
+		contentTypeIDIf,
 		contentTypes: {
 			Gallery
 		},
@@ -173,7 +181,7 @@ export default {
 			? `<gallery-introduction-text>${galleryIntroductionText}</gallery-introduction-text>`
 			: "";
 		return `
-			<section content-type="text-and-image">
+			<section content-type="text-and-image" ${contentTypeIDIf(id)}>
 				<inner-content>
 					${Marker.render({ isNumbered })}
 					${figureHTML}

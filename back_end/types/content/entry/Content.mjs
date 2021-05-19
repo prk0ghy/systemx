@@ -16,6 +16,7 @@ export default {
 		title
 	}, {
 		cms,
+		contentTypeIDIf,
 		contentTypes: {
 			Headline,
 			HeroImage
@@ -44,9 +45,11 @@ export default {
 			tag: "h1"
 		});
 		return `
-			${heroImageHTML}
-			${headlineHTML}
-			${children.join("")}
+			<main content-type="content" ${contentTypeIDIf(id)}>
+				${heroImageHTML}
+				${headlineHTML}
+				${children.join("")}
+			</main>
 		`;
 	}
 };

@@ -7,6 +7,7 @@ export default {
 				files: datei {
 					${cms.fragments.asset}
 				}
+				id
 				posters: posterbild {
 					${cms.fragments.asset}
 				}
@@ -19,6 +20,7 @@ export default {
 				files: datei {
 					${cms.fragments.asset}
 				}
+				id
 				posters: posterbild {
 					${cms.fragments.asset}
 				}
@@ -31,6 +33,7 @@ export default {
 				files: datei {
 					${cms.fragments.asset}
 				}
+				id
 				posters: posterbild {
 					${cms.fragments.asset}
 				}
@@ -43,6 +46,7 @@ export default {
 				files: datei {
 					${cms.fragments.asset}
 				}
+				id
 				isNumbered: nummerierung
 				posters: posterbild {
 					${cms.fragments.asset}
@@ -53,9 +57,11 @@ export default {
 	async render({
 		caption,
 		files,
+		id,
 		isNumbered,
 		posters
 	}, {
+		contentTypeIDIf,
 		download,
 		EditorialError,
 		helpers: {
@@ -77,7 +83,7 @@ export default {
 			});
 		}
 		return `
-			<section content-type="video">
+			<section content-type="video" ${contentTypeIDIf(id)}>
 				<inner-content>
 					${Marker.render({ isNumbered })}
 					<figure figure-type="video">

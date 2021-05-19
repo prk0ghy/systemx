@@ -10,7 +10,7 @@ function showLazyIframe(ele){
 	ele.parentElement.insertBefore(iframeWrapper,ele);
 	ele.classList.add("hidden-embedding-placeholder");
 	newEle.contentWindow.postMessage({context: 'h5p', action: 'ready'}, '*');
-}	
+}
 
 function showEmbeddingSections(container){
 	if(container === null){return;}

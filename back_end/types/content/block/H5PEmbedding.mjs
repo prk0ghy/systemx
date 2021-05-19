@@ -5,6 +5,7 @@ export default {
 				__typename
 				caption: unterschrift_nested
 				html: h5p_slider
+				id
 			`
 		}],
 		["elemente_nested_h5p_BlockType", {
@@ -12,6 +13,7 @@ export default {
 				__typename
 				caption: unterschrift
 				html: h5p
+				id
 			`
 		}],
 		["inhalt_h5p_BlockType", {
@@ -19,22 +21,26 @@ export default {
 				__typename
 				caption: unterschrift
 				html: h5p_slider
+				id
 			`
 		}],
 		["inhaltsbausteine_h5p_BlockType", {
 			fetch: () => `
 				__typename
 				caption: unterschrift_h5p
-				isNumbered: nummerierung
 				html: h5p
+				id
+				isNumbered: nummerierung
 			`
 		}]
 	]),
 	async render({
 		caption,
+		id,
 		isNumbered,
 		html
 	}, {
+		contentTypeIDIf,
 		helpers: {
 			Marker
 		}
@@ -43,7 +49,7 @@ export default {
 			? `<figcaption>${caption}</figcaption>`
 			: "";
 		return `
-			<section content-type="embedding" embedding-type="h5p">
+			<section content-type="embedding" ${contentTypeIDIf(id)} embedding-type="h5p">
 				<inner-content>
 					${Marker.render({ isNumbered })}
 					<figure figure-type="embedding">
