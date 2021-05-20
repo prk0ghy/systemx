@@ -16,7 +16,6 @@ const memoize = fn => {
 };
 const globalFragments = {
 	asset: () => `
-		__typename
 		height
 		url
 		width
