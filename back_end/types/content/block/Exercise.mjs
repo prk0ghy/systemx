@@ -84,6 +84,9 @@ export default {
 					...on aufgabeInhalt_BlockType {
 						elements: aufgabeElemente {
 							__typename
+							...on aufgabeElemente_audioDatei_BlockType {
+								${types.aufgabeElemente_audioDatei_BlockType}
+							}
 							...on aufgabeElemente_embeddedVideoAudio_BlockType {
 								${types.aufgabeElemente_embeddedVideoAudio_BlockType}
 							}
@@ -95,6 +98,9 @@ export default {
 							}
 							...on aufgabeElemente_tabulator_BlockType {
 								${types.aufgabeElemente_tabulator_BlockType}
+							}
+							...on aufgabeElemente_tabellen_BlockType {
+								${types.aufgabeElemente_tabellen_BlockType}
 							}
 							...on aufgabeElemente_textMitOhneBild_BlockType {
 								${types.aufgabeElemente_textMitOhneBild_BlockType}
