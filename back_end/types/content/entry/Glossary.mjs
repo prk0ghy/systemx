@@ -2,6 +2,7 @@ export default {
 	queries: new Map([
 		["glossar_glossar_Entry", {
 			fetch: ({ fragments }) => `
+				__typename
 				title
 				elements: ${fragments.elements}
 			`

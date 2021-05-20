@@ -2,10 +2,10 @@ export default {
 	queries: new Map([
 		["aufklappElemente_aufgabe_BlockType", {
 			fetch: ({ types }) => `
-				__typename
 				content: aufklappAufgabenInhalt {
 					...on aufklappAufgabenInhalt_BlockType {
 						elements: aufklappAufgabenElemente {
+							__typename
 							...on aufklappAufgabenElemente_embeddedVideoAudio_BlockType {
 								${types.aufklappAufgabenElemente_embeddedVideoAudio_BlockType}
 							}
@@ -39,10 +39,10 @@ export default {
 		}],
 		["quersliderInhalt_aufgabe_BlockType", {
 			fetch: ({ types }) => `
-				__typename
 				content: quersliderAufgabenInhalt {
 					...on quersliderAufgabenInhalt_BlockType {
 						elements: quersliderAufgabenElemente {
+							__typename
 							...on quersliderAufgabenElemente_galerie_BlockType {
 								${types.quersliderAufgabenElemente_galerie_BlockType}
 							}
@@ -51,6 +51,9 @@ export default {
 							}
 							...on quersliderAufgabenElemente_tabellen_BlockType {
 								${types.quersliderAufgabenElemente_tabellen_BlockType}
+							}
+							...on quersliderAufgabenElemente_tabulator_BlockType {
+								${types.quersliderAufgabenElemente_tabulator_BlockType}
 							}
 							...on quersliderAufgabenElemente_textMitOhneBild_BlockType {
 								${types.quersliderAufgabenElemente_textMitOhneBild_BlockType}
@@ -80,6 +83,7 @@ export default {
 				content: aufgabeInhalt {
 					...on aufgabeInhalt_BlockType {
 						elements: aufgabeElemente {
+							__typename
 							...on aufgabeElemente_embeddedVideoAudio_BlockType {
 								${types.aufgabeElemente_embeddedVideoAudio_BlockType}
 							}
@@ -88,6 +92,9 @@ export default {
 							}
 							...on aufgabeElemente_h5p_BlockType {
 								${types.aufgabeElemente_h5p_BlockType}
+							}
+							...on aufgabeElemente_tabulator_BlockType {
+								${types.aufgabeElemente_tabulator_BlockType}
 							}
 							...on aufgabeElemente_textMitOhneBild_BlockType {
 								${types.aufgabeElemente_textMitOhneBild_BlockType}

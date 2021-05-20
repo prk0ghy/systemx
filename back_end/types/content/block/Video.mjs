@@ -2,7 +2,6 @@ export default {
 	queries: new Map([
 		["aufgabeElemente_videoDatei_BlockType", {
 			fetch: cms => `
-				__typename
 				caption: videounterschrift
 				files: datei {
 					${cms.fragments.asset}
@@ -15,7 +14,6 @@ export default {
 		}],
 		["aufklappAufgabenElemente_videoDatei_BlockType", {
 			fetch: cms => `
-				__typename
 				caption: videounterschrift
 				files: datei {
 					${cms.fragments.asset}
@@ -28,7 +26,6 @@ export default {
 		}],
 		["aufklappElemente_videoDatei_BlockType", {
 			fetch: cms => `
-				__typename
 				caption: videounterschrift
 				files: datei {
 					${cms.fragments.asset}
@@ -55,7 +52,6 @@ export default {
 		}],
 		["quersliderAufgabenElemente_videoDatei_BlockType", {
 			fetch: cms => `
-				__typename
 				caption: videounterschrift
 				files: datei {
 					${cms.fragments.asset}
@@ -68,7 +64,6 @@ export default {
 		}],
 		["quersliderInhalt_videoDatei_BlockType", {
 			fetch: cms => `
-				__typename
 				caption: videoUnterschrift
 				files: datei {
 					${cms.fragments.asset}

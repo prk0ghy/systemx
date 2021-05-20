@@ -147,7 +147,6 @@ export default class {
 	constructor({
 		globalRender,
 		hints = {},
-		download,
 		model = {
 			__typename: "root"
 		},

@@ -2,6 +2,7 @@ export default {
 	queries: new Map([
 		["inhalt_inhalt_Entry", {
 			fetch: ({ fragments }) => `
+				__typename
 				elements: ${fragments.elements}
 				heroImageCaption: bildunterschrift
 				heroImages: heroimage {

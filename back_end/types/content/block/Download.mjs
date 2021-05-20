@@ -2,7 +2,6 @@ export default {
 	queries: new Map([
 		["aufgabeElemente_download_BlockType", {
 			fetch: ({ fragments }) => `
-				__typename
 				description: beschreibung
 				files: datei {
 					${fragments.asset}
@@ -20,7 +19,6 @@ export default {
 		}],
 		["aufklappElemente_download_BlockType", {
 			fetch: ({ fragments }) => `
-				__typename
 				description: beschreibung
 				files: datei {
 					${fragments.asset}
@@ -57,7 +55,6 @@ export default {
 		}],
 		["quersliderInhalt_download_BlockType", {
 			fetch: ({ fragments }) => `
-				__typename
 				description: beschreibung
 				files: datei {
 					${fragments.asset}
@@ -72,7 +69,7 @@ export default {
 				file: files[0],
 				...rest
 			})
-		}],
+		}]
 	]),
 	async render({
 		description,

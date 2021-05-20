@@ -2,55 +2,6 @@ export default {
 	queries: new Map([
 		["aufgabeElemente_galerie_BlockType", {
 			fetch: cms => `
-				__typename
-				captions: bildunterschriften {
-					text: col1
-				}
-				files: bilder {
-					${cms.fragments.asset}
-				}
-				id
-				galleryIntroductionText: galerietext
-			`,
-			map: ({
-				captions,
-				files,
-				...rest
-			}) => ({
-				images: files.map((file, index) => ({
-					caption: captions[index]?.text || null,
-					files: [file]
-				})),
-				...rest
-			})
-		}],
-		["quersliderAufgabenElemente_galerie_BlockType", {
-			fetch: cms => `
-				__typename
-				captions: bildunterschriften_aufgabe {
-					text: col1
-				}
-				files: bilder_aufgabe {
-					${cms.fragments.asset}
-				}
-				id
-				galleryIntroductionText: galerietext_aufgabe
-			`,
-			map: ({
-				captions,
-				files,
-				...rest
-			}) => ({
-				images: files.map((file, index) => ({
-					caption: captions[index]?.text || null,
-					files: [file]
-				})),
-				...rest
-			})
-		}],
-		["quersliderInhalt_galerie_BlockType", {
-			fetch: cms => `
-				__typename
 				captions: bildunterschriften {
 					text: col1
 				}
@@ -74,7 +25,6 @@ export default {
 		}],
 		["aufklappAufgabenElemente_galerie_BlockType", {
 			fetch: cms => `
-				__typename
 				captions: bildunterschriften {
 					text: col1
 				}
@@ -98,7 +48,6 @@ export default {
 		}],
 		["aufklappElemente_galerie_BlockType", {
 			fetch: cms => `
-				__typename
 				captions: bildunterschriften {
 					text: col1
 				}
@@ -135,6 +84,52 @@ export default {
 				}
 				isNumbered: nummerierung
 			`
+		}],
+		["quersliderAufgabenElemente_galerie_BlockType", {
+			fetch: cms => `
+				captions: bildunterschriften_aufgabe {
+					text: col1
+				}
+				files: bilder_aufgabe {
+					${cms.fragments.asset}
+				}
+				id
+				galleryIntroductionText: galerietext_aufgabe
+			`,
+			map: ({
+				captions,
+				files,
+				...rest
+			}) => ({
+				images: files.map((file, index) => ({
+					caption: captions[index]?.text || null,
+					files: [file]
+				})),
+				...rest
+			})
+		}],
+		["quersliderInhalt_galerie_BlockType", {
+			fetch: cms => `
+				captions: bildunterschriften {
+					text: col1
+				}
+				files: bilder {
+					${cms.fragments.asset}
+				}
+				id
+				galleryIntroductionText: galerietext
+			`,
+			map: ({
+				captions,
+				files,
+				...rest
+			}) => ({
+				images: files.map((file, index) => ({
+					caption: captions[index]?.text || null,
+					files: [file]
+				})),
+				...rest
+			})
 		}]
 	]),
 	async render({

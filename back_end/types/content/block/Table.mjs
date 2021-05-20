@@ -2,14 +2,12 @@ export default {
 	queries: new Map([
 		["aufgabeElemente_tabellen_BlockType", {
 			fetch: () => `
-				__typename
 				id
 				tableDescriptor: tabelle
 			`
 		}],
 		["aufklappElemente_tabellen_BlockType", {
 			fetch: () => `
-				__typename
 				id
 				tableDescriptor: tabelle
 			`
@@ -25,14 +23,12 @@ export default {
 		}],
 		["quersliderAufgabenElemente_tabellen_BlockType", {
 			fetch: () => `
-				__typename
 				id
 				tableDescriptor: tabelle_q
 			`
 		}],
 		["quersliderInhalt_tabellen_BlockType", {
 			fetch: () => `
-				__typename
 				id
 				tableDescriptor: tabelle
 			`
@@ -45,11 +41,22 @@ export default {
 		tableDescriptor
 	}, {
 		contentTypeIDIf,
+		Error,
 		helpers: {
 			Marker
 		}
 	}) {
-		const { table: tableHTML } = JSON.parse(tableDescriptor);
+		const tableHTML = (() => {
+			try {
+				return JSON.parse(tableDescriptor).table;
+			}
+			catch {
+				return Error.render({
+					message: "There was an attempt to parse this table, but it failed. Does the `tableDescriptor` field evaluate to `undefined`?",
+					title: "Broken table"
+				});
+			}
+		})();
 		const captionHTML = caption
 			? `<figcaption>${caption}</figcaption>`
 			: "";

@@ -50,10 +50,8 @@ export default {
 	queries: new Map([
 		["aufgabeElemente_textMitOhneBild_BlockType", {
 			fetch: cms => `
-				__typename
 				id
 				images: bilder {
-					__typename
 					${cms.fragments.asset}
 				}
 				imageWidth: bildbreite
@@ -74,10 +72,8 @@ export default {
 		}],
 		["aufklappAufgabenElemente_textMitOhneBild_BlockType", {
 			fetch: cms => `
-				__typename
 				id
 				images: bilder {
-					__typename
 					${cms.fragments.asset}
 				}
 				imageWidth: bildbreite
@@ -98,10 +94,8 @@ export default {
 		}],
 		["aufklappElemente_textMitOhneBild_BlockType", {
 			fetch: cms => `
-				__typename
 				id
 				images: bilder {
-					__typename
 					${cms.fragments.asset}
 				}
 				imageWidth: bildbreite
@@ -126,7 +120,6 @@ export default {
 				displayInOneLine: flex
 				id
 				images: bilder {
-					__typename
 					...on bilder_BlockType {
 						caption: bildunterschrift
 						files: datei {
@@ -143,10 +136,8 @@ export default {
 		}],
 		["quersliderAufgabenElemente_textMitOhneBild_BlockType", {
 			fetch: cms => `
-				__typename
 				id
 				images: bilder {
-					__typename
 					${cms.fragments.asset}
 				}
 				imageWidth: bildbreite
@@ -167,10 +158,8 @@ export default {
 		}],
 		["quersliderInhalt_textMitOhneBild_BlockType", {
 			fetch: cms => `
-				__typename
 				id
 				images: bilder {
-					__typename
 					${cms.fragments.asset}
 				}
 				imageWidth: bildbreite

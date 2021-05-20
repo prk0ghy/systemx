@@ -2,7 +2,6 @@ export default {
 	queries: new Map([
 		["aufgabeElemente_audioDatei_BlockType", {
 			fetch: cms => `
-				__typename
 				audioFiles: audiodatei {
 					${cms.fragments.asset}
 				}
@@ -12,7 +11,6 @@ export default {
 		}],
 		["aufklappElemente_audioDatei_BlockType", {
 			fetch: cms => `
-				__typename
 				audioFiles: audiodatei {
 					${cms.fragments.asset}
 				}
@@ -22,7 +20,6 @@ export default {
 		}],
 		["quersliderInhalt_audioDatei_BlockType", {
 			fetch: cms => `
-				__typename
 				audioFiles: audio {
 					${cms.fragments.asset}
 				}
@@ -61,21 +58,27 @@ export default {
 			Marker
 		}
 	}) {
-		const src = audioFiles[0]?.url;
+		const resource = audioFiles?.[0];
+		if (!resource) {
+			return EditorialError.render({
+				message: "This element is missing a resource."
+			});
+		}
+		const src = resource?.url;
 		const poster = posters?.length
 			? await Image.render({
 				asset: posters[0]
 			})
 			: "";
 		const license = License.render({
-			asset: audioFiles[0]
+			asset: resource
 		});
 		const captionHTML = caption
 			? `<figcaption>${caption}</figcaption>`
 			: "";
 		if (!src) {
 			return EditorialError.render({
-				message: "This element is missing a file."
+				message: "This element is missing a source."
 			});
 		}
 		return `
