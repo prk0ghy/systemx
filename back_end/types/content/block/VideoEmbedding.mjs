@@ -114,6 +114,7 @@ export default {
 		}
 	}, {
 		contentTypeIDIf,
+		EditorialError,
 		helpers: {
 			License,
 			Marker
@@ -133,7 +134,13 @@ export default {
 		const timedVideoURL = parameters
 			? `${videoURL}?${parameters}`
 			: videoURL;
+		const imageMissingError = imageURL
+			? ""
+			: EditorialError.render({
+				message: "The poster image for this video embedding is missing a URL."
+			});
 		return `
+			${imageMissingError}
 			<section content-type="embedding" ${contentTypeIDIf(id)} embedding-type="video">
 				<inner-content>
 					${Marker.render({ isNumbered })}
