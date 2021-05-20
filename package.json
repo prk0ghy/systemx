@@ -37,6 +37,7 @@
 	},
 	"scripts": {
 		"build": "node back_end/index.mjs",
+		"build:release": "rm -rf web && node back_end/index.mjs --download-media",
 		"dev": "nodemon --ignore web/ back_end/index.mjs --quiet --start-server",
 		"lint": "eslint 'back_end/**/*.mjs' 'front_end/**/*.js'",
 		"mon": "nodemon --ignore web/ back_end/index.mjs --skip-network --start-server",
