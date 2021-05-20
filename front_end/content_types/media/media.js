@@ -188,7 +188,6 @@
 
 		document.addEventListener("keydown", (e) => {
 			const focusedVideo = document.activeElement;
-			console.log(e.key);
 			if(focusedVideo === null){return;}
 			if(focusedVideo !== media){return;}
 

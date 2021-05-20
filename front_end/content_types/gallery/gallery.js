@@ -25,7 +25,8 @@
 				const src   = imgTag.src;
 				const w     = imgTag.getAttribute("width")|0;
 				const h     = imgTag.getAttribute("height")|0;
-				const title = img.querySelector("figcaption").innerHTML;
+				const figCaption = img.querySelector("figcaption");
+				const title = figCaption ? figCaption.innerHTML : "";
 				items.push({src,w,h,title});
 			}
 			if(items.count === 0){return;}
