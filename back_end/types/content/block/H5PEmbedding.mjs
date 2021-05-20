@@ -51,6 +51,7 @@ export default {
 		html
 	}, {
 		contentTypeIDIf,
+		EditorialError,
 		helpers: {
 			Marker
 		}
@@ -58,12 +59,15 @@ export default {
 		const captionHTML = caption
 			? `<figcaption>${caption}</figcaption>`
 			: "";
+		const embeddingHTML = html || EditorialError.render({
+			message: "This embedding is missing the required embedding HTML."
+		});
 		return `
 			<section content-type="embedding" ${contentTypeIDIf(id)} embedding-type="h5p">
 				<inner-content>
 					${Marker.render({ isNumbered })}
 					<figure figure-type="embedding">
-						${html}
+						${embeddingHTML}
 						${captionHTML}
 					</figure>
 				</inner-content>
