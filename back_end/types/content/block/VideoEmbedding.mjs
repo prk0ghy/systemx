@@ -21,7 +21,7 @@ export default {
 		return parameters.toString();
 	},
 	queries: new Map([
-		["elemente_embeddedVideoAudio_BlockType", {
+		["aufgabeElemente_embeddedVideoAudio_BlockType", {
 			fetch: () => `
 				caption: embedUnterschrift
 				end: ende
@@ -36,7 +36,7 @@ export default {
 				}
 			`
 		}],
-		["elemente_nested_embeddedVideoAudio_BlockType", {
+		["quersliderInhalt_embeddedVideoAudio_BlockType", {
 			fetch: () => `
 				caption: videoUnterschrift
 				end: ende
@@ -51,9 +51,24 @@ export default {
 				}
 			`
 		}],
-		["inhalt_embeddedVideoAudio_BlockType", {
+		["aufklappAufgabenElemente_embeddedVideoAudio_BlockType", {
 			fetch: () => `
 				caption: videoUnterschrift
+				end: ende
+				id
+				start
+				videoData: urlDesStreams {
+					imageHeight
+					imageURL: image
+					imageWidth
+					title
+					videoURL: url
+				}
+			`
+		}],
+		["aufklappElemente_embeddedVideoAudio_BlockType", {
+			fetch: () => `
+				caption: embedUnterschrift
 				end: ende
 				id
 				start

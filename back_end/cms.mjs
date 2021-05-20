@@ -40,7 +40,7 @@ const globalFragments = {
 			...on inhaltsbausteine_download_BlockType {
 				${types.inhaltsbausteine_download_BlockType}
 			}
-			...on inhaltsbausteine_embeddedVideoAudio_BlockType  {
+			...on inhaltsbausteine_embeddedVideoAudio_BlockType {
 				${types.inhaltsbausteine_embeddedVideoAudio_BlockType}
 			}
 			...on inhaltsbausteine_galerie_BlockType {
@@ -72,25 +72,6 @@ const globalFragments = {
 			}
 			...on inhaltsbausteine_videoDatei_BlockType {
 				${types.inhaltsbausteine_videoDatei_BlockType}
-			}
-		}
-	`),
-	exerciseElements: memoize(({ types }) => `
-		elemente_nested {
-			...on elemente_nested_embeddedVideoAudio_BlockType {
-				${types.elemente_nested_embeddedVideoAudio_BlockType}
-			}
-			...on elemente_nested_galerie_BlockType {
-				${types.elemente_nested_galerie_BlockType}
-			}
-			...on elemente_nested_h5p_BlockType {
-				${types.elemente_nested_h5p_BlockType}
-			}
-			...on elemente_nested_textMitOhneBild_BlockType {
-				${types.elemente_nested_textMitOhneBild_BlockType}
-			}
-			...on elemente_nested_videoDatei_BlockType {
-				${types.elemente_nested_videoDatei_BlockType}
 			}
 		}
 	`)

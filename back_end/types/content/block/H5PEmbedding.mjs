@@ -1,14 +1,6 @@
 export default {
 	queries: new Map([
-		["elemente_h5p_BlockType", {
-			fetch: () => `
-				__typename
-				caption: unterschrift_nested
-				html: h5p_slider
-				id
-			`
-		}],
-		["elemente_nested_h5p_BlockType", {
+		["aufgabeElemente_h5p_BlockType", {
 			fetch: () => `
 				__typename
 				caption: unterschrift
@@ -16,10 +8,33 @@ export default {
 				id
 			`
 		}],
-		["inhalt_h5p_BlockType", {
+		["quersliderAufgabenElemente_h5p_BlockType", {
+			fetch: () => `
+				__typename
+				html: h5p_embed
+				id
+			`
+		}],
+		["quersliderInhalt_h5p_BlockType", {
 			fetch: () => `
 				__typename
 				caption: unterschrift
+				html: h5p_slider
+				id
+			`
+		}],
+		["aufklappAufgabenElemente_h5p_BlockType", {
+			fetch: () => `
+				__typename
+				caption: unterschrift
+				html: h5p
+				id
+			`
+		}],
+		["aufklappElemente_h5p_BlockType", {
+			fetch: () => `
+				__typename
+				caption: unterschrift_nested
 				html: h5p_slider
 				id
 			`

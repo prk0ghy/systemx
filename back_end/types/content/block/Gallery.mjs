@@ -1,6 +1,6 @@
 export default {
 	queries: new Map([
-		["elemente_galerie_BlockType", {
+		["aufgabeElemente_galerie_BlockType", {
 			fetch: cms => `
 				__typename
 				captions: bildunterschriften {
@@ -24,7 +24,31 @@ export default {
 				...rest
 			})
 		}],
-		["elemente_nested_galerie_BlockType", {
+		["quersliderAufgabenElemente_galerie_BlockType", {
+			fetch: cms => `
+				__typename
+				captions: bildunterschriften_aufgabe {
+					text: col1
+				}
+				files: bilder_aufgabe {
+					${cms.fragments.asset}
+				}
+				id
+				galleryIntroductionText: galerietext_aufgabe
+			`,
+			map: ({
+				captions,
+				files,
+				...rest
+			}) => ({
+				images: files.map((file, index) => ({
+					caption: captions[index]?.text || null,
+					files: [file]
+				})),
+				...rest
+			})
+		}],
+		["quersliderInhalt_galerie_BlockType", {
 			fetch: cms => `
 				__typename
 				captions: bildunterschriften {
@@ -48,7 +72,31 @@ export default {
 				...rest
 			})
 		}],
-		["inhalt_galerie_BlockType", {
+		["aufklappAufgabenElemente_galerie_BlockType", {
+			fetch: cms => `
+				__typename
+				captions: bildunterschriften {
+					text: col1
+				}
+				files: bilder {
+					${cms.fragments.asset}
+				}
+				id
+				galleryIntroductionText: galerietext
+			`,
+			map: ({
+				captions,
+				files,
+				...rest
+			}) => ({
+				images: files.map((file, index) => ({
+					caption: captions[index]?.text || null,
+					files: [file]
+				})),
+				...rest
+			})
+		}],
+		["aufklappElemente_galerie_BlockType", {
 			fetch: cms => `
 				__typename
 				captions: bildunterschriften {

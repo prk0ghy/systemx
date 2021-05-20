@@ -1,16 +1,21 @@
 export default {
 	queries: new Map([
-		["elemente_tabulator_BlockType", {
+		["aufgabeElemente_tabulator_BlockType", {
 			fetch: () => `
 				__typename
 			`
 		}],
-		["inhalt_tabulator_BlockType", {
+		["aufklappElemente_tabulator_BlockType", {
 			fetch: () => `
 				__typename
 			`
 		}],
 		["inhaltsbausteine_tabulator_BlockType", {
+			fetch: () => `
+				__typename
+			`
+		}],
+		["quersliderInhalt_tabulator_BlockType", {
 			fetch: () => `
 				__typename
 			`

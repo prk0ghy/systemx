@@ -1,6 +1,6 @@
 export default {
 	queries: new Map([
-		["elemente_ueberschrift_BlockType", {
+		["aufgabeElemente_ueberschrift_BlockType", {
 			fetch: () => `
 				__typename
 				headline: ueberschrift
@@ -8,7 +8,7 @@ export default {
 				tag: groesse
 			`
 		}],
-		["inhalt_ueberschrift_BlockType", {
+		["aufklappElemente_ueberschrift_BlockType", {
 			fetch: () => `
 				__typename
 				headline: ueberschrift
@@ -22,6 +22,14 @@ export default {
 				headline: ueberschrift
 				id
 				isNumbered: nummerierung
+				tag: groesse
+			`
+		}],
+		["quersliderInhalt_ueberschrift_BlockType", {
+			fetch: () => `
+				__typename
+				headline: ueberschrift
+				id
 				tag: groesse
 			`
 		}]

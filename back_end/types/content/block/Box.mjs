@@ -23,40 +23,40 @@ export default {
 				colorClassName: Farbe
 				content: inhaltDesKastens {
 					...on inhaltDesKastens_BlockType {
-						elements: elemente {
+						elements: aufklappElemente {
 							__typename
-							...on elemente_audioDatei_BlockType {
-								${types.elemente_audioDatei_BlockType}
+							...on aufklappElemente_audioDatei_BlockType {
+								${types.aufklappElemente_audioDatei_BlockType}
 							}
-							...on elemente_aufgabe_BlockType {
-								${types.elemente_aufgabe_BlockType}
+							...on aufklappElemente_aufgabe_BlockType {
+								${types.aufklappElemente_aufgabe_BlockType}
 							}
-							...on elemente_download_BlockType {
-								${types.elemente_download_BlockType}
+							...on aufklappElemente_download_BlockType {
+								${types.aufklappElemente_download_BlockType}
 							}
-							...on elemente_embeddedVideoAudio_BlockType {
-								${types.elemente_embeddedVideoAudio_BlockType}
+							...on aufklappElemente_embeddedVideoAudio_BlockType {
+								${types.aufklappElemente_embeddedVideoAudio_BlockType}
 							}
-							...on elemente_tabellen_BlockType {
-								${types.elemente_tabellen_BlockType}
+							...on aufklappElemente_tabellen_BlockType {
+								${types.aufklappElemente_tabellen_BlockType}
 							}
-							...on elemente_tabulator_BlockType {
-								${types.elemente_tabulator_BlockType}
+							...on aufklappElemente_tabulator_BlockType {
+								${types.aufklappElemente_tabulator_BlockType}
 							}
-							...on elemente_galerie_BlockType {
-								${types.elemente_galerie_BlockType}
+							...on aufklappElemente_galerie_BlockType {
+								${types.aufklappElemente_galerie_BlockType}
 							}
-							...on elemente_h5p_BlockType {
-								${types.elemente_h5p_BlockType}
+							...on aufklappElemente_h5p_BlockType {
+								${types.aufklappElemente_h5p_BlockType}
 							}
-							...on elemente_textMitOhneBild_BlockType {
-								${types.elemente_textMitOhneBild_BlockType}
+							...on aufklappElemente_textMitOhneBild_BlockType {
+								${types.aufklappElemente_textMitOhneBild_BlockType}
 							}
-							...on elemente_ueberschrift_BlockType {
-								${types.elemente_ueberschrift_BlockType}
+							...on aufklappElemente_ueberschrift_BlockType {
+								${types.aufklappElemente_ueberschrift_BlockType}
 							}
-							...on elemente_videoDatei_BlockType {
-								${types.elemente_videoDatei_BlockType}
+							...on aufklappElemente_videoDatei_BlockType {
+								${types.aufklappElemente_videoDatei_BlockType}
 							}
 						}
 					}

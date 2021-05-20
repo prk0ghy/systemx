@@ -12,40 +12,40 @@ export default {
 				isNumbered: nummerierung
 				tabs {
 					...on tabs_BlockType {
-						contents: inhalt {
+						contents: quersliderInhalt {
 							__typename
-							...on inhalt_audioDatei_BlockType {
-								${types.inhalt_audioDatei_BlockType}
+							...on quersliderInhalt_audioDatei_BlockType {
+								${types.quersliderInhalt_audioDatei_BlockType}
 							}
-							...on inhalt_aufgabe_BlockType {
-								${types.inhalt_aufgabe_BlockType}
+							...on quersliderInhalt_aufgabe_BlockType {
+								${types.quersliderInhalt_aufgabe_BlockType}
 							}
-							...on inhalt_download_BlockType {
-								${types.inhalt_download_BlockType}
+							...on quersliderInhalt_download_BlockType {
+								${types.quersliderInhalt_download_BlockType}
 							}
-							...on inhalt_embeddedVideoAudio_BlockType {
-								${types.inhalt_embeddedVideoAudio_BlockType}
+							...on quersliderInhalt_embeddedVideoAudio_BlockType {
+								${types.quersliderInhalt_embeddedVideoAudio_BlockType}
 							}
-							...on inhalt_galerie_BlockType {
-								${types.inhalt_galerie_BlockType}
+							...on quersliderInhalt_galerie_BlockType {
+								${types.quersliderInhalt_galerie_BlockType}
 							}
-							...on inhalt_h5p_BlockType {
-								${types.inhalt_h5p_BlockType}
+							...on quersliderInhalt_h5p_BlockType {
+								${types.quersliderInhalt_h5p_BlockType}
 							}
-							...on inhalt_tabellen_BlockType {
-								${types.inhalt_tabellen_BlockType}
+							...on quersliderInhalt_tabellen_BlockType {
+								${types.quersliderInhalt_tabellen_BlockType}
 							}
-							...on inhalt_tabulator_BlockType {
-								${types.inhalt_tabulator_BlockType}
+							...on quersliderInhalt_tabulator_BlockType {
+								${types.quersliderInhalt_tabulator_BlockType}
 							}
-							...on inhalt_textMitOhneBild_BlockType {
-								${types.inhalt_textMitOhneBild_BlockType}
+							...on quersliderInhalt_textMitOhneBild_BlockType {
+								${types.quersliderInhalt_textMitOhneBild_BlockType}
 							}
-							...on inhalt_ueberschrift_BlockType {
-								${types.inhalt_ueberschrift_BlockType}
+							...on quersliderInhalt_ueberschrift_BlockType {
+								${types.quersliderInhalt_ueberschrift_BlockType}
 							}
-							...on inhalt_videoDatei_BlockType {
-								${types.inhalt_videoDatei_BlockType}
+							...on quersliderInhalt_videoDatei_BlockType {
+								${types.quersliderInhalt_videoDatei_BlockType}
 							}
 						}
 						title: bezeichnung

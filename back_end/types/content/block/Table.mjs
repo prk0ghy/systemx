@@ -1,16 +1,15 @@
 export default {
 	queries: new Map([
-		["elemente_tabellen_BlockType", {
+		["aufgabeElemente_tabellen_BlockType", {
 			fetch: () => `
 				__typename
 				id
 				tableDescriptor: tabelle
 			`
 		}],
-		["inhalt_tabellen_BlockType", {
+		["aufklappElemente_tabellen_BlockType", {
 			fetch: () => `
 				__typename
-				caption: quelle
 				id
 				tableDescriptor: tabelle
 			`
@@ -21,6 +20,20 @@ export default {
 				caption: quelle
 				id
 				isNumbered: nummerierung
+				tableDescriptor: tabelle
+			`
+		}],
+		["quersliderAufgabenElemente_tabellen_BlockType", {
+			fetch: () => `
+				__typename
+				id
+				tableDescriptor: tabelle_q
+			`
+		}],
+		["quersliderInhalt_tabellen_BlockType", {
+			fetch: () => `
+				__typename
+				id
 				tableDescriptor: tabelle
 			`
 		}]

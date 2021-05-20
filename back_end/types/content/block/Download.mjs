@@ -1,6 +1,6 @@
 export default {
 	queries: new Map([
-		["elemente_download_BlockType", {
+		["aufgabeElemente_download_BlockType", {
 			fetch: ({ fragments }) => `
 				__typename
 				description: beschreibung
@@ -18,7 +18,7 @@ export default {
 				...rest
 			})
 		}],
-		["inhalt_download_BlockType", {
+		["aufklappElemente_download_BlockType", {
 			fetch: ({ fragments }) => `
 				__typename
 				description: beschreibung
@@ -54,7 +54,25 @@ export default {
 				file: files[0],
 				...rest
 			})
-		}]
+		}],
+		["quersliderInhalt_download_BlockType", {
+			fetch: ({ fragments }) => `
+				__typename
+				description: beschreibung
+				files: datei {
+					${fragments.asset}
+				}
+				id
+				url: urldownload
+			`,
+			map: ({
+				files,
+				...rest
+			}) => ({
+				file: files[0],
+				...rest
+			})
+		}],
 	]),
 	async render({
 		description,

@@ -48,7 +48,7 @@ export default {
 		}
 	},
 	queries: new Map([
-		["elemente_nested_textMitOhneBild_BlockType", {
+		["aufgabeElemente_textMitOhneBild_BlockType", {
 			fetch: cms => `
 				__typename
 				id
@@ -72,7 +72,7 @@ export default {
 				...rest
 			})
 		}],
-		["elemente_textMitOhneBild_BlockType", {
+		["aufklappAufgabenElemente_textMitOhneBild_BlockType", {
 			fetch: cms => `
 				__typename
 				id
@@ -96,7 +96,7 @@ export default {
 				...rest
 			})
 		}],
-		["inhalt_textMitOhneBild_BlockType", {
+		["aufklappElemente_textMitOhneBild_BlockType", {
 			fetch: cms => `
 				__typename
 				id
@@ -140,6 +140,54 @@ export default {
 				isNumbered: nummerierung
 				text
 			`
+		}],
+		["quersliderAufgabenElemente_textMitOhneBild_BlockType", {
+			fetch: cms => `
+				__typename
+				id
+				images: bilder {
+					__typename
+					${cms.fragments.asset}
+				}
+				imageWidth: bildbreite
+				imagePosition: bildposition
+				galleryIntroductionText: bildunterschrift
+				text
+			`,
+			map: ({
+				images,
+				...rest
+			}) => ({
+				images: images.map(image => ({
+					caption: null,
+					files: [image]
+				})),
+				...rest
+			})
+		}],
+		["quersliderInhalt_textMitOhneBild_BlockType", {
+			fetch: cms => `
+				__typename
+				id
+				images: bilder {
+					__typename
+					${cms.fragments.asset}
+				}
+				imageWidth: bildbreite
+				imagePosition: bildposition
+				galleryIntroductionText: bildunterschrift
+				text
+			`,
+			map: ({
+				images,
+				...rest
+			}) => ({
+				images: images.map(image => ({
+					caption: null,
+					files: [image]
+				})),
+				...rest
+			})
 		}]
 	]),
 	async render({

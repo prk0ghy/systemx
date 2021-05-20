@@ -1,6 +1,6 @@
 export default {
 	queries: new Map([
-		["elemente_audioDatei_BlockType", {
+		["aufgabeElemente_audioDatei_BlockType", {
 			fetch: cms => `
 				__typename
 				audioFiles: audiodatei {
@@ -10,7 +10,17 @@ export default {
 				id
 			`
 		}],
-		["inhalt_audioDatei_BlockType", {
+		["aufklappElemente_audioDatei_BlockType", {
+			fetch: cms => `
+				__typename
+				audioFiles: audiodatei {
+					${cms.fragments.asset}
+				}
+				caption: audiounterschrift
+				id
+			`
+		}],
+		["quersliderInhalt_audioDatei_BlockType", {
 			fetch: cms => `
 				__typename
 				audioFiles: audio {

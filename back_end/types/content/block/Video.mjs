@@ -1,6 +1,6 @@
 export default {
 	queries: new Map([
-		["elemente_nested_videoDatei_BlockType", {
+		["aufgabeElemente_videoDatei_BlockType", {
 			fetch: cms => `
 				__typename
 				caption: videounterschrift
@@ -13,7 +13,7 @@ export default {
 				}
 			`
 		}],
-		["elemente_videoDatei_BlockType", {
+		["aufklappAufgabenElemente_videoDatei_BlockType", {
 			fetch: cms => `
 				__typename
 				caption: videounterschrift
@@ -26,10 +26,10 @@ export default {
 				}
 			`
 		}],
-		["inhalt_videoDatei_BlockType", {
+		["aufklappElemente_videoDatei_BlockType", {
 			fetch: cms => `
 				__typename
-				caption: videoUnterschrift
+				caption: videounterschrift
 				files: datei {
 					${cms.fragments.asset}
 				}
@@ -48,6 +48,32 @@ export default {
 				}
 				id
 				isNumbered: nummerierung
+				posters: posterbild {
+					${cms.fragments.asset}
+				}
+			`
+		}],
+		["quersliderAufgabenElemente_videoDatei_BlockType", {
+			fetch: cms => `
+				__typename
+				caption: videounterschrift
+				files: datei {
+					${cms.fragments.asset}
+				}
+				id
+				posters: posterbild {
+					${cms.fragments.asset}
+				}
+			`
+		}],
+		["quersliderInhalt_videoDatei_BlockType", {
+			fetch: cms => `
+				__typename
+				caption: videoUnterschrift
+				files: datei {
+					${cms.fragments.asset}
+				}
+				id
 				posters: posterbild {
 					${cms.fragments.asset}
 				}

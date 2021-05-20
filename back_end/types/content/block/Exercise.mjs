@@ -1,11 +1,27 @@
 export default {
 	queries: new Map([
-		["elemente_aufgabe_BlockType", {
-			fetch: ({ fragments }) => `
+		["aufklappElemente_aufgabe_BlockType", {
+			fetch: ({ types }) => `
 				__typename
-				content: inhalt {
-					...on inhalt_BlockType {
-						elements: ${fragments.exerciseElements}
+				content: aufklappAufgabenInhalt {
+					...on aufklappAufgabenInhalt_BlockType {
+						elements: aufklappAufgabenElemente {
+							...on aufklappAufgabenElemente_embeddedVideoAudio_BlockType {
+								${types.aufklappAufgabenElemente_embeddedVideoAudio_BlockType}
+							}
+							...on aufklappAufgabenElemente_galerie_BlockType {
+								${types.aufklappAufgabenElemente_galerie_BlockType}
+							}
+							...on aufklappAufgabenElemente_h5p_BlockType {
+								${types.aufklappAufgabenElemente_h5p_BlockType}
+							}
+							...on aufklappAufgabenElemente_textMitOhneBild_BlockType {
+								${types.aufklappAufgabenElemente_textMitOhneBild_BlockType}
+							}
+							...on aufklappAufgabenElemente_videoDatei_BlockType {
+								${types.aufklappAufgabenElemente_videoDatei_BlockType}
+							}
+						}
 					}
 				}
 				id
@@ -21,12 +37,28 @@ export default {
 				content: content[0]
 			})
 		}],
-		["inhalt_aufgabe_BlockType", {
-			fetch: ({ fragments }) => `
+		["quersliderInhalt_aufgabe_BlockType", {
+			fetch: ({ types }) => `
 				__typename
-				content: inhalt {
-					...on inhalt_BlockType {
-						elements: ${fragments.exerciseElements}
+				content: quersliderAufgabenInhalt {
+					...on quersliderAufgabenInhalt_BlockType {
+						elements: quersliderAufgabenElemente {
+							...on quersliderAufgabenElemente_galerie_BlockType {
+								${types.quersliderAufgabenElemente_galerie_BlockType}
+							}
+							...on quersliderAufgabenElemente_h5p_BlockType {
+								${types.quersliderAufgabenElemente_h5p_BlockType}
+							}
+							...on quersliderAufgabenElemente_tabellen_BlockType {
+								${types.quersliderAufgabenElemente_tabellen_BlockType}
+							}
+							...on quersliderAufgabenElemente_textMitOhneBild_BlockType {
+								${types.quersliderAufgabenElemente_textMitOhneBild_BlockType}
+							}
+							...on quersliderAufgabenElemente_videoDatei_BlockType {
+								${types.quersliderAufgabenElemente_videoDatei_BlockType}
+							}
+						}
 					}
 				}
 				id
@@ -43,11 +75,27 @@ export default {
 			})
 		}],
 		["inhaltsbausteine_aufgabe_BlockType", {
-			fetch: ({ fragments }) => `
+			fetch: ({ types }) => `
 				__typename
-				content: inhalt {
-					...on inhalt_BlockType {
-						elements: ${fragments.exerciseElements}
+				content: aufgabeInhalt {
+					...on aufgabeInhalt_BlockType {
+						elements: aufgabeElemente {
+							...on aufgabeElemente_embeddedVideoAudio_BlockType {
+								${types.aufgabeElemente_embeddedVideoAudio_BlockType}
+							}
+							...on aufgabeElemente_galerie_BlockType {
+								${types.aufgabeElemente_galerie_BlockType}
+							}
+							...on aufgabeElemente_h5p_BlockType {
+								${types.aufgabeElemente_h5p_BlockType}
+							}
+							...on aufgabeElemente_textMitOhneBild_BlockType {
+								${types.aufgabeElemente_textMitOhneBild_BlockType}
+							}
+							...on aufgabeElemente_videoDatei_BlockType {
+								${types.aufgabeElemente_videoDatei_BlockType}
+							}
+						}
 					}
 				}
 				html: h5p
