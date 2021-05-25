@@ -1,0 +1,14 @@
+[Unit]
+After=network-online.target
+Description=The systemx preview
+Requires=network-online.target
+StartLimitBurst=25
+StartLimitIntervalSec=60
+
+[Service]
+ExecStart=npm start --prefix=/var/www/html/dilewe.de/module-sachsen/
+Restart=on-failure
+User=www-data
+
+[Install]
+WantedBy=multi-user.target
