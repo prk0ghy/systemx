@@ -112,7 +112,11 @@ export const renderSingleEntry = async (targetName, uri) => {
 	const entry = result.entry;
 	if (entry === null) {
 		console.error(`404: ${effectiveURI}`);
-		return "<h1>404</h1>";
+		return {"html": await wrapWithApplicationShell(targetName, {
+			content: "<main><center><h1>404 - Page not found</h1></center></main>",
+			pageTitle: "404 - Page not found",
+			pageURL: uri
+		}), "status": 404};
 	}
 	const html = await render(entry, new RenderingContext({
 		globalRender: render
@@ -126,7 +130,7 @@ export const renderSingleEntry = async (targetName, uri) => {
 		pageURL: url
 	});
 	const finalHTML = Marker.fill(wrappedHTML);
-	return finalHTML;
+	return {"html": finalHTML, "status": 200};
 };
 /*
 * This function fetches and then renders all "entries", which is CraftCMS-speak for pages.

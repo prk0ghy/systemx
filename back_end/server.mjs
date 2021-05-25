@@ -36,8 +36,8 @@ export function start(targetName) {
 		if(request.url === "/robots.txt"){
 			response.end("User-agent: *\nDisallow: /\n");
 		}else if(isContentURL(request.url)){
-			const html = await renderSingleEntry(targetName,transformURL(request.url));
-			response.writeHead(200);
+			const {html,status} = await renderSingleEntry(targetName,transformURL(request.url));
+			response.writeHead(status);
 			response.end(html);
 		}else{
 			serve(request, response, done);
