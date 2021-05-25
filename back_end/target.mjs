@@ -142,6 +142,7 @@ export const buildEntries = async targetName => {
 	const mediaPath = getMediaPath(targetName);
 	await mkdirp(mediaPath);
 	let warningHTML = "";
+
 	await Promise.all(result.entries.map(async entry => {
 		const directory = await mkdirp(targetPath, entry.uri);
 		const outputFilePath = path.join(directory, "index.html");
@@ -205,6 +206,24 @@ export const buildEntries = async targetName => {
 		const finalHTML = Marker.fill(wrappedHTML);
 		await fsp.writeFile(outputFilePath, formatHTML(finalHTML));
 	}));
+
+	const homePageSourcePath = path.join(targetPath,await getHomePage(),"index.html");
+	const homePageDestPath = path.join(targetPath,"index.html");
+
+	try {
+		const { smtime } = await fsp.stat(homePageSourcePath);
+		try {
+			const { dmtime } = await fsp.stat(homePageDestPath);
+			if (options.forceRendering || Date.parse(stime) > Date.parse(dmtime)) {
+				await fsp.copyFile(homePageSourcePath,homePageDestPath);
+			}
+		} catch {
+			await fsp.copyFile(homePageSourcePath,homePageDestPath);
+		}
+	}
+	catch {
+		/* Nothing we can do if it fails */
+	}
 	if (options.forceRendering) {
 		const warningPath = path.join(targetPath, "warnings.html");
 		await fsp.writeFile(warningPath, await wrapWithApplicationShell(targetName, {
