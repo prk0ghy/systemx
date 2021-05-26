@@ -152,15 +152,15 @@ export default class {
 		},
 		parentContext = null
 	}) {
-		this.model = model;
-		this.hints = Object.assign({}, hints, parentContext?.hints);
-		this.parentContext = parentContext;
-		this.type = model.__typename;
-		this.render = this.render.bind(this);
-		this.globalRender = globalRender || parentContext.globalRender;
 		this.download = options.downloadMedia
 			? parentContext?.download || this.download
 			: url => url;
+		this.globalRender = globalRender || parentContext.globalRender;
+		this.hints = Object.assign({}, hints, parentContext?.hints);
+		this.model = model;
+		this.parentContext = parentContext;
+		this.type = model.__typename;
+		this.render = this.render.bind(this);
 	}
 	render(model, hints) {
 		const context = new this.constructor({

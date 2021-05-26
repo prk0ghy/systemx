@@ -15,11 +15,11 @@ const memoize = fn => {
 	};
 };
 const globalFragments = {
-	asset: () => `
+	asset: ({ introspection }) => `
 		height
 		url
 		width
-		...on s3_Asset {
+		...on ${introspection.assetType} {
 			creativeCommonsTerms: rechtemodule
 			license: lizenzart
 			source: quelle
@@ -86,10 +86,60 @@ const globalTypes = {
 		uri
 	`
 };
+const introspect = async () => {
+	const result = await query(() => `
+		__schema {
+			types {
+				name
+			}
+		}
+	`);
+	const exists = typeName => Boolean(result.__schema.types.find(type => type.name === typeName));
+	const coalesce = (...types) => types.length
+		? types
+			.map(typeName => ({
+				exists: exists(typeName),
+				typeName
+			}))
+			.reduce((resultA, resultB) => {
+				if (resultA.exists) {
+					return resultA.typeName;
+				}
+				else if (resultB.exists) {
+					return resultB.typeName;
+				}
+				throw new Error("Asset type could not be determined.");
+			})
+		: null;
+	return {
+		assetType: coalesce("s3_Asset", "dateien_Asset"),
+		exists
+	};
+};
+const maybeWrap = (query, enabled) => enabled
+	? `{ ${query} }`
+	: query;
+const endPoint = new URL(options.graphqlEndpoint);
+/*
+* CraftCMS hard-codes the origin into all URLs which leads to funky behavior.
+* In order to avoid this, we remove the origin from all URLs.
+*/
+const removeOriginFromURLs = response => JSON.parse(JSON.stringify(response).split(`${endPoint.origin}/`).join("/"));
+const query = async (queryFunction, {
+	raw
+} = {}) => request(endPoint, gql([
+	maybeWrap(await queryFunction(globalTypes, globalFragments), !raw)
+		.replace(/[\t]/g, "")
+		.replace(/[\n]/g, " ")
+		.trim()
+]))
+	.then(removeOriginFromURLs);
+export default query;
 export const getContext = async () => {
 	const contentTypes = await loadContentTypes();
 	const cms = {
 		fragments: {},
+		introspection: await introspect(),
 		types: globalTypes
 	};
 	for (const [, module] of contentTypes.entries()) {
@@ -112,21 +162,3 @@ export const getContext = async () => {
 	}
 	return cms;
 };
-const maybeWrap = (query, enabled) => enabled
-	? `{ ${query} }`
-	: query;
-const endPoint = new URL(options.graphqlEndpoint);
-/*
-* CraftCMS hard-codes the origin into all URLs which leads to funky behavior.
-* In order to avoid this, we remove the origin from all URLs.
-*/
-const removeOriginFromURLs = response => JSON.parse(JSON.stringify(response).split(`${endPoint.origin}/`).join("/"));
-export default async (queryFunction, {
-	raw
-} = {}) => request(endPoint, gql([
-	maybeWrap(await queryFunction(globalTypes, globalFragments), !raw)
-		.replace(/[\t]/g, "")
-		.replace(/[\n]/g, " ")
-		.trim()
-]))
-	.then(removeOriginFromURLs);
