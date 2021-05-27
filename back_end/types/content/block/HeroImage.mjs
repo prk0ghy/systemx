@@ -2,7 +2,6 @@ export default {
 	queries: new Map([
 		["inhaltsbausteine_heroimage_BlockType", {
 			fetch: cms => `
-				__typename
 				id
 				images: bild {
 					${cms.fragments.asset}
@@ -11,7 +10,6 @@ export default {
 		}],
 		["inhaltsbausteine_trennerbild_BlockType", {
 			fetch: cms => `
-				__typename
 				id
 				images: datei {
 					${cms.fragments.asset}

@@ -14,7 +14,6 @@ export default {
 		}],
 		["inhaltsbausteine_tabelle_BlockType", {
 			fetch: () => `
-				__typename
 				caption: quelle
 				id
 				isNumbered: nummerierung

@@ -86,6 +86,10 @@ const globalTypes = {
 		uri
 	`
 };
+/**
+* Sends a custom introspection query to the server, then returns an object that allows for high-level checks.
+* This, for instance, can be used to check whether or not a certain type exists.
+*/
 const introspect = async () => {
 	const result = await query(() => `
 		__schema {

@@ -71,7 +71,6 @@ export default {
 		}],
 		["inhaltsbausteine_galerie_BlockType", {
 			fetch: cms => `
-				__typename
 				galleryIntroductionText: einleitungstextGallerie
 				id
 				images: bilder {

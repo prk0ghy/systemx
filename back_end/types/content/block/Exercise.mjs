@@ -79,7 +79,6 @@ export default {
 		}],
 		["inhaltsbausteine_aufgabe_BlockType", {
 			fetch: ({ types }) => `
-				__typename
 				content: aufgabeInhalt {
 					...on aufgabeInhalt_BlockType {
 						elements: aufgabeElemente {

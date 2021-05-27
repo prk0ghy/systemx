@@ -7,7 +7,6 @@ export default {
 	queries: new Map([
 		["inhaltsbausteine_querslider_BlockType", {
 			fetch: ({ types }) => `
-				__typename
 				id
 				isNumbered: nummerierung
 				tabs {

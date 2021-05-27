@@ -23,7 +23,6 @@ export default {
 		}],
 		["inhaltsbausteine_h5p_BlockType", {
 			fetch: () => `
-				__typename
 				caption: unterschrift_h5p
 				html: h5p
 				id

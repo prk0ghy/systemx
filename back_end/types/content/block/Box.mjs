@@ -19,7 +19,6 @@ export default {
 	queries: new Map([
 		["inhaltsbausteine_aufklappkasten_BlockType", {
 			fetch: ({ types }) => `
-				__typename
 				colorClassName: Farbe
 				content: inhaltDesKastens {
 					...on inhaltDesKastens_BlockType {

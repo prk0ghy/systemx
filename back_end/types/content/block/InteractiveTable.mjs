@@ -12,7 +12,6 @@ export default {
 		}],
 		["inhaltsbausteine_tabulator_BlockType", {
 			fetch: () => `
-				__typename
 				id
 			`
 		}],

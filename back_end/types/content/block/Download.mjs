@@ -36,7 +36,6 @@ export default {
 		}],
 		["inhaltsbausteine_download_BlockType", {
 			fetch: ({ fragments }) => `
-				__typename
 				description: beschreibung
 				files: datei {
 					${fragments.asset}

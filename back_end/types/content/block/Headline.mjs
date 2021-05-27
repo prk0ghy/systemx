@@ -16,7 +16,6 @@ export default {
 		}],
 		["inhaltsbausteine_ueberschrift_BlockType", {
 			fetch: () => `
-				__typename
 				headline: ueberschrift
 				id
 				isNumbered: nummerierung

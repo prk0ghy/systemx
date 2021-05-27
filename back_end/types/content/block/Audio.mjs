@@ -29,7 +29,6 @@ export default {
 		}],
 		["inhaltsbausteine_audioDatei_BlockType", {
 			fetch: cms => `
-				__typename
 				audioFiles: audio {
 					${cms.fragments.asset}
 				}

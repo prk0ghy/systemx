@@ -116,7 +116,6 @@ export default {
 		}],
 		["inhaltsbausteine_textMitOhneBild_BlockType", {
 			fetch: cms => `
-				__typename
 				displayInOneLine: flex
 				id
 				images: bilder {

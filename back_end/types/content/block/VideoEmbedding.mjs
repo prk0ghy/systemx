@@ -83,7 +83,6 @@ export default {
 		}],
 		["inhaltsbausteine_embeddedVideoAudio_BlockType", {
 			fetch: () => `
-				__typename
 				caption: videoUnterschrift
 				end: ende
 				id
