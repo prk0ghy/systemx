@@ -4,7 +4,10 @@ import Error from "./types/helper/Error.mjs";
 import RenderingContext from "./RenderingContext.mjs";
 const cmsContext = await getCMSContext();
 const contentTypes = await loadContentTypes();
-const warnedContentTypes = new Set();
+const warnedContentTypes = new Set([
+	/* This content type is handled elsewhere and isn't necessary during rendering */
+	"startseite_verweis_Entry"
+]);
 /*
 * "Rendering" a content type means transforming it to HTML.
 * Usually, this function will be used by passing a CraftCMS model to it.
