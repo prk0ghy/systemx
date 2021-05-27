@@ -62,10 +62,10 @@ const flattenData = data => {
 /*
 * Retrieves information about the current, next and previous entry.
 */
-const getPageData = (target, pageURL) => {
+const getPageData = (target, pageURI) => {
 	const data = navigationCache.get(target);
 	const flattened = flattenData(data);
-	const i = flattened.findIndex(page => page.uri === pageURL);
+	const i = flattened.findIndex(page => page.uri === pageURI);
 	return {
 		current: flattened[i],
 		next: flattened[i + 1],
@@ -75,8 +75,8 @@ const getPageData = (target, pageURL) => {
 /*
 * Returns the HTML for our navigation header.
 */
-export const getNavigationHeader = async (target, pageURL) => {
-	const data = getPageData(target, pageURL);
+export const getNavigationHeader = async (target, pageURI) => {
+	const data = getPageData(target, pageURI);
 	const title = data.current?.title || "Lasub";
 	const previousTitle = data.previous?.title || "";
 	const previousURL = data.previous?.uri;
@@ -97,10 +97,10 @@ export const getNavigationHeader = async (target, pageURL) => {
 /*
 * Returns the HTML for a single entry for the navigation menu.
 */
-const buildNavigationMenuEntry = (entry, pageURL) => {
+const buildNavigationMenuEntry = (entry, pageURI) => {
 	const ulContent = entry.children
 		? entry.children
-			.map(entry => buildNavigationMenuEntry(entry, pageURL))
+			.map(entry => buildNavigationMenuEntry(entry, pageURI))
 			.join("")
 			.trim()
 		: "";
@@ -108,8 +108,8 @@ const buildNavigationMenuEntry = (entry, pageURL) => {
 		? `<ul>${ulContent}</ul>`
 		: "";
 	return `
-		<li${pageURL === entry.uri ? ` class="active"` : ""} page-id="${entry.id}">
-			<a href="${entry.uri}" page-url="${pageURL}">${entry.title}</a>
+		<li${pageURI === entry.uri ? ` class="active"` : ""} page-id="${entry.id}">
+			<a href="${entry.uri}" page-url="${pageURI}">${entry.title}</a>
 			${childrenHTML}
 		</li>
 	`;
@@ -117,13 +117,13 @@ const buildNavigationMenuEntry = (entry, pageURL) => {
 /*
 * Returns the HTML four our navigation menu.
 */
-export const getNavigationMenu = async (target, pageURL) => {
+export const getNavigationMenu = async (target, pageURI) => {
 	if (!navigationCache.has(target)) {
 		return `<h1>Error loading navigation</h1>`;
 	}
 	const navigationContent = navigationCache
 		.get(target)
-		.map(entry => buildNavigationMenuEntry(entry, pageURL))
+		.map(entry => buildNavigationMenuEntry(entry, pageURI))
 		.join("");
 	return `
 		<aside id="navigation" style="display:none;">

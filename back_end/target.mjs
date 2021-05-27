@@ -17,7 +17,13 @@ const fsp = fs.promises;
 * Should actually execute a GraphQL query to figure out what contents need to be displayed,
 * but since there is only a single target right now, we're hardcoding the home page.
 */
-const getHomePage = async () => "inhalt/f-a-q-und-hilfe";
+const getHomePageURI = entries => {
+	const homeEntry = entries.find(entry => entry.references);
+	if (!homeEntry || !homeEntry.references.length) {
+		throw new Error("Could not determine home page");
+	}
+	return homeEntry.references[0].uri;
+};
 /*
 * Every project is a "target".
 * Every target will be output into its own directory.
@@ -48,7 +54,7 @@ const renderFile = async (source, destination, targetName) => {
 	const html = await wrapWithApplicationShell(targetName, {
 		content: fileContent,
 		pageTitle: "Instrumentalisierung der Vergangenheit",
-		pageURL: destination.substr(targetPath.length).replace("\\","/")
+		pageURI: destination.substr(targetPath.length).replace("\\","/")
 	});
 	return fsp.writeFile(destination, html);
 };
@@ -96,58 +102,78 @@ const renderAssets = async destination => {
 	const assetDirectories = await resources.getAssetDirectories();
 	return Promise.all(assetDirectories.map(directory => renderDirectory(directory, destination)));
 };
+const getEntries = async () => {
+	const { entries } = await query(() => `
+		entries {
+			__typename
+			dateUpdated
+			id
+			title
+			uid
+			uri
+			...on startseite_verweis_Entry {
+				references: starteintrag {
+					uri
+				}
+			}
+		}
+	`);
+	return entries;
+};
 /*
 * This functions renders a single entry and returns the complete HTML for it, including all warnings at the top.
 *
-* Should only be used as a preview for authors, production releases should use buildEntries instead
+* Should only be used as a preview for authors; production releases should use `buildEntries` instead.
 */
 export const renderSingleEntry = async (targetName, uri) => {
 	const loadNavigationPromise = loadNavigation(targetName);
-	const effectiveURI = uri || await getHomePage(targetName);
-	const result = await query(async types => `
-		entry (uri: "${await effectiveURI}") {
-			${types.Entry}
-		}
-	`);
-	const entry = result.entry;
-	if (entry === null) {
+	const entries = await getEntries();
+	const homePageURI = getHomePageURI(entries);
+	const entry = entries.find(entry => entry.uri === uri) || entries.find(entry => entry.uri === homePageURI);
+	const effectiveURI = entry.uri;
+	if (!entry) {
 		console.error(`404: ${effectiveURI}`);
-		return {"html": await wrapWithApplicationShell(targetName, {
-			content: "<main><center><h1>404 - Page not found</h1></center></main>",
-			pageTitle: "404 - Page not found",
-			pageURL: uri
-		}), "status": 404};
+		return {
+			html: await wrapWithApplicationShell(targetName, {
+				content: `
+					<main>
+						<center>
+							<h1>404 - Page not found</h1>
+						</center>
+					</main>
+				`,
+				pageTitle: "404 - Page not found",
+				pageURI: uri
+			}),
+			status: 404
+		};
 	}
 	const html = await render(entry, new RenderingContext({
 		globalRender: render
 	}));
-	/* Remove target prefix and in case of Windows, replace blackslashes with forward slashes */
-	const url = `/${effectiveURI}/index.html`;
 	await loadNavigationPromise;
 	const wrappedHTML = await wrapWithApplicationShell(targetName, {
 		content: html,
 		pageTitle: entry.title,
-		pageURL: url
+		pageURI: `/${effectiveURI}/index.html`
 	});
 	const finalHTML = Marker.fill(wrappedHTML);
-	return {"html": finalHTML, "status": 200};
+	return {
+		html: finalHTML,
+		status: 200
+	};
 };
 /*
 * This function fetches and then renders all "entries", which is CraftCMS-speak for pages.
 * Essentially, this is the heart of systemx.
 */
 export const buildEntries = async targetName => {
-	const result = await query(types => `
-		entries {
-			${types.Entry}
-		}
-	`);
+	const entries = await getEntries();
 	const targetPath = getTargetPath(targetName);
 	const mediaPath = getMediaPath(targetName);
 	await mkdirp(mediaPath);
 	let warningHTML = "";
-
-	await Promise.all(result.entries.map(async entry => {
+	await Promise.all(entries.map(async entry => {
 		const directory = await mkdirp(targetPath, entry.uri);
 		const outputFilePath = path.join(directory, "index.html");
 		try {
@@ -201,28 +227,27 @@ export const buildEntries = async targetName => {
 			}
 		}));
 		/* Remove target prefix and in case of Windows, replace blackslashes with forward slashes */
-		const url = outputFilePath.substr(targetPath.length).replace(/\\/g,"/");
+		const uri = outputFilePath.substr(targetPath.length).replace(/\\/g, "/");
 		const wrappedHTML = await wrapWithApplicationShell(targetName, {
 			content: html,
 			pageTitle: entry.title,
-			pageURL: url
+			pageURI: uri
 		});
 		const finalHTML = Marker.fill(wrappedHTML);
 		await fsp.writeFile(outputFilePath, formatHTML(finalHTML));
 	}));
-
-	const homePageSourcePath = path.join(targetPath,await getHomePage(),"index.html");
-	const homePageDestPath = path.join(targetPath,"index.html");
-
+	const homePageSourcePath = path.join(targetPath, await getHomePageURI(entries), "index.html");
+	const homePageDestinationPath = path.join(targetPath, "index.html");
 	try {
 		const { smtime } = await fsp.stat(homePageSourcePath);
 		try {
-			const { dmtime } = await fsp.stat(homePageDestPath);
+			const { dmtime } = await fsp.stat(homePageDestinationPath);
 			if (options.forceRendering || Date.parse(stime) > Date.parse(dmtime)) {
-				await fsp.copyFile(homePageSourcePath,homePageDestPath);
+				await fsp.copyFile(homePageSourcePath, homePageDestinationPath);
 			}
-		} catch {
-			await fsp.copyFile(homePageSourcePath,homePageDestPath);
+		}
+		catch {
+			await fsp.copyFile(homePageSourcePath, homePageDestinationPath);
 		}
 	}
 	catch {

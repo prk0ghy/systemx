@@ -22,7 +22,7 @@ const contextualize = types => context => Object.fromEntries([...types.entries()
 			...rest
 		} = module.default;
 		return [name, {
-			render: (model, hints) => {
+			render: (model, hints = context.hints) => {
 				const map = queries?.get(model.__typename)?.map;
 				const mappedModel = map
 					? map(model)

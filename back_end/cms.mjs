@@ -76,16 +76,6 @@ const globalFragments = {
 		}
 	`)
 };
-const globalTypes = {
-	Entry: `
-		__typename
-		dateUpdated
-		id
-		title
-		uid
-		uri
-	`
-};
 /**
 * Sends a custom introspection query to the server, then returns an object that allows for high-level checks.
 * This, for instance, can be used to check whether or not a certain type exists.
@@ -124,6 +114,7 @@ const maybeWrap = (query, enabled) => enabled
 	? `{ ${query} }`
 	: query;
 const endPoint = new URL(options.graphqlEndpoint);
+const types = {};
 /*
 * CraftCMS hard-codes the origin into all URLs which leads to funky behavior.
 * In order to avoid this, we remove the origin from all URLs.
@@ -132,7 +123,7 @@ const removeOriginFromURLs = response => JSON.parse(JSON.stringify(response).spl
 const query = async (queryFunction, {
 	raw
 } = {}) => request(endPoint, gql([
-	maybeWrap(await queryFunction(globalTypes, globalFragments), !raw)
+	maybeWrap(await queryFunction(types, globalFragments), !raw)
 		.replace(/[\t]/g, "")
 		.replace(/[\n]/g, " ")
 		.trim()
@@ -144,7 +135,7 @@ export const getContext = async () => {
 	const cms = {
 		fragments: {},
 		introspection: await introspect(),
-		types: globalTypes
+		types
 	};
 	for (const [, module] of contentTypes.entries()) {
 		for (const [key, setup] of module.default.queries) {
