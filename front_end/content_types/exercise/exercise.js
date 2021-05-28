@@ -19,7 +19,7 @@
 					]
 				},
 				theme: 'snow',
-				placeholder: 'Aufgabe beantworten'
+				placeholder: 'Aufgabe bearbeiten'
 			});
 			let delayedWriteHandle = undefined;
 			editor.on('text-change', () => {
