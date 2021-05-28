@@ -6,7 +6,14 @@ export default {
 				images: bild {
 					${cms.fragments.asset}
 				}
-			`
+			`,
+			map: ({
+				images,
+				...rest
+			}) => ({
+				image: images[0],
+				...rest
+			})
 		}],
 		["inhaltsbausteine_trennerbild_BlockType", {
 			fetch: cms => `
@@ -14,13 +21,20 @@ export default {
 				images: datei {
 					${cms.fragments.asset}
 				}
-			`
+			`,
+			map: ({
+				images,
+				...rest
+			}) => ({
+				image: images[0],
+				...rest
+			})
 		}]
 	]),
 	async render({
 		caption,
 		id,
-		images
+		image
 	}, {
 		contentTypeIDIf,
 		Error,
@@ -29,10 +43,9 @@ export default {
 			License
 		}
 	}) {
-		const image = images[0];
 		if (!image) {
 			return Error.render({
-				message: "Invalid attempt to render hero image without providing any images.",
+				message: "Invalid attempt to render hero image without providing an image.",
 				title: "Image missing"
 			});
 		}

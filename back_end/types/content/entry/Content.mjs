@@ -10,13 +10,20 @@ export default {
 				id
 				title
 				titleOverride: title_override
-			`
+			`,
+			map: ({
+				heroImages,
+				...rest
+			}) => ({
+				heroImage: heroImages[0],
+				...rest
+			})
 		}]
 	]),
 	async render({
 		elements,
 		heroImageCaption,
-		heroImages,
+		heroImage,
 		id,
 		title,
 		titleOverride
@@ -29,10 +36,10 @@ export default {
 		render
 	}) {
 		const children = await Promise.all(elements.map(element => render(element)));
-		const heroImageHTML = heroImages.length
+		const heroImageHTML = heroImage
 			? await HeroImage.render({
 				caption: heroImageCaption,
-				images: heroImages,
+				image: heroImage,
 				uid: `${id}-hero-image`
 			})
 			: "";
