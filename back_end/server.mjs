@@ -1,47 +1,56 @@
 import finalHandler from "finalhandler";
 import http from "http";
 import options from "./options.mjs";
+import path from "path";
 import serveStatic from "serve-static";
 import { renderSingleEntry } from "./target.mjs";
-
-function isContentURL(url){
-	const path = String(url).split("/");
-	const last = String(path[path.length-1]);
-	if((last === "") || (last.indexOf('.') < 0) || (last === "index.html") || (last === "index.htm")){
-		return true;
-	}
-	return false;
-}
-
-function transformURL(url){
-	const path = String(url).split("/");
-	const last = String(path[path.length-1]);
-	if((last === "") || (last === "index.html") || (last === "index.htm")){
-		const ret = path.slice(1,path.length-1).join("/");
-		return decodeURI(ret);
-	}else if(last.indexOf('.') < 0){
-		const ret = path.slice(1,path.length).join("/");
-		return decodeURI(ret);
-	}else{
-		return url;
-	}
-}
-
-export function start(targetName) {
-	const serve = serveStatic("./web/" + targetName, {
-		"index": "index.html"
+/*
+* Content URIs correspond to rendered entries.
+* Resources like fonts are not considered content URIs.
+*/
+const isContentURI = pathName => {
+	const parts = String(pathName).split("/");
+	const lastPart = parts[parts.length - 1];
+	return !lastPart || !lastPart.includes(".") || /index\.html?/.test(lastPart);
+};
+/*
+* Transforms a URL
+*/
+const toCraftCMSSlug = pathName => {
+	const parts = String(pathName).split("/");
+	const lastPart = parts[parts.length - 1];
+	return !lastPart || /index\.html?/.test(lastPart)
+		? decodeURI(parts.slice(1, parts.length - 1).join("/"))
+		: !lastPart.includes(".")
+			? decodeURI(parts.slice(1, parts.length).join("/"))
+			: pathName;
+};
+/*
+* Starts an HTTP server for target `targetName`.
+*
+* This will serve all resources for this target and render entries on demand.
+* Ideally, this function is used for previews.
+*/
+export default targetName => {
+	const serve = serveStatic(path.join("web", targetName), {
+		index: "index.html"
 	});
 	const server = http.createServer(async (request, response) => {
-		const done = finalHandler(request, response);
-		if(request.url === "/robots.txt"){
+		const isDone = finalHandler(request, response);
+		if (request.url === "/robots.txt") {
 			response.end("User-agent: *\nDisallow: /\n");
-		}else if(isContentURL(request.url)){
-			const {html,status} = await renderSingleEntry(targetName,transformURL(request.url));
+		}
+		else if (isContentURI(request.url)) {
+			const {
+				html,
+				status
+			} = await renderSingleEntry(targetName, toCraftCMSSlug(request.url));
 			response.writeHead(status);
 			response.end(html);
-		}else{
-			serve(request, response, done);
+		}
+		else {
+			serve(request, response, isDone);
 		}
 	});
 	server.listen(options.httpPort);
-}
+};

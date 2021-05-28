@@ -15,7 +15,9 @@ const helperTypes = await loadHelperTypes();
 * Hence, we bind all relevant information to the function such that type modules become simpler.
 */
 const contextualize = types => context => Object.fromEntries([...types.entries()]
-	.map(([name, module]) => {
+	.map(([name, {
+		module
+	}]) => {
 		const {
 			render,
 			queries,

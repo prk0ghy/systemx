@@ -1,11 +1,12 @@
 import { loadContentTypes } from "./types.mjs";
-import { getContext as getCMSContext } from "./cms.mjs";
 import Error from "./types/helper/Error.mjs";
 import RenderingContext from "./RenderingContext.mjs";
-const cmsContext = await getCMSContext();
 const contentTypes = await loadContentTypes();
 const warnedContentTypes = new Set([
-	/* This content type is handled elsewhere and isn't necessary during rendering */
+	/*
+	* This content type is handled elsewhere and isn't necessary during rendering.
+	* Its only job is to determine which entry is supposed to be the home page.
+	*/
 	"startseite_verweis_Entry"
 ]);
 /*
@@ -20,28 +21,37 @@ const warnedContentTypes = new Set([
 */
 export const render = async (model, context, hints) => {
 	const { __typename: type } = model;
-	const contentType = (() => {
-		for (const [, contentType] of contentTypes) {
-			const prototype = contentType.default;
+	const [contentType, isEntryType] = (() => {
+		for (const [, {
+			isEntryType,
+			module
+		}] of contentTypes) {
+			const prototype = module.default;
 			if ([...(prototype?.queries?.keys() || [])].includes(type)) {
-				return prototype;
+				return [prototype, isEntryType];
 			}
 		}
-		return null;
+		return [];
 	})();
 	if (contentType) {
 		const { map } = contentType.queries.get(type);
-		if (!contentType.cms) {
-			contentType.cms = cmsContext;
-		}
+		const effectiveModel = isEntryType
+			? (await context.query(() => `
+				entry(id: ${model.id}) {
+					...on ${type} {
+						${contentType.queries.get(type).fetch(context.cms)}
+					}
+				}
+			`)).entry
+			: model;
 		/*
 		* Nested content types may have structurally different models.
 		* Therefore, they can define a `map` function for each `__typename` in their `queries` section.
 		* This allows us to map the result of a query to a known structure prior to rendering it.
 		*/
 		const mappedModel = map
-			? map(model)
-			: model;
+			? map(effectiveModel)
+			: effectiveModel;
 		return contentType.render(mappedModel, new RenderingContext({
 			hints,
 			model: mappedModel,

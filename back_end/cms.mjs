@@ -137,7 +137,9 @@ export const getContext = async () => {
 		introspection: await introspect(),
 		types
 	};
-	for (const [, module] of contentTypes.entries()) {
+	for (const [, {
+		module
+	}] of contentTypes.entries()) {
 		for (const [key, setup] of module.default.queries) {
 			if (Object.hasOwnProperty.call(cms.types, key)) {
 				continue;
