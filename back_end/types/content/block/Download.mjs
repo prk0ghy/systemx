@@ -92,7 +92,7 @@ export default {
 							<p>${description}</p>
 						</download-text>
 						<download-icon>
-							<a href="${await download(url || file.url)}" target="blank">
+							<a href="${await download(url || file.url)}" target="_blank">
 								<p>DOWNLOAD</p>
 							</a>
 						</download-icon>
