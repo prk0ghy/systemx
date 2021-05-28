@@ -19,7 +19,7 @@ const recurseDirectory = async (directory, types) => {
 		const moduleName = path.basename(fileName, moduleExtension);
 		const moduleURL = URL.pathToFileURL(path.join(directory, fileName));
 		try {
-			const module = await import(moduleURL);
+			const module = await import(moduleURL.pathname);
 			const parts = directory.split(path.sep);
 			const lastPart = parts[parts.length - 1];
 			const isEntryType = lastPart === "entry";

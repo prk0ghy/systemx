@@ -19,8 +19,10 @@
 	"devDependencies": {
 		"@babel/eslint-parser": "^7.13.14",
 		"@babel/plugin-proposal-class-properties": "^7.13.0",
-		"@babel/plugin-syntax-top-level-await": "^7.12.13",
+		"@babel/preset-env": "^7.14.2",
+		"babel-jest": "^27.0.1",
 		"eslint": "^7.24.0",
+		"jest": "^27.0.1",
 		"stylelint": "^13.12.0",
 		"stylelint-config-standard": "^21.0.0"
 	},
@@ -42,7 +44,9 @@
 		"lint": "eslint 'back_end/**/*.mjs' 'front_end/**/*.js'",
 		"mon": "nodemon --ignore web/ back_end/index.mjs --skip-network --start-server",
 		"start": "node back_end/index.mjs --start-server",
-		"open": "node back_end/index.mjs --open-browser --start-server"
+		"open": "node back_end/index.mjs --open-browser --start-server",
+		"test": "npm run test:back-end",
+		"test:back-end": "jest back_end/test"
 	},
 	"type": "module",
 	"version": "0.0.1"

@@ -1,13 +1,9 @@
-import { loadContentTypes, loadHelperTypes } from "./types.mjs";
 import Error from "./types/helper/Error.mjs";
 import { formatBytes } from "./format.mjs";
 import fs from "fs";
 import options from "./options.mjs";
 import https from "https";
-import query, { getContext as getCMSContext } from "./cms.mjs";
-const cmsContext = await getCMSContext();
-const contentTypes = await loadContentTypes();
-const helperTypes = await loadHelperTypes();
+import query from "./cms.mjs";
 /*
 * Types should be able to call `render` without providing their context,
 * as it makes content types much easier to use.
@@ -53,8 +49,7 @@ export default class {
 		: elseValue;
 	contentTypeIDIf = ( ...rest) => this.attributeIf("content-type-id", ...rest);
 	classIf = (...rest) => this.attributeIf("class", ...rest);
-	cms = cmsContext;
-	contentTypes = contextualize(contentTypes)(this);
+	contentTypes = null;
 	download = url => {
 		downloads.set(url, {});
 		const currentDownload = downloads.get(url);
@@ -142,23 +137,31 @@ export default class {
 			type: this.type
 		}, this)
 	};
-	helpers = contextualize(helperTypes)(this);
+	helpers = null;
 	hints = null;
 	query = query;
 	type = null;
 	constructor({
+		cms,
 		globalRender,
 		hints = {},
+		isMock,
 		model = {
 			__typename: "root"
 		},
-		parentContext = null
+		parentContext = null,
+		types
 	}) {
+		this.types = types || parentContext.types;
+		this.cms = cms || parentContext.cms;
+		this.contentTypes = contextualize(this.types.content)(this);
 		this.download = options.downloadMedia
 			? parentContext?.download || this.download
 			: url => url;
 		this.globalRender = globalRender || parentContext.globalRender;
+		this.helpers = contextualize(this.types.helper)(this);
 		this.hints = Object.assign({}, hints, parentContext?.hints);
+		this.isMock = isMock || parentContext?.isMock;
 		this.model = model;
 		this.parentContext = parentContext;
 		this.type = model.__typename;

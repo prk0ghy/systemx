@@ -1,4 +1,5 @@
 import * as resources from "./page_elements/resources.mjs";
+import { loadContentTypes, loadHelperTypes } from "./types.mjs";
 import { buildHead } from "./page_elements/head.mjs";
 import { formatHTML } from "./format.mjs";
 import fs from "fs";
@@ -7,8 +8,8 @@ import Marker from "./types/helper/Marker.mjs";
 import { mkdirp } from "./fileSystem.mjs";
 import options from "./options.mjs";
 import path from "path";
-import query from "./cms.mjs";
-import { render } from "./renderer.mjs";
+import query, { getContext as getCMSContext } from "./cms.mjs";
+import { makeRenderer } from "./renderer.mjs";
 import RenderingContext from "./RenderingContext.mjs";
 import wrapWithApplicationShell from "./page.mjs";
 export const resourceDirectoryName = "resources";
@@ -148,8 +149,17 @@ export const renderSingleEntry = async (targetName, uri) => {
 			status: 404
 		};
 	}
-	const html = await render(entry, new RenderingContext({
-		globalRender: render
+	const cmsContext = await getCMSContext();
+	const contentTypes = await loadContentTypes();
+	const helperTypes = await loadHelperTypes();
+	const globalRender = makeRenderer(contentTypes);
+	const html = await globalRender(entry, new RenderingContext({
+		cms: cmsContext,
+		globalRender,
+		types: {
+			content: contentTypes,
+			helper: helperTypes
+		}
 	}));
 	await loadNavigationPromise;
 	const wrappedHTML = await wrapWithApplicationShell(targetName, {
@@ -173,6 +183,9 @@ export const buildEntries = async targetName => {
 	const mediaPath = getMediaPath(targetName);
 	await mkdirp(mediaPath);
 	let warningHTML = "";
+	const cmsContext = await getCMSContext();
+	const contentTypes = await loadContentTypes();
+	const helperTypes = await loadHelperTypes();
 	await Promise.all(entries.map(async entry => {
 		const directory = await mkdirp(targetPath, entry.uri);
 		const outputFilePath = path.join(directory, "index.html");
@@ -185,8 +198,10 @@ export const buildEntries = async targetName => {
 		catch {
 			/* Doesn't matter if it fails, we just render a new file */
 		}
-		const html = await render(entry, new RenderingContext({
-			globalRender: render,
+		const globalRender = makeRenderer(contentTypes);
+		const html = await globalRender(entry, new RenderingContext({
+			cms: cmsContext,
+			globalRender,
 			hints: {
 				appendError: (() => {
 					let lastURI = null;
@@ -224,6 +239,10 @@ export const buildEntries = async targetName => {
 					const htmlPath = filePath.replace(targetPath, "");
 					return htmlPath;
 				}
+			},
+			types: {
+				content: contentTypes,
+				helper: helperTypes
 			}
 		}));
 		/* Remove target prefix and in case of Windows, replace blackslashes with forward slashes */

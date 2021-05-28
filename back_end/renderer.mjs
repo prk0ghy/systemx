@@ -1,7 +1,7 @@
-import { loadContentTypes } from "./types.mjs";
+import { loadContentTypes, loadHelperTypes } from "./types.mjs";
 import Error from "./types/helper/Error.mjs";
+import { getContext as getCMSContext } from "./cms.mjs";
 import RenderingContext from "./RenderingContext.mjs";
-const contentTypes = await loadContentTypes();
 const warnedContentTypes = new Set([
 	/*
 	* This content type is handled elsewhere and isn't necessary during rendering.
@@ -19,7 +19,7 @@ const warnedContentTypes = new Set([
 *
 * The rest of properties will be passed on to the corresponding `render` function.
 */
-export const render = async (model, context, hints) => {
+export const makeRenderer = contentTypes => async (model, context, hints) => {
 	const { __typename: type } = model;
 	const [contentType, isEntryType] = (() => {
 		for (const [, {
@@ -35,7 +35,7 @@ export const render = async (model, context, hints) => {
 	})();
 	if (contentType) {
 		const { map } = contentType.queries.get(type);
-		const effectiveModel = isEntryType
+		const effectiveModel = isEntryType && !context.isMock
 			? (await context.query(() => `
 				entry(id: ${model.id}) {
 					...on ${type} {
@@ -49,7 +49,7 @@ export const render = async (model, context, hints) => {
 		* Therefore, they can define a `map` function for each `__typename` in their `queries` section.
 		* This allows us to map the result of a query to a known structure prior to rendering it.
 		*/
-		const mappedModel = map
+		const mappedModel = map && !context.isMock
 			? map(effectiveModel)
 			: effectiveModel;
 		return contentType.render(mappedModel, new RenderingContext({
@@ -67,4 +67,21 @@ export const render = async (model, context, hints) => {
 		title: "Unsupported content type",
 		type
 	}, context);
+};
+export const makeMockRenderer = async (contextOverrides = {}) => {
+	const cmsContext = await getCMSContext();
+	const contentTypes = await loadContentTypes();
+	const helperTypes = await loadHelperTypes();
+	const globalRender = await makeRenderer(contentTypes);
+	const context = new RenderingContext({
+		cms: cmsContext,
+		globalRender,
+		isMock: true,
+		types: {
+			content: contentTypes,
+			helper: helperTypes
+		},
+		...contextOverrides
+	});
+	return (model, hints) => globalRender(model, context, hints);
 };
