@@ -8,7 +8,7 @@ import Marker from "./types/helper/Marker.mjs";
 import { mkdirp } from "./fileSystem.mjs";
 import options from "./options.mjs";
 import path from "path";
-import query, { getContext as getCMSContext } from "./cms.mjs";
+import query, { getContext as getCMSContext, craftIntrospect } from "./cms.mjs";
 import { makeRenderer } from "./renderer.mjs";
 import RenderingContext from "./RenderingContext.mjs";
 import wrapWithApplicationShell from "./page.mjs";
@@ -149,7 +149,7 @@ export const renderSingleEntry = async (targetName, uri) => {
 			status: 404
 		};
 	}
-	const cmsContext = await getCMSContext();
+	const cmsContext = await getCMSContext(craftIntrospect);
 	const contentTypes = await loadContentTypes();
 	const helperTypes = await loadHelperTypes();
 	const globalRender = makeRenderer(contentTypes);
@@ -183,7 +183,7 @@ export const buildEntries = async targetName => {
 	const mediaPath = getMediaPath(targetName);
 	await mkdirp(mediaPath);
 	let warningHTML = "";
-	const cmsContext = await getCMSContext();
+	const cmsContext = await getCMSContext(craftIntrospect);
 	const contentTypes = await loadContentTypes();
 	const helperTypes = await loadHelperTypes();
 	await Promise.all(entries.map(async entry => {
