@@ -27,7 +27,7 @@ export const loadNavigation = async target => {
 			}
 		}
 		query {
-			entries(typeId: 10, status: "live", level: 1) {
+			entries(level: 1, status: "live", type: "inhalt") {
 				...recurseEntries
 			}
 		}
