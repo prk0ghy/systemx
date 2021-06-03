@@ -1,4 +1,6 @@
 import minimist from "minimist";
+import fs from "fs";
+import os from "os";
 
 const argv = minimist(process.argv.slice(2));
 const options = {
@@ -10,6 +12,29 @@ const options = {
 	skipNetwork: false,
 	startServer: false
 };
+
+const loadConfigFile = path => {
+	try {
+		const fileContent = fs.readFileSync(path);
+		const conf = JSON.parse(fileContent);
+		Object.assign(options, options, conf);
+	} catch {
+		/* If we can't read/parse the file then we just continue */
+	}
+}
+
+const loadConfigDir = path => {
+	try {
+		fs.readdirSync(path).map(fn => `${path}/${fn}`).map(loadConfigFile);
+	} catch {
+		/* If we can't read the dir then we just skip it */
+	}
+}
+
+loadConfigFile("/etc/systemx.conf");
+loadConfigDir("/etc/systemx.d");
+loadConfigFile(`${os.homedir()}/systemx.conf`);
+loadConfigDir(`${os.homedir()}/systemx.d`);
 
 // Environment variables can override config files
 
