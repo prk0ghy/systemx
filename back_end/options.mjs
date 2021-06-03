@@ -11,6 +11,17 @@ const options = {
 	startServer: false
 };
 
+// Environment variables can override config files
+
+for(const env in process.env){
+	if(!env.startsWith("SYSTEMX_")){continue;}
+	const envnp = env.slice(8); // Remove the prefix
+	const optionName = envnp.toLowerCase().replace(/_[a-z]/g, $1 => `${$1.slice(1).toUpperCase()}`);
+	if (Object.hasOwnProperty.call(options, optionName)) {
+		options[optionName] = process.env[env];
+	}
+}
+
 // Command-Line arguments have the highest priority
 
 for(const arg in argv){
@@ -28,4 +39,5 @@ if (options.forceRendering && options.skipNetwork) {
 if (options.downloadMedia && options.skipNetwork) {
 	throw new Error(`Conflicting options \`downloadMedia\` and \`skipNetwork\` specified. You can only choose one.`);
 }
+
 export default options;
