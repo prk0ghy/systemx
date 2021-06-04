@@ -1,6 +1,6 @@
 import { loadContentTypes, loadHelperTypes } from "./types.mjs";
 import Error from "./types/helper/Error.mjs";
-import { getContext as getCMSContext, mockIntrospect, craftIntrospect } from "./cms.mjs";
+import { getContext as getCMSContext, introspectMock } from "./cms.mjs";
 import RenderingContext from "./RenderingContext.mjs";
 const warnedContentTypes = new Set([
 	/*
@@ -69,7 +69,7 @@ export const makeRenderer = contentTypes => async (model, context, hints) => {
 	}, context);
 };
 export const makeMockRenderer = async (contextOverrides = {}) => {
-	const cmsContext = await getCMSContext(mockIntrospect);
+	const cmsContext = await getCMSContext(introspectMock);
 	const contentTypes = await loadContentTypes();
 	const helperTypes = await loadHelperTypes();
 	const globalRender = await makeRenderer(contentTypes);

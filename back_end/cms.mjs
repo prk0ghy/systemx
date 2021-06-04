@@ -80,7 +80,7 @@ const globalFragments = {
 * Sends a custom introspection query to the server, then returns an object that allows for high-level checks.
 * This, for instance, can be used to check whether or not a certain type exists.
 */
-export const craftIntrospect = async () => {
+export const introspectCraft = async () => {
 	const result = await query(() => `
 		__schema {
 			types {
@@ -111,7 +111,7 @@ export const craftIntrospect = async () => {
 	};
 };
 /* Mock introspection function to be used with automated tests. */
-export const mockIntrospect = async () => {
+export const introspectMock = async () => {
 	return {
 		assetType: "dateien_Asset",
 		exists: true
@@ -137,7 +137,7 @@ const query = async (queryFunction, {
 ]))
 	.then(removeOriginFromURLs);
 export default query;
-export const getContext = async (introspect) => {
+export const getContext = async introspect => {
 	const contentTypes = await loadContentTypes();
 	const cms = {
 		fragments: {},

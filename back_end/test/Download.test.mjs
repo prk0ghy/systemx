@@ -1,5 +1,5 @@
-import { makeMockRenderer } from "../renderer.mjs";
 import cheerio from "cheerio";
+import { makeMockRenderer } from "../renderer.mjs";
 it("renders `inhaltsbausteine_download_BlockType`", async () => {
 	const render = await makeMockRenderer();
 	const html = await render({
