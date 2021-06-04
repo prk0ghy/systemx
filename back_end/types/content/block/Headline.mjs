@@ -47,10 +47,11 @@ export default {
 				message: "The size of this headline should be controlled via the corresponding field in the content type. However, this headline embeds the size in HTML, resulting in a faulty tree. Please remove the problematic tag."
 			})
 			: "";
+		const isReallyNumbered = isNumbered && tag === "h1";
 		return `
 			<section content-type="headline" ${contentTypeIDIf(id)}>
 				<inner-content>
-					${Marker.render({ isNumbered })}
+					${Marker.render({ isNumbered: isReallyNumbered })}
 					${embeddedTagError}
 					<${tag}>${headline}</${tag}>
 				</inner-content>
