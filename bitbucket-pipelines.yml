@@ -1,0 +1,18 @@
+image: node:latest
+pipelines:
+  default:
+    - parallel:
+        - step:
+            caches:
+              - node
+            name: Run tests
+            script:
+              - npm install
+              - npm run test
+        - step:
+            caches:
+              - node
+            name: Lint code
+            script:
+              - npm install
+              - npm run lint
