@@ -194,6 +194,7 @@ export default {
 		},
 		helpers: {
 			Image,
+			License,
 			Marker
 		}
 	}) {
@@ -204,6 +205,7 @@ export default {
 				images?.map(async image => await this.renderFigure({
 					caption: image.caption,
 					imageHTML: await Image.render({ asset: image?.files?.[0] }),
+					licenseHTML: await License.render({ asset: image?.files?.[0] }),
 					position: mappedImagePosition,
 					width: mappedImageWidth
 				})))
@@ -230,6 +232,7 @@ export default {
 	renderFigure({
 		caption,
 		imageHTML,
+		licenseHTML,
 		position,
 		width
 	}) {
@@ -239,6 +242,7 @@ export default {
 		return `
 			<figure figure-position="${position}" figure-type="picture" figure-width="${width}">
 				${imageHTML}
+				${licenseHTML}
 				${captionHTML}
 			</figure>
 		`;

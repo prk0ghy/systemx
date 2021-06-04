@@ -8,7 +8,7 @@ export default {
 			content += `<p>Quelle: <a href="${asset.source}">${asset.source}</a></p>`;
 		}
 		if (asset.license) {
-			content += `<p>Lizenz: ${asset.license}</p>`;
+			content += `<p>Lizenz: ${this.toName(asset.license)}</p>`;
 		}
 		if (asset.creativeCommonsTerms?.length) {
 			content += `<p>(CC ${asset.creativeCommonsTerms.sort().join("-")})</p>`;
@@ -19,5 +19,11 @@ export default {
 				<license-content>${content}</license-content>
 			</details>
 		`;
+	},
+	toName(licenseCode) {
+		if (licenseCode === "arrc") {
+			return "Alle Rechte vorbehalten";
+		}
+		return licenseCode;
 	}
 };
