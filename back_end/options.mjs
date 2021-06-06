@@ -5,15 +5,44 @@ const argv = minimist(process.argv.slice(2));
 const options = {
 	downloadMedia: false,
 	forceRendering: false,
-	graphqlEndpoint: "https://lasub.dilewe.de/api",
 	httpPort: 8042,
 	openBrowser: false,
 	skipNetwork: false,
-	startServer: false
+	startServer: false,
+	graphqlEndpoint: "https://lasub.dilewe.de/api",
+	targets: {
+		altenburg: {
+			graphqlEndpoint: "https://altenburg.test-dilewe.de/api",
+			httpPort: 8056
+		},
+		juramuseum: {
+			graphqlEndpoint: "https://systemx-jura-museum.test-dilewe.de/api",
+			httpPort: 8049
+		},
+		rdhessen: {
+			graphqlEndpoint: "https://rdhessen.test-dilewe.de/api",
+			httpPort: 8048,
+			skipNetwork: true // Crashes if set to false, why?
+		},
+		lasub: {
+			graphqlEndpoint: "https://lasub.dilewe.de/api",
+			httpPort: 8042
+		},
+		stifterverband: {
+			graphqlEndpoint: "https://stifterverband.test-dilewe.de/api",
+			httpPort: 8050
+		}
+	}
 };
 /*
-* Reads a JSON-formatted configuration file from `path`,
-* then assigns its values to the `options` object.
+* Last argument is the current target, if nothing is specified,
+* fall back to `lasub`
+*/
+export const currentTarget = argv._.length ? argv._[argv._.length - 1] : "lasub";
+
+/*
+* Read a JSON-formatted configuration file from `path`,
+* then assign its values to the `options` object.
 */
 const loadConfigurationFile = path => {
 	try {
@@ -25,9 +54,10 @@ const loadConfigurationFile = path => {
 		/* If we can't read/parse the file then we just continue */
 	}
 };
+
 /*
-* Reads every file in a directory, without recursing it,
-* and then passes each file to `loadConfigurationFile`.
+* Read every file in a directory, without recursing,
+* and then pass each file to `loadConfigurationFile`.
 */
 const loadConfigurationDirectory = path => {
 	try {
@@ -67,6 +97,10 @@ for (const arg in argv) {
 	}
 }
 /*
+* Assign target specific options based on `currentTarget`
+*/
+Object.assign(options,options,options?.targets[currentTarget]);
+/*
 * Do some sanity checks
 */
 if (options.forceRendering && options.skipNetwork) {
@@ -74,5 +108,8 @@ if (options.forceRendering && options.skipNetwork) {
 }
 if (options.downloadMedia && options.skipNetwork) {
 	throw new Error(`Conflicting options \`downloadMedia\` and \`skipNetwork\` specified. You can only choose one.`);
+}
+if (!options.graphqlEndpoint || !options.graphqlEndpoint.startsWith("http")) {
+	throw new Error(`No valid GraphQL endpoint specified, maybe an invalid/unknown target?`);
 }
 export default options;

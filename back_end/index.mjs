@@ -1,17 +1,16 @@
 import * as target  from "./target.mjs";
 import open from "open";
-import options from "./options.mjs";
+import {currentTarget, default as options} from "./options.mjs";
 import serve from "./server.mjs";
-const cTarget = "lasub";
 (async () => {
-	await target.build(cTarget);
+	await target.build(currentTarget);
 	if (options.startServer) {
-		serve(cTarget);
+		serve(currentTarget);
 	}
 	if (options.openBrowser) {
 		open(options.startServer
 			? `http://localhost:${options.httpPort}/`
-			: `file://${process.cwd()}/web/${cTarget}/index.html`
+			: `file://${process.cwd()}/web/${currentTarget}/index.html`
 		);
 	}
 })();

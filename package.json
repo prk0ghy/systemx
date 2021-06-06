@@ -44,7 +44,7 @@
 		"dev": "nodemon --ignore web/ back_end/index.mjs --quiet --start-server",
 		"lint": "eslint 'back_end/**/*.mjs' 'front_end/**/*.js'",
 		"mon": "nodemon --ignore web/ back_end/index.mjs --skip-network --start-server",
-		"start": "node back_end/index.mjs --start-server",
+		"start": "node back_end/index.mjs --start-server --",
 		"open": "node back_end/index.mjs --open-browser --start-server",
 		"test": "npm run test:back-end",
 		"test:back-end": "jest back_end/test"
