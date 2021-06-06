@@ -24,7 +24,7 @@ const options = {
 			skipNetwork: true // Crashes if set to false, why?
 		},
 		lasub: {
-			graphqlEndpoint: "https://lasub.dilewe.apasdfpode/api",
+			graphqlEndpoint: "https://lasub.dilewe.de/api",
 			httpPort: 8042
 		},
 		stifterverband: {
