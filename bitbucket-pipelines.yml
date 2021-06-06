@@ -16,3 +16,38 @@ pipelines:
             script:
               - npm install
               - npm run lint
+        - step:
+            caches:
+              - node
+            name: Build altenburg
+            script:
+              - npm install
+              - npm run build altenburg
+        - step:
+            caches:
+              - node
+            name: Build juramuseum
+            script:
+              - npm install
+              - npm run build juramuseum
+        - step:
+            caches:
+              - node
+            name: Build rdhessen
+            script:
+              - npm install
+              - npm run build rdhessen
+        - step:
+            caches:
+              - node
+            name: Build lasub
+            script:
+              - npm install
+              - npm run build lasub
+        - step:
+            caches:
+              - node
+            name: Build stifterverband
+            script:
+              - npm install
+              - npm run build stifterverband
