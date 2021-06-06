@@ -261,7 +261,7 @@ export const buildEntries = async targetName => {
 		const { smtime } = await fsp.stat(homePageSourcePath);
 		try {
 			const { dmtime } = await fsp.stat(homePageDestinationPath);
-			if (options.forceRendering || Date.parse(stime) > Date.parse(dmtime)) {
+			if (options.forceRendering || Date.parse(smtime) > Date.parse(dmtime)) {
 				await fsp.copyFile(homePageSourcePath, homePageDestinationPath);
 			}
 		}
