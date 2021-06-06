@@ -9,7 +9,6 @@ const options = {
 	openBrowser: false,
 	skipNetwork: false,
 	startServer: false,
-	graphqlEndpoint: "https://lasub.dilewe.de/api",
 	targets: {
 		altenburg: {
 			graphqlEndpoint: "https://altenburg.test-dilewe.de/api",
@@ -108,6 +107,9 @@ if (options.forceRendering && options.skipNetwork) {
 }
 if (options.downloadMedia && options.skipNetwork) {
 	throw new Error(`Conflicting options \`downloadMedia\` and \`skipNetwork\` specified. You can only choose one.`);
+}
+if (!currentTarget || !(options?.targets[currentTarget])){
+	throw new Error(`Not a valid target \`${currentTarget}\``);
 }
 if (!options.graphqlEndpoint || !options.graphqlEndpoint.startsWith("http")) {
 	throw new Error(`No valid GraphQL endpoint specified, maybe an invalid/unknown target?`);
