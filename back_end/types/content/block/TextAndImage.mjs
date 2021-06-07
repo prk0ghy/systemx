@@ -60,11 +60,14 @@ export default {
 				text
 			`,
 			map: ({
+				galleryIntroductionText,
 				images,
 				...rest
 			}) => ({
-				images: images.map(image => ({
-					caption: null,
+				images: images.map((image, i) => ({
+					caption: i === 0
+						? galleryIntroductionText
+						: null,
 					files: [image]
 				})),
 				...rest
@@ -82,11 +85,14 @@ export default {
 				text
 			`,
 			map: ({
+				galleryIntroductionText,
 				images,
 				...rest
 			}) => ({
-				images: images.map(image => ({
-					caption: null,
+				images: images.map((image, i) => ({
+					caption: i === 0
+						? galleryIntroductionText
+						: null,
 					files: [image]
 				})),
 				...rest
@@ -104,11 +110,14 @@ export default {
 				text
 			`,
 			map: ({
+				galleryIntroductionText,
 				images,
 				...rest
 			}) => ({
-				images: images.map(image => ({
-					caption: null,
+				images: images.map((image, i) => ({
+					caption: i === 0
+						? galleryIntroductionText
+						: null,
 					files: [image]
 				})),
 				...rest
@@ -145,11 +154,14 @@ export default {
 				text
 			`,
 			map: ({
+				galleryIntroductionText,
 				images,
 				...rest
 			}) => ({
-				images: images.map(image => ({
-					caption: null,
+				images: images.map((image, i) => ({
+					caption: i === 0
+						? galleryIntroductionText
+						: null,
 					files: [image]
 				})),
 				...rest
@@ -167,11 +179,14 @@ export default {
 				text
 			`,
 			map: ({
+				galleryIntroductionText,
 				images,
 				...rest
 			}) => ({
-				images: images.map(image => ({
-					caption: null,
+				images: images.map((image, i) => ({
+					caption: i === 0
+						? galleryIntroductionText
+						: null,
 					files: [image]
 				})),
 				...rest
