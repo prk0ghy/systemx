@@ -64,3 +64,13 @@ s, strike {
 a {
 	color:rgb(var(--highlight-color));
 }
+
+sub {
+	font-size:0.7em;
+	vertical-align:sub;
+}
+
+sup {
+	font-size:0.7em;
+	vertical-align:super;
+}
