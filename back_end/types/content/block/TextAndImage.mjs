@@ -210,16 +210,18 @@ export default {
 					width: mappedImageWidth
 				})))
 			)).join("")
-			: images?.length && images.length >= 2
-				? await Gallery.render({
-					images
-				})
-				: "";
+			: "";
+		const galleryHTML = !displayInOneLine && images?.length && images.length > 1
+		? await Gallery.render({
+			images
+		})
+		: "";
 		const galleryIntroductionHTML = galleryIntroductionText
 			? `<gallery-introduction-text>${galleryIntroductionText}</gallery-introduction-text>`
 			: "";
 		return `
 			<section content-type="text-and-image" ${contentTypeIDIf(id)}>
+				${galleryHTML}
 				<inner-content>
 					${Marker.render({ isNumbered })}
 					${figureHTML}

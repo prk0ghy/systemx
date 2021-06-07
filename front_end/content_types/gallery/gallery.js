@@ -17,7 +17,15 @@
 		const pswpElement = document.getElementById("pswp");
 		const galleries = document.querySelectorAll('section[content-type="gallery"] > inner-content > details');
 		galleries.forEach(gallery => {
-			const button = gallery.firstElementChild;
+			const button = document.createElement("BUTTON");
+			button.setAttribute("button-type","fullscreen");
+			gallery.appendChild(button);
+			const previousSlideButton = document.createElement("BUTTON");
+			previousSlideButton.setAttribute("button-type","previous-slide");
+			gallery.appendChild(previousSlideButton);
+			const nextSlideButton = document.createElement("BUTTON");
+			nextSlideButton.setAttribute("button-type","next-slide");
+			gallery.appendChild(nextSlideButton);
 			const items = [];
 			for(const img of gallery.children){
 				const imgTag = img.querySelector("img");
@@ -29,13 +37,17 @@
 				const title = figCaption ? figCaption.innerHTML : "";
 				items.push({src,w,h,title});
 			}
+			const slides = gallery.querySelectorAll(`figure[figure-type="gallery"]`);
+			slides.forEach(e => e.classList.add("hidden"));
+			slides[0].classList.remove("hidden");
+			gallery.setAttribute("open",true);
 			if(items.count === 0){return;}
 			const options = {
 				index:0,
 				bgOpacity: 0.5,
 				closeOnScroll: false,
 				getThumbBoundsFn:()=>{
-					const rect = button.getBoundingClientRect();
+					const rect = slides[options.index].getBoundingClientRect();
 					const ret = {
 						x: rect.x|0,
 						y:(rect.y|0) + (document.children[0].scrollTop),
@@ -44,11 +56,38 @@
 					return ret;
 				}
 			};
-			button.addEventListener("click",(e)=>{
+
+			function setSlide(i){
+				i = i|0;
+				if(i < 0){
+					if(slides.length <= 0){return;}
+					setSlide(slides.length-1);
+					return;
+				}else if(i >= slides.length){
+					setSlide(0);
+					return;
+				}
+				let ci = 0;
+				for(img of slides){
+					if(ci++ == i){
+						img.classList.remove("hidden");
+					}else{
+						img.classList.add("hidden");
+					}
+				}
+				options.index = i;
+			}
+			gallery.addEventListener("click", e => e.preventDefault())
+			button.addEventListener("click",e => {
 				e.preventDefault();
 				const gal = new PhotoSwipe(pswpElement,PhotoSwipeUI_Default,items,options);
 				gal.init();
+				gal.listen('close', () => button.classList.remove("active"));
+				gal.listen('beforeChange', () => setSlide(gal.getCurrentIndex()));
+				button.classList.add("active");
 			});
+			previousSlideButton.addEventListener("click", () => setSlide(options.index - 1));
+			nextSlideButton.addEventListener("click", () => setSlide(options.index + 1));
 		});
 	}
 	setTimeout(initPhotoswipe,0);

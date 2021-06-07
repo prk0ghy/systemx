@@ -68,6 +68,10 @@ details > summary {
 	outline:none;
 }
 
+button {
+	cursor:pointer;
+}
+
 @media screen and (max-width: 950px) {
 	body { font-size:1.6em; }
 }
