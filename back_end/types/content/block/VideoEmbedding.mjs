@@ -130,8 +130,9 @@ export default {
 		const startSeconds = this.toSeconds(start);
 		const endSeconds = this.toSeconds(end);
 		const parameters = this.getParameters(startSeconds, endSeconds).toString();
+		const separator = videoURL.indexOf("?") < 0 ? "?" : "&";
 		const timedVideoURL = parameters
-			? `${videoURL}?${parameters}`
+			? `${videoURL}${separator}${parameters}`
 			: videoURL;
 		const imageMissingError = imageURL
 			? ""
