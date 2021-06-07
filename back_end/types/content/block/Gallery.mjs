@@ -173,7 +173,7 @@ export default {
 					${galleryIntroductionTextHTML}
 					<details>
 						<summary>${figures[0]}</summary>
-						${figures.slice(1)}
+						${figures.slice(1).join("")}
 					</details>
 				</inner-content>
 			</section>
