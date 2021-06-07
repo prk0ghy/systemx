@@ -6,7 +6,7 @@ StartLimitBurst=25
 StartLimitIntervalSec=60
 
 [Service]
-ExecStart=npm start --prefix=/var/www/html/dilewe.de/module-sachsen/ "%p"
+ExecStart=npm start --prefix=/var/www/html/dilewe.de/systemx/ -- %i
 Restart=on-failure
 User=www-data
 
