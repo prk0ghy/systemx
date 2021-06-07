@@ -68,21 +68,33 @@ figcaption p:last-child {
 }
 
 figure-row {
-	display:flex;
-	flex-wrap:wrap;
+	display:block;
 }
 
 figure-row > figure {
-	flex:1 0 25%;
-	float:none !important;
-	width:auto !important;
-	margin:0 0.25em 0.5em !important;
+	display:inline-block;
+	float:left !important;
+	margin:0 !important;
+	padding:0 !important;
+	width:100%;
+	box-sizing:border-box;
 }
 
-figure-row > figure:first-child {
-	margin-left:0 !important;
+figure-row:after {
+	content:'';
+	clear:both;
+	display:block;
+	position:relative;
 }
 
-figure-row > figure:last-child {
-	margin-right:0 !important;
+figure-row > figure[figure-cols="2"] {
+	width:50%;
+}
+
+figure-row > figure[figure-cols="3"] {
+	width:33.3%;
+}
+
+figure-row > figure[figure-cols="4"] {
+	width:25%;
 }
