@@ -6,7 +6,7 @@ StartLimitBurst=25
 StartLimitIntervalSec=60
 
 [Service]
-ExecStart=npm start --prefix=/var/www/html/dilewe.de/systemx/ -- %i
+ExecStart=npm start --prefix=/var/www/html/dilewe.de/systemx/ -- %I
 Restart=on-failure
 User=www-data
 
