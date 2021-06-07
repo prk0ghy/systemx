@@ -68,8 +68,8 @@
 					return;
 				}
 				let ci = 0;
-				for(img of slides){
-					if(ci++ == i){
+				for(const img of slides){
+					if(ci++ === i){
 						img.classList.remove("hidden");
 					}else{
 						img.classList.add("hidden");
@@ -77,7 +77,7 @@
 				}
 				options.index = i;
 			}
-			gallery.addEventListener("click", e => e.preventDefault())
+			gallery.addEventListener("click", e => e.preventDefault());
 			button.addEventListener("click",e => {
 				e.preventDefault();
 				const gal = new PhotoSwipe(pswpElement,PhotoSwipeUI_Default,items,options);
