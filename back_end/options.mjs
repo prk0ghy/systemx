@@ -20,8 +20,7 @@ const options = {
 		},
 		rdhessen: {
 			graphqlEndpoint: "https://rdhessen.test-dilewe.de/api",
-			httpPort: 8048,
-			skipNetwork: true // Crashes if set to false, why?
+			httpPort: 8048
 		},
 		lasub: {
 			graphqlEndpoint: "https://lasub.dilewe.de/api",
