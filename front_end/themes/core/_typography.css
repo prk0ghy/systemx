@@ -74,3 +74,12 @@ sup {
 	font-size:0.7em;
 	vertical-align:super;
 }
+
+blockquote {
+	padding:0.5em 0;
+	margin-bottom:1em;
+	font-style:italic;
+	font-size:1.2em;
+	color: var(--headerbar-color);
+	font-weight:300;
+}
