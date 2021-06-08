@@ -72,7 +72,7 @@ figure-row {
 }
 
 figure-row > figure {
-	display:inline-block;
+	display:block;
 	float:left !important;
 	margin:0 !important;
 	padding:0 !important;
