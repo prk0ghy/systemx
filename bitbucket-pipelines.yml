@@ -58,3 +58,9 @@ pipelines:
             script:
               - npm install
               - npm run build stifterverband
+    - step:
+        name: Deploy to production!
+        deployment: production
+        trigger: manual
+        script:
+          - ssh -p 42 dev.dilewe.de /var/www/html/dilewe.de/systemx/deploy

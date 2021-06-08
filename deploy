@@ -1,0 +1,5 @@
+#!/bin/sh
+cd /var/www/html/dilewe.de/systemx/
+git reset --hard
+git pull
+systemctl restart 'systemx@*'
