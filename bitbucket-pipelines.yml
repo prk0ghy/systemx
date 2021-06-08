@@ -40,17 +40,17 @@ pipelines:
         - step:
             caches:
               - node
-            name: Build rdhessen
-            script:
-              - npm install
-              - npm run build rdhessen
-        - step:
-            caches:
-              - node
             name: Build lasub
             script:
               - npm install
               - npm run build lasub
+        - step:
+            caches:
+              - node
+            name: Build rdhessen
+            script:
+              - npm install
+              - npm run build rdhessen
         - step:
             caches:
               - node
@@ -59,7 +59,7 @@ pipelines:
               - npm install
               - npm run build stifterverband
     - step:
-        name: Deploy to production!
+        name: Deploy to production
         deployment: production
         trigger: manual
         script:
