@@ -6,6 +6,7 @@ import serve from "./server.mjs";
 	await target.build(currentTarget);
 	if (options.startServer) {
 		serve(currentTarget);
+		console.log(`Starting server on http://localhost:${options.httpPort}/`);
 	}
 	if (options.openBrowser) {
 		open(options.startServer
