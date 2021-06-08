@@ -6,7 +6,7 @@ export default {
 	},
 	queries: new Map([
 		["inhaltsbausteine_querslider_BlockType", {
-			fetch: ({ types }) => `
+			fetch: ({fragments, types }) => `
 				id
 				isNumbered: nummerierung
 				tabs {
@@ -48,6 +48,9 @@ export default {
 							}
 						}
 						title: bezeichnung
+						media: tabMedia {
+							${fragments.asset}
+						}
 					}
 				}
 				type: kastentyp
@@ -74,8 +77,10 @@ export default {
 		`).join("");
 		const tabContents = (await Promise.all(tabs.map(async (tab, index) => {
 			const contentsHTML = (await Promise.all(tab.contents.map(content => render(content)))).join("");
+			const resource = tab.media?.[0];
+			const tabMedia = resource ? `tab-media="${resource?.url}"` : "";
 			return `
-				<tab-box-content ${classIf(index === 0, "active")} tab-index="${index}">
+				<tab-box-content ${classIf(index === 0, "active")} tab-index="${index}" ${tabMedia}>
 					${contentsHTML}
 				</tab-box-content>
 			`;

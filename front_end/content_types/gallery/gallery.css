@@ -127,6 +127,7 @@ gallery-text > p {
 
 .pswp__bg {
 	background: #fff;
+	opacity: 0.9!important;
 }
 
 .pswp__ui--fit .pswp__top-bar {
@@ -135,6 +136,9 @@ gallery-text > p {
 
 .pswp__ui--fit .pswp__caption {
 	background:var(--background-color);
+}
+.pswp__button.pswp__button--arrow--right {
+	background:var(--dlw-blue);
 }
 
 button[button-type="next-slide"],
