@@ -3,13 +3,13 @@ import minimist from "minimist";
 import os from "os";
 const argv = minimist(process.argv.slice(2));
 const options = {
+	disableMarkers: false,
 	downloadMedia: false,
 	forceRendering: false,
 	httpPort: 8042,
 	openBrowser: false,
 	skipNetwork: false,
 	startServer: false,
-	disableMarkers: false,
 	targets: {
 		altenburg: {
 			graphqlEndpoint: "https://altenburg.test-dilewe.de/api",
@@ -20,9 +20,9 @@ const options = {
 			httpPort: 8053
 		},
 		juramuseum: {
+			disableMarkers: true,
 			graphqlEndpoint: "https://systemx-jura-museum.test-dilewe.de/api",
-			httpPort: 8049,
-			disableMarkers: true
+			httpPort: 8049
 		},
 		rdhessen: {
 			graphqlEndpoint: "https://rdhessen.test-dilewe.de/api",
