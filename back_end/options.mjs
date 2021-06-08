@@ -9,6 +9,7 @@ const options = {
 	openBrowser: false,
 	skipNetwork: false,
 	startServer: false,
+	disableMarkers: false,
 	targets: {
 		altenburg: {
 			graphqlEndpoint: "https://altenburg.test-dilewe.de/api",
@@ -20,7 +21,8 @@ const options = {
 		},
 		juramuseum: {
 			graphqlEndpoint: "https://systemx-jura-museum.test-dilewe.de/api",
-			httpPort: 8049
+			httpPort: 8049,
+			disableMarkers: true
 		},
 		rdhessen: {
 			graphqlEndpoint: "https://rdhessen.test-dilewe.de/api",

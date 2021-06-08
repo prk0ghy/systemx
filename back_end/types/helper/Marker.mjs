@@ -1,3 +1,4 @@
+import options from "../../options.mjs";
 export default {
 	fill(html) {
 		let i = 0;
@@ -11,7 +12,7 @@ export default {
 			renderMarkers = true
 		}
 	}) {
-		return isNumbered && renderMarkers
+		return !options.disableMarkers && isNumbered && renderMarkers
 			? `<a class="marker"></a>`
 			: "";
 	}
