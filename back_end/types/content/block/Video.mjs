@@ -111,7 +111,6 @@ export default {
 						${captionHTML}
 					</figure>
 					${licenseHTML}
-					<help-icon></help-icon>
 				</inner-content>
 			</section>
 		`;

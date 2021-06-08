@@ -78,7 +78,10 @@ export default {
 			})
 		}],
 		["inhaltsbausteine_aufgabe_BlockType", {
-			fetch: ({ types }) => `
+			fetch: ({
+				fragments,
+				types
+			}) => `
 				content: aufgabeInhalt {
 					...on aufgabeInhalt_BlockType {
 						elements: aufgabeElemente {
@@ -110,6 +113,9 @@ export default {
 						}
 					}
 				}
+				helpVideos: hilfsvideo_q {
+					${fragments.asset}
+				}
 				html: h5p
 				id
 				inputType: benutzereingabe
@@ -119,15 +125,18 @@ export default {
 			`,
 			map: ({
 				content,
+				helpVideos,
 				...rest
 			}) => ({
 				...rest,
-				content: content[0]
+				content: content[0],
+				helpVideo: helpVideos[0]
 			})
 		}]
 	]),
 	async render({
 		content,
+		helpVideo,
 		html,
 		id,
 		inputType,
@@ -137,6 +146,7 @@ export default {
 	}, {
 		contentTypeIDIf,
 		helpers: {
+			HelpVideo,
 			Marker
 		},
 		render
@@ -155,6 +165,7 @@ export default {
 			<section content-type="exercise" ${contentTypeIDIf(id)}>
 				<inner-content>
 					${Marker.render({ isNumbered })}
+					${await HelpVideo.render({ asset: helpVideo })}
 					<exercise-content>
 						${titleHTML}
 						${textHTML ?? ""}

@@ -6,7 +6,13 @@ export default {
 	},
 	queries: new Map([
 		["inhaltsbausteine_querslider_BlockType", {
-			fetch: ({fragments, types }) => `
+			fetch: ({
+				fragments,
+				types
+			}) => `
+				helpVideos: hilfsvideo_qs {
+					${fragments.asset}
+				}
 				id
 				isNumbered: nummerierung
 				tabs {
@@ -47,49 +53,73 @@ export default {
 								${types.quersliderInhalt_videoDatei_BlockType}
 							}
 						}
-						title: bezeichnung
 						media: tabMedia {
 							${fragments.asset}
 						}
+						title: bezeichnung
 					}
 				}
 				type: kastentyp
-			`
+			`,
+			map: ({
+				helpVideos,
+				tabs,
+				...rest
+			}) => ({
+				helperVideo: helpVideos[0],
+				tabs: tabs.map(tab => Object.assign({}, tab, {
+					media: tab.media[0]
+				})),
+				...rest
+			})
 		}]
 	]),
 	async render({
+		helpVideo,
 		id,
 		isNumbered,
 		tabs,
 		type
 	}, {
+		attributeIf,
 		classIf,
 		contentTypeIDIf,
 		helpers: {
+			HelpVideo,
 			Marker
 		},
 		render
 	}) {
 		const tabHeaders = tabs.map((tab, index) => `
-			<tab-box-header ${classIf(index === 0, "active")} tab-index="${index}">
+			<tab-box-header
+				${classIf(index === 0, "active")}
+				tab-index="0"
+			>
 				${tab.title}
 			</tab-box-header>
 		`).join("");
 		const tabContents = (await Promise.all(tabs.map(async (tab, index) => {
 			const contentsHTML = (await Promise.all(tab.contents.map(content => render(content)))).join("");
-			const resource = tab.media?.[0];
-			const tabMedia = resource ? `tab-media="${resource?.url}"` : "";
 			return `
-				<tab-box-content ${classIf(index === 0, "active")} tab-index="${index}" ${tabMedia}>
+				<tab-box-content
+					${classIf(index === 0, "active")}
+					tab-index="0"
+					${attributeIf("tab-media", tab.media?.url)}
+				>
 					${contentsHTML}
 				</tab-box-content>
 			`;
 		}))).join("");
 		const boxType = this.getType(type);
 		return `
-			<section content-type="tab-box" ${contentTypeIDIf(id)} tab-box-type="${boxType}">
+			<section
+				content-type="tab-box"
+				${contentTypeIDIf(id)}
+				tab-box-type="${boxType}"
+			>
 				<inner-content>
 					${Marker.render({ isNumbered })}
+					${await HelpVideo.render({ asset: helpVideo })}
 					<tab-box-header-wrap>
 						${tabHeaders}
 					</tab-box-header-wrap>

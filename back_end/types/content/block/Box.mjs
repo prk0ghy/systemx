@@ -18,7 +18,10 @@ export default {
 	},
 	queries: new Map([
 		["inhaltsbausteine_aufklappkasten_BlockType", {
-			fetch: ({ types }) => `
+			fetch: ({
+				fragments,
+				types
+			}) => `
 				colorClassName: Farbe
 				content: inhaltDesKastens {
 					...on inhaltDesKastens_BlockType {
@@ -61,17 +64,28 @@ export default {
 					}
 				}
 				headline: boxHeader
+				helpVideos: hilfsvideo {
+					${fragments.asset}
+				}
 				id
 				isNumbered: nummerierung
 				source: quellenangaben
 				summary: zusammenfassung
-			`
+			`,
+			map: ({
+				helpVideos,
+				...rest
+			}) => ({
+				helpVideo: helpVideos[0],
+				...rest
+			})
 		}]
 	]),
 	async render({
 		content: [content],
 		colorClassName,
 		headline,
+		helpVideo,
 		id,
 		isNumbered,
 		source,
@@ -80,6 +94,7 @@ export default {
 		contentTypeIDIf,
 		EditorialError,
 		helpers: {
+			HelpVideo,
 			Marker
 		},
 		render
@@ -102,6 +117,7 @@ export default {
 			<section box-type="${boxType}" content-type="box" ${contentTypeIDIf(id)}>
 				<inner-content>
 					${Marker.render({ isNumbered })}
+					${await HelpVideo.render({ asset: helpVideo })}
 					<details class="box-wrap">
 						<summary>
 							<box-caption>
