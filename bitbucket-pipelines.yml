@@ -26,6 +26,13 @@ pipelines:
         - step:
             caches:
               - node
+            name: Build bettermarks
+            script:
+              - npm install
+              - npm run build bettermarks
+        - step:
+            caches:
+              - node
             name: Build juramuseum
             script:
               - npm install

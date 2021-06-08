@@ -14,6 +14,10 @@ const options = {
 			graphqlEndpoint: "https://altenburg.test-dilewe.de/api",
 			httpPort: 8056
 		},
+		bettermarks: {
+			graphqlEndpoint: "https://bm.test-dilewe.de/api",
+			httpPort: 8053
+		},
 		juramuseum: {
 			graphqlEndpoint: "https://systemx-jura-museum.test-dilewe.de/api",
 			httpPort: 8049
