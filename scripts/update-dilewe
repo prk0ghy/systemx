@@ -1,0 +1,10 @@
+#!/bin/sh
+if [ "$HOSTNAME" != "dev.dilewe.de" ]; then
+    echo "Very likely that you don't want to execute this script since it is meant for the dev.dilewe.de server."
+    exit
+fi
+cd /var/www/html/dilewe.de/systemx/
+git reset --hard
+git pull
+npm i
+systemctl restart 'systemx@*'

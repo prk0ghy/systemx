@@ -63,4 +63,4 @@ pipelines:
         deployment: production
         trigger: manual
         script:
-          - ssh -p 42 dev.dilewe.de /var/www/html/dilewe.de/systemx/deploy
+          - ssh -p 42 dev.dilewe.de /var/www/html/dilewe.de/systemx/scripts/update-dilewe
