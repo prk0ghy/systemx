@@ -28,6 +28,20 @@ figure[figure-position="left"] {
 	margin:0 var(--content-padding-half) var(--content-padding-half) 0;
 }
 
+
+figure-row {
+	display:block;
+}
+
+figure-row > figure {
+	display:block;
+	float:left !important;
+	margin:0 !important;
+	padding:0 !important;
+	width:100%;
+	box-sizing:border-box;
+}
+
 figure:last-child {
 	margin-bottom:0;
 }
@@ -67,20 +81,7 @@ figcaption p:last-child {
 	}
 }
 
-figure-row {
-	display:block;
-}
-
-figure-row > figure {
-	display:block;
-	float:left !important;
-	margin:0 !important;
-	padding:0 !important;
-	width:100%;
-	box-sizing:border-box;
-}
-
-figure-row:after {
+figure-row::after {
 	content:'';
 	clear:both;
 	display:block;

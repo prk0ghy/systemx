@@ -17,12 +17,11 @@ main > section[content-type="embedding"]::after {
 	display:block;
 	position:absolute;
 	left:0;
-	bottom:0;
+	bottom: -1em;
 	width:100%;
 	height:50%;
 	background: var(--background-green);
 	z-index:0;
-	bottom: -1em;
 }
 
 /* figure[figure-type="embedding"] > figcaption {

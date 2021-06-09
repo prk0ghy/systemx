@@ -4,10 +4,17 @@ pipelines:
     - step:
         caches:
           - node
-        name: Lint code
+        name: Lint JS Code
         script:
           - npm install
-          - npm run lint
+          - npm run eslint
+    - step:
+        caches:
+          - node
+        name: Lint CSS
+        script:
+          - npm install
+          - npm run stylelint
     - step:
         caches:
           - node
