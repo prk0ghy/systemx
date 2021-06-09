@@ -20,6 +20,27 @@ export default {
 		}
 		return parameters.toString();
 	},
+	getPreviewImageURL(videoURL) {
+		if (["youtube.", "youtu.be"].some(term => videoURL.includes(term))) {
+			return this.getYouTubePreviewImageURL(videoURL);
+		}
+	},
+	getYouTubePreviewImageURL(videoURL) {
+		const url = new URL(videoURL);
+		const videoID = url.hostname.includes("youtu.be")
+			/* Short URL */
+			? url.pathname.slice(1)
+			/* Long URL */
+			: url.pathname === "/watch"
+				/* The video ID is in the `v` parameter */
+				? url.searchParams.get("v")
+				: null;
+		if (!videoID) {
+			console.warn(`Could not extract YouTube video ID from URL: ${videoURL}`);
+			return null;
+		}
+		return `https://img.youtube.com/vi/${videoID}/maxresdefault.jpg`;
+	},
 	queries: new Map([
 		["aufgabeElemente_embeddedVideoAudio_BlockType", {
 			fetch: () => `
@@ -113,6 +134,7 @@ export default {
 		}
 	}, {
 		contentTypeIDIf,
+		download,
 		EditorialError,
 		helpers: {
 			License,
@@ -130,14 +152,18 @@ export default {
 		const startSeconds = this.toSeconds(start);
 		const endSeconds = this.toSeconds(end);
 		const parameters = this.getParameters(startSeconds, endSeconds).toString();
-		const separator = videoURL.indexOf("?") < 0 ? "?" : "&";
+		const separator = videoURL.includes("?")
+			? "?"
+			: "&";
+		const thirdPartyImageURL = imageURL || this.getPreviewImageURL(videoURL);
+		const firstPartyImageURL = thirdPartyImageURL && await download(thirdPartyImageURL);
 		const timedVideoURL = parameters
 			? `${videoURL}${separator}${parameters}`
 			: videoURL;
-		const imageMissingError = imageURL
+		const imageMissingError = firstPartyImageURL
 			? ""
 			: EditorialError.render({
-				message: "The poster image for this video embedding is missing a URL."
+				message: "The preview image for this video embedding is missing a URL."
 			});
 		return `
 			${imageMissingError}
@@ -146,7 +172,7 @@ export default {
 					${Marker.render({ isNumbered })}
 					<figure figure-type="embedding">
 						<a href="${timedVideoURL}" class="embedding-link">
-							<img alt="${title}" height="${imageHeight}" src="${imageURL}" width="${imageWidth}">
+							<img alt="${title}" height="${imageHeight}" src="${firstPartyImageURL}" width="${imageWidth}">
 						</a>
 						${licenseHTML}
 						${captionHTML}
