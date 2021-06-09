@@ -46,20 +46,6 @@ export const getResourcePath = targetName => path.join(getTargetPath(targetName)
 */
 const getMediaPath = targetName => path.join(getResourcePath(targetName), "media");
 /*
-* "Rendering a file" means that the `source` HTML file will first be wrapped with the application shell
-* and then be written into the target directory.
-*/
-const renderFile = async (source, destination, targetName) => {
-	const targetPath = getTargetPath(targetName);
-	const fileContent = await fsp.readFile(source, "utf-8");
-	const html = await wrapWithApplicationShell(targetName, {
-		content: fileContent,
-		pageTitle: "Instrumentalisierung der Vergangenheit",
-		pageURI: destination.substr(targetPath.length).replace("\\","/")
-	});
-	return fsp.writeFile(destination, html);
-};
-/*
 * Recursively renders all the files in `source` into `directory`.
 * If the file does not end with ".html", it will be copied over without any processing.
 *
@@ -75,12 +61,7 @@ const renderDirectory = async (source, destination, targetName) => {
 			const targetPath = path.join(destination, fileName);
 			const stat = await fsp.stat(sourcePath);
 			if (stat.isFile()) {
-				if (path.extname(sourcePath) === ".html") {
-					promises.push(renderFile(sourcePath, targetPath, targetName));
-				}
-				else {
-					promises.push(fsp.copyFile(sourcePath, targetPath));
-				}
+				promises.push(fsp.copyFile(sourcePath, targetPath));
 			}
 			else if (stat.isDirectory()) {
 				/* Ignore everything else */
