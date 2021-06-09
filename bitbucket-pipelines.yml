@@ -1,21 +1,21 @@
 image: node:latest
 pipelines:
   default:
+    - step:
+        caches:
+          - node
+        name: Lint code
+        script:
+          - npm install
+          - npm run lint
+    - step:
+        caches:
+          - node
+        name: Run tests
+        script:
+          - npm install
+          - npm run test
     - parallel:
-        - step:
-            caches:
-              - node
-            name: Run tests
-            script:
-              - npm install
-              - npm run test
-        - step:
-            caches:
-              - node
-            name: Lint code
-            script:
-              - npm install
-              - npm run lint
         - step:
             caches:
               - node
