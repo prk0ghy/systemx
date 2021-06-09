@@ -59,14 +59,12 @@ pipelines:
               - npm install
               - npm run build stifterverband
     - step:
-        name: Update author previews
+        name: Update editor previews if `master`, else do nothing
         deployment: preview
-        trigger: manual
         script:
-          - ssh -p 42 dev.dilewe.de /var/www/html/dilewe.de/systemx/scripts/update-dilewe
+          - :; [ "$BITBUCKET_BRANCH" == "master" ] && ssh -p 42 dev.dilewe.de /var/www/html/dilewe.de/systemx/scripts/update-dilewe || echo "Not deploying anything."
     - step:
-        name: Rebuild static pages
+        name: Rebuild static pages if `master`, else do nothing
         deployment: production
-        trigger: manual
         script:
-          - ssh -p 42 dev.dilewe.de /var/www/html/dilewe.de/systemx/scripts/rebuild-pages
+          - :; [ "$BITBUCKET_BRANCH" == "master" ] && ssh -p 42 dev.dilewe.de /var/www/html/dilewe.de/systemx/scripts/rebuild-pages  || echo "Not deploying anything."
