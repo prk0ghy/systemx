@@ -24,6 +24,7 @@ export default {
 		if (["youtube.", "youtu.be"].some(term => videoURL.includes(term))) {
 			return this.getYouTubePreviewImageURL(videoURL);
 		}
+		return null;
 	},
 	getYouTubePreviewImageURL(videoURL) {
 		const url = new URL(videoURL);
