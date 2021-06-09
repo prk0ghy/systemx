@@ -59,8 +59,14 @@ pipelines:
               - npm install
               - npm run build stifterverband
     - step:
-        name: Deploy to production
-        deployment: production
+        name: Update author previews
+        deployment: preview
         trigger: manual
         script:
           - ssh -p 42 dev.dilewe.de /var/www/html/dilewe.de/systemx/scripts/update-dilewe
+    - step:
+        name: Rebuild static pages
+        deployment: production
+        trigger: manual
+        script:
+          - ssh -p 42 dev.dilewe.de /var/www/html/dilewe.de/systemx/scripts/rebuild-pages
