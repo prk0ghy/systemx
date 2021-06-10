@@ -117,6 +117,7 @@
 			function showEndSlide(){
 				endSlide.classList.add('active');
 				box.classList.add("end-slide-active");
+				closeFullscreen();
 				curSlide = tabContent.length;
 			}
 
