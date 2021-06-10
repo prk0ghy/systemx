@@ -45,8 +45,12 @@ section[tab-box-type="support"] tab-box-content-wrap {
 	position:relative;
 	width:100%;
 	min-height:600px;
-	border-top-color: var(--support-slider-main-color);
+	border-color: var(--support-slider-main-color);
 	background:var(--support-slider-background-color);
+}
+
+section[tab-box-type="support"] tab-box-content-wrap:fullscreen {
+	border:none;
 }
 
 section[tab-box-type="support"] control-wrap {
