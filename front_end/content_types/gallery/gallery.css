@@ -161,6 +161,13 @@ button[button-type="fullscreen"] {
 	font-family: "icomoon";
 }
 
+figure[figure-type="picture"] button[button-type="fullscreen"] {
+	top:auto;
+	font-size:0.8em;
+	margin-top:-2em;
+	right:2.5em;
+}
+
 button[button-type="next-slide"] {
 	top:268px;
 	height:64px;

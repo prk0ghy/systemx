@@ -1,7 +1,7 @@
 /* globals PhotoSwipe, PhotoSwipeUI_Default */
 
-(()=>{
-	function initPhotoswipe(){
+(() => {
+	const initPhotoswipe = () => {
 		const pswpMarkup = '<div class="pswp__bg"></div><div class="pswp__scroll-wrap"><div class="pswp__container"> <div class="pswp__item"></div><div class="pswp__item"></div><div class="pswp__item"></div></div><div class="pswp__ui pswp__ui--hidden"> <div class="pswp__top-bar"> <div class="pswp__counter"></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button> <button class="pswp__button pswp__button--share" title="Share"></button> <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button> <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button> <div class="pswp__preloader"> <div class="pswp__preloader__icn"> <div class="pswp__preloader__cut"> <div class="pswp__preloader__donut"></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"> <div class="pswp__share-tooltip"></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"> </button> <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"> </button> <div class="pswp__caption"> <div class="pswp__caption__center"></div></div></div></div>';
 		const ele = document.createElement("DIV");
 		ele.id = "pswp";
@@ -11,9 +11,9 @@
 		ele.setAttribute("aria-hidden","true");
 		ele.innerHTML = pswpMarkup;
 		document.querySelector("body").append(ele);
-	}
+	};
 
-	function initGallery(){
+	const initGallery = () => {
 		const pswpElement = document.getElementById("pswp");
 		const galleries = document.querySelectorAll('section[content-type="gallery"] > inner-content > details');
 		galleries.forEach(gallery => {
@@ -31,7 +31,7 @@
 				const imgTag = img.querySelector("img");
 				if(imgTag === null){continue;}
 				const src   = imgTag.src;
-				const w     = imgTag.getAttribute("width")|0;
+				const w     = imgTag.getAttribute("width") |0;
 				const h     = imgTag.getAttribute("height")|0;
 				const figCaption = img.querySelector("figcaption");
 				const title = figCaption ? figCaption.innerHTML : "";
@@ -57,7 +57,7 @@
 				}
 			};
 
-			function setSlide(i){
+			const setSlide = i => {
 				i = i|0;
 				if(i < 0){
 					if(slides.length <= 0){return;}
@@ -76,7 +76,8 @@
 					}
 				}
 				options.index = i;
-			}
+			};
+
 			gallery.addEventListener("click", e => e.preventDefault());
 			button.addEventListener("click",e => {
 				e.preventDefault();
@@ -89,7 +90,54 @@
 			previousSlideButton.addEventListener("click", () => setSlide(options.index - 1));
 			nextSlideButton.addEventListener("click", () => setSlide(options.index + 1));
 		});
-	}
+	};
+	const initSingleGallery = () => {
+		const pswpElement = document.getElementById("pswp");
+		const singles = document.querySelectorAll('figure[figure-type="picture"]');
+		singles.forEach(single => {
+			const items = [];
+			const figCaption = single.querySelector("figcaption");
+			{
+				const imgTag = single.querySelector("img");
+				if(imgTag === null){return;}
+				const src   = imgTag.src;
+				const w     = imgTag.getAttribute("width") |0;
+				const h     = imgTag.getAttribute("height")|0;
+				const title = figCaption ? figCaption.innerHTML : "";
+				items.push({src,w,h,title});
+			}
+
+			const options = {
+				index:0,
+				bgOpacity: 0.5,
+				closeOnScroll: false,
+				getThumbBoundsFn:()=>{
+					const rect = single.getBoundingClientRect();
+					const ret = {
+						x: rect.x|0,
+						y:(rect.y|0) + (document.children[0].scrollTop),
+						w:rect.width|0
+					};
+					return ret;
+				}
+			};
+			if(items.count === 0){return;}
+
+			const button = document.createElement("BUTTON");
+			button.setAttribute("button-type","fullscreen");
+			single.insertBefore(button,figCaption);
+
+			single.addEventListener("click", e => e.preventDefault());
+			button.addEventListener("click", e => {
+				e.preventDefault();
+				const gal = new PhotoSwipe(pswpElement,PhotoSwipeUI_Default,items,options);
+				gal.init();
+				gal.listen('close', () => button.classList.remove("active"));
+				button.classList.add("active");
+			});
+		});
+	};
 	setTimeout(initPhotoswipe,0);
 	setTimeout(initGallery,0);
+	setTimeout(initSingleGallery,0);
 })();
