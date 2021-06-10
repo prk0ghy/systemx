@@ -95,7 +95,7 @@ export default {
 		const tabHeaders = tabs.map((tab, index) => `
 			<tab-box-header
 				${classIf(index === 0, "active")}
-				tab-index="0"
+				tab-index="${index}"
 			>
 				${tab.title}
 			</tab-box-header>
@@ -105,7 +105,7 @@ export default {
 			return `
 				<tab-box-content
 					${classIf(index === 0, "active")}
-					tab-index="0"
+					tab-index="${index}"
 					${attributeIf("tab-media", tab.media?.url)}
 				>
 					${contentsHTML}
