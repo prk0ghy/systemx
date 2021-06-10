@@ -17,7 +17,6 @@
 			const sum = ratios.reduce((a,b) => a+b,0);
 			const widths = ratios.map(v => (v/sum) * 100.0);
 			widths.forEach((v,i) => {cols[i].style.width = `${v}%`;});
-			console.log(widths);
 		}
 	}
 	setTimeout(initFigureRows,0);
