@@ -2,7 +2,9 @@ export default {
 	getType(type) {
 		return type === "aufgabenkasten"
 			? "exercise"
-			: "mixed";
+			: type === "foerderfenster"
+				? "support"
+				: "mixed";
 	},
 	queries: new Map([
 		["inhaltsbausteine_querslider_BlockType", {

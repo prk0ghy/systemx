@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <filter id="Ellipse_11" x="24" y="894" width="164" height="164" filterUnits="userSpaceOnUse">
+      <feOffset dx="3" dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feFlood flood-opacity="0.839"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-Förderfenster_Beispiel_Englisch_-_Schlussbildschirm">
+      <rect width="1024" height="1024"/>
+    </clipPath>
+  </defs>
+  <g id="Förderfenster_Beispiel_Englisch_-_Schlussbildschirm" data-name="Förderfenster_Beispiel_Englisch - Schlussbildschirm" clip-path="url(#clip-Förderfenster_Beispiel_Englisch_-_Schlussbildschirm)">
+    <g id="Gruppe_10" data-name="Gruppe 10">
+      <g id="Ebene_2" data-name="Ebene 2" transform="translate(156.0 168.0)">
+        <g id="Ebene_6" data-name="Ebene 6" transform="translate(0 0.005)">
+          <ellipse id="Ellipse_12" data-name="Ellipse 12" cx="336.676" cy="75.933" rx="336.676" ry="75.933" transform="translate(0 458.837)" fill="#221b15"/>
+          <path id="Pfad_115" data-name="Pfad 115" d="M585.972,281.028c4.654,8.889,9.169,17.8,12.194,25.87,9.859,26.281-17.244,23.822-17.244,23.822S492.555,309,430.957,379.666s-71.449,71.178-133.055.543-149-48.946-149-48.946-27.1,2.467-17.251-23.814c3.056-8.137,7.6-17.143,12.334-26.118-9.425-2.505-25.66-7.889-18.5-13.854,6.865-5.717,23.015-10.379,32.2-12.675,4.46-9.557,7.23-17.717,6-22.914-3.3-13.963-37.784-166.728,21.355-229.156,0,0,14.777-9.851,36.954,12.326,17.019,17.019,62.583,73.691,82.852,99.15a28.383,28.383,0,0,0,25.9,10.456l68.323-.543a28.406,28.406,0,0,0,25.893-10.456c20.269-25.443,65.872-82.139,82.852-99.157C530-7.671,544.783,2.188,544.783,2.188c59.139,62.42,24.644,215.186,21.355,229.149-1.264,5.36,1.714,13.869,6.415,23.814,9.308,2.4,24.287,6.88,30.818,12.326C610.3,273.217,595.5,278.414,585.972,281.028Z" transform="translate(-27.75 -0.005)" fill="#00a99d"/>
+          <ellipse id="Ellipse_13" data-name="Ellipse 13" cx="27.514" cy="22.177" rx="27.514" ry="22.177" transform="translate(309.162 378.699)" fill="#1a1a1a"/>
+          <path id="Pfad_116" data-name="Pfad 116" d="M492.56,342.519s28.445-38.5,79.819-11.992" transform="translate(-110.483 -72.053)" fill="none" stroke="#1a1a1a" stroke-linecap="round" stroke-miterlimit="10" stroke-width="17"/>
+          <path id="Pfad_117" data-name="Pfad 117" d="M358.21,341.687s-29.29-37.854-80.06-10.208" transform="translate(-62.39 -72.089)" fill="none" stroke="#1a1a1a" stroke-linecap="round" stroke-miterlimit="10" stroke-width="17"/>
+          <path id="Pfad_118" data-name="Pfad 118" d="M559.345,712.417a1372.661,1372.661,0,0,1-352.585,0L252.751,504.15c25.148,0,66.446,30.857,89.446,44.354s63.258,13.5,86.257,0,59.729-44.354,84.892-44.354Z" transform="translate(-46.377 -113.086)" fill="#00a99d"/>
+          <path id="Pfad_119" data-name="Pfad 119" d="M569.591,132.221l51.328-76.135a8.758,8.758,0,0,1,15.072.962C647.122,79.3,659,124.728,648.021,179.26c-7.943,39.413-62.281-3.6-78.64-29.1A16.29,16.29,0,0,1,569.591,132.221Z" transform="translate(-127.133 -11.72)" fill="#fff" opacity="0.4"/>
+          <path id="Pfad_120" data-name="Pfad 120" d="M274.3,132.216,222.969,56.081a8.758,8.758,0,0,0-15.1.962c-11.139,22.247-22.968,67.68-12.031,122.219,7.935,39.413,62.281-3.6,78.64-29.1a16.328,16.328,0,0,0-.186-17.95Z" transform="translate(-42.953 -11.715)" fill="#fff" opacity="0.4"/>
+          <path id="Pfad_121" data-name="Pfad 121" d="M371.606,530.039v13.489s-37.528,5.647-64.453-24.047-65.864-34.224-65.864-34.224-31.082-5.732-59.6,0,13.6-30.617,13.6-30.617L142,418.021s128.075-15.847,173.112,67.237C315.128,485.258,344.7,529.24,371.606,530.039Z" transform="translate(-31.851 -93.496)" fill="none" stroke="#00a99d" stroke-linecap="round" stroke-linejoin="round" stroke-width="13"/>
+          <path id="Pfad_122" data-name="Pfad 122" d="M619.981,485.258c-28.522-5.732-59.6,0-59.6,0s-38.924,4.546-65.841,34.232-64.453,24.047-64.453,24.047v-13.5c26.893-.776,56.471-44.781,56.471-44.781,45.076-83.085,173.1-67.237,173.1-67.237l-53.283,36.621S648.5,490.975,619.981,485.258Z" transform="translate(-96.471 -93.496)" fill="none" stroke="#00a99d" stroke-linecap="round" stroke-linejoin="round" stroke-width="13"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -31,6 +31,8 @@
 	--table-background-content: #CFE2EC9C;
 	--dlw-blue-light: #7BA6C4;
 	--dlw-blue-dark: #1E3E51;
+	--support-slider-main-color: #00a99d;
+	--support-slider-background-color: #d9f3fc;
 }
 
 @media screen and (max-width: 650px) {

@@ -4,6 +4,8 @@
 	function initTabBoxes() {
 		const boxes = document.querySelectorAll('section[content-type="tab-box"]');
 		boxes.forEach(box => {
+			const boxType = box.getAttribute('tab-box-type');
+			if(boxType === "support"){return;}
 			const innerContent = box.firstElementChild;
 			const tabHeader  = innerContent.querySelectorAll("tab-box-header");
 			const tabContent = innerContent.querySelectorAll("tab-box-content");

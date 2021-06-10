@@ -1,0 +1,169 @@
+section[tab-box-type="support"] tab-box-header {
+	display:none;
+}
+
+section[tab-box-type="support"] button {
+	width:1.5em;
+	height:1.5em;
+	font-size:2em;
+	display:inline-block;
+	margin:0 0.5em;
+	text-align:center;
+	vertical-align:middle;
+	line-height:1.5em;
+	color:var(--support-slider-main-color);
+	border-radius:50%;
+	box-shadow: 2px 2px 8px #000;
+	cursor:pointer;
+}
+
+section[tab-box-type="support"] button::after {
+	content: "";
+	font-family:icomoon;
+}
+
+section[tab-box-type="support"] button[button-function="media"]::after {
+	content: "M";
+	line-height:1em;
+}
+
+section[tab-box-type="support"] button[button-function="exit"]::after {
+	content: "\2716";
+	line-height:1em;
+}
+
+section[tab-box-type="support"] button[button-function="previous"]::after {
+	content: "\e902";
+}
+
+section[tab-box-type="support"] button[button-function="next"]::after {
+	content: "\e901";
+}
+
+section[tab-box-type="support"] tab-box-content-wrap {
+	display:block;
+	position:relative;
+	width:100%;
+	min-height:600px;
+	border-top-color: var(--support-slider-main-color);
+	background:var(--support-slider-background-color);
+}
+
+section[tab-box-type="support"] control-wrap {
+	position:absolute;
+	bottom:0;
+	left:0;
+	width:100%;
+	height:4em;
+	padding-top:0.4em;
+	box-sizing: border-box;
+	text-align:right;
+	background: var(--support-slider-main-color);
+	transition:background-color 300ms;
+	z-index:20;
+}
+
+section[tab-box-type="support"].start-slide-active control-wrap,
+section[tab-box-type="support"].end-slide-active control-wrap {
+	background-color:transparent;
+}
+
+section[tab-box-type="support"] start-slide,
+section[tab-box-type="support"] end-slide {
+	display:block;
+	transition:opacity 300ms;
+	opacity:0;
+	cursor:pointer;
+}
+
+section[tab-box-type="support"] .active {
+	z-index:10;
+	opacity:1;
+}
+
+section[tab-box-type="support"] end-slide::before,
+section[tab-box-type="support"] start-slide::before {
+	content:'';
+	position:absolute;
+	display:block;
+	width:24em;
+	height:24em;
+	left:50%;
+	top:50%;
+	margin-left:-12em;
+	margin-top:-12em;
+	background:url("/resources/foerderfuchs.svg") no-repeat;
+	background-size:contain;
+}
+
+section[tab-box-type="support"] slider-info {
+	font-size:2em;
+	color:#fff;
+	font-weight:bold;
+	line-height:1.5em;
+	vertical-align:middle;
+	display:inline-block;
+}
+
+section[tab-box-type="support"] start-slide::after {
+	content:"Los geht's!";
+	position:absolute;
+	text-align:center;
+	display:block;
+	left:0;
+	top:50%;
+	width:100%;
+	margin-top:3.5em;
+	font-size:2em;
+}
+
+section[tab-box-type="support"] end-slide::after {
+	content:"Du bist fertig!";
+	position:absolute;
+	text-align:center;
+	display:block;
+	left:0;
+	top:50%;
+	width:100%;
+	margin-top:3.5em;
+	font-size:2em;
+}
+
+section[tab-box-type="support"] control-wrap::after {
+	content:'';
+	display:block;
+	position:relative;
+	clear:both;
+}
+
+section[tab-box-type="support"] button[button-function="exit"] {
+	float:left;
+}
+
+section[tab-box-type="support"] button[button-function="media"] {
+	position:absolute;
+	left:50%;
+	margin-left:-1em;
+	top:0.2em;
+	opacity:0;
+	transition:opacity 300ms;
+}
+
+section[tab-box-type="support"].has-media button[button-function="media"] {
+	opacity:1;
+}
+
+section[tab-box-type="support"].start-slide-active button[button-function="exit"],
+section[tab-box-type="support"].start-slide-active button[button-function="media"],
+section[tab-box-type="support"].start-slide-active button[button-function="previous"],
+section[tab-box-type="support"].end-slide-active button[button-function="media"],
+section[tab-box-type="support"].end-slide-active button[button-function="previous"],
+section[tab-box-type="support"].end-slide-active button[button-function="next"],
+section[tab-box-type="support"].end-slide-active slider-info,
+section[tab-box-type="support"].start-slide-active slider-info {
+	display:none;
+}
+
+section[tab-box-type="support"] section[content-type="text-and-image"] {
+	padding:0;
+}
