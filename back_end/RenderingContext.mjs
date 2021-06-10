@@ -52,6 +52,7 @@ export default class {
 	contentTypeIDIf = ( ...rest) => this.attributeIf("content-type-id", ...rest);
 	classIf = (...rest) => this.attributeIf("class", ...rest);
 	contentTypes = null;
+	escapeHTML = escapeHTML;
 	download = url => {
 		downloads.set(url, {});
 		const currentDownload = downloads.get(url);
