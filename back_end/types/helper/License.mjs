@@ -1,9 +1,13 @@
+import { escapeHTML } from '../../RenderingContext.mjs';
 export default {
 	render({ asset }) {
 		if (!asset) {
 			return "";
 		}
 		let content = "";
+		if (asset.creator) {
+			content += `<p>Urheber: ${escapeHTML(asset.creator)}</p>`;
+		}
 		if (asset.source) {
 			content += `<p>Quelle: <a href="${asset.source}">${asset.source}</a></p>`;
 		}

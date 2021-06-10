@@ -23,6 +23,7 @@ const globalFragments = {
 			creativeCommonsTerms: rechtemodule
 			license: lizenzart
 			source: quelle
+			creator: urheber
 		}
 	`,
 	elements: memoize(({ types }) => `
