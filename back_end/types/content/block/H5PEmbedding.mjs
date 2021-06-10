@@ -66,7 +66,7 @@ export default {
 				<inner-content>
 					${Marker.render({ isNumbered })}
 					<figure figure-type="embedding">
-						${embeddingHTML}
+						${embeddingHTML.replace("http://","https://")}
 						${captionHTML}
 					</figure>
 				</inner-content>
