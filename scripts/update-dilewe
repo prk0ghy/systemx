@@ -7,4 +7,9 @@ cd /var/www/html/dilewe.de/systemx/
 git reset --hard
 git pull
 npm install
-systemctl restart 'systemx@*'
+systemctl restart 'systemx@altenburg'
+systemctl restart 'systemx@bettermarks'
+systemctl restart 'systemx@juramuseum'
+systemctl restart 'systemx@rdhessen'
+systemctl restart 'systemx@lasub'
+systemctl restart 'systemx@stifterverband'
