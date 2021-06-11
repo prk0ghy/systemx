@@ -40,6 +40,7 @@
 	},
 	"scripts": {
 		"build": "node back_end/index.mjs",
+		"build:clean": "rm -rf web && node back_end/index.mjs",
 		"build:release": "rm -rf web && node back_end/index.mjs --download-media",
 		"dev": "nodemon --ignore web/ back_end/index.mjs --quiet --start-server",
 		"lint": "npm run eslint && npm run stylelint",

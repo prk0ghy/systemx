@@ -29,42 +29,42 @@ pipelines:
             name: Build altenburg
             script:
               - npm install
-              - npm run build altenburg
+              - npm run build:clean altenburg
         - step:
             caches:
               - node
             name: Build bettermarks
             script:
               - npm install
-              - npm run build bettermarks
+              - npm run build:clean bettermarks
         - step:
             caches:
               - node
             name: Build juramuseum
             script:
               - npm install
-              - npm run build juramuseum
+              - npm run build:clean juramuseum
         - step:
             caches:
               - node
             name: Build lasub
             script:
               - npm install
-              - npm run build lasub
+              - npm run build:clean lasub
         - step:
             caches:
               - node
             name: Build rdhessen
             script:
               - npm install
-              - npm run build rdhessen
+              - npm run build:clean rdhessen
         - step:
             caches:
               - node
             name: Build stifterverband
             script:
               - npm install
-              - npm run build stifterverband
+              - npm run build:clean stifterverband
     - step:
         name: Update editor previews if `master`, else do nothing
         deployment: preview
