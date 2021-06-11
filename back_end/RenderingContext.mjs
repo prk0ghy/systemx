@@ -36,7 +36,7 @@ const agent = new https.Agent({
 });
 const downloads = new Map();
 
-export const escapeHTML = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+export const escapeHTML = s => String(s).replaceAll('&','&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 /*
 * The rendering context is a small set of properties that is useful for debugging.
 * Moreover, it also comes with a `render` function that can be used for recursive rendering.
