@@ -5,11 +5,11 @@ if [[ "$HOSTNAME" != "dev.dilewe.de" ]]; then
 fi
 cd /var/www/html/dilewe.de/systemx/
 
-npm run build altenburg &
-npm run build bettermarks &
-npm run build juramuseum &
-npm run build rdhessen &
-npm run build lasub &
-npm run build stifterverband &
+sudo -u www-data npm run build altenburg &
+sudo -u www-data npm run build bettermarks &
+sudo -u www-data npm run build juramuseum &
+sudo -u www-data npm run build rdhessen &
+sudo -u www-data npm run build lasub &
+sudo -u www-data npm run build stifterverband &
 
 wait
