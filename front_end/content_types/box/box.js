@@ -3,7 +3,7 @@ let overlayHideBoxCallback = undefined;
 
 /* Don't pollute the global scope if avoidable */
 (() => {
-	function initBoxes() {
+	const initBoxes = () => {
 		const boxes = document.querySelectorAll('section[content-type="box"] > inner-content > details');
 		boxes.forEach(boxDetails => {
 			boxDetails.classList.add("box-wrap");
@@ -12,7 +12,7 @@ let overlayHideBoxCallback = undefined;
 			let boxVisible = false;
 			let classRemoverTimer = undefined;
 
-			function calcHeights(){
+			const calcHeights = () => {
 				if(boxVisible){
 					const viewportHeight = window.innerHeight|0;
 					const headerHeight   = boxHeader.clientHeight|0;
@@ -20,9 +20,9 @@ let overlayHideBoxCallback = undefined;
 				}else{
 					boxContent.style.maxHeight = "";
 				}
-			}
+			};
 
-			function showBox(){
+			const showBox = () => {
 				boxVisible = true;
 				const rect = boxHeader.getBoundingClientRect();
 				boxDetails.parentElement.style.height = ((rect.height|0)+8) + "px"; // Set a fixed height for the parent element, because as soon as we set position:fixed it will loose its height and would lead to content jumping aronud
@@ -39,9 +39,9 @@ let overlayHideBoxCallback = undefined;
 					classRemoverTimer = undefined;
 				}
 				calcHeights();
-			}
+			};
 
-			function hideBox(){
+			const hideBox = () => {
 				boxVisible = false;
 				overlayHideBoxCallback = undefined;
 				if(classRemoverTimer === undefined){
@@ -57,7 +57,7 @@ let overlayHideBoxCallback = undefined;
 				const prect = boxDetails.parentElement.getBoundingClientRect();
 				boxDetails.style.top = (prect.top|0)+"px";
 				calcHeights();
-			}
+			};
 
 			boxHeader.addEventListener("click", e => {
 				e.preventDefault();
@@ -71,11 +71,11 @@ let overlayHideBoxCallback = undefined;
 			});
 		});
 
-		function hideCurBox(){
+		const hideCurBox = () => {
 			if(overlayHideBoxCallback === undefined){return;}
 			overlayHideBoxCallback();
-		}
+		};
 		overlayCloseHandlers.push(hideCurBox);
-	}
+	};
 	setTimeout(initBoxes, 0);
 })();
