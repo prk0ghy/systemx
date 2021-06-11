@@ -93,7 +93,7 @@
 	};
 	const initSingleGallery = () => {
 		const pswpElement = document.getElementById("pswp");
-		const singles = document.querySelectorAll('figure[figure-type="picture"]');
+		const singles = document.querySelectorAll('figure[figure-type="picture"],figure[figure-type="hero-image"]');
 		singles.forEach(single => {
 			const items = [];
 			const figCaption = single.querySelector("figcaption");
