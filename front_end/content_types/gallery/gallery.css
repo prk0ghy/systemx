@@ -160,11 +160,11 @@ main > section[content-type="text-and-image"] > section[content-type="gallery"]:
 }
 
 .pswp__button.pswp__button--arrow--left {
-	margin-left: 10px
+	margin-left: 10px;
 }
 
 .pswp__button.pswp__button--arrow--right {
- margin-right: 10px;
+	margin-right: 10px;
 }
 
 .pswp__button.pswp__button--arrow--right::before {
@@ -265,5 +265,5 @@ figure-row button[button-type="fullscreen"]::after {
 
 main > section[content-type="text-and-image"] > inner-content > figure > button[button-type="fullscreen"]::before,
 main > section[content-type="text-and-image"] > inner-content > figure > button[button-type="fullscreen"]::after {
-	margin-left: 0px;
+	margin-left: 0;
 }
