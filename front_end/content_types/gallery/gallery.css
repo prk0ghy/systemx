@@ -136,8 +136,45 @@ main > section[content-type="text-and-image"] > section[content-type="gallery"]:
 	background:var(--background-color);
 }
 
+.pswp__button.pswp__button--arrow--right,
+.pswp__button.pswp__button--arrow--left {
+	width: 60px;
+	height: 60px;
+	background-color: #fff;
+	font-family: "icomoon";
+	color: var(--dlw-blue);
+	border-radius: 50%;
+}
+
+.pswp__ui--idle .pswp__button--arrow--left,
+.pswp__ui--idle .pswp__button--arrow--right {
+	opacity: 1;
+}
+
+.pswp__button.pswp__button--arrow--right::before,
+.pswp__button.pswp__button--arrow--left::before {
+	margin-top: -36px;
+	background: transparent;
+	line-height: 60px;
+	font-size: 3.3em;
+}
+
+.pswp__button.pswp__button--arrow--left {
+	margin-left: 10px
+}
+
 .pswp__button.pswp__button--arrow--right {
-	background:var(--dlw-blue);
+ margin-right: 10px;
+}
+
+.pswp__button.pswp__button--arrow--right::before {
+	content: "\e901";
+	right: 18px;
+}
+
+.pswp__button.pswp__button--arrow--left::before {
+	content: "\e902";
+	left: 7px;
 }
 
 button[button-type="next-slide"],
@@ -224,4 +261,9 @@ figure-row button[button-type="fullscreen"]::before,
 figure-row button[button-type="fullscreen"]::after {
 	font-size: 1.1em;
 	line-height: 1.1em;
+}
+
+main > section[content-type="text-and-image"] > inner-content > figure > button[button-type="fullscreen"]::before,
+main > section[content-type="text-and-image"] > inner-content > figure > button[button-type="fullscreen"]::after {
+	margin-left: 0px;
 }
