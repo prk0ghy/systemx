@@ -34,7 +34,8 @@ tab-box-content > footer {
 
 tab-box-content > section[content-type="audio"],
 tab-box-content > section[content-type="embedding"],
-tab-box-content > section[content-type="video"] {
+tab-box-content > section[content-type="video"],
+tab-box-content > section[content-type="exercise"] {
 	padding:0;
 }
 
