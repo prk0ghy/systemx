@@ -1,0 +1,18 @@
+<h1>Bestellen</h1>
+
+<form class="order-form" method="POST" action="<%- abslink %>/order">
+	<ul class="cart">
+	<% for(let product in cart) { %>
+		<li class="cart-item"><%= cart[product].name %> <cart-remove product-id="<%= product %>"/></li>
+	</ul>
+	<% } %>
+	<br/>
+
+	<label class=form-row>
+		<input type="email" name="email"/>
+		<span>Email</span>
+	</label>
+	<br/>
+
+	<input type="submit" value="Jetzt Zahlungspflichtig Bestellen"/>
+</form>

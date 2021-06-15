@@ -1,0 +1,21 @@
+
+<h1>Login</h1>
+
+<br/>
+
+<form action="<%= loginhref %>" method="POST" class="login-form">
+	<p><%= status %></p>
+	<input type="hidden" name="redirect" value="<%= redirect %>"/>
+
+	<br/>
+	<label class=form-row>
+		<input autofocus type="text" name="username"/>
+		<span>Benutzername</span>
+	</label>
+	<label class=form-row>
+		<input type="password" name="password"/>
+		<span>Passwort</span>
+	</label>
+	<input type="submit" value="Einloggen"/>
+	<a href="<%- pwresethref %>" class="pwreset">Passwort vergessen?</a>
+</form>
