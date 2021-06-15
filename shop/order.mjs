@@ -9,29 +9,8 @@ const checkProductData = data => {
 	return data !== undefined;
 };
 
-const addOrder = async args => {
-	return new Promise(async (resolve, reject) => {
-		db.run("INSERT INTO shop_order (fe_user_id,email,price_total,price_taxes,price_subtotal) VALUES (?,?,?,?,?)",args['fe_user_id'],args['email'],args['price_total'],args['price_taxes'],args['price_subtotal'],function(err){
-			if(err){
-				reject(err);
-			}else{
-				console.log(this.lastID);
-				resolve(this.lastID);
-			}
-		});
-	});
-}
-
-export const addOrderItem = async args => new Promise(async (resolve, reject) => {
-	db.run("INSERT INTO shop_order_item (shop_order_id, product_id, product_amount, product_single_price) VALUES (?,?,?,?)",args['shop_order_id'],args['product_id'],args['product_amount'],args['product_single_price'],function(err){
-		if(err){
-			reject(err);
-		}else{
-			console.log(this.lastID);
-			resolve(this.lastID);
-		}
-	});
-});
+const addOrder = ({fe_user_id,email,price_total,price_taxes,price_subtotal}) => dbinsert("INSERT INTO shop_order (fe_user_id,email,price_total,price_taxes,price_subtotal) VALUES (?,?,?,?,?)",[fe_user_id,email,price_total,price_taxes,price_subtotal]);
+export const addOrderItem = args => dbinsert("INSERT INTO shop_order_item (shop_order_id, product_id, product_amount, product_single_price) VALUES (?,?,?,?)",[shop_order_id,product_id,product_amount,product_single_price]);
 
 export const add = async (invoice_data,products) => {
 	if(!checkInvoiceData(invoice_data)){return false;}

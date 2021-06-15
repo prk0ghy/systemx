@@ -1,6 +1,6 @@
 import fs from 'fs';
 import bcrypt from 'bcrypt';
-import {dbget,dball,dbrun, default as dbm} from "./db.mjs";
+import {dbinsert,dbget,dball,dbrun, default as dbm} from "./db.mjs";
 import * as config from "./config.mjs";
 const saltRounds = 10;
 const db         = dbm();
@@ -35,7 +35,7 @@ export const addProds = async (id,prods) => {
 export const add = async (name,email,pass="") => {
 	const hash = await bcrypt.hash(pass, saltRounds);
 	console.log("Add "+name);
-	dbrun("INSERT INTO feuser (name,password,email,passwordExpired) VALUES (?,?,?,0)",[name,hash,email]);
+	return dbinsert("INSERT INTO feuser (name,password,email,passwordExpired) VALUES (?,?,?,0)",[name,hash,email]);
 };
 
 export const deleteUser = id => dbrun("DELETE FROM feuser WHERE ID=?",id);

@@ -1,6 +1,16 @@
 import sqlite3 from "sqlite3";
 const db         = new sqlite3.Database('local_data.db');
 
+export const dbinsert = (statement, data = []) => new Promise((resolve,reject) => {
+    db.run(statement,data,function(error){
+        if(error === null){
+            resolve(this.lastID);
+        }else{
+            reject(error);
+        }
+    });
+});
+
 export const dbrun = (statement, data = []) => new Promise((resolve,reject) => {
     db.run(statement,data,(error,data) => {
         if(error === null){
