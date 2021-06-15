@@ -1,29 +1,21 @@
 import fs from "fs";
-import {dbrun, default as dbm} from "./db.mjs";
+import {dbget, dbrun, default as dbm} from "./db.mjs";
 import bcrypt from "bcrypt";
 const saltRounds = 10;
 let db = dbm();
 const fsp = fs.promises;
 
-const getUser = async name => new Promise((resolve, reject) => {
-	db.get(`SELECT ID,name,password FROM beuser WHERE name = ?`,name,function(err,rows){
-		if(err){
-			reject(err);
-		}else{
-			resolve(rows);
-		}
-	});
-});
+const getUser = name => dbget(`SELECT ID,name,password FROM beuser WHERE name = ?`,name);
 
-export const addUser = (name,pass) => {
-	const hash = bcrypt.hashSync(pass, saltRounds);
-	db.run("INSERT INTO beuser (name,password) VALUES (?,?)",name,hash,function(err){});
+export const addUser = async (name,pass) => {
+	const hash = await bcrypt.hash(pass, saltRounds);
+	return await dbrun("INSERT INTO beuser (name,password) VALUES (?,?)",[name,hash]);
 };
 
 export const tryLogin = async (name,pass) => {
 	let row = await getUser(name);
 	if(row == null){return null;}
-	if(bcrypt.compareSync(pass, row.password)){
+	if(await bcrypt.compare(pass, row.password)){
 		return row;
 	}
 	return null;
@@ -33,7 +25,8 @@ export const tryLogin = async (name,pass) => {
 	await dbrun("CREATE TABLE IF NOT EXISTS beuser (ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name TEXT UNIQUE NOT NULL, password TEXT NOT NULL)");
 	let data = await fsp.readFile('shop/data/beuser.json');
 	let obj = JSON.parse(data.toString());
-	obj.forEach( row => {
+	obj.forEach(async row => {
+		if(await getUser(row.name)){return;}
 		addUser(row.name,row.pass);
 	});
 })();

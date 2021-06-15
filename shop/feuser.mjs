@@ -1,62 +1,26 @@
 import fs from 'fs';
 import bcrypt from 'bcrypt';
-import {dbrun, default as dbm} from "./db.mjs";
+import {dbget,dball,dbrun, default as dbm} from "./db.mjs";
 import * as config from "./config.mjs";
 const saltRounds = 10;
 const db         = dbm();
 const fsp = fs.promises;
 
-export const getByName = async name => {
-	return new Promise((resolve, reject) => {
-		db.get(`SELECT * FROM feuser WHERE name = ?`,name,function(err,rows){
-			if(err){
-				reject(err);
-			}else{
-				resolve(rows);
-			}
-		});
-	});
-}
+export const getByName = name => dbget(`SELECT * FROM feuser WHERE name = ?`,[name]);
+export const getByID = id => dbget(`SELECT * FROM feuser WHERE ID = ?`,id|0);
+export const getAll = () => dball(`SELECT ID,name FROM feuser`,[]);
 
-export const getByID = async id => {
-	return new Promise((resolve, reject) => {
-		db.get(`SELECT * FROM feuser WHERE ID = ?`,id|0,function(err,rows){
-			if(err){
-				reject(err);
-			}else{
-				resolve(rows);
-			}
-		});
-	});
-}
-
-export const getAll = async () => {
-	return new Promise((resolve, reject) => {
-		db.all(`SELECT ID,name FROM feuser`,function(err,rows){
-			if(err){
-				reject(err);
-			}else{
-				resolve(rows);
-			}
-		});
-	});
-}
-
-export const getActiveProds = async id => new Promise((resolve, reject) => {
-	db.all(`SELECT name FROM feuser_product WHERE user = ?`,id|0,function(err,rows){
-		if(err){
-			reject(err);
-			return;
-		}
-		let res = [];
-		rows.forEach( row => {
-			let prod = config.getProduct(row.name);
-			if(prod === undefined){return;}
-			res[row.name] = prod;
-		});
-		resolve(res);
-	});
-});
+export const getActiveProds = async id => {
+	const rows = await dball(`SELECT name FROM feuser_product WHERE user = ?`,[id|0]);
+	if(!rows){return [];}
+	let res = [];
+	for(row of rows){
+		let prod = config.getProduct(row.name);
+		if(!prod){continue;}
+		res[row.name] = prod;
+	}
+	return res;
+};
 
 export const addProds = async (id,prods) => {
 	let prodList = [];
@@ -64,45 +28,23 @@ export const addProds = async (id,prods) => {
 	let activeProds = await getActiveProds(id);
 	for(let p in prodList){
 		if(!prodList.hasOwnProperty(p) || activeProds[p]){continue;}
-		db.run('INSERT INTO feuser_product (user,name) VALUES (?,?)',id,p,function(err){});
+		await dbrun('INSERT INTO feuser_product (user,name) VALUES (?,?)',[id,p]);
 	}
 }
 
-export const add = async (name,pass,email) => new Promise(async (resolve, reject) => {
+export const add = async (name,email,pass="") => {
 	const hash = await bcrypt.hash(pass, saltRounds);
 	console.log("Add "+name);
-	db.run("INSERT INTO feuser (name,password,email,passwordExpired) VALUES (?,?,?,0)",name,hash,email,function(err){
-		if(err){
-			reject(err);
-		}else{
-			resolve(this.lastID);
-		}
-	});
-});
-
-export const addNoPassword = async (name,email) => new Promise(async (resolve, reject) => {
-	console.log("Add "+name);
-	db.run("INSERT INTO feuser (name,password,email,passwordExpired) VALUES (?,?,?,1)",name,"",email,function(err){
-		if(err){
-			reject(err);
-		}else{
-			resolve(this.lastID);
-		}
-	});
-});
-
-export const deleteUser = id => {
-	db.run("DELETE FROM feuser WHERE ID=?",id,function(err){});
+	dbrun("INSERT INTO feuser (name,password,email,passwordExpired) VALUES (?,?,?,0)",[name,hash,email]);
 };
 
-export const changePW = (id,pass) => {
-	const hash = bcrypt.hashSync(pass, saltRounds);
-	db.run("UPDATE feuser SET password=?,passwordExpired=0 WHERE ID=?",hash,id,function(err){});
+export const deleteUser = id => dbrun("DELETE FROM feuser WHERE ID=?",id);
+export const changePW = async (id,pass) => {
+	const hash = await bcrypt.hash(pass, saltRounds);
+	await dbrun("UPDATE feuser SET password=?,passwordExpired=0 WHERE ID=?",[hash,id]);
 };
 
-export const expirePW = id => {
-	db.run("UPDATE feuser SET passwordExpired=1 WHERE ID=?",id,function(err){});
-};
+export const expirePW = id => dbrun("UPDATE feuser SET passwordExpired=1 WHERE ID=?",[id]);
 
 export const tryLogin = async (name,pass) => {
 	console.log("Trying to login "+name);
@@ -124,7 +66,7 @@ export const tryLogin = async (name,pass) => {
 	obj.forEach( async row => {
 		let user   = await getByName(row.name);
 		if(user !== undefined){return;}
-		let userid = await add(row.name,row.pass,row.email);
+		let userid = await add(row.name,row.email,row.pass);
 		await addProds(userid,row.products);
 	});
 })();

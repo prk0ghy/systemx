@@ -93,7 +93,7 @@ const reqRegister = async ctx => {
 		let user = await feuser.getByName(email);
 		if(user !== undefined) {arr.errors.push("Die von Ihnen angegebene E-Mail-Adresse befindet sich bereits im System, bitte verwenden Sie eine andere oder melden Sie sich an.");}
 		if(arr.errors.length === 0){
-			let userid = await feuser.add(email,pw,email);
+			let userid = await feuser.add(email,email,pw);
 			await fesession.start(ctx,userid);
 		}
 	}

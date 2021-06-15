@@ -27,7 +27,7 @@ const tryCreateUser = async ctx => {
 	if(ctx.request.body === undefined)      {return false;}
 	if(ctx.request.body.email === undefined){return false;}
 	const email = ctx.request.body.email+'';
-	return await feuser.addNoPassword(email,email);
+	return await feuser.add(email,email);
 }
 
 const reqPostShopOrder = async ctx => {
