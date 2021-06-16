@@ -812,6 +812,10 @@ body.template-order main {
 	max-width: 768px;
 }
 
+body.template-checkout main {
+	position: absolute;
+}
+
 body.template-order ul {
 	margin: 5rem auto 2rem auto;
 	background-color: rgba(26,26,31, 0.8);
