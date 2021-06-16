@@ -58,6 +58,7 @@
 		"eslint": "eslint 'back_end/**/*.mjs' 'front_end/**/*.js'",
 		"stylelint": "stylelint 'front_end/**/*.css'",
 		"mon": "nodemon --ignore web/ back_end/index.mjs --skip-network --start-server",
+		"mon:shop": "nodemon --ignore web/ shop/index.mjs",
 		"start": "node back_end/index.mjs --start-server --",
 		"open": "node back_end/index.mjs --open-browser --start-server",
 		"test": "npm run test:back-end",
