@@ -40,7 +40,8 @@ export default {
 		Error,
 		helpers: {
 			Image,
-			License
+			License,
+			Video
 		}
 	}) {
 		if (!image) {
@@ -52,6 +53,10 @@ export default {
 		const licenseHTML = License.render({
 			asset: image
 		});
+		const isVideo = image.mimeType.substr(0,5) === "video";
+		const mediaHTML = isVideo
+			? await Video.render({asset: image, controls: false, muted: true, loop: true, autoplay: true})
+			: await Image.render({asset: image});
 		const captionHTML = caption
 			? `<figcaption>${caption}</figcaption>`
 			: "";
@@ -59,7 +64,7 @@ export default {
 			<section content-type="hero-image" ${contentTypeIDIf(id)}>
 				<inner-content>
 					<figure figure-type="hero-image">
-						${await Image.render({ asset: image })}
+						${mediaHTML}
 						${licenseHTML}
 						${captionHTML}
 					</figure>

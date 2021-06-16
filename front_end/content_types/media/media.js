@@ -2,6 +2,7 @@
 	let tabindex = 100;
 
 	function initMedia(media) {
+		if(media.getAttribute('controls') === null){return;}
 		media.removeAttribute('controls'); // Remove Browser based controls via JS, so we have them as a fallback when JS is disabled
 		media.volume = 1.0; // Force volume to 100% on init
 

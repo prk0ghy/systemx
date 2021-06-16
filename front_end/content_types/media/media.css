@@ -413,3 +413,7 @@ section[content-type="audio"][audio-type="no-image"] {
 	margin-top:calc(var(--content-padding) * -1);
 }
 
+figure[figure-type="hero-image"] > video {
+	max-height:500px;
+	object-fit:cover;
+}

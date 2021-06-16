@@ -86,11 +86,12 @@ export default {
 		EditorialError,
 		helpers: {
 			License,
-			Marker
+			Marker,
+			Video
 		}
 	}) {
 		const src = files[0]?.url;
-		const posterURL = posters[0]?.url || "";
+		const posterURL = posters[0]?.url || null;
 		const licenseHTML = License.render({
 			asset: files[0]
 		});
@@ -102,12 +103,16 @@ export default {
 				message: "This element is missing a file."
 			});
 		}
+		const videoHTML = await Video.render({
+			asset: files[0],
+			posterURL
+		});
 		return `
 			<section content-type="video" ${contentTypeIDIf(id)}>
 				<inner-content>
 					${Marker.render({ isNumbered })}
 					<figure figure-type="video">
-						<video controls poster="${posterURL}" src="${await download(src)}"></video>
+						${videoHTML}
 						${captionHTML}
 					</figure>
 					${licenseHTML}

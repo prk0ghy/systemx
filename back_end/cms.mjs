@@ -19,6 +19,7 @@ const globalFragments = {
 		height
 		url
 		width
+		mimeType
 		...on ${introspection.assetType} {
 			creativeCommonsTerms: rechtemodule
 			license: lizenzart
