@@ -82,7 +82,6 @@ export default {
 		posters
 	}, {
 		contentTypeIDIf,
-		download,
 		EditorialError,
 		helpers: {
 			License,
