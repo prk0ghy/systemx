@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+# Simple git hook that runs the linter and test suite
+# before every commit, to enable copy/link this file into .git/hooks/pre-commit
+npm i && npm run lint && npm run test
