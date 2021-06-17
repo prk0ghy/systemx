@@ -1,6 +1,6 @@
 import finalHandler from "finalhandler";
 import http from "http";
-import options from "./options.mjs";
+import options from "../../common/options.mjs";
 import path from "path";
 import serveStatic from "serve-static";
 import { renderSingleEntry } from "./target.mjs";

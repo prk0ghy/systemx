@@ -14,30 +14,34 @@ import * as fesession from "./fesession.mjs";
 import * as pwreset from "./pwreset.mjs";
 import proxy from "./proxy.mjs";
 
+const start = async () => {
+	config.printConfig();
 
-const app       = new Koa();
-const router    = new KoaRouter();
+	const app       = new Koa();
+	const router    = new KoaRouter();
 
-router.prefix('/'+config.get('prefix'));
+	router.prefix('/'+config.get('prefix'));
 
-backend.addRoutes(router);
-cart.addRoutes(router);
-fesession.addRoutes(router);
-pwreset.addRoutes(router);
-frontend.addRoutes(router);
-shop.addRoutes(router);
+	backend.addRoutes(router);
+	cart.addRoutes(router);
+	fesession.addRoutes(router);
+	pwreset.addRoutes(router);
+	frontend.addRoutes(router);
+	shop.addRoutes(router);
 
-const fileserve = new Koa();
-fileserve.use(KoaStatic('shop/public'));
+	const fileserve = new Koa();
+	fileserve.use(KoaStatic('shop/public'));
 
-app
-  .use(KoaBody())
-  .use(KoaMount('/'+config.get('prefix')+'/public',fileserve))
-  .use(frontend.reqRelaxedFilter)
-  .use(router.routes())
-  .use(router.allowedMethods())
-  .use(frontend.reqFilter)
-  .use(proxy)
-  .listen(config.get('port'));
+	app
+		.use(KoaBody())
+		.use(KoaMount('/'+config.get('prefix')+'/public',fileserve))
+		.use(frontend.reqRelaxedFilter)
+		.use(router.routes())
+		.use(router.allowedMethods())
+		.use(frontend.reqFilter)
+		.use(proxy)
+		.listen(config.get('port'));
 
-console.log("HTTP Server started on Port "+config.get('port'));
+	console.log("HTTP Server started on Port "+config.get('port'));
+};
+export default start;

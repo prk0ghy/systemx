@@ -1,9 +1,9 @@
 import * as target  from "./target.mjs";
 import open from "open";
-import {currentTarget, default as options} from "./options.mjs";
+import {currentTarget, default as options} from "../../common/options.mjs";
 import serve from "./server.mjs";
 
-(async () => {
+const start = async () => {
 	await target.build(currentTarget);
 	if (options.startServer) {
 		serve(currentTarget);
@@ -15,4 +15,5 @@ import serve from "./server.mjs";
 			: `file://${process.cwd()}/web/${currentTarget}/index.html`
 		);
 	}
-})();
+};
+export default start;

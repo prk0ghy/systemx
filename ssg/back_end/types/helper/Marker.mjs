@@ -1,4 +1,4 @@
-import options from "../../options.mjs";
+import options from "../../../../common/options.mjs";
 export default {
 	fill(html) {
 		let i = 0;

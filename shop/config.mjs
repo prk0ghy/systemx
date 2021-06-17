@@ -42,6 +42,10 @@ export const getOrigin = ctx => {
 	return null;
 };
 
+export const printConfig = () => {
+	console.log(config);
+};
+
 (() => {
 	let ddata = fs.readFileSync('shop/data/default_config.json');
 	config = JSON.parse(ddata);
@@ -53,6 +57,6 @@ export const getOrigin = ctx => {
 			...JSON.parse(ldata)
 		};
 	}
-	console.log("Config:");
-	console.log(config);
 })();
+
+

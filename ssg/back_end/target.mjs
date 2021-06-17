@@ -6,7 +6,7 @@ import fs from "fs";
 import { loadNavigation } from "./page_elements/navigation.mjs";
 import Marker from "./types/helper/Marker.mjs";
 import { mkdirp } from "./fileSystem.mjs";
-import options from "./options.mjs";
+import options from "../../common/options.mjs";
 import path from "path";
 import query, { getContext as getCMSContext, introspectCraft } from "./cms.mjs";
 import { makeRenderer } from "./renderer.mjs";

@@ -10,6 +10,7 @@ const options = {
 	openBrowser: false,
 	skipNetwork: false,
 	startServer: false,
+	startShop: false,
 	targets: {
 		altenburg: {
 			graphqlEndpoint: "https://altenburg.test-dilewe.de/api",

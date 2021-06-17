@@ -1,7 +1,7 @@
 import Error from "./types/helper/Error.mjs";
 import { formatBytes } from "./format.mjs";
 import fs from "fs";
-import options from "./options.mjs";
+import options from "../../common/options.mjs";
 import https from "https";
 import query from "./cms.mjs";
 /*

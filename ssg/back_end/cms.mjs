@@ -1,6 +1,6 @@
 import { gql } from "graphql-request";
 import request from "./rateLimiting.mjs";
-import options from "./options.mjs";
+import options from "../../common/options.mjs";
 import { loadContentTypes } from "./types.mjs";
 const memoize = fn => {
 	const cache = new Map();

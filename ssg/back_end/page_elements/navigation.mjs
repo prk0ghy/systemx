@@ -1,5 +1,5 @@
 import { request, gql } from "graphql-request";
-import options from "../options.mjs";
+import options from "../../../common/options.mjs";
 const navigationCache = new Map();
 /*
 * Requests all data needed to build the navigation from the server, given a target.
