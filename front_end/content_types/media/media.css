@@ -48,6 +48,10 @@ figure.videofigure > figcaption {
 	font-style:italic;
 }
 
+figure[figure-type="video"] figcaption {
+	min-height: 38px;
+}
+
 media-play-pause {
 	font-family: icomoon;
 	position: relative;

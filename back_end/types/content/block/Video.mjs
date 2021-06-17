@@ -96,7 +96,7 @@ export default {
 		});
 		const captionHTML = caption
 			? `<figcaption>${caption}</figcaption>`
-			: "";
+			: "<figcaption></figcaption>";
 		if (!src) {
 			return EditorialError.render({
 				message: "This element is missing a file."
