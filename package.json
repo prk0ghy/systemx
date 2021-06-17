@@ -63,7 +63,7 @@
 		"start": "node ./index.mjs --start-server --",
 		"open": "node ./index.mjs --open-browser --start-server",
 		"test": "npm run test:back-end",
-		"test:back-end": "jest ssg/back_end/test",
+		"test:back-end": "jest ssg/back_end/test -- lasub",
 		"shop": "node ./index.mjs --start-shop"
 	},
 	"type": "module",
