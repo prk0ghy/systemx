@@ -3,13 +3,17 @@ export default {
 		["aufgabeElemente_tabellen_BlockType", {
 			fetch: () => `
 				id
-				tableDescriptor: tabelle
+				tableDescriptor: tabelle {
+					table
+				}
 			`
 		}],
 		["aufklappElemente_tabellen_BlockType", {
 			fetch: () => `
 				id
-				tableDescriptor: tabelle
+				tableDescriptor: tabelle {
+					table
+				}
 			`
 		}],
 		["inhaltsbausteine_tabelle_BlockType", {
@@ -17,19 +21,25 @@ export default {
 				caption: quelle
 				id
 				isNumbered: nummerierung
-				tableDescriptor: tabelle
+				tableDescriptor: tabelle {
+					table
+				}
 			`
 		}],
 		["quersliderAufgabenElemente_tabellen_BlockType", {
 			fetch: () => `
 				id
-				tableDescriptor: tabelle_q
+				tableDescriptor: tabelle_q {
+					table
+				}
 			`
 		}],
 		["quersliderInhalt_tabellen_BlockType", {
 			fetch: () => `
 				id
-				tableDescriptor: tabelle
+				tableDescriptor: tabelle {
+					table
+				}
 			`
 		}]
 	]),
@@ -45,15 +55,15 @@ export default {
 			Marker
 		}
 	}) {
+		console.log(tableDescriptor);
 		const tableHTML = (() => {
-			try {
-				return JSON.parse(tableDescriptor).table;
-			}
-			catch {
+			if(!tableDescriptor || !tableDescriptor?.table){
 				return Error.render({
 					message: "There was an attempt to parse this table, but it failed. Does the `tableDescriptor` field evaluate to `undefined`?",
 					title: "Broken table"
 				});
+			}else{
+				return tableDescriptor?.table;
 			}
 		})();
 		const captionHTML = caption
