@@ -50,20 +50,21 @@
 		"url": "git@bitbucket.org:idlgbr/systemx.git"
 	},
 	"scripts": {
-		"build": "node back_end/index.mjs",
-		"build:clean": "rm -rf web && node back_end/index.mjs",
-		"build:release": "rm -rf web && node back_end/index.mjs --download-media",
-		"dev": "nodemon --ignore web/ back_end/index.mjs --quiet --start-server",
+		"build": "node ssg/back_end/index.mjs",
+		"build:clean": "rm -rf web && node ssg/back_end/index.mjs",
+		"build:release": "rm -rf web && node ssg/back_end/index.mjs --download-media",
+		"dev": "nodemon --ignore web/ ssg/back_end/index.mjs --quiet --start-server",
 		"lint": "npm run eslint && npm run stylelint",
-		"eslint": "eslint 'back_end/**/*.mjs' 'front_end/**/*.js'",
-		"stylelint": "stylelint 'front_end/**/*.css'",
-		"mon": "nodemon --ignore web/ back_end/index.mjs --skip-network --start-server",
-		"mon:shop": "nodemon --ignore web/ shop/index.mjs",
-		"start": "node back_end/index.mjs --start-server --",
-		"open": "node back_end/index.mjs --open-browser --start-server",
+		"eslint": "eslint 'ssg/back_end/**/*.mjs' 'ssg/front_end/**/*.js'",
+		"stylelint": "stylelint 'ssg/front_end/**/*.css'",
+		"mon": "npm run mon:ssg",
+		"mon:ssg": "nodemon --ignore web/ ssg/back_end/index.mjs --skip-network --start-server",
+		"mon:shop": "nodemon --ignore web/ ssg/shop/index.mjs",
+		"start": "node ssg/back_end/index.mjs --start-server --",
+		"open": "node ssg/back_end/index.mjs --open-browser --start-server",
 		"test": "npm run test:back-end",
-		"test:back-end": "jest back_end/test",
-		"shop": "node shop/index.mjs"
+		"test:back-end": "jest ssg/back_end/test",
+		"shop": "node ssg/shop/index.mjs"
 	},
 	"type": "module",
 	"version": "0.0.1"
