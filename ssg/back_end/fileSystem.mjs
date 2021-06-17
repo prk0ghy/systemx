@@ -9,4 +9,4 @@ export const mkdirp = async (...pathParts) => {
 		console.error("Directory creation has failed.", error);
 	}
 	return joinedPath;
-}
+};
