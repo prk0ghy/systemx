@@ -55,7 +55,6 @@ export default {
 			Marker
 		}
 	}) {
-		console.log(tableDescriptor);
 		const tableHTML = (() => {
 			if(!tableDescriptor || !tableDescriptor?.table){
 				return Error.render({
