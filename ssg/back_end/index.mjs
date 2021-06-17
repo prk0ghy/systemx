@@ -10,10 +10,14 @@ const start = async () => {
 		console.log(`Starting server on http://localhost:${options.httpPort}/`);
 	}
 	if (options.openBrowser) {
-		open(options.startServer
-			? `http://localhost:${options.httpPort}/`
-			: `file://${process.cwd()}/web/${currentTarget}/index.html`
-		);
+		try {
+			open(options.startServer
+				? `http://localhost:${options.httpPort}/`
+				: `file://${process.cwd()}/web/${currentTarget}/index.html`
+			);
+		} catch {
+			/* Not a problem if we can't open a browser window, as this is only a convenience feature. */
+		}
 	}
 };
 export default start;
