@@ -4,6 +4,6 @@ export let database;
 export const initialize = async () => {
 	database = await open({
 		driver: sqlite3.Database,
-		filename: "dist/local_data.sqlite"
+		filename: ".storage/local_data.sqlite"
 	});
 };

@@ -1,6 +1,7 @@
 import * as target  from "./target.mjs";
+import { getDistributionPath } from "../../common/paths.mjs";
+import options, { currentTarget } from "../../common/options.mjs";
 import open from "open";
-import {currentTarget, default as options} from "../../common/options.mjs";
 import serve from "./server.mjs";
 
 const start = async () => {
@@ -11,12 +12,14 @@ const start = async () => {
 	}
 	if (options.openBrowser) {
 		try {
+			const distributionPath = await getDistributionPath();
 			open(options.startServer
 				? `http://localhost:${options.httpPort}/`
-				: `file://${process.cwd()}/dist/web/${currentTarget}/index.html`
+				: `file://${process.cwd()}/${distributionPath}/${currentTarget}/index.html`
 			);
-		} catch {
-			/* Not a problem if we can't open a browser window, as this is only a convenience feature. */
+		}
+		catch {
+			/* It's not a problem if we can't open a browser window, as this is only a convenience feature. */
 		}
 	}
 };

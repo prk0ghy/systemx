@@ -4,6 +4,7 @@ import os from "os";
 import path from "path";
 const argv = minimist(process.argv.slice(2));
 const options = {
+	compliance: "none",
 	disableMarkers: false,
 	downloadMedia: false,
 	forceRendering: false,
@@ -105,9 +106,9 @@ for (const arg in argv) {
 	}
 }
 /*
-* Assign target specific options based on `currentTarget`
+* Assign target-specific options based on `currentTarget`
 */
-Object.assign(options,options,options?.targets[currentTarget]);
+Object.assign(options, options, options?.targets[currentTarget]);
 /*
 * Do some sanity checks
 */
