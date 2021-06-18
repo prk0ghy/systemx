@@ -20,7 +20,7 @@ export default async () => {
 			name TEXT NOT NULL
 		)
 	`);
-	let data = await fs.promises.readFile("shop/data/feuser.json");
+	let data = await fs.promises.readFile("modules/shop/data/feuser.json");
 	let rows = JSON.parse(data.toString());
 	rows.forEach(async row => {
 		const user = await getByName(row.name);

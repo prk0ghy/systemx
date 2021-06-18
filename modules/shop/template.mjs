@@ -30,10 +30,10 @@ const fileExtension = str => {
 	});
 	pageFooter += '  <script>let baseUrl="' + configuration.absoluteUrl('') + '";</script>';
 
-	let files = fs.readdirSync("shop/views/");
+	let files = fs.readdirSync("modules/shop/views/");
 	files.forEach(file => {
 		const name = path.parse(file).name;
-		templates[name] = fs.readFileSync(`shop/views/${file}`).toString();
+		templates[name] = fs.readFileSync(`modules/shop/views/${file}`).toString();
 	});
 })();
 

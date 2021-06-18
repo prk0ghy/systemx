@@ -1,8 +1,8 @@
-import { getDistributionPath } from "./common/paths.mjs";
-import { mkdirp } from "./common/fileSystem.mjs";
-import options from "./common/options.mjs";
-import startSSG from "./ssg/back_end/index.mjs";
-import startShop from "./shop/index.mjs";
+import { getDistributionPath } from "./modules/common/paths.mjs";
+import { mkdirp } from "./modules/common/fileSystem.mjs";
+import options from "./modules/common/options.mjs";
+import startSSG from "./modules/ssg/back_end/index.mjs";
+import startShop from "./modules/shop/index.mjs";
 (async () => {
 	await mkdirp(".storage");
 	await mkdirp(await getDistributionPath());
