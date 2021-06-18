@@ -4,8 +4,9 @@ import os from "os";
 import path from "path";
 const argv = minimist(process.argv.slice(2));
 const options = {
-	compliance: "none",
+	configurationPath: path.join(".systemx", "settings"),
 	disableMarkers: false,
+	distributionPath: "web",
 	downloadMedia: false,
 	forceRendering: false,
 	httpPort: 8042,
@@ -13,6 +14,7 @@ const options = {
 	skipNetwork: false,
 	startServer: false,
 	startShop: false,
+	storagePath: path.join(".systemx", "storage"),
 	targets: {
 		altenburg: {
 			graphqlEndpoint: "https://altenburg.test-dilewe.de/api",
@@ -42,8 +44,8 @@ const options = {
 	}
 };
 /*
-* Last argument is the current target, if nothing is specified,
-* fall back to `lasub`
+* The last argument is the current target.
+* If nothing is specified, fall back to `lasub`
 */
 export const currentTarget = argv._.length
 	? argv._[argv._.length - 1]
@@ -59,7 +61,7 @@ const loadConfigurationFile = path => {
 		Object.assign(options, configuration);
 	}
 	catch {
-		/* If we can't read/parse the file then we just continue */
+		/* If we can't read/parse the file, then we just continue */
 	}
 };
 /*

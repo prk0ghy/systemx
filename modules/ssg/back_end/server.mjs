@@ -1,5 +1,4 @@
 import finalHandler from "finalhandler";
-import { getDistributionPath } from "../../common/paths.mjs";
 import http from "http";
 import options from "../../common/options.mjs";
 import path from "path";
@@ -32,9 +31,8 @@ const toCraftCMSSlug = pathName => {
 * This will serve all resources for this target and render entries on demand.
 * Ideally, this function is used for previews.
 */
-export default async targetName => {
-	const distributionPath = await getDistributionPath();
-	const serve = serveStatic(path.join(distributionPath, targetName), {
+export default targetName => {
+	const serve = serveStatic(path.join(options.distributionPath, targetName), {
 		index: "index.html"
 	});
 	const server = http.createServer(async (request, response) => {

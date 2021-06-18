@@ -3,7 +3,6 @@ import { loadContentTypes, loadHelperTypes } from "./types.mjs";
 import { buildHead } from "./page_elements/head.mjs";
 import { formatHTML } from "./format.mjs";
 import fs from "fs";
-import { getDistributionPath } from "../../common/paths.mjs";
 import { loadNavigation } from "./page_elements/navigation.mjs";
 import Marker from "./types/helper/Marker.mjs";
 import { mkdirp } from "../../common/fileSystem.mjs";
@@ -32,20 +31,20 @@ const getHomePageURI = entries => {
 *
 * This function determines the path to that directory.
 */
-const getTargetPath = async targetName => path.join(await getDistributionPath(), targetName);
+const getTargetPath = targetName => path.join(options.distributionPath, targetName);
 /*
 * Targets can make use of resources in HTML.
 * Resources can be of any file type; they don't have to be images.
 *
 * This function determines the path to a resource directory within a target.
 */
-export const getResourcePath = async targetName => path.join(await getTargetPath(targetName), resourceDirectoryName);
+export const getResourcePath = targetName => path.join(getTargetPath(targetName), resourceDirectoryName);
 /*
 * Media are one kind of resource, specifically images or videos.
 *
 * This function determines the path to a media directory within a target.
 */
-const getMediaPath = async targetName => path.join(await getResourcePath(targetName), "media");
+const getMediaPath = targetName => path.join(getResourcePath(targetName), "media");
 /*
 * Recursively renders all the files in `source` into `directory`.
 * If the file does not end with ".html", it will be copied over without any processing.
@@ -161,8 +160,8 @@ export const renderSingleEntry = async (targetName, uri) => {
 */
 export const buildEntries = async targetName => {
 	const entries = await getEntries();
-	const targetPath = await getTargetPath(targetName);
-	const mediaPath = await getMediaPath(targetName);
+	const targetPath = getTargetPath(targetName);
+	const mediaPath = getMediaPath(targetName);
 	await mkdirp(mediaPath);
 	let warningHTML = "";
 	const cmsContext = await getCMSContext(introspectCraft);
@@ -266,7 +265,7 @@ export const buildEntries = async targetName => {
 * Builds a target, given its name.
 */
 export const build = async targetName => {
-	const resourcePath = await getResourcePath(targetName);
+	const resourcePath = getResourcePath(targetName);
 	mkdirp(resourcePath);
 	await buildHead(targetName);
 	await renderAssets(resourcePath);

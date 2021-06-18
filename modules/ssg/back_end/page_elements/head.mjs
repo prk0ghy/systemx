@@ -48,7 +48,7 @@ export async function buildHead(targetName){
 	if (headResources.has(targetName)) {return;}
 
 	const promises = [];
-	const resourcePath = await getResourcePath(targetName);
+	const resourcePath = getResourcePath(targetName);
 
 	promises.push(copyResource(path.join("node_modules", "quill", "dist"), resourcePath, "quill.min.js"));
 	promises.push(copyResource(path.join("node_modules", "quill", "dist"), resourcePath, "quill.snow.css"));

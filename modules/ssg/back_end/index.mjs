@@ -1,5 +1,4 @@
 import * as target  from "./target.mjs";
-import { getDistributionPath } from "../../common/paths.mjs";
 import options, { currentTarget } from "../../common/options.mjs";
 import open from "open";
 import serve from "./server.mjs";
@@ -12,10 +11,9 @@ const start = async () => {
 	}
 	if (options.openBrowser) {
 		try {
-			const distributionPath = await getDistributionPath();
 			open(options.startServer
 				? `http://localhost:${options.httpPort}/`
-				: `file://${process.cwd()}/${distributionPath}/${currentTarget}/index.html`
+				: `file://${process.cwd()}/${options.distributionPath}/${currentTarget}/index.html`
 			);
 		}
 		catch {
