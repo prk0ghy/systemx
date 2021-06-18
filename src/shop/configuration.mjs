@@ -1,5 +1,5 @@
 import fs from "fs";
-let config     = {};
+let configuration = {};
 const getHostname = host => {
 	const io = host.indexOf(":");
 	if(io < 0){return host;}
@@ -14,10 +14,10 @@ export const makeid = length => {
 	}
 	return result;
 }
-export const prefixUrl = url => "/" + config["prefix"] + url;
-export const absoluteUrl = url => config["baseurl"] + prefixUrl(url);
-export const get = key => config[key];
-export const getProduct = key => config.products?.[key];
+export const prefixUrl = url => "/" + configuration["prefix"] + url;
+export const absoluteUrl = url => configuration["baseurl"] + prefixUrl(url);
+export const get = key => configuration[key];
+export const getProduct = key => configuration.products?.[key];
 export const getOrigin = ctx => {
 	const hostname = getHostname(ctx.headers.host);
 	const origin = get("origin");
@@ -27,14 +27,14 @@ export const getOrigin = ctx => {
 	}
 	return null;
 };
-export const printConfig = () => console.log(config);
+export const printConfig = () => console.log(configuration);
 (() => {
-	let defaultData = fs.readFileSync("src/shop/data/default_config.json");
-	config = JSON.parse(defaultData);
-	if (fs.existsSync("local_config.json")) {
-		let localData = fs.readFileSync("local_config.json");
-		config = {
-			...config,
+	let defaultData = fs.readFileSync("src/shop/data/default_configuration.json");
+	configuration = JSON.parse(defaultData);
+	if (fs.existsSync("local_configuration.json")) {
+		let localData = fs.readFileSync("local_configuration.json");
+		configuration = {
+			...configuration,
 			...JSON.parse(localData)
 		};
 	}

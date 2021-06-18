@@ -1,20 +1,18 @@
 import * as beuser from "./beuser.mjs";
-import * as config from "./config.mjs";
-
+import * as configuration from "./configuration.mjs";
 const sessions = {};
-
 export const startSession = async (ctx, user) => {
-	let sesid = config.makeid(32);
+	let sesid = configuration.makeid(32);
 	sessions[sesid] = {
 		"ID"       : user.ID,
 		"username" : user.name
 	};
 
-	ctx.cookies.set(config.get('beSessionCookie'),sesid);
+	ctx.cookies.set(configuration.get('beSessionCookie'),sesid);
 };
 
 export const stopSession = ctx => {
-	let cookie = ctx.cookies.get(config.get('beSessionCookie'));
+	let cookie = ctx.cookies.get(configuration.get('beSessionCookie'));
 	if((cookie !== undefined) && (sessions[cookie] !== undefined)){
 		delete sessions[cookie];
 		return true;
@@ -35,6 +33,6 @@ export const checkPassword = async ctx => {
 };
 
 export const check = ctx => {
-	let cookie = ctx.cookies.get(config.get('beSessionCookie'));
+	let cookie = ctx.cookies.get(configuration.get('beSessionCookie'));
 	return (cookie !== undefined) && (sessions[cookie] !== undefined);
 };

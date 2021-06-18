@@ -1,4 +1,4 @@
-import * as config from "./config.mjs";
+import * as configuration from "./configuration.mjs";
 import * as feuser from "./feuser.mjs";
 import * as fesession from "./fesession.mjs";
 import * as pwreset from "./pwreset.mjs";
@@ -8,7 +8,7 @@ import * as template from "./template.mjs";
 let resetRequests = {};
 
 const getDeletionHash = path => {
-	let prefix = config.prefixUrl('/userDelete');
+	let prefix = configuration.prefixUrl('/userDelete');
 	let ppath  = path.substr(0,prefix.length).trim();
 	if(prefix !== ppath){return false;}
 	if(path[prefix.length] !== '/'){return '';}
@@ -18,9 +18,9 @@ const getDeletionHash = path => {
 const addDeletionRequest = async id => {
 	let user = await feuser.getUserByID(id);
 	if(user === undefined){return false;}
-	let hash = config.makeid(32);
+	let hash = configuration.makeid(32);
 	resetRequests[hash] = user.ID|0;
-	let delLink = config.absoluteUrl('/userDelete/'+hash);
+	let delLink = configuration.absoluteUrl('/userDelete/'+hash);
 	let mailText = 'Um Ihren Account unwiederruflich zu löschen, besuchen Sie bitte folgenden Link: '+delLink;
 	//let mailHtml = '<h3>Passwort Löschen</h3><p>Um Ihren Account unwiederruflich zu löschen, besuchen Sie bitte folgenden Link: <a href="'+delLink+'">'+delLink+'</a></p>';
 	//mail.send("proexly@proexly-test.de",user.email,"Passwort Zuruecksetzen",mailText,mailHtml);
@@ -32,8 +32,8 @@ export const reqLogin = async ctx => {
 	let arr = {};
 	arr.title  = 'Login'
 	arr.status = 'Bitte gib deine Zugangsdaten ein.';
-	arr.pwresethref = config.prefixUrl('/pwreset');
-	arr.loginhref = config.absoluteUrl('/login');
+	arr.pwresethref = configuration.prefixUrl('/pwreset');
+	arr.loginhref = configuration.absoluteUrl('/login');
 	if((ctx.method === 'POST') && (ctx.request.body !== undefined) && (ctx.request.body.username !== undefined)){
 		arr.status = 'Passwort ungueltig, bitte versuche es erneut!';
 	}
@@ -43,7 +43,7 @@ export const reqLogin = async ctx => {
 export const checkUserDelete = async ctx => getDeletionHash(ctx.request.path) !== false;
 
 export const checkUserSettings = async ctx => {
-	let prefix  = config.prefixUrl('/userSettings');
+	let prefix  = configuration.prefixUrl('/userSettings');
 	let ppath   = ctx.request.path.substr(0,prefix.length).trim();
 	let sprefix = prefix+'/';
 	if((prefix !== ppath) && (sprefix !== ppath)){return false;}
@@ -53,7 +53,7 @@ export const checkUserSettings = async ctx => {
 };
 
 const reqStartpage = async ctx => {
-	switch(config.get("startpage")){
+	switch(configuration.get("startpage")){
 	case "shop":
 		return await shop.reqGetShop(ctx);
 	case "login":
@@ -106,7 +106,7 @@ const reqGetUserSettings = async ctx => {
 	arr.title  = 'Ihre Daten'
 	arr.status = '';
 	arr.user   = user;
-	arr.user.products = await feuser.getActiveProds(user.ID);
+	arr.user.products = await feuser.getActiveProducts(user.ID);
 	if(ctx.feuserStatus !== undefined){arr.status = ctx.feuserStatus;}
 
 	ctx.body = await template.renderPage('feuserSettings',arr,false,ctx);

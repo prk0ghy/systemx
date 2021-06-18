@@ -1,4 +1,4 @@
-import * as config from "./config.mjs";
+import * as configuration from "./configuration.mjs";
 import * as besession from "./besession.mjs";
 import * as feuser from "./feuser.mjs";
 import * as template from "./template.mjs";
@@ -11,7 +11,7 @@ export const addRoutes = router => {
 
 const reqLogout = ctx => {
 	besession.stopSession(ctx);
-	ctx.redirect(config.absoluteUrl('/backend'));
+	ctx.redirect(configuration.absoluteUrl('/backend'));
 };
 
 const reqBackend =  async ctx => {
@@ -57,7 +57,7 @@ const getUsersHTML = async () => {
 
 	return users.map(row => `
 	<div class="user" row-id="${row.ID|0}"><span class="username">${template.escapeHTML(row.name)}</span>
-	<form method="POST" action="${config.prefixUrl('/backend')}" class="backend-form">
+	<form method="POST" action="${configuration.prefixUrl('/backend')}" class="backend-form">
 	<input type="hidden" name="verb" value="delete"/>
 	<input type="hidden" name="id" value="${row.ID|0}"/>
 	<input type="submit" value="Löschen" class=delete />

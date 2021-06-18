@@ -5,7 +5,7 @@ import { formatHTML } from "./format.mjs";
 import fs from "fs";
 import { loadNavigation } from "./page_elements/navigation.mjs";
 import Marker from "./types/helper/Marker.mjs";
-import { mkdirp } from "./fileSystem.mjs";
+import { mkdirp } from "../../common/fileSystem.mjs";
 import options from "../../common/options.mjs";
 import path from "path";
 import query, { getContext as getCMSContext, introspectCraft } from "./cms.mjs";
@@ -31,7 +31,7 @@ const getHomePageURI = entries => {
 *
 * This function determines the path to that directory.
 */
-const getTargetPath = targetName => path.join("web", targetName);
+const getTargetPath = targetName => path.join("dist/web", targetName);
 /*
 * Targets can make use of resources in HTML.
 * Resources can be of any file type; they don't have to be images.

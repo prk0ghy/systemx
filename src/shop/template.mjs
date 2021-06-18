@@ -1,11 +1,9 @@
+import * as configuration from "./configuration.mjs";
+import * as cart from "./cart.mjs";
+import * as fesession from "./fesession.mjs";
 import fs from 'fs';
 import path from 'path';
 import ejs from 'ejs';
-
-import * as config from "./config.mjs";
-import * as cart from "./cart.mjs";
-import * as fesession from "./fesession.mjs";
-
 const templates = [];
 let pagePreamble = "";
 let pageFooter   = "";
@@ -16,9 +14,9 @@ const fileExtension = str => {
 };
 
 (() => {
-	pagePreamble = "<!DOCTYPE html>\n<html lang="+config.get('lang')+">\n <head>\n";
+	pagePreamble = "<!DOCTYPE html>\n<html lang="+configuration.get('lang')+">\n <head>\n";
 
-	config.get('resources').forEach( path => {
+	configuration.get('resources').forEach( path => {
 		let data = fs.readFileSync(path).toString();
 		switch(fileExtension(path)){
 		case 'js':
@@ -30,7 +28,7 @@ const fileExtension = str => {
 		}
 
 	});
-	pageFooter += '  <script>let baseUrl="' + config.absoluteUrl('') + '";</script>';
+	pageFooter += '  <script>let baseUrl="' + configuration.absoluteUrl('') + '";</script>';
 
 	let files = fs.readdirSync("src/shop/views/");
 	files.forEach(file => {
@@ -52,9 +50,9 @@ export const escapeHTML = text => {
 
 const checkArr = (template,arr,shop,ctx) => {
 	if(arr['title'] === undefined)   {arr['title'] = '';}
-	if(arr['redirect'] === undefined){arr['redirect'] = config.get('baseurl') + ctx.request.path;}
+	if(arr['redirect'] === undefined){arr['redirect'] = configuration.get('baseurl') + ctx.request.path;}
 	if(arr['err'] === undefined)     {arr['err'] = '';}
-	arr['abslink'] = config.get('baseurl') + '/' + config.get('prefix');
+	arr['abslink'] = configuration.get('baseurl') + '/' + configuration.get('prefix');
 	arr['session'] = fesession.get(ctx);
 	arr['cart']    = cart.get(ctx);
 
@@ -65,15 +63,15 @@ const getHeader = () => {
 	let ret = '<header><nav aria-label="Navigation des Portals">';
 
 	ret += '<ul id="nav-left">';
-	ret += '<li class="home"><a href="'+config.get('baseurl')+'">Home</a></li>';
+	ret += '<li class="home"><a href="'+configuration.get('baseurl')+'">Home</a></li>';
 	ret += '</ul>'
 
 	ret += '<ul id="nav-right">';
 	ret += '<li class="open-nav">mein MVet</li>';
 	// if(arr.session !== undefined){
-	// 	ret += '<li class="login"><a href="'+config.absoluteUrl('/logout')+'">Logout</a></li>';
+	// 	ret += '<li class="login"><a href="'+configuration.absoluteUrl('/logout')+'">Logout</a></li>';
 	// }else{
-	// 	ret += '<li class="login"><a href="'+config.absoluteUrl('/login')+'">Login</a></li>';
+	// 	ret += '<li class="login"><a href="'+configuration.absoluteUrl('/login')+'">Login</a></li>';
 	// }
 	ret += '</ul>'
 
@@ -81,7 +79,7 @@ const getHeader = () => {
 };
 
 const getUserPanelLogin = (template, arr) => {
-	let loginHtml = '<form action="'+config.absoluteUrl('/login')+'" method="POST" class="login-form">';
+	let loginHtml = '<form action="'+configuration.absoluteUrl('/login')+'" method="POST" class="login-form">';
 	loginHtml += '<input type="hidden" name="redirect" value="' + arr['redirect'] + '"/>';
 	loginHtml += '<label class=form-row><input autofocus type="text" name="username"/><span>Benutzername</span></label>';
 	loginHtml += '<label class=form-row><input type="password" name="password"/><span>Passwort</span></label>';
@@ -113,7 +111,7 @@ const getUserPanel = (template, arr) => {
 
 const getFooter = () => {
 	let ret = '';
-	ret += '<footer><a href="'+config.absoluteUrl('/impressum')+'">Impressum</a> <a href="'+config.absoluteUrl('/datenschutz')+'">Datenschutzerkl&auml;rung</a></footer>';
+	ret += '<footer><a href="'+configuration.absoluteUrl('/impressum')+'">Impressum</a> <a href="'+configuration.absoluteUrl('/datenschutz')+'">Datenschutzerkl&auml;rung</a></footer>';
 	ret += pageFooter;
 	return ret;
 };

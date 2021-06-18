@@ -32,7 +32,7 @@ const toCraftCMSSlug = pathName => {
 * Ideally, this function is used for previews.
 */
 export default targetName => {
-	const serve = serveStatic(path.join("web", targetName), {
+	const serve = serveStatic(path.join("dist/web", targetName), {
 		index: "index.html"
 	});
 	const server = http.createServer(async (request, response) => {

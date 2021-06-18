@@ -25,13 +25,13 @@ const options = {
 			graphqlEndpoint: "https://systemx-jura-museum.test-dilewe.de/api",
 			httpPort: 8049
 		},
-		rdhessen: {
-			graphqlEndpoint: "https://rdhessen.test-dilewe.de/api",
-			httpPort: 8048
-		},
 		lasub: {
 			graphqlEndpoint: "https://lasub.dilewe.de/api",
 			httpPort: 8042
+		},
+		rdhessen: {
+			graphqlEndpoint: "https://rdhessen.test-dilewe.de/api",
+			httpPort: 8048
 		},
 		stifterverband: {
 			graphqlEndpoint: "https://stifterverband.test-dilewe.de/api",
@@ -43,8 +43,9 @@ const options = {
 * Last argument is the current target, if nothing is specified,
 * fall back to `lasub`
 */
-export const currentTarget = argv._.length ? argv._[argv._.length - 1] : "lasub";
-
+export const currentTarget = argv._.length
+	? argv._[argv._.length - 1]
+	: "lasub";
 /*
 * Read a JSON-formatted configuration file from `path`,
 * then assign its values to the `options` object.
@@ -59,7 +60,6 @@ const loadConfigurationFile = path => {
 		/* If we can't read/parse the file then we just continue */
 	}
 };
-
 /*
 * Read every file in a directory, without recursing,
 * and then pass each file to `loadConfigurationFile`.
@@ -82,11 +82,12 @@ loadConfigurationDirectory(`${os.homedir()}/systemx.d`);
 * Environment variables can override configuration files
 */
 for (const env in process.env) {
-	if(!env.startsWith("SYSTEMX_")) {
+	const prefix = "SYSTEMX_";
+	if(!env.startsWith(prefix)) {
 		continue;
 	}
-	// Remove the prefix
-	const envnp = env.slice(8);
+	/* Remove the prefix */
+	const envnp = env.slice(prefix.length);
 	const optionName = envnp.toLowerCase().replace(/_[a-z]/g, $1 => `${$1.slice(1).toUpperCase()}`);
 	if (Object.hasOwnProperty.call(options, optionName)) {
 		options[optionName] = process.env[env];

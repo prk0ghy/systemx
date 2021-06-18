@@ -1,11 +1,11 @@
 import * as cart from "./cart.mjs";
+import * as configuration from "./configuration.mjs";
 import * as feuser from "./feuser.mjs";
-import * as config from "./config.mjs";
 
 const sessions = {};
 
 export const stop = ctx => {
-	let cookie = ctx.cookies.get(config.get('feSessionCookie'));
+	let cookie = ctx.cookies.get(configuration.get('feSessionCookie'));
 	if((cookie !== undefined) && (sessions[cookie] !== undefined)){
 		delete sessions[cookie];
 		return true;
@@ -15,7 +15,7 @@ export const stop = ctx => {
 }
 
 export const refresh = async (ctx, sesid) => {
-	if(sesid === undefined){ sesid = ctx.cookies.get(config.get('feSessionCookie')); }
+	if(sesid === undefined){ sesid = ctx.cookies.get(configuration.get('feSessionCookie')); }
 	if((sesid === undefined) || (sessions[sesid] === undefined)){return;}
 	const userid = sessions[sesid].ID|0;
 	let user = await feuser.getByID(userid)
@@ -25,7 +25,7 @@ export const refresh = async (ctx, sesid) => {
 		"username" : user.name,
 		"email"    : user.email,
 		"cart"     : cart.get(ctx),
-		"products" : await feuser.getActiveProds(user.ID)
+		"products" : await feuser.getActiveProducts(user.ID)
 	};
 	console.log('Refreshed Session');
 	console.log(sessions[sesid]);
@@ -34,16 +34,16 @@ export const refresh = async (ctx, sesid) => {
 export const start = async (ctx,userid) => {
 	let user  = await feuser.getByID(userid)
 	if(user === undefined){return;}
-	let sesid = config.makeid(64);
-	while(sessions[sesid] !== undefined){sesid=config.makeid(64);}
+	let sesid = configuration.makeid(64);
+	while(sessions[sesid] !== undefined){sesid=configuration.makeid(64);}
 	sessions[sesid] = {"ID" : user.ID};
 	await refresh(ctx,sesid);
-	ctx.cookies.set(config.get('feSessionCookie'),sesid);
+	ctx.cookies.set(configuration.get('feSessionCookie'),sesid);
 }
 
 export const get = ctx => {
 	if(ctx === undefined){return undefined;}
-	let cookie = ctx.cookies.get(config.get('feSessionCookie'));
+	let cookie = ctx.cookies.get(configuration.get('feSessionCookie'));
 	if((cookie !== undefined) && (sessions[cookie] !== undefined)){
 		return sessions[cookie];
 	}
@@ -70,14 +70,14 @@ export const checkPassword = async ctx => {
 }
 
 export const check = ctx => {
-	let cookie = ctx.cookies.get(config.get('feSessionCookie'));
+	let cookie = ctx.cookies.get(configuration.get('feSessionCookie'));
 	return (cookie !== undefined) && (sessions[cookie] !== undefined);
 }
 
 const reqLogout = async ctx => {
 	console.log("reqLogout");
 	stop(ctx);
-	ctx.redirect(config.get('baseurl'));
+	ctx.redirect(configuration.get('baseurl'));
 }
 
 export const addRoutes = router => {

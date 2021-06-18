@@ -1,32 +1,46 @@
-import fs from "fs";
-import {dbget, dbrun, default as dbm} from "./db.mjs";
+import { database } from "./database.mjs";
 import bcrypt from "bcrypt";
+import fs from "fs";
 const saltRounds = 10;
-let db = dbm();
-const fsp = fs.promises;
-
-const getUser = name => dbget(`SELECT ID,name,password FROM beuser WHERE name = ?`,name);
-
-export const addUser = async (name,pass) => {
-	const hash = await bcrypt.hash(pass, saltRounds);
-	return await dbrun("INSERT INTO beuser (name,password) VALUES (?,?)",[name,hash]);
+const getUser = name => database.get(`SELECT ID, name, password FROM beuser WHERE name = ?`, name);
+export const addUser = async (name, password) => {
+	const hash = await bcrypt.hash(password, saltRounds);
+	return database.run(`
+		INSERT INTO beuser
+		(
+			name,
+			password
+		)
+		VALUES (?, ?)
+	`, [
+		name,
+		hash
+	]);
 };
-
-export const tryLogin = async (name,pass) => {
+export default async () => {
+	await database.run(`
+		CREATE TABLE IF NOT EXISTS beuser(
+			ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+			name TEXT UNIQUE NOT NULL,
+			password TEXT NOT NULL
+		)
+	`);
+	const data = await fs.promises.readFile("src/shop/data/beuser.json");
+	const rows = JSON.parse(data.toString());
+	rows.forEach(async row => {
+		if (await getUser(row.name)) {
+			return;
+		}
+		addUser(row.name, row.pass);
+	});
+};
+export const tryLogin = async (name, password) => {
 	let row = await getUser(name);
-	if(row == null){return null;}
-	if(await bcrypt.compare(pass, row.password)){
+	if (row == null) {
+		return null;
+	}
+	if (await bcrypt.compare(password, row.password)) {
 		return row;
 	}
 	return null;
 };
-
-(async () => {
-	await dbrun("CREATE TABLE IF NOT EXISTS beuser (ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name TEXT UNIQUE NOT NULL, password TEXT NOT NULL)");
-	let data = await fsp.readFile("src/shop/data/beuser.json");
-	let obj = JSON.parse(data.toString());
-	obj.forEach(async row => {
-		if(await getUser(row.name)){return;}
-		addUser(row.name,row.pass);
-	});
-})();

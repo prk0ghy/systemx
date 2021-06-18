@@ -1,7 +1,6 @@
-import * as config from "./src/config.mjs";
-
+import * as configuration from "./src/configuration.mjs";
 const getProductCheckoutLI = name => {
-	let prod = config.getProduct(name);
+	let prod = configuration.getProduct(name);
 	if(prod === undefined)     {return '';}
 	if(prod.name === undefined){return '';}
 
@@ -9,7 +8,7 @@ const getProductCheckoutLI = name => {
 };
 
 const getProductPrice = name => {
-	let prod = config.getProduct(name);
+	let prod = configuration.getProduct(name);
 	if(prod === undefined)     {return '';}
 	if(prod.name === undefined){return '';}
 
@@ -52,7 +51,7 @@ export const getLinkList = async ctx => {
 	for(let name in ctx.request.body){
 		if(!ctx.request.body.hasOwnProperty(name)){continue;}
 		if(ctx.request.body[name] !== 'orderItem'){continue;}
-		let prod = config.getProduct(name);
+		let prod = configuration.getProduct(name);
 		if(prod === undefined)     {continue;}
 		if(prod.name === undefined){continue;}
 		ret += '<li><a href="'+prod.href+'">'+prod.name+'</a></li>';

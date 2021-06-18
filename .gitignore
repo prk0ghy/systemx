@@ -3,9 +3,7 @@
 # Learn more about .gitignore:
 #     https://www.atlassian.com/git/tutorials/saving-changes/gitignore
 
-#systemx specific stuff
-web/
-local_data.db
+# systemx-specific stuff
 local_config.json
 
 # Node artifact files
@@ -45,4 +43,3 @@ Thumbs.db
 *.app
 *.exe
 *.war
-
