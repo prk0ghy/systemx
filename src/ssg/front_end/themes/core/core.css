@@ -59,7 +59,8 @@ main > section:first-child {
 	border-radius: 50%;
 	border: solid 2px #BFBFBF;
 	width: 2em;
-	line-height: 2em;
+	height: 2em;
+	line-height: 1.85em;
 	text-align: center;
 }
 

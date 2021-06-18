@@ -6,6 +6,11 @@ video {
 	outline: none;
 }
 
+section[content-type="video"] > inner-content > details > summary {
+	right: 3.75em;
+	bottom: 4px;
+}
+
 section[content-type="video"] > inner-content > details > summary::marker {
 	content: '';
 	display: none;
@@ -23,6 +28,11 @@ section[content-type="video"] > inner-content > details > summary::-webkit-detai
 section[content-type="audio"] > inner-content > details > summary::-webkit-details-marker {
 	content: '';
 	display: none;
+}
+
+tab-box-content > section[content-type="video"] > inner-content > details > summary {
+	right: 0.7em;
+	bottom: 4px;
 }
 
 main > section[content-type="video"]::after {

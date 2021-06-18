@@ -154,7 +154,7 @@ export default {
 		const figures = await Promise.all(images.map(async image => {
 			const imageCaptionHTML = image.caption
 				? `<figcaption>${image.caption}</figcaption>`
-				: "";
+				: `<figcaption></figcaption>`;
 			return `
 				<figure figure-type="gallery">
 					${await Image.render({ asset: image.files[0] })}
