@@ -3,9 +3,12 @@ if [[ "$HOSTNAME" != "dev.dilewe.de" ]]; then
 	echo "It's very likely that you don't want to execute this script, since it is meant for the dev.dilewe.de server."
 	exit
 fi
-cd /var/www/html/dilewe.de/systemx/
-git reset --hard
-git pull
+cd /var/www/html/dilewe.de/systemx
+# Make sure we're on the correct branch
+git checkout master
+# Don't just run `$ git pull`, as this might lead to conflicts
+git fetch
+git reset --hard origin/master
 npm install
 systemctl restart 'systemx@altenburg'
 systemctl restart 'systemx@bettermarks'
