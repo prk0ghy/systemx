@@ -6,7 +6,7 @@ const saltRounds = 10;
 const db         = dbm();
 const fsp = fs.promises;
 
-export const getByName = name => dbget(`SELECT * FROM feuser WHERE name = ?`,[name]);
+export const getByName = name => dbget(`SELECT * FROM feuser WHERE name = ?`,[String(name)]);
 export const getByID = id => dbget(`SELECT * FROM feuser WHERE ID = ?`,id|0);
 export const getAll = () => dball(`SELECT ID,name FROM feuser`,[]);
 

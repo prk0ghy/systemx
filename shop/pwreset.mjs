@@ -6,7 +6,7 @@ import * as template from "./template.mjs";
 let resetRequests = {};
 
 const addReset = async name => {
-	let user = await feuser.get((name+'').trim());
+	let user = await feuser.getByName(name.trim());
 	if(user === undefined){return false;}
 	let hash = config.makeid(32);
 	resetRequests[hash] = user.ID|0;
