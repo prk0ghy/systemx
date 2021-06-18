@@ -1,6 +1,7 @@
 import fs from "fs";
 import minimist from "minimist";
 import os from "os";
+import path from "path";
 const argv = minimist(process.argv.slice(2));
 const options = {
 	disableMarkers: false,
@@ -76,8 +77,9 @@ const loadConfigurationDirectory = path => {
 };
 loadConfigurationFile("/etc/systemx.conf");
 loadConfigurationDirectory("/etc/systemx.d");
-loadConfigurationFile(`${os.homedir()}/systemx.conf`);
-loadConfigurationDirectory(`${os.homedir()}/systemx.d`);
+loadConfigurationFile(path.join(process.env.XDG_CONFIG_HOME || path.join(os.homedir(), ".config"), "systemx.conf"));
+loadConfigurationFile(`${os.homedir()}/.systemx.conf`);
+loadConfigurationDirectory(`${os.homedir()}/.systemx.d`);
 /*
 * Environment variables can override configuration files
 */
