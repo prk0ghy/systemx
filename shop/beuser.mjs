@@ -25,7 +25,7 @@ export default async () => {
 			password TEXT NOT NULL
 		)
 	`);
-	const data = await fs.promises.readFile("src/shop/data/beuser.json");
+	const data = await fs.promises.readFile("shop/data/beuser.json");
 	const rows = JSON.parse(data.toString());
 	rows.forEach(async row => {
 		if (await getUser(row.name)) {

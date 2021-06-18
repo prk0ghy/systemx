@@ -1,4 +1,4 @@
-import * as configuration from "./src/configuration.mjs";
+import * as configuration from "./configuration.mjs";
 const getProductCheckoutLI = name => {
 	let prod = configuration.getProduct(name);
 	if(prod === undefined)     {return '';}

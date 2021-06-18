@@ -38,7 +38,7 @@ const start = async () => {
 		part.addRoutes(router);
 	}
 	const koa = new Koa();
-	koa.use(koaStatic("src/shop/public"));
+	koa.use(koaStatic("shop/public"));
 	application
 		.use(koaBody())
 		.use(koaMount("/" + configuration.get("prefix") + "/public", koa))

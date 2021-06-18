@@ -39,7 +39,7 @@
 		"stylelint-config-standard": "^22.0.0"
 	},
 	"license": "GPL-2.0-only",
-	"main": "src/index.mjs",
+	"main": "index.mjs",
 	"name": "systemx",
 	"nodemonConfig": {
 		"ext": "css,html,jpg,js,json,mjs,png",
@@ -50,23 +50,23 @@
 		"url": "git@bitbucket.org:idlgbr/systemx.git"
 	},
 	"scripts": {
-		"build": "node src/index.mjs",
-		"build:clean": "rm -rf dist web && node src/index.mjs",
+		"build": "node ./index.mjs",
+		"build:clean": "rm -rf dist web && node ./index.mjs",
 		"build:release": "rm -rf dist web && node ./index.mjs --download-media",
 		"dev": "npm run dev:shop",
-		"dev:ssg": "nodemon --ignore dist/ --ignore web/ src/index.mjs --quiet --start-server",
-		"dev:shop": "nodemon --ignore dist/ --ignore web/ src/index.mjs --quiet --start-shop",
+		"dev:ssg": "nodemon --ignore dist/ --ignore web/ ./index.mjs --quiet --start-server",
+		"dev:shop": "nodemon --ignore dist/ --ignore web/ ./index.mjs --quiet --start-shop",
 		"lint": "npm run eslint && npm run stylelint",
-		"eslint": "eslint 'src/ssg/back_end/**/*.mjs' 'src/ssg/front_end/**/*.js'",
-		"stylelint": "stylelint 'src/ssg/front_end/**/*.css'",
+		"eslint": "eslint './ssg/back_end/**/*.mjs' './ssg/front_end/**/*.js'",
+		"stylelint": "stylelint './ssg/front_end/**/*.css'",
 		"mon": "npm run mon:ssg",
-		"mon:ssg": "nodemon --ignore dist/ --ignore web/ src/index.mjs --skip-network --start-server",
-		"mon:shop": "nodemon --ignore dist/ --ignore web/ src/index.mjs --skip-network --start-shop",
-		"start": "node src/index.mjs --start-server --",
-		"open": "node src/index.mjs --open-browser --start-server",
+		"mon:ssg": "nodemon --ignore dist/ --ignore web/ ./index.mjs --skip-network --start-server",
+		"mon:shop": "nodemon --ignore dist/ --ignore web/ ./index.mjs --skip-network --start-shop",
+		"start": "node ./index.mjs --start-server --",
+		"open": "node ./index.mjs --open-browser --start-server",
 		"test": "npm run test:back-end",
 		"test:back-end": "jest ssg/back_end/test -- lasub",
-		"shop": "node src/index.mjs --start-shop"
+		"shop": "node ./index.mjs --start-shop"
 	},
 	"type": "module",
 	"version": "0.0.1"

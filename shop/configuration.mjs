@@ -29,7 +29,7 @@ export const getOrigin = ctx => {
 };
 export const printConfig = () => console.log(configuration);
 (() => {
-	let defaultData = fs.readFileSync("src/shop/data/default_configuration.json");
+	let defaultData = fs.readFileSync("shop/data/default_configuration.json");
 	configuration = JSON.parse(defaultData);
 	if (fs.existsSync("local_configuration.json")) {
 		let localData = fs.readFileSync("local_configuration.json");

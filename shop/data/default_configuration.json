@@ -28,8 +28,8 @@
 	},
 	"port": 8020,
 	"resources": [
-		"src/shop/res/main.css",
-		"src/shop/res/main.js"
+		"shop/res/main.css",
+		"shop/res/main.js"
 	],
 	"startpage": "shop"
 }
