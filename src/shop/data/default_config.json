@@ -1,0 +1,35 @@
+{
+	"baseurl": "http://localhost:8020",
+	"beSessionCookie": "proexly-besession",
+	"cartSessionCookie": "proexly-cartsession",
+	"feSessionCookie": "proexly-fesession",
+	"lang": "de",
+	"origin": {
+		"*": "http://forum-theater/",
+		"localhost": "http://forum-theater/"
+	},
+	"prefix": "proexly",
+	"products": {
+		"kapitel1": {
+			"href": "https://localhost:8020/kapitel1/",
+			"name": "Kapitel 1",
+			"price": 9.99
+		},
+		"kapitel2": {
+			"href": "https://localhost:8020/kapitel2/",
+			"name": "Kapitel 2",
+			"price": 19.99
+		},
+		"kapitel3": {
+			"href": "https://localhost:8020/kapitel3/",
+			"name": "Kapitel 3",
+			"price": 29.99
+		}
+	},
+	"port": 8020,
+	"resources": [
+		"src/shop/res/main.css",
+		"src/shop/res/main.js"
+	],
+	"startpage": "shop"
+}

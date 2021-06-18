@@ -60,7 +60,7 @@ export const tryLogin = async (name,pass) => {
 (async () => {
 	await dbrun("CREATE TABLE IF NOT EXISTS feuser (ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name TEXT UNIQUE NOT NULL, password TEXT NOT NULL, email TEXT NOT NULL, passwordExpired INTEGER DEFAULT 0)");
 	await dbrun("CREATE TABLE IF NOT EXISTS feuser_product (ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, user INTEGER NOT NULL, name TEXT NOT NULL)");
-	let data = await fsp.readFile('shop/data/feuser.json');
+	let data = await fsp.readFile("src/shop/data/feuser.json");
 	let obj = JSON.parse(data.toString());
 
 	obj.forEach( async row => {

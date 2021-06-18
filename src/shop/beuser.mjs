@@ -23,7 +23,7 @@ export const tryLogin = async (name,pass) => {
 
 (async () => {
 	await dbrun("CREATE TABLE IF NOT EXISTS beuser (ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name TEXT UNIQUE NOT NULL, password TEXT NOT NULL)");
-	let data = await fsp.readFile('shop/data/beuser.json');
+	let data = await fsp.readFile("src/shop/data/beuser.json");
 	let obj = JSON.parse(data.toString());
 	obj.forEach(async row => {
 		if(await getUser(row.name)){return;}

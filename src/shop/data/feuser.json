@@ -1,0 +1,9 @@
+[{
+	"email": "bennyschulenburg@gmx.de",
+	"name": "mbook",
+	"pass": "test",
+	"products": [
+		"kapitel1",
+		"kapitel3"
+	]
+}]

@@ -39,11 +39,11 @@ async function getFromPath(ext, prefix, inline) {
 
 async function getFromContentTypes(ext, inline) {
 	try {
-		const names = await fsp.readdir("ssg/front_end/content_types/");
+		const names = await fsp.readdir("src/ssg/front_end/content_types/");
 		let ret = "";
 		for (const name of names) {
 			if(name.substr(0,1) === "."){continue;}
-			const prefix = "ssg/front_end/content_types/" + name + "/";
+			const prefix = "src/ssg/front_end/content_types/" + name + "/";
 			ret += await getFromPath(ext, prefix, inline);
 		}
 		return ret;
@@ -53,11 +53,11 @@ async function getFromContentTypes(ext, inline) {
 
 async function getFromThemes(ext, inline) {
 	try {
-		const names = await fsp.readdir("ssg/front_end/themes/");
+		const names = await fsp.readdir("src/ssg/front_end/themes/");
 		let ret = "";
 		for (const name of names) {
 			if(name.substr(0,1) === "."){continue;}
-			const prefix = "ssg/front_end/themes/" + name + "/";
+			const prefix = "src/ssg/front_end/themes/" + name + "/";
 			ret += await getFromPath(ext, prefix, inline);
 		}
 		return ret;
@@ -69,10 +69,10 @@ export async function getAssetDirectories() {
 	const ret = [];
 
 	try {
-		const names = await fsp.readdir("ssg/front_end/themes/");
+		const names = await fsp.readdir("src/ssg/front_end/themes/");
 		for (const name of names) {
 			if(name.substr(0,1) === "."){continue;}
-			const prefix = "ssg/front_end/themes/" + name + "/";
+			const prefix = "src/ssg/front_end/themes/" + name + "/";
 			ret.push(prefix);
 		}
 		return ret;
@@ -80,10 +80,10 @@ export async function getAssetDirectories() {
 	catch (e) { /* Skip if no themes available */ }
 
 	try {
-		const names = await fsp.readdir("ssg/front_end/content_types/");
+		const names = await fsp.readdir("src/ssg/front_end/content_types/");
 		for (const name of names) {
 			if(name.substr(0,1) === "."){continue;}
-			const prefix = "ssg/front_end/content_types/" + name + "/";
+			const prefix = "src/ssg/front_end/content_types/" + name + "/";
 			ret.push(prefix);
 		}
 		return ret;

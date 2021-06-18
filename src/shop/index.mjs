@@ -30,7 +30,7 @@ const start = async () => {
 	shop.addRoutes(router);
 
 	const fileserve = new Koa();
-	fileserve.use(KoaStatic('shop/public'));
+	fileserve.use(KoaStatic("src/shop/public"));
 
 	app
 		.use(KoaBody())

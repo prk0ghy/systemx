@@ -37,7 +37,7 @@ const recurseDirectory = async (directory, types) => {
 const loadTypes = async directoryName => {
 	const types = new Map();
 	const root = await getPackageDirectory();
-	const directory = path.join(root, "ssg", "back_end", "types", directoryName);
+	const directory = path.join(root, "src", "ssg", "back_end", "types", directoryName);
 	await recurseDirectory(directory, types);
 	return types;
 };
