@@ -9,7 +9,7 @@ let pagePreamble = "";
 let pageFooter   = "";
 
 const fileExtension = str => {
-	let ppos = str.lastIndexOf('.');
+	const ppos = str.lastIndexOf('.');
 	return str.substr(ppos+1).toLowerCase();
 };
 
@@ -17,8 +17,10 @@ const fileExtension = str => {
 	pagePreamble = "<!DOCTYPE html>\n<html lang="+configuration.get('lang')+">\n <head>\n";
 
 	configuration.get('resources').forEach( path => {
-		let data = fs.readFileSync(path).toString();
+		const data = fs.readFileSync(path).toString();
 		switch(fileExtension(path)){
+		default:
+			break;
 		case 'js':
 			pageFooter += "  <script>\n"+data+"\n  </script>\n";
 			break;
@@ -30,7 +32,7 @@ const fileExtension = str => {
 	});
 	pageFooter += '  <script>let baseUrl="' + configuration.absoluteUrl('') + '";</script>';
 
-	let files = fs.readdirSync("modules/shop/views/");
+	const files = fs.readdirSync("modules/shop/views/");
 	files.forEach(file => {
 		const name = path.parse(file).name;
 		templates[name] = fs.readFileSync(`modules/shop/views/${file}`).toString();
@@ -38,23 +40,23 @@ const fileExtension = str => {
 })();
 
 export const escapeHTML = text => {
-	let map = {
+	const map = {
 		'&': '&amp;',
 		'<': '&lt;',
 		'>': '&gt;',
 		'"': '&quot;',
 		"'": '&#039;'
 	};
-	return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+	return text.replace(/[&<>"']/g, (m) => { return map[m]; });
 };
 
 const checkArr = (template,arr,shop,ctx) => {
-	if(arr['title'] === undefined)   {arr['title'] = '';}
-	if(arr['redirect'] === undefined){arr['redirect'] = configuration.get('baseurl') + ctx.request.path;}
-	if(arr['err'] === undefined)     {arr['err'] = '';}
-	arr['abslink'] = configuration.get('baseurl') + '/' + configuration.get('prefix');
-	arr['session'] = fesession.get(ctx);
-	arr['cart']    = cart.get(ctx);
+	if(arr.title === undefined)   {arr.title = '';}
+	if(arr.redirect === undefined){arr.redirect = configuration.get('baseurl') + ctx.request.path;}
+	if(arr.err === undefined)     {arr.err = '';}
+	arr.abslink = configuration.get('baseurl') + '/' + configuration.get('prefix');
+	arr.session = fesession.get(ctx);
+	arr.cart    = cart.get(ctx);
 
 	return arr;
 };
@@ -64,7 +66,7 @@ const getHeader = () => {
 
 	ret += '<ul id="nav-left">';
 	ret += '<li class="home"><a href="'+configuration.get('baseurl')+'">Home</a></li>';
-	ret += '</ul>'
+	ret += '</ul>';
 
 	ret += '<ul id="nav-right">';
 	ret += '<li class="open-nav">mein MVet</li>';
@@ -73,14 +75,14 @@ const getHeader = () => {
 	// }else{
 	// 	ret += '<li class="login"><a href="'+configuration.absoluteUrl('/login')+'">Login</a></li>';
 	// }
-	ret += '</ul>'
+	ret += '</ul>';
 
 	return ret+'</nav></header>';
 };
 
 const getUserPanelLogin = (template, arr) => {
 	let loginHtml = '<form action="'+configuration.absoluteUrl('/login')+'" method="POST" class="login-form">';
-	loginHtml += '<input type="hidden" name="redirect" value="' + arr['redirect'] + '"/>';
+	loginHtml += '<input type="hidden" name="redirect" value="' + arr.redirect + '"/>';
 	loginHtml += '<label class=form-row><input autofocus type="text" name="username"/><span>Benutzername</span></label>';
 	loginHtml += '<label class=form-row><input type="password" name="password"/><span>Passwort</span></label>';
 	loginHtml += '<input type="submit" value="Einloggen"/>';
@@ -134,21 +136,21 @@ export const renderPage = async (template, arr, shop, ctx) => {
 		filename: template,
 		async: true
 	};
-	arr = checkArr(template,arr,shop,ctx);
-	if(templates[template] === undefined){template = 'error';}
-	return wrapPage(template,arr,shop,await ejs.render(templates[template], arr, options));
+	const checkedArr = checkArr(template,arr,shop,ctx);
+	const checkedTemplate = templates[template] === undefined ? 'error' : template;
+	return wrapPage(checkedTemplate,checkedArr,shop,await ejs.render(templates[checkedTemplate], checkedArr, options));
 };
 
 const replaceMarkers = (text,arr) => {
-	for(let key in arr){
-		if(!arr.hasOwnProperty(key)){continue;}
-		text = text.replace('###'+key+'###',arr[key]+'');
+	let ret = text;
+	for(const key in arr){
+		ret = text.replace('###'+key+'###',String(arr[key]));
 	}
-	return text;
+	return ret;
 };
 
 export const renderPageSimple = (template, arr, shop, ctx) => {
-	arr = checkArr(template,arr,shop,ctx);
-	if(templates[template] === undefined){template = 'error';}
-	return wrapPage(template,arr,shop,replaceMarkers(templates[template],arr));
+	const checkedArr = checkArr(template,arr,shop,ctx);
+	const checkedTemplate = templates[template] === undefined ? 'error' : template;
+	return wrapPage(checkedTemplate,checkedArr,shop,replaceMarkers(templates[checkedTemplate],checkedArr));
 };

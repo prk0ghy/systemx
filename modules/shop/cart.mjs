@@ -2,20 +2,19 @@ import * as fesession from "./fesession.mjs";
 import * as configuration from "./configuration.mjs";
 const carts = {};
 const getFancyCart = cart => {
-	if(cart === undefined){cart = [];}
-	for(let p in cart){
-		let prod = configuration.getProduct(p);
-		for(let pa in prod){
-			if(prod.hasOwnProperty(pa)){cart[p][pa] = prod[pa];}
+	if(!cart){return getFancyCart([]);}
+	for(const p in cart){
+		const prod = configuration.getProduct(p);
+		for(const pa in prod){
+			cart[p][pa] = prod[pa];
 		}
 	}
 	return cart;
 };
 
 const sumLists = (a,b) => {
-	if(a === undefined){a = {};}
-	for(let p in b){
-		if(!b.hasOwnProperty(p)){continue;}
+	if(!a){return sumLists({},b);}
+	for(const p in b){
 		if(a[p] === undefined){
 			a[p] = b[p];
 		}else{
@@ -27,8 +26,8 @@ const sumLists = (a,b) => {
 
 
 export const empty = ctx => {
-	if(ctx === undefined){return;}
-	let sesid = ctx.cookies.get(configuration.get("cartSessionCookie"));
+	if(ctx === undefined){return true;}
+	const sesid = ctx.cookies.get(configuration.get("cartSessionCookie"));
 	if((sesid !== undefined) && (carts[sesid] !== undefined)){
 		delete carts[sesid];
 		fesession.refreshSession(ctx);
@@ -38,7 +37,7 @@ export const empty = ctx => {
 };
 
 export const remove = async (ctx,product) => {
-	let sesid = ctx.cookies.get(configuration.get("cartSessionCookie"));
+	const sesid = ctx.cookies.get(configuration.get("cartSessionCookie"));
 	if((sesid !== undefined) && (carts[sesid] !== undefined)){
 		delete carts[sesid][product];
 		await fesession.refresh(ctx);
@@ -50,7 +49,7 @@ export const remove = async (ctx,product) => {
 export const add = async (ctx,products) => {
 	let sesid = ctx.cookies.get(configuration.get("cartSessionCookie"));
 	if((sesid === undefined) || (carts[sesid] === undefined)){
-		for(sesid=configuration.makeid(64);carts[sesid] !== undefined;sesid=configuration.makeid(64)){}
+		for(sesid=configuration.makeid(64);carts[sesid] !== undefined;sesid=configuration.makeid(64)){ /* Just try until we find an unused id */}
 		carts[sesid] = {};
 		ctx.cookies.set(configuration.get("cartSessionCookie"),sesid);
 	}
@@ -59,14 +58,17 @@ export const add = async (ctx,products) => {
 };
 
 export const addSingle = async (ctx,product,amount) => {
-	if(amount === undefined){amount = 1;}
-	let arr = {};
+	if(amount === undefined){
+		addSingle(ctx,product,1);
+		return;
+	}
+	const arr = {};
 	arr[product] = {"amount":amount};
 	await add(ctx,arr);
 };
 
 export const get = ctx => {
-	let sesid = ctx.cookies.get(configuration.get("cartSessionCookie"));
+	const sesid = ctx.cookies.get(configuration.get("cartSessionCookie"));
 	if((sesid !== undefined) && (carts[sesid] !== undefined)){
 		return getFancyCart(carts[sesid]);
 	}
@@ -83,11 +85,13 @@ const reqPostCart = async ctx => {
 	if(ctx.request.body      === undefined){return;}
 	if(ctx.request.body.verb === undefined){return;}
 	switch(ctx.request.body.verb){
+	default:
+		console.warn(`Unknown post cart verb: ${ctx.request.body.verb}`);
+		break;
 	case "add": {
 		if(ctx.request.body.product === undefined){return;}
-		let product = ctx.request.body.product;
-		let amount = 1;
-		if(ctx.request.body.amount === undefined){amount = ctx.request.body.amount | 0;}
+		const product = ctx.request.body.product;
+		const amount = ctx.request.body.amount ? ctx.request.body.amount | 0 : 1;
 		await addSingle(ctx,product,amount);
 		break; }
 	case "empty":
@@ -95,7 +99,7 @@ const reqPostCart = async ctx => {
 		break;
 	case "remove": {
 		if(ctx.request.body.product === undefined){return;}
-		let product = ctx.request.body.product;
+		const product = ctx.request.body.product;
 		await remove(ctx,product);
 		break; }
 	}

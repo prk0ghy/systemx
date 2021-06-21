@@ -3,15 +3,15 @@ import * as feuser from "./feuser.mjs";
 import * as fesession from "./fesession.mjs";
 import * as template from "./template.mjs";
 
-let resetRequests = {};
+const resetRequests = {};
 
 const addReset = async name => {
-	let user = await feuser.getByName(name.trim());
+	const user = await feuser.getByName(name.trim());
 	if(user === undefined){return false;}
-	let hash = configuration.makeid(32);
+	const hash = configuration.makeid(32);
 	resetRequests[hash] = user.ID|0;
-	let resetLink = configuration.absoluteUrl("/pwreset/"+hash);
-	let mailText = "Um Ihr Passwort zurueckzusetzen besuchen Sie bitte folgenden Link: "+resetLink;
+	const resetLink = configuration.absoluteUrl("/pwreset/"+hash);
+	const mailText = "Um Ihr Passwort zurueckzusetzen besuchen Sie bitte folgenden Link: "+resetLink;
 	//let mailHtml = "<h3>Passwort Zuruecksetzen</h3><p>Um Ihr Passwort zurueckzusetzen benutzen Sie bitte folgenden Link: <a href=""+resetLink+"">"+resetLink+"</a></p>";
 	//mail.send("proexly@proexly-test.de",user.email,"Passwort Zuruecksetzen",mailText,mailHtml);
 	console.log(mailText);
@@ -19,33 +19,33 @@ const addReset = async name => {
 };
 
 const getHash = path => {
-	let prefix = configuration.prefixUrl("/pwreset");
-	let ppath  = path.substr(0,prefix.length).trim();
+	const prefix = configuration.prefixUrl("/pwreset");
+	const ppath  = path.substr(0,prefix.length).trim();
 	if(prefix !== ppath){return false;}
 	if(path[prefix.length] !== "/"){return "";}
 	return path.substr(prefix.length+1);
 };
 
 export const checkReset = ctx => {
-	let hash = getHash(ctx.request.path)
+	const hash = getHash(ctx.request.path);
 	return hash !== false;
 };
 
 export const changeCheck = async ctx => {
-	let user = await fesession.getUser(ctx);
+	const user = await fesession.getUser(ctx);
 	if(user === undefined){return false;}
 	return user.passwordExpired === 1;
 };
 
 export const changePage = async ctx => {
-	let arr = {};
-	let hash = getHash(ctx.request.path);
-	arr.title  = "Passwort zur&uuml;cksetzen"
+	const arr = {};
+	const hash = getHash(ctx.request.path);
+	arr.title  = "Passwort zur&uuml;cksetzen";
 	arr.status = "";
 	arr.pwresethref = configuration.prefixUrl("/pwreset");
 	if(hash !== ""){
 		if(resetRequests[hash] !== undefined){
-			let userid = resetRequests[hash]|0;
+			const userid = resetRequests[hash]|0;
 			await fesession.start(ctx,userid);
 			feuser.expirePW(userid);
 			ctx.redirect(configuration.get("baseurl"));
@@ -55,7 +55,7 @@ export const changePage = async ctx => {
 		}
 	}
 	if((ctx.method === "POST") && (ctx.request.body !== undefined) && (ctx.request.body.password !== undefined)){
-		let user = await fesession.getUser(ctx);
+		const user = await fesession.getUser(ctx);
 		feuser.changePW(user.ID,ctx.request.body.password);
 		ctx.redirect(ctx.request.originalUrl);
 	}
@@ -63,14 +63,14 @@ export const changePage = async ctx => {
 };
 
 const reqGetPWResetDo = async ctx => {
-	let arr    = {};
-	arr.title  = "Passwort zurücksetzen"
+	const arr  = {};
+	arr.title  = "Passwort zurücksetzen";
 	arr.status = "Ihr Link konnte nicht validiert werden, bitte probieren Sie es von vorne.";
 	arr.pwresethref = configuration.prefixUrl("/pwreset");
 	console.log(ctx.params);
 
 	if((ctx.params !== undefined) && (ctx.params.rid !== undefined) && (resetRequests[ctx.params.rid] !== undefined)){
-		let userid = resetRequests[ctx.params.rid]|0;
+		const userid = resetRequests[ctx.params.rid]|0;
 		await fesession.start(ctx,userid);
 		feuser.expirePW(userid);
 		ctx.redirect(configuration.get("baseurl"));
@@ -81,23 +81,23 @@ const reqGetPWResetDo = async ctx => {
 };
 
 const reqGetPWReset = async ctx => {
-	let arr    = {};
+	const arr  = {};
 	//let hash   = getHash(ctx.request.path);
-	arr.title  = "Passwort zurücksetzen"
+	arr.title  = "Passwort zurücksetzen";
 	arr.status = "Bitte geben Sie ihren Benutzernamen ein um Ihr Passwort zurückzusetzen.";
 	arr.pwresethref = configuration.prefixUrl("/pwreset");
 	ctx.body = await template.renderPage("pwreset",arr,false,ctx);
 };
 
 const reqPostPWReset = async ctx => {
-	let arr    = {};
+	const arr  = {};
 	//let hash   = getHash(ctx.request.path);
-	arr.title  = "Passwort zurücksetzen"
+	arr.title  = "Passwort zurücksetzen";
 	arr.status = "Bitte geben Sie ihren Benutzernamen ein um Ihr Passwort zurückzusetzen.";
 	arr.pwresethref = configuration.prefixUrl("/pwreset");
 
 	if((ctx.method === "POST") && (ctx.request.body !== undefined) && (ctx.request.body.username !== undefined)){
-		let hash = await addReset(ctx.request.body.username);
+		const hash = await addReset(ctx.request.body.username);
 		if(hash === false){
 			arr.status = "Es trat ein Fehler auf, bitte übeprüfen Sie ihre Eingabe.";
 		}else{

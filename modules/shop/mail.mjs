@@ -7,15 +7,15 @@ const checkTransporter = async() => {
 	if(transporter !== undefined){return;}
 	testAccount = await nodemailer.createTestAccount();
 	transporter = nodemailer.createTransport({
-	host: "smtp.ethereal.email",
-	port: 587,
-	secure: false,
-	auth: {
-		user: testAccount.user,
-		pass: testAccount.pass,
-	},
+		host: "smtp.ethereal.email",
+		port: 587,
+		secure: false,
+		auth: {
+			user: testAccount.user,
+			pass: testAccount.pass
+		}
 	});
-}
+};
 
 export const send = async (from,to,subject,text,html) => {
 	await checkTransporter();
@@ -25,8 +25,8 @@ export const send = async (from,to,subject,text,html) => {
 		to:      to,
 		subject: subject,
 		text:    text,
-		html:    html,
+		html:    html
 	});
 	console.log("Message sent: %s", info.messageId);
 	console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-}
+};

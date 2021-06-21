@@ -35,8 +35,8 @@ export default async () => {
 	});
 };
 export const tryLogin = async (name, password) => {
-	let row = await getUser(name);
-	if (row == null) {
+	const row = await getUser(name);
+	if (row === null) {
 		return null;
 	}
 	if (await bcrypt.compare(password, row.password)) {

@@ -20,14 +20,14 @@ export default async () => {
 			name TEXT NOT NULL
 		)
 	`);
-	let data = await fs.promises.readFile("modules/shop/data/feuser.json");
-	let rows = JSON.parse(data.toString());
+	const data = await fs.promises.readFile("modules/shop/data/feuser.json");
+	const rows = JSON.parse(data.toString());
 	rows.forEach(async row => {
 		const user = await getByName(row.name);
 		if (user) {
 			return;
 		}
-		let userID = await add(row.name, row.email, row.pass);
+		const userID = await add(row.name, row.email, row.pass);
 		await addProducts(userID, row.products);
 	});
 };
@@ -54,11 +54,8 @@ const addProducts = async (id, products) => {
 	products.forEach(name => {
 		productList[name] = name;
 	});
-	const activeProducts = await getActiveProducts(id);
+	// const activeProducts = await getActiveProducts(id);
 	for (const p in productList) {
-		if (!productList.hasOwnProperty(p) || activeProducts[p]) {
-			continue;
-		}
 		await database.run("INSERT INTO feuser_product (user, name) VALUES (?, ?)", [id, p]);
 	}
 };
@@ -78,7 +75,7 @@ export const tryLogin = async (name, pass) => {
 	if (!row) {
 		return null;
 	}
-	console.log("Trying as "+name);1
+	console.log("Trying as "+name);
 	if (await bcrypt.compare(pass, row.password)) {
 		console.log("Logging in as "+name);
 		return row;

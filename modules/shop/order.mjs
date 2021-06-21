@@ -48,7 +48,7 @@ export const addOrderItem = ({
 	product_amount,
 	product_id,
 	product_single_price,
-	shop_order_id,
+	shop_order_id
 }) => database.run(`
 	INSERT INTO shop_order_item (
 		shop_order_id,
@@ -71,9 +71,6 @@ export const add = async (invoice_data, products) => {
 	}
 	let total = 0;
 	for (const id in products) {
-		if (!products.hasOwnProperty(id)) {
-			continue;
-		}
 		total += products[id].price * products[id].amount;
 	}
 	const subtotal = total / 1.19;
@@ -84,14 +81,11 @@ export const add = async (invoice_data, products) => {
 		price_taxes: total - subtotal,
 		price_total: total
 	};
-	let shop_order_id = await addOrder(shop_order);
+	const shop_order_id = await addOrder(shop_order);
 	if (shop_order_id === false) {
 		return false;
 	}
 	for (const id in products) {
-		if (!products.hasOwnProperty(id)) {
-			continue;
-		}
 		const shop_order_item = {
 			product_amount: products[id].amount,
 			product_id: id,

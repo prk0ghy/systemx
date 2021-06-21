@@ -27,18 +27,14 @@ export default async () => {
 	`);
 };
 
-const reqShopRedirect = context => {
-	context.redirect(configuration.absoluteUrl(""));
-};
-
 export const reqGetShop = async context => {
-	let arr = {};
+	const arr = {};
 	arr.title = "Shop";
 	context.body = await template.renderPage("shop",arr,true,context);
 };
 
 const reqPostShopCheckout = async context => {
-	let arr = {};
+	const arr = {};
 	arr.title = "Warenkorb";
 	context.body = await template.renderPage("checkout",arr,true,context);
 };
@@ -52,14 +48,15 @@ const tryCreateUser = context => {
 };
 
 const reqPostShopOrder = async context => {
-	let products = cart.get(context);
+	const products = cart.get(context);
 	if (fesession.getUser(context) === undefined) {
 		const newUser = await tryCreateUser(context);
 		if (!newUser) {
-			return context.body = await template.renderPage("order", {
+			context.body = await template.renderPage("order", {
 				err: "Die E-Mail ist bereits im System vorhanden.",
 				title: "Ein Fehler ist aufgetreten!"
 			}, true, context);
+			return;
 		}
 		await fesession.start(context,newUser);
 		const targetUrl = configuration.absoluteUrl("/checkout");
@@ -71,12 +68,13 @@ const reqPostShopOrder = async context => {
 	const user = await fesession.getUser(context);
 	if (!order.add({
 		email: user.email,
-		fe_user_id: user.ID,
+		fe_user_id: user.ID
 	}, products)) {
-		return context.body = await template.renderPage("order", {
+		context.body = await template.renderPage("order", {
 			err: "Bitte überprüfen Sie ihre Bestellung.",
-			title: "Ein Fehler ist aufgetreten!",
+			title: "Ein Fehler ist aufgetreten!"
 		}, true, context);
+		return;
 	}
 	await cart.empty();
 	context.body = await template.renderPage("order", {

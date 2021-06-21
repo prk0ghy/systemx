@@ -2,7 +2,7 @@ import * as beuser from "./beuser.mjs";
 import * as configuration from "./configuration.mjs";
 const sessions = {};
 export const startSession = async (ctx, user) => {
-	let sesid = configuration.makeid(32);
+	const sesid = configuration.makeid(32);
 	sessions[sesid] = {
 		"ID"       : user.ID,
 		"username" : user.name
@@ -12,7 +12,7 @@ export const startSession = async (ctx, user) => {
 };
 
 export const stopSession = ctx => {
-	let cookie = ctx.cookies.get(configuration.get('beSessionCookie'));
+	const cookie = ctx.cookies.get(configuration.get('beSessionCookie'));
 	if((cookie !== undefined) && (sessions[cookie] !== undefined)){
 		delete sessions[cookie];
 		return true;
@@ -25,7 +25,7 @@ export const checkPassword = async ctx => {
 	if(ctx.request.body === undefined)            {return false;}
 	if(ctx.request.body.beusername === undefined) {return false;}
 	if(ctx.request.body.bepassword === undefined) {return false;}
-	let user = await beuser.tryLogin(ctx.request.body.beusername,ctx.request.body.bepassword);
+	const user = await beuser.tryLogin(ctx.request.body.beusername,ctx.request.body.bepassword);
 	if(user === null)                             {return false;}
 
 	await startSession(ctx,user);
@@ -33,6 +33,6 @@ export const checkPassword = async ctx => {
 };
 
 export const check = ctx => {
-	let cookie = ctx.cookies.get(configuration.get('beSessionCookie'));
+	const cookie = ctx.cookies.get(configuration.get('beSessionCookie'));
 	return (cookie !== undefined) && (sessions[cookie] !== undefined);
 };

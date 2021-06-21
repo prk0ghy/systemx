@@ -21,7 +21,7 @@ const reqBackend =  async ctx => {
 	}
 
 	await checkBackendPost(ctx);
-	let arr = {};
+	const arr = {};
 	arr.title = 'Backend';
 	arr.users = await getUsersHTML();
 
@@ -33,13 +33,14 @@ const reqFilter = async (ctx,next) => {
 		return await next(ctx);
 	}else if(await besession.checkPassword(ctx)){
 		ctx.redirect(ctx.request.url);
+		return null;
 	}else{
 		return reqLoginPage(ctx);
 	}
 };
 
 const reqLoginPage = async (ctx) => {
-	let arr = {};
+	const arr = {};
 	arr.title  = 'Backend Login';
 	arr.status = '';
 	if((ctx.method === 'POST') && (ctx.request.body !== undefined) && (ctx.request.body.beusername !== undefined)){
@@ -82,6 +83,8 @@ const checkBackendPost = async ctx => {
 	const POST = ctx.request.body;
 
 	switch(ctx.request.body.verb){
+	default:
+		break;
 	case 'delete':
 		feuser.deleteUser(POST.id|0);
 		break;
