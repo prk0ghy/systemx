@@ -58,7 +58,7 @@
 		"dev:shop": "nodemon --ignore dist/ --ignore web/ ./index.mjs --quiet --start-shop",
 		"lint": "npm run eslint && npm run stylelint",
 		"eslint": "eslint './modules/**/*.mjs' './modules/**/*.js'",
-		"stylelint": "stylelint './modules/ssg/front_end/**/*.css'",
+		"stylelint": "stylelint './modules/**/*.css'",
 		"mon": "npm run mon:ssg",
 		"mon:ssg": "nodemon --ignore dist/ --ignore web/ ./index.mjs --skip-network --start-server",
 		"mon:shop": "nodemon --ignore dist/ --ignore web/ ./index.mjs --skip-network --start-shop",
