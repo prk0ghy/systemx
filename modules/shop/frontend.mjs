@@ -7,16 +7,8 @@ import * as template from "./template.mjs";
 
 const resetRequests = {};
 
-const getDeletionHash = path => {
-	const prefix = configuration.prefixUrl('/userDelete');
-	const ppath  = path.substr(0,prefix.length).trim();
-	if(prefix !== ppath){return false;}
-	if(path[prefix.length] !== '/'){return '';}
-	return path.substr(prefix.length+1);
-};
-
 const addDeletionRequest = async id => {
-	const user = await feuser.getUserByID(id);
+	const user = await feuser.getByID(id);
 	if(user === undefined){return false;}
 	const hash = configuration.makeid(32);
 	resetRequests[hash] = user.ID|0;
@@ -30,17 +22,26 @@ const addDeletionRequest = async id => {
 
 export const reqLogin = async ctx => {
 	const arr = {};
+	const ses = fesession.get(ctx);
 	arr.title  = 'Login';
+	arr.loggedIn = false;
 	arr.status = 'Bitte gib deine Zugangsdaten ein.';
 	arr.pwresethref = configuration.prefixUrl('/pwreset');
 	arr.loginhref = configuration.absoluteUrl('/login');
-	if((ctx.method === 'POST') && (ctx.request.body !== undefined) && (ctx.request.body.username !== undefined)){
-		arr.status = 'Passwort ungueltig, bitte versuche es erneut!';
+	arr.logouthref = configuration.absoluteUrl('/logout');
+	if(!ses && (ctx.method === 'POST') && (ctx.request.body !== undefined) && (ctx.request.body.username !== undefined)){
+		if(await fesession.checkPassword(ctx)){
+			ctx.redirect(ctx.request.body.redirect);
+			return;
+		}else {
+			arr.status = 'Passwort ungueltig, bitte versuche es erneut!';
+		}
+	}else if(ses){
+		arr.status = 'Du bist bereits eingeloggt';
+		arr.loggedIn = true;
 	}
 	ctx.body = await template.renderPage('login',arr,false,ctx);
 };
-
-export const checkUserDelete = async ctx => getDeletionHash(ctx.request.path) !== false;
 
 export const checkUserSettings = async ctx => {
 	const prefix  = configuration.prefixUrl('/userSettings');
@@ -63,13 +64,17 @@ const reqStartpage = async ctx => {
 };
 
 export const reqFilter = async (ctx,next) => {
-	console.log(ctx.method);
 	if((ctx.request.path === '/') || (ctx.request.path === '')){
 		return reqStartpage(ctx,next);
 	}else if(await fesession.checkPassword(ctx)){
 		ctx.redirect(ctx.request.url);
 	}
-	return reqLogin(ctx);
+	const ses = fesession.get(ctx);
+	if(ses){
+		return next(ctx);
+	}else{
+		return reqLogin(ctx);
+	}
 };
 
 export const reqRelaxedFilter = async (ctx,next) => {
@@ -138,7 +143,7 @@ const reqPostUserSettings = async ctx => {
 
 const reqUserDeletePage = async ctx => {
 	const arr  = {};
-	const hash = getDeletionHash(ctx.request.path);
+	const hash = ctx.params.hash;
 	const user = await fesession.getUser(ctx);
 	arr.title  = 'Alle Daten löschen';
 	arr.status = '<p>Bitte pr&uuml;fen Sie den Link und stellen Sie sicher, dass Sie eingeloggt sind damit wir Ihren Account vollst&auml;ndig l&ouml;schen k&ouml;nnen.</p>';
@@ -146,11 +151,11 @@ const reqUserDeletePage = async ctx => {
 	if((resetRequests[hash] !== undefined) && (resetRequests[hash] === user.ID)){
 		if((ctx.method === 'POST') && (ctx.request.body !== undefined) && (ctx.request.body.confirm !== undefined)){
 			arr.status   = '<p>Ihr Account wurde vollst&auml;ndig und unwiederruflich gel&ouml;scht, vielen Dank dass Sie das mBook genutzt haben.</p>';
-			feuser.delete(user.ID);
+			feuser.deleteUser(user.ID);
 			delete resetRequests[hash];
 			fesession.stop(ctx);
 		}else{
-			arr.status = '<p>Sind Sie sicher, dass Sie Ihren Account und alle dazugeh&ouml;rigen Daten l&ouml;schen wollen?</p><form method="POST" action="'+ctx.request.originalUrl+'" class="login-form"><input type="submit" class=delete name=confirm value="Account Löschen"/></form>';
+			arr.status = '<p>Sind Sie sicher, dass Sie Ihren Account und alle dazugeh&ouml;rigen Daten l&ouml;schen wollen?</p><form method="post" action="'+ctx.request.originalUrl+'" class="login-form"><input type="submit" class=delete name=confirm value="Account Löschen"/></form>';
 		}
 	}
 	ctx.body = await template.renderPage('userDelete',arr,false,ctx);
@@ -173,8 +178,7 @@ export const addRoutes = router => {
 	router.post('/userSettings', reqFilter, reqPostUserSettings);
 	router.get ('/userSettings/',reqFilter, reqGetUserSettings);
 	router.get ('/userSettings', reqFilter, reqGetUserSettings);
-	router.all ('/userDelete/',  reqFilter, reqUserDeletePage);
-	router.all ('/userDelete',   reqFilter, reqUserDeletePage);
+	router.all ('/userDelete/:hash', reqFilter, reqUserDeletePage);
 	router.all ('/login',        reqLogin);
 	router.all ('/register',     reqRegister);
 	router.get ('/impressum',    reqGetImpressum);

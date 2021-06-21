@@ -42,7 +42,7 @@ const proxyDoRequest = (ctx,host) => new Promise((resolve, reject) => {
 			body.push(chunk);
 		});
 		response.on("end", () => {
-			ctx.response.headers = response.headers;
+			//ctx.response.headers = response.headers;
 			ctx.response.body    = Buffer.concat(body);
 			ctx.response.type    = response.type;
 

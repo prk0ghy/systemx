@@ -3,10 +3,11 @@
 
 <br/>
 
-<form action="<%= loginhref %>" method="POST" class="login-form">
+<form action="<%= loginhref %>" method="post" class="login-form">
 	<p><%= status %></p>
 	<input type="hidden" name="redirect" value="<%= redirect %>"/>
 
+	<% if(!loggedIn){ %>
 	<br/>
 	<label class=form-row>
 		<input autofocus type="text" name="username"/>
@@ -18,4 +19,7 @@
 	</label>
 	<input type="submit" value="Einloggen"/>
 	<a href="<%- pwresethref %>" class="pwreset">Passwort vergessen?</a>
+	<% } else { %>
+	<a href="<%- logouthref %>" class="button">Logout</a>
+	<% } %>
 </form>

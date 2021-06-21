@@ -48,6 +48,6 @@ const start = async () => {
 		.use(frontend.reqFilter)
 		.use(proxy)
 		.listen(configuration.get("port"));
-	console.log("HTTP Server started on port " + configuration.get("port"));
+	console.log("Shop started: " + configuration.get("baseurl"));
 };
 export default start;

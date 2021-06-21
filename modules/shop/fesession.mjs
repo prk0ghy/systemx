@@ -27,7 +27,7 @@ export const refresh = async (ctx, sesid) => {
 		"cart"     : cart.get(ctx),
 		"products" : await feuser.getActiveProducts(user.ID)
 	};
-	console.log('Refreshed Session');
+	console.log('Started / Refreshed Session');
 	console.log(sessions[id]);
 };
 
