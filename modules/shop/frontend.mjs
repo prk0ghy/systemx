@@ -62,6 +62,7 @@ const reqStartpage = async ctx => {
 };
 
 export const reqFilter = async (ctx,next) => {
+	console.log(ctx.method);
 	if((ctx.request.path === '/') || (ctx.request.path === '')){
 		return reqStartpage(ctx,next);
 	}else if(await fesession.checkPassword(ctx)){
@@ -153,24 +154,22 @@ const userDeletePage = async ctx => {
 };
 
 const reqGetImpressum = async ctx => {
-	let arr    = {};
-	arr.title  = 'Impressum'
-	ctx.body = await template.renderPage('impressum',arr,false,ctx);
+	let arr   = {};
+	arr.title = 'Impressum'
+	ctx.body  = await template.renderPage('impressum',arr,false,ctx);
 };
 
 const reqGetDatenschutz = async ctx => {
-	let arr    = {};
-	arr.title  = 'Datenschutzerklärung'
-	ctx.body = await template.renderPage('datenschutz',arr,false,ctx);
+	let arr   = {};
+	arr.title = 'Datenschutzerklärung'
+	ctx.body  = await template.renderPage('datenschutz',arr,false,ctx);
 };
 
 export const addRoutes = router => {
-	router.post('/userSettings/',reqFilter, reqPostUserSettings);
-	router.post('/userSettings', reqFilter, reqPostUserSettings);
-	router.get ('/userSettings/',reqFilter, reqGetUserSettings);
-	router.get ('/userSettings', reqFilter, reqGetUserSettings);
-	router.all ('/login',        reqLogin);
-	router.all ('/register',     reqRegister);
-	router.get ('/impressum',    reqGetImpressum);
-	router.get ('/datenschutz',  reqGetDatenschutz);
+	router.all('/userSettings/',reqFilter, reqGetUserSettings);
+	router.all('/userSettings', reqFilter, reqGetUserSettings);
+	router.all('/login',        reqLogin);
+	router.all('/register',     reqRegister);
+	router.get('/impressum',    reqGetImpressum);
+	router.get('/datenschutz',  reqGetDatenschutz);
 };

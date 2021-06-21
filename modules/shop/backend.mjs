@@ -63,7 +63,7 @@ const getUsersHTML = async () => {
 	<input type="submit" value="Löschen" class=delete />
 	</form>
 
-	<form method="POST" action="/backend" class="backend-form">
+	<form method="POST" action="${configuration.prefixUrl('/backend')}" class="backend-form">
 	<input type="hidden" name="verb" value="changepw"/>
 	<input type="hidden" name="id" value="${row.ID|0}"/>
 	<label class="form-row inline-row">
@@ -80,7 +80,6 @@ const checkBackendPost = async ctx => {
 	if(ctx.request.body === undefined)      {return;}
 	if(ctx.request.body.verb === undefined) {return;}
 	const POST = ctx.request.body;
-	console.log("BACKEND POST!!!");
 
 	switch(ctx.request.body.verb){
 	case 'delete':

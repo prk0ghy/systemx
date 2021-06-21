@@ -71,7 +71,7 @@ const reqGetPWResetDo = async ctx => {
 
 	if((ctx.params !== undefined) && (ctx.params.rid !== undefined) && (resetRequests[ctx.params.rid] !== undefined)){
 		let userid = resetRequests[ctx.params.rid]|0;
-		await fesession.startSession(ctx,userid);
+		await fesession.start(ctx,userid);
 		feuser.expirePW(userid);
 		ctx.redirect(configuration.get("baseurl"));
 		return;

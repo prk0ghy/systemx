@@ -40,7 +40,7 @@ export const getActiveProducts = async id => {
 		return [];
 	}
 	const res = [];
-	for (row of rows) {
+	for (const row of rows) {
 		const product = configuration.getProduct(row.name);
 		if (!product) {
 			continue;
@@ -74,13 +74,13 @@ export const changePW = async (id, pass) => {
 };
 export const expirePW = id => database.run("UPDATE feuser SET passwordExpired = 1 WHERE ID = ?", [id]);
 export const tryLogin = async (name, pass) => {
-	console.log("Trying to login "+name);
 	const row = await getByName(name);
-	if (row === null) {
+	if (!row) {
 		return null;
 	}
-	console.log("Comparing for "+name);
+	console.log("Trying as "+name);1
 	if (await bcrypt.compare(pass, row.password)) {
+		console.log("Logging in as "+name);
 		return row;
 	}
 	return null;

@@ -1,11 +1,11 @@
 <h1>Bestellen</h1>
 
-<form class="order-form" method="POST" action="<%- abslink %>/order">
+<form class="order-form form-panel" method="POST" action="<%- abslink %>/order">
 	<ul class="cart">
 	<% for(let product in cart) { %>
 		<li class="cart-item"><%= cart[product].name %> <cart-remove product-id="<%= product %>"/></li>
-	</ul>
 	<% } %>
+	</ul>
 	<br/>
 
 	<label class=form-row>

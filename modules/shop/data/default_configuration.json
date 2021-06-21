@@ -5,8 +5,8 @@
 	"feSessionCookie": "proexly-fesession",
 	"lang": "de",
 	"origin": {
-		"*": "http://forum-theater/",
-		"localhost": "http://forum-theater/"
+		"*": "http://localhost:8042/",
+		"localhost": "http://localhost:8042/"
 	},
 	"prefix": "proexly",
 	"products": {
