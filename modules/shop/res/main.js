@@ -1,4 +1,6 @@
-async function postData(url = '', data = {}) {
+/* global baseUrl */
+
+const postData= async (url = '', data = {}) => {
 	const response = await fetch(url, {
 		method: 'POST',
 		mode: 'cors',
@@ -10,90 +12,81 @@ async function postData(url = '', data = {}) {
 		body: JSON.stringify(data)
 	});
 	return response.json();
-}
+};
 
-function cartAddProduct(product,amount){
-	if(amount === undefined){amount = 1;}
+const cartAddProduct = (product,amount = 1) => {
 	postData(baseUrl+'/cart',{
 		"verb":"add",
 		"product":product,
 		"amount":amount
 	});
-}
+};
 
-function cartRemoveProduct(product,amount){
-	if(amount === undefined){amount = 1;}
+const cartRemoveProduct = product => {
 	postData(baseUrl+'/cart',{
 		"verb":"remove",
 		"product":product
 	});
-}
+};
 
-function cartEmptyAll(){
-	postData(baseUrl+'/cart',{
-		"verb":"empty"
-	});
-}
-
-function initProductLinks(){
-	var cbs = document.querySelectorAll('input[type="checkbox"][value="orderItem"]');
-	for(var i=0;i<cbs.length;i++){
-		let cb = cbs[i];
-		cb.addEventListener('change', e => {
-			let product = cb.name+"";
+const initProductLinks = () => {
+	const cbs = document.querySelectorAll('input[type="checkbox"][value="orderItem"]');
+	for(let i=0;i<cbs.length;i++){
+		const cb = cbs[i];
+		cb.addEventListener('change', () => {
+			const product = String(cb.name);
 			if(cb.checked){
 				cartAddProduct(product);
 			}else{
 				cartRemoveProduct(product);
 			}
-		})
+		});
 	}
-}
+};
 
-
-function initCartActions(){
-	var cbs = document.querySelectorAll('cart-remove');
-	for(var i=0;i<cbs.length;i++){
-		let cb = cbs[i];
-		cb.addEventListener('click', (e) => {
-			let product = cb.getAttribute('product-id')+'';
+const initCartActions = () => {
+	const cbs = document.querySelectorAll('cart-remove');
+	for(let i=0;i<cbs.length;i++){
+		const cb = cbs[i];
+		cb.addEventListener('click', () => {
+			const product = String(cb.getAttribute('product-id'));
 			cartRemoveProduct(product);
-			let li = cb.parentNode;
+			const li = cb.parentNode;
 			li.classList.add('removing');
-			setTimeout(function(){
+			setTimeout(() => {
 				li.parentNode.removeChild(li);
 			},500);
-		})
+		});
 	}
-}
+};
 
-function closeSideNav(){
-	let overlay = document.querySelector('.userpanel-overlay');
-	overlay.addEventListener('click', function(e){
-		let sidenav = document.querySelector('.userpanel-container');
+const closeSideNav = () => {
+	const overlay = document.querySelector('.userpanel-overlay');
+	overlay.addEventListener('click', e => {
+		const sidenav = document.querySelector('.userpanel-container');
 		sidenav.classList.remove('active');
 		e.target.classList.remove('active');
-		setTimeout(function () {
+		setTimeout(() => {
 			e.target.style.display='none';
 		}, 500);
 	});
 };
 
-function toggleSideNav(){
-	let overlay = document.querySelector('.userpanel-overlay');
-	setTimeout(function () {
+const toggleSideNav = () => {
+	const overlay = document.querySelector('.userpanel-overlay');
+	setTimeout(() => {
 		overlay.classList.toggle('active');
 	}, 1);
 	overlay.classList.toggle('active');
-	let btn_open = document.querySelector('#nav-right .open-nav');
-	btn_open.addEventListener('click', function(e){
-		let sidenav = document.querySelector('.userpanel-container');
-		let overlay = document.querySelector('.userpanel-overlay');
+	const btn_open = document.querySelector('#nav-right .open-nav');
+	btn_open.addEventListener('click', () => {
+		const sidenav = document.querySelector('.userpanel-container');
+		const overlay = document.querySelector('.userpanel-overlay');
 		sidenav.classList.toggle('active');
-		setTimeout(function () {
+		setTimeout(() => {
 			overlay.style.display='block';
 		}, 1);
-		setTimeout(function () {
+		setTimeout(() => {
 			overlay.classList.toggle('active');
 		}, 10);
 	});
