@@ -28,7 +28,6 @@ export default (url,query) => {
 				resolve(result);
 			} catch (error) {
 				console.error(`Error during GraphQL Request, exiting immediatly!\n${error}`);
-				process.exitCode = 42;
 				reject();
 			}
 		};
