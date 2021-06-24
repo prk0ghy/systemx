@@ -2,6 +2,7 @@ export default {
 	queries: new Map([
 		["aufgabeElemente_audioDatei_BlockType", {
 			fetch: cms => `
+				adsjiofasdfjioj: asiodpfjoipasdjf
 				audioFiles: audiodatei {
 					${cms.fragments.asset}
 				}

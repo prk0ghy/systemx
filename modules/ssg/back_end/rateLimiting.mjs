@@ -19,12 +19,18 @@ function workQueue(){
  * overload the Server.
  */
 export default (url,query) => {
-	return new Promise(resolve => {
+	return new Promise((resolve,reject) => {
 		const call = async () => {
-			const result = await request(url,query);
-			requestsActive--;
-			workQueue();
-			resolve(result);
+			try {
+				const result = await request(url,query);
+				requestsActive--;
+				workQueue();
+				resolve(result);
+			} catch (error) {
+				console.error(`Error during GraphQL Request, exiting immediatly!\n${error}`);
+				process.exitCode = 42;
+				reject();
+			}
 		};
 		requestQueue.push(call);
 		workQueue();
