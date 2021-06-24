@@ -45,16 +45,17 @@ export default {
 	}) {
 		const embeddedTagError = String(headline).trim().startsWith("<h")
 			? EditorialError.render({
-				message: "The size of this headline should be controlled via the corresponding field in the content type. However, this headline embeds the size in HTML, resulting in a faulty tree. Please remove the problematic tag."
+				message: "A Headline should only use HTML header tags (h1 to h6), please change the content accordingly, thank you."
 			})
 			: "";
+		const hTag = ["h1","h2","h3","h4","h5","h6"].includes(tag) ? tag : "h3";
 		const isReallyNumbered = isNumbered && tag === "h1";
 		return `
 			<section content-type="headline" ${contentTypeIDIf(id)}>
 				<inner-content>
 					${Marker.render({ isNumbered: isReallyNumbered })}
 					${embeddedTagError}
-					<${tag}>${escapeHTML(headline)}</${tag}>
+					<${hTag}>${escapeHTML(headline)}</${hTag}>
 				</inner-content>
 			</section>
 		`;
