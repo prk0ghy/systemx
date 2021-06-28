@@ -265,6 +265,9 @@ export const buildEntries = async targetName => {
 * Builds a target, given its name.
 */
 export const build = async targetName => {
+	if(options.cleanBuild){
+		await fsp.rm(getTargetPath(targetName),{recursive: true});
+	}
 	const resourcePath = getResourcePath(targetName);
 	mkdirp(resourcePath);
 	await buildHead(targetName);
