@@ -198,6 +198,13 @@ button[button-type="fullscreen"] {
 	font-family: "icomoon";
 }
 
+button[button-type="fullscreen"] {
+	background-image: url("/resources/fullscreen.svg");
+	background-repeat: no-repeat;
+	background-clip: content-box;
+	background-size: 100%;
+}
+
 figure[figure-type="hero-image"] button[button-type="fullscreen"] {
 	top:auto;
 	font-size:0.87em;
@@ -205,6 +212,7 @@ figure[figure-type="hero-image"] button[button-type="fullscreen"] {
 	margin-top: -45px;
 	box-shadow: 0 3px 6px #00000029;
 	transition: background-color 300ms, color 300ms;
+	padding: 0;
 }
 
 figure[figure-type="picture"] button[button-type="fullscreen"] {
@@ -214,6 +222,7 @@ figure[figure-type="picture"] button[button-type="fullscreen"] {
 	bottom: 15px;
 	box-shadow: 0 3px 6px #00000029;
 	transition: background-color 300ms, color 300ms;
+	padding: 0;
 }
 
 section[content-type="gallery"] button[button-type="fullscreen"] {
@@ -222,6 +231,7 @@ section[content-type="gallery"] button[button-type="fullscreen"] {
 	bottom: 48px;
 	box-shadow: 0 3px 6px #00000029;
 	transition: background-color 300ms, color 300ms;
+	padding: 0;
 }
 
 figure[figure-type="picture"] > details.license > summary {
@@ -248,18 +258,6 @@ button[button-type="previous-slide"] {
 	left:20px;
 	top:268px;
 	cursor:pointer;
-}
-
-button[button-type="fullscreen"]::before {
-	margin-left: -1px;
-	content: "\e906";
-	opacity: 1;
-}
-
-button[button-type="fullscreen"]::after {
-	margin-left: -1px;
-	content: "\e907";
-	opacity: 0;
 }
 
 button[button-type="fullscreen"].active::before {
