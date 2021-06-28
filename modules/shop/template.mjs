@@ -83,8 +83,9 @@ const getHeader = () => {
 const getUserPanelLogin = (template, arr) => {
 	let loginHtml = '<form action="'+configuration.absoluteUrl('/login')+'" method="POST" class="login-form">';
 	loginHtml += '<input type="hidden" name="redirect" value="' + arr.redirect + '"/>';
-	loginHtml += '<label class=form-row><input autofocus type="text" name="username"/><span>Benutzername</span></label>';
-	loginHtml += '<label class=form-row><input type="password" name="password"/><span>Passwort</span></label>';
+	loginHtml += '<h2>Login</h2>';
+	loginHtml += '<label class=form-row><input autofocus type="text" name="username" placeholder="E-Mail"/></label>';
+	loginHtml += '<label class=form-row><input type="password" name="password "placeholder="Passwort"/></label>';
 	loginHtml += '<input type="submit" value="Einloggen"/>';
 	loginHtml += '<a href="<%- pwresethref %>" class="pwreset">Passwort vergessen?</a>';
 	loginHtml += '</form>';
