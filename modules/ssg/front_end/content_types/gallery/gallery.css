@@ -21,8 +21,8 @@ section[content-type="gallery"] > inner-content > details > summary::-webkit-det
 }
 
 figure[figure-type="gallery"] > details.license > summary {
-	right:3em;
-	margin-top:-2.3em;
+	right:58px;
+	bottom: 48px;
 }
 
 figure[figure-type="gallery"] > details.license > license-content {
@@ -198,16 +198,39 @@ button[button-type="fullscreen"] {
 	font-family: "icomoon";
 }
 
-figure[figure-type="hero-image"] button[button-type="fullscreen"],
-figure[figure-type="picture"] button[button-type="fullscreen"] {
+figure[figure-type="hero-image"] button[button-type="fullscreen"] {
 	top:auto;
-	font-size:0.8em;
-	margin-top:-2em;
-	right:2.5em;
+	font-size:0.87em;
+	right:52px;
+	margin-top: -45px;
+	box-shadow: 0 3px 6px #00000029;
+	transition: background-color 300ms, color 300ms;
 }
 
-figure[figure-type="hero-image"] button[button-type="fullscreen"] {
+figure[figure-type="picture"] button[button-type="fullscreen"] {
+	top:auto;
 	font-size:0.87em;
+	right:52px;
+	bottom: 15px;
+	box-shadow: 0 3px 6px #00000029;
+	transition: background-color 300ms, color 300ms;
+}
+
+section[content-type="gallery"] button[button-type="fullscreen"] {
+	right:20px;
+	top:auto;
+	bottom: 48px;
+	box-shadow: 0 3px 6px #00000029;
+	transition: background-color 300ms, color 300ms;
+}
+
+figure[figure-type="picture"] > details.license > summary {
+	right:0.6em;
+	bottom: 15px;
+}
+
+section[content-type="tab-box"] figure[figure-type="gallery"] img {
+	border: none;
 }
 
 button[button-type="next-slide"] {

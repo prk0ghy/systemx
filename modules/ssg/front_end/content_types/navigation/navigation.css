@@ -45,7 +45,6 @@ nav li a {
 	font-family: var(--font-headlines);
 	font-size:1.3em;
 	padding-left:calc(var(--content-padding) * 1);
-	text-indent: -2rem;
 }
 nav li li a { padding-left:calc(var(--content-padding) * 2); }
 nav li li li a { padding-left:calc(var(--content-padding) * 3); }
