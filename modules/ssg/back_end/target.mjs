@@ -266,7 +266,11 @@ export const buildEntries = async targetName => {
 */
 export const build = async targetName => {
 	if(options.cleanBuild){
-		await fsp.rm(getTargetPath(targetName),{recursive: true});
+		try {
+			await fsp.rm(getTargetPath(targetName),{recursive: true});
+		} catch {
+			/* MOst likely means the target folder doesn't exist in the first place */
+		}
 	}
 	const resourcePath = getResourcePath(targetName);
 	mkdirp(resourcePath);
