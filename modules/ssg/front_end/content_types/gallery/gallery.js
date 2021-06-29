@@ -48,6 +48,7 @@
 			if(items.count === 0){return;}
 			const options = {
 				index:0,
+				loop: configuration.galleryWrapAround,
 				bgOpacity: 0.5,
 				closeOnScroll: false,
 				getThumbBoundsFn:()=>{
@@ -61,7 +62,7 @@
 				}
 			};
 
-			const setSlide = i => {
+			const setSlideWrap = i => {
 				i = i|0;
 				if(i < 0){
 					if(items.length <= 0){return;}
@@ -84,6 +85,43 @@
 				}
 				options.index = i;
 			};
+
+			const setSlideNoWrap = i => {
+				i = i|0;
+				if(configuration.galleryWrapAround){
+					if(i < 0){
+						if(items.length <= 0){return;}
+						setSlide(items.length-1);
+						return;
+					}else if(i >= items.length){
+						setSlide(0);
+						return;
+					}
+				}else{
+					if(i < 0){
+						if(items.length <= 0){return;}
+						setSlide(0);
+						return;
+					}else if(i >= items.length){
+						setSlide(items.length-1);
+						return;
+					}
+				}
+
+				let ci = 0;
+				for(const slide of items){
+					if(ci++ === i){
+						slide.figure.classList.remove("hidden");
+						slide.figcaption.classList.remove("hidden");
+					}else{
+						slide.figure.classList.add("hidden");
+						slide.figcaption.classList.add("hidden");
+					}
+				}
+				options.index = i;
+			};
+
+			const setSlide = configuration.galleryWrapAround ? setSlideWrap : setSlideNoWrap;
 
 			gallery.addEventListener("click", e => e.preventDefault());
 			button.addEventListener("click",e => {

@@ -6,6 +6,10 @@ const argv = minimist(process.argv.slice(2));
 const options = {
 	configurationPath: path.join(".systemx", "settings"),
 	cleanBuild: false,
+	cssVars: {},
+	jsVars: {
+		galleryWrapAround: true
+	},
 	disableMarkers: false,
 	distributionPath: "web",
 	downloadMedia: false,

@@ -21,8 +21,8 @@ section[content-type="gallery"] > inner-content > details > summary::-webkit-det
 }
 
 figure[figure-type="gallery"] > details.license > summary {
-	right: 3.7em;
-	bottom: 1.1em;
+	right: 2.9em;
+	margin-top: -52px;
 }
 
 figure[figure-type="gallery"] > details.license > license-content {
@@ -203,8 +203,8 @@ button[button-type="fullscreen"] {
 	background-size: 100%;
 	top:auto;
 	font-size:0.87em;
-	right:52px;
-	margin-top: -1.83em;
+	right:16px;
+	margin-top: -45px;
 	box-shadow: 0 3px 6px #00000029;
 	transition: background-color 300ms, color 300ms;
 	padding: 0;
@@ -220,9 +220,14 @@ section[content-type="gallery"] button[button-type="fullscreen"] {
 	right: 1em;
 }
 
+figure[figure-type="picture"] > button[button-type="fullscreen"] {
+	right:8px;
+	margin-top: -45px;
+}
+
 figure[figure-type="picture"] > details.license > summary {
-	right:0.6em;
-	margin-top: -2em;
+	right:45px;
+	margin-top: -45px;
 }
 
 section[content-type="tab-box"] figure[figure-type="gallery"] img {
