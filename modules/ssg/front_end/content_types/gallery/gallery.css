@@ -21,8 +21,8 @@ section[content-type="gallery"] > inner-content > details > summary::-webkit-det
 }
 
 figure[figure-type="gallery"] > details.license > summary {
-	right:58px;
-	top: 588px;
+	right: 3.7em;
+	bottom: 1.1em;
 }
 
 figure[figure-type="gallery"] > details.license > license-content {
@@ -37,7 +37,6 @@ figure[figure-type="gallery"] > img {
 	border:solid 12px var(--background-color);
 	background:var(--background-color);
 }
-
 
 section[content-type="gallery"] figure[figure-type="gallery"] img {
 	width:100%;
@@ -182,7 +181,6 @@ button[button-type="previous-slide"],
 button[button-type="fullscreen"] {
 	display: block;
 	position: absolute;
-	top: 552px;
 	right: 20px;
 	width: 30px;
 	height: 30px;
@@ -203,39 +201,28 @@ button[button-type="fullscreen"] {
 	background-repeat: no-repeat;
 	background-clip: content-box;
 	background-size: 100%;
-}
-
-figure[figure-type="hero-image"] button[button-type="fullscreen"] {
 	top:auto;
 	font-size:0.87em;
 	right:52px;
+	margin-top: -1.83em;
+	box-shadow: 0 3px 6px #00000029;
+	transition: background-color 300ms, color 300ms;
+	padding: 0;
+}
+
+section[section-type="hero-image"] button[button-type="fullscreen"] {
+	right: 2.5em;
 	margin-top: -45px;
-	box-shadow: 0 3px 6px #00000029;
-	transition: background-color 300ms, color 300ms;
-	padding: 0;
-}
-
-figure[figure-type="picture"] button[button-type="fullscreen"] {
-	top:auto;
-	font-size:0.87em;
-	right:52px;
-	bottom: 15px;
-	box-shadow: 0 3px 6px #00000029;
-	transition: background-color 300ms, color 300ms;
-	padding: 0;
 }
 
 section[content-type="gallery"] button[button-type="fullscreen"] {
-	right:20px;
-	top: 549px;
-	box-shadow: 0 3px 6px #00000029;
-	transition: background-color 300ms, color 300ms;
-	padding: 0;
+	bottom: 1em;
+	right: 1em;
 }
 
 figure[figure-type="picture"] > details.license > summary {
 	right:0.6em;
-	bottom: 15px;
+	margin-top: -2em;
 }
 
 section[content-type="tab-box"] figure[figure-type="gallery"] img {
@@ -287,3 +274,8 @@ main > section[content-type="text-and-image"] > inner-content > figure > button[
 main > section[content-type="text-and-image"] > inner-content > figure > button[button-type="fullscreen"]::after {
 	margin-left: 0;
 }
+
+caption-wrap > figcaption.hidden {
+	display:none;
+}
+
