@@ -22,7 +22,7 @@ section[content-type="gallery"] > inner-content > details > summary::-webkit-det
 
 figure[figure-type="gallery"] > details.license > summary {
 	right:58px;
-	bottom: 48px;
+	top: 588px;
 }
 
 figure[figure-type="gallery"] > details.license > license-content {
@@ -199,7 +199,7 @@ button[button-type="fullscreen"] {
 }
 
 button[button-type="fullscreen"] {
-	background-image: url("/resources/fullscreen.svg");
+	background-image: url("/resources/svg/fullscreen.svg");
 	background-repeat: no-repeat;
 	background-clip: content-box;
 	background-size: 100%;
@@ -227,8 +227,7 @@ figure[figure-type="picture"] button[button-type="fullscreen"] {
 
 section[content-type="gallery"] button[button-type="fullscreen"] {
 	right:20px;
-	top:auto;
-	bottom: 48px;
+	top: 549px;
 	box-shadow: 0 3px 6px #00000029;
 	transition: background-color 300ms, color 300ms;
 	padding: 0;
