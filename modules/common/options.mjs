@@ -32,7 +32,15 @@ const options = {
 		juramuseum: {
 			disableMarkers: true,
 			graphqlEndpoint: "https://systemx-jura-museum.test-dilewe.de/api",
-			httpPort: 8049
+			httpPort: 8049,
+			jsVars: {
+				galleryWrapAround: false
+			},
+			cssVars: {
+				backgroundBlue:  "rgba(0,0,0,0)",
+				backgroundRed:   "rgba(0,0,0,0)",
+				backgroundGreen: "rgba(0,0,0,0)"
+			}
 		},
 		lasub: {
 			graphqlEndpoint: "https://lasub.dilewe.de/api",

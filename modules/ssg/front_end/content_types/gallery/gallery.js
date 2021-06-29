@@ -1,4 +1,4 @@
-/* globals PhotoSwipe, PhotoSwipeUI_Default */
+/* globals PhotoSwipe, PhotoSwipeUI_Default, configuration */
 
 (() => {
 	const initPhotoswipe = () => {

@@ -44,17 +44,18 @@ const resourceTag = filename => {
 	return '';
 };
 
-const configJSVars = targetName => {
+const configJSVars = () => {
 	return `<script type="text/javascript">
 	const configuration = ${JSON.stringify(options.jsVars)};
 	</script>`;
 };
 
-const configCSSVars = targetName => {
-	let vars = [];
+const configCSSVars = () => {
+	const vars = [];
 	for(const k in options.cssVars){
+		const cssName = `--${k.replace(/[A-Z]/g, c => `-${c.toLowerCase()}`)}`;
 		const v = options.cssVars[k];
-		vars.push(`${k}: ${v}`);
+		vars.push(`${cssName}: ${v};\n`);
 	}
 	return `<style>
 	:root {
@@ -99,14 +100,14 @@ export const buildHead = async targetName => {
 	curHead += resourceTag('default-skin.css');
 
 	curHead += resourceTag('main.css');
-	//curHead += configCSSVars(targetName);
+	curHead += configCSSVars(targetName);
 
 
 	curHead += resourceTag('quill.min.js');
 	curHead += resourceTag('photoswipe-ui-default.min.js');
 	curHead += resourceTag('photoswipe.min.js');
 
-	curHead += configJSVars(targetName);
+	curHead += configJSVars();
 	curHead += resourceTag('main.js');
 
 
