@@ -31,7 +31,7 @@ const hideOverlay = () => {
 		overlayElement = document.createElement("PAGE-OVERLAY");
 
 		document.body.appendChild(overlayElement);
-		overlayElement.addEventListener("click", window.hideOverlay);
+		overlayElement.addEventListener("click", hideOverlay);
 		// This is important so we can set scrollTop before leaving the site
 		// because most browsers save the scrollTop position and restore it when using the history
 		addEventListener("beforeunload",hideOverlay);

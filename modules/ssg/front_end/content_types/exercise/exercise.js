@@ -5,7 +5,7 @@
 		const textareas = document.querySelectorAll(".exercise-text");
 		for(const area of textareas){
 			const section = getFirstParentSection(area);
-			const id = section !== null ? section.id : "undefined";
+			const id = section !== null ? section.getAttribute("content-type-id") : "undefined";
 			const localStorageKey = `quill-${id}`;
 			const fancyEditor = document.createElement("FANCY-EXERCISE-EDITOR");
 			area.parentElement.append(fancyEditor);
