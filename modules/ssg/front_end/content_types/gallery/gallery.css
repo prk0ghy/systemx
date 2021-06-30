@@ -21,8 +21,8 @@ section[content-type="gallery"] > inner-content > details > summary::-webkit-det
 }
 
 figure[figure-type="gallery"] > details.license > summary {
-	right: 2.9em;
-	margin-top: -52px;
+	right: 46px;
+	margin-top: -45px;
 }
 
 figure[figure-type="gallery"] > details.license > license-content {
@@ -216,8 +216,8 @@ section[section-type="hero-image"] button[button-type="fullscreen"] {
 }
 
 section[content-type="gallery"] button[button-type="fullscreen"] {
-	bottom: 1em;
 	right: 1em;
+	margin-top: -45px;
 }
 
 figure[figure-type="picture"] > button[button-type="fullscreen"] {

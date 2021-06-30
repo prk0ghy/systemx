@@ -164,7 +164,7 @@ upload-section input[type=file] {
 fancy-exercise-editor {
 	display:block;
 	box-shadow: inset 1px 2px 3px 1px #00000063;
-	padding:0 var(--content-padding-quarter);
+	padding:var(--content-padding-quarter);
 }
 
 /* height of blank space from quill */
@@ -184,7 +184,7 @@ fancy-exercise-editor {
 	line-height: 1.1em;
 	font-weight: 300;
 	right:auto;
-	left: 0;
+	left: var(--content-padding-quarter);
 }
 
 /* Styling for Textelements  */
