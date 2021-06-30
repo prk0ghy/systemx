@@ -1,7 +1,7 @@
 /* globals showEmbeddingSections,openFullscreen,closeFullscreen */
 
 (() => {
-	function initSupportSlider() {
+	const initSupportSlider = () => {
 		const boxes = document.querySelectorAll('section[content-type="tab-box"]');
 		boxes.forEach(box => {
 			const boxType = box.getAttribute('tab-box-type');
@@ -17,12 +17,12 @@
 				showSlide(0);
 			});
 
-			endSlide.addEventListener("click",(e) => {
+			endSlide.addEventListener("click",e => {
 				e.stopPropagation();
 				showSlide(-1);
 			});
 
-			controlWrap.addEventListener("click",(e) => {
+			controlWrap.addEventListener("click",e => {
 				e.stopPropagation();
 				if(curSlide === -1){
 					showSlide(0);
@@ -75,7 +75,7 @@
 			let curSlide = -1;
 			let mediaPlaying;
 
-			function playMedia(i){
+			const playMedia = i => {
 				if((i < 0) || (i >= tabContent.length)){
 					return;
 				}
@@ -94,9 +94,9 @@
 				});
 				audio.play();
 				mediaPlaying = audio;
-			}
+			};
 
-			function removeActiveClassFromAllSlides(){
+			const removeActiveClassFromAllSlides = () => {
 				for(const cContent of tabContent){
 					cContent.classList.remove('active');
 				}
@@ -105,23 +105,23 @@
 				box.classList.remove("start-slide-active");
 				box.classList.remove("end-slide-active");
 				box.classList.remove("has-media");
-			}
+			};
 
-			function showStartSlide(){
+			const showStartSlide = () => {
 				startSlide.classList.add('active');
 				box.classList.add("start-slide-active");
 				closeFullscreen();
 				curSlide = -1;
-			}
+			};
 
-			function showEndSlide(){
+			const showEndSlide = () => {
 				endSlide.classList.add('active');
 				box.classList.add("end-slide-active");
 				closeFullscreen();
 				curSlide = tabContent.length;
-			}
+			};
 
-			function showSlide(i) {
+			const showSlide = i => {
 				removeActiveClassFromAllSlides();
 				if(i < 0){
 					showStartSlide();
@@ -139,8 +139,9 @@
 					curSlide = i;
 				}
 				refreshPageInfo();
-			}
+			};
 			showSlide(-1);
 		});
-	}	setTimeout(initSupportSlider,0);
+	};
+	setTimeout(initSupportSlider,0);
 })();

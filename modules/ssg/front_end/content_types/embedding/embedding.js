@@ -1,4 +1,4 @@
-function showLazyIframe(ele){
+const showLazyIframe = ele => {
 	if(ele.classList.contains("hidden-embedding-placeholder")){return;}
 	const iframeWrapper = document.createElement("IFRAME-WRAPPER");
 	const newEle = document.createElement("IFRAME");
@@ -10,9 +10,9 @@ function showLazyIframe(ele){
 	ele.parentElement.insertBefore(iframeWrapper,ele);
 	ele.classList.add("hidden-embedding-placeholder");
 	newEle.contentWindow.postMessage({context: 'h5p', action: 'ready'}, '*');
-}
+};
 
-function showEmbeddingSections(container){
+const showEmbeddingSections = container => {
 	if(container === null){return;}
 	for(const child of container.children){
 		if(child.tagName !== "SECTION"){continue;}
@@ -27,13 +27,13 @@ function showEmbeddingSections(container){
 			showLazyIframe(lazyIframe);
 		}
 	}
-}
+};
 
-function showEmbeddingSectionsAll(containers){
+const showEmbeddingSectionsAll = containers => {
 	for(const curContainer of containers){
 		showEmbeddingSections(curContainer);
 	}
-}
+};
 
 (()=>{
 	function initLazyIframes(){

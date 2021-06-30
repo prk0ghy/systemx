@@ -1,6 +1,6 @@
 
 (()=>{
-	function initFigureRows(){
+	const initFigureRows = () => {
 		const rows = document.querySelectorAll("figure-row");
 		for(const row of rows){
 			const cols = row.children;
@@ -18,6 +18,6 @@
 			const widths = ratios.map(v => (v/sum) * 100.0);
 			widths.forEach((v,i) => {cols[i].style.width = `${v}%`;});
 		}
-	}
+	};
 	setTimeout(initFigureRows,0);
 })();

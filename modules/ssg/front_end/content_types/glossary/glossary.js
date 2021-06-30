@@ -1,11 +1,11 @@
 /* globals showModal */
 
 (() => {
-	function getLinkPath(href){
+	const getLinkPath = href => {
 		return "/"+(String(href).split("/").slice(3).join("/"));
-	}
+	};
 
-	async function fetchGlossaryEntry(rawHref){
+	const fetchGlossaryEntry = async rawHref => {
 		try {
 			const getGlossar = await fetch(rawHref);
 			if(getGlossar.ok){
@@ -18,18 +18,18 @@
 			}
 		} catch(e){ /* Doesn't matter */ }
 		return `<section content-type="error"><inner-content><h3>Der Glossareintrag konnte nicht geladen werden</h3></inner-content></section>`;
-	}
+	};
 
-	async function loadGlossaryEntry(rawHref){
+	const loadGlossaryEntry = async rawHref => {
 		const content = await fetchGlossaryEntry(rawHref);
 		const entry = document.createElement("GLOSSARY-ENTRY");
 		entry.setAttribute("entry-href",getLinkPath(rawHref));
 		entry.innerHTML = `<glossary-entry-content>${content}</glossary-entry-content>`;
 		document.querySelector("main").appendChild(entry);
 		showModal(entry);
-	}
+	};
 
-	function initGlossaryLink(a){
+	const initGlossaryLink = a => {
 		a.classList.add("glossary-link");
 		a.addEventListener("click",async (e) => {
 			e.preventDefault();
@@ -41,15 +41,15 @@
 				loadGlossaryEntry(a.href);
 			}
 		});
-	}
+	};
 
-	function initGlossary() {
+	const initGlossary = () => {
 		for(const link of document.querySelectorAll("a")){
 			const hrefArr = link.href.split("/");
 			if(hrefArr.length < 5){continue;}
 			if(hrefArr[3] !== "glossar"){continue;}
 			initGlossaryLink(link);
 		}
-	}
+	};
 	setTimeout(initGlossary,0);
 })();

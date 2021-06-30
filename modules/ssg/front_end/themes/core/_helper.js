@@ -1,21 +1,22 @@
 /* This File should contain little helper functions to be used around the codebase */
 /* exported getFirstParentSection,addHideElementContentHandler,hideElementContentHandler,openFullscreen,closeFullscreen */
 
-function getFirstParentSection(ele){
+const getFirstParentSection = ele => {
 	if(!ele){return null;}
 	if(ele.tagName === 'SECTION'){return ele;}
 	return getFirstParentSection(ele.parentElement);
-}
+};
 
 const hideElementContentHandlerList = {};
-function addHideElementContentHandler(name,handler){
+const addHideElementContentHandler = (name,handler) => {
 	hideElementContentHandlerList[name] = handler;
-}
-function hideElementContentHandler(ele){
+};
+
+const hideElementContentHandler = ele => {
 	for(const name in hideElementContentHandlerList){
 		hideElementContentHandlerList[name](ele);
 	}
-}
+};
 
 /* Important to do this here and not in the closeFullscreen
  * procedure because a user might exit fullscreen mode by
@@ -33,7 +34,7 @@ document.addEventListener("fullscreenchange", () => {
  * larger than the overall document height. By setting it on entering
  * fullscreen (and removing the value later) we work around that issue.
  */
-function openFullscreen(element) {
+const openFullscreen = element => {
 	document.documentElement.style.height = (document.documentElement.scrollHeight|0)+"px";
 	if (element.requestFullscreen) {
 		element.requestFullscreen();
@@ -44,9 +45,9 @@ function openFullscreen(element) {
 	} else {
 		return;
 	}
-}
+};
 
-function closeFullscreen() {
+const closeFullscreen = () => {
 	if( window.innerHeight !== screen.height){return;} // Already in fullscreen
 	if (document.exitFullscreen) {
 		document.exitFullscreen();
@@ -57,4 +58,4 @@ function closeFullscreen() {
 	} else {
 		return;
 	}
-}
+};

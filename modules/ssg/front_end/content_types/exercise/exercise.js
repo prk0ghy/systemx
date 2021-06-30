@@ -1,7 +1,7 @@
 /* globals Quill,getFirstParentSection */
 
 (() => {
-	function initExerciseEditors(){
+	const initExerciseEditors = () => {
 		const textareas = document.querySelectorAll(".exercise-text");
 		for(const area of textareas){
 			const section = getFirstParentSection(area);
@@ -44,9 +44,9 @@
 				}
 			}
 		}
-	}
+	};
 
-	function initUploadSections(){
+	const initUploadSections = () => {
 		const sections = document.querySelectorAll("upload-section");
 		for(const section of sections){
 			const uploadButton = document.createElement("UPLOAD-BUTTON");
@@ -62,7 +62,7 @@
 				fileInput.click();
 			});
 		}
-	}
+	};
 	setTimeout(initExerciseEditors,0);
 	setTimeout(initUploadSections,0);
 })();

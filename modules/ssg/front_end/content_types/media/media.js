@@ -1,7 +1,7 @@
 (() => {
 	let tabindex = 100;
 
-	function initMedia(media) {
+	const initMedia = media => {
 		if(media.getAttribute('controls') === null){return;}
 		media.removeAttribute('controls'); // Remove Browser based controls via JS, so we have them as a fallback when JS is disabled
 		media.volume = 1.0; // Force volume to 100% on init
@@ -60,12 +60,12 @@
 			}
 		}
 
-		media.addEventListener("click", (e) => {
+		media.addEventListener("click", e => {
 			e.preventDefault();
 			playPauseButton.click();
 		});
 
-		playPauseButton.addEventListener("click",(e) => {
+		playPauseButton.addEventListener("click",e => {
 			e.preventDefault();
 			media.focus();
 			if(media.paused){
@@ -111,7 +111,7 @@
 		const volumeSliderMark = document.createElement("MEDIA-VOLUME-SLIDER-MARK");
 		volumeSlider.appendChild(volumeSliderMark);
 
-		volumeButton.addEventListener("click", (e) => {
+		volumeButton.addEventListener("click", e => {
 			if(e.buttons !== 0){return;}
 			e.preventDefault();
 			if(!media.muted){
@@ -125,15 +125,15 @@
 			}
 		});
 
-		function secondsToTimestamp(ts){
+		const secondsToTimestamp = ts => {
 			const minutes = (ts / 60)|0;
 			const seconds = (ts - minutes * 60)|0;
 			const minuteValue = minutes < 10 ? `0${minutes}` : `${minutes}`;
 			const secondValue = seconds < 10 ? `0${seconds}` : `${seconds}`;
 			return `${minuteValue}:${secondValue}`;
-		}
+		};
 
-		function volumeMouseHandler(e){
+		const volumeMouseHandler = e => {
 			if((e !== undefined) && (e.buttons === 1)){
 				const rect = volumeSlider.getBoundingClientRect();
 				const volume = Math.max(0.01,Math.min(1,(e.x-rect.x)/rect.width));
@@ -149,7 +149,7 @@
 				volumeButton.classList.remove('active');
 				volumeButton.setAttribute("volume-level",0|((media.volume/0.33)+1));
 			}
-		}
+		};
 		volumeSlider.addEventListener("mousedown", volumeMouseHandler);
 		volumeSlider.addEventListener("mousemove", volumeMouseHandler);
 
@@ -165,29 +165,29 @@
 		timestamp.innerText = secondsToTimestamp(0);
 		duration.innerText = secondsToTimestamp(media.duration);
 
-		function seekbarUpdate(){
+		const seekbarUpdate = () => {
 			const curPos = (media.currentTime/media.duration);
 			seekbarMark.style.width = (curPos*100.0)+"%";
 			timestamp.innerText = secondsToTimestamp(media.currentTime);
-		}
+		};
 
 		media.addEventListener('timeupdate',seekbarUpdate);
 		media.addEventListener('durationchange', () => {
 			duration.innerText= secondsToTimestamp(media.duration);
 		});
 
-		function seekbarHandler(e){
+		const seekbarHandler = e => {
 			if(e.buttons !== 1){return;}
 			const rect = seekbar.getBoundingClientRect();
 			const curPos = Math.min(1,(e.x-rect.x)/rect.width);
 			seekbarMark.style.width = (curPos*100.0)+"%";
 			media.currentTime = (curPos*media.duration)|0;
 			seekbarUpdate();
-		}
+		};
 		seekbar.addEventListener("mousedown", seekbarHandler);
 		seekbar.addEventListener("mousemove", seekbarHandler);
 
-		document.addEventListener("keydown", (e) => {
+		document.addEventListener("keydown", e => {
 			const focusedVideo = document.activeElement;
 			if(focusedVideo === null){return;}
 			if(focusedVideo !== media){return;}
@@ -239,10 +239,9 @@
 				media.currentTime = (media.duration/100*90);
 			}
 		});
+	};
 
-	}
-
-	function initAllMedia() {
+	const initAllMedia = () => {
 		const getVideos = document.querySelectorAll('video');
 		for (const video of getVideos){
 			initMedia(video);
@@ -252,6 +251,6 @@
 		for (const audio of getAudios){
 			initMedia(audio);
 		}
-	}
+	};
 	setTimeout(initAllMedia,0);
 })();

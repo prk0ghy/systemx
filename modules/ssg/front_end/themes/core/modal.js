@@ -1,7 +1,7 @@
 /* exported showModal,hideModal */
 /* global showOverlay,hideOverlay,overlayCloseHandlers */
 
-function showModal(content){
+const showModal = content => {
 	content.classList.add("show-modal");
 	content.offsetTop; // Sync CSS <-> JS
 	content.classList.add("visible");
@@ -12,9 +12,9 @@ function showModal(content){
 		content.prepend(buttonCloseModal);
 	}
 	showOverlay();
-}
+};
 
-function hideModal() {
+const hideModal = () => {
 	const modals = document.querySelectorAll(".show-modal.visible");
 	modals.forEach(modal => {
 		modal.classList.remove("visible");
@@ -26,7 +26,7 @@ function hideModal() {
 			modal.classList.remove("show-modal");
 		}, 510);
 	});
-}
+};
 
 setTimeout(() => {
 	overlayCloseHandlers.push(hideModal);

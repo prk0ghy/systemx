@@ -1,7 +1,7 @@
 /* globals showEmbeddingSections */
 
 (() => {
-	function initTabBoxes() {
+	const initTabBoxes = () => {
 		const boxes = document.querySelectorAll('section[content-type="tab-box"]');
 		boxes.forEach(box => {
 			const boxType = box.getAttribute('tab-box-type');
@@ -29,7 +29,7 @@
 				});
 			}));
 		});
-	}
+	};
 	setTimeout(initTabBoxes, 0);
 })();
 

@@ -1,6 +1,6 @@
 /* Don't pollute the global scope if avoidable */
 (() => {
-	function initRights() {
+	const initRights = () => {
 		const licenseButtons = document.querySelectorAll("details.license > summary");
 		for(const license of licenseButtons){
 			const licenseContent = license.parentElement.lastElementChild;
@@ -14,6 +14,6 @@
 				license.parentElement.classList.toggle("active");
 			});
 		}
-	}
+	};
 	setTimeout(initRights, 0);
 })();
