@@ -2,6 +2,11 @@ section[tab-box-type="support"] tab-box-header {
 	display:none;
 }
 
+section[tab-box-type="support"] p, h2, h3, h4, h5, h6, li, span, figcaption {
+	font-family: "Montserrat";
+	font-weight: 400;
+}
+
 section[tab-box-type="support"] button {
 	width:1.5em;
 	height:1.5em;
@@ -168,6 +173,19 @@ section[tab-box-type="support"].start-slide-active slider-info {
 	display:none;
 }
 
-section[tab-box-type="support"] section[content-type="text-and-image"] {
-	padding:0;
+section[tab-box-type="support"] tab-box-content {
+	padding: var(--content-padding-half);
+}
+
+section[tab-box-type="support"] .ql-toolbar button {
+	font-size: 13px;
+	margin: 0;
+	border-radius: 0%;
+	box-shadow: none;
+}
+
+section[tab-box-type="support"] button[button-type="fullscreen"] {
+	width: 30px;
+	height: 30px;
+	margin: -45px 0 0 0;
 }
