@@ -21,7 +21,7 @@ section[content-type="gallery"] > inner-content > details > summary::-webkit-det
 }
 
 figure[figure-type="gallery"] > details.license > summary {
-	right: 46px;
+	right: 59px;
 	margin-top: -45px;
 }
 
