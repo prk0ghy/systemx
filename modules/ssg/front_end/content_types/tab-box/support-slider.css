@@ -198,14 +198,25 @@ section[tab-box-type="support"] tab-box-content [content-type="galery"] {
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 16px;
-
 }
 
+section[tab-box-type="support"] tab-box-content [content-type="video"],
+section[tab-box-type="support"] tab-box-content [content-type="audio"],
+section[tab-box-type="support"] tab-box-content [content-type="embedding"],
+section[tab-box-type="support"] tab-box-content [content-type="exercise"],
+section[tab-box-type="support"] tab-box-content [content-type="download"],
+section[tab-box-type="support"] tab-box-content [content-type="galery"] {
+	margin-top: 16px;
+}
+
+section[tab-box-type="support"] tab-box-content [content-type="galery"] inner-content {
+	margin: 0 auto;
+}
 
 section[tab-box-type="support"] tab-box-content-wrap:fullscreen tab-box-content {
 	padding: 0;
 	height: calc(100vh - 134px);
-	overflow: scroll;
+	overflow-y: auto;
 }
 
 section[tab-box-type="support"] .ql-toolbar button {
