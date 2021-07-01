@@ -183,9 +183,24 @@ section[tab-box-type="support"].start-slide-active slider-info {
 
 section[tab-box-type="support"] tab-box-content {
 	padding: 0;
-	margin: 0 auto 134px auto;
-	max-width: var(--content-width);
+	margin: 0 0 134px 0;
 }
+
+section[tab-box-type="support"] tab-box-content [content-type="headline"],
+section[tab-box-type="support"] tab-box-content [content-type="text-and-image"],
+section[tab-box-type="support"] tab-box-content [content-type="video"],
+section[tab-box-type="support"] tab-box-content [content-type="audio"],
+section[tab-box-type="support"] tab-box-content [content-type="embedding"],
+section[tab-box-type="support"] tab-box-content [content-type="exercise"],
+section[tab-box-type="support"] tab-box-content [content-type="download"],
+section[tab-box-type="support"] tab-box-content [content-type="galery"] {
+	max-width: var(--content-width);
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 16px;
+
+}
+
 
 section[tab-box-type="support"] tab-box-content-wrap:fullscreen tab-box-content {
 	padding: 0;
