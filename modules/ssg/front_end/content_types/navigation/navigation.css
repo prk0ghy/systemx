@@ -32,6 +32,12 @@ aside#navigation > nav > ul {
 	overflow-y:scroll;
 }
 
+@media only screen and (max-width: 800px) {
+	aside#navigation > nav > ul {
+		height: 91%;
+	}
+}
+
 nav li {
 	position:relative;
 }
@@ -110,5 +116,11 @@ nav-close-button::after {
 @media only screen and (max-width: 800px) {
 	nav-close-button {
 		bottom:1em;
+	}
+}
+
+@media only screen and (max-width: 800px) {
+	nav-close-button {
+		bottom:46px;
 	}
 }

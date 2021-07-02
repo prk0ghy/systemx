@@ -65,15 +65,33 @@
 			playPauseButton.click();
 		});
 
+		let hideControlsTimeout = undefined;
+		const refreshHideControlsTimeout = () => {
+			controlsWrapper.classList.remove('hidden');
+			if(hideControlsTimeout !== undefined){
+				clearTimeout(hideControlsTimeout);
+			}
+			hideControlsTimeout = setTimeout(() => {
+				if(!media.paused){
+					controlsWrapper.classList.add('hidden');
+				}
+			},1000);
+		};
+		media.addEventListener("mousemove",() =>{
+			refreshHideControlsTimeout();
+		});
+
 		playPauseButton.addEventListener("click",e => {
 			e.preventDefault();
 			media.focus();
 			if(media.paused){
 				playPauseButton.classList.add('active');
+				refreshHideControlsTimeout();
 				media.play();
 				showStatusIcon('play');
 			} else {
 				playPauseButton.classList.remove('active');
+				controlsWrapper.classList.remove('hidden');
 				media.pause();
 				showStatusIcon('pause');
 			}
@@ -87,7 +105,7 @@
 				if(document.fullscreenElement === null){
 					fullscreenButton.classList.add('active');
 					wrapper.requestFullscreen();
-				} else{
+				} else {
 					fullscreenButton.classList.remove('active');
 					document.exitFullscreen();
 				}
@@ -96,7 +114,7 @@
 			document.addEventListener('fullscreenchange', () => {
 				if (document.fullscreenElement === wrapper) {
 					fullscreenButton.classList.add('active');
-				} else{
+				} else {
 					fullscreenButton.classList.remove('active');
 				}
 			});
@@ -138,16 +156,18 @@
 				const rect = volumeSlider.getBoundingClientRect();
 				const volume = Math.max(0.01,Math.min(1,(e.x-rect.x)/rect.width));
 				media.volume = volume;
+				media.muted = false;
 			}
-			volumeSliderMark.style.width = (media.volume*100.0)+"%";
-			if(media.volume <= 0.02){
+			if(media.muted || media.volume <= 0.02){
 				media.muted = true;
 				volumeButton.classList.add('active');
 				volumeButton.setAttribute("volume-level",0);
+				volumeSliderMark.style.width = "0";
 			}else{
 				media.muted = false;
 				volumeButton.classList.remove('active');
 				volumeButton.setAttribute("volume-level",0|((media.volume/0.33)+1));
+				volumeSliderMark.style.width = (media.volume*100.0)+"%";
 			}
 		};
 		volumeSlider.addEventListener("mousedown", volumeMouseHandler);
