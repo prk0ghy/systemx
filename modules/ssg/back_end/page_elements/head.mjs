@@ -1,6 +1,7 @@
 import * as css from "./css.mjs";
 import * as js from "./js.mjs";
 import { getResourcePath, resourceDirectoryName } from "../target.mjs";
+import options from "../../../common/options.mjs";
 import crypto from "crypto";
 import fs from "fs";
 import path from "path";
@@ -10,16 +11,16 @@ const resourceNamedHashes = new Map();
 const headResources = new Map();
 
 
-function dateTimeToUnixTime(d){
+const dateTimeToUnixTime = d => {
 	return (new Date(d).getTime()/1000)|0;
-}
+};
 
-function md5(data){
+const md5 = data => {
 	const secret = "λの秘密";
 	return crypto.createHmac("md5", secret).update(data).digest("hex");
-}
+};
 
-async function copyResource(sourceDir, destDir, filename){
+const copyResource = async (sourceDir, destDir, filename) => {
 	const sourcePath = path.join(sourceDir, filename);
 	const destPath   = path.join(destDir  , filename);
 	const stats      = await fsp.stat(sourcePath);
@@ -28,23 +29,42 @@ async function copyResource(sourceDir, destDir, filename){
 	resourceNamedHashes.set(filename, hash);
 
 	return fsp.copyFile(sourcePath, destPath);
-}
+};
 
-function resourceTag(filename){
+const resourceTag = filename => {
 	const ext   = filename.split('.').pop().toLowerCase();
 	const query = resourceNamedHashes.has(filename) ? `?ver=${resourceNamedHashes.get(filename)}` : "";
 	const href  = `/${resourceDirectoryName}/${filename}${query}`;
 	if(ext === 'js'){
 		return `<script defer type=text/javascript src="${href}"></script>`;
-	}
-	else if(ext === 'css'){
+	} else if(ext === 'css'){
 		return `<link rel=stylesheet type=text/css href="${href}"></link>`;
 	}
 	// Ignore the rest
 	return '';
-}
+};
 
-export async function buildHead(targetName){
+const configJSVars = () => {
+	return `<script type="text/javascript">
+	const configuration = ${JSON.stringify(options.jsVars)};
+	</script>`;
+};
+
+const configCSSVars = () => {
+	const vars = [];
+	for(const k in options.cssVars){
+		const cssName = `--${k.replace(/[A-Z]/g, c => `-${c.toLowerCase()}`)}`;
+		const v = options.cssVars[k];
+		vars.push(`${cssName}: ${v};\n`);
+	}
+	return `<style>
+	:root {
+		${vars.join("\n		")}
+	}
+	</style>`;
+};
+
+export const buildHead = async targetName => {
 	if (headResources.has(targetName)) {return;}
 
 	const promises = [];
@@ -74,21 +94,27 @@ export async function buildHead(targetName){
 	await Promise.all(promises);
 	let curHead = '';
 	curHead += `<style>${cssInline}</style>`;
-	curHead += resourceTag('quill.min.js');
 	curHead += resourceTag('quill.snow.css');
 
-	curHead += resourceTag('photoswipe-ui-default.min.js');
-	curHead += resourceTag('photoswipe.min.js');
 	curHead += resourceTag('photoswipe.css');
 	curHead += resourceTag('default-skin.css');
 
 	curHead += resourceTag('main.css');
+	curHead += configCSSVars(targetName);
+
+
+	curHead += resourceTag('quill.min.js');
+	curHead += resourceTag('photoswipe-ui-default.min.js');
+	curHead += resourceTag('photoswipe.min.js');
+
+	curHead += configJSVars();
 	curHead += resourceTag('main.js');
 
-	headResources.set(targetName, curHead);
-}
 
-export default async function(targetName, pageTitle) {
+	headResources.set(targetName, curHead);
+};
+
+const getHead = async (targetName, pageTitle) => {
 	if(!headResources.has(targetName)){
 		console.error("Trying to build pages before the head could be properly built");
 		console.log(headResources);
@@ -101,4 +127,5 @@ export default async function(targetName, pageTitle) {
 		<title>${pageTitle}</title>
 		${headResources.get(targetName)}
 	`;
-}
+};
+export default getHead;

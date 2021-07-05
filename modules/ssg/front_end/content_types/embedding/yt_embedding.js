@@ -1,11 +1,11 @@
 /* global addHideElementContentHandler */
 
 (()=>{
-	function decodeParam(g){
+	const decodeParam = g => {
 		return decodeURIComponent(g).replace(/\+/g,' ');
-	}
+	};
 
-	function getParamValue(key, href){
+	const getParamValue = (key, href) => {
 		const params = href ? href.split('?') : window.location.search.split('?');
 		if(params.length !== 2){
 			return '';
@@ -17,9 +17,9 @@
 			if (item[0] === encodeURIComponent(key)) { return decodeParam(item[1]); }
 		}
 		return '';
-	}
+	};
 
-	function ytCalcStart(t){
+	const ytCalcStart = t => {
 		let ret = 0;
 		const m   = t.match(/(\d+[a-z])/g);
 
@@ -38,18 +38,18 @@
 			}
 		}
 		return ret;
-	}
+	};
 
-	function vimeoToIframe(href,autoplay){
+	const vimeoToIframe = (href,autoplay) => {
 		const m = href.match(/https?:\/\/vimeo.com\/(\d+)/i);
 		if(m === null){return null;}
 		const vid = m[1];
 		const ret = document.createElement("IFRAME");
 		ret.setAttribute("src",`https://player.vimeo.com/video/${vid}${autoplay ? "?autoplay=1" : ""}`);
 		return ret;
-	}
+	};
 
-	function youtubeToIframe(href,autoplay){
+	const youtubeToIframe = (href,autoplay) => {
 		const m = href.match(/https?:\/\/www.youtube.com\/watch?.*/i);
 		if(m === null){return vimeoToIframe(href,autoplay);}
 		const vid = getParamValue('v',href);
@@ -64,18 +64,18 @@
 		const ret = document.createElement("IFRAME");
 		ret.setAttribute("src",`https://www.youtube-nocookie.com/embed/${vid}${params.length > 0 ? "?"+params.join('&') : ""}`);
 		return ret;
-	}
+	};
 
-	function tagesschauToIFrame(href, autoplay){
+	const tagesschauToIFrame = (href, autoplay) => {
 		const m = href.match(/https?:\/\/www.tagesschau.de\/multimedia\/video\/video-(\d+).*/i);
 		if(m === null){return youtubeToIframe(href,autoplay);}
 		const vid = m[1];
 		const ret = document.createElement("IFRAME");
 		ret.setAttribute("src",`https://www.tagesschau.de/multimedia/video/video-${vid}~player_branded-true.html`);
 		return ret;
-	}
+	};
 
-	function textToEmbedding(href,autoplay){
+	const textToEmbedding = (href,autoplay) => {
 		if(autoplay === undefined){autoplay = false;}
 		if(href === undefined){return false;}
 		const ret = tagesschauToIFrame(href,autoplay);
@@ -86,9 +86,9 @@
 			ret.setAttribute("allow","autoplay; fullscreen");
 		}
 		return ret;
-	}
+	};
 
-	function initEmbeddingLinks(){
+	const initEmbeddingLinks = () => {
 		const embeddingLinks = document.querySelectorAll(".embedding-link");
 		addHideElementContentHandler("hideIframes",ele => {
 			for(const e of ele.querySelectorAll('iframe-wrap[iframe-type="youtube"]')){
@@ -114,6 +114,6 @@
 			});
 
 		}
-	}
+	};
 	setTimeout(initEmbeddingLinks,0);
 })();

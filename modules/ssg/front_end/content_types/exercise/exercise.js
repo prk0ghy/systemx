@@ -1,11 +1,11 @@
 /* globals Quill,getFirstParentSection */
 
 (() => {
-	function initExerciseEditors(){
+	const initExerciseEditors = () => {
 		const textareas = document.querySelectorAll(".exercise-text");
 		for(const area of textareas){
 			const section = getFirstParentSection(area);
-			const id = section !== null ? section.id : "undefined";
+			const id = section !== null ? section.getAttribute("content-type-id") : "undefined";
 			const localStorageKey = `quill-${id}`;
 			const fancyEditor = document.createElement("FANCY-EXERCISE-EDITOR");
 			area.parentElement.append(fancyEditor);
@@ -44,9 +44,9 @@
 				}
 			}
 		}
-	}
+	};
 
-	function initUploadSections(){
+	const initUploadSections = () => {
 		const sections = document.querySelectorAll("upload-section");
 		for(const section of sections){
 			const uploadButton = document.createElement("UPLOAD-BUTTON");
@@ -62,7 +62,7 @@
 				fileInput.click();
 			});
 		}
-	}
+	};
 	setTimeout(initExerciseEditors,0);
 	setTimeout(initUploadSections,0);
 })();

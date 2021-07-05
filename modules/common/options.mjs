@@ -5,6 +5,11 @@ import path from "path";
 const argv = minimist(process.argv.slice(2));
 const options = {
 	configurationPath: path.join(".systemx", "settings"),
+	cleanBuild: false,
+	cssVars: {},
+	jsVars: {
+		galleryWrapAround: true
+	},
 	disableMarkers: false,
 	distributionPath: "web",
 	downloadMedia: false,
@@ -27,7 +32,15 @@ const options = {
 		juramuseum: {
 			disableMarkers: true,
 			graphqlEndpoint: "https://systemx-jura-museum.test-dilewe.de/api",
-			httpPort: 8049
+			httpPort: 8049,
+			jsVars: {
+				galleryWrapAround: false
+			},
+			cssVars: {
+				backgroundBlue:  "rgba(0,0,0,0)",
+				backgroundRed:   "rgba(0,0,0,0)",
+				backgroundGreen: "rgba(0,0,0,0)"
+			}
 		},
 		lasub: {
 			graphqlEndpoint: "https://lasub.dilewe.de/api",

@@ -7,13 +7,13 @@
 	// in the scope of initHelpVideo. Will be ignored if undefined
 	let hideHelpVideoCallback = undefined;
 
-	function initHelpVideo(videoWrap){
+	const initHelpVideo = videoWrap => {
 		const videoSrc = videoWrap.getAttribute("video");
 		const button   = videoWrap.querySelector("help-video-button");
 		let video      = undefined;
 		let oldX, oldY;
 
-		function hideHelpVideo(){
+		const hideHelpVideo = () => {
 			videoWrap.removeAttribute("open");
 			videoWrap.style.transition = "left 600ms, top 400ms, width 500ms, height 500ms";
 			videoWrap.style.left       = `calc(${oldX}px + 1em)`;
@@ -26,9 +26,9 @@
 			if(video.playing){video.stop();}
 
 			hideHelpVideoCallback = undefined;
-		}
+		};
 
-		function showHelpVideo(){
+		const showHelpVideo = () => {
 			// This is so clicking on the button again while it is opening close it again
 			if(hideHelpVideoCallback !== undefined){
 				hideOverlay();
@@ -83,7 +83,7 @@
 
 			showOverlay();
 			hideHelpVideoCallback = hideHelpVideo;
-		}
+		};
 
 		button.addEventListener("click",(e) => {
 			e.stopPropagation();
@@ -101,20 +101,20 @@
 			videoWrap.removeAttribute("style");
 			video.style.display = "none";
 		});
-	}
+	};
 
-	function initHelpVideos(){
+	const initHelpVideos = () => {
 		const videos = document.querySelectorAll("help-video");
 
 		for(const video of videos){
 			initHelpVideo(video);
 		}
-	}
+	};
 
-	function hideCurHelpVIdeo(){
+	const hideCurHelpVIdeo = () => {
 		if(hideHelpVideoCallback === undefined){return;}
 		hideHelpVideoCallback();
-	}
+	};
 
 	overlayCloseHandlers.push(hideCurHelpVIdeo);
 	setTimeout(initHelpVideos,0);

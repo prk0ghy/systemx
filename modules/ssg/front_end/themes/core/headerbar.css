@@ -88,6 +88,7 @@ header h3 {
 	header {
 		top: auto;
 		bottom:0;
+		height: 48px;
 	}
 
 	header h3 {
@@ -125,7 +126,30 @@ header h3 {
 		display:none !important;
 	}
 
+	#header-center {
+		display: flex;
+	}
+
 	#header-center > button {
 		margin:0 var(--content-padding-half);
+	}
+
+	#button-navigation {
+		font-size: 2.1em;
+		line-height: 42px;
+	}
+
+	#header-center > a {
+		flex: auto;
+		font-size: 2em;
+		line-height: 28px;
+	}
+
+	#button-next {
+		align-self: flex-end;
+	}
+
+	#button-previous {
+		align-self: flex-start;
 	}
 }

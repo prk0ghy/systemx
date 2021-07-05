@@ -1,5 +1,5 @@
 (() => {
-	function getNumerator(type,i){
+	const getNumerator = (type,i) => {
 		switch(type){
 		default:
 			return String(i);
@@ -8,9 +8,9 @@
 		case "A":
 			return String.fromCharCode(65+i-1); // 65 == A in ASCII
 		}
-	}
+	};
 
-	function initOrderedLists() {
+	const initOrderedLists = () => {
 		// Set all exercise OLs to use lower case alphabetical letters. might not be needed in the future
 		for(const list of document.querySelectorAll(".exercise-content ol")){
 			list.setAttribute("type","a");
@@ -35,6 +35,6 @@
 				item.prepend(numerator);
 			}
 		}
-	}
+	};
 	setTimeout(initOrderedLists, 0);
 })();

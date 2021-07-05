@@ -1,4 +1,4 @@
-/* globals PhotoSwipe, PhotoSwipeUI_Default */
+/* globals PhotoSwipe, PhotoSwipeUI_Default, configuration */
 
 (() => {
 	const initPhotoswipe = () => {
@@ -18,6 +18,8 @@
 		const galleries = document.querySelectorAll('section[content-type="gallery"] > inner-content > details');
 		galleries.forEach(gallery => {
 			const button = document.createElement("BUTTON");
+			const captionWrap = document.createElement("CAPTION-WRAP");
+			gallery.parentElement.append(captionWrap);
 			button.setAttribute("button-type","fullscreen");
 			gallery.appendChild(button);
 			const previousSlideButton = document.createElement("BUTTON");
@@ -27,27 +29,30 @@
 			nextSlideButton.setAttribute("button-type","next-slide");
 			gallery.appendChild(nextSlideButton);
 			const items = [];
-			for(const img of gallery.children){
-				const imgTag = img.querySelector("img");
-				if(imgTag === null){continue;}
+			for(const figure of gallery.querySelectorAll('figure')){
+				const imgTag = figure.querySelector("img");
+				if(!imgTag){continue;}
 				const src   = imgTag.src;
 				const w     = imgTag.getAttribute("width") |0;
 				const h     = imgTag.getAttribute("height")|0;
-				const figCaption = img.querySelector("figcaption");
-				const title = figCaption ? figCaption.innerHTML : "";
-				items.push({src,w,h,title});
+				const figcaption = figure.querySelector("figcaption");
+				const title = figcaption ? figcaption.innerHTML : "";
+				items.push({src,w,h,title,figure,figcaption,imgTag});
+				captionWrap.append(figcaption);
+				figure.classList.add("hidden");
+				figcaption.classList.add("hidden");
 			}
-			const slides = gallery.querySelectorAll(`figure[figure-type="gallery"]`);
-			slides.forEach(e => e.classList.add("hidden"));
-			slides[0].classList.remove("hidden");
+			items[0].figure.classList.remove("hidden");
+			items[0].figcaption.classList.remove("hidden");
 			gallery.setAttribute("open",true);
 			if(items.count === 0){return;}
 			const options = {
 				index:0,
+				loop: configuration.galleryWrapAround,
 				bgOpacity: 0.5,
 				closeOnScroll: false,
 				getThumbBoundsFn:()=>{
-					const rect = slides[options.index].getBoundingClientRect();
+					const rect = items[options.index].imgTag.getBoundingClientRect();
 					const ret = {
 						x: rect.x|0,
 						y:(rect.y|0) + (document.children[0].scrollTop),
@@ -57,26 +62,66 @@
 				}
 			};
 
-			const setSlide = i => {
+			const setSlideWrap = i => {
 				i = i|0;
 				if(i < 0){
-					if(slides.length <= 0){return;}
-					setSlide(slides.length-1);
+					if(items.length <= 0){return;}
+					setSlide(items.length-1);
 					return;
-				}else if(i >= slides.length){
+				}else if(i >= items.length){
 					setSlide(0);
 					return;
 				}
+
 				let ci = 0;
-				for(const img of slides){
+				for(const slide of items){
 					if(ci++ === i){
-						img.classList.remove("hidden");
+						slide.figure.classList.remove("hidden");
+						slide.figcaption.classList.remove("hidden");
 					}else{
-						img.classList.add("hidden");
+						slide.figure.classList.add("hidden");
+						slide.figcaption.classList.add("hidden");
 					}
 				}
 				options.index = i;
 			};
+
+			const setSlideNoWrap = i => {
+				i = i|0;
+				if(configuration.galleryWrapAround){
+					if(i < 0){
+						if(items.length <= 0){return;}
+						setSlide(items.length-1);
+						return;
+					}else if(i >= items.length){
+						setSlide(0);
+						return;
+					}
+				}else{
+					if(i < 0){
+						if(items.length <= 0){return;}
+						setSlide(0);
+						return;
+					}else if(i >= items.length){
+						setSlide(items.length-1);
+						return;
+					}
+				}
+
+				let ci = 0;
+				for(const slide of items){
+					if(ci++ === i){
+						slide.figure.classList.remove("hidden");
+						slide.figcaption.classList.remove("hidden");
+					}else{
+						slide.figure.classList.add("hidden");
+						slide.figcaption.classList.add("hidden");
+					}
+				}
+				options.index = i;
+			};
+
+			const setSlide = configuration.galleryWrapAround ? setSlideWrap : setSlideNoWrap;
 
 			gallery.addEventListener("click", e => e.preventDefault());
 			button.addEventListener("click",e => {
@@ -91,7 +136,8 @@
 			nextSlideButton.addEventListener("click", () => setSlide(options.index + 1));
 		});
 	};
-	const initSingleGallery = () => {
+
+	const initLightbox = () => {
 		const pswpElement = document.getElementById("pswp");
 		const singles = document.querySelectorAll('figure[figure-type="picture"],figure[figure-type="hero-image"]');
 		singles.forEach(single => {
@@ -139,5 +185,5 @@
 	};
 	setTimeout(initPhotoswipe,0);
 	setTimeout(initGallery,0);
-	setTimeout(initSingleGallery,0);
+	setTimeout(initLightbox,0);
 })();

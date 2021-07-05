@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+if [[ "$HOSTNAME" != "dev.dilewe.de" ]]; then
+	echo "It's very likely that you don't want to execute this script, since it is meant for the dev.dilewe.de server."s
+	exit
+fi
+cd /var/www/html/dilewe.de/systemx/
+
+sudo -u www-data mkdir -p /var/www/html/dilewe.de/systemx/web/
+
+sudo -u www-data npm run build:release altenburg &
+sudo -u www-data npm run build:release bettermarks &
+sudo -u www-data npm run build:release juramuseum &
+sudo -u www-data npm run build:release rdhessen &
+sudo -u www-data npm run build:release lasub &
+sudo -u www-data npm run build:release stifterverband &
+
+wait

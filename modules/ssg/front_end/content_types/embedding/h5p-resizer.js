@@ -1,9 +1,9 @@
-(function() {
+(() => {
 	if (!window.postMessage || !window.addEventListener || window.h5pResizerInitialized) {return;}
 	window.h5pResizerInitialized = true;
 
 	const actionHandlers = {};
-	actionHandlers.hello = function(iframe, data, respond) {
+	actionHandlers.hello = (iframe, data, respond) => {
 		iframe.style.width = '100%';
 		iframe.getBoundingClientRect();
 		const resize = function() {
@@ -17,18 +17,18 @@
 		respond('hello');
 	};
 
-	actionHandlers.prepareResize = function(iframe, data, respond) {
+	actionHandlers.prepareResize = (iframe, data, respond) => {
 		if (iframe.clientHeight !== data.scrollHeight || data.scrollHeight !== data.clientHeight) {
 			iframe.style.height = data.clientHeight + 'px';
 			respond('resizePrepared');
 		}
 	};
 
-	actionHandlers.resize = function(iframe, data) {
+	actionHandlers.resize = (iframe, data) => {
 		iframe.style.height = data.scrollHeight + 'px';
 	};
 
-	window.addEventListener('message', (event) => {
+	window.addEventListener('message', event => {
 		if (event.data.context !== 'h5p') {
 			return;
 		}

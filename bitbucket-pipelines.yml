@@ -67,12 +67,49 @@ pipelines:
               - npm install
               - npm run build:clean stifterverband
     - step:
-        name: Update editor previews if `master`, else do nothing
+        name: Update editor previews if `master`
         deployment: preview
         script:
           - :; [ "$BITBUCKET_BRANCH" == "master" ] && ssh -p 42 dev.dilewe.de /var/www/html/dilewe.de/systemx/scripts/update-dilewe || echo "Not deploying anything."
     - step:
-        name: Rebuild static pages if `master`, else do nothing
+        name: Rebuild ALL sites
         deployment: production
+        trigger: manual
         script:
-          - :; [ "$BITBUCKET_BRANCH" == "master" ] && ssh -p 42 dev.dilewe.de /var/www/html/dilewe.de/systemx/scripts/rebuild-pages  || echo "Not deploying anything."
+          - ssh -p 42 dev.dilewe.de /var/www/html/dilewe.de/systemx/scripts/rebuild-pages-release
+    - step:
+        name: Build Altenburg
+        deployment: altenburg
+        trigger: manual
+        script:
+          - ssh -p 42 dev.dilewe.de "cd /var/www/html/dilewe.de/systemx/ && npm run build:clean altenburg"
+    - step:
+        name: Build Bettermarks
+        deployment: bettermarks
+        trigger: manual
+        script:
+          - ssh -p 42 dev.dilewe.de "cd /var/www/html/dilewe.de/systemx/ && npm run build:clean bettermarks"
+    - step:
+        name: Build Juramuseum
+        deployment: juramuseum
+        trigger: manual
+        script:
+          - ssh -p 42 dev.dilewe.de "cd /var/www/html/dilewe.de/systemx/ && npm run build:clean juramuseum"
+    - step:
+        name: Build Lasub
+        deployment: lasub
+        trigger: manual
+        script:
+          - ssh -p 42 dev.dilewe.de "cd /var/www/html/dilewe.de/systemx/ && npm run build:clean lasub"
+    - step:
+        name: Build RD Hessen
+        deployment: rdhessen
+        trigger: manual
+        script:
+          - ssh -p 42 dev.dilewe.de "cd /var/www/html/dilewe.de/systemx/ && npm run build:clean rdhessen"
+    - step:
+        name: Build Stifterverband
+        deployment: stifterverband
+        trigger: manual
+        script:
+          - ssh -p 42 dev.dilewe.de "cd /var/www/html/dilewe.de/systemx/ && npm run build:clean stifterverband"

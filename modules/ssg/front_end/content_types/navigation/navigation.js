@@ -1,6 +1,6 @@
 /* global showOverlay,hideOverlay,overlayCloseHandlers */
 
-function initNavBar() {
+const initNavBar = () => {
 	const navBar = document.querySelector("body > aside");
 	const navButton = document.querySelector("#button-navigation");
 
@@ -23,15 +23,15 @@ function initNavBar() {
 	overlayCloseHandlers.push(() => {
 		navBar.classList.remove("active");
 	});
-}
+};
 setTimeout(initNavBar, 0);
 
 /* Don't pollute the global scope if avoidable */
 (() => {
-	function initNavigation() {
+	const initNavigation = () => {
 		const navUl = document.querySelectorAll("nav > ul ul");
 
-		function showNavigationActive(ele){
+		const showNavigationActive = ele => {
 			if((ele === null) || ((ele.tagName !== "UL") && (ele.tagName !== "LI"))){return;}
 			if(ele.tagName === "UL"){
 				ele.classList.remove("hidden");
@@ -44,9 +44,9 @@ setTimeout(initNavBar, 0);
 				}
 			}
 			showNavigationActive(ele.parentElement);
-		}
+		};
 
-		function refreshNavigationList(){
+		const refreshNavigationList = () => {
 			for(const ele of document.querySelectorAll("nav ul")){
 				ele.classList.add("hidden");
 			}
@@ -59,8 +59,7 @@ setTimeout(initNavBar, 0);
 				ele.classList.remove("active");
 			}
 			showNavigationActive(document.querySelector("nav li.active"));
-		}
-
+		};
 
 		navUl.forEach(ele => {
 			const parentLi = ele.parentElement;
@@ -83,6 +82,6 @@ setTimeout(initNavBar, 0);
 		overlayCloseHandlers.push(() => {
 			refreshNavigationList();
 		});
-	}
+	};
 	setTimeout(initNavigation, 0);
 })();

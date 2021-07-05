@@ -31,7 +31,10 @@ const getHomePageURI = entries => {
 *
 * This function determines the path to that directory.
 */
-const getTargetPath = targetName => path.join(options.distributionPath, targetName);
+const getTargetPathNew = targetName => path.join(options.distributionPath, `${targetName}.new`);
+const getTargetPathOld = targetName => path.join(options.distributionPath, `${targetName}.old`);
+const getTargetPathRaw = targetName => path.join(options.distributionPath, targetName);
+const getTargetPath    = targetName => options.cleanBuild ? getTargetPathNew(targetName) : getTargetPathRaw(targetName);
 /*
 * Targets can make use of resources in HTML.
 * Resources can be of any file type; they don't have to be images.
@@ -262,9 +265,60 @@ export const buildEntries = async targetName => {
 	}
 };
 /*
+* When updating first we rename DIR to DIR.old, then when this succeeds we rename DIR.new to DIR
+* and finally remove the DIR.old and DIR.new dirs if they are still around.
+* The main renaming is also done in a blocking manner to make sure that they get the highest priority.
+*/
+const atomicRename = async targetName => {
+	try {
+		await fsp.rm(getTargetPathOld(targetName),{recursive: true});
+	} catch {
+		/* Shouldn't happen but maybe an old folder is still hanging around due to a past error */
+	}
+	try {
+		fs.renameSync(getTargetPathRaw(targetName),getTargetPathOld(targetName));
+		try {
+			fs.renameSync(getTargetPathNew(targetName),getTargetPathRaw(targetName));
+		} catch {
+			console.error("Error when marking the new version as the current one, rolling back");
+			fs.renameSync(getTargetPathOld(targetName),getTargetPathRaw(targetName));
+		}
+	} catch {
+		// First we check if there actually is a current version, if not we can just continue
+		if(!fs.existsSync(getTargetPathRaw(targetName))){
+			try {
+				fs.renameSync(getTargetPathNew(targetName),getTargetPathRaw(targetName));
+			} catch {
+				console.error("Error when marking the new version as the current one, rolling back");
+				fs.renameSync(getTargetPathOld(targetName),getTargetPathRaw(targetName));
+			}
+		}else{
+			console.error("Error when marking the current version as old, rolling back");
+			await fs.renameSync(getTargetPathOld(targetName),getTargetPathRaw(targetName));
+		}
+	}
+	try {
+		await fsp.rm(getTargetPathOld(targetName),{recursive: true});
+	} catch {
+		/* Strange but not a problem if the .old folder doesn't exist */
+	}
+	try {
+		await fsp.rm(getTargetPathNew(targetName),{recursive: true});
+	} catch {
+		/* Should only happen in case of an error */
+	}
+};
+/*
 * Builds a target, given its name.
 */
 export const build = async targetName => {
+	if(options.cleanBuild){
+		try {
+			await fsp.rm(getTargetPathNew(targetName),{recursive: true});
+		} catch {
+			/* MOst likely means the target folder doesn't exist in the first place */
+		}
+	}
 	const resourcePath = getResourcePath(targetName);
 	mkdirp(resourcePath);
 	await buildHead(targetName);
@@ -274,5 +328,8 @@ export const build = async targetName => {
 		await loadNavigation(targetName);
 		await buildEntries(targetName);
 		console.timeEnd("target#buildEntries");
+	}
+	if(options.cleanBuild){
+		await atomicRename(targetName);
 	}
 };

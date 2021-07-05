@@ -21,8 +21,8 @@ section[content-type="gallery"] > inner-content > details > summary::-webkit-det
 }
 
 figure[figure-type="gallery"] > details.license > summary {
-	right:58px;
-	bottom: 48px;
+	right: 59px;
+	margin-top: -45px;
 }
 
 figure[figure-type="gallery"] > details.license > license-content {
@@ -37,7 +37,6 @@ figure[figure-type="gallery"] > img {
 	border:solid 12px var(--background-color);
 	background:var(--background-color);
 }
-
 
 section[content-type="gallery"] figure[figure-type="gallery"] img {
 	width:100%;
@@ -67,7 +66,7 @@ gallery-text {
 	font-family: var(--font-headlines);
 	line-height: 1.35em;
 	padding:0 12px 0 12px;
-	color: #333;
+	color: var(--text-color);
 	font-size: 1em;
 	font-weight: 300;
 	display:block;
@@ -182,7 +181,6 @@ button[button-type="previous-slide"],
 button[button-type="fullscreen"] {
 	display: block;
 	position: absolute;
-	top: 552px;
 	right: 20px;
 	width: 30px;
 	height: 30px;
@@ -199,44 +197,37 @@ button[button-type="fullscreen"] {
 }
 
 button[button-type="fullscreen"] {
-	background-image: url("/resources/fullscreen.svg");
+	background-image: url("/resources/svg/fullscreen.svg");
 	background-repeat: no-repeat;
 	background-clip: content-box;
 	background-size: 100%;
-}
-
-figure[figure-type="hero-image"] button[button-type="fullscreen"] {
 	top:auto;
 	font-size:0.87em;
-	right:52px;
+	right:16px;
 	margin-top: -45px;
 	box-shadow: 0 3px 6px #00000029;
 	transition: background-color 300ms, color 300ms;
 	padding: 0;
 }
 
-figure[figure-type="picture"] button[button-type="fullscreen"] {
-	top:auto;
-	font-size:0.87em;
-	right:52px;
-	bottom: 15px;
-	box-shadow: 0 3px 6px #00000029;
-	transition: background-color 300ms, color 300ms;
-	padding: 0;
+section[section-type="hero-image"] button[button-type="fullscreen"] {
+	right: 2.5em;
+	margin-top: -45px;
 }
 
 section[content-type="gallery"] button[button-type="fullscreen"] {
-	right:20px;
-	top:auto;
-	bottom: 48px;
-	box-shadow: 0 3px 6px #00000029;
-	transition: background-color 300ms, color 300ms;
-	padding: 0;
+	right: 1em;
+	margin-top: -45px;
+}
+
+figure[figure-type="picture"] > button[button-type="fullscreen"] {
+	right:8px;
+	margin-top: -45px;
 }
 
 figure[figure-type="picture"] > details.license > summary {
-	right:0.6em;
-	bottom: 15px;
+	right:45px;
+	margin-top: -45px;
 }
 
 section[content-type="tab-box"] figure[figure-type="gallery"] img {
@@ -288,3 +279,8 @@ main > section[content-type="text-and-image"] > inner-content > figure > button[
 main > section[content-type="text-and-image"] > inner-content > figure > button[button-type="fullscreen"]::after {
 	margin-left: 0;
 }
+
+caption-wrap > figcaption.hidden {
+	display:none;
+}
+

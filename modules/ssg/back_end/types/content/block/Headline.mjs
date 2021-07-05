@@ -37,7 +37,6 @@ export default {
 		tag = "h3"
 	}, {
 		contentTypeIDIf,
-		escapeHTML,
 		EditorialError,
 		helpers: {
 			Marker
@@ -55,7 +54,7 @@ export default {
 				<inner-content>
 					${Marker.render({ isNumbered: isReallyNumbered })}
 					${embeddedTagError}
-					<${hTag}>${escapeHTML(headline)}</${hTag}>
+					<${hTag}>${headline}</${hTag}>
 				</inner-content>
 			</section>
 		`;

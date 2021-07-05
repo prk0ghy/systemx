@@ -70,6 +70,7 @@ media-play-pause {
 	cursor:pointer;
 	padding-left: calc(var(--content-padding-quarter) * 0.75);
 	top: -1px;
+	transition: background-color 100ms;
 }
 
 media-play-pause::before {
@@ -104,6 +105,20 @@ media-wrap[media-type="video"] > media-controls {
 	bottom: 0;
 	width: 100%;
 	background: linear-gradient(to top, black, rgba(0, 0, 0, 0));
+}
+
+figure[figure-type="hero-image"] > video {
+	max-height:500px;
+	object-fit:cover;
+}
+
+media-wrap[media-type="video"]:fullscreen video {
+	height: 100%;
+}
+
+media-wrap[media-type="video"] > media-controls.hidden {
+	opacity: 0;
+	transition: opacity 800ms;
 }
 
 media-controls::after {
@@ -157,6 +172,7 @@ media-volume-button {
 	width:1.25em;
 	padding-left: calc(var(--content-padding-quarter) * 1.35);
 	cursor: pointer;
+	transition: background-color 100ms;
 }
 
 media-volume-button::before {
@@ -171,6 +187,7 @@ media-volume-slider {
 	cursor: pointer;
 	overflow:visible;
 	margin-left: var(--content-padding-half);
+	transition: background-color 100ms;
 }
 
 media-volume-slider::before {
@@ -194,6 +211,7 @@ media-volume-slider-mark {
 	background-color:white;
 	top: 50%;
 	margin-top: -3px;
+	transition: background-color 100ms;
 }
 
 media-volume-slider-mark::after {
@@ -250,6 +268,7 @@ media-seekbar {
 	cursor: pointer;
 	overflow:visible;
 	left: 20px;
+	transition: background-color 100ms;
 }
 
 media-seekbar::before {
@@ -330,13 +349,11 @@ media-play-pause:hover,
 media-volume-button:hover,
 media-fullscreen:hover {
 	color: var(--dlw-blue);
-	transition: 100ms;
 }
 
 media-volume-slider-mark:hover,
 media-volume-slider-mark:hover::after {
 	background-color: var(--dlw-blue);
-	transition: 100ms;
 }
 
 audio {
@@ -401,13 +418,11 @@ media-wrap[media-type="audio"] media-volume-slider::before {
 media-wrap[media-type="audio"] media-play-pause:hover,
 media-wrap[media-type="audio"] media-volume-button:hover {
 	color: var(--dlw-blue-dark);
-	transition: 100ms;
 }
 
 media-wrap[media-type="audio"] media-volume-slider-mark:hover,
 media-wrap[media-type="audio"] media-volume-slider-mark:hover::after {
 	background-color: var(--dlw-blue-dark);
-	transition: 100ms;
 }
 
 figure[figure-type="audio"] details.license > summary {
@@ -427,7 +442,4 @@ section[content-type="audio"][audio-type="no-image"] {
 	margin-top:calc(var(--content-padding) * -1);
 }
 
-figure[figure-type="hero-image"] > video {
-	max-height:500px;
-	object-fit:cover;
-}
+

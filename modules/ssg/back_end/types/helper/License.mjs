@@ -12,10 +12,14 @@ export default {
 			content += `<p>Quelle: <a href="${asset.source}">${asset.source}</a></p>`;
 		}
 		if (asset.license) {
-			content += `<p>Lizenz: ${this.toName(asset.license)}</p>`;
-		}
-		if (asset.creativeCommonsTerms?.length) {
-			content += `<p>(CC ${asset.creativeCommonsTerms.sort().join("-")})</p>`;
+			content += `<license-info license-key="${asset.license.toUpperCase()}">`;
+			content += `<license-name>${this.toName(asset.license)}</license-name>`;
+			if (asset.creativeCommonsTerms?.length) {
+				const terms    = asset.creativeCommonsTerms.sort();
+				const termHTML = terms.map(v => `<license-icon icon-term="${v.toUpperCase()}">${v.toUpperCase()}</license-icon>`);
+				content += termHTML.join("");
+			}
+			content += "</license-info>";
 		}
 		return `
 			<details class="license">
@@ -29,5 +33,19 @@ export default {
 			return "Alle Rechte vorbehalten";
 		}
 		return licenseCode;
+	},
+	toTitle(licenseTerm) {
+		switch(licenseTerm.toUpperCase()){
+		case "SA":
+			return "Share-Alike";
+		case "BY":
+			return "Attribution";
+		case "ND":
+			return "No-Derivatives";
+		case "NC":
+			return "Non-Commercial";
+		default:
+			return licenseTerm;
+		}
 	}
 };

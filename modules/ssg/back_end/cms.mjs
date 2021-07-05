@@ -20,6 +20,7 @@ const globalFragments = {
 		url
 		width
 		mimeType
+		focalPoint
 		...on ${introspection.assetType} {
 			creativeCommonsTerms: rechtemodule
 			license: lizenzart
