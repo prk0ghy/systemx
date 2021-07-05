@@ -452,6 +452,11 @@ label.inline-row input {
 	color: #a62109;
 }
 
+form.login-form .form-row span {
+	background-color: unset;
+	color: var(--color-text);
+}
+
 .form-row input[readonly],
 .form-row input[readonly]:focus + span,
 .form-row input[readonly]:focus + label {
@@ -485,7 +490,7 @@ input.inline-button[type="submit"].delete {
 	border: solid 2px var(--color-error);
 }
 
-.login-form>label.form-row {
+.login-form > label.form-row {
 	width: 100%;
 }
 
@@ -582,7 +587,7 @@ label > input[type="checkbox"]:checked + span::before {
 	margin: -5.5vw 0 0 0;
 }
 
-.bg_si2 label > input[type="checkbox"]:checked+span::before {
+.bg_si2 label > input[type="checkbox"]:checked + span::before {
 	color: #217ca6;
 	margin: -5.5vw 0 0 0;
 }
@@ -831,21 +836,43 @@ div.userpanel-container form.login-form {
 	padding: 0 7%;
 }
 
+.pwreset {
+	font-size: 1.2em;
+	position: absolute;
+	left: 16px;
+	bottom: 16px;
+	text-decoration: none;
+	color: var(--color-blue);
+}
+
 form.login-form .pwreset {
 	position: relative;
 }
 
-div.userpanel-container form.login-form .order-form .form-row input,
-div.userpanel-container form.login-form .form-row input {
+body.template-backend label.inline-row input {
+	border-right: unset;
+	border: solid 1px var(--color-white);
+}
+
+body.template-belogin .order-form .form-row input,
+body.template-belogin .login-form .form-row input {
+	background-color: unset;
+	color: black;
+	border: solid 1px #3E4162;
+}
+
+div.userpanel-container form.login-form .form-row input,
+div.userpanel-container form.login-form .order-form .form-row input {
 	background-color: unset;
 	color: var(--color-text);
 	border: 2px solid var(--color-text);
 	font-weight: 100;
 	font-size: 2.8rem;
 }
-form.login-form .form-row span {
-	background-color: unset;
-	color: var(--color-text);
+
+body.template-belogin h3 {
+	font-size: 1.7em;
+	margin-bottom: 2em;
 }
 
 .card-grid.bg_si1 h3 {
@@ -865,7 +892,8 @@ body.template-backend .username {
 }
 
 body.template-backend .backend-form h3 {
-	margin-bottom: 1.5em;
+	margin-bottom: 2.5em;
+	margin-top: 1em;
 }
 
 body.template-checkout header,
@@ -873,15 +901,6 @@ body.template-order header,
 body.template-pwreset header,
 body.template-login header {
 	display: none;
-}
-
-.pwreset {
-	font-size: 1.2em;
-	position: absolute;
-	left: 16px;
-	bottom: 16px;
-	text-decoration: none;
-	color: var(--color-blue);
 }
 
 .success {
@@ -1027,16 +1046,6 @@ body.template-backend {
 	padding-bottom: 5em;
 }
 
-body.template-backend .backend-form h3 {
-	margin-bottom: 2.5em;
-	margin-top: 1em;
-}
-
-body.template-backend label.inline-row input{
-	border-right: unset;
-	border: solid 1px var(--color-white);
-}
-
 /* Backend Login */
 
 body.template-belogin nav[aria-label="Navigation des Portals"] {
@@ -1062,22 +1071,10 @@ body.template-belogin input[type="submit"] {
 	border-radius: 12px;
 }
 
-body.template-belogin .order-form .form-row input,
-body.template-belogin .login-form .form-row input {
-	background-color: unset;
-	color: black;
-	border: solid 1px #3E4162;
-}
-
 body.template-belogin .order-form .form-row span,
 body.template-belogin .login-form .form-row span {
 	background-color: unset;
 	color: black;
-}
-
-body.template-belogin h3 {
-	font-size: 1.7em;
-	margin-bottom: 2em;
 }
 
 body.template-belogin h1 {
