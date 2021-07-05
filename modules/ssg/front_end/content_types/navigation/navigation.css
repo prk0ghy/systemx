@@ -52,6 +52,10 @@ nav li a {
 	font-size:1.3em;
 	padding-left:calc(var(--content-padding) * 1);
 }
+
+nav > ul > li > a {
+	font-weight: bold;
+}
 nav li li a { padding-left:calc(var(--content-padding) * 2); }
 nav li li li a { padding-left:calc(var(--content-padding) * 3); }
 

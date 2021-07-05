@@ -215,7 +215,7 @@ section[tab-box-type="support"] tab-box-content [content-type="galery"] inner-co
 
 section[tab-box-type="support"] tab-box-content-wrap:fullscreen tab-box-content {
 	padding: 0;
-	height: calc(100vh - 134px);
+	height: calc(100vh - 4em);
 	overflow-y: auto;
 }
 
@@ -229,5 +229,5 @@ section[tab-box-type="support"] .ql-toolbar button {
 section[tab-box-type="support"] button[button-type="fullscreen"] {
 	width: 30px;
 	height: 30px;
-	margin: -45px 0 0 0;
+	margin: -45px -34px 0 0;
 }
