@@ -386,15 +386,15 @@ input[type="submit"].create {
 	font-family: 'Montserrat', sans-serif;
 }
 
-label>input[type="checkbox"]+span::after {
+label > input[type="checkbox"] + span::after {
 	content: 'In den Warenkorb';
 }
 
-label>input[type="checkbox"]:checked+span::after {
+label > input[type="checkbox"]:checked + span::after {
 	content: 'Im Warenkorb';
 }
 
-.card-grid label>input[type="checkbox"]:checked+span::after {
+.card-grid label > input[type="checkbox"]:checked + span::after {
 	color: #217ca6;
 }
 
@@ -404,7 +404,7 @@ label.form-row {
 	width: 100%;
 }
 
-label.form-row>span {
+label.form-row > span {
 	position: absolute;
 	left: -2px;
 	font-size: 1.4em;
@@ -438,8 +438,8 @@ label.inline-row input {
 	border-color: var(--color-blue);
 }
 
-.form-row input:focus+span,
-.form-row input:focus+label {
+.form-row input:focus + span,
+.form-row input:focus + label {
 	color: var(--color-blue);
 }
 
@@ -447,14 +447,14 @@ label.inline-row input {
 	border-color: #a62109;
 }
 
-.form-row input.error+span,
-.form-row input.error+label {
+.form-row input.error + span,
+.form-row input.error + label {
 	color: #a62109;
 }
 
 .form-row input[readonly],
-.form-row input[readonly]:focus+span,
-.form-row input[readonly]:focus+label {
+.form-row input[readonly]:focus + span,
+.form-row input[readonly]:focus + label {
 	color: #aaa;
 }
 
@@ -513,12 +513,12 @@ form.feuser-form input[type="submit"] {
 	display: block;
 }
 
-center>.form-row {
+center > .form-row {
 	display: block;
 	width: 100%;
 }
 
-.login-form>.delete {
+.login-form > .delete {
 	width: 100%;
 }
 
@@ -526,14 +526,14 @@ center>.form-row {
 	width: auto;
 }
 
-label>input[type="checkbox"] {
+label > input[type="checkbox"] {
 	opacity: 0;
 	position: absolute;
 	width: 0;
 	height: 0;
 }
 
-label>input[type="checkbox"]+span::before {
+label > input[type="checkbox"] + span::before {
 	font-family: var(--font-icon);
 	content: '\e8cc';
 	display: inline-block;
@@ -550,7 +550,7 @@ label>input[type="checkbox"]+span::before {
 	margin: -5.5vw 0 0 8.8vw;
 }
 
-label>input[type="checkbox"]:checked+span::before {
+label > input[type="checkbox"]:checked + span::before {
 	color: #217ca6;
 	margin: -5.5vw 0 0 6vw;
 	animation: elastic 0.7s linear 0s 1 normal;
@@ -578,11 +578,11 @@ label>input[type="checkbox"]:checked+span::before {
 	}
 }
 
-.bg_si2 label>input[type="checkbox"]+span::before {
+.bg_si2 label > input[type="checkbox"] + span::before {
 	margin: -5.5vw 0 0 0;
 }
 
-.bg_si2 label>input[type="checkbox"]:checked+span::before {
+.bg_si2 label > input[type="checkbox"]:checked+span::before {
 	color: #217ca6;
 	margin: -5.5vw 0 0 0;
 }
@@ -813,35 +813,37 @@ header nav {
 	visibility: visible;
 }
 
-div.userpanel-container form.login-form h2{
+div.userpanel-container form.login-form h2 {
 	margin-bottom: 1em;
 	font-weight: 100;
 	font-size: 2.5rem;
 	padding-left: 1em;
 }
 
-div.userpanel-container.active{
+div.userpanel-container.active {
 	width: 35%;
 	min-width: 450px;
 }
-div.userpanel-container form.login-form{
+
+div.userpanel-container form.login-form {
 	margin: 0 auto;
 	margin-top: 22vh;
 	padding: 0 7%;
 }
 
-form.login-form .pwreset{
+form.login-form .pwreset {
 	position: relative;
 }
 
-div.userpanel-container form.login-form .order-form .form-row input,div.userpanel-container form.login-form .form-row input{
+div.userpanel-container form.login-form .order-form .form-row input,
+div.userpanel-container form.login-form .form-row input {
 	background-color: unset;
 	color: var(--color-text);
 	border: 2px solid var(--color-text);
 	font-weight: 100;
 	font-size: 2.8rem;
 }
-form.login-form .form-row span{
+form.login-form .form-row span {
 	background-color: unset;
 	color: var(--color-text);
 }
