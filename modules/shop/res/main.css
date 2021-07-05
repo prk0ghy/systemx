@@ -1082,8 +1082,6 @@ body.template-belogin h1 {
 	font-size: 3em;
 }
 
-body.template-belogin {}
-
 body.template-belogin input[type="submit"]:hover,
 body.template-belogin input[type="submit"]:focus,
 body.template-belogin input[type="submit"]:active {
