@@ -68,7 +68,7 @@ export default {
 				tabs,
 				...rest
 			}) => ({
-				helperVideo: helpVideos[0],
+				helpVideo: helpVideos[0],
 				tabs: tabs.map(tab => Object.assign({}, tab, {
 					media: tab.media[0]
 				})),
