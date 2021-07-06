@@ -26,7 +26,6 @@ a.icon-button-360::before {
 	content:"";
 	display:inline-block;
 	width:1.8em;
-	margin-right:0.5em;
 	height:1em;
 	background:url("/resources/svg/icon-360.svg");
 	background-size:100% 100%;
