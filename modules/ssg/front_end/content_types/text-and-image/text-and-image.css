@@ -21,3 +21,15 @@ section[content-type="text-and-image"] figcaption {
 section[content-type="text-and-image"] figure-row figcaption {
 	padding: 0.3em 1em 2em 1em;
 }
+
+figure.inline {
+	display:inline !important;
+	width:auto !important;
+	height:auto !important;
+}
+
+img.inline {
+	width:auto;
+	height:1em;
+	display:inline-block;
+}
