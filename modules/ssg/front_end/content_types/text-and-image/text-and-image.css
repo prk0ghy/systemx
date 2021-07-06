@@ -22,14 +22,13 @@ section[content-type="text-and-image"] figure-row figcaption {
 	padding: 0.3em 1em 2em 1em;
 }
 
-figure.inline {
-	display:inline !important;
-	width:auto !important;
-	height:auto !important;
-}
-
-img.inline {
-	width:auto;
-	height:1em;
+a.icon-button-360::before {
+	content:"";
 	display:inline-block;
+	width:1.8em;
+	margin-right:0.5em;
+	height:1em;
+	background:url("/resources/svg/icon-360.svg");
+	background-size:100% 100%;
+	vertical-align:middle;
 }
