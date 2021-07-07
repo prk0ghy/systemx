@@ -34,7 +34,7 @@ aside#navigation > nav > ul {
 
 @media only screen and (max-width: 800px) {
 	aside#navigation > nav > ul {
-		height: 91%;
+		height: calc(100% - 64px);
 	}
 }
 
@@ -55,7 +55,9 @@ nav li a {
 
 nav > ul > li > a {
 	font-weight: 500;
+	padding:var(--content-padding-quarter) var(--content-padding);
 }
+
 nav li li a { padding-left:calc(var(--content-padding) * 2); }
 nav li li li a { padding-left:calc(var(--content-padding) * 3); }
 
@@ -66,6 +68,10 @@ nav li a:hover {
 nav li.active > a {
 	background-color: rgba(var(--highlight-color), 0.7);
 	color:#fff;
+}
+
+nav ul li ul li:last-child {
+	margin-bottom: 16px;
 }
 
 nav nav-toggle {
@@ -88,6 +94,10 @@ nav nav-toggle::before {
 	content:"\e909";
 }
 
+nav ul li ul li nav-toggle {
+	top: 0.2em;
+}
+
 nav li.active > nav-toggle {
 	color:#fff;
 	border-left-color:#fff;
@@ -104,8 +114,8 @@ nav ul.hidden {
 nav-close-button {
 	position:absolute;
 	left:50%;
+	transform: translate(-50%, 0%);
 	bottom:0;
-	margin-left:-0.5em;
 	width:1em;
 	height:1em;
 	text-align:center;
