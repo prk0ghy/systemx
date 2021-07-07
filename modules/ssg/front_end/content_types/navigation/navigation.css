@@ -45,7 +45,7 @@ nav li {
 nav li a {
 	display:block;
 	width:100%;
-	padding:var(--content-padding-quarter) var(--content-padding);
+	padding:calc(var(--content-padding-quarter) / 2) var(--content-padding);
 	color:var(--text-color);
 	text-decoration:none;
 	font-family: var(--font-headlines);
@@ -54,7 +54,7 @@ nav li a {
 }
 
 nav > ul > li > a {
-	font-weight: bold;
+	font-weight: 500;
 }
 nav li li a { padding-left:calc(var(--content-padding) * 2); }
 nav li li li a { padding-left:calc(var(--content-padding) * 3); }
