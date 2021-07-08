@@ -194,7 +194,6 @@ section[tab-box-type="support"] tab-box-content [content-type="embedding"],
 section[tab-box-type="support"] tab-box-content [content-type="exercise"],
 section[tab-box-type="support"] tab-box-content [content-type="download"],
 section[tab-box-type="support"] tab-box-content [content-type="galery"] {
-	max-width: var(--content-width);
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 16px;
