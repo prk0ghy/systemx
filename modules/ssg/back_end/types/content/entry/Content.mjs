@@ -10,6 +10,7 @@ export default {
 				id
 				title
 				titleOverride: title_override
+				vgWortPixel
 			`,
 			map: ({
 				heroImages,
@@ -26,7 +27,8 @@ export default {
 		heroImage,
 		id,
 		title,
-		titleOverride
+		titleOverride,
+		vgWortPixel
 	}, {
 		contentTypeIDIf,
 		contentTypes: {
@@ -48,6 +50,7 @@ export default {
 			tag: "h1"
 		});
 		return `
+			<script>const vgWortPixel = ${JSON.stringify(vgWortPixel)};</script>
 			<main content-type="content" ${contentTypeIDIf(id)}>
 				${heroImageHTML}
 				${headlineHTML}
