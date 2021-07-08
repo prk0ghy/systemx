@@ -166,6 +166,10 @@ upload-section input[type=file] {
 
 /* Text-Editor Quill Styling */
 
+span.ql-formats button > svg {
+	fill: blue;
+}
+
 fancy-exercise-editor {
 	display:block;
 	box-shadow: inset 1px 2px 3px 1px #00000063;
@@ -244,73 +248,32 @@ fancy-exercise-editor {
 	margin-top: 1em;
 	border: none;
 	padding: var(--content-padding-quarter) 0;
-	align-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
 	width: 100%;
 	margin-left:auto;
 	margin-right:auto;
+}
+
+div.ql-toolbar.ql-snow span.ql-formats {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+span.ql-picker.ql-color-picker {
+	padding: 0;
 }
 
 .ql-snow.ql-toolbar button {
 	background: none;
 	border: none;
 	cursor: pointer;
-	height: 2.5em;
-	width: 3.5em;
-	padding: 0;
-	vertical-align:bottom;
-}
-
-html body .ql-toolbar.ql-snow .ql-formats {
-	margin: 0;
-}
-
-.ql-toolbar.ql-snow .ql-formats:nth-of-type(2) {
-	margin-left: 5%;
-	margin-right: 5%;
-}
-
-.ql-toolbar.ql-snow .ql-formats:nth-of-type(3) {
-	margin-right: 10%;
-}
-
-.ql-italic, .ql-underline, .ql-strike {
-	margin-right: -0.5em;
-}
-
-.ql-bold {
-	margin-right: -1em;
-}
-
-html body .ql-toolbar.ql-snow .ql-picker-label {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 2.5em;
 	padding: 0;
 }
 
-html body .ql-picker .ql-color-picker {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin: 0 1em 0 2em;
-}
 
-html body .ql-color {
-	margin-right: 1em;
-}
-
-.ql-snow .ql-color-picker .ql-picker-options {
-	width: 306px;
-	position: absolute;
-	left: -131px;
-}
-
-html body .ql-snow .ql-color-picker .ql-picker-item {
-	height: 34px;
-	width: 34px;
-	margin: 4px;
-}
 
 /* Text Container Styling */
 
