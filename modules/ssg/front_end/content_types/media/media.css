@@ -8,7 +8,7 @@ video {
 
 section[content-type="video"] > inner-content > details > summary {
 	right: 3.75em;
-	bottom: 4px;
+	bottom: 8px;
 }
 
 section[content-type="video"] > inner-content > details > summary::marker {
@@ -60,6 +60,7 @@ figure.videofigure > figcaption {
 
 figure[figure-type="video"] figcaption {
 	min-height: 38px;
+	padding: 6px 0 16px 0;
 }
 
 media-play-pause {

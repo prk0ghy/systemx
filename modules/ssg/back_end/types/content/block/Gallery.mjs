@@ -170,11 +170,11 @@ export default {
 			<section content-type="gallery" ${contentTypeIDIf(id)}>
 				<inner-content>
 					${Marker.render({ isNumbered })}
-					${galleryIntroductionTextHTML}
 					<details>
 						<summary>${figures[0]}</summary>
 						${figures.slice(1).join("")}
 					</details>
+					${galleryIntroductionTextHTML}
 				</inner-content>
 			</section>
 		`;
