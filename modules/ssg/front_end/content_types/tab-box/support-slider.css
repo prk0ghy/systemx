@@ -193,10 +193,13 @@ section[tab-box-type="support"] tab-box-content [content-type="audio"],
 section[tab-box-type="support"] tab-box-content [content-type="embedding"],
 section[tab-box-type="support"] tab-box-content [content-type="exercise"],
 section[tab-box-type="support"] tab-box-content [content-type="download"],
-section[tab-box-type="support"] tab-box-content [content-type="galery"] {
+section[tab-box-type="support"] tab-box-content [content-type="gallery"] {
+	max-width: calc(100% - var(--content-padding-half));
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 16px;
+	top: 50%;
+	transform: translate(0, -50%);
 }
 
 section[tab-box-type="support"] tab-box-content [content-type="video"],
@@ -208,8 +211,9 @@ section[tab-box-type="support"] tab-box-content [content-type="galery"] {
 	margin-top: 16px;
 }
 
-section[tab-box-type="support"] tab-box-content [content-type="galery"] inner-content {
+section[tab-box-type="support"] tab-box-content [content-type="gallery"] inner-content {
 	margin: 0 auto;
+	max-width: none;
 }
 
 section[tab-box-type="support"] tab-box-content-wrap:fullscreen tab-box-content {
