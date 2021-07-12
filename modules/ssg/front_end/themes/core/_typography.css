@@ -80,7 +80,7 @@ blockquote {
 	padding:0.5em 0;
 	margin-bottom:1em;
 	font-style:italic;
-	font-size:1.2em;
+	font-size:1em;
 	color: var(--headerbar-color);
 	font-weight:300;
 }

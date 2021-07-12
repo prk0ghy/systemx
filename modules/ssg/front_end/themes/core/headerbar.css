@@ -127,7 +127,6 @@ header h3 {
 	#header-left {
 		float: none;
 		margin-right: 0;
-
 	}
 
 	#header-center {
@@ -142,10 +141,8 @@ header h3 {
 
 	#button-navigation {
 		position: absolute;
-
 		left: calc(50% - 25px);
 		bottom: -35px;
-
 		font-size: 2.1em;
 		line-height: 42px;
 		margin-top: -0.2em;
