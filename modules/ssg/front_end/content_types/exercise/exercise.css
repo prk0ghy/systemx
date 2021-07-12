@@ -166,10 +166,6 @@ upload-section input[type=file] {
 
 /* Text-Editor Quill Styling */
 
-span.ql-formats button > svg {
-	fill: blue;
-}
-
 fancy-exercise-editor {
 	display:block;
 	box-shadow: inset 1px 2px 3px 1px #00000063;
@@ -256,13 +252,26 @@ fancy-exercise-editor {
 	margin-right:auto;
 }
 
-div.ql-toolbar.ql-snow span.ql-formats {
+.ql-toolbar span.ql-formats {
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-start;
 }
 
+.ql-toolbar span.ql-formats:nth-of-type(1) {
+	width: 20%;
+}
+
+.ql-toolbar span.ql-formats:nth-of-type(2),
+.ql-toolbar span.ql-formats:nth-of-type(3) {
+	width: 12%;
+}
+
 span.ql-picker.ql-color-picker {
+	padding: 0;
+}
+
+.ql-snow .ql-color-picker span.ql-picker-label {
 	padding: 0;
 }
 
@@ -273,7 +282,17 @@ span.ql-picker.ql-color-picker {
 	padding: 0;
 }
 
+span.ql-picker-label:hover > svg path,
+span.ql-picker-label.ql-active > svg path {
+	fill: var(--dlw-blue);
+}
 
+.ql-snow.ql-toolbar button:hover > svg path,
+.ql-snow.ql-toolbar button:hover > svg circle,
+.ql-snow.ql-toolbar button.ql-active > svg path,
+.ql-snow.ql-toolbar button.ql-active > svg circle {
+	fill: var(--dlw-blue);
+}
 
 /* Text Container Styling */
 
