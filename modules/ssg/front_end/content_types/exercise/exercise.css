@@ -51,8 +51,8 @@ section[content-type="exercise"] ol > li > ol-number {
 
 .ql-editor ul > li::before {
 	position: absolute;
-	top: 0.1em;
-	left: 1.5em;
+	top: 0.4em;
+	left: 0.45em;
 	content: "";
 	display: block;
 	width: 0.4em;
@@ -228,13 +228,13 @@ fancy-exercise-editor {
 
 .ql-editor ul > li {
 	font-family: var(--font-content);
-	line-height:0.7em;
+	line-height: 1.25em;
 	font-weight: 400;
 }
 
 .ql-editor ol > li {
 	font-family: var(--font-content);
-	line-height:0.7em;
+	line-height: 1.25em;
 	font-weight: 400;
 }
 
@@ -379,6 +379,7 @@ span.ql-picker-label.ql-active > svg path {
 @media screen and (max-width: 450px) {
 	.ql-toolbar span.ql-formats:nth-of-type(3) {
 		margin-top: 1em;
+		margin-bottom: 0.5em;
 	}
 
 	.ql-toolbar span.ql-formats:nth-of-type(1) {
@@ -425,6 +426,7 @@ span.ql-picker-label.ql-active > svg path {
 	.ql-toolbar span.ql-formats:nth-of-type(3) {
 		width: 38%;
 		margin-top: 1em;
+		margin-bottom: 0.5em;
 	}
 
 	span#ql-picker-options-0 {
