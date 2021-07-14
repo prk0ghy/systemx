@@ -150,6 +150,10 @@ main > section[content-type="text-and-image"] > section[content-type="gallery"]:
 	font-family: "icomoon";
 	color: var(--dlw-blue);
 	border-radius: 50%;
+	background-repeat: no-repeat;
+	background-clip: content-box;
+	background-size: 100%;
+	transform: translate(0, -50%);
 }
 
 .pswp__ui--idle .pswp__button--arrow--left,
@@ -167,20 +171,12 @@ main > section[content-type="text-and-image"] > section[content-type="gallery"]:
 
 .pswp__button.pswp__button--arrow--left {
 	margin-left: 10px;
+	background-image: url("/resources/svg/arrow-left.svg");
 }
 
 .pswp__button.pswp__button--arrow--right {
 	margin-right: 10px;
-}
-
-.pswp__button.pswp__button--arrow--right::before {
-	content: "\e901";
-	right: 18px;
-}
-
-.pswp__button.pswp__button--arrow--left::before {
-	content: "\e902";
-	left: 7px;
+	background-image: url("/resources/svg/arrow-right.svg");
 }
 
 button[button-type="next-slide"],
@@ -201,13 +197,14 @@ button[button-type="fullscreen"] {
 	font-size: 1em;
 	line-height: 1em;
 	font-family: "icomoon";
+	padding: 0;
 }
 
 button[button-type="fullscreen"] {
 	background-image: url("/resources/svg/fullscreen.svg");
 	background-repeat: no-repeat;
 	background-clip: content-box;
-	background-size: 100%;
+	background-size: 80%;
 	top:auto;
 	font-size:0.87em;
 	right:16px;
@@ -215,6 +212,8 @@ button[button-type="fullscreen"] {
 	box-shadow: 0 3px 6px #00000029;
 	transition: background-color 300ms, color 300ms;
 	padding: 0;
+	background-position-x: 50%;
+	background-position-y: 50%;
 }
 
 section[section-type="hero-image"] button[button-type="fullscreen"] {
@@ -243,19 +242,34 @@ section[content-type="tab-box"] figure[figure-type="gallery"] img {
 
 button[button-type="next-slide"] {
 	top:268px;
-	height:64px;
-	width:64px;
+	height:44px;
+	width:44px;
 	font-size:2em;
+	background-image: url("/resources/svg/arrow-right.svg");
+	background-repeat: no-repeat;
+	background-clip: content-box;
+	background-size: 80%;
+	opacity: 70%;
+	cursor: pointer;
+	background-position-x: 60%;
+	background-position-y: 55%;
 }
 
 button[button-type="previous-slide"] {
 	right:auto;
-	height:64px;
-	width:64px;
+	height:44px;
+	width:44px;
 	font-size:2em;
+	background-image: url("/resources/svg/arrow-left.svg");
+	background-repeat: no-repeat;
+	background-clip: content-box;
+	background-size: 80%;
 	left:20px;
 	top:268px;
 	cursor:pointer;
+	opacity: 70%;
+	background-position-x: 31%;
+	background-position-y: 55%;
 }
 
 button[button-type="fullscreen"].active::before {
@@ -264,16 +278,6 @@ button[button-type="fullscreen"].active::before {
 
 button[button-type="fullscreen"].active::after {
 	opacity: 1;
-}
-
-button[button-type="previous-slide"]::before {
-	margin-left: -1px;
-	content: "\e902";
-}
-
-button[button-type="next-slide"]::before {
-	margin-left: -1px;
-	content: "\e901";
 }
 
 figure-row button[button-type="fullscreen"]::before,
