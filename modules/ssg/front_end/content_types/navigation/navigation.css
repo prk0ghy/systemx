@@ -34,11 +34,11 @@ aside#navigation > nav > ul {
 
 @media only screen and (max-width: 800px) {
 	aside#navigation > nav > ul {
-		height: calc(100% - 70px);
+		height: calc(100% - 40px);
 	}
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 650px) {
 	aside#navigation > nav > ul {
 		height: calc(100% - 64px);
 	}
