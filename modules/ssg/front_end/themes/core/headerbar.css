@@ -42,6 +42,8 @@ header::after {
 #button-navigation,
 #button-previous,
 #button-next {
+	width: 33px;
+	height: 33px;
 	text-align:center;
 	vertical-align:middle;
 	appearance:none;
@@ -54,14 +56,36 @@ header::after {
 	text-decoration: none;
 }
 
-#button-navigation::after { content: "\e904"; }
+#button-navigation {
+	background-image: url("/resources/svg/hamburger.svg");
+	background-repeat: no-repeat;
+	background-clip: content-box;
+	background-size: 100%;
+}
+
 #button-settings::after { content: "\e994"; }
-#button-previous::after { content: "\e902"; }
-#button-next::after { content: "\e901"; }
 
 button#button-previous,
 button#button-next {
 	display:none;
+}
+
+#button-previous {
+	width: 30px;
+	height: 30px;
+	background-image: url("/resources/svg/arrow-left.svg");
+	background-repeat: no-repeat;
+	background-clip: content-box;
+	background-size: 100%;
+}
+
+#button-next {
+	width: 30px;
+	height: 30px;
+	background-image: url("/resources/svg/arrow-right.svg");
+	background-repeat: no-repeat;
+	background-clip: content-box;
+	background-size: 100%;
 }
 
 header h3 {
@@ -118,6 +142,7 @@ header h3 {
 	header {
 		border-top: solid 2px var(--headerbar-color);
 		border-bottom: none;
+		height: 60px;
 	}
 
 	header h3 {
