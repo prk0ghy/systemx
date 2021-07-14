@@ -114,6 +114,10 @@ box-content > footer {
 	top:6px;
 }
 
+.box-wrap.active.closing > summary::before {
+	transform: unset;
+}
+
 @media screen and (max-width: 950px) {
 	section[content-type="box"] > inner-content > details > summary::before,
 	section[content-type="box"] > inner-content > details > summary::after {

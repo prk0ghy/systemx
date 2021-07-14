@@ -42,10 +42,12 @@ let overlayHideBoxCallback = undefined;
 			};
 
 			const hideBox = () => {
+				boxDetails.classList.add("closing");
 				boxVisible = false;
 				overlayHideBoxCallback = undefined;
 				if(classRemoverTimer === undefined){
 					classRemoverTimer = setTimeout(() => {
+						boxDetails.classList.remove("closing");
 						boxDetails.classList.remove("active");
 						classRemoverTimer = undefined;
 						boxDetails.parentElement.style.height = "";
