@@ -125,14 +125,13 @@ header h3 {
 	}
 
 	#header-left {
+		position: static;
 		float: none;
 		margin-right: 0;
 	}
 
 	#header-center {
-		display: grid;
-		grid-template-columns: 1fr 100px 1fr;
-		grid-template-rows: auto;
+		position: static;
 	}
 
 	#header-center > button {
@@ -141,26 +140,40 @@ header h3 {
 
 	#button-navigation {
 		position: absolute;
-		left: calc(50% - 25px);
-		bottom: -35px;
+		width: 44px;
+		height: 44px;
+		left: 50%;
+		top: 50%;
+		transition-property: 50%;
+		margin-top: -22px;
+		margin-left: -22px;
 		font-size: 2.1em;
 		line-height: 42px;
-		margin-top: -0.2em;
 	}
 
 	#header-center > a {
-		flex: auto;
 		font-size: 2em;
 		line-height: 40px;
+		position: absolute;
+		top: 50%;
 	}
 
 	#button-next {
-		align-self: flex-end;
-		grid-area: 1 / 3 / 2 / 4;
+		width: 33px;
+		height: 33px;
+		right: 1em;
+		margin-top: -17px;
 	}
 
 	#button-previous {
-		align-self: flex-start;
-		grid-area: 1 / 1 / 2 / 2;
+		width: 33px;
+		height: 33px;
+		left: 1em;
+		margin-top: -17px;
+	}
+
+	aside nav-close-button {
+		bottom: 58px;
+		font-size: 2.3em;
 	}
 }
