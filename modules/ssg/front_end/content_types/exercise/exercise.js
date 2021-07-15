@@ -77,14 +77,14 @@
 
 					//change Background of QL Picker with actual color
 					const pickerBackground = document.querySelector(".ql-background .ql-picker-label");
-					const pickerSvgBg = pickerBackground.querySelector("svg");
+					const pickerSvgBg = pickerBackground.querySelector("svg g path:first-child");
 					const colorValueBg = pickerBackground.dataset.value;
 
 					if (colorValueBg !== undefined) {
-						pickerSvgBg.style.backgroundColor = pickerBackground.dataset.value;
+						pickerSvgBg.style.fill = pickerBackground.dataset.value;
 					}
 					else {
-						pickerSvgBg.style.backgroundColor = "transparent";
+						pickerSvgBg.style.fill = "transparent";
 					}
 				});
 			}
