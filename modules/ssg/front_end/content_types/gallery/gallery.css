@@ -21,7 +21,7 @@ section[content-type="gallery"] > inner-content > details > summary::-webkit-det
 }
 
 figure[figure-type="gallery"] > details.license > summary {
-	right: 59px;
+	right: 54px;
 	margin-top: -45px;
 }
 
@@ -53,7 +53,8 @@ section[content-type="gallery"] .gallery-text p {
 
 section[content-type="gallery"] figure[figure-type="gallery"] img {
 	width:100%;
-	height:600px;
+	height:60vw;
+	max-height: 600px;
 	object-fit:cover;
 }
 
@@ -222,7 +223,7 @@ section[section-type="hero-image"] button[button-type="fullscreen"] {
 }
 
 section[content-type="gallery"] button[button-type="fullscreen"] {
-	right: 1em;
+	right: 18px;
 	margin-top: -45px;
 }
 
@@ -241,7 +242,6 @@ section[content-type="tab-box"] figure[figure-type="gallery"] img {
 }
 
 button[button-type="next-slide"] {
-	top:268px;
 	height:44px;
 	width:44px;
 	font-size:2em;
@@ -250,6 +250,8 @@ button[button-type="next-slide"] {
 	background-clip: content-box;
 	background-size: 80%;
 	opacity: 70%;
+	top:50%;
+	margin-top: -22px;
 	cursor: pointer;
 	background-position-x: 60%;
 	background-position-y: 55%;
@@ -265,7 +267,8 @@ button[button-type="previous-slide"] {
 	background-clip: content-box;
 	background-size: 80%;
 	left:20px;
-	top:268px;
+	top:50%;
+	margin-top: -22px;
 	cursor:pointer;
 	opacity: 70%;
 	background-position-x: 31%;
@@ -294,4 +297,3 @@ main > section[content-type="text-and-image"] > inner-content > figure > button[
 caption-wrap > figcaption.hidden {
 	display:none;
 }
-
