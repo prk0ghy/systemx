@@ -26,10 +26,17 @@ let overlayHideBoxCallback = undefined;
 				boxVisible = true;
 				const rect = boxHeader.getBoundingClientRect();
 				boxDetails.parentElement.style.height = ((rect.height|0)+8) + "px"; // Set a fixed height for the parent element, because as soon as we set position:fixed it will loose its height and would lead to content jumping aronud
-				boxDetails.style.top = (rect.top|0) + "px";
+				const oldTop = (rect.top|0);
+				const newTop = window.innerWidth > 800 ? 32 : 16;
+				const diff = oldTop - newTop;
+				boxDetails.style.top = `${newTop}px`;
+				boxDetails.style.transform = `translateY(${diff}px)`;
 				boxDetails.classList.add("active");
 				boxDetails.getBoundingClientRect(); // Sync CSS <-> JS
-				boxDetails.style.top = window.innerWidth > 800 ? "32px" : "16px";
+				boxDetails.style.transition = `transform 250ms`;
+				window.requestAnimationFrame(() => {
+					boxDetails.style.transform = `translateY(0)`;
+				});
 				showEmbeddingSections(boxContent);
 
 				showOverlay();
@@ -51,13 +58,13 @@ let overlayHideBoxCallback = undefined;
 						boxDetails.classList.remove("active");
 						classRemoverTimer = undefined;
 						boxDetails.parentElement.style.height = "";
-						boxDetails.style.top = "";
-						boxContent.style.maxHeight = "";
+						boxDetails.setAttribute("style","");
 					},410);
 				}
 				hideElementContentHandler(boxDetails);
 				const prect = boxDetails.parentElement.getBoundingClientRect();
-				boxDetails.style.top = (prect.top|0)+"px";
+				const newTop = window.innerWidth > 800 ? 32 : 16;
+				boxDetails.style.transform = `translateY(${(prect.top - newTop)|0}px)`;
 				calcHeights();
 			};
 

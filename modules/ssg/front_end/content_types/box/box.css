@@ -41,8 +41,10 @@ section[content-type="box"] > inner-content > details > summary::after {
 	position:absolute;
 	font-size: 2.5em;
 	right: 30px;
+	top:24px;
 	color: #fff;
-	transition:transform 500ms, top 500ms;
+	transform:translate(0, 0) rotate3d(1, 0, 0, 0deg);
+	transition:transform 500ms;
 	transition-timing-function: ease-in-out;
 }
 
@@ -94,7 +96,6 @@ box-content > footer {
 
 .box-wrap {
 	position:relative;
-	transition:top 250ms;
 }
 
 .box-wrap.active {
@@ -105,17 +106,17 @@ box-content > footer {
 	box-sizing:border-box;
 }
 
-.box-wrap.active > summary::before {
-	transform:translate(0, 40%) rotate3d(1, 0, 0, 180deg);
-}
-
-.box-wrap.active > summary::before,
 .box-wrap.active > summary::after {
-	top:6px;
+	transform:translate(0, -30%);
 }
 
+.box-wrap.active > summary::before {
+	transform:translate(0, 10%) rotate3d(1, 0, 0, 180deg);
+}
+
+.box-wrap.active.closing > summary::after,
 .box-wrap.active.closing > summary::before {
-	transform: unset;
+	transform:translate(0, 0%) rotate3d(1, 0, 0, 0deg);
 }
 
 @media screen and (max-width: 950px) {
