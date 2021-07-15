@@ -71,8 +71,8 @@ button#button-next {
 }
 
 #button-previous {
-	width: 30px;
-	height: 30px;
+	width: 32px;
+	height: 32px;
 	background-image: url("/resources/svg/arrow-left.svg");
 	background-repeat: no-repeat;
 	background-clip: content-box;
@@ -80,8 +80,8 @@ button#button-next {
 }
 
 #button-next {
-	width: 30px;
-	height: 30px;
+	width: 32px;
+	height: 32px;
 	background-image: url("/resources/svg/arrow-right.svg");
 	background-repeat: no-repeat;
 	background-clip: content-box;
@@ -195,17 +195,17 @@ header h3 {
 	}
 
 	#button-next {
-		width: 33px;
-		height: 33px;
+		width: 32px;
+		height: 32px;
 		right: 1em;
-		margin-top: -17px;
+		margin-top: -16px;
 	}
 
 	#button-previous {
-		width: 33px;
-		height: 33px;
+		width: 32px;
+		height: 32px;
 		left: 1em;
-		margin-top: -17px;
+		margin-top: -16px;
 	}
 
 	aside nav-close-button {
