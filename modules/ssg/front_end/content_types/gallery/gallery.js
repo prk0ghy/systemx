@@ -140,6 +140,7 @@
 	const initLightbox = () => {
 		const pswpElement = document.getElementById("pswp");
 		const singles = document.querySelectorAll('figure[figure-type="picture"],figure[figure-type="hero-image"]');
+		const doNothingSpecial = e => {e.stopPropagation();};
 		singles.forEach(single => {
 			const items = [];
 			const figCaption = single.querySelector("figcaption");
@@ -172,6 +173,10 @@
 			const button = document.createElement("BUTTON");
 			button.setAttribute("button-type","fullscreen");
 			single.insertBefore(button,figCaption);
+
+			for(const link of single.querySelectorAll("a")){
+				link.addEventListener("click",doNothingSpecial);
+			}
 
 			single.addEventListener("click", e => e.preventDefault());
 			button.addEventListener("click", e => {

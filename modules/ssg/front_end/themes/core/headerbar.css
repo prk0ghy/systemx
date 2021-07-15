@@ -61,6 +61,8 @@ header::after {
 	background-repeat: no-repeat;
 	background-size: 100%;
 	width:32px;
+	position:relative;
+	top:2px;
 }
 
 #button-settings::after { content: "\e994"; }

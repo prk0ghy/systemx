@@ -1,3 +1,7 @@
+license-info[license-key="ARRC"] {
+	display:none;
+}
+
 license-info[license-key="CC4"] > license-name,
 license-info[license-key="CC3"] > license-name,
 license-info[license-key="CC2"] > license-name,
@@ -15,7 +19,7 @@ license-info[license-key="CC"]::before,
 license-info[license-key="CC0"]::before,
 license-info[license-key="PD"]::before {
 	content:'';
-	background:url("/resources/svg/PD.svg");
+	background:url("/resources/svg/PD.svg") no-repeat;
 	background-size:contain;
 	width:3em;
 	height:3em;
@@ -30,8 +34,16 @@ license-icon {
 	text-indent:-9999px;
 }
 
+license-info[license-key="CC4"]::before,
+license-info[license-key="CC3"]::before,
+license-info[license-key="CC2"]::before,
 license-info[license-key="CC"]::before {
 	background-image:url("/resources/svg/CC.svg");
+}
+
+license-info[license-key="PD"] license-icon,
+license-info[license-key="CC0"] license-icon {
+	display:none;
 }
 
 license-info[license-key="CC0"]::before {
