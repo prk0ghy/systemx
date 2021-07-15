@@ -157,14 +157,22 @@ export default {
 			? "?"
 			: "&";
 		const thirdPartyImageURL = imageURL || this.getPreviewImageURL(videoURL);
-		const firstPartyImageURL = thirdPartyImageURL && await download(thirdPartyImageURL);
+		let downloadError = "";
+		let firstPartyImageURL = "";
+		try {
+			firstPartyImageURL = thirdPartyImageURL && await download(thirdPartyImageURL);
+		} catch(e) {
+			console.warn(e);
+			downloadError = e;
+			/* Better to print an error than to stop everything, maybe generate an image with an error message? */
+		}
 		const timedVideoURL = parameters
 			? `${videoURL}${separator}${parameters}`
 			: videoURL;
 		const imageMissingError = firstPartyImageURL
 			? ""
 			: EditorialError.render({
-				message: "The preview image for this video embedding is missing a URL."
+				message: downloadError ? `There was an error while downloading the posterframe: ${downloadError}` : "The preview image for this video embedding is missing a URL."
 			});
 		return `
 			${imageMissingError}

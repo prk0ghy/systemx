@@ -2,6 +2,7 @@ import * as resources from "./page_elements/resources.mjs";
 import { loadContentTypes, loadHelperTypes } from "./types.mjs";
 import { buildHead } from "./page_elements/head.mjs";
 import { formatHTML } from "./format.mjs";
+import crypto from "crypto";
 import fs from "fs";
 import { loadNavigation } from "./page_elements/navigation.mjs";
 import Marker from "./types/helper/Marker.mjs";
@@ -48,6 +49,23 @@ export const getResourcePath = targetName => path.join(getTargetPath(targetName)
 * This function determines the path to a media directory within a target.
 */
 const getMediaPath = targetName => path.join(getResourcePath(targetName), "media");
+/*
+* Just a precaution against hash collision that might occur, unlikely but would be good to know if it dies occur
+*/
+const checkHashCollision = (() => {
+	const collisionMap = new Map();
+	return (data,hash) => {
+		if(!collisionMap.has(hash)){
+			collisionMap.set(hash,data);
+		}else{
+			if(collisionMap.get(hash) !== data){
+				const msg = `DETECTED HASH COLLISION!!! - ${hash} == ${data} == ${collisionMap.get(hash)}`;
+				console.error(msg);
+				throw new Error(msg);
+			}
+		}
+	};
+})();
 /*
 * Recursively renders all the files in `source` into `directory`.
 * If the file does not end with ".html", it will be copied over without any processing.
@@ -201,27 +219,19 @@ export const buildEntries = async targetName => {
 						}
 					};
 				})(),
-				/*
-				* Determines an absolute, target-specific path to wherever the media file `fileName` should be saved at.
-				*
-				* `callback` is executed once we know whether or not a download is necessary. The second argument denotes whether a download is necessary.
-				* The caller can use this to download the file to the path specified in the first argument of `callback`.
-				*
-				* This function returns a path to the media resource that can be put in HTML.
-				*/
-				handleMedia: async (fileName, modificationDate, callback) => {
+				getFilePath: url => {
+					const urlObject = new URL(url);
+					const hash = crypto.createHash("sha1");
+					hash.update(url,'utf-8');
+					const hashPrefix = hash.digest('hex');
+					checkHashCollision(url,hashPrefix);
+					const fileName = `${hashPrefix}_${decodeURIComponent(urlObject
+						.pathname
+						.substr(urlObject.pathname.lastIndexOf("/") + 1)
+					)}`;
 					const filePath = path.join(mediaPath, fileName);
-					try {
-						const { mtime } = await fsp.stat(filePath);
-						const needsDownload = modificationDate > mtime;
-						await callback(filePath, needsDownload);
-					}
-					catch {
-						/* Doesn't matter if it fails, we just save a new medium */
-						await callback(filePath, true);
-					}
 					const htmlPath = filePath.replace(targetPath, "");
-					return htmlPath;
+					return {filePath, htmlPath};
 				}
 			},
 			types: {
