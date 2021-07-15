@@ -7,8 +7,22 @@ video {
 }
 
 section[content-type="video"] > inner-content > details > summary {
-	right: 3.75em;
+	right: 64px;
 	bottom: 8px;
+}
+
+@media only screen and (max-width: 650px) {
+	section[content-type="video"] > inner-content > details > summary {
+		right: 34px;
+		bottom: 0.4em;
+	}
+}
+
+@media only screen and (max-width: 400px) {
+	section[content-type="video"] > inner-content > details > summary {
+		right: 24px;
+		bottom: 0.4em;
+	}
 }
 
 section[content-type="video"] > inner-content > details > summary::marker {
@@ -60,7 +74,7 @@ figure.videofigure > figcaption {
 
 figure[figure-type="video"] figcaption {
 	min-height: 38px;
-	padding: 6px 0 16px 0;
+	padding: 6px 33px 16px 0;
 }
 
 media-play-pause {

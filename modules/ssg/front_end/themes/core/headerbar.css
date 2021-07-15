@@ -121,15 +121,14 @@ header h3 {
 	#header-center { top:10px; }
 
 	#header-left {
-		float: right;
-		margin-right: -1rem;
+		position: absolute;
+		float: none;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
 	}
-	#header-right { float:left; }
 
-	#button-navigation {
-		width: 32px;
-		height: 32px;
-	}
+	#header-right { float:left; }
 
 	#button-next {
 		position: absolute;
