@@ -147,9 +147,9 @@
 			{
 				const imgTag = single.querySelector("img");
 				if(imgTag === null){return;}
-				const src   = imgTag.src;
-				const w     = imgTag.getAttribute("width") |0;
-				const h     = imgTag.getAttribute("height")|0;
+				const src   = imgTag.getAttribute("raw-src");
+				const w     = imgTag.getAttribute("raw-width") |0;
+				const h     = imgTag.getAttribute("raw-height")|0;
 				const title = figCaption ? figCaption.innerHTML : "";
 				items.push({src,w,h,title});
 			}

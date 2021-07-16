@@ -75,6 +75,22 @@ export const makeMockRenderer = async (contextOverrides = {}) => {
 	const globalRender = await makeRenderer(contentTypes);
 	const context = new RenderingContext({
 		cms: cmsContext,
+		hints: {
+			getFilePath: url => {
+				const urlObject = new URL(url.startsWith("//") ? `https:${url}` : url);
+				const fileName = `${decodeURIComponent(urlObject
+					.pathname
+					.substr(urlObject.pathname.lastIndexOf("/") + 1)
+				)}`;
+				const filePath = `media/${fileName}`;
+				const htmlPath = filePath;
+				const thumb = {
+					"filePath": filePath,
+					"htmlPath": filePath
+				};
+				return {filePath, htmlPath, thumb};
+			}
+		},
 		globalRender,
 		isMock: true,
 		types: {

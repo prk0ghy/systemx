@@ -9,12 +9,15 @@ const getFocalPoint = focalPoint => {
 
 export default {
 	async render({
-		asset
+		asset,
+		imageSize = 100
 	}, {
-		download
+		downloadWithThumb
 	}) {
+
+		const {thumbHtmlPath, thumbSize, htmlPath} = await downloadWithThumb(asset.url,imageSize);
 		return asset
-			? `<img src="${await download(asset.url)}" width="${asset.width}" height="${asset.height}" ${getFocalPoint(asset.focalPoint)}>`
+			? `<img src="${thumbHtmlPath}" width="${thumbSize.width}" height="${thumbSize.height}" raw-src="${htmlPath}" raw-width="${asset.width}" raw-height="${asset.height}" ${getFocalPoint(asset.focalPoint)}>`
 			: "";
 	}
 };

@@ -157,7 +157,7 @@ export default {
 				: `<figcaption></figcaption>`;
 			return `
 				<figure figure-type="gallery">
-					${await Image.render({ asset: image.files[0] })}
+					${await Image.render({ asset: image.files[0], imageSize: 100 })}
 					${License.render({ asset: image.files[0] })}
 					${imageCaptionHTML}
 				</figure>

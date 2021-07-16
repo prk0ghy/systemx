@@ -1,5 +1,6 @@
 import cheerio from "cheerio";
 import { makeMockRenderer } from "../renderer.mjs";
+
 it("renders `inhaltsbausteine_audioDatei_BlockType`", async () => {
 	const render = await makeMockRenderer();
 	const html = await render({

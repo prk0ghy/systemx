@@ -44,7 +44,7 @@ section[content-type="box"] > inner-content > details > summary::after {
 	top:24px;
 	color: #fff;
 	transform:translate(0, 0) rotate3d(1, 0, 0, 0deg);
-	transition:transform 500ms;
+	transition:transform 400ms;
 	transition-timing-function: ease-in-out;
 }
 

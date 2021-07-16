@@ -49,6 +49,7 @@ export const getResourcePath = targetName => path.join(getTargetPath(targetName)
 * This function determines the path to a media directory within a target.
 */
 const getMediaPath = targetName => path.join(getResourcePath(targetName), "media");
+const getThumbPath = targetName => path.join(getResourcePath(targetName), "thumb");
 /*
 * Just a precaution against hash collision that might occur, unlikely but would be good to know if it dies occur
 */
@@ -184,6 +185,8 @@ export const buildEntries = async targetName => {
 	const targetPath = getTargetPath(targetName);
 	const mediaPath = getMediaPath(targetName);
 	await mkdirp(mediaPath);
+	const thumbPath = getThumbPath(targetName);
+	await mkdirp(thumbPath);
 	let warningHTML = "";
 	const cmsContext = await getCMSContext(introspectCraft);
 	const contentTypes = await loadContentTypes();
@@ -219,8 +222,19 @@ export const buildEntries = async targetName => {
 						}
 					};
 				})(),
+				shouldMakeThumbnail: path => {
+					switch(path.substring(path.lastIndexOf('.')+1).toLowerCase()){
+					case "jpg":
+					case "jpeg":
+					case "png":
+					case "webp":
+						return true;
+					default:
+						return false;
+					}
+				},
 				getFilePath: url => {
-					const urlObject = new URL(url);
+					const urlObject = new URL(url.startsWith("//") ? `https:${url}` : url);
 					const hash = crypto.createHash("sha1");
 					hash.update(url,'utf-8');
 					const hashPrefix = hash.digest('hex');
@@ -230,8 +244,13 @@ export const buildEntries = async targetName => {
 						.substr(urlObject.pathname.lastIndexOf("/") + 1)
 					)}`;
 					const filePath = path.join(mediaPath, fileName);
-					const htmlPath = filePath.replace(targetPath, "");
-					return {filePath, htmlPath};
+					const htmlPath = filePath.substr(targetPath.length);
+					const thumb = {
+						"filePath": path.join(thumbPath, fileName)
+					};
+					thumb.htmlPath = (thumbPath + thumb.filePath.substr(mediaPath.length)).substr(targetPath.length);
+
+					return {filePath, htmlPath, thumb};
 				}
 			},
 			types: {
@@ -280,11 +299,14 @@ export const buildEntries = async targetName => {
 * The main renaming is also done in a blocking manner to make sure that they get the highest priority.
 */
 const atomicRename = async targetName => {
+	console.time("atomic#rmOld");
 	try {
 		await fsp.rm(getTargetPathOld(targetName),{recursive: true});
 	} catch {
 		/* Shouldn't happen but maybe an old folder is still hanging around due to a past error */
 	}
+	console.timeEnd("atomic#rmOld");
+	console.time("atomic#mv");
 	try {
 		fs.renameSync(getTargetPathRaw(targetName),getTargetPathOld(targetName));
 		try {
@@ -307,16 +329,19 @@ const atomicRename = async targetName => {
 			await fs.renameSync(getTargetPathOld(targetName),getTargetPathRaw(targetName));
 		}
 	}
+	console.timeEnd("atomic#mv");
 	try {
 		await fsp.rm(getTargetPathOld(targetName),{recursive: true});
 	} catch {
 		/* Strange but not a problem if the .old folder doesn't exist */
 	}
+	console.time("atomic#rmNew");
 	try {
 		await fsp.rm(getTargetPathNew(targetName),{recursive: true});
 	} catch {
 		/* Should only happen in case of an error */
 	}
+	console.timeEnd("atomic#rmNew");
 };
 /*
 * Builds a target, given its name.

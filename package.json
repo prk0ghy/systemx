@@ -7,6 +7,7 @@
 		"cheerio": "^1.0.0-rc.10",
 		"ejs": "^3.1.6",
 		"finalhandler": "^1.1.2",
+		"gm": "^1.23.1",
 		"graphql": "^15.5.1",
 		"graphql-request": "^3.5.0",
 		"js-beautify": "^1.14.0",
@@ -60,8 +61,8 @@
 	},
 	"scripts": {
 		"build": "node ./index.mjs",
-		"build:clean": "node ./index.mjs --clean-build",
-		"build:release": "node ./index.mjs --download-media --clean-build",
+		"build:clean": "node ./index.mjs --clean-build --",
+		"build:release": "node ./index.mjs --download-media --clean-build --",
 		"build:shop:new": "npm --prefix modules/shop/front-end run build",
 		"clean": "rm -rf dist web && npm --prefix modules/shop/front-end run clean",
 		"dev": "npm run dev:shop",

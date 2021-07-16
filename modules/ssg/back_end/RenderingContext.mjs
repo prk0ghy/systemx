@@ -1,6 +1,7 @@
 import Error from "./types/helper/Error.mjs";
 import options from "../../common/options.mjs";
 import Download from "../../common/download.mjs";
+import {default as Thumbnail, getImageSize} from "../../common/thumbnail.mjs";
 import query from "./cms.mjs";
 /*
 * Types should be able to call `render` without providing their context,
@@ -52,6 +53,26 @@ export default class {
 			throw new Error(`Couldn't download ${url}`);
 		}
 		return htmlPath;
+	};
+	downloadWithThumb = async (url, imageSize) => {
+		if(this.isMock){ return {thumbHtmlPath: url, thumbSize: {width: 128, height: 128}, htmlPath: url};}
+		const {filePath, htmlPath, thumb} = this.hints.getFilePath(url);
+		let thumbHtmlPath = thumb.htmlPath;
+		if(await Download(url,filePath) !== true){
+			throw new Error(`Couldn't download ${url}`);
+		}
+		if(this.hints.shouldMakeThumbnail(filePath)){
+			const maxV = imageSize > 50 ? 2048 : imageSize > 35 ? 1024 : 512;
+			if(await Thumbnail(filePath,thumb.filePath,maxV,maxV) !== true){
+				throw new Error(`Couldn't generate thumb for ${url}`);
+			}
+			const thumbSize = await getImageSize(thumb.filePath);
+			return {thumbHtmlPath, thumbSize, htmlPath};
+		}else{
+			thumbHtmlPath = htmlPath;
+			const thumbSize = await getImageSize(filePath);
+			return {thumbHtmlPath, thumbSize, htmlPath};
+		}
 	};
 	EditorialError = {
 		render: ({ ...args }) => Error.render({

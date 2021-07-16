@@ -225,7 +225,7 @@ export default {
 			? this.splitFigureRows((await Promise.all(
 				images?.map(async image => await this.renderFigure({
 					caption: image.caption,
-					imageHTML: await Image.render({ asset: image?.files?.[0] }),
+					imageHTML: await Image.render({ asset: image?.files?.[0], imageSize: mappedImageWidth }),
 					licenseHTML: await License.render({ asset: image?.files?.[0] }),
 					position: mappedImagePosition,
 					width: mappedImageWidth,

@@ -4,7 +4,7 @@ const requestQueue = [];
 let requestsActive = 0;
 
 function workQueue(){
-	for(let i=requestsActive;i<64;i++){
+	for(let i=requestsActive;i<16;i++){
 		const top = requestQueue.pop();
 		if(top === undefined){break;}
 		requestsActive++;
