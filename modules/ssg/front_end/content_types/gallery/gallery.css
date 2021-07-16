@@ -132,15 +132,19 @@ main > section[content-type="text-and-image"] > section[content-type="gallery"]:
 
 .pswp__bg {
 	background: #fff;
-	opacity: 0.9 !important;
+	opacity: 1 !important;
 }
 
 .pswp__ui--fit .pswp__top-bar {
-	background:var(--dlw-blue);
+	background:#257DA7;
+}
+
+.pswp__caption {
+	background: #fff;
 }
 
 .pswp__ui--fit .pswp__caption {
-	background:var(--background-color);
+	background:#fff;
 }
 
 .pswp__button.pswp__button--arrow--right,
@@ -149,7 +153,7 @@ main > section[content-type="text-and-image"] > section[content-type="gallery"]:
 	height: 60px;
 	background-color: #fff;
 	font-family: "icomoon";
-	color: var(--dlw-blue);
+	color: #257DA7;
 	border-radius: 50%;
 	background-repeat: no-repeat;
 	background-clip: content-box;
