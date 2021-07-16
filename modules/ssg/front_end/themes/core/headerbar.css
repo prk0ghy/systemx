@@ -93,7 +93,11 @@ header h3 {
 	font-family: var(--font-headlines);
 	font-weight: 400;
 	font-size: 0.9em;
-	margin: 0 var(--content-padding);
+	margin: -6px var(--content-padding);
+	max-width: 44vw;
+	overflow: hidden;
+	white-space: nowrap;
+	line-height: 1.2em;
 }
 
 
