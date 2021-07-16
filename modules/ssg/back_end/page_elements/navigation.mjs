@@ -21,6 +21,9 @@ export const loadNavigation = async target => {
 						...entriesFields
 						children(status: "live", level: 5) {
 							...entriesFields
+							children(status: "live", level: 6) {
+								...entriesFields
+							}
 						}
 					}
 				}
@@ -33,7 +36,7 @@ export const loadNavigation = async target => {
 		}
 	`]));
 	const fixLinks = entries => {
-		if ((!entries) || (typeof entries[Symbol.iterator] !== 'function')){
+		if (!entries){
 			return null;
 		}
 		for (const child of entries) {
