@@ -154,8 +154,8 @@ export default {
 		const endSeconds = this.toSeconds(end);
 		const parameters = this.getParameters(startSeconds, endSeconds).toString();
 		const separator = videoURL.includes("?")
-			? "?"
-			: "&";
+			? "&"
+			: "?";
 		const thirdPartyImageURL = imageURL || this.getPreviewImageURL(videoURL);
 		let downloadError = "";
 		let firstPartyImageURL = "";
@@ -166,6 +166,8 @@ export default {
 			downloadError = e;
 			/* Better to print an error than to stop everything, maybe generate an image with an error message? */
 		}
+		console.log(videoURL);
+		console.log(separator);
 		const timedVideoURL = parameters
 			? `${videoURL}${separator}${parameters}`
 			: videoURL;
