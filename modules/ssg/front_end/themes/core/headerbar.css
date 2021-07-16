@@ -61,8 +61,12 @@ header::after {
 	background-repeat: no-repeat;
 	background-size: 100%;
 	width:32px;
+<<<<<<< HEAD
 	position:relative;
 	top:2px;
+=======
+	margin-top: 6px;
+>>>>>>> develop/rainer
 }
 
 #button-settings::after { content: "\e994"; }
@@ -94,7 +98,11 @@ header h3 {
 	font-family: var(--font-headlines);
 	font-weight: 400;
 	font-size: 0.9em;
-	margin: 0 var(--content-padding);
+	margin: -6px var(--content-padding);
+	max-width: 44vw;
+	overflow: hidden;
+	white-space: nowrap;
+	line-height: 1.2em;
 }
 
 
@@ -121,6 +129,10 @@ header h3 {
 	}
 
 	#header-center { top:10px; }
+
+	#button-navigation {
+		margin-top: 8px;
+	}
 
 	#header-left {
 		position: absolute;
@@ -165,9 +177,15 @@ header h3 {
 	}
 
 	#header-left {
-		position: static;
+		position: absolute;
 		float: none;
-		margin-right: 0;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	#button-navigation {
+		margin-top: 3px;
 	}
 
 	#header-center {
@@ -176,17 +194,6 @@ header h3 {
 
 	#header-center > button {
 		margin:0 var(--content-padding-half);
-	}
-
-	#button-navigation {
-		position: absolute;
-		width: 32px;
-		height: 32px;
-		left: 50%;
-		top: 50%;
-		transition-property: 50%;
-		margin-top: -16px;
-		margin-left: -16px;
 	}
 
 	#header-center > a {
