@@ -33,7 +33,7 @@ export const loadNavigation = async target => {
 		}
 	`]));
 	const fixLinks = entries => {
-		if (entries === null) {
+		if ((!entries) || (typeof entries[Symbol.iterator] !== 'function')){
 			return null;
 		}
 		for (const child of entries) {

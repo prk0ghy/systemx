@@ -166,8 +166,6 @@ export default {
 			downloadError = e;
 			/* Better to print an error than to stop everything, maybe generate an image with an error message? */
 		}
-		console.log(videoURL);
-		console.log(separator);
 		const timedVideoURL = parameters
 			? `${videoURL}${separator}${parameters}`
 			: videoURL;
