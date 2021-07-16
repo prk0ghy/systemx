@@ -26,6 +26,14 @@ export default {
 				}
 			`
 		}],
+		["quersliderAufgabenElemente_tabellen_BlockType", {
+			fetch: () => `
+				id
+				tableDescriptor: tabelle_q {
+					table
+				}
+			`
+		}],
 		["quersliderInhalt_tabellen_BlockType", {
 			fetch: () => `
 				id

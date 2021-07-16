@@ -39,6 +39,12 @@ export default {
 				...rest
 			})
 		}],
+		["quersliderAufgabenElemente_h5p_BlockType", {
+			fetch: () => `
+				html: h5p_embed
+				id
+			`
+		}],
 		["quersliderInhalt_h5p_BlockType", {
 			fetch: () => `
 				caption: unterschrift
