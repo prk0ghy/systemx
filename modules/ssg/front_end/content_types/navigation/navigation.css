@@ -57,7 +57,7 @@ nav li {
 nav li a {
 	display:block;
 	width:100%;
-	padding:calc(var(--content-padding-quarter) / 2) var(--content-padding);
+	padding:calc(var(--content-padding-quarter)) var(--content-padding);
 	color:var(--text-color);
 	text-decoration:none;
 	font-family: var(--font-headlines);
@@ -88,9 +88,9 @@ nav ul li ul li:last-child {
 nav nav-toggle {
 	content:'';
 	display:block;
-	font-size:1em;
+	font-size:1.5em;
 	position:absolute;
-	left:0.25em;
+	left:0;
 	top:0.5em;
 	font-family:icomoon;
 	text-align:center;
