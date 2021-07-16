@@ -184,6 +184,11 @@ main > section[content-type="text-and-image"] > section[content-type="gallery"]:
 	background-image: url("/resources/svg/arrow-right.svg");
 }
 
+figure[hide-buttons="1"] > details.license > summary,
+figure[hide-buttons="1"] > button {
+	display:none;
+}
+
 button[button-type="next-slide"],
 button[button-type="previous-slide"],
 button[button-type="fullscreen"] {

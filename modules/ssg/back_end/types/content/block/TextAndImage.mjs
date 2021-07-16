@@ -54,6 +54,7 @@ export default {
 				images: bilder {
 					${cms.fragments.asset}
 				}
+				hideButtons
 				imageWidth: bildbreite
 				imagePosition: bildposition
 				galleryIntroductionText: bildunterschrift
@@ -79,6 +80,7 @@ export default {
 				images: bilder {
 					${cms.fragments.asset}
 				}
+				hideButtons
 				imageWidth: bildbreite
 				imagePosition: bildposition
 				galleryIntroductionText: bildunterschrift
@@ -104,6 +106,7 @@ export default {
 				images: bilder {
 					${cms.fragments.asset}
 				}
+				hideButtons
 				imageWidth: bildbreite
 				imagePosition: bildposition
 				galleryIntroductionText: bildunterschrift
@@ -135,6 +138,7 @@ export default {
 						}
 					}
 				}
+				hideButtons
 				imageWidth: bildbreite
 				imagePosition: bildposition
 				galleryIntroductionText: einleitungstextGallerie
@@ -173,6 +177,7 @@ export default {
 				images: bilder {
 					${cms.fragments.asset}
 				}
+				hideButtons
 				imageWidth: bildbreite
 				imagePosition: bildposition
 				galleryIntroductionText: bildunterschrift
@@ -196,6 +201,7 @@ export default {
 	async render({
 		displayInOneLine = false,
 		id,
+		hideButtons = false,
 		images,
 		imageWidth,
 		imagePosition,
@@ -222,7 +228,8 @@ export default {
 					imageHTML: await Image.render({ asset: image?.files?.[0] }),
 					licenseHTML: await License.render({ asset: image?.files?.[0] }),
 					position: mappedImagePosition,
-					width: mappedImageWidth
+					width: mappedImageWidth,
+					hideButtons
 				})))
 			)).join("")
 			: "";
@@ -251,13 +258,14 @@ export default {
 		imageHTML,
 		licenseHTML,
 		position,
+		hideButtons,
 		width
 	}) {
 		const captionHTML = caption
 			? `<figcaption>${caption}</figcaption>`
 			: "";
 		return `
-			<figure figure-position="${position}" figure-type="picture" figure-width="${width}">
+			<figure figure-position="${position}" figure-type="picture" figure-width="${width}" hide-buttons="${hideButtons ? 1 : 0}">
 				${imageHTML}
 				${licenseHTML}
 				${captionHTML}
