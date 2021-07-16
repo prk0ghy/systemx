@@ -142,31 +142,6 @@ export default {
 				text
 			`
 		}],
-		["quersliderAufgabenElemente_textMitOhneBild_BlockType", {
-			fetch: cms => `
-				id
-				images: bilder {
-					${cms.fragments.asset}
-				}
-				imageWidth: bildbreite
-				imagePosition: bildposition
-				galleryIntroductionText: bildunterschrift
-				text
-			`,
-			map: ({
-				galleryIntroductionText,
-				images,
-				...rest
-			}) => ({
-				images: images.map((image, i) => ({
-					caption: i === 0
-						? galleryIntroductionText
-						: null,
-					files: [image]
-				})),
-				...rest
-			})
-		}],
 		["quersliderInhalt_textMitOhneBild_BlockType", {
 			fetch: cms => `
 				id

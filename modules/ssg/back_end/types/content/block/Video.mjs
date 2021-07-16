@@ -49,18 +49,6 @@ export default {
 				}
 			`
 		}],
-		["quersliderAufgabenElemente_videoDatei_BlockType", {
-			fetch: cms => `
-				caption: videounterschrift
-				files: datei {
-					${cms.fragments.asset}
-				}
-				id
-				posters: posterbild {
-					${cms.fragments.asset}
-				}
-			`
-		}],
 		["quersliderInhalt_videoDatei_BlockType", {
 			fetch: cms => `
 				caption: videoUnterschrift

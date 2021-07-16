@@ -84,29 +84,6 @@ export default {
 				isNumbered: nummerierung
 			`
 		}],
-		["quersliderAufgabenElemente_galerie_BlockType", {
-			fetch: cms => `
-				captions: bildunterschriften_aufgabe {
-					text: col1
-				}
-				files: bilder_aufgabe {
-					${cms.fragments.asset}
-				}
-				id
-				galleryIntroductionText: galerietext_aufgabe
-			`,
-			map: ({
-				captions,
-				files,
-				...rest
-			}) => ({
-				images: files.map((file, index) => ({
-					caption: captions[index]?.text || null,
-					files: [file]
-				})),
-				...rest
-			})
-		}],
 		["quersliderInhalt_galerie_BlockType", {
 			fetch: cms => `
 				captions: bildunterschriften {
