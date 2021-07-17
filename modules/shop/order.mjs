@@ -44,6 +44,14 @@ const addOrder = ({
 	price_taxes,
 	price_subtotal
 ]);
+export const getNewestIDByUserID = async userID => {
+	const row = await database.get(`
+		SELECT ID AS id FROM shop_order WHERE fe_user_id = ? ORDER BY ID DESC
+	`, [
+		userID
+	]);
+	return row.id;
+};
 export const addOrderItem = ({
 	product_amount,
 	product_id,

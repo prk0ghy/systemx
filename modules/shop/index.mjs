@@ -1,12 +1,13 @@
 import * as configuration from "./configuration.mjs";
-import * as backend from "./backend.mjs";
+import * as backEnd from "./backend.mjs";
 import * as cart from "./cart.mjs";
 import * as shop from "./shop.mjs";
 import * as feuser from "./feuser.mjs";
 import * as beuser from "./beuser.mjs";
-import * as frontend from "./frontend.mjs";
+import * as frontEnd from "./frontend.mjs";
 import * as fesession from "./fesession.mjs";
 import * as order from "./order.mjs";
+import * as payments from "./payments/index.mjs";
 import * as pwreset from "./pwreset.mjs";
 import { initialize as initializeDatabase } from "./database.mjs";
 import Koa from "koa";
@@ -25,13 +26,14 @@ const start = async () => {
 		beuser,
 		feuser,
 		order,
+		payments,
 		shop
 	].map(part => part.default()));
 	for (const part of [
-		backend,
+		backEnd,
 		cart,
 		fesession,
-		frontend,
+		frontEnd,
 		pwreset,
 		shop
 	]) {
@@ -42,10 +44,10 @@ const start = async () => {
 	application
 		.use(koaBody())
 		.use(koaMount("/" + configuration.get("prefix") + "/public", koa))
-		.use(frontend.reqRelaxedFilter)
+		.use(frontEnd.reqRelaxedFilter)
 		.use(router.routes())
 		.use(router.allowedMethods())
-		.use(frontend.reqFilter)
+		.use(frontEnd.reqFilter)
 		.use(proxy)
 		.listen(configuration.get("port"));
 	console.log("Shop started: " + configuration.get("baseurl"));

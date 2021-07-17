@@ -5,6 +5,10 @@ import * as fesession from "./fesession.mjs";
 import * as order from "./order.mjs";
 import * as template from "./template.mjs";
 import { database } from "./database.mjs";
+import {
+	captureOrder as capturePayPalOrder,
+	makeOrder as makePayPalOrder
+} from "./payments/index.mjs";
 export default async () => {
 	await database.run(`
 		CREATE TABLE IF NOT EXISTS shop_order(
@@ -59,9 +63,8 @@ const reqPostShopOrder = async context => {
 			return;
 		}
 		await fesession.start(context,newUser);
-		const targetUrl = configuration.absoluteUrl("/checkout");
-		console.log(targetUrl);
-		context.redirect(targetUrl);
+		const targetURL = configuration.absoluteUrl("/checkout");
+		context.redirect(targetURL);
 		return;
 	}
 
@@ -71,21 +74,39 @@ const reqPostShopOrder = async context => {
 		fe_user_id: user.ID
 	}, products)) {
 		context.body = await template.renderPage("order", {
-			err: "Bitte überprüfen Sie ihre Bestellung.",
+			err: "Bitte überprüfen Sie Ihre Bestellung.",
 			title: "Ein Fehler ist aufgetreten!"
 		}, true, context);
 		return;
 	}
-	await cart.empty();
-	context.body = await template.renderPage("order", {
-		title: "Vielen Dank für ihre Bestellung.", products
+	const payPalOrder = await makePayPalOrder(products);
+	context.body = await template.renderPage("payment", {
+		payPalClientID: process.env.PAYPAL_CLIENT_ID,
+		payPalOrderID: payPalOrder.result.id,
+		title: "Bitte bezahlen Sie Ihre Bestellung."
 	}, true, context);
 };
-
+const captureCheckout = async context => {
+	const user = await fesession.getUser(context);
+	const orderID = await order.getNewestIDByUserID(user.ID);
+	const payPalOrderID = context.headers["x-paypal-order-id"];
+	await capturePayPalOrder(orderID, payPalOrderID);
+	context.body = "";
+};
+const renderOrderDone = async context => {
+	const products = cart.get(context);
+	await cart.empty();
+	context.body = await template.renderPage("order-done", {
+		products,
+		title: "Vielen Dank für Ihre Bestellung."
+	}, true, context);
+};
 export const addRoutes = router => {
-	router.get ("/",             reqGetShop);
-	router.get ("/order",        reqPostShopCheckout);
-	router.get ("/checkout",     reqPostShopCheckout);
-	router.post("/checkout",     reqPostShopCheckout);
-	router.post("/order",        reqPostShopOrder);
+	router.get("/", reqGetShop);
+	router.get("/order", reqPostShopCheckout);
+	router.get("/order-done", renderOrderDone);
+	router.get("/checkout", reqPostShopCheckout);
+	router.post("/checkout", reqPostShopCheckout);
+	router.post("/checkout/capture", captureCheckout);
+	router.post("/order", reqPostShopOrder);
 };

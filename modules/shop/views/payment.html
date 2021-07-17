@@ -1,0 +1,21 @@
+<h1><%= title %></h1>
+<% if (err != "") { %>
+	<p><%= err %></p>
+<% } else { %>
+	<div id="paypal-button-container"></div>
+	<script src="https://www.paypal.com/sdk/js?client-id=<%= payPalClientID %>&currency=EUR"></script>
+	<script>
+		paypal.Buttons({
+			createOrder: () => "<%= payPalOrderID %>",
+			onApprove: async data => {
+				await fetch("/proexly/checkout/capture", {
+					headers: {
+						"x-PayPal-Order-ID": data.orderID
+					},
+					method: "POST"
+				});
+				window.location = "/proexly/order-done";
+			}
+		}).render("#paypal-button-container");
+	</script>
+<% } %>
