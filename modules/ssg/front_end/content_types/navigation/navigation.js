@@ -59,6 +59,18 @@ setTimeout(initNavBar, 0);
 				ele.classList.remove("active");
 			}
 			showNavigationActive(document.querySelector("nav li.active"));
+
+			//this opens the menu on Jura-Museum
+			if (navUl.length < 50) {
+				const firstLevel = document.querySelectorAll("nav > ul > li > ul > li");
+				for (let i = 0; i < firstLevel.length; i++) {
+					firstLevel[i].firstElementChild.classList.add("active");
+					const ulHidden = firstLevel[i].querySelector("ul");
+					if (ulHidden !== null) {
+						ulHidden.classList.remove("hidden");
+					}
+				}
+			}
 		};
 
 		navUl.forEach(ele => {
@@ -82,18 +94,6 @@ setTimeout(initNavBar, 0);
 		overlayCloseHandlers.push(() => {
 			refreshNavigationList();
 		});
-
-		//this opens the menu on Jura-Museum
-		if (navUl.length < 50) {
-			const firstLevel = document.querySelectorAll("nav > ul > li > ul > li");
-			for (let i = 0; i < firstLevel.length; i++) {
-				firstLevel[i].firstElementChild.classList.add("active");
-				const ulHidden = firstLevel[i].querySelector("ul");
-				if (ulHidden !== null) {
-					ulHidden.classList.remove("hidden");
-				}
-			}
-		}
 	};
 	setTimeout(initNavigation, 0);
 })();

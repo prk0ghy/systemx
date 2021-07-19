@@ -64,6 +64,10 @@ figcaption p:last-child {
 	margin-bottom:0;
 }
 
+figure[figure-type="embedding"] figcaption {
+	padding-right:0;
+}
+
 @media only screen and (max-width: 800px) {
 	figure[figure-width="50"],
 	figure[figure-width="30"] {
