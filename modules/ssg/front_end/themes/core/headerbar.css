@@ -59,7 +59,7 @@ header::after {
 #button-navigation {
 	background-image: url("/resources/svg/hamburger.svg");
 	background-repeat: no-repeat;
-	background-size: 100%;
+	background-size: contain;
 	width: 32px;
 	position: relative;
 	top: 2px;
