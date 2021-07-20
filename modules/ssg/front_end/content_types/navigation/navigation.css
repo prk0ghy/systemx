@@ -46,7 +46,7 @@ aside#navigation > nav > ul {
 
 @media only screen and (max-width: 500px) {
 	aside#navigation > nav > ul {
-		height: calc(100% - 80px);
+		height: calc(100% - 108px);
 	}
 }
 
@@ -72,6 +72,11 @@ nav > ul > li > a {
 nav li li a { padding-left:calc(var(--content-padding) * 2); }
 nav li li li a { padding-left:calc(var(--content-padding) * 3); }
 
+nav > ul > li > ul > li > ul > li > a {
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
 nav li a:hover {
 	background-color: rgba(0, 0, 0, 0.05);
 }
@@ -91,7 +96,7 @@ nav nav-toggle {
 	font-size:1.5em;
 	position:absolute;
 	left:0;
-	top:0.5em;
+	top:0.4em;
 	font-family:icomoon;
 	text-align:center;
 	cursor:pointer;
