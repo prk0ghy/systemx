@@ -72,7 +72,7 @@ setTimeout(initNavBar, 0);
 				}
 			}
 			const activeEntry = document.querySelector("nav a.active");
-			activeEntry.scrollIntoView({block: "center", behavior: "smooth"});
+			activeEntry.scrollIntoView(true);
 		};
 
 		navUl.forEach(ele => {
