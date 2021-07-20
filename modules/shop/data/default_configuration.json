@@ -1,8 +1,8 @@
 {
 	"baseurl": "http://localhost:8020",
-	"beSessionCookie": "proexly-besession",
-	"cartSessionCookie": "proexly-cartsession",
-	"feSessionCookie": "proexly-fesession",
+	"beSessionCookie": "PROEXLY_BACK_END_SESSION",
+	"cartSessionCookie": "PROEXLY_CART_SESSION",
+	"feSessionCookie": "PROEXLY_FRONT_END_SESSION",
 	"lang": "de",
 	"origin": {
 		"*": "http://localhost:8042/",

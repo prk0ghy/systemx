@@ -1,18 +1,20 @@
 <h1>Bestellen</h1>
-
 <form class="order-form form-panel" method="POST" action="<%- abslink %>/order">
 	<ul class="cart">
-	<% for(let product in cart) { %>
-		<li class="cart-item"><%= cart[product].name %> <cart-remove product-id="<%= product %>"/></li>
-	<% } %>
+		<% for (const product in cart) { %>
+			<li class="cart-item">
+				<%= cart[product].name %> <cart-remove product-id="<%= product %>"/>
+			</li>
+		<% } %>
 	</ul>
-	<br/>
-
-	<label class=form-row>
-		<input type="email" name="email"/>
-		<span>Email</span>
-	</label>
-	<br/>
-
-	<input type="submit" value="Jetzt Zahlungspflichtig Bestellen"/>
+	<% if (!frontEndUser) { %>
+		<div>Um mit der Bestellung fortzufahren, melden Sie sich bitte an.</div>
+		<div class="login">
+			<input type="text" placeholder="Benutzername"></input>
+			<input type="password" placeholder="Passwort"></input>
+		</div>
+		<a href="<%- abslink %>/register">Registrieren</a>
+	<% } else { %>
+		<input type="submit" value="Jetzt zahlungspflichtig bestellen"/>
+	<% } %>
 </form>
