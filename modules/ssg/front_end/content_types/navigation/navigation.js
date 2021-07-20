@@ -72,7 +72,13 @@ setTimeout(initNavBar, 0);
 				}
 			}
 			const activeEntry = document.querySelector("nav a.active");
-			activeEntry.scrollIntoView(true);
+			const activeTopEntry = document.querySelector("nav li.active");
+			if (activeEntry !== null) {
+				activeEntry.scrollIntoView(true);
+			}
+			if (activeTopEntry !== null) {
+				activeTopEntry.scrollIntoView(true);
+			}
 		};
 
 		navUl.forEach(ele => {
