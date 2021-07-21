@@ -16,6 +16,7 @@ pipelines:
             script:
               - npm install
               - npm run stylelint
+    - parallel:
         - step:
             caches:
               - node
