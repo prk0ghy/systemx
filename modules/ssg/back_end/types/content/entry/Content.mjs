@@ -7,6 +7,9 @@ export default {
 				heroImages: heroimage {
 					${fragments.asset}
 				}
+				heroImagesMobile: heroimageMobile {
+					${fragments.asset}
+				}
 				id
 				title
 				titleOverride: title_override
@@ -14,9 +17,11 @@ export default {
 			`,
 			map: ({
 				heroImages,
+				heroImagesMobile,
 				...rest
 			}) => ({
 				heroImage: heroImages[0],
+				heroImageMobile: heroImagesMobile[0],
 				...rest
 			})
 		}]
@@ -25,6 +30,7 @@ export default {
 		elements,
 		heroImageCaption,
 		heroImage,
+		heroImageMobile,
 		id,
 		title,
 		titleOverride,
@@ -45,6 +51,13 @@ export default {
 				uid: `${id}-hero-image`
 			})
 			: "";
+		const heroImageMobileHTML = heroImageMobile
+			? await HeroImage.render({
+				caption: heroImageCaption,
+				image: heroImageMobile,
+				uid: `${id}-hero-image`
+			})
+			: "";
 		const headlineHTML = Headline.render({
 			headline: titleOverride || title,
 			tag: "h1"
@@ -52,7 +65,8 @@ export default {
 		return `
 			<script>const vgWortPixel = ${JSON.stringify(vgWortPixel)};</script>
 			<main content-type="content" ${contentTypeIDIf(id)}>
-				${heroImageHTML}
+				<desktop-only>${heroImageHTML}</desktop-only>
+				<mobile-only>${heroImageMobileHTML}</mobile-only>
 				${headlineHTML}
 				${children.join("")}
 			</main>
