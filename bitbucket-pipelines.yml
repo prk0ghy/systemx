@@ -1,29 +1,15 @@
 image: node:lts
 pipelines:
   default:
-    - parallel:
-        - step:
-            caches:
-              - node
-            name: Lint JS Code
-            script:
-              - npm install
-              - npm run eslint
-        - step:
-            caches:
-              - node
-            name: Lint CSS
-            script:
-              - npm install
-              - npm run stylelint
-    - parallel:
-        - step:
-            caches:
-              - node
-            name: Run tests
-            script:
-              - npm install
-              - npm run test
+    - step:
+        caches:
+          - node
+        name: Lint JS/CSS and run Tests
+        script:
+          - npm install
+          - npm run eslint
+          - npm run stylelint
+          - npm run test
     - parallel:
         - step:
             caches:
