@@ -58,6 +58,10 @@ export default {
 				uid: `${id}-hero-image`
 			})
 			: "";
+		const heroImageWrap = heroImageMobileHTML ?
+			`<desktop-only>${heroImageHTML}</desktop-only>
+			<mobile-only>${heroImageMobileHTML}</mobile-only>`
+			: heroImageHTML;
 		const headlineHTML = Headline.render({
 			headline: titleOverride || title,
 			tag: "h1"
@@ -65,8 +69,7 @@ export default {
 		return `
 			<script>const vgWortPixel = ${JSON.stringify(vgWortPixel)};</script>
 			<main content-type="content" ${contentTypeIDIf(id)}>
-				<desktop-only>${heroImageHTML}</desktop-only>
-				<mobile-only>${heroImageMobileHTML}</mobile-only>
+				${heroImageWrap}
 				${headlineHTML}
 				${children.join("")}
 			</main>
