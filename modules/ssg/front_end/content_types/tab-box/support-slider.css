@@ -16,15 +16,21 @@ section[tab-box-type="support"] figcaption {
 }
 
 section[tab-box-type="support"] p {
-	font-size: 2.8em;
+	font-size: 2em;
+	text-align: center;
+}
+
+section[tab-box-type="support"] p:fullscreen {
+	font-size: 3vw;
+	text-align: center;
 }
 
 section[tab-box-type="support"] h2 {
-	font-size: 3em;
+	font-size: 1.2em;
 }
 
 section[tab-box-type="support"] h3 {
-	font-size: 2.9em;
+	font-size: 1em;
 }
 
 section[tab-box-type="support"] button {
@@ -213,7 +219,7 @@ section[tab-box-type="support"] tab-box-content [content-type="gallery"] {
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-rows: calc(100vh - 7em);
-	overflow: scroll;
+	overflow-y: auto;
 }
 
 section[tab-box-type="support"] tab-box-content [content-type="video"],
@@ -223,6 +229,12 @@ section[tab-box-type="support"] tab-box-content [content-type="exercise"],
 section[tab-box-type="support"] tab-box-content [content-type="download"],
 section[tab-box-type="support"] tab-box-content [content-type="galery"] {
 	margin-top: 16px;
+}
+
+section[tab-box-type="support"] tab-box-content [content-type="video"],
+section[tab-box-type="support"] tab-box-content [content-type="audio"],
+section[tab-box-type="support"] tab-box-content [content-type="embedding"] {
+	max-width: var(--content-width);
 }
 
 section[tab-box-type="support"] tab-box-content inner-content {
@@ -240,6 +252,7 @@ section[tab-box-type="support"] tab-box-content-wrap:fullscreen tab-box-content 
 	padding: 0;
 	height: calc(100vh - 4em);
 	overflow-y: auto;
+	position: relative;
 }
 
 section[tab-box-type="support"] .ql-toolbar button {
