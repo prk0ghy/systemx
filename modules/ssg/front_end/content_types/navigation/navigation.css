@@ -62,7 +62,7 @@ nav li a {
 	text-decoration:none;
 	font-family: var(--font-headlines);
 	font-size:1.3em;
-	padding-left:calc(var(--content-padding) * 1);
+	padding-left:calc(var(--content-padding) * 1.5);
 	font-weight: normal;
 }
 
@@ -94,7 +94,7 @@ nav ul li ul li:last-child {
 nav nav-toggle {
 	content:'';
 	display:block;
-	font-size:1.5em;
+	font-size:2em;
 	position:absolute;
 	left:0;
 	top:0.4em;
