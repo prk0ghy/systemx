@@ -15,6 +15,18 @@ section[tab-box-type="support"] figcaption {
 	font-weight: 400;
 }
 
+section[tab-box-type="support"] p {
+	font-size: 2.8em;
+}
+
+section[tab-box-type="support"] h2 {
+	font-size: 3em;
+}
+
+section[tab-box-type="support"] h3 {
+	font-size: 2.9em;
+}
+
 section[tab-box-type="support"] button {
 	width:1.5em;
 	height:1.5em;
@@ -198,8 +210,10 @@ section[tab-box-type="support"] tab-box-content [content-type="gallery"] {
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 16px;
-	top: 50%;
-	transform: translate(0, -50%);
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: calc(100vh - 7em);
+	overflow: scroll;
 }
 
 section[tab-box-type="support"] tab-box-content [content-type="video"],
@@ -209,6 +223,12 @@ section[tab-box-type="support"] tab-box-content [content-type="exercise"],
 section[tab-box-type="support"] tab-box-content [content-type="download"],
 section[tab-box-type="support"] tab-box-content [content-type="galery"] {
 	margin-top: 16px;
+}
+
+section[tab-box-type="support"] tab-box-content inner-content {
+	justify-self: center;
+	align-self: center;
+	width: 100%;
 }
 
 section[tab-box-type="support"] tab-box-content [content-type="gallery"] inner-content {
