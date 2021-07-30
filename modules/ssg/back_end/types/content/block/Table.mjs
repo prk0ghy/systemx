@@ -6,6 +6,7 @@ export default {
 				tableDescriptor: tabelle {
 					table
 				}
+				tableType: art
 			`
 		}],
 		["aufklappElemente_tabellen_BlockType", {
@@ -14,6 +15,7 @@ export default {
 				tableDescriptor: tabelle {
 					table
 				}
+				tableType: art
 			`
 		}],
 		["inhaltsbausteine_tabelle_BlockType", {
@@ -24,6 +26,7 @@ export default {
 				tableDescriptor: tabelle {
 					table
 				}
+				tableType: art
 			`
 		}],
 		["quersliderAufgabenElemente_tabellen_BlockType", {
@@ -40,6 +43,7 @@ export default {
 				tableDescriptor: tabelle {
 					table
 				}
+				tableType: art
 			`
 		}]
 	]),
@@ -47,7 +51,8 @@ export default {
 		caption,
 		id,
 		isNumbered,
-		tableDescriptor
+		tableDescriptor,
+		tableType = "simple-table"
 	}, {
 		contentTypeIDIf,
 		Error,
@@ -56,12 +61,13 @@ export default {
 		}
 	}) {
 		const tableHTML = (() => {
-			if(!tableDescriptor || !tableDescriptor?.table){
+			if (!tableDescriptor || !tableDescriptor?.table) {
 				return Error.render({
 					message: "There was an attempt to parse this table, but it failed. Does the `tableDescriptor` field evaluate to `undefined`?",
 					title: "Broken table"
 				});
-			}else{
+			}
+			else {
 				return tableDescriptor?.table;
 			}
 		})();
@@ -69,7 +75,7 @@ export default {
 			? `<figcaption>${caption}</figcaption>`
 			: "";
 		return `
-			<section content-type="table" ${contentTypeIDIf(id)}>
+			<section content-type="table" ${contentTypeIDIf(id)} table-type="${tableType}">
 				<inner-content>
 					${Marker.render({ isNumbered })}
 					<figure figure-type="table">

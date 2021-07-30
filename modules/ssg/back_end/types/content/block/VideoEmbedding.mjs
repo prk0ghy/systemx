@@ -161,7 +161,8 @@ export default {
 		let firstPartyImageURL = "";
 		try {
 			firstPartyImageURL = thirdPartyImageURL && await download(thirdPartyImageURL);
-		} catch(e) {
+		}
+		catch(e) {
 			console.warn(e);
 			downloadError = e;
 			/* Better to print an error than to stop everything, maybe generate an image with an error message? */
