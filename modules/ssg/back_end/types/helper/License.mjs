@@ -35,7 +35,8 @@ export default {
 			}
 		}
 		if (asset.source) {
-			content += `<p>Quelle: <a href="${asset.source}">${asset.source}</a></p>`;
+			const cooked = String(asset.source).replace(/(https?:\/\/\S+)/g,`<a href="$1">$1</a>`);
+			content += `<p>${cooked}</p>`;
 		}
 		if (asset.license) {
 			const href = getLicenseHref(asset.license,asset.creativeCommonsTerms);
