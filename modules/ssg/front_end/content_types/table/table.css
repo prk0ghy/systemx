@@ -21,6 +21,14 @@ th, td {
 	border: 10px solid var(--background-color);
 }
 
+thead {
+	border-bottom: 10px solid var(--background-color);
+}
+
+tfoot {
+	border-top: 10px solid var(--background-color);
+}
+
 [table-type="table-both"] th,
 [table-type="table-both"] tr > :first-child,
 [table-type="table-headcolumn"] tr > :first-child,
