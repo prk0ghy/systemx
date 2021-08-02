@@ -155,7 +155,7 @@ h1 span {
 	font-family: 'Montserrat', sans-serif;
 	font-weight: bold;
 	margin: 3vw 0 0 0;
-	font-size: 10;
+	font-size: 10vw;
 	position: absolute;
 }
 
@@ -607,11 +607,12 @@ div.header {
 body.template-shop h1 {
 	color: white;
 	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
 	font-size: 3vw;
-	line-height: 3vw;
+	line-height: 5vw;
 	position: absolute;
 	top: 64px;
-	left: 20;
+	left: 20px;
 	margin: 0;
 }
 
