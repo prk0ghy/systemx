@@ -61,7 +61,7 @@
 		"lint": "npm run eslint && npm run stylelint",
 		"eslint": "eslint './modules/**/*.mjs' './modules/**/*.js'",
 		"stylelint": "stylelint './modules/**/*.css'",
-		"mon": "npm run mon:ssg",
+		"mon": "nodemon --ignore dist/ --ignore web/ ./index.mjs --skip-network --start-server --start-shop",
 		"mon:ssg": "nodemon --ignore dist/ --ignore web/ ./index.mjs --skip-network --start-server",
 		"mon:shop": "nodemon --ignore dist/ --ignore web/ ./index.mjs --skip-network --start-shop",
 		"start": "node ./index.mjs --start-server --",

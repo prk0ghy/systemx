@@ -32,12 +32,10 @@ export const reqLogin = async context => {
 		if (await frontEndSession.checkPassword(context)) {
 			context.redirect(context.request.body.redirect);
 			return;
-		}
-		else {
+		} else {
 			values.status = "Passwort ungültig, bitte versuche es erneut!";
 		}
-	}
-	else if (session) {
+	} else if (session) {
 		values.status = "Du bist bereits angemeldet";
 		values.loggedIn = true;
 	}

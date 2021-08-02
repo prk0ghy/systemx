@@ -10,15 +10,19 @@ import * as order from "./order.mjs";
 import * as payments from "./payments/index.mjs";
 import * as pwreset from "./pwreset.mjs";
 import { initialize as initializeDatabase } from "./database.mjs";
+import { currentTarget } from "../common/options.mjs";
 import Koa from "koa";
 import koaBody from "koa-body";
 import KoaRouter from "koa-router";
 import koaStatic from "koa-static";
 import koaMount from "koa-mount";
 import proxy from "./proxy.mjs";
+import { buildPreamble } from "./template.mjs";
+
 const start = async () => {
 	await initializeDatabase();
-	configuration.printConfig();
+	await buildPreamble(currentTarget);
+	//configuration.printConfig();
 	const application = new Koa();
 	const router = new KoaRouter();
 	router.prefix("/" + configuration.get("prefix"));
@@ -39,17 +43,16 @@ const start = async () => {
 	]) {
 		part.addRoutes(router);
 	}
-	const koa = new Koa();
-	koa.use(koaStatic("modules/shop/public"));
 	application
 		.use(koaBody())
-		.use(koaMount("/" + configuration.get("prefix") + "/public", koa))
+		.use(koaMount(`/${configuration.get("prefix")}/public`, new Koa().use(koaStatic("modules/shop/public"))))
+		.use(koaMount(`/${configuration.get("prefix")}/resources`, new Koa().use(koaStatic(`web/${currentTarget}/resources`))))
 		.use(frontEnd.reqRelaxedFilter)
 		.use(router.routes())
 		.use(router.allowedMethods())
 		.use(frontEnd.reqFilter)
 		.use(proxy)
 		.listen(configuration.get("port"));
-	console.log("Shop started: " + configuration.get("baseurl"));
+	console.log(`Shop started: ${configuration.get("baseurl")}/`);
 };
 export default start;

@@ -27,9 +27,5 @@
 		}
 	},
 	"port": 8020,
-	"resources": [
-		"modules/shop/res/main.css",
-		"modules/shop/res/main.js"
-	],
 	"startpage": "shop"
 }
