@@ -9,6 +9,7 @@ table {
 	border:none;
 	overflow: auto;
 	border-collapse: collapse;
+	display:block;
 }
 
 th, td {
