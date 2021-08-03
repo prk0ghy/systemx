@@ -2,6 +2,12 @@
 /* global showOverlay,hideOverlay,overlayCloseHandlers */
 
 const showModal = content => {
+	if (typeof content === 'string' || content instanceof String){
+		const tempWrapper = document.createElement("TEMPORARY-MODAL");
+		tempWrapper.innerHTML = `<modal-content>${content}</modal-content>`;
+		document.body.append(tempWrapper);
+		return showModal(tempWrapper);
+	}
 	content.classList.add("show-modal");
 	content.offsetTop; // Sync CSS <-> JS
 	content.classList.add("visible");
@@ -12,6 +18,7 @@ const showModal = content => {
 		content.prepend(buttonCloseModal);
 	}
 	showOverlay();
+	return content;
 };
 
 const hideModal = () => {
@@ -24,6 +31,9 @@ const hideModal = () => {
 				parent.removeAttribute("open");
 			}
 			modal.classList.remove("show-modal");
+			if(modal.tagName === "TEMPORARY-MODAL"){
+				modal.remove();
+			}
 		}, 510);
 	});
 };

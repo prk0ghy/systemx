@@ -8,7 +8,7 @@ glossary-entry > modal-close {
 	color:var(--dlw-blue);
 }
 
-glossary-entry-content {
+modal-content {
 	width: 100%;
 	max-width: var(--content-width);
 	margin:0 0 0 auto;
@@ -17,6 +17,6 @@ glossary-entry-content {
 	padding: var(--content-padding);
 }
 
-glossary-entry-content a.marker {
+modal-content a.marker {
 	display:none;
 }

@@ -24,7 +24,7 @@
 		const content = await fetchGlossaryEntry(rawHref);
 		const entry = document.createElement("GLOSSARY-ENTRY");
 		entry.setAttribute("entry-href",getLinkPath(rawHref));
-		entry.innerHTML = `<glossary-entry-content>${content}</glossary-entry-content>`;
+		entry.innerHTML = `<modal-content>${content}</modal-content>`;
 		document.querySelector("main").appendChild(entry);
 		showModal(entry);
 	};
