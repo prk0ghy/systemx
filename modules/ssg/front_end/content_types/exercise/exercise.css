@@ -14,10 +14,6 @@ section[content-type="tab-box"][tab-box-type="exercise"] > inner-content {
 }
 
 section[content-type="exercise"] exercise-content > section {
-	padding: var(--content-padding-quarter) var(--content-padding);
-}
-
-section[content-type="exercise"] exercise-content > section[content-type="text-and-image"] {
 	padding: 0;
 }
 
