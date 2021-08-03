@@ -1,0 +1,93 @@
+
+.btn-buy {
+	color: #3E4162;
+	position: relative;
+	display: block;
+	overflow: hidden;
+	width: 100%;
+	height: 80;
+	max-width: 250;
+	margin: 1rem auto 1rem auto;
+	text-decoration: none;
+	line-height: 80;
+	text-transform: uppercase;
+	border: 1px solid currentColor;
+	transition: 0.5s ease-in-out;
+	background-color: transparent;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+
+.btn-buy span {
+	font-size: 1.4vw;
+	line-height: 130%;
+	font-family: 'Montserrat', sans-serif;
+	position: relative;
+	z-index: 2;
+}
+
+.btn-buy::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: -50;
+	bottom: 0;
+	left: 0;
+	border-right: 50 solid transparent;
+	border-bottom: 80 solid #3E4162;
+	-webkit-transform: translateX(-100%);
+	transform: translateX(-100%);
+	box-sizing: border-box;
+	-webkit-transition: 0.5s ease-in-out;
+	transition: 0.5s ease-in-out;
+}
+
+.btn-buy:hover {
+	color: #cdc4cc;
+}
+
+.btn-buy:hover::before {
+	-webkit-transform: translateX(0);
+	transform: translateX(0);
+}
+
+.btn-buy:active,
+.btn-buy:hover {
+	outline-width: 0;
+}
+
+label > input[type="checkbox"] + span::after {
+	content: 'In den Warenkorb';
+}
+
+label > input[type="checkbox"]:checked + span::after {
+	content: 'Im Warenkorb';
+}
+
+.card-grid label > input[type="checkbox"]:checked + span::after {
+	color: #217ca6;
+}
+
+.order-form .cart {
+	padding: 2px;
+	margin: 32px 0 32px 0;
+	list-style: none;
+}
+
+.order-form .cart-item {
+	border: 1px solid rgba(26, 26, 31, 0.8);
+}
+
+.order-form input[type="submit"] {
+	font-size: 1em;
+}
+
+cart-remove {
+	display: inline-block;
+	cursor: pointer;
+}
+
+cart-remove::after {
+	content: 'X';
+	color: red;
+}
