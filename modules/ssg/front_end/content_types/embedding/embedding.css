@@ -28,12 +28,12 @@ main > section[content-type="embedding"]::after {
 	padding-bottom: var(--content-padding-half);
 } */
 
-[embedding-target="youtube"] {
+[embedding-target="video"] {
 	display:block;
 	position:relative;
 }
 
-[embedding-target="youtube"]::before {
+[embedding-target="video"]::before {
 	content:'';
 	position:absolute;
 	left:50%;
@@ -42,7 +42,7 @@ main > section[content-type="embedding"]::after {
 	margin-top:-32px;
 	width:96px;
 	height:64px;
-	background:red;
+	background: var(--dlw-blue);
 	z-index:2;
 	border-radius:8px;
 	opacity:0;
@@ -50,7 +50,7 @@ main > section[content-type="embedding"]::after {
 	transition:opacity 250ms, transform 400ms;
 }
 
-[embedding-target="youtube"]::after {
+[embedding-target="video"]::after {
 	content:'';
 	display:block;
 	width:0;
@@ -69,16 +69,16 @@ main > section[content-type="embedding"]::after {
 	transition:opacity 250ms, transform 400ms;
 }
 
-[embedding-target="youtube"]:active::before,
-[embedding-target="youtube"]:hover::before,
-[embedding-target="youtube"]:focus::before {
+[embedding-target="video"]:active::before,
+[embedding-target="video"]:hover::before,
+[embedding-target="video"]:focus::before {
 	opacity:0.7;
 	transform:scale(1);
 }
 
-[embedding-target="youtube"]:active::after,
-[embedding-target="youtube"]:hover::after,
-[embedding-target="youtube"]:focus::after {
+[embedding-target="video"]:active::after,
+[embedding-target="video"]:hover::after,
+[embedding-target="video"]:focus::after {
 	opacity:1;
 	transform:scale(1);
 }
@@ -87,19 +87,19 @@ main > section[content-type="embedding"]::after {
 	background: var(--background-color) !important;
 }
 
-.hidden-yt-placeholder,
+.hidden-video-placeholder,
 .hidden-embedding-placeholder {
 	display:none !important;
 }
 
-iframe-wrap[iframe-type="youtube"] {
+iframe-wrap[iframe-type="video"] {
 	width:100%;
 	padding-top:56.25%;
 	position:relative;
 	display:block;
 }
 
-iframe-wrap[iframe-type="youtube"] > iframe {
+iframe-wrap[iframe-type="video"] > iframe {
 	position:absolute;
 	left:0;
 	top:0;
@@ -117,4 +117,10 @@ section[content-type="embedding"] > inner-content > figure > iframe {
 
 section[content-type="embedding"][embedding-type="h5p"] > inner-content > figure > iframe {
 	background:transparent;
+}
+
+/* Privacy Modal */
+
+div.privacy-overlay.hide {
+	display: none !important;
 }

@@ -1,4 +1,4 @@
-/* global addHideElementContentHandler */
+/* global addHideElementContentHandler showModal hideModal hideOverlay */
 
 (()=>{
 	const decodeParam = g => {
@@ -91,29 +91,56 @@
 	const initEmbeddingLinks = () => {
 		const embeddingLinks = document.querySelectorAll(".embedding-link");
 		addHideElementContentHandler("hideIframes",ele => {
-			for(const e of ele.querySelectorAll('iframe-wrap[iframe-type="youtube"]')){
+			for(const e of ele.querySelectorAll('iframe-wrap[iframe-type="video"]')){
 				e.remove();
 			}
-			for(const e of ele.querySelectorAll(".hidden-yt-placeholder")){
-				e.classList.remove('hidden-yt-placeholder');
+			for(const e of ele.querySelectorAll(".hidden-video-placeholder")){
+				e.classList.remove('hidden-video-placeholder');
 			}
 		});
 		for(const link of embeddingLinks){
-			link.setAttribute("embedding-target","youtube"); // Should actually check the href in the future
+			link.setAttribute("embedding-target","video");
 			link.addEventListener("click",(e) => {
 				const embeddingIframe = textToEmbedding(link.href,true);
 				if(embeddingIframe !== null){
-					e.preventDefault();
-					const wrap = document.createElement("IFRAME-WRAP");
-					wrap.setAttribute("iframe-type","youtube");
-					wrap.append(embeddingIframe);
-					link.parentElement.insertBefore(wrap,link);
-					embeddingIframe.classList.add("yt-iframe");
-					link.classList.add("hidden-yt-placeholder");
+					const getLocalStorage = localStorage.getItem('externalEmbeds');
+					if (getLocalStorage === 'accept') {
+						e.preventDefault();
+						const wrap = document.createElement("IFRAME-WRAP");
+						wrap.setAttribute("iframe-type","video");
+						wrap.append(embeddingIframe);
+						link.parentElement.insertBefore(wrap,link);
+						embeddingIframe.classList.add("video-iframe");
+						link.classList.add("hidden-video-placeholder");
+					} else {
+						e.preventDefault();
+						privacyOverlay();
+					}
 				}
 			});
-
 		}
+		const privacyOverlay = () => {
+			const wrapper = document.createElement('div');
+			wrapper.classList.add('privacy-overlay');
+			const text = document.createElement('p');
+			text.innerHTML = 'Fuer externe Embeds, benoetigen wir Ihre Zustimmung, eine Verbindung zu dem jeweiligem Anbieter aufzubauen';
+			const learnMore = document.createElement('p');
+			learnMore.innerHTML = 'In unserer <a href="./datenschutz">Datenschutzerklaerung</a> koennen Sie mehr dazu erfahren';
+			const acceptButton = document.createElement('BUTTON');
+			acceptButton.innerHTML = 'Akzeptieren';
+			acceptButton.setAttribute('id', 'privacy-overlay-accept');
+			wrapper.appendChild(text);
+			wrapper.appendChild(learnMore);
+			wrapper.appendChild(acceptButton);
+			acceptButton.onclick = () => {
+				localStorage.setItem('externalEmbeds', 'accept');
+				hideModal();
+				hideOverlay();
+				wrapper.classList.add('hide');
+			};
+			document.body.appendChild(wrapper);
+			showModal(wrapper);
+		};
 	};
 	setTimeout(initEmbeddingLinks,0);
 })();
