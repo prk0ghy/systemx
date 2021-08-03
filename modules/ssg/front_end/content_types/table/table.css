@@ -1,13 +1,14 @@
 table-wrap {
 	overflow:auto;
 	display:block;
-	width:100%;
+	width:50%;
 }
 
 table {
+	display: block;
 	width:100%;
 	border:none;
-	overflow: auto;
+	overflow-x: scroll;
 	border-collapse: collapse;
 }
 
