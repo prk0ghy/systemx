@@ -1,5 +1,3 @@
-import { getFees } from "./payPalFees.mjs";
-console.log(getFees(0.01, "EUR", "DE"));
 const makeAmount = (value, currencyCode = "EUR") => ({
 	currency_code: currencyCode,
 	value: String(value.toFixed(2))
