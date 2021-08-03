@@ -53,11 +53,6 @@ section[tab-box-type="support"] button::after {
 	font-family:icomoon;
 }
 
-section[tab-box-type="support"] button[button-function="media"]::after {
-	content: "M";
-	line-height:1em;
-}
-
 section[tab-box-type="support"] button[button-function="exit"]::after {
 	content: "\2716";
 	line-height:1em;
@@ -179,13 +174,30 @@ section[tab-box-type="support"] button[button-function="exit"] {
 	float:left;
 }
 
+section[tab-box-type="support"] button[button-function="media"]::before {
+	content:"Vorlesen";
+}
+
+section[tab-box-type="support"] button[button-function="media"]::after {
+	border-left:solid 0.85em var(--support-slider-main-color);
+	border-top:solid 0.5em transparent;
+	border-bottom:solid 0.5em transparent;
+	position:absolute;
+	right:0.4em;
+	top:50%;
+	margin-top:-0.5em;
+}
+
 section[tab-box-type="support"] button[button-function="media"] {
 	position:absolute;
-	left:50%;
-	margin-left:-1em;
+	left:2.25em;
 	top:0.2em;
 	opacity:0;
 	transition:opacity 300ms;
+	width:auto;
+	border-radius:0.25em;
+	padding-right:2em;
+	padding-left:0.35em;
 }
 
 section[tab-box-type="support"].has-media button[button-function="media"] {
