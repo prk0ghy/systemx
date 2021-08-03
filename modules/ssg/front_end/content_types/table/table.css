@@ -4,12 +4,16 @@ table-wrap {
 	width:100%;
 }
 
+figure[figure-type="table"] {
+	width:100%;
+	display:block;
+	overflow:auto;
+}
+
 table {
 	width:100%;
 	border:none;
-	overflow: auto;
 	border-collapse: collapse;
-	display:block;
 }
 
 th, td {
