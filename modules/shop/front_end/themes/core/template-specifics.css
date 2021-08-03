@@ -1,0 +1,126 @@
+body.template-impressum,
+body.template-datenschutz {
+	background: url('/proexly/public/jpg/3.jpg');
+	background-size: cover;
+}
+
+body.template-login {
+	background: url('/proexly/public/jpg/wartung.png');
+	background-size: cover;
+}
+
+body.template-checkout {
+	background: url('/proexly/public/jpg/2.jpg');
+	background-size: cover;
+}
+
+body.template-order {
+	background: url('/proexly/public/jpg/3.jpg');
+	background-size: cover;
+}
+
+body.template-pwreset {
+	background: url('/proexly/public/jpg/wartung.png');
+	background-size: cover;
+}
+
+body.template-register {
+	background: url('/proexly/public/jpg/wartung.png');
+	background-size: cover;
+}
+
+body.template-checkout h1 {
+	width: 100%;
+	max-width: 400;
+	margin: 0 auto 0.5em auto;
+	padding: 32px 0 0 0;
+}
+
+body.template-register h1,
+body.template-order h1,
+body.template-datenschutz h1,
+body.template-impressum h1,
+body.template-pwreset h1,
+body.template-login h1 {
+	color: white;
+	font-weight: bold;
+	font-family: var(--font-headline);
+	font-size: 2.5em;
+	line-height: 120%;
+	position: absolute;
+	top: 20vh;
+	left: 24.1%;
+	margin: 0;
+}
+
+body.template-datenschutz main,
+body.template-impressum main,
+body.template-checkout main,
+body.template-order main {
+	margin: 0 auto 0 auto;
+	max-width: 768px;
+}
+
+body.template-order ul {
+	margin: 5rem auto 2rem auto;
+	background-color: rgba(26, 26, 31, 0.8);
+	color: #fff;
+	padding: 16px 16px 16px 32px;
+	border-radius: 8px;
+	box-shadow: 1px 1px 4px rgba(26, 26, 31, 0.8);
+	max-width: 360;
+	position: relative;
+}
+
+body.template-impressum main,
+body.template-datenschutz main {
+	display: table;
+	width: 100%;
+	max-width: none;
+}
+
+body.template-impressum article,
+body.template-datenschutz article {
+	margin: 128px auto 0 auto;
+	background-color: rgba(26, 26, 31, 0.8);
+	color: #fff;
+	padding: 16px;
+	border-radius: 8px;
+	box-shadow: 1px 1px 4px rgba(26, 26, 31, 0.8);
+	position: relative;
+	max-width: 920;
+}
+
+body.template-impressum footer,
+body.template-datenschutz footer {
+	color: #fff;
+}
+
+body.template-checkout header,
+body.template-order header,
+body.template-pwreset header,
+body.template-login header {
+	display: none;
+}
+
+body.template-order main {
+	padding-top: 18em;
+}
+
+body.template-belogin h3 {
+	font-size: 1.7em;
+	margin-bottom: 2em;
+}
+
+
+body.template-shop h1 {
+	color: white;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
+	font-size: 3vw;
+	line-height: 5vw;
+	position: absolute;
+	top: 64px;
+	left: 20px;
+	margin: 0;
+}

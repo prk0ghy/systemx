@@ -131,7 +131,7 @@ section[tab-box-type="support"] start-slide::before {
 	top:50%;
 	margin-left:-12em;
 	margin-top:-12em;
-	background:url("/resources/foerderfuchs.svg") no-repeat;
+	background:url("/resources/svg/foerderfuchs.svg") no-repeat;
 	background-size:contain;
 }
 

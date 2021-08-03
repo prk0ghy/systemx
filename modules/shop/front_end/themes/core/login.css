@@ -1,0 +1,136 @@
+
+/* Login Userpanel */
+
+.userpanel-overlay {
+	background-color: rgba(0, 0, 0, 0);
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	left: 0;
+	transition: all 0.5s ease 0s;
+	-webkit-transition: all 0.5s ease 0s;
+	z-index: 49;
+	display: none;
+}
+
+.userpanel-overlay.active {
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.6);
+}
+
+.userpanel-container {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	max-width: 360;
+	right: 0;
+	background-color: rgba(210, 210, 210, 0.7);
+	-webkit-transform: translate3d(-100%, 0, 0);
+	transform: translate3d(+100%, 0, 0);
+	visibility: visible;
+	transition: all 0.5s ease 0s;
+	-webkit-transition: all 0.5s ease 0s;
+	z-index: 50;
+}
+
+.userpanel-container.active {
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+	visibility: visible;
+}
+
+div.userpanel-container form.login-form h2 {
+	margin-bottom: 1em;
+	font-weight: 100;
+	font-size: 2.5rem;
+	padding-left: 1em;
+}
+
+div.userpanel-container.active {
+	width: 35%;
+	min-width: 450px;
+}
+
+div.userpanel-container form.login-form {
+	margin: 0 auto;
+	margin-top: 22vh;
+	padding: 0 7%;
+}
+
+.pwreset {
+	font-size: 1.2em;
+	position: absolute;
+	left: 16px;
+	bottom: 16px;
+	text-decoration: none;
+	color: var(--color-blue);
+}
+
+form.login-form .pwreset {
+	position: relative;
+}
+
+div.userpanel-container form.login-form .form-row input,
+div.userpanel-container form.login-form .order-form .form-row input {
+	background-color: unset;
+	color: var(--color-text);
+	border: 2px solid var(--color-text);
+	font-weight: 100;
+	font-size: 2.8rem;
+}
+
+
+.login-form > label.form-row {
+	width: 100%;
+}
+
+.username {
+	font-size: 1.3em;
+	margin-bottom: 0.5em;
+	display: block;
+}
+
+center,
+form.feuser-form {
+	margin: 0 auto 2em;
+	max-width: 320;
+	display: block;
+}
+
+form.feuser-form::after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+form.feuser-form input[type="submit"] {
+	width: 100%;
+	display: block;
+}
+
+center > .form-row {
+	display: block;
+	width: 100%;
+}
+
+.login-form > .delete {
+	width: 100%;
+}
+
+
+.login-form {
+	width: 100%;
+	max-width: 897px;
+	margin: 0 auto;
+	box-sizing: border-box;
+	margin-left: 23.2%;
+	margin-top: 22vh;
+	padding: 16px;
+	border-radius: 8px;
+	position: relative;
+}
+
+.login-form p {
+	color: var(--color-white);
+	margin-bottom: 2em;
+}

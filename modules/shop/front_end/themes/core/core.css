@@ -1,0 +1,80 @@
+html {
+	height: 100%;
+}
+
+html,
+body {
+	font-family: var(--font-text);
+	color: var(--color-text);
+	background: #fff;
+	text-align: left;
+	font-size: 16px;
+	line-height: 1.35em;
+	display: block;
+	min-height: 100%;
+	box-sizing: border-box;
+	position: relative;
+}
+
+body {
+	padding: 0 0 2em;
+	margin: 0;
+}
+
+table {
+	background: rgba(255, 255, 255, 0.7);
+	border-radius: 2px;
+	border: solid 1px black;
+	color: var(--color-text);
+}
+
+table th {
+	color: var(--color-blue);
+}
+
+.login-form::after,
+.order-form::after {
+	content: '';
+	display: block;
+	position: relative;
+	clear: both;
+}
+
+
+input[type="submit"] {
+	color: var(--color-white);
+	background: var(--color-blue);
+	-webkit-appearance: none;
+	border: none;
+	outline: none;
+	padding: 8px 16px;
+	font-weight: bold;
+	float: right;
+	box-sizing: border-box;
+	line-height: 1.35em;
+	font-size: 1.3em;
+	cursor: pointer;
+}
+
+input[type="submit"].delete {
+	background: #a6213c;
+}
+
+input[type="submit"].create {
+	background: #3ca621;
+}
+
+.success {
+	color: #66D944;
+}
+
+.error {
+	color: #a6213c;
+}
+
+.form-panel {
+	width: 100%;
+	max-width: 400;
+	margin: 0 auto;
+	box-sizing: border-box;
+}

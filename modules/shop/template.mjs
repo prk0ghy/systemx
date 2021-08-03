@@ -1,43 +1,29 @@
 import * as configuration from "./configuration.mjs";
 import * as cart from "./cart.mjs";
 import * as fesession from "./fesession.mjs";
+import getHead from "./page_elements/head.mjs";
 import fs from 'fs';
 import path from 'path';
 import ejs from 'ejs';
+const fsp = fs.promises;
 const templates = [];
 let pagePreamble = "";
-let pageFooter   = "";
 
-const fileExtension = str => {
-	const ppos = str.lastIndexOf('.');
-	return str.substr(ppos+1).toLowerCase();
-};
+export const buildPreamble = async targetName => {
+	console.log(`Build preamble ${targetName}`);
 
-(() => {
-	pagePreamble = "<!DOCTYPE html>\n<html lang="+configuration.get('lang')+">\n <head>\n";
+	pagePreamble = `<!DOCTYPE html>
+	<html lang=${configuration.get('lang')}>
+	<head>
+		${await getHead(targetName)}
+		<script>const baseUrl="' + configuration.absoluteUrl('') + '";</script>`;
 
-	configuration.get('resources').forEach( path => {
-		const data = fs.readFileSync(path).toString();
-		switch(fileExtension(path)){
-		default:
-			break;
-		case 'js':
-			pageFooter += "  <script>\n"+data+"\n  </script>\n";
-			break;
-		case 'css':
-			pagePreamble += "  <style>\n"+data+"\n  </style>\n";
-			break;
-		}
-
-	});
-	pageFooter += '  <script>let baseUrl="' + configuration.absoluteUrl('') + '";</script>';
-
-	const files = fs.readdirSync("modules/shop/views/");
-	files.forEach(file => {
+	const files = await fsp.readdir("modules/shop/views/");
+	for(const file of files){
 		const name = path.parse(file).name;
-		templates[name] = fs.readFileSync(`modules/shop/views/${file}`).toString();
-	});
-})();
+		templates[name] = (await fsp.readFile(`modules/shop/views/${file}`)).toString();
+	}
+};
 
 export const escapeHTML = text => {
 	const map = {
@@ -113,10 +99,7 @@ const getUserPanel = (template, arr) => {
 };
 
 const getFooter = () => {
-	let ret = '';
-	ret += '<footer><a href="'+configuration.absoluteUrl('/impressum')+'">Impressum</a> <a href="'+configuration.absoluteUrl('/datenschutz')+'">Datenschutzerkl&auml;rung</a></footer>';
-	ret += pageFooter;
-	return ret;
+	return '<footer><a href="'+configuration.absoluteUrl('/impressum')+'">Impressum</a> <a href="'+configuration.absoluteUrl('/datenschutz')+'">Datenschutzerkl&auml;rung</a></footer>';
 };
 
 const wrapPage = (template,arr,shop,str) => {

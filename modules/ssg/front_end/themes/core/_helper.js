@@ -8,10 +8,12 @@ const getFirstParentSection = ele => {
 };
 
 const hideElementContentHandlerList = {};
+/* Use this function to add functions that disable active elements, such as iframes/videos */
 const addHideElementContentHandler = (name,handler) => {
 	hideElementContentHandlerList[name] = handler;
 };
 
+/* Should be called on elements that are loosing visiblity or getting deactivated/disabled */
 const hideElementContentHandler = ele => {
 	for(const name in hideElementContentHandlerList){
 		hideElementContentHandlerList[name](ele);

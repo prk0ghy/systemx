@@ -22,7 +22,18 @@ th, td {
 	border: 10px solid var(--background-color);
 }
 
-th {
+thead {
+	border-bottom: 10px solid var(--background-color);
+}
+
+tfoot {
+	border-top: 10px solid var(--background-color);
+}
+
+[table-type="table-both"] th,
+[table-type="table-both"] tr > :first-child,
+[table-type="table-headcolumn"] tr > :first-child,
+[table-type="table-headrow"] th {
 	color: #fff;
 	box-shadow: 0 3px 6px #00000029;
 	background: var(--table-background-header);

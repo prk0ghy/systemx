@@ -6,8 +6,12 @@ import startShop from "./modules/shop/index.mjs";
 	await mkdirp(options.configurationPath);
 	await mkdirp(options.distributionPath);
 	await mkdirp(options.storagePath);
-	await startSSG();
-	if (options.startShop) {
-		await startShop();
+	const promises = [];
+	if (options.startServer) {
+		promises.push(startSSG());
 	}
+	if (options.startShop) {
+		promises.push(startShop());
+	}
+	await Promise.all(promises);
 })();

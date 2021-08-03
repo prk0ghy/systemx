@@ -7,7 +7,7 @@ const start = async () => {
 	await target.build(currentTarget);
 	if (options.startServer) {
 		serve(currentTarget);
-		console.log(`Starting server on http://localhost:${options.httpPort}/`);
+		console.log(`SSG started: http://localhost:${options.httpPort}/`);
 	}
 	if (options.openBrowser) {
 		try {

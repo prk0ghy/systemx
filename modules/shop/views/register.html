@@ -1,26 +1,20 @@
-
 <h1>Registrieren</h1>
 <br/>
-
 <form method="POST" class="login-form">
 	<p><%= status %></p>
 	<ul class="pw_error_list">
-	<% for(let i=0;i<errors.length;i++){ %>
-	<li><%= errors[i] %></li>
+	<% for (let i=0; i < errors.length; ++i) { %>
+		<li><%= errors[i] %></li>
 	<% } %>
 	</ul>
-	<input type="hidden" name="redirect" value="<%= redirect %>"/>
-
 	<br/>
 	<label class=form-row>
-		<input autofocus type="email" name="email" required/>
+		<input autofocus type="email" name="email" required>
 		<span>E-Mail</span>
 	</label>
-
 	<label class=form-row>
-		<input type="password" name="password" required/>
+		<input type="password" name="password" required>
 		<span>Passwort</span>
 	</label>
-
-	<input type="submit" value="Registrieren"/>
+	<input type="submit" value="Registrieren">
 </form>
