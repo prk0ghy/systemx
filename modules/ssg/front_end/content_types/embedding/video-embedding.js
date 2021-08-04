@@ -104,7 +104,7 @@
 				const embeddingIframe = textToEmbedding(link.href,true);
 				if(embeddingIframe !== null){
 					const getLocalStorage = localStorage.getItem('externalEmbeds');
-					if (getLocalStorage === 'accept') {
+					if (getLocalStorage === 'true') {
 						e.preventDefault();
 						const wrap = document.createElement("IFRAME-WRAP");
 						wrap.setAttribute("iframe-type","video");
@@ -120,24 +120,28 @@
 			});
 		}
 		const privacyOverlay = () => {
-			const wrapper = document.createElement('div');
+			const wrapper = document.createElement('DIV');
 			wrapper.classList.add('privacy-overlay');
-			const text = document.createElement('p');
+			const text = document.createElement('P');
 			text.innerHTML = 'Fuer externe Embeds, benoetigen wir Ihre Zustimmung, eine Verbindung zu dem jeweiligem Anbieter aufzubauen';
-			const learnMore = document.createElement('p');
+			const learnMore = document.createElement('P');
 			learnMore.innerHTML = 'In unserer <a href="./datenschutz">Datenschutzerklaerung</a> koennen Sie mehr dazu erfahren';
 			const acceptButton = document.createElement('BUTTON');
 			acceptButton.innerHTML = 'Akzeptieren';
 			acceptButton.setAttribute('id', 'privacy-overlay-accept');
-			wrapper.appendChild(text);
-			wrapper.appendChild(learnMore);
-			wrapper.appendChild(acceptButton);
-			acceptButton.onclick = () => {
-				localStorage.setItem('externalEmbeds', 'accept');
+			const declineButton = document.createElement('BUTTON');
+			declineButton.innerHTML = 'Abbrechen';
+			declineButton.setAttribute('id', 'privacy-overlay-decline');
+			const buttonWrap = document.createElement('DIV');
+			buttonWrap.classList.add('privacy-overlay-btn-wrap');
+			buttonWrap.append(acceptButton, declineButton);
+			wrapper.append(text, learnMore, buttonWrap);
+			acceptButton.addEventListener("click", () => {
+				localStorage.setItem('externalEmbeds', 'true');
 				hideModal();
 				hideOverlay();
 				wrapper.classList.add('hide');
-			};
+			});
 			document.body.appendChild(wrapper);
 			showModal(wrapper);
 		};
