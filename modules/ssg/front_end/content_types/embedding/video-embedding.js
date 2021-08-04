@@ -1,4 +1,4 @@
-/* global addHideElementContentHandler showModal hideModal hideOverlay */
+/* global addHideElementContentHandler,canUseEmbeds */
 
 (()=>{
 	const decodeParam = g => {
@@ -100,51 +100,21 @@
 		});
 		for(const link of embeddingLinks){
 			link.setAttribute("embedding-target","video");
-			link.addEventListener("click",(e) => {
+			link.addEventListener("click",async e => {
 				const embeddingIframe = textToEmbedding(link.href,true);
 				if(embeddingIframe !== null){
-					const getLocalStorage = localStorage.getItem('externalEmbeds');
-					if (getLocalStorage === 'true') {
-						e.preventDefault();
+					e.preventDefault();
+					if (await canUseEmbeds()) {
 						const wrap = document.createElement("IFRAME-WRAP");
 						wrap.setAttribute("iframe-type","video");
 						wrap.append(embeddingIframe);
 						link.parentElement.insertBefore(wrap,link);
 						embeddingIframe.classList.add("video-iframe");
 						link.classList.add("hidden-video-placeholder");
-					} else {
-						e.preventDefault();
-						privacyOverlay();
 					}
 				}
 			});
 		}
-		const privacyOverlay = () => {
-			const wrapper = document.createElement('DIV');
-			wrapper.classList.add('privacy-overlay');
-			const text = document.createElement('P');
-			text.innerHTML = 'Fuer externe Embeds, benoetigen wir Ihre Zustimmung, eine Verbindung zu dem jeweiligem Anbieter aufzubauen';
-			const learnMore = document.createElement('P');
-			learnMore.innerHTML = 'In unserer <a href="./datenschutz">Datenschutzerklaerung</a> koennen Sie mehr dazu erfahren';
-			const acceptButton = document.createElement('BUTTON');
-			acceptButton.innerHTML = 'Akzeptieren';
-			acceptButton.setAttribute('id', 'privacy-overlay-accept');
-			const declineButton = document.createElement('BUTTON');
-			declineButton.innerHTML = 'Abbrechen';
-			declineButton.setAttribute('id', 'privacy-overlay-decline');
-			const buttonWrap = document.createElement('DIV');
-			buttonWrap.classList.add('privacy-overlay-btn-wrap');
-			buttonWrap.append(acceptButton, declineButton);
-			wrapper.append(text, learnMore, buttonWrap);
-			acceptButton.addEventListener("click", () => {
-				localStorage.setItem('externalEmbeds', 'true');
-				hideModal();
-				hideOverlay();
-				wrapper.classList.add('hide');
-			});
-			document.body.appendChild(wrapper);
-			showModal(wrapper);
-		};
 	};
 	setTimeout(initEmbeddingLinks,0);
 })();
