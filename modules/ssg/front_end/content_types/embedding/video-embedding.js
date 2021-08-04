@@ -100,18 +100,17 @@
 		});
 		for(const link of embeddingLinks){
 			link.setAttribute("embedding-target","video");
+			const embeddingIframe = textToEmbedding(link.href,true);
+			if(embeddingIframe === null){continue;}
 			link.addEventListener("click",async e => {
-				const embeddingIframe = textToEmbedding(link.href,true);
-				if(embeddingIframe !== null){
-					e.preventDefault();
-					if (await canUseEmbeds()) {
-						const wrap = document.createElement("IFRAME-WRAP");
-						wrap.setAttribute("iframe-type","video");
-						wrap.append(embeddingIframe);
-						link.parentElement.insertBefore(wrap,link);
-						embeddingIframe.classList.add("video-iframe");
-						link.classList.add("hidden-video-placeholder");
-					}
+				e.preventDefault();
+				if (await canUseEmbeds()) {
+					const wrap = document.createElement("IFRAME-WRAP");
+					wrap.setAttribute("iframe-type","video");
+					wrap.append(embeddingIframe);
+					link.parentElement.insertBefore(wrap,link);
+					embeddingIframe.classList.add("video-iframe");
+					link.classList.add("hidden-video-placeholder");
 				}
 			});
 		}

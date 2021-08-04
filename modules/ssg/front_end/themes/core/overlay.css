@@ -24,3 +24,19 @@ body.modal-active {
 	overflow-y:scroll;
 	transition:top 300ms;
 }
+
+@keyframes overlay-blur-out {
+	from {
+		filter: blur(0);
+	}
+
+	to {
+		filter: blur(3px);
+	}
+}
+
+.overlay-blur {
+	animation-name: overlay-blur-out;
+	animation-duration: 500ms;
+	filter: blur(3px);
+}

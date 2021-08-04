@@ -1,4 +1,4 @@
-/* global showOverlay,hideOverlay,overlayCloseHandlers,showEmbeddingSections,hideElementContentHandler */
+/* global showOverlay,hideOverlay,overlayCloseHandlers,showEmbeddingSections,hideElementContentHandler,getFirstParentSection */
 let overlayHideBoxCallback = undefined;
 
 /* Don't pollute the global scope if avoidable */
@@ -7,6 +7,7 @@ let overlayHideBoxCallback = undefined;
 		const boxes = document.querySelectorAll('section[content-type="box"] > inner-content > details');
 		boxes.forEach(boxDetails => {
 			boxDetails.classList.add("box-wrap");
+			const boxSection = getFirstParentSection(boxDetails);
 			const boxHeader  = boxDetails.querySelector("summary");
 			const boxContent = boxDetails.querySelector("box-content");
 			let boxVisible = false;
@@ -39,7 +40,7 @@ let overlayHideBoxCallback = undefined;
 				});
 				showEmbeddingSections(boxContent);
 
-				showOverlay();
+				showOverlay(boxSection);
 				overlayHideBoxCallback = hideBox;
 				if(classRemoverTimer !== undefined){
 					clearTimeout(classRemoverTimer);

@@ -17,7 +17,7 @@ const initNavBar = () => {
 			hideOverlay();
 		} else {
 			navBar.classList.add("active");
-			showOverlay();
+			showOverlay(navBar);
 		}
 	});
 	overlayCloseHandlers.push(() => {

@@ -11,6 +11,7 @@ const allowUseOfEmbeds = async (v) => {
 
 const canUseEmbeds = () => new Promise(resolve => {
 	if(localStorage.getItem('allowExternalEmbeds') === 'true'){ resolve(true); return; }
+	hideOverlay();
 
 	const modal = showModal(`<p>Fuer externe Embeds, benoetigen wir Ihre Zustimmung, eine Verbindung zu dem jeweiligem Anbieter aufzubauen</p>
 		<p>In unserer <a href="./datenschutz/" target="_blank">Datenschutzerklaerung</a> koennen Sie mehr dazu erfahren</p>

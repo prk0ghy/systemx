@@ -1,4 +1,4 @@
-/* global hideOverlay,showOverlay,overlayCloseHandlers */
+/* global hideOverlay,showOverlay,overlayCloseHandlers,getFirstParentSection */
 
 (()=>{
 	// This var stores a reference to a hideHelpVideo() function
@@ -8,6 +8,7 @@
 	let hideHelpVideoCallback = undefined;
 
 	const initHelpVideo = videoWrap => {
+		const section  = getFirstParentSection(videoWrap);
 		const videoSrc = videoWrap.getAttribute("video");
 		const button   = videoWrap.querySelector("help-video-button");
 		let video      = undefined;
@@ -81,7 +82,7 @@
 			videoWrap.style.height = max+"px";
 			videoWrap.offsetTop;
 
-			showOverlay();
+			showOverlay(section);
 			hideHelpVideoCallback = hideHelpVideo;
 		};
 

@@ -17,7 +17,7 @@ const showModal = content => {
 		buttonCloseModal.addEventListener("click",hideOverlay);
 		content.prepend(buttonCloseModal);
 	}
-	showOverlay();
+	showOverlay(content);
 	return content;
 };
 
