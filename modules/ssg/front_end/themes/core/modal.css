@@ -11,6 +11,7 @@ html .show-modal {
 	overflow-y:auto;
 	transition: transform 500ms;
 	transition-timing-function: ease-in-out;
+	max-width: 100%;
 }
 
 html .visible {

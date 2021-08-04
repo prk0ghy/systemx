@@ -95,10 +95,16 @@ nav nav-toggle {
 	content:'';
 	display:block;
 	font-size:2em;
+	font-family: icomoon, sans-serif;
 	position:absolute;
-	left:0;
-	top:0.4em;
-	font-family:icomoon;
+	left:2vw;
+	top:0.65em;
+	width: 32px;
+	height: 32px;
+	background-image: url("/resources/svg/arrow-right.svg");
+	background-repeat: no-repeat;
+	background-clip: content-box;
+	background-size: 100%;
 	text-align:center;
 	cursor:pointer;
 	color:rgb(var(--highlight-color));
@@ -107,12 +113,8 @@ nav nav-toggle {
 	transform-origin: 50% 50%;
 }
 
-nav nav-toggle::before {
-	content:"\e909";
-}
-
 nav ul li ul li nav-toggle {
-	top: 0.4em;
+	top: 0.65em;
 }
 
 nav li.active > nav-toggle {

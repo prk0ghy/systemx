@@ -1,0 +1,7 @@
+button[button-type="cancel"] {
+	color: var(--dlw-blue);
+}
+
+button[button-type="accept"] {
+	color: var(--dlw-blue);
+}

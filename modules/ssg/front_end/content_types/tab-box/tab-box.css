@@ -16,11 +16,11 @@ tab-box-content.active {
 }
 
 tab-box-content > section {
-	padding:var(--content-padding-half) var(--content-padding);
+	padding:var(--content-padding-half) var(--content-padding) 0;
 }
 
-tab-box-content > section:last-child {
-	padding-bottom:0;
+tab-box-content > section > inner-content {
+	margin-bottom:0 !important;
 }
 
 tab-box-content > footer {
@@ -176,10 +176,6 @@ main > section[content-type="tab-box"] section[content-type="embedding"] {
 
 [content-type="tab-box"] > inner-content > details > section > p {
 	padding-top: var(--content-padding-half);
-}
-
-tab-box-content > section:last-child > inner-content {
-	margin-bottom:0;
 }
 
 @media only screen and (max-width: 1062px) {
