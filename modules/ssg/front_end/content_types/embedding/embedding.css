@@ -118,9 +118,3 @@ section[content-type="embedding"] > inner-content > figure > iframe {
 section[content-type="embedding"][embedding-type="h5p"] > inner-content > figure > iframe {
 	background:transparent;
 }
-
-/* Privacy Modal */
-
-div.privacy-overlay.hide {
-	display: none !important;
-}
