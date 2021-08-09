@@ -73,11 +73,11 @@
 	};
 
 	embeddingHandlers.arte = (href, autoplay) => {
-		const m = href.match(/https?:\/\/www.arte.tv\/(de|fr|en|es|pl|it)\/videos\/*/); // could be more optimized
+		const m = href.match(/https?:\/\/www.arte.tv\/(de|fr|en|es|pl|it)\/videos\/([^\/]*)\/*/); // could be more optimized
 		if(m === null){return null;}
 		if(autoplay === true){autoplay = 1;} else {autoplay = 0;}
-		const id = href.slice(30, 42); // seems a bit dirty
 		const lang = m[1];
+		const id   = m[2];
 		return `https://www.arte.tv/embeds/${lang}/${id}?autoplay=${autoplay}`;
 	};
 
