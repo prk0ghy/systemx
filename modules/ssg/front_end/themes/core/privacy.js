@@ -19,14 +19,16 @@ const canUseEmbeds = () => new Promise(resolve => {
 		<button button-type="accept">Akzeptieren</button>
 		<button button-type="cancel">Abbrechen</button>
 		</div>`);
-
-	modal.querySelector(`button[button-type="accept"]`).addEventListener("click", async () => {
+	const cancelButton = modal.querySelector(`button[button-type="cancel"]`);
+	cancelButton.addEventListener("click", () => {
+		hideOverlay();
+		return resolve(false);
+	});
+	const acceptButton = modal.querySelector(`button[button-type="accept"]`);
+	acceptButton.addEventListener("click", async () => {
 		await allowUseOfEmbeds(true);
 		hideOverlay();
 		return resolve(true);
 	});
-	modal.querySelector(`button[button-type="cancel"]`).addEventListener("click", () => {
-		hideOverlay();
-		return resolve(false);
-	});
+	acceptButton.focus();
 });

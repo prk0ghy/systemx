@@ -32,3 +32,9 @@ modal-close::after {
 	content: '\2715';
 	text-shadow:0 0 3px #fff;
 }
+
+modal-content::after {
+	content:'';
+	clear:both;
+	display:block;
+}

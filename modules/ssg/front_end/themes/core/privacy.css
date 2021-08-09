@@ -1,38 +1,30 @@
-div#privacy-btn-wrap {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
 button[button-type="accept"],
 button[button-type="cancel"] {
+	float: right;
 	border: none;
+	color: var(--box-gray);
 	border-radius: 8px;
 	text-align: center;
 	text-decoration: none;
-	color: white;
-	padding: 0.8em;
+	font-size:0.9em;
+	padding: 0.5em;
+	margin-left:1em;
+	transition: background-color 200ms;
 }
 
 button[button-type="accept"] {
 	background-color: var(--dlw-blue);
-	font-size: 0.8em;
-}
-
-button[button-type="cancel"] {
-	background-color: var(--box-gray);
+	color: white;
 }
 
 button[button-type="accept"]:hover,
 button[button-type="accept"]:focus,
 button[button-type="accept"]:active {
-	background-color: #257DA7B0;
-	transition: background-color 200ms;
+	background-color: #257DA7D0;
 }
 
 button[button-type="cancel"]:hover,
 button[button-type="cancel"]:focus,
 button[button-type="cancel"]:active {
-	background-color: #6E747499;
-	transition: background-color 200ms;
+	background-color: #dddd;
 }
