@@ -2,37 +2,6 @@ section[tab-box-type="support"] tab-box-header {
 	display:none;
 }
 
-section[tab-box-type="support"] p,
-section[tab-box-type="support"] h2,
-section[tab-box-type="support"] h3,
-section[tab-box-type="support"] h4,
-section[tab-box-type="support"] h5,
-section[tab-box-type="support"] h6,
-section[tab-box-type="support"] li,
-section[tab-box-type="support"] span,
-section[tab-box-type="support"] figcaption {
-	font-family: "Montserrat";
-	font-weight: 400;
-}
-
-section[tab-box-type="support"] p {
-	font-size: 2em;
-	text-align: center;
-}
-
-section[tab-box-type="support"] p:fullscreen {
-	font-size: 3vw;
-	text-align: center;
-}
-
-section[tab-box-type="support"] h2 {
-	font-size: 1.2em;
-}
-
-section[tab-box-type="support"] h3 {
-	font-size: 1em;
-}
-
 section[tab-box-type="support"] button {
 	width:1.5em;
 	height:1.5em;
@@ -106,13 +75,10 @@ section[tab-box-type="support"] end-slide {
 	cursor:pointer;
 }
 
-section[tab-box-type="support"] .active {
+section[tab-box-type="support"] tab-box-content-wrap .active {
 	z-index:10;
 	opacity:1;
-}
-
-section[tab-box-type="support"] tab-box-content.active {
-	display: grid;
+	display:block;
 }
 
 section[tab-box-type="support"] end-slide::before,
@@ -204,6 +170,9 @@ section[tab-box-type="support"].has-media button[button-function="media"] {
 	opacity:1;
 }
 
+section[tab-box-type="support"] details.license,
+section[tab-box-type="support"] section[content-type="gallery"] button[button-type="fullscreen"],
+section[tab-box-type="support"] figure[figure-type="picture"] button[button-type="fullscreen"],
 section[tab-box-type="support"].start-slide-active button[button-function="exit"],
 section[tab-box-type="support"].start-slide-active button[button-function="media"],
 section[tab-box-type="support"].start-slide-active button[button-function="previous"],
@@ -215,50 +184,22 @@ section[tab-box-type="support"].start-slide-active slider-info {
 	display:none;
 }
 
+section[tab-box-type="support"] tab-box-content > section {
+	width:100%;
+	max-width: calc(100% - var(--content-padding));
+	padding:0;
+	margin:0 auto var(--content-padding-half);
+}
+
 section[tab-box-type="support"] tab-box-content {
 	padding: 0;
-	margin: 0 0 134px 0;
+	margin: 0;
 	position: relative;
-}
-
-section[tab-box-type="support"] tab-box-content [content-type="headline"],
-section[tab-box-type="support"] tab-box-content [content-type="text-and-image"],
-section[tab-box-type="support"] tab-box-content [content-type="video"],
-section[tab-box-type="support"] tab-box-content [content-type="audio"],
-section[tab-box-type="support"] tab-box-content [content-type="embedding"],
-section[tab-box-type="support"] tab-box-content [content-type="exercise"],
-section[tab-box-type="support"] tab-box-content [content-type="download"],
-section[tab-box-type="support"] tab-box-content [content-type="gallery"] {
-	max-width: calc(100% - var(--content-padding-half));
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom: 16px;
-	justify-self: center;
-	align-self: center;
-}
-
-section[tab-box-type="support"] tab-box-content [content-type="video"],
-section[tab-box-type="support"] tab-box-content [content-type="audio"],
-section[tab-box-type="support"] tab-box-content [content-type="embedding"],
-section[tab-box-type="support"] tab-box-content [content-type="exercise"],
-section[tab-box-type="support"] tab-box-content [content-type="download"],
-section[tab-box-type="support"] tab-box-content [content-type="galery"] {
-	margin-top: 16px;
-}
-
-section[tab-box-type="support"] tab-box-content [content-type="video"],
-section[tab-box-type="support"] tab-box-content [content-type="audio"],
-section[tab-box-type="support"] tab-box-content [content-type="embedding"] {
-	max-width: var(--content-width);
-}
-
-section[tab-box-type="support"] tab-box-content-wrap:fullscreen [content-type="audio"] {
-	width: 90vw;
+	border-bottom:solid transparent 4em;
+	padding-top: var(--content-padding-quarter);
 }
 
 section[tab-box-type="support"] tab-box-content inner-content {
-	justify-self: center;
-	align-self: center;
 	width: 100%;
 }
 
@@ -267,23 +208,9 @@ section[tab-box-type="support"] tab-box-content [content-type="gallery"] inner-c
 	max-width: none;
 }
 
-section[tab-box-type="support"] tab-box-content-wrap:fullscreen tab-box-content {
-	padding: 0;
-	grid-template-columns: 1fr;
-	overflow-y: auto;
-	height: calc(100vh - 4em);
-	position: relative;
-}
-
 section[tab-box-type="support"] .ql-toolbar button {
 	font-size: 13px;
 	margin: 0;
 	border-radius: 0%;
 	box-shadow: none;
-}
-
-section[tab-box-type="support"] button[button-type="fullscreen"] {
-	width: 30px;
-	height: 30px;
-	margin: -45px -34px 0 0;
 }

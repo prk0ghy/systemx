@@ -1,7 +1,8 @@
 /* exported showModal,hideModal */
-/* global showOverlay,hideOverlay,overlayCloseHandlers */
+/* global closeFullscreen,showOverlay,hideOverlay,overlayCloseHandlers */
 
 const showModal = content => {
+	closeFullscreen();
 	if (typeof content === 'string' || content instanceof String){
 		const tempWrapper = document.createElement("TEMPORARY-MODAL");
 		tempWrapper.innerHTML = `<modal-content>${content}</modal-content>`;
@@ -41,4 +42,3 @@ const hideModal = () => {
 setTimeout(() => {
 	overlayCloseHandlers.push(hideModal);
 }, 0);
-

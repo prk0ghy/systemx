@@ -141,6 +141,13 @@
 				refreshPageInfo();
 			};
 			showSlide(-1);
+
+			/* Reset to start-slide when leaving fullscreen mode */
+			document.addEventListener("fullscreenchange", () => {
+				if( window.innerHeight === screen.height){return;}
+				if(curSlide === tabContent.length){return;}
+				showSlide(-1);
+			});
 		});
 	};
 	setTimeout(initSupportSlider,0);
