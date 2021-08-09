@@ -40,18 +40,19 @@
 		return ret;
 	};
 
-	const vimeoToIframe = (href,autoplay) => {
+	const embeddingHandlers = {};
+
+	embeddingHandlers.vimeo = (href,autoplay) => {
 		const m = href.match(/https?:\/\/vimeo.com\/(\d+)/i);
 		if(m === null){return null;}
 		const vid = m[1];
 		const ret = document.createElement("IFRAME");
-		ret.setAttribute("src",`https://player.vimeo.com/video/${vid}${autoplay ? "?autoplay=1" : ""}`);
-		return ret;
+		return `https://player.vimeo.com/video/${vid}${autoplay ? "?autoplay=1" : ""}`;
 	};
 
-	const youtubeToIframe = (href,autoplay) => {
+	embeddingHandlers.youtube = (href,autoplay) => {
 		const m = href.match(/https?:\/\/www.youtube.com\/watch?.*/i);
-		if(m === null){return vimeoToIframe(href,autoplay);}
+		if(m === null){return null;}
 		const vid = getParamValue('v',href);
 		const params = [];
 		const time = getParamValue('t',href)|0;
@@ -61,41 +62,44 @@
 		if(time > 0){
 			params.push('start='+ytCalcStart(time));
 		}
-		const ret = document.createElement("IFRAME");
-		ret.setAttribute("src",`https://www.youtube-nocookie.com/embed/${vid}${params.length > 0 ? "?"+params.join('&') : ""}`);
-		return ret;
+		return `https://www.youtube-nocookie.com/embed/${vid}${params.length > 0 ? "?"+params.join('&') : ""}`;
 	};
 
-	const tagesschauToIFrame = (href, autoplay) => {
+	embeddingHandlers.tagesschau = (href, autoplay) => {
 		const m = href.match(/https?:\/\/www.tagesschau.de\/multimedia\/video\/video-(\d+).*/i);
-		if(m === null){return arteToIFrame(href,autoplay);}
+		if(m === null){return null;}
 		const vid = m[1];
-		const ret = document.createElement("IFRAME");
-		ret.setAttribute("src",`https://www.tagesschau.de/multimedia/video/video-${vid}~player_branded-true.html`);
-		return ret;
+		return `https://www.tagesschau.de/multimedia/video/video-${vid}~player_branded-true.html`
 	};
 
-	const arteToIFrame = (href, autoplay) => {
+	embeddingHandlers.arte = (href, autoplay) => {
 		const m = href.match(/https?:\/\/www.arte.tv\/(de|fr|en|es|pl|it)\/videos\/*/); // could be more optimized
-		if(m === null){return youtubeToIframe(href, autoplay);}
+		if(m === null){return null;}
 		if(autoplay === true){autoplay = 1;} else {autoplay = 0;}
 		const id = href.slice(30, 42); // seems a bit dirty
 		const lang = m[1];
-		const ret = document.createElement("IFRAME");
-		ret.setAttribute("src", `https://www.arte.tv/embeds/${lang}/${id}?autoplay=${autoplay}`);
-		return ret;
+		return `https://www.arte.tv/embeds/${lang}/${id}?autoplay=${autoplay}`;
 	};
+
+	const embeddingGetHref = (href, autoplay) => {
+		for(const i in embeddingHandlers){
+			const curHref = embeddingHandlers[i](href,autoplay);
+			if(curHref !== null){return curHref;}
+		}
+		return null;
+	}
 
 	const textToEmbedding = (href,autoplay) => {
 		if(autoplay === undefined){autoplay = false;}
-		if(href === undefined){return false;}
-		const ret = tagesschauToIFrame(href,autoplay);
-		if(ret !== null){
-			ret.setAttribute('width',"870");
-			ret.setAttribute('height',"490");
-			ret.setAttribute('frameborder',"0");
-			ret.setAttribute("allow","autoplay; fullscreen");
-		}
+		if(href === undefined){return null;}
+		const embedHref = embeddingGetHref(href,autoplay);
+		if(embedHref === null){return null;}
+		const ret = document.createElement("IFRAME");
+		ret.setAttribute("src", embedHref);
+		ret.setAttribute('width',"870");
+		ret.setAttribute('height',"490");
+		ret.setAttribute('frameborder',"0");
+		ret.setAttribute("allow","autoplay; fullscreen");
 		return ret;
 	};
 
