@@ -68,10 +68,21 @@
 
 	const tagesschauToIFrame = (href, autoplay) => {
 		const m = href.match(/https?:\/\/www.tagesschau.de\/multimedia\/video\/video-(\d+).*/i);
-		if(m === null){return youtubeToIframe(href,autoplay);}
+		if(m === null){return arteToIFrame(href,autoplay);}
 		const vid = m[1];
 		const ret = document.createElement("IFRAME");
 		ret.setAttribute("src",`https://www.tagesschau.de/multimedia/video/video-${vid}~player_branded-true.html`);
+		return ret;
+	};
+
+	const arteToIFrame = (href, autoplay) => {
+		const m = href.match(/https?:\/\/www.arte.tv\/(de|fr|en|es|pl|it)\/videos\/*/); // could be more optimized
+		if(m === null){return youtubeToIframe(href, autoplay);}
+		if(autoplay === true){autoplay = 1;} else {autoplay = 0;}
+		const id = href.slice(30, 42); // seems a bit dirty
+		const lang = m[1];
+		const ret = document.createElement("IFRAME");
+		ret.setAttribute("src", `https://www.arte.tv/embeds/${lang}/${id}?autoplay=${autoplay}`);
 		return ret;
 	};
 
