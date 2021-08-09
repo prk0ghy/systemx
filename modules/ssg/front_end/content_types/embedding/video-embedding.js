@@ -46,7 +46,6 @@
 		const m = href.match(/https?:\/\/vimeo.com\/(\d+)/i);
 		if(m === null){return null;}
 		const vid = m[1];
-		const ret = document.createElement("IFRAME");
 		return `https://player.vimeo.com/video/${vid}${autoplay ? "?autoplay=1" : ""}`;
 	};
 
@@ -65,15 +64,15 @@
 		return `https://www.youtube-nocookie.com/embed/${vid}${params.length > 0 ? "?"+params.join('&') : ""}`;
 	};
 
-	embeddingHandlers.tagesschau = (href, autoplay) => {
+	embeddingHandlers.tagesschau = href => {
 		const m = href.match(/https?:\/\/www.tagesschau.de\/multimedia\/video\/video-(\d+).*/i);
 		if(m === null){return null;}
 		const vid = m[1];
-		return `https://www.tagesschau.de/multimedia/video/video-${vid}~player_branded-true.html`
+		return `https://www.tagesschau.de/multimedia/video/video-${vid}~player_branded-true.html`;
 	};
 
 	embeddingHandlers.arte = (href, autoplay) => {
-		const m = href.match(/https?:\/\/www.arte.tv\/(de|fr|en|es|pl|it)\/videos\/([^\/]*)\/*/); // could be more optimized
+		const m = href.match(/https?:\/\/www.arte.tv\/(de|fr|en|es|pl|it)\/videos\/([^/]*)\/*/); // could be more optimized
 		if(m === null){return null;}
 		if(autoplay === true){autoplay = 1;} else {autoplay = 0;}
 		const lang = m[1];
@@ -87,7 +86,7 @@
 			if(curHref !== null){return curHref;}
 		}
 		return null;
-	}
+	};
 
 	const textToEmbedding = (href,autoplay) => {
 		if(autoplay === undefined){autoplay = false;}
