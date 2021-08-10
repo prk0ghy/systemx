@@ -1,0 +1,20 @@
+.header {
+	position: relative;
+	& .hero-image {
+		height: 100vh;
+		object-fit: cover;
+		object-position: center center;
+		width: 100%;
+	}
+	& .content {
+		color: white;
+		left: 0;
+		margin-top: 4rem;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		& .text {
+			margin: 0 auto;
+		}
+	}
+}

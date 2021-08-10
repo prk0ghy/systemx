@@ -1,0 +1,16 @@
+@import "../breakpoints.css";
+.laced {
+	@media (--all) {
+		margin: 0 2rem;
+	}
+	@media (--tablet) {
+		margin: 0 4rem;
+	}
+	@media (--desktop) {
+		margin: 0 5rem;
+	}
+	& .content {
+		margin: 0 auto;
+		max-width: 172rem;
+	}
+}

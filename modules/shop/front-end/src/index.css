@@ -1,0 +1,30 @@
+* {
+	box-sizing: border-box;
+	color: inherit;
+	margin: 0;
+	padding: 0;
+}
+:root {
+	font-family: sans-serif;
+	/* This makes sure that 1rem = 10px */
+	font-size: 62.5%;
+	& a {
+		text-decoration: none;
+	}
+	& body {
+		font-size: 2.5rem;
+		min-height: 100vh;
+		position: relative;
+		& :global(#root) {
+			height: 100%;
+		}
+	}
+	& img {
+		display: block;
+		height: auto;
+		max-width: 100%;
+	}
+	& p {
+		margin-bottom: 3rem;
+	}
+}

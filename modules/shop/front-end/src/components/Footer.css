@@ -1,0 +1,15 @@
+.footer {
+	background-color: white;
+	padding: 4rem 0;
+	& .items {
+		display: inline-grid;
+		grid-auto-flow: column;
+		grid-gap: 4rem;
+		list-style-type: none;
+		& .item {
+			& .link {
+				color: green;
+			}
+		}
+	}
+}

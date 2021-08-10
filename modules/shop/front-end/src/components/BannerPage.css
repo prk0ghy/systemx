@@ -1,0 +1,21 @@
+.banner-page {
+	& .banner {
+		position: relative;
+		& .image {
+			height: calc(100vh - var(--header-height));
+			object-fit: cover;
+			object-position: left top;
+			width: 100%;
+		}
+		& .title {
+			color: white;
+			font-size: 8vw;
+			font-weight: bold;
+			position: absolute;
+			top: 5rem;
+		}
+	}
+	& .content {
+		margin-top: 10rem;
+	}
+}

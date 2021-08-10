@@ -1,0 +1,103 @@
+@import "../breakpoints.css";
+.product {
+	--grid-template-areas: "rest preview";
+	--name-margin: 15rem;
+	--name-width: 100vw;
+	--text-alignment: right;
+	background-color: var(--product-color);
+	color: white;
+	overflow: hidden;
+	&.start-with-preview {
+		--grid-template-areas: "preview rest";
+		--name-margin: -20vw;
+		--name-width: initial;
+		--text-alignment: left;
+	}
+	& .row {
+		@media (--all) {
+			display: flex;
+			flex-direction: column;
+		}
+		@media (--desktop) {
+			display: grid;
+			grid-template-areas: var(--grid-template-areas);
+			grid-template-columns: 60rem 1fr;
+		}
+		& .name {
+			hyphens: auto;
+			@media (--all) {
+				margin-left: 4rem;
+			}
+			@media (--desktop) {
+				margin: 0;
+				margin-left: var(--name-margin);
+				display: grid;
+				width: var(--name-width);
+			}
+			& .text {
+				position: relative;
+				@media (--all) {
+					font-size: 5rem;
+				}
+				@media (--tablet) {
+					font-size: 8rem;
+				}
+				@media (--laptop) {
+					font-size: 12rem;
+				}
+				@media (--desktop) {
+					font-size: 10vmax;
+				}
+			}
+		}
+		& .card {
+			grid-area: rest;
+			max-height: 90rem;
+			padding: 4rem 0 6rem;
+			& .card-content {
+				display: grid;
+				grid-auto-flow: row;
+				grid-gap: 10rem;
+				height: 100%;
+				justify-content: space-between;
+				& .enticer {
+					position: relative;
+					@media (--desktop) {
+						text-align: var(--text-alignment);
+					}
+					& .caption {
+						font-size: 4rem;
+						margin-bottom: 2.8rem;
+					}
+					& .description {
+						-webkit-box-orient: vertical;
+						-webkit-line-clamp: 4;
+						display: -webkit-box;
+						font-size: 2.5rem;
+						overflow: hidden;
+						text-overflow: ellipsis;
+					}
+				}
+				& .bottom {
+					display: flex;
+					width: 100%;
+					& .action {
+						margin: 0 auto;
+						text-align: center;
+						& .price {
+							font-size: 4.5rem;
+							margin-bottom: 1.8rem;
+						}
+					}
+				}
+			}
+		}
+		& .preview {
+			align-self: stretch;
+			grid-area: preview;
+			object-fit: cover;
+			object-position: center center;
+			width: 100%;
+		}
+	}
+}
