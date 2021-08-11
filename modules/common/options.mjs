@@ -48,6 +48,10 @@ const options = {
 			graphqlEndpoint: "https://lasub.dilewe.de/api",
 			httpPort: 8042
 		},
+		leipzig: {
+			graphqlEndpoint: "https://archiv-buergerbewegung-leipzig.test-dilewe.de/api",
+			httpPort: 8052
+		},
 		rdhessen: {
 			graphqlEndpoint: "https://rdhessen.test-dilewe.de/api",
 			httpPort: 8048
