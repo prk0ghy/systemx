@@ -39,7 +39,9 @@ const options = {
 			cssVars: {
 				backgroundBlue:  "rgba(0,0,0,0)",
 				backgroundRed:   "rgba(0,0,0,0)",
-				backgroundGreen: "rgba(0,0,0,0)"
+				backgroundGreen: "rgba(0,0,0,0)",
+				fontContent:   "Franklin",
+				fontHeadlines: "Franklin"
 			}
 		},
 		lasub: {

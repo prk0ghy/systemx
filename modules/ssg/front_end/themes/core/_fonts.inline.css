@@ -132,6 +132,109 @@
 }
 
 @font-face {
+	font-family: Franklin;
+	src: url("/resources/fonts/LibreFranklin-Thin.ttf");
+	font-weight: 100;
+}
+
+@font-face {
+	font-family: Franklin;
+	src: url("/resources/fonts/LibreFranklin-ThinItalic.ttf");
+	font-weight: 100;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: Franklin;
+	src: url("/resources/fonts/LibreFranklin-Light.ttf");
+	font-weight: 200;
+}
+
+@font-face {
+	font-family: Franklin;
+	src: url("/resources/fonts/LibreFranklin-LightItalic.ttf");
+	font-weight: 200;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: Franklin;
+	src: url("/resources/fonts/LibreFranklin-Regular.ttf");
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: Franklin;
+	src: url("/resources/fonts/LibreFranklin-Italic.ttf");
+	font-weight: 400;
+	font-style:italic;
+}
+
+@font-face {
+	font-family: Franklin;
+	src: url("/resources/fonts/LibreFranklin-Medium.ttf");
+	font-weight: 500;
+}
+
+@font-face {
+	font-family: Franklin;
+	src: url("/resources/fonts/LibreFranklin-MediumItalic.ttf");
+	font-weight: 500;
+	font-style:italic;
+}
+
+@font-face {
+	font-family: Franklin;
+	src: url("/resources/fonts/LibreFranklin-SemiBold.ttf");
+	font-weight: 600;
+}
+
+@font-face {
+	font-family: Franklin;
+	src: url("/resources/fonts/LibreFranklin-SemiBoldItalic.ttf");
+	font-weight: 600;
+	font-style:italic;
+}
+
+@font-face {
+	font-family: Franklin;
+	src: url("/resources/fonts/LibreFranklin-Bold.ttf");
+	font-weight: 700;
+}
+
+@font-face {
+	font-family: Franklin;
+	src: url("/resources/fonts/LibreFranklin-BoldItalic.ttf");
+	font-weight: 700;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: Franklin;
+	src: url("/resources/fonts/LibreFranklin-ExtraBold.ttf");
+	font-weight: 800;
+}
+
+@font-face {
+	font-family: Franklin;
+	src: url("/resources/fonts/LibreFranklin-ExtraBoldItalic.ttf");
+	font-weight: 800;
+}
+
+@font-face {
+	font-family: Franklin;
+	src: url("/resources/fonts/LibreFranklin-Black.ttf");
+	font-weight: 900;
+}
+
+@font-face {
+	font-family: Franklin;
+	src: url("/resources/fonts/LibreFranklin-BlackItalic.ttf");
+	font-weight: 900;
+	font-style: italic;
+}
+
+@font-face {
 	font-family: 'icomoon';
 	src:  url('/resources/fonts/icomoon.eot?5ii8n0');
 	src:  url('/resources/fonts/icomoon.eot?5ii8n0#iefix') format('embedded-opentype'),
