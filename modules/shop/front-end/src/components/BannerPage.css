@@ -10,7 +10,7 @@
 		& .title {
 			color: white;
 			font-size: 8vw;
-			font-weight: bold;
+			font-weight: var(--font-weight-bold);
 			position: absolute;
 			top: 5rem;
 		}

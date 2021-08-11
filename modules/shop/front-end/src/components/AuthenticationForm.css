@@ -1,4 +1,3 @@
-@import "../breakpoints.css";
 .authentication-form {
 	& .title {
 		font-size: 3.5rem;

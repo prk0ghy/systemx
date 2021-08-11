@@ -1,4 +1,3 @@
-@import "../breakpoints.css";
 .laced {
 	@media (--all) {
 		margin: 0 2rem;

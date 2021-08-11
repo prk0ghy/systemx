@@ -1,4 +1,3 @@
-@import "../breakpoints.css";
 .product {
 	--grid-template-areas: "rest preview";
 	--name-margin: 15rem;

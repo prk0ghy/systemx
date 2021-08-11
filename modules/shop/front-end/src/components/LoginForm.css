@@ -19,7 +19,7 @@
 		background-image: none;
 		border: none;
 		color: var(--color-link);
-		font-weight: bold;
+		font-weight: var(--font-weight-bold);
 		display: block;
 		margin-bottom: 3rem;
 		margin-left: auto;
