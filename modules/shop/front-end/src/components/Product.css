@@ -22,16 +22,25 @@
 			grid-template-areas: var(--grid-template-areas);
 			grid-template-columns: 60rem 1fr;
 		}
-		& .name {
+		& .name, & .mobile-name {
+			font-weight: var(--font-weight-black);
 			hyphens: auto;
 			@media (--all) {
-				margin-left: 4rem;
+				&.name {
+					display: none;
+				}
 			}
 			@media (--desktop) {
+				display: grid;
 				margin: 0;
 				margin-left: var(--name-margin);
-				display: grid;
 				width: var(--name-width);
+				&.name {
+					display: block;
+				}
+				&.mobile-name {
+					display: none;
+				}
 			}
 			& .text {
 				position: relative;
@@ -45,7 +54,7 @@
 					font-size: 12rem;
 				}
 				@media (--desktop) {
-					font-size: 10vmax;
+					font-size: 9vw;
 				}
 			}
 		}
@@ -66,13 +75,17 @@
 					}
 					& .caption {
 						font-size: 4rem;
+						font-weight: var(--font-weight-medium);
 						margin-bottom: 2.8rem;
 					}
 					& .description {
+						/* stylelint-disable-next-line property-no-vendor-prefix */
 						-webkit-box-orient: vertical;
-						-webkit-line-clamp: 4;
+						/* stylelint-disable-next-line value-no-vendor-prefix */
 						display: -webkit-box;
 						font-size: 2.5rem;
+						font-weight: var(--font-weight-light);
+						-webkit-line-clamp: 4;
 						overflow: hidden;
 						text-overflow: ellipsis;
 					}
@@ -85,6 +98,7 @@
 						text-align: center;
 						& .price {
 							font-size: 4.5rem;
+							font-weight: var(--font-weight-bold);
 							margin-bottom: 1.8rem;
 						}
 					}

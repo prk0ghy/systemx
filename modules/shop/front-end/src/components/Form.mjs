@@ -6,7 +6,7 @@ export default ({
 	className,
 	...rest
 }) => (
-	<Form className={ cx(styles.form, className)} { ...rest }>
+	<Form className={ cx(styles.form, className) } { ...rest }>
 		{ children }
 	</Form>
 );

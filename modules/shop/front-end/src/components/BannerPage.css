@@ -4,7 +4,7 @@
 		& .image {
 			height: calc(100vh - var(--header-height));
 			object-fit: cover;
-			object-position: left top;
+			object-position: center center;
 			width: 100%;
 		}
 		& .title {

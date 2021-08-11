@@ -1,19 +1,19 @@
 import { createContainer } from "react-tracked";
+import { useBrand } from "contexts/Brand.mjs";
 import { useReducer } from "react";
-const reduce = (state, action) => {
-	const { data } = action;
-};
+const reduce = state => state;
 export const {
 	Provider: ProductsProvider,
 	useTracked: useProducts
 } = createContainer(() => {
+	const [{ assetBaseURL }] = useBrand();
 	const state = {
 		products: [{
 			caption: "Handbuch für Exotentiermediziner",
 			description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
 			id: "abc",
 			name: "mVet",
-			previewURL: "/assets/mvet/products/turtle.jpg",
+			previewURL: `${assetBaseURL}/products/turtle.jpg`,
 			price: 200
 		}, {
 			children: [{
@@ -25,21 +25,21 @@ export const {
 			description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
 			id: "blah",
 			name: "Tagungsbände",
-			previewURL: "/assets/mvet/products/bird.jpg",
+			previewURL: `${assetBaseURL}/products/bird.jpg`,
 			price: null
 		}, {
 			caption: null,
 			description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
 			id: "jkl",
 			name: "Fort- und Weiterbildungen",
-			previewURL: "/assets/mvet/products/lizard.jpg",
+			previewURL: `${assetBaseURL}/products/lizard.jpg`,
 			price: 123
 		}, {
 			caption: null,
 			description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
 			id: "ghi",
 			name: "Diagnose-Tool",
-			previewURL: "/assets/mvet/products/monkey.jpg",
+			previewURL: `${assetBaseURL}/products/monkey.jpg`,
 			price: 200
 		}]
 	};

@@ -1,22 +1,22 @@
 import { createContainer } from "react-tracked";
 import { useReducer } from "react";
 const reduce = (state, action) => {
-	const { data } = action;
 	switch (action.type) {
 		case "ADD_ITEM": {
-			return data;
+			return state;
 		}
 		default: {
-			throw new Error("Invalid cart reduction");
+			throw new Error("Unknown brand reduction");
 		}
 	}
 };
 export const {
-	Provider: CartProvider,
-	useTracked: useCart
+	Provider: BrandProvider,
+	useTracked: useBrand
 } = createContainer(() => {
 	const state = {
-		items: []
+		assetBaseURL: "/assets/mvet",
+		name: "mVet"
 	};
 	const dispatch = useReducer(reduce, null);
 	return [state, dispatch];

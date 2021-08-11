@@ -1,19 +1,19 @@
-import { Field, Formik } from "formik";
 import AuthenticationForm from "components/AuthenticationForm.mjs";
-import Button from "components/Button.mjs";
 import CountrySelector from "components/CountrySelector.mjs";
-import Form from "components/Form.mjs";
+import { Formik } from "formik";
 import Input from "components/Input.mjs";
 import RadioGroup from "components/RadioGroup.mjs";
 import styles from "./LoginForm.css";
-export default ({
-	onSwitchView
-}) => {
+export default () => {
+	const accountTypes = {
+		business: "Geschäftskunde",
+		personal: "Privatkunde"
+	};
 	const initialValues = {
 		accountType: "personal",
 		country: "DE",
-		firstName: "",
 		email: "",
+		firstName: "",
 		lastName: "",
 		organization: "",
 		password: "",
@@ -24,11 +24,9 @@ export default ({
 		<div className={ styles.registrationForm }>
 			<Formik initialValues={ initialValues }>
 				{
-					({
-						values
-					}) => (
+					({ values }) => (
 						<AuthenticationForm
-							description="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata."
+							description="Um ein Konto zu erstellen, füllen Sie das Registrierungsformular aus."
 							submit="Registrieren"
 							title="Registrierung"
 						>
@@ -41,10 +39,7 @@ export default ({
 							<RadioGroup
 								label="Kontotyp"
 								name="accountType"
-								options={{
-									personal: "Privatkunde",
-									business: "Geschäftskunde"
-								}}
+								options={ accountTypes }
 								required
 							/>
 							<Input

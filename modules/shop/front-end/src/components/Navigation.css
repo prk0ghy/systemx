@@ -5,9 +5,9 @@
 		display: grid;
 		grid-auto-flow: column;
 		grid-gap: 2.6rem;
+		height: var(--navigation-height);
 		justify-content: space-between;
 		list-style-type: none;
-		height: var(--navigation-height);
 		& .item {
 			height: 100%;
 			& .link {

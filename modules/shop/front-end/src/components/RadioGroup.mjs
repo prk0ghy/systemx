@@ -16,7 +16,7 @@ export default ({
 	return (
 		<div className={ styles.radioGroup }>
 			<Labeled label={ label }>
-				<div className={ styles.group } role="group" aria-labelledby={ name }>
+				<div aria-labelledby={ name } className={ styles.group } role="group">
 					{ labels }
 				</div>
 			</Labeled>

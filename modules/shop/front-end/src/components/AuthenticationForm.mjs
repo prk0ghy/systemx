@@ -1,5 +1,5 @@
-import cx from "classnames";
 import Button from "components/Button.mjs";
+import cx from "classnames";
 import Form from "components/Form.mjs";
 import styles from "./AuthenticationForm.css";
 export default ({
@@ -13,7 +13,7 @@ export default ({
 	return (
 		<div className={ authenticationClassName }>
 			<h1 className={ styles.title }>{ title }</h1>
-			<p className={ styles.description }>{ description }</p>
+			<div className={ styles.description }>{ description }</div>
 			<Form>
 				{ children }
 				<Button className={ styles.submit } kind="primary" type="submit">{ submit }</Button>

@@ -1,23 +1,25 @@
 import {
-	BrowserRouter as Router,
 	Route,
+	BrowserRouter as Router,
 	Switch
 } from "react-router-dom";
 import Authentication from "components/routes/Authentication.mjs";
+import { BrandProvider } from "contexts/Brand.mjs";
 import { CartProvider } from "contexts/Cart.mjs";
-import { ProductsProvider } from "contexts/Products.mjs";
 import Footer from "components/Footer.mjs";
 import Header from "components/Header.mjs";
-import Imprint from "components/routes/Imprint.mjs";
 import Home from "components/routes/Home.mjs";
+import Imprint from "components/routes/Imprint.mjs";
 import Privacy from "components/routes/Privacy.mjs";
 import termsAndConditions from "components/routes/Terms-and-conditions.mjs";
+import { ProductsProvider } from "contexts/Products.mjs";
 import routes from "../routes.mjs";
+import ScrollManager from "components/ScrollManager.mjs";
 import styles from "./Application.css";
-
 const Application = () => (
 	<div className={ styles.application }>
 		<Router>
+			<ScrollManager/>
 			<Header/>
 			<main>
 				<Switch>
@@ -34,9 +36,11 @@ const Application = () => (
 	</div>
 );
 export default () => (
-	<ProductsProvider>
-		<CartProvider>
-			<Application/>
-		</CartProvider>
-	</ProductsProvider>
+	<BrandProvider>
+		<ProductsProvider>
+			<CartProvider>
+				<Application/>
+			</CartProvider>
+		</ProductsProvider>
+	</BrandProvider>
 );

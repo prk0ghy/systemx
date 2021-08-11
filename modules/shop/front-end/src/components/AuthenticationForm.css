@@ -9,7 +9,7 @@
 	}
 	& .submit {
 		margin-top: 7rem;
-		min-width: 30rem;
+		min-width: 50%;
 		@media (--tablet) {
 			justify-self: flex-end;
 		}

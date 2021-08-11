@@ -8,7 +8,7 @@ module.exports = {
 			resolve(importString) {
 				const replacements = [
 					["cache", path.join(process.cwd(), ".cache/fonts")],
-					["src", path.join(process.cwd(), "src")],
+					["src", path.join(process.cwd(), "src")]
 				];
 				for (const [prefix, targetPath] of replacements) {
 					const needle = `~${prefix}`;
