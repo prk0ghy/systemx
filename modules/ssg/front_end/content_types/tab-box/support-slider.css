@@ -96,6 +96,23 @@ section[tab-box-type="support"] start-slide::before {
 	background-size:contain;
 }
 
+section[tab-box-type="support"] end-slide {
+	background:url("/resources/svg/foerderfuchs_confetti.svg") no-repeat;
+	background-size:cover;
+	position:absolute;
+	width:100%;
+	height:100%;
+}
+
+section[tab-box-type="support"] end-slide::before {
+	width:32em;
+	height:32em;
+	margin-left:-16.5em;
+	margin-top:-17em;
+	background-image:url("/resources/svg/foerderfuchs_party.svg");
+	background-size:contain;
+}
+
 section[tab-box-type="support"] slider-info {
 	font-size:2em;
 	color:#fff;
