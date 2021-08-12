@@ -59,6 +59,7 @@ export default {
 							${fragments.asset}
 						}
 						title: bezeichnung
+						source: quellenangaben_q
 					}
 				}
 				type: kastentyp
@@ -100,6 +101,11 @@ export default {
 				${tab.title}
 			</tab-box-header>
 		`).join("");
+		const tabSource = tabs.map((tab) => `
+			<tab-box-source>
+				${tab.source}
+			</tab-box-source>
+		`).join("");
 		const tabContents = (await Promise.all(tabs.map(async (tab, index) => {
 			const contentsHTML = (await Promise.all(tab.contents.map(content => render(content)))).join("");
 			return `
@@ -127,6 +133,7 @@ export default {
 					</tab-box-header-wrap>
 					<tab-box-content-wrap>
 						${tabContents}
+						${tabSource}
 					</tab-box-content-wrap>
 				</inner-content>
 			</section>

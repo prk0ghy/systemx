@@ -79,6 +79,13 @@ tab-box-header.active {
 	box-shadow: 1px 3px 6px 1px #00000089;
 }
 
+tab-box-source {
+	display: block;
+	padding: var(--content-padding-half) var(--content-padding) 0;
+	font-size: 0.8em;
+	line-height: 1.5em;
+}
+
 [tab-box-type="exercise"] tab-box-header {
 	font-size:1.45em;
 	width:1.5em;
