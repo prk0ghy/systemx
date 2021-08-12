@@ -101,11 +101,11 @@ export default {
 				${tab.title}
 			</tab-box-header>
 		`).join("");
-		const tabSource = tabs.map((tab) => `
+		const tabSource = tabs.map(tab => tab?.source ? `
 			<tab-box-source>
 				${tab.source}
 			</tab-box-source>
-		`).join("");
+		` : "").join("");
 		const tabContents = (await Promise.all(tabs.map(async (tab, index) => {
 			const contentsHTML = (await Promise.all(tab.contents.map(content => render(content)))).join("");
 			return `
