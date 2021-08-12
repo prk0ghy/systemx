@@ -1,10 +1,14 @@
+import ImageText from "components/ImageText.mjs";
 import Laced from "components/Laced.mjs";
 import Page from "components/Page.mjs";
 import ProductList from "components/ProductList.mjs";
 import styles from "./Home.css";
 import { useBrand } from "contexts/Brand.mjs";
 export default () => {
-	const [{ assetBaseURL }] = useBrand();
+	const [{
+		assetBaseURL,
+		subjectMatter
+	}] = useBrand();
 	return (
 		<Page title="Home">
 			<header className={ styles.header }>
@@ -13,9 +17,9 @@ export default () => {
 					<div className={ styles.text }>
 						<Laced>
 							<h1>
-								<span className={ styles.small }>Das Portal für</span>
+								<ImageText className={ styles.small }>Das Portal für</ImageText>
 								<br/>
-								<span className={ styles.big }>Tiermedizin</span>
+								<ImageText className={ styles.big }>{ subjectMatter }</ImageText>
 							</h1>
 						</Laced>
 					</div>

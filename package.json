@@ -65,7 +65,7 @@
 		"dev:ssg": "nodemon --ignore dist/ --ignore web/ ./index.mjs --quiet --start-server",
 		"dev:shop": "nodemon --ignore dist/ --ignore web/ ./index.mjs --quiet --start-shop",
 		"dev:shop:new": "npm --prefix modules/shop/front-end run dev",
-		"lint": "npm run eslint && npm run stylelint",
+		"lint": "npm run eslint; npm run stylelint",
 		"eslint": "eslint './modules/**/*.mjs' './modules/**/*.js' --ignore-pattern 'modules/shop/front-end'; npm --prefix modules/shop/front-end run lint:es",
 		"stylelint": "stylelint './modules/**/*.css' --ignore-pattern 'dist/'",
 		"mon": "nodemon --ignore dist/ --ignore web/ ./index.mjs --skip-network --start-server --start-shop",

@@ -1,6 +1,7 @@
 import { formatPrice, H } from "../format.mjs";
 import Button from "components/Button.mjs";
 import cx from "classnames";
+import ImageText from "components/ImageText.mjs";
 import Laced from "components/Laced.mjs";
 import styles from "./Product.css";
 export default ({
@@ -29,11 +30,11 @@ export default ({
 				<div className={ styles.card }>
 					<h2 className={ styles.mobileName }>
 						<Laced>
-							<span className={ styles.text }>{ name }</span>
+							<ImageText className={ styles.text }>{ name }</ImageText>
 						</Laced>
 					</h2>
 					<h2 className={ styles.name }>
-						<span className={ styles.text }>{ name }</span>
+						<ImageText className={ styles.text }>{ name }</ImageText>
 					</h2>
 					<Laced>
 						<div className={ styles.cardContent }>

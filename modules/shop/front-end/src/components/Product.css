@@ -25,6 +25,7 @@
 		& .name, & .mobile-name {
 			font-weight: var(--font-weight-black);
 			hyphens: auto;
+			letter-spacing: 0.5rem;
 			@media (--all) {
 				&.name {
 					display: none;

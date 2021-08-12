@@ -1,8 +1,10 @@
 import AuthenticationForm from "components/AuthenticationForm.mjs";
 import { Formik } from "formik";
 import Input from "components/Input.mjs";
+import { Link } from "react-router-dom";
+import routes from "../routes.mjs";
 import styles from "./LoginForm.css";
-export default ({ onSwitchView }) => {
+export default () => {
 	const description = (
 		<>
 			<p>Bevor Sie mit Ihrem Einkauf fortfahren können, melden Sie sich bitte an. Dies erleichtert es uns, Ihren Einkauf zu bearbeiten.</p>
@@ -20,7 +22,7 @@ export default ({ onSwitchView }) => {
 								submit="Anmelden"
 								title="Anmeldung"
 							>
-								<button className={ styles.registerButton } onClick={ onSwitchView } type="button">Neues Konto registrieren</button>
+								<Link className={ styles.registrationButton } to={ routes.registration.path }>Neues Konto registrieren</Link>
 								<Input
 									autoComplete="email"
 									label="E-Mail-Adresse"

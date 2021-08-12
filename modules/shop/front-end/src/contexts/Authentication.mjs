@@ -14,11 +14,7 @@ export const {
 	Provider: BrandProvider,
 	useTracked: useBrand
 } = createContainer(() => {
-	const state = {
-		assetBaseURL: "/assets/mvet",
-		name: "mVet",
-		subjectMatter: "Tiermedizin"
-	};
+	const state = {};
 	const dispatch = useReducer(reduce, null);
 	return [state, dispatch];
 });

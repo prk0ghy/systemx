@@ -23,12 +23,12 @@ export default ({ className }) => {
 				<li className={ styles.item }>
 					<ul className={ styles.items }>
 						<li className={ styles.item }>
-							<Link className={ styles.link } to={ routes.authentication.path }>
+							<Link className={ styles.link } to={ routes.login.path }>
 								<img className={ cx(styles.image, styles.cart) } src={ `${assetBaseURL}/ui/cart.png` }/>
 							</Link>
 						</li>
 						<li className={ styles.item }>
-							<Link className={ styles.link } to={ routes.authentication.path }>
+							<Link className={ styles.link } to={ routes.login.path }>
 								<span>Mein <b>{ name }</b></span>
 							</Link>
 						</li>

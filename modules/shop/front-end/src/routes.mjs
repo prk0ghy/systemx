@@ -1,8 +1,4 @@
 export default {
-	authentication: {
-		name: "Anmeldung",
-		path: "/authentication"
-	},
 	home: {
 		name: "Startseite",
 		path: "/"
@@ -11,9 +7,17 @@ export default {
 		name: "Impressum",
 		path: "/imprint"
 	},
+	login: {
+		name: "Anmeldung",
+		path: "/login"
+	},
 	privacy: {
 		name: "Datenschutz",
 		path: "/privacy"
+	},
+	registration: {
+		name: "Registrierung",
+		path: "/register"
 	},
 	termsAndConditions: {
 		name: "AGB",
