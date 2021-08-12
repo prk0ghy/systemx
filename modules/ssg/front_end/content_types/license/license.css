@@ -1,7 +1,7 @@
 details.license > summary {
-	font-family: var(--font-headlines);
+	font-family: montserrat;
 	font-size: 0.8em;
-	font-weight: 800;
+	font-weight: 500;
 	position: absolute;
 	right:0.5em;
 	margin-top:-2em;
