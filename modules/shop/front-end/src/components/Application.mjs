@@ -1,22 +1,44 @@
 import {
-	Route,
+	Route as OriginalRoute,
 	BrowserRouter as Router,
 	Switch
 } from "react-router-dom";
+import {
+	lazy,
+	Suspense
+} from "react";
 import { BrandProvider } from "contexts/Brand.mjs";
 import { CartProvider } from "contexts/Cart.mjs";
 import Footer from "components/shell/Footer.mjs";
 import Header from "components/shell/Header.mjs";
-import Home from "components/routes/Home.mjs";
-import Imprint from "components/routes/Imprint.mjs";
-import Login from "components/routes/Login.mjs";
-import Privacy from "components/routes/Privacy.mjs";
 import { ProductsProvider } from "contexts/Products.mjs";
-import Registration from "components/routes/Registration.mjs";
 import routes from "root/routes.mjs";
 import ScrollManager from "components/shell/ScrollManager.mjs";
 import styles from "./Application.css";
-import TermsAndConditions from "components/routes/TermsAndConditions.mjs";
+const withSuspense = WrappedComponent => (
+	<Suspense fallback={ null }>
+		<WrappedComponent/>
+	</Suspense>
+);
+const Home = lazy(() => import("components/routes/Home.mjs"));
+const Imprint = lazy(() => import("components/routes/Imprint.mjs"));
+const Login = lazy(() => import("components/routes/Login.mjs"));
+const Privacy = lazy(() => import("components/routes/Privacy.mjs"));
+const Registration = lazy(() => import("components/routes/Registration.mjs"));
+const TermsAndConditions = lazy(() => import("components/routes/TermsAndConditions.mjs"));
+const Route = ({
+	component,
+	...rest
+}) => {
+	const ComponentWithSuspense = () => withSuspense(component);
+	return (
+		<OriginalRoute
+			exact
+			render={ props => <ComponentWithSuspense { ...props }/> }
+			{ ...rest }
+		/>
+	);
+};
 const Application = () => (
 	<div className={ styles.application }>
 		<Router>
