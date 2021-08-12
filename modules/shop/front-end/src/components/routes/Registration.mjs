@@ -1,7 +1,10 @@
-import AuthenticationPage from "components/AuthenticationPage.mjs";
-import RegistrationForm from "components/RegistrationForm.mjs";
+import AuthenticationLayout from "components/layouts/AuthenticationLayout.mjs";
+import Page from "components/shell/Page.mjs";
+import RegistrationForm from "components/forms/RegistrationForm.mjs";
 export default () => (
-	<AuthenticationPage title="Registrierung">
-		<RegistrationForm/>
-	</AuthenticationPage>
+	<Page title="Registrierung">
+		<AuthenticationLayout>
+			<RegistrationForm/>
+		</AuthenticationLayout>
+	</Page>
 );

@@ -67,7 +67,8 @@ export default {
 	resolve: {
 		alias: {
 			components: path.join(src, "components"),
-			contexts: path.join(src, "contexts")
+			contexts: path.join(src, "components", "contexts"),
+			root: path.join(src)
 		}
 	}
 };

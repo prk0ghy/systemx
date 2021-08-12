@@ -5,16 +5,16 @@ import {
 } from "react-router-dom";
 import { BrandProvider } from "contexts/Brand.mjs";
 import { CartProvider } from "contexts/Cart.mjs";
-import Footer from "components/Footer.mjs";
-import Header from "components/Header.mjs";
+import Footer from "components/shell/Footer.mjs";
+import Header from "components/shell/Header.mjs";
 import Home from "components/routes/Home.mjs";
 import Imprint from "components/routes/Imprint.mjs";
 import Login from "components/routes/Login.mjs";
 import Privacy from "components/routes/Privacy.mjs";
 import { ProductsProvider } from "contexts/Products.mjs";
 import Registration from "components/routes/Registration.mjs";
-import routes from "../routes.mjs";
-import ScrollManager from "components/ScrollManager.mjs";
+import routes from "root/routes.mjs";
+import ScrollManager from "components/shell/ScrollManager.mjs";
 import styles from "./Application.css";
 import TermsAndConditions from "components/routes/TermsAndConditions.mjs";
 const Application = () => (

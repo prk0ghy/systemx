@@ -7,15 +7,18 @@
 	--outline-color: #222222;
 	--outline-width: max(var(--optimal-outline-width), var(--minimum-outline-width));
 	@supports (--webkit-text-stroke: var(--outline-width) var(--outline-color)) {
-		-webkit-text-stroke: var(--outline-width) var(--outline-color);
+		&, & * {
+			-webkit-text-stroke: var(--outline-width) var(--outline-color);
+		}
 	}
 	@supports not (--webkit-text-stroke: var(--outline-width) var(--outline-color)) {
-		/* stylelint-disable-next-line unit-allowed-list */
 		--outline-width: max(var(--fallback-outline-width), var(--minimum-outline-width));
-		text-shadow:
-			var(--outline-width) var(--outline-width) 0 var(--outline-color),
-			var(--outline-width) calc(-1 * var(--outline-width)) 0 var(--outline-color),
-			calc(-1 * var(--outline-width)) var(--outline-width) 0 var(--outline-color),
-			calc(-1 * var(--outline-width)) calc(-1 * var(--outline-width)) 0 var(--outline-color);
+		&, & * {
+			text-shadow:
+				var(--outline-width) var(--outline-width) 0 var(--outline-color),
+				var(--outline-width) calc(-1 * var(--outline-width)) 0 var(--outline-color),
+				calc(-1 * var(--outline-width)) var(--outline-width) 0 var(--outline-color),
+				calc(-1 * var(--outline-width)) calc(-1 * var(--outline-width)) 0 var(--outline-color);
+		}
 	}
 }

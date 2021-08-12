@@ -1,4 +1,4 @@
-import Product from "components/Product.mjs";
+import Product from "components/marketing/Product.mjs";
 import styles from "./ProductList.css";
 import { useProducts } from "contexts/Products.mjs";
 export default () => {

@@ -25,7 +25,8 @@
 		& .name, & .mobile-name {
 			font-weight: var(--font-weight-black);
 			hyphens: auto;
-			letter-spacing: 0.5rem;
+			/* stylelint-disable-next-line unit-allowed-list */
+			letter-spacing: 0.05em;
 			@media (--all) {
 				&.name {
 					display: none;

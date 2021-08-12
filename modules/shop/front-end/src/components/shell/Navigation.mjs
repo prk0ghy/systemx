@@ -1,6 +1,6 @@
 import cx from "classnames";
 import { Link } from "react-router-dom";
-import routes from "../routes.mjs";
+import routes from "root/routes.mjs";
 import styles from "./Navigation.css";
 import { useBrand } from "contexts/Brand.mjs";
 export default ({ className }) => {

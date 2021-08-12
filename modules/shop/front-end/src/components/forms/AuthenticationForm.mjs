@@ -1,6 +1,6 @@
-import Button from "components/Button.mjs";
+import Button from "components/inputs/Button.mjs";
 import cx from "classnames";
-import Form from "components/Form.mjs";
+import Form from "components/forms/Form.mjs";
 import styles from "./AuthenticationForm.css";
 export default ({
 	children,

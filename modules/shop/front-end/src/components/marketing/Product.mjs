@@ -1,8 +1,8 @@
-import { formatPrice, H } from "../format.mjs";
-import Button from "components/Button.mjs";
+import { formatPrice, H } from "root/format.mjs";
+import Button from "components/inputs/Button.mjs";
 import cx from "classnames";
-import ImageText from "components/ImageText.mjs";
-import Laced from "components/Laced.mjs";
+import ImageText from "components/generics/ImageText.mjs";
+import Laced from "components/generics/Laced.mjs";
 import styles from "./Product.css";
 export default ({
 	caption,

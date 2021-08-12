@@ -1,6 +1,6 @@
 import cx from "classnames";
 import { Field } from "formik";
-import Labeled from "components/Labeled.mjs";
+import Labeled from "components/inputs/Labeled.mjs";
 import styles from "./Input.css";
 export default ({
 	className,

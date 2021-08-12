@@ -1,8 +1,8 @@
-import AuthenticationForm from "components/AuthenticationForm.mjs";
-import CountrySelector from "components/CountrySelector.mjs";
+import AuthenticationForm from "components/forms/AuthenticationForm.mjs";
+import CountrySelector from "components/inputs/CountrySelector.mjs";
 import { Formik } from "formik";
-import Input from "components/Input.mjs";
-import RadioGroup from "components/RadioGroup.mjs";
+import Input from "components/inputs/Input.mjs";
+import RadioGroup from "components/inputs/RadioGroup.mjs";
 import styles from "./LoginForm.css";
 export default () => {
 	const accountTypes = {

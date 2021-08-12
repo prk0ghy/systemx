@@ -1,6 +1,6 @@
-import Laced from "components/Laced.mjs";
+import Laced from "components/generics/Laced.mjs";
 import { Link } from "react-router-dom";
-import routes from "../routes.mjs";
+import routes from "root/routes.mjs";
 import styles from "./Footer.css";
 export default () => {
 	const footerRoutes = [

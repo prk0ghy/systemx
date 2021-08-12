@@ -1,38 +1,5 @@
-.header {
-	position: relative;
-	& .hero-image {
-		height: 100vh;
-		object-fit: cover;
-		object-position: center center;
-		width: 100%;
-	}
-	& .content {
-		color: white;
-		left: 0;
-		margin-top: 4rem;
-		position: absolute;
-		top: 0;
-		width: 100%;
-		& .text {
-			margin: 0 auto;
-			& .small {
-				font-size: 3rem;
-			}
-			& .big {
-				font-weight: var(--font-weight-black);
-				@media (--all) {
-					font-size: 14vw;
-				}
-				@media (--tablet) {
-					font-size: 13vw;
-				}
-				@media (--laptop) {
-					font-size: 12vw;
-				}
-				@media (--desktop) {
-					font-size: 10vw;
-				}
-			}
-		}
+.home {
+	& .small {
+		font-size: 5rem;
 	}
 }

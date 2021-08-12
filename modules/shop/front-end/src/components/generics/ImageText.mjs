@@ -4,5 +4,5 @@ export default ({
 	children,
 	className
 }) => (
-	<span className={ cx(styles.imageText, className) }>{ children }</span>
+	<div className={ cx(styles.imageText, className) }>{ children }</div>
 );

@@ -1,8 +1,8 @@
-import AuthenticationForm from "components/AuthenticationForm.mjs";
+import AuthenticationForm from "components/forms/AuthenticationForm.mjs";
 import { Formik } from "formik";
-import Input from "components/Input.mjs";
+import Input from "components/inputs/Input.mjs";
 import { Link } from "react-router-dom";
-import routes from "../routes.mjs";
+import routes from "root/routes.mjs";
 import styles from "./LoginForm.css";
 export default () => {
 	const description = (
