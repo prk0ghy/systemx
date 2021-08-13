@@ -1,0 +1,5 @@
+.home {
+	& .small {
+		font-size: 5rem;
+	}
+}

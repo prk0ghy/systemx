@@ -20,12 +20,28 @@ const withSuspense = WrappedComponent => (
 		<WrappedComponent/>
 	</Suspense>
 );
-const Home = lazy(() => import("components/routes/Home.mjs"));
-const Imprint = lazy(() => import("components/routes/Imprint.mjs"));
-const Login = lazy(() => import("components/routes/Login.mjs"));
-const Privacy = lazy(() => import("components/routes/Privacy.mjs"));
-const Registration = lazy(() => import("components/routes/Registration.mjs"));
-const TermsAndConditions = lazy(() => import("components/routes/TermsAndConditions.mjs"));
+const prefetchMap = new WeakMap();
+const prefetchLazy = LazyComponent => {
+  if (!prefetchMap.has(LazyComponent)) {
+    prefetchMap.set(LazyComponent, LazyComponent._ctor());
+  }
+  return prefetchMap.get(LazyComponent);
+};
+
+const prerenderedLazy = dynamicImport => {
+  const LazyComponent = React.lazy(dynamicImport);
+  return React.memo(props => (
+    <PrerenderedComponent live={prefetchLazy(LazyComponent)}>
+      <LazyComponent {...props} />
+    </PrerenderedComponent>
+  ));
+};
+const Home = prerenderedLazy(() => import("components/routes/Home.mjs"));
+const Imprint = prerenderedLazy(() => import("components/routes/Imprint.mjs"));
+const Login = prerenderedLazy(() => import("components/routes/Login.mjs"));
+const Privacy = prerenderedLazy(() => import("components/routes/Privacy.mjs"));
+const Registration = prerenderedLazy(() => import("components/routes/Registration.mjs"));
+const TermsAndConditions = prerenderedLazy(() => import("components/routes/TermsAndConditions.mjs"));
 const Route = ({
 	component,
 	...rest

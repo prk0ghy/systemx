@@ -1,0 +1,7 @@
+.shell {
+	--color-link: #5e7ff1;
+	--header-height: 7rem;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	min-height: 100vh;
+}

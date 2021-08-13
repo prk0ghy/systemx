@@ -1,0 +1,9 @@
+.labeled {
+	display: block;
+	& .label {
+		display: block;
+		font-size: 2rem;
+		font-weight: var(--font-weight-medium);
+		margin-bottom: 0.8rem;
+	}
+}

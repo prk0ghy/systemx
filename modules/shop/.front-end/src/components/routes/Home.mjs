@@ -1,4 +1,5 @@
-import BannerLayout from "components/layouts/BannerLayout.mjs";
+import BannerLayout
+from "components/layouts/BannerLayout.mjs";
 import Page from "components/shell/Page.mjs";
 import ProductList from "components/marketing/ProductList.mjs";
 import styles from "./Home.css";
@@ -16,7 +17,7 @@ export default () => {
 	);
 	return (
 		<Page title="Startseite">
-			<BannerLayout className={ styles.home } headline={ headline } image={ `${assetBaseURL}/ui/hero.jpg` }>
+			<BannerLayout className={ styles.home } headline={ headline } height={ 1076 } image={ `${assetBaseURL}/ui/hero.jpg` } width={ 1920 }>
 				<ProductList/>
 			</BannerLayout>
 		</Page>

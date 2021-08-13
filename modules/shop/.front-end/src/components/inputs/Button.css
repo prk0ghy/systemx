@@ -1,0 +1,15 @@
+.button {
+	background: #ffffff61 0% 0% no-repeat padding-box;
+	border: none;
+	box-shadow: 0 0.3rem 0.6rem #00000047;
+	color: white;
+	font-size: 2rem;
+	font-weight: var(--font-weight-light);
+	padding: 1.5rem 3rem;
+	&:hover {
+		cursor: pointer;
+	}
+	&.primary {
+		background-color: #0a409a;
+	}
+}

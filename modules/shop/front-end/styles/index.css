@@ -1,0 +1,39 @@
+@import "~cache/fonts.css";
+* {
+	box-sizing: border-box;
+	color: inherit;
+	font-family: Montserrat, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+:root {
+	--font-weight-light: 300;
+	--font-weight-regular: 400;
+	--font-weight-medium: 500;
+	--font-weight-semi-bold: 600;
+	--font-weight-bold: 700;
+	--font-weight-extra-bold: 800;
+	--font-weight-black: 900;
+	/* This makes sure that 1rem = 10px */
+	font-size: 62.5%;
+	font-weight: var(--font-weight-light);
+	& a {
+		text-decoration: none;
+	}
+	& body {
+		font-size: 2.5rem;
+		min-height: 100vh;
+		position: relative;
+		& :global(#root) {
+			height: 100%;
+		}
+	}
+	& img {
+		display: block;
+		height: auto;
+		max-width: 100%;
+	}
+	& p {
+		margin-bottom: 3rem;
+	}
+}
