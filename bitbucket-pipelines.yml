@@ -7,6 +7,7 @@ pipelines:
         name: Lint JS/CSS and run Tests
         script:
           - npm install
+          - npm run postinstall
           - npm run eslint
           - npm run stylelint
           - npm run test
