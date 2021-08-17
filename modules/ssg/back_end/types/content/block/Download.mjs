@@ -78,11 +78,20 @@ export default {
 		url
 	}, {
 		contentTypeIDIf,
+		Error,
 		download,
 		helpers: {
 			Marker
 		}
 	}) {
+		const href = await download(url || file?.url);
+		if (!href) {
+			return Error.render({
+				message: "Invalid attempt to render a download element without providing a URL or a File.",
+				title: "Download URL/File missing",
+				isEditorial: true
+			});
+		}
 		return `
 			<section content-type="download" ${contentTypeIDIf(id)}>
 				<inner-content>
@@ -92,9 +101,7 @@ export default {
 							<p>${description}</p>
 						</download-text>
 						<download-icon>
-							<a href="${await download(url || file.url)}" target="_blank">
-								<p>DOWNLOAD</p>
-							</a>
+							<a href="${href}" target="_blank"><p>DOWNLOAD</p></a>
 						</download-icon>
 					</download-wrap>
 				</inner-content>
