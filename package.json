@@ -74,6 +74,7 @@
 		"mon": "nodemon --ignore dist/ --ignore web/ ./index.mjs --skip-network --start-server --start-shop",
 		"mon:ssg": "nodemon --ignore dist/ --ignore web/ ./index.mjs --skip-network --start-server",
 		"mon:shop": "nodemon --ignore dist/ --ignore web/ ./index.mjs --skip-network --start-shop",
+		"mon:local": "nodemon --ignore dist/ --ignore web/ ./index.mjs --skip-network --start-server --start-shop --graphql-endpoint=\"http://localhost:80/\"",
 		"start": "node ./index.mjs --start-server --",
 		"open": "node ./index.mjs --open-browser --start-server",
 		"postinstall": "npm --prefix modules/shop/front-end install",
