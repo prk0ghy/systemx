@@ -27,7 +27,9 @@ inner-content {
 	margin-right:auto;
 }
 
-main > section > inner-content {
+main > section > inner-content,
+main > mobile-only > section > inner-content,
+main > desktop-only > section > inner-content {
 	width:100%;
 	max-width:var(--content-width);
 	padding:0 var(--content-padding);
