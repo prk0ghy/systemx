@@ -135,6 +135,9 @@ export default {
 						${tabContents}
 						${tabSource}
 					</tab-box-content-wrap>
+					<tab-box-header-wrap type="bottom">
+						${tabHeaders}
+					</tab-box-header-wrap type="bottom">
 				</inner-content>
 			</section>
 		`;

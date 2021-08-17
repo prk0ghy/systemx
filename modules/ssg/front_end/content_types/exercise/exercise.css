@@ -82,6 +82,7 @@ section[content-type="exercise"] section[content-type="gallery"] gallery-text {
 
 section[content-type="exercise"] section[content-type="gallery"] [figure-type="gallery"] > img {
 	border:none;
+	height: auto;
 }
 
 /* Padding-adjustment of an exercise inside a pop-up box */

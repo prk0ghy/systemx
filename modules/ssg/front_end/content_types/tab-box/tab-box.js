@@ -24,6 +24,12 @@
 					tabHeader.forEach((cHeader)=>{cHeader.classList.remove('active');});
 					tabContent.forEach((cContent)=>{cContent.classList.remove('active');});
 					header.classList.add('active');
+					const headerIndex = header.getAttribute('tab-index') | 0;
+					const headerQs = "tab-box-header[tab-index='"+ headerIndex + "']";
+					const allTabs = header.parentElement.parentElement.querySelectorAll(headerQs);
+					for (let i = 0; i < allTabs.length; i++) {
+						allTabs[i].classList.add('active');
+					}
 					curContent.classList.add('active');
 					showEmbeddingSections(curContent);
 				});
