@@ -197,6 +197,13 @@ section[tab-box-type="support"] button[button-function="media"] {
 	padding-left:0.35em;
 }
 
+@media only screen and (min-width: 1200px) {
+	section[tab-box-type="support"] button[button-function="media"] {
+		left:50%;
+		transform: translateX(-50%);
+	}
+}
+
 section[tab-box-type="support"].has-media button[button-function="media"] {
 	opacity:1;
 }
