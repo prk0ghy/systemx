@@ -7,7 +7,7 @@ import startShop from "./modules/shop/index.mjs";
 	await mkdirp(options.distributionPath);
 	await mkdirp(options.storagePath);
 	const promises = [];
-	if (options.startServer) {
+	if (options.startServer || options.cleanBuild) {
 		promises.push(startSSG());
 	}
 	if (options.startShop) {
