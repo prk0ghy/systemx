@@ -256,6 +256,8 @@ section[tab-box-type="support"] tab-box-content-wrap tab-box-source {
 section[tab-box-type="support"] [content-type="video"] media-fullscreen,
 section[tab-box-type="support"] [content-type="video"] media-volume-slider,
 section[tab-box-type="support"] [content-type="video"] media-volume-button,
+section[tab-box-type="support"] [content-type="video"] media-seekbar,
+section[tab-box-type="support"] [content-type="video"] media-timestamp-wrapper,
 section[tab-box-type="support"] [content-type="audio"] media-fullscreen,
 section[tab-box-type="support"] [content-type="audio"] media-volume-slider,
 section[tab-box-type="support"] [content-type="audio"] media-volume-button {
@@ -291,4 +293,38 @@ section[tab-box-type="support"] button[button-type="license"] {
 	margin:0.5em 0 0.5em auto;
 	display:block;
 	font-size:1em;
+}
+
+section[tab-box-type="support"] media-wrap[media-type="video"] > media-controls,
+section[tab-box-type="support"] media-wrap[media-type="video"] media-controls-left {
+	position:static;
+}
+
+section[tab-box-type="support"] media-wrap[media-type="video"] > media-controls.hidden {
+	opacity: 1;
+}
+
+section[tab-box-type="support"] [content-type="video"] media-play-pause {
+	padding:0;
+	position:absolute;
+	top: auto;
+	left: calc(50% - 7.5rem);
+	bottom: 50%;
+	transform: scale(4);
+	transition: left 200ms, bottom 350ms, transform 500ms;
+}
+
+section[tab-box-type="support"] [content-type="video"] media-play-pause.active {
+	left: 0.75rem;
+	bottom: 2.5rem;
+	transform: scale(1);
+}
+
+section[tab-box-type="support"] [content-type="video"] media-controls-left > media-play-pause::after,
+section[tab-box-type="support"] [content-type="video"] media-controls-left > media-play-pause::before {
+	font-size: 5rem;
+}
+
+section[tab-box-type="support"] [content-type="video"] media-status-icon {
+	display: none !important;
 }

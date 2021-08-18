@@ -97,6 +97,11 @@
 			}
 		});
 
+		media.addEventListener("ended", () => {
+			playPauseButton.classList.remove('active');
+			controlsWrapper.classList.remove('hidden');
+		});
+
 		if(media.tagName === "VIDEO"){
 			const fullscreenButton = document.createElement("MEDIA-FULLSCREEN");
 			controlsWrapperRight.appendChild(fullscreenButton);
