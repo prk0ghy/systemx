@@ -37,19 +37,17 @@ export default {
 		tag = "h3"
 	}, {
 		contentTypeIDIf,
-		escapeHTML,
 		helpers: {
 			Marker
 		}
 	}) {
 		const hTag = ["h1","h2","h3","h4","h5","h6"].includes(tag) ? tag : "h3";
 		const isReallyNumbered = isNumbered && tag === "h1";
-		const outHeadline = headline.replace(/<\S+>/g,"");
 		return `
 			<section content-type="headline" ${contentTypeIDIf(id)}>
 				<inner-content>
 					${Marker.render({ isNumbered: isReallyNumbered })}
-					<${hTag}>${escapeHTML(outHeadline)}</${hTag}>
+					<${hTag}>${headline}</${hTag}>
 				</inner-content>
 			</section>
 		`;
