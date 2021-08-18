@@ -101,8 +101,8 @@ export default {
 				${tab.title}
 			</tab-box-header>
 		`).join("");
-		const tabSource = tabs.map(tab => tab?.source ? `
-			<tab-box-source>
+		const tabSource = tabs.map((tab, index) => tab?.source ? `
+			<tab-box-source tab-index="${index}">
 				${tab.source}
 			</tab-box-source>
 		` : "").join("");
@@ -135,9 +135,9 @@ export default {
 						${tabContents}
 						${tabSource}
 					</tab-box-content-wrap>
-					<tab-box-header-wrap type="bottom">
+					<tab-box-header-wrap wrap-type="bottom">
 						${tabHeaders}
-					</tab-box-header-wrap type="bottom">
+					</tab-box-header-wrap>
 				</inner-content>
 			</section>
 		`;

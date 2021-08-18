@@ -1,3 +1,7 @@
+li {
+	line-height:1.2em;
+}
+
 main ol,
 main ul {
 	margin-bottom:var(--content-padding-half);
@@ -6,6 +10,11 @@ main ul {
 main li ol,
 main li ul {
 	padding-top:var(--content-padding-half);
+}
+
+main ol:last-child,
+main ul:last-child {
+	margin-bottom: 0;
 }
 
 main ol > li,

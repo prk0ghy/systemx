@@ -1,4 +1,5 @@
-/* globals showEmbeddingSections,openFullscreen,closeFullscreen */
+/* globals showModal,showEmbeddingSections,openFullscreen,closeFullscreen */
+
 
 (() => {
 	const initSupportSlider = () => {
@@ -11,6 +12,34 @@
 			const startSlide     = document.createElement("START-SLIDE");
 			const endSlide       = document.createElement("END-SLIDE");
 			const controlWrap    = document.createElement("CONTROL-WRAP");
+
+			const showLicense = () => {
+				let html = '';
+				for(let i=0;i<tabContent.length;i++){
+					let tmp = "";
+
+					const licenses = tabContent[i].querySelectorAll("details.license");
+					for(const c of licenses){
+						tmp += `<div>${c.querySelector("license-content").innerHTML}</div><hr/>`;
+					}
+
+					const sources = tabContentWrap.querySelectorAll(`tab-box-source[tab-index="${i}"]`);
+					for(const source of sources){
+						tmp += `<div>${source.innerHTML}</div><hr/>`;
+					}
+
+					if(tmp !== ""){
+						html += `<h2>${i+1}</h2>${tmp}`;
+					}
+				}
+				showModal(html);
+			};
+
+			const button         = document.createElement("BUTTON");
+			button.setAttribute("button-type","license");
+			button.addEventListener("click",showLicense);
+			tabContentWrap.parentElement.append(button);
+
 
 			startSlide.addEventListener("click", e => {
 				e.stopPropagation();
@@ -107,6 +136,26 @@
 				box.classList.remove("has-media");
 			};
 
+			const resizeSlide = i => {
+				if((i < 0) || (i >= tabContent.length)){return;}
+				const content = tabContent[i];
+				const maxHeight = (tabContentWrap.clientHeight - controlWrap.offsetHeight) * 0.9;
+				let fs = 3.0;
+				for(let step = 1.0; step > 0.01; step *= 0.5){
+					content.style.fontSize = `${fs}em`;
+					const curHeight = content.scrollHeight;
+					if(curHeight > maxHeight){
+						fs -= step;
+					}else{
+						fs += step;
+					}
+				}
+				const imgs = content.querySelectorAll(`figure[figure-type="picture"][figure-width="100"] img`);
+				for(const img of imgs){
+					img.style.maxHeight = `${maxHeight}px`;
+				}
+			};
+
 			const showStartSlide = () => {
 				startSlide.classList.add('active');
 				box.classList.add("start-slide-active");
@@ -137,6 +186,7 @@
 						box.classList.add("has-media");
 					}
 					curSlide = i;
+					resizeSlide(curSlide);
 				}
 				refreshPageInfo();
 			};
@@ -144,9 +194,17 @@
 
 			/* Reset to start-slide when leaving fullscreen mode */
 			document.addEventListener("fullscreenchange", () => {
-				if( window.innerHeight === screen.height){return;}
+				if((curSlide < 0) || (curSlide >= tabContent.length)){return;}
+				if( window.innerHeight === screen.height){
+					resizeSlide(curSlide);
+					return;
+				}
 				if(curSlide === tabContent.length){return;}
 				showSlide(-1);
+			});
+			document.addEventListener("resize", () => {
+				if((curSlide < 0) || (curSlide >= tabContent.length)){return;}
+				resizeSlide(curSlide);
 			});
 		});
 	};

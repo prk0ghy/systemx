@@ -47,9 +47,12 @@ p {
 	line-height:1.5em;
 }
 
-
 figcaption,p,li {
 	font-weight:300;
+}
+
+p:last-child {
+	margin-bottom:0;
 }
 
 b, strong {

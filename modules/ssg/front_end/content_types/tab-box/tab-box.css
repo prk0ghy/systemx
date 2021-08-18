@@ -104,7 +104,7 @@ tab-box-source {
 	z-index: 2;
 }
 
-[tab-box-type="exercise"] tab-box-header-wrap[type="bottom"] tab-box-header {
+[tab-box-type="exercise"] tab-box-header-wrap[wrap-type="bottom"] tab-box-header {
 	margin:0 8px 8px;
 }
 

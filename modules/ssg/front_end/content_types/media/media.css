@@ -80,12 +80,13 @@ figure[figure-type="video"] figcaption {
 media-play-pause {
 	font-family: icomoon;
 	position: relative;
-	width: 1.25em;
-	height: 1em;
+	width: 2rem;
+	height: 1.7rem;
 	cursor:pointer;
 	padding-left: calc(var(--content-padding-quarter) * 0.75);
 	top: -1px;
 	transition: background-color 100ms;
+	font-size: 1.7rem;
 }
 
 media-play-pause::before {
@@ -146,6 +147,7 @@ media-controls::after {
 media-controls-left {
 	float:left;
 	text-align:left;
+	font-size: 1.5rem;
 }
 
 media-controls-right {
@@ -159,8 +161,8 @@ media-controls-right > * {
 }
 
 media-fullscreen {
-	width: 1.25em;
-	height: 1em;
+	width: 1.6rem;
+	height: 1rem;
 	font-family: icomoon;
 	cursor: pointer;
 	margin-right: 15px;
@@ -184,7 +186,7 @@ media-fullscreen.active::before {
 
 media-volume-button {
 	font-family: icomoon;
-	width:1.25em;
+	width:2rem;
 	padding-left: calc(var(--content-padding-quarter) * 1.35);
 	cursor: pointer;
 	transition: background-color 100ms;
@@ -253,12 +255,12 @@ media-timestamp-wrapper {
 	top: -6px;
 	font-family:var(--font-content);
 	font-weight:300;
-	font-size:1.3em;
+	font-size:1.5rem;
 	color: var(--background-grey);
 }
 
 media-timestamp {
-	font-size: 0.5em;
+	font-size: 1rem;
 	width: 1.25em;
 	user-select: none;
 }
@@ -270,7 +272,7 @@ media-timestamp::after {
 }
 
 media-duration {
-	font-size: 0.5em;
+	font-size: 1rem;
 	width: 1.25em;
 	user-select: none;
 }

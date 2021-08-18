@@ -4,21 +4,24 @@ download-wrap {
 	align-items: center;
 	box-shadow: 0 3px 6px #00000063;
 	transition: box-shadow 0.5s;
+	background: var(--dlw-gray-100);
 }
 
 download-wrap:hover {
 	box-shadow: 0 12px 24px #00000063;
 }
 
-download-wrap p {
-	margin: 0.7em;
-}
-
 download-text {
+	padding:0.7rem;
 	flex: 1 1 70%;
 	display: flex;
 	align-items: center;
-	background: var(--dlw-gray-100);
+}
+
+download-wrap a {
+	padding: 0.7rem;
+	min-width:100%;
+	text-align:center;
 }
 
 download-icon {
@@ -36,3 +39,7 @@ download-icon a {
 	text-decoration: none !important;
 }
 
+/* Fix the drop-shadow */
+html body section[tab-box-type="support"] tab-box-content section[content-type="download"] {
+	margin-bottom:1rem;
+}
