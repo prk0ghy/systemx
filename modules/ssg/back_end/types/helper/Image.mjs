@@ -19,7 +19,7 @@ export default {
 		const thumbWidth  = thumbHtmlPath ? thumbSize?.width ? `width="${thumbSize.width}"` : "" : `width="${asset.width}`;
 		const thumbHeight = thumbHtmlPath ? thumbSize?.height ? `height="${thumbSize.height}"` : "" : `height="${asset.height}`;
 		return asset
-			? `<img src="${thumbHtmlPath}" ${thumbWidth} ${thumbHeight} raw-src="${htmlPath}" raw-width="${asset.width}" raw-height="${asset.height}" ${getFocalPoint(asset.focalPoint)}>`
+			? `<img src="${thumbHtmlPath || htmlPath}" ${thumbWidth} ${thumbHeight} raw-src="${htmlPath}" raw-width="${asset.width}" raw-height="${asset.height}" ${getFocalPoint(asset.focalPoint)}>`
 			: "";
 	}
 };
