@@ -38,6 +38,13 @@ main > desktop-only > section > inner-content {
 	position:relative;
 }
 
+section:after {
+	content:'';
+	display:block;
+	position:relative;
+	clear:both;
+}
+
 figure {
 	position:relative;
 }

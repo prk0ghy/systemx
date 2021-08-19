@@ -2,7 +2,7 @@ section[tab-box-type="support"] tab-box-header {
 	display:none;
 }
 
-section[tab-box-type="support"] button {
+section[tab-box-type="support"] control-wrap button {
 	width:1.5em;
 	height:1.5em;
 	font-size:2em;
@@ -280,19 +280,22 @@ section[tab-box-type="support"] download-wrap {
 	font-size: 1.5rem;
 }
 
+section[tab-box-type="support"] button[button-type="license"] {
+	right: 1rem;
+}
+
+@media only screen and (max-width: 650px) {
+	section[tab-box-type="support"] button[button-type="license"] {
+		position:relative;
+		right:auto;
+		margin-top:1rem;
+		float:right;
+	}
+}
+
 section[tab-box-type="support"] button[button-type="license"]::after {
 	content:"§";
 	font-family: montserrat;
-	position:relative;
-	top:-2px;
-}
-
-section[tab-box-type="support"] button[button-type="license"] {
-	background:white;
-	z-index:11;
-	margin:0.5em 0 0.5em auto;
-	display:block;
-	font-size:1em;
 }
 
 section[tab-box-type="support"] media-wrap[media-type="video"] > media-controls,
