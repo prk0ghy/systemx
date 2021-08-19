@@ -81,6 +81,8 @@ details > summary {
 }
 
 button {
+	font-family: var(--font-headlines);
+	appearance: none;
 	cursor:pointer;
 }
 

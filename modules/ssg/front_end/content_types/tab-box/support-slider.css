@@ -11,10 +11,16 @@ section[tab-box-type="support"] control-wrap button {
 	text-align:center;
 	vertical-align:middle;
 	line-height:1.5em;
+	background: white;
 	color:var(--support-slider-main-color);
+	border: none;
 	border-radius:50%;
-	box-shadow: 2px 2px 8px #000;
+	box-shadow: 0 3px 6px #00000040;
 	cursor:pointer;
+}
+
+main ul > li::before {
+	border-color: var(--support-slider-main-color);
 }
 
 section[tab-box-type="support"] button::after {
@@ -23,8 +29,9 @@ section[tab-box-type="support"] button::after {
 }
 
 section[tab-box-type="support"] button[button-function="exit"]::after {
-	content: "\2716";
+	content: "\2715";
 	line-height:1em;
+	font-family: sans-serif;
 }
 
 section[tab-box-type="support"] button[button-function="previous"]::after {
@@ -188,7 +195,7 @@ section[tab-box-type="support"] button[button-function="media"]::after {
 section[tab-box-type="support"] button[button-function="media"] {
 	position:absolute;
 	left:2.25em;
-	top:0.2em;
+	top:0.15em;
 	opacity:0;
 	transition:opacity 300ms;
 	width:auto;
@@ -224,9 +231,15 @@ section[tab-box-type="support"].start-slide-active slider-info {
 
 section[tab-box-type="support"] tab-box-content > section {
 	width:100%;
-	max-width: calc(100% - var(--content-padding));
+	max-width: calc(var(--content-width) - var(--content-padding));
 	padding:0;
 	margin:0 auto var(--content-padding-half);
+}
+
+@media only screen and (max-width: 900px) {
+	section[tab-box-type="support"] tab-box-content > section {
+		max-width: calc(100% - var(conntent-padding-half));
+	}
 }
 
 section[tab-box-type="support"] tab-box-content > section:last-child {
