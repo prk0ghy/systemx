@@ -46,10 +46,6 @@ figure:last-child {
 	margin-bottom:0;
 }
 
-figure-row > figure img {
-	padding: 5px;
-}
-
 figcaption {
 	font-family: var(--font-headlines);
 	font-weight: 400;

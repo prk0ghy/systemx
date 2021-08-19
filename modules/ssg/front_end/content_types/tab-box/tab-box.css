@@ -77,8 +77,6 @@ tab-box-header.active {
 	background-color: var(--dlw-blue);
 	color: #fff;
 	box-shadow: 1px 3px 6px 1px #00000089;
-	position: relative;
-	z-index: 2;
 }
 
 tab-box-source {
@@ -100,12 +98,6 @@ tab-box-source {
 	background-color: var(--background-red);
 	color: var(--exercise-red);
 	box-shadow: 1px 3px 6px 1px #00000089;
-	position: relative;
-	z-index: 2;
-}
-
-[tab-box-type="exercise"] tab-box-header-wrap[wrap-type="bottom"] tab-box-header {
-	margin:0 8px 8px;
 }
 
 [tab-box-type="exercise"] > inner-content > tab-box-content-wrap {
