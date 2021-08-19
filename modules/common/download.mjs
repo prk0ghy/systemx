@@ -53,7 +53,6 @@ const download = (url,filePath) => {
 				});
 				request.end();
 			} catch (error) {
-				console.error(error);
 				reject(error);
 				return;
 			}
