@@ -69,9 +69,7 @@ export default class {
 			const thumbSize = await getImageSize(thumb.filePath);
 			return {thumbHtmlPath, thumbSize, htmlPath};
 		}else{
-			thumbHtmlPath = htmlPath;
-			const thumbSize = await getImageSize(filePath);
-			return {thumbHtmlPath, thumbSize, htmlPath};
+			return {htmlPath};
 		}
 	};
 	EditorialError = {
