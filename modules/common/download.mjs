@@ -5,7 +5,7 @@ const downloadQueue = [];
 let downloadsActive = 0;
 
 const workQueue = () => {
-	for(let i=downloadsActive;i<8;i++){
+	for(let i=downloadsActive;i<16;i++){
 		const top = downloadQueue.pop();
 		if(top === undefined){break;}
 		downloadsActive++;
@@ -33,6 +33,8 @@ const download = (url,filePath) => {
 					agent
 				}, response => {
 					if (response.statusCode < 200 || response.statusCode >= 300) {
+						downloadsActive--;
+						workQueue();
 						reject(new Error(`Bad status code - ${url} == ${response.statusCode}`));
 						return;
 					}
@@ -47,6 +49,7 @@ const download = (url,filePath) => {
 					});
 				});
 				request.on("error", e => {
+					console.log(`× - ${url}`);
 					downloadsActive--;
 					workQueue();
 					reject(e);

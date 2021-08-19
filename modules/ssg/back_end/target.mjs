@@ -356,8 +356,15 @@ export const build = async targetName => {
 	}
 	const resourcePath = getResourcePath(targetName);
 	mkdirp(resourcePath);
+
+	console.time("target#buildHead");
 	await buildHead(targetName);
+	console.timeEnd("target#buildHead");
+
+	console.time("target#renderAssets");
 	await renderAssets(resourcePath);
+	console.timeEnd("target#renderAssets");
+
 	if (!options.skipNetwork) {
 		console.time("target#buildEntries");
 		await loadNavigation(targetName);
@@ -365,6 +372,7 @@ export const build = async targetName => {
 		console.timeEnd("target#buildEntries");
 	}
 	if(options.cleanBuild){
+		console.log("atomicRename");
 		await atomicRename(targetName);
 	}
 };

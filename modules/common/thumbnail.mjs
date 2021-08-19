@@ -4,7 +4,7 @@ const taskQueue = [];
 let tasksActive = 0;
 
 const workQueue = () => {
-	for(let i=tasksActive;i<4;i++){
+	for(let i=tasksActive;i<16;i++){
 		const top = taskQueue.pop();
 		if(top === undefined){break;}
 		tasksActive++;
@@ -42,10 +42,12 @@ const makeThumbnail = (inPath, outPath, maxWidth, maxHeight) => {
 					tasksActive--;
 					workQueue();
 					if(err){
+						console.log(`× - ${outPath}`);
 						return reject(err);
+					}else{
+						console.log(`✓ - ${outPath}`);
+						return resolve(true);
 					}
-					console.log(`✓ - ${outPath}`);
-					return resolve(true);
 				});
 		};
 		taskQueue.push(call);

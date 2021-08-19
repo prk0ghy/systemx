@@ -49,23 +49,17 @@ export default class {
 	escapeHTML = escapeHTML;
 	download = async url => {
 		const {filePath, htmlPath} = this.hints.getFilePath(url);
-		if(await Download(url,filePath) !== true){
-			throw new Error(`Couldn't download ${url}`);
-		}
+		await Download(url,filePath);
 		return htmlPath;
 	};
 	downloadWithThumb = async (url, imageSize) => {
 		if(this.isMock){ return {thumbHtmlPath: url, thumbSize: {width: 128, height: 128}, htmlPath: url};}
 		const {filePath, htmlPath, thumb} = this.hints.getFilePath(url);
 		let thumbHtmlPath = thumb.htmlPath;
-		if(await Download(url,filePath) !== true){
-			throw new Error(`Couldn't download ${url}`);
-		}
+		await Download(url,filePath);
 		if(this.hints.shouldMakeThumbnail(filePath)){
 			const maxV = imageSize > 50 ? 2048 : imageSize > 35 ? 1024 : 512;
-			if(await Thumbnail(filePath,thumb.filePath,maxV,maxV) !== true){
-				throw new Error(`Couldn't generate thumb for ${url}`);
-			}
+			await Thumbnail(filePath,thumb.filePath,maxV,maxV);
 			const thumbSize = await getImageSize(thumb.filePath);
 			return {thumbHtmlPath, thumbSize, htmlPath};
 		}else{
