@@ -16,8 +16,10 @@ export default {
 	}) {
 
 		const {thumbHtmlPath, thumbSize, htmlPath} = await downloadWithThumb(asset.url,imageSize);
+		const thumbWidth  = thumbSize?.width ? `width="${thumbSize.width}"` : "";
+		const thumbHeight = thumbSize?.height ? `height="${thumbSize.height}"` : "";
 		return asset
-			? `<img src="${thumbHtmlPath}" width="${thumbSize.width}" height="${thumbSize.height}" raw-src="${htmlPath}" raw-width="${asset.width}" raw-height="${asset.height}" ${getFocalPoint(asset.focalPoint)}>`
+			? `<img src="${thumbHtmlPath}" ${thumbWidth} ${thumbHeight} raw-src="${htmlPath}" raw-width="${asset.width}" raw-height="${asset.height}" ${getFocalPoint(asset.focalPoint)}>`
 			: "";
 	}
 };

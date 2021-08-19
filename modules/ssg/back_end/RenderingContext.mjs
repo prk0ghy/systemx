@@ -109,6 +109,9 @@ export default class {
 		this.download = options.downloadMedia
 			? parentContext?.download || this.download
 			: url => url;
+		this.downloadWithThumb = options.downloadMedia
+			? parentContext?.downloadWithThumb || this.downloadWithThumb
+			: url => {return {thumbHtmlPath: url, htmlPath: url};};
 		this.globalRender = globalRender || parentContext.globalRender;
 		this.helpers = contextualize(this.types.helper)(this);
 		this.hints = Object.assign({}, hints, parentContext?.hints);
