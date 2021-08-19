@@ -58,7 +58,7 @@ export default class {
 		let thumbHtmlPath = thumb.htmlPath;
 		await Download(url,filePath);
 		if(this.hints.shouldMakeThumbnail(filePath)){
-			const maxV = imageSize > 50 ? 2048 : imageSize > 35 ? 1024 : 512;
+			const maxV = imageSize > 100 ? 2048 : imageSize > 66 ? 1024 : imageSize > 35 ? 512 : 320;
 			await Thumbnail(filePath,thumb.filePath,maxV,maxV);
 			const thumbSize = await getImageSize(thumb.filePath);
 			return {thumbHtmlPath, thumbSize, htmlPath};

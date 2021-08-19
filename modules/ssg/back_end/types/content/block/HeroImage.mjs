@@ -56,7 +56,7 @@ export default {
 		const isVideo = image.mimeType.substr(0,5) === "video";
 		const mediaHTML = isVideo
 			? await Video.render({asset: image, controls: false, muted: true, loop: false, autoplay: true})
-			: await Image.render({asset: image, imageSize: 100});
+			: await Image.render({asset: image, imageSize: 200});
 		const captionHTML = caption
 			? `<figcaption>${caption}</figcaption>`
 			: "";
