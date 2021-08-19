@@ -14,25 +14,25 @@
 			const controlWrap    = document.createElement("CONTROL-WRAP");
 
 			const showLicense = () => {
-				let html = '';
+				let html = [];
 				for(let i=0;i<tabContent.length;i++){
 					let tmp = "";
 
 					const licenses = tabContent[i].querySelectorAll("details.license");
 					for(const c of licenses){
-						tmp += `<div>${c.querySelector("license-content").innerHTML}</div><hr/>`;
+						tmp += `<div>${c.querySelector("license-content").innerHTML}</div>`;
 					}
 
 					const sources = tabContentWrap.querySelectorAll(`tab-box-source[tab-index="${i}"]`);
 					for(const source of sources){
-						tmp += `<div>${source.innerHTML}</div><hr/>`;
+						tmp += `<div>${source.innerHTML}</div>`;
 					}
 
 					if(tmp !== ""){
-						html += `<h2>${i+1}</h2>${tmp}`;
+						html.push(`<h2>${i+1}</h2>${tmp}`);
 					}
 				}
-				showModal(html);
+				showModal(html.join("<hr/>"));
 			};
 
 			const button         = document.createElement("BUTTON");
