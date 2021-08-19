@@ -38,7 +38,7 @@ main > desktop-only > section > inner-content {
 	position:relative;
 }
 
-section:after {
+section::after {
 	content:'';
 	display:block;
 	position:relative;

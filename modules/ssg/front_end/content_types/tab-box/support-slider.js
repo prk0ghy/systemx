@@ -14,7 +14,7 @@
 			const controlWrap    = document.createElement("CONTROL-WRAP");
 
 			const showLicense = () => {
-				let html = [];
+				const html = [];
 				for(let i=0;i<tabContent.length;i++){
 					let tmp = "";
 

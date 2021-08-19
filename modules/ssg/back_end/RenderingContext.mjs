@@ -55,7 +55,7 @@ export default class {
 	downloadWithThumb = async (url, imageSize) => {
 		if(this.isMock){ return {thumbHtmlPath: url, thumbSize: {width: 128, height: 128}, htmlPath: url};}
 		const {filePath, htmlPath, thumb} = this.hints.getFilePath(url);
-		let thumbHtmlPath = thumb.htmlPath;
+		const thumbHtmlPath = thumb.htmlPath;
 		await Download(url,filePath);
 		if(this.hints.shouldMakeThumbnail(filePath)){
 			const maxV = imageSize > 100 ? 2048 : imageSize > 66 ? 1024 : imageSize > 35 ? 512 : 320;
