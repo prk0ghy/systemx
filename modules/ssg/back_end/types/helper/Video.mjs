@@ -12,7 +12,7 @@ export default {
 	}) {
 		const attributes = [];
 		if(posterURL){
-			const {thumbHtmlPath, htmlPath} = await downloadWithThumb(posterURL);
+			const {thumbHtmlPath, htmlPath} = await downloadWithThumb(posterURL, 100);
 			attributes.push(`poster="${thumbHtmlPath || htmlPath}"`);
 		}
 		attributes.push(controls ? "controls" : "");
