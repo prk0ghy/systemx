@@ -7,10 +7,14 @@ export default {
 		loop = false,
 		autoplay = false
 	}, {
-		download
+		download,
+		downloadWithThumb
 	}) {
 		const attributes = [];
-		attributes.push(posterURL !== null ? `poster="${posterURL}"` : "");
+		if(posterURL){
+			const {thumbHtmlPath, htmlPath} = await downloadWithThumb(posterURL);
+			attributes.push(`poster="${thumbHtmlPath || htmlPath}"`);
+		}
 		attributes.push(controls ? "controls" : "");
 		attributes.push(muted ? "muted" : "");
 		attributes.push(loop ? "loop" : "");
