@@ -10,6 +10,10 @@ section[content-type="embedding"] > inner-content > details > summary::-webkit-d
 
 [figure-type="embedding"] details.license > summary {
 	margin-top:var(--content-padding-quarter);
+	position: relative;
+	float: right;
+	margin-left: 11px;
+	right: 0;
 }
 
 main > section[content-type="embedding"]::after {
