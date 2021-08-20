@@ -1,0 +1,27 @@
+.cart-icon {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	position: relative;
+	& .image {
+		height: 65%;
+		object-fit: contain;
+		width: 100%;
+	}
+	& .notification {
+		--size: 2rem;
+		align-items: center;
+		background-color: #ff4646;
+		border-radius: 50%;
+		display: flex;
+		font-size: 1.5rem;
+		font-weight: var(--font-weight-bold);
+		height: var(--size);
+		justify-content: center;
+		line-height: 1;
+		position: absolute;
+		right: calc(-1 * var(--size) / 5);
+		top: 0.25rem;
+		width: var(--size);
+	}
+}

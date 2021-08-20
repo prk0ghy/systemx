@@ -1,13 +1,19 @@
 import { formatPrice, H } from "root/format";
-import Button from "components/inputs/Button";
 import cx from "classnames";
+import dynamic from "next/dynamic";
 import ImageText from "components/generics/ImageText";
 import Laced from "components/generics/Laced";
 import styles from "./Product.module.css";
+import { useCallback } from "react";
+import { useCart } from "contexts/Cart";
+const Button = dynamic(() => import("components/inputs/Button"), {
+	ssr: false
+});
 const Product = ({
 	caption,
 	children,
 	description,
+	id,
 	name,
 	previewHeight,
 	previewURL,
@@ -15,6 +21,7 @@ const Product = ({
 	price,
 	startWithPreview
 }) => {
+	const [{ items }, dispatch] = useCart();
 	const productClassName = cx(styles.product, {
 		[styles.startWithPreview]: startWithPreview
 	});
@@ -25,7 +32,26 @@ const Product = ({
 		);
 	const buttonText = children
 		? "Zur Auswahl"
-		: "In den Warenkorb";
+		: items.includes(id)
+			? "Aus dem Warenkorb"
+			: "In den Warenkorb";
+	const onClick = useCallback(() => {
+		if (!children) {
+			dispatch({
+				data: {
+					id
+				},
+				type: items.includes(id)
+					? "REMOVE_ITEM"
+					: "ADD_ITEM"
+			});
+		}
+	}, [
+		children,
+		dispatch,
+		id,
+		items
+	]);
 	return (
 		<div className={ productClassName }>
 			<div className={ styles.row }>
@@ -47,7 +73,7 @@ const Product = ({
 							<div className={ styles.bottom }>
 								<div className={ styles.action }>
 									{ formattedPrice }
-									<Button>{ buttonText }</Button>
+									<Button onClick={ onClick }>{ buttonText }</Button>
 								</div>
 							</div>
 						</div>

@@ -7,13 +7,13 @@
 		"next": "11.1.0",
 		"react": "17.0.2",
 		"react-dom": "17.0.2",
-		"react-tracked": "^1.7.3"
+		"react-tracked": "^1.7.4"
 	},
 	"devDependencies": {
 		"@babel/eslint-parser": "^7.15.0",
 		"@next/eslint-plugin-next": "^11.1.0",
 		"autoprefixer": "^10.3.1",
-		"cssnano": "^5.0.7",
+		"cssnano": "^5.0.8",
 		"eslint": "7.32.0",
 		"eslint-config-next": "11.1.0",
 		"get-google-fonts": "^1.2.2",
@@ -27,9 +27,10 @@
 	"private": true,
 	"scripts": {
 		"build": "npm run download:fonts && next build",
+		"clean": "rm -rf .cache .next",
 		"dev": "npm run download:fonts:if-necessary; next dev",
 		"download:fonts": "get-google-fonts -i \"https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap\" -wo .cache/fonts -p ../.cache/fonts/",
-		"download:fonts:if-necessary": "[ ! -d .cache/fonts ] && npm run download:fonts",
+		"download:fonts:if-necessary": "[ ! -d .cache/fonts ] && npm run download:fonts || true",
 		"lint": "next lint",
 		"start": "next start"
 	},

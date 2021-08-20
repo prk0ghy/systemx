@@ -1,8 +1,12 @@
 import cx from "classnames";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import routes from "root/routes";
 import styles from "./Navigation.module.css";
 import { useBrand } from "contexts/Brand";
+const CartIcon = dynamic(() => import("./CartIcon"), {
+	ssr: false
+});
 const Navigation = ({ className }) => {
 	const [{
 		logoHeight,
@@ -33,17 +37,7 @@ const Navigation = ({ className }) => {
 				<li className={ styles.item }>
 					<ul className={ styles.items }>
 						<li className={ styles.item }>
-							<Link href={ routes.login.path }>
-								<a className={ styles.link }>
-									<img
-										alt=""
-										className={ cx(styles.image, styles.cart) }
-										height={ 77 }
-										src="/mvet/ui/cart.png"
-										width={ 100 }
-									/>
-								</a>
-							</Link>
+							<CartIcon/>
 						</li>
 						<li className={ styles.item }>
 							<Link href={ routes.login.path }>

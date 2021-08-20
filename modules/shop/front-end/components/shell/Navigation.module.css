@@ -2,13 +2,14 @@
 	--navigation-height: calc(var(--header-height) - 2rem);
 	& .items {
 		align-items: center;
-		display: grid;
+		display: flex;
+		gap: 2.6rem;
 		grid-auto-flow: column;
-		grid-gap: 2.6rem;
 		height: var(--navigation-height);
 		justify-content: space-between;
 		list-style-type: none;
 		& .item {
+			display: flex;
 			height: 100%;
 			& .link {
 				align-items: center;
