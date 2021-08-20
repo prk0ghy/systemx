@@ -135,6 +135,7 @@
 			const removeActiveClassFromAllSlides = () => {
 				for(const cContent of tabContent){
 					cContent.classList.remove('active');
+					hideElementContentHandler(cContent);
 				}
 				startSlide.classList.remove('active');
 				endSlide.classList.remove('active');

@@ -22,7 +22,7 @@
 				if(curContent === undefined){return;}
 				header.addEventListener('click',() => {
 					tabHeader.forEach((cHeader)=>{cHeader.classList.remove('active');});
-					tabContent.forEach((cContent)=>{cContent.classList.remove('active');});
+					tabContent.forEach((cContent)=>{cContent.classList.remove('active'); hideElementContentHandler(cContent);});
 					header.classList.add('active');
 					curContent.classList.add('active');
 					showEmbeddingSections(curContent);
@@ -32,4 +32,3 @@
 	};
 	setTimeout(initTabBoxes, 0);
 })();
-

@@ -1,3 +1,5 @@
+/* global addHideElementContentHandler */
+
 const showLazyIframe = ele => {
 	if(ele.classList.contains("hidden-embedding-placeholder")){return;}
 	const iframeWrapper = document.createElement("IFRAME-WRAPPER");
@@ -36,6 +38,15 @@ const showEmbeddingSectionsAll = containers => {
 };
 
 (()=>{
+	addHideElementContentHandler("hideEmbeddings",ele => {
+		for(const e of ele.querySelectorAll('iframe-wrapper')){
+			e.remove();
+		}
+		for(const e of ele.querySelectorAll('.hidden-embedding-placeholder')){
+			e.classList.remove('hidden-embedding-placeholder');
+		}
+	});
+
 	function initLazyIframes(){
 		showEmbeddingSections(document.querySelector("main"));
 		showEmbeddingSectionsAll(document.querySelectorAll("exercise-content"));

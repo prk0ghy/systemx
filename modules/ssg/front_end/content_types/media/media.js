@@ -1,3 +1,5 @@
+/* globals addHideElementContentHandler */
+
 (() => {
 	let tabindex = 100;
 
@@ -98,6 +100,8 @@
 		});
 
 		media.addEventListener("ended", () => {
+			if(!media.paused){media.pause();}
+			media.currentTime = 0;
 			playPauseButton.classList.remove('active');
 			controlsWrapper.classList.remove('hidden');
 		});
@@ -276,6 +280,12 @@
 		for (const audio of getAudios){
 			initMedia(audio);
 		}
+
+		addHideElementContentHandler("stopMedia",ele => {
+			for(const e of ele.querySelectorAll('media-wrap audio, media-wrap video')){
+				e.dispatchEvent(new CustomEvent("ended",{}));
+			}
+		});
 	};
 	setTimeout(initAllMedia,0);
 })();

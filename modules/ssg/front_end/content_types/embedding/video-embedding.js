@@ -104,7 +104,7 @@
 
 	const initEmbeddingLinks = () => {
 		const embeddingLinks = document.querySelectorAll(".embedding-link");
-		addHideElementContentHandler("hideIframes",ele => {
+		addHideElementContentHandler("hideVideoEmbeddings",ele => {
 			for(const e of ele.querySelectorAll('iframe-wrap[iframe-type="video"]')){
 				e.remove();
 			}
