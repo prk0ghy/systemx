@@ -8,10 +8,10 @@ import Laced from "components/generics/Laced";
 import Navigation from "components/shell/Navigation";
 import styles from "./Header.module.css";
 const Header = () => {
-	const [isExpanded, setIsExpanded] = useState(false);
+	const [onScroll, setOnScroll] = useState(false);
 	const handleScroll = useCallback(() => {
 		const limitY = 240;
-		setIsExpanded(window.scrollY >= limitY);
+		setOnScroll(window.scrollY >= limitY);
 	}, []);
 	useEffect(() => {
 		window.addEventListener("scroll", handleScroll, {
@@ -24,7 +24,7 @@ const Header = () => {
 		handleScroll
 	]);
 	const headerClassName = cx(styles.header, {
-		[styles.expanded]: isExpanded
+		[styles.scroll]: onScroll
 	});
 	return (
 		<header className={ headerClassName }>
