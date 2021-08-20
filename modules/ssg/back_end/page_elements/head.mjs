@@ -71,6 +71,7 @@ export const buildHead = async targetName => {
 	const resourcePath = getResourcePath(targetName);
 
 	promises.push(copyResource(path.join("node_modules", "quill", "dist"), resourcePath, "quill.min.js"));
+	promises.push(copyResource(path.join("node_modules", "quill", "dist"), resourcePath, "quill.min.js.map"));
 	promises.push(copyResource(path.join("node_modules", "quill", "dist"), resourcePath, "quill.snow.css"));
 	promises.push(copyResource(path.join("node_modules", "photoswipe", "dist"), resourcePath, "photoswipe-ui-default.min.js"));
 	promises.push(copyResource(path.join("node_modules", "photoswipe", "dist"), resourcePath, "photoswipe.min.js"));
