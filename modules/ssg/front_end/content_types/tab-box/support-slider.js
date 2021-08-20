@@ -69,6 +69,7 @@
 			controlWrap.append(controlExit);
 
 			const controlMedia = document.createElement("BUTTON");
+			controlMedia.innerText = "Vorlesen";
 			controlMedia.setAttribute("button-function","media");
 			controlMedia.addEventListener("click", e => {
 				e.stopPropagation();
@@ -109,9 +110,13 @@
 					return;
 				}
 				if(mediaPlaying){
-					mediaPlaying.pause();
-					mediaPlaying.remove();
-					mediaPlaying = undefined;
+					if(mediaPlaying.paused){
+						mediaPlaying.play();
+						controlMedia.classList.add('playing');
+					}else{
+						mediaPlaying.pause();
+						controlMedia.classList.remove('playing');
+					}
 					return;
 				}
 				const slide = tabContent[i];
@@ -119,8 +124,10 @@
 				audio.setAttribute("src",slide.getAttribute('tab-media'));
 				audio.addEventListener("ended", () => {
 					audio.remove();
+					controlMedia.classList.remove('playing');
 					mediaPlaying = undefined;
 				});
+				controlMedia.classList.add('playing');
 				audio.play();
 				mediaPlaying = audio;
 			};
@@ -134,14 +141,20 @@
 				box.classList.remove("start-slide-active");
 				box.classList.remove("end-slide-active");
 				box.classList.remove("has-media");
+				if(mediaPlaying){
+					mediaPlaying.pause();
+					mediaPlaying.remove();
+					mediaPlaying = undefined;
+					controlMedia.classList.remove('playing');
+				}
 			};
 
 			const resizeSlide = i => {
 				if((i < 0) || (i >= tabContent.length)){return;}
 				const content = tabContent[i];
 				const maxHeight = (tabContentWrap.clientHeight - controlWrap.offsetHeight) * 0.9;
-				let fs = 3.0;
-				for(let step = 1.0; step > 0.01; step *= 0.5){
+				let fs = 3.05;
+				for(let step = 1.0; step > 0.01; step *= 0.6){
 					content.style.fontSize = `${fs}em`;
 					const curHeight = content.scrollHeight;
 					if(curHeight > maxHeight){
@@ -150,8 +163,8 @@
 						fs += step;
 					}
 				}
-				if(fs < 1.05){fs = 1;}
-				if(fs > 4.95){fs = 5;}
+				if(fs < 1.1){fs = 1;}
+				if(fs > 5.0){fs = 5;}
 				content.style.fontSize = `${fs}em`;
 				const imgs = content.querySelectorAll(`figure[figure-type="picture"][figure-width="100"] img`);
 				for(const img of imgs){

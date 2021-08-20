@@ -178,11 +178,8 @@ section[tab-box-type="support"] button[button-function="exit"] {
 	float:left;
 }
 
-section[tab-box-type="support"] button[button-function="media"]::before {
-	content:"Vorlesen";
-}
-
 section[tab-box-type="support"] button[button-function="media"]::after {
+	content:"";
 	border-left:solid 0.85em var(--support-slider-main-color);
 	border-top:solid 0.5em transparent;
 	border-bottom:solid 0.5em transparent;
@@ -190,6 +187,30 @@ section[tab-box-type="support"] button[button-function="media"]::after {
 	right:0.4em;
 	top:50%;
 	margin-top:-0.5em;
+	transition: opacity 300ms;
+	opacity:1;
+}
+
+section[tab-box-type="support"] button[button-function="media"].playing::after {
+	opacity:0;
+}
+
+section[tab-box-type="support"] button[button-function="media"]::before {
+	content:"";
+	border-left:solid 0.3em var(--support-slider-main-color);
+	border-right:solid 0.3em var(--support-slider-main-color);
+	position:absolute;
+	right:0.4em;
+	width:0.3em;
+	height:1em;
+	top:50%;
+	margin-top:-0.5em;
+	transition: opacity 300ms;
+	opacity:0;
+}
+
+section[tab-box-type="support"] button[button-function="media"].playing::before {
+	opacity:1;
 }
 
 section[tab-box-type="support"] button[button-function="media"] {
