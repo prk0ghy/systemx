@@ -9,6 +9,7 @@ tab-box-content-wrap {
 
 tab-box-content {
 	display:none;
+	padding-bottom:var(--content-padding-half);
 }
 
 tab-box-content.active {
