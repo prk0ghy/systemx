@@ -150,6 +150,9 @@
 						fs += step;
 					}
 				}
+				if(fs < 1.05){fs = 1;}
+				if(fs > 4.95){fs = 5;}
+				content.style.fontSize = `${fs}em`;
 				const imgs = content.querySelectorAll(`figure[figure-type="picture"][figure-width="100"] img`);
 				for(const img of imgs){
 					img.style.maxHeight = `${maxHeight}px`;
