@@ -19,7 +19,9 @@ it("renders `inhaltsbausteine_h5p_BlockType`", async () => {
 	expect($(".marker").text()).toBe("");
 	const figure = $(`figure[figure-type="embedding"]`);
 	expect(figure.length).toBe(1);
-	const iframe = figure.find("iframe");
+	const rawIframe = figure.find("iframe");
+	expect(rawIframe.length).toBe(0);
+	const iframe = figure.find("lazy-iframe");
 	expect(iframe.length).toBe(1);
 	expect(iframe.attr("src").length).toBeGreaterThan(4);
 	expect(iframe.attr("src")).toBe("https://some.random.iframe/");

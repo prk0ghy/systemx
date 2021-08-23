@@ -1,17 +1,45 @@
 /* global addHideElementContentHandler */
 
+const calculateAspectRatio = (() => {
+	const plistGetf = (arr,key) => {
+		for(let i=0;i<arr.length-1;i++){
+			if(arr[i] === key){return arr[i+1];}
+		}
+		return null;
+	};
+
+	return (ele) => {
+		const src = ele.getAttribute("src");
+		if(!src || !src.includes("geogebra.org/")){return;}
+		const srcArr = src.split("/");
+		const width = plistGetf(srcArr,"width");
+		const height = plistGetf(srcArr,"height");
+		if(!width || !height){return;}
+		const ar = width / height;
+		ele.setAttribute("aspect-ratio",ar);
+	};
+})();
+
 const showLazyIframe = ele => {
 	if(ele.classList.contains("hidden-embedding-placeholder")){return;}
 	const iframeWrapper = document.createElement("IFRAME-WRAPPER");
 	const newEle = document.createElement("IFRAME");
 	newEle.setAttribute("frameborder","0");
 	newEle.setAttribute("allowfullscreen","allowfullscreen");
+
+	const allow = ele.getAttribute("allow");
+	if(allow){
+		newEle.setAttribute("allow",allow);
+	}
+
 	newEle.setAttribute("src",ele.getAttribute("src"));
 	newEle.classList.add("h5p-iframe");
+	calculateAspectRatio(newEle);
 	iframeWrapper.append(newEle);
 	ele.parentElement.insertBefore(iframeWrapper,ele);
 	ele.classList.add("hidden-embedding-placeholder");
 	newEle.contentWindow.postMessage({context: 'h5p', action: 'ready'}, '*');
+	resizeEmbedding(newEle);
 };
 
 const showEmbeddingSections = container => {
@@ -31,9 +59,14 @@ const showEmbeddingSections = container => {
 	}
 };
 
-const showEmbeddingSectionsAll = containers => {
-	for(const curContainer of containers){
-		showEmbeddingSections(curContainer);
+const resizeEmbedding = ele => {
+	const ar = parseFloat(ele.getAttribute('aspect-ratio'));
+	ele.style.height = `${((ele.clientWidth / ar)|0)+1}px`;
+};
+
+const resizeEmbeddings = () => {
+	for(const e of document.querySelectorAll('iframe[aspect-ratio]')){
+		resizeEmbedding(e);
 	}
 };
 
@@ -49,7 +82,7 @@ const showEmbeddingSectionsAll = containers => {
 
 	function initLazyIframes(){
 		showEmbeddingSections(document.querySelector("main"));
-		showEmbeddingSectionsAll(document.querySelectorAll("exercise-content"));
 	}
 	setTimeout(initLazyIframes,0);
+	window.addEventListener('resize', resizeEmbeddings);
 })();

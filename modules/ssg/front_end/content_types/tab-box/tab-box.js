@@ -1,4 +1,4 @@
-/* globals showEmbeddingSections */
+/* globals showEmbeddingSections,hideElementContentHandler */
 
 (() => {
 	const initTabBoxes = () => {

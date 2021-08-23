@@ -1,4 +1,4 @@
-/* globals showModal,showEmbeddingSections,openFullscreen,closeFullscreen */
+/* globals showModal,showEmbeddingSections,openFullscreen,closeFullscreen,hideElementContentHandler */
 
 
 (() => {
