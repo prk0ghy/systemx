@@ -15,13 +15,6 @@ pipelines:
         - step:
             caches:
               - node
-            name: Build altenburg
-            script:
-              - npm install
-              - npm run build:clean altenburg
-        - step:
-            caches:
-              - node
             name: Build bettermarks
             script:
               - npm install
@@ -65,12 +58,6 @@ pipelines:
         trigger: manual
         script:
           - ssh -p 42 dev.dilewe.de /var/www/html/dilewe.de/systemx/scripts/rebuild-pages-release
-    - step:
-        name: Build Altenburg
-        deployment: altenburg
-        trigger: manual
-        script:
-          - ssh -p 42 dev.dilewe.de "cd /var/www/html/dilewe.de/systemx/ && npm run build:clean altenburg"
     - step:
         name: Build Bettermarks
         deployment: bettermarks
