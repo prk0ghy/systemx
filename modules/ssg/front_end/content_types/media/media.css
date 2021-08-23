@@ -77,6 +77,10 @@ figure[figure-type="video"] figcaption {
 	padding: 6px 33px 16px 0;
 }
 
+section[content-type="video"] figure[figure-type="video"] {
+	margin-bottom:0;
+}
+
 media-play-pause {
 	font-family: icomoon;
 	position: relative;
@@ -458,5 +462,3 @@ figure[figure-type="audio"] img {
 section[content-type="audio"][audio-type="no-image"] {
 	margin-top:calc(var(--content-padding) * -1);
 }
-
-

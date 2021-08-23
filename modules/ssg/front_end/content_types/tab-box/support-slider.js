@@ -150,6 +150,17 @@
 				}
 			};
 
+			const centerSlide = i => {
+				const content = tabContent[i];
+				const maxHeight = (tabContentWrap.clientHeight - controlWrap.offsetHeight);
+				const curHeight = content.scrollHeight;
+				if(curHeight >= maxHeight){
+					content.style.paddingTop = '';
+				}else{
+					content.style.paddingTop = `${(maxHeight - curHeight) / 2}px`;
+				}
+			};
+
 			const resizeSlide = i => {
 				if((i < 0) || (i >= tabContent.length)){return;}
 				const content = tabContent[i];
@@ -171,6 +182,7 @@
 				for(const img of imgs){
 					img.style.maxHeight = `${maxHeight}px`;
 				}
+				centerSlide(i);
 			};
 
 			const showStartSlide = () => {
