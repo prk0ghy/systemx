@@ -224,7 +224,7 @@
 			/* Reset to start-slide when leaving fullscreen mode */
 			document.addEventListener("fullscreenchange", () => {
 				if((curSlide < 0) || (curSlide >= tabContent.length)){return;}
-				if( window.innerHeight === screen.height){
+				if(isFullscreen()){
 					resizeSlide(curSlide);
 					return;
 				}

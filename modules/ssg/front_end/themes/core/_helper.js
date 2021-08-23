@@ -49,8 +49,10 @@ const openFullscreen = element => {
 	}
 };
 
+const isFullscreen = () => document.fullscreenElement !== null;
+
 const closeFullscreen = () => {
-	if( window.innerHeight !== screen.height){return;} // Already in fullscreen
+	if(!isFullscreen()){return;}
 	if (document.exitFullscreen) {
 		document.exitFullscreen();
 	} else if (document.webkitExitFullscreen) {
