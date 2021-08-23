@@ -22,7 +22,7 @@ const options = {
 	storagePath: path.join(".systemx", "storage"),
 	targets: {
 		bdv: {
-			graphqlEndpoint: "https://altenburg.test-dilewe.de/api",
+			graphqlEndpoint: "https://bdv.test-dilewe.de/api",
 			httpPort: 8056
 		},
 		bettermarks: {
