@@ -154,8 +154,8 @@
 				if((i < 0) || (i >= tabContent.length)){return;}
 				const content = tabContent[i];
 				const maxHeight = (tabContentWrap.clientHeight - controlWrap.offsetHeight) * 0.9;
-				let fs = 3.05;
-				for(let step = 1.0; step > 0.01; step *= 0.6){
+				let fs = 2.55;
+				for(let step = 1.0; step > 0.01; step *= 0.5){
 					content.style.fontSize = `${fs}em`;
 					const curHeight = content.scrollHeight;
 					if(curHeight > maxHeight){
@@ -165,7 +165,7 @@
 					}
 				}
 				if(fs < 1.1){fs = 1;}
-				if(fs > 5.0){fs = 5;}
+				if(fs > 4.0){fs = 4;}
 				content.style.fontSize = `${fs}em`;
 				const imgs = content.querySelectorAll(`figure[figure-type="picture"][figure-width="100"] img`);
 				for(const img of imgs){
