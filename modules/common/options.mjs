@@ -21,7 +21,7 @@ const options = {
 	startShop: false,
 	storagePath: path.join(".systemx", "storage"),
 	targets: {
-		altenburg: {
+		bdv: {
 			graphqlEndpoint: "https://altenburg.test-dilewe.de/api",
 			httpPort: 8056
 		},
