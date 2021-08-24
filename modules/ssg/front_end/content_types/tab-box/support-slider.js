@@ -1,4 +1,4 @@
-/* globals showModal,showEmbeddingSections,openFullscreen,closeFullscreen,hideElementContentHandler */
+/* globals showModal,showEmbeddingSections,openFullscreen,closeFullscreen,hideElementContentHandler,isFullscreen */
 
 
 (() => {
@@ -106,9 +106,7 @@
 			let mediaPlaying;
 
 			const playMedia = i => {
-				if((i < 0) || (i >= tabContent.length)){
-					return;
-				}
+				if((i < 0) || (i >= tabContent.length)){return;}
 				if(mediaPlaying){
 					if(mediaPlaying.paused){
 						mediaPlaying.play();
@@ -152,6 +150,7 @@
 
 			const centerSlide = i => {
 				const content = tabContent[i];
+				content.style.paddingTop = '';
 				const maxHeight = (tabContentWrap.clientHeight - controlWrap.offsetHeight);
 				const curHeight = content.scrollHeight;
 				if(curHeight >= maxHeight){
@@ -234,6 +233,14 @@
 			document.addEventListener("resize", () => {
 				if((curSlide < 0) || (curSlide >= tabContent.length)){return;}
 				resizeSlide(curSlide);
+			});
+			tabContent.forEach( (content,index) => {
+				content.addEventListener("content-resize", e => {
+					e.stopPropagation();
+					if(index === curSlide){
+						resizeSlide(curSlide);
+					}
+				});
 			});
 		});
 	};

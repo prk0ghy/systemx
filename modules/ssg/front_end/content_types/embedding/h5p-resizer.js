@@ -6,7 +6,7 @@
 	actionHandlers.hello = (iframe, data, respond) => {
 		iframe.style.width = '100%';
 		iframe.getBoundingClientRect();
-		const resize = function() {
+		const resize = () => {
 			if (iframe.contentWindow) {
 				respond('resize');
 			} else {
@@ -18,28 +18,27 @@
 	};
 
 	actionHandlers.prepareResize = (iframe, data, respond) => {
-		if (iframe.clientHeight !== data.scrollHeight || data.scrollHeight !== data.clientHeight) {
-			iframe.style.height = data.clientHeight + 'px';
-			respond('resizePrepared');
-		}
+		if (iframe.clientHeight === data.scrollHeight && data.scrollHeight === data.clientHeight) {return;}
+		iframe.style.height = data.clientHeight + 'px';
+		respond('resizePrepared');
 	};
 
 	actionHandlers.resize = (iframe, data) => {
 		iframe.style.height = data.scrollHeight + 'px';
+		iframe.dispatchEvent(new CustomEvent("content-resize",{detail:{}, bubbles: true, cancelable: true, composed: false}));
+	};
+
+	const findIframe = target => {
+		for(const iframe of document.getElementsByTagName('iframe')){
+			if(iframe.contentWindow !== target){continue;}
+			return iframe;
+		}
+		return null;
 	};
 
 	window.addEventListener('message', event => {
-		if (event.data.context !== 'h5p') {
-			return;
-		}
-		let iframe;
-		const iframes = document.getElementsByTagName('iframe');
-		for (let i = 0; i < iframes.length; i++) {
-			if (iframes[i].contentWindow === event.source) {
-				iframe = iframes[i];
-				break;
-			}
-		}
+		if (event.data.context !== 'h5p') {return;}
+		const iframe = findIframe(event.source);
 		if (!iframe) {return;}
 		if (actionHandlers[event.data.action]) {
 			actionHandlers[event.data.action](iframe, event.data, (action, data) => {
