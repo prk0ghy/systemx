@@ -49,7 +49,7 @@
 			const options = {
 				index:0,
 				loop: configuration.galleryWrapAround,
-				bgOpacity: 0.5,
+				bgOpacity: configuration.galleryBackgroundOpacity,
 				closeOnScroll: false,
 				getThumbBoundsFn:()=>{
 					const rect = items[options.index].imgTag.getBoundingClientRect();
@@ -156,7 +156,7 @@
 
 			const options = {
 				index:0,
-				bgOpacity: 0.5,
+				bgOpacity: configuration.galleryBackgroundOpacity,
 				closeOnScroll: false,
 				getThumbBoundsFn:()=>{
 					const rect = single.getBoundingClientRect();

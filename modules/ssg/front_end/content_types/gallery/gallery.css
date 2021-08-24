@@ -132,7 +132,6 @@ main > section[content-type="text-and-image"] > section[content-type="gallery"]:
 
 .pswp__bg {
 	background: #fff;
-	opacity: 1 !important;
 }
 
 .pswp__ui--fit .pswp__top-bar {

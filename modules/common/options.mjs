@@ -8,7 +8,8 @@ const options = {
 	cleanBuild: false,
 	cssVars: {},
 	jsVars: {
-		galleryWrapAround: true
+		galleryWrapAround: true,
+		galleryBackgroundOpacity: 0.95
 	},
 	disableMarkers: false,
 	distributionPath: "web",
