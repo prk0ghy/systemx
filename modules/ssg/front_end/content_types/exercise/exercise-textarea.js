@@ -1,6 +1,5 @@
 /* globals Quill,getFirstParentSection */
 
-
 (() => {
 	const initExerciseEditors = () => {
 		const textareas = document.querySelectorAll(".exercise-text");
@@ -100,24 +99,5 @@
 			}
 		}
 	};
-
-	const initUploadSections = () => {
-		const sections = document.querySelectorAll("upload-section");
-		for (const section of sections) {
-			const uploadButton = document.createElement("UPLOAD-BUTTON");
-			uploadButton.innerText = "Datei hochladen";
-			section.appendChild(uploadButton);
-
-			const fileInput = document.createElement("INPUT");
-			fileInput.setAttribute("type", "file");
-			section.appendChild(fileInput);
-
-			uploadButton.addEventListener("click", (e) => {
-				e.preventDefault();
-				fileInput.click();
-			});
-		}
-	};
 	setTimeout(initExerciseEditors, 0);
-	setTimeout(initUploadSections, 0);
 })();

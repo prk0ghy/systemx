@@ -1,10 +1,27 @@
 /* This File should contain little helper functions to be used around the codebase */
-/* exported getFirstParentSection,addHideElementContentHandler,hideElementContentHandler,openFullscreen,closeFullscreen */
+/* exported getFirstParentSection,addHideElementContentHandler,hideElementContentHandler,openFullscreen,closeFullscreen,fileExtension,downloadData */
 
 const getFirstParentSection = ele => {
 	if(!ele){return null;}
 	if(ele.tagName === 'SECTION'){return ele;}
 	return getFirstParentSection(ele.parentElement);
+};
+
+const fileExtension = filename => {
+	const i = filename.lastIndexOf(".");
+	return i < 0 ? "" : filename.substr(i+1).toLowerCase();
+};
+
+/* Download some content immediatly */
+const downloadData = (filename, data) => {
+	const a = document.createElement('a');
+	a.setAttribute('href', data);
+	a.setAttribute('download', filename);
+	a.style.display = 'none';
+
+	document.body.appendChild(a);
+	a.click();
+	document.body.removeChild(a);
 };
 
 const hideElementContentHandlerList = {};

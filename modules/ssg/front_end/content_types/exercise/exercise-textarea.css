@@ -130,37 +130,6 @@ main > section[content-type="exercise"]::after {
 	z-index:-1;
 }
 
-/* Upload Button */
-
-upload-section {
-	position: relative;
-	display: block;
-	padding:var(--content-padding-half) var(--content-padding);
-}
-
-upload-button {
-	border: 2px solid var(--exercise-red);
-	color: var(--exercise-red);
-	background-color: white;
-	padding: 8px 20px;
-	border-radius: 8px;
-	font-size: 20px;
-	font-weight: bold;
-	cursor:pointer;
-	transition: 500ms background-color, 300ms color;
-}
-
-upload-button:active,
-upload-button:focus,
-upload-button:hover {
-	background-color: var(--exercise-red);
-	color: white;
-}
-
-upload-section input[type=file] {
-	display:none;
-}
-
 /* Text-Editor Quill Styling */
 
 fancy-exercise-editor {

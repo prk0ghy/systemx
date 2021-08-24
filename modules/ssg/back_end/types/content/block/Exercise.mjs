@@ -156,10 +156,14 @@ export default {
 			? `<h3>${title}</h3>`
 			: "";
 		const input = (() => {
-			if (inputType === "texteingabe") {
+			switch(inputType){
+			default:
+				return "";
+			case "dateiupload":
+				return `<exercise-files></exercise-files>`;
+			case "texteingabe":
 				return `<textarea class="exercise-text"></textarea>`;
 			}
-			return "";
 		})();
 		const elementsHTML = (await Promise.all((content.elements || []).map(element => render(element)))).join("");
 		return `

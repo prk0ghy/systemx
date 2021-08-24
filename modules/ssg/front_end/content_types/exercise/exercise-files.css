@@ -1,0 +1,109 @@
+exercise-files {
+	position: relative;
+	display: block;
+	padding:var(--content-padding-half) 0;
+}
+
+exercise-file::after,
+exercise-files::after {
+	content:'';
+	display:block;
+	position:relative;
+	clear:both;
+}
+
+exercise-upload-button {
+	display:inline-block;
+	float:right;
+	border: 2px solid var(--exercise-red);
+	color: var(--exercise-red);
+	background-color: white;
+	padding: 8px 20px;
+	border-radius: 8px;
+	font-size: 20px;
+	font-weight: bold;
+	cursor:pointer;
+	transition: 500ms background-color, 300ms color;
+}
+
+exercise-file-list {
+	display:block;
+	text-align:center;
+}
+
+exercise-file {
+	display:block;
+	position:relative;
+	width:100%;
+	height:auto;
+	padding:var(--content-padding-quarter);
+	border: 1px solid var(--exercise-red);
+	margin-bottom:1em;
+	text-align:left;
+}
+
+exercise-upload-button:active,
+exercise-upload-button:focus,
+exercise-upload-button:hover {
+	background-color: var(--exercise-red);
+	color: white;
+}
+
+exercise-files input[type=file] {
+	display:none;
+}
+
+exercise-file-delete::after {
+	content: "Löschen";
+}
+
+exercise-file-delete {
+	display:inline-block;
+	position:absolute;
+	right:var(--content-padding-quarter);
+	top:var(--content-padding-quarter);
+	color: #e51a;
+	background-color: #fffc;
+	border:solid 1px #e51a;
+	padding: 0.1em 0.5em;
+	font-size: 1rem;
+	font-weight: bold;
+	cursor:pointer;
+	transition: background-color 300ms, color 300ms;
+}
+
+exercise-file-delete:active,
+exercise-file-delete:focus,
+exercise-file-delete:hover {
+	color:#fff;
+	background-color:#e51;
+}
+
+exercise-file-name {
+	font-size:0.8em;
+	line-height:1.2em;
+	font-weight:bold;
+	cursor:pointer;
+}
+
+exercise-file-placeholder {
+	display:block;
+	width:100%;
+	color:#fffa;
+	font-size:4em;
+	text-align:center;
+	padding:1em 0;
+	text-transform:uppercase;
+	background: var(--background-red);
+	cursor:pointer;
+}
+
+@media screen and (min-width: 820px) {
+	exercise-file-list[max-cols="2"] > exercise-file {
+		width:48%;
+		display:inline-block;
+		vertical-align:top;
+		margin-left:1%;
+		margin-right:1%;
+	}
+}
