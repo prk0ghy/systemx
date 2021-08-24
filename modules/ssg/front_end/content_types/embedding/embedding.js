@@ -45,6 +45,10 @@ const showLazyIframe = ele => {
 const showEmbeddingSections = container => {
 	if(container === null){return;}
 	for(const child of container.children){
+		if(child.tagName === "LAZY-IFRAME"){
+			showLazyIframe(child);
+			continue;
+		}
 		if(child.tagName !== "SECTION"){continue;}
 		if(child.getAttribute("content-type") === "exercise"){
 			showEmbeddingSections(child.querySelector("exercise-content"));

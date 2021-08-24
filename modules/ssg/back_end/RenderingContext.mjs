@@ -29,6 +29,10 @@ const contextualize = types => context => Object.fromEntries([...types.entries()
 			...rest
 		}];
 	}));
+export const CleanEmbeddingHTML = html => html.replace("http://","https://")
+	.replace("<iframe ","<lazy-iframe ")
+	.replace("</iframe>","</lazy-iframe>")
+	.replace(/<script.*<\/script>/,"");
 
 export const escapeHTML = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 /*
@@ -47,6 +51,7 @@ export default class {
 	classIf = (...rest) => this.attributeIf("class", ...rest);
 	contentTypes = null;
 	escapeHTML = escapeHTML;
+	CleanEmbeddingHTML = CleanEmbeddingHTML;
 	download = async url => {
 		const {filePath, htmlPath} = this.hints.getFilePath(url);
 		await Download(url,filePath);

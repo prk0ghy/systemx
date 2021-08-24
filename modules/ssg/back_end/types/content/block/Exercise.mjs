@@ -145,6 +145,7 @@ export default {
 		title
 	}, {
 		contentTypeIDIf,
+		CleanEmbeddingHTML,
 		helpers: {
 			HelpVideo,
 			Marker
@@ -170,7 +171,7 @@ export default {
 						${titleHTML}
 						${textHTML ?? ""}
 						${elementsHTML}
-						${html ?? ""}
+						${CleanEmbeddingHTML(html ?? "")}
 						${input}
 					</exercise-content>
 				</inner-content>

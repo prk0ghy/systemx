@@ -69,6 +69,7 @@ export default {
 		html
 	}, {
 		contentTypeIDIf,
+		CleanEmbeddingHTML,
 		EditorialError,
 		helpers: {
 			HelpVideo,
@@ -84,21 +85,16 @@ export default {
 		const captionHTML = caption
 			? `<figcaption>${caption}</figcaption>`
 			: "";
-		const rawEmbeddingHTML = html || EditorialError.render({
+		const embeddingHTML = html || EditorialError.render({
 			message: "This embedding is missing the required embedding HTML."
 		});
-		const embeddingHTML = rawEmbeddingHTML
-			.replace("http://","https://")
-			.replace("<iframe ","<lazy-iframe ")
-			.replace("</iframe>","</lazy-iframe>")
-			.replace(/<script.*<\/script>/,"");
 		return `
 			<section content-type="embedding" ${contentTypeIDIf(id)} embedding-type="h5p">
 				<inner-content>
 					${Marker.render({ isNumbered })}
 					${await HelpVideo.render({ asset: helpVideo })}
 					<figure figure-type="embedding">
-						${embeddingHTML}
+						${CleanEmbeddingHTML(embeddingHTML)}
 						${authorHTML}
 						${captionHTML}
 					</figure>
