@@ -93,7 +93,9 @@ export default {
 					${Marker.render({ isNumbered })}
 					${await HelpVideo.render({ asset: helpVideo })}
 					<figure figure-type="embedding">
+						<embed-container>
 						${embeddingHTML.replace("http://","https://").replace("<iframe ","<lazy-iframe ")}
+						</embed-container>
 						${authorHTML}
 						${captionHTML}									
 					</figure>
