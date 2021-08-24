@@ -84,20 +84,22 @@ export default {
 		const captionHTML = caption
 			? `<figcaption>${caption}</figcaption>`
 			: "";
-		const embeddingHTML = html || EditorialError.render({
+		const rawEmbeddingHTML = html || EditorialError.render({
 			message: "This embedding is missing the required embedding HTML."
 		});
+		const embeddingHTML = rawEmbeddingHTML
+			.replace("http://","https://")
+			.replace("<iframe ","<lazy-iframe ")
+			.replace("</iframe>","</lazy-iframe>");
 		return `
 			<section content-type="embedding" ${contentTypeIDIf(id)} embedding-type="h5p">
 				<inner-content>
 					${Marker.render({ isNumbered })}
 					${await HelpVideo.render({ asset: helpVideo })}
 					<figure figure-type="embedding">
-						<embed-container>
-						${embeddingHTML.replace("http://","https://").replace("<iframe ","<lazy-iframe ")}
-						</embed-container>
+						${embeddingHTML}
 						${authorHTML}
-						${captionHTML}									
+						${captionHTML}
 					</figure>
 				</inner-content>
 			</section>
