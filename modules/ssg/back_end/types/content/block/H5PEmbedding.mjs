@@ -90,7 +90,8 @@ export default {
 		const embeddingHTML = rawEmbeddingHTML
 			.replace("http://","https://")
 			.replace("<iframe ","<lazy-iframe ")
-			.replace("</iframe>","</lazy-iframe>");
+			.replace("</iframe>","</lazy-iframe>")
+			.replace(/<script.*<\/script>/,"");
 		return `
 			<section content-type="embedding" ${contentTypeIDIf(id)} embedding-type="h5p">
 				<inner-content>
