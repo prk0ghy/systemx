@@ -112,7 +112,6 @@ section[content-type="embedding"] iframe {
 	display: block;
 	background:#666;
 	width:100%;
-	height:600px;
 }
 
 section[content-type="embedding"][embedding-type="h5p"] > inner-content > figure > iframe {

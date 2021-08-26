@@ -37,7 +37,7 @@ figure-row > figure {
 	display:block;
 	float:left !important;
 	margin:0 !important;
-	padding:0 !important;
+	padding:5px;
 	width:100%;
 	box-sizing:border-box;
 }

@@ -53,6 +53,7 @@ export default {
 					imageHeight
 					imageURL: image
 					imageWidth
+					aspectRatio
 					title
 					videoURL: url
 				}
@@ -68,6 +69,7 @@ export default {
 					imageHeight
 					imageURL: image
 					imageWidth
+					aspectRatio
 					title
 					videoURL: url
 				}
@@ -83,6 +85,7 @@ export default {
 					imageHeight
 					imageURL: image
 					imageWidth
+					aspectRatio
 					title
 					videoURL: url
 				}
@@ -98,6 +101,7 @@ export default {
 					imageHeight
 					imageURL: image
 					imageWidth
+					aspectRatio
 					title
 					videoURL: url
 				}
@@ -114,6 +118,7 @@ export default {
 					imageHeight
 					imageURL: image
 					imageWidth
+					aspectRatio
 					title
 					videoURL: url
 				}
@@ -130,6 +135,7 @@ export default {
 			imageHeight,
 			imageURL,
 			imageWidth,
+			aspectRatio,
 			title,
 			videoURL
 		}
@@ -156,7 +162,7 @@ export default {
 		const separator = videoURL.includes("?")
 			? "&"
 			: "?";
-		const thirdPartyImageURL = imageURL || this.getPreviewImageURL(videoURL);
+		const thirdPartyImageURL = this.getPreviewImageURL(videoURL) || imageURL;
 		let downloadError = "";
 		let firstPartyImageURL = "";
 		try {
@@ -181,7 +187,7 @@ export default {
 					${Marker.render({ isNumbered })}
 					<figure figure-type="embedding">
 						<a href="${timedVideoURL}" class="embedding-link">
-							<img alt="${title}" height="${imageHeight}" src="${firstPartyImageURL}" width="${imageWidth}">
+							<img alt="${title}" height="${imageHeight}" src="${firstPartyImageURL}" width="${imageWidth}" aspect-ratio="${aspectRatio}">
 						</a>
 						${licenseHTML}
 						${captionHTML}
