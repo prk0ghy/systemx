@@ -1,33 +1,69 @@
 import {
 	useCallback,
 	useEffect,
+	useRef,
 	useState
 } from "react";
 import cx from "classnames";
 import Laced from "components/generics/Laced";
 import Navigation from "components/shell/Navigation";
 import styles from "./Header.module.css";
+import { useRouter } from "next/router";
 const Header = () => {
-	const [onScroll, setOnScroll] = useState(false);
-	const handleScroll = useCallback(() => {
-		const limitY = 240;
-		setOnScroll(window.scrollY >= limitY);
-	}, []);
+	const headerReference = useRef();
+	const router = useRouter();
+	const [isMinimized, setIsMinimized] = useState(false);
+	const [hasNavigated, setHasNavigated] = useState(false);
+	const [lastScrollPosition, setLastScrollPosition] = useState(0);
+	const handleVisibility = useCallback(() => {
+		const limitY = 300;
+		const y = window.scrollY;
+		const isThresholdPassed = y >= limitY;
+		const isLastScrollDirectionDown = lastScrollPosition < y;
+		const shouldMinimize = hasNavigated || isThresholdPassed && isLastScrollDirectionDown;
+		setIsMinimized(shouldMinimize);
+		setLastScrollPosition(y);
+		headerReference.current.inert = shouldMinimize;
+	}, [
+		hasNavigated,
+		lastScrollPosition
+	]);
+	const onRouteChange = useCallback(() => {
+		setHasNavigated(true);
+		const reset = () => {
+			setHasNavigated(false);
+			window.removeEventListener("scroll", reset);
+		};
+		window.addEventListener("scroll", reset, {
+			passive: true
+		});
+	}, [
+		setHasNavigated
+	]);
 	useEffect(() => {
-		window.addEventListener("scroll", handleScroll, {
+		window.addEventListener("scroll", handleVisibility, {
 			passive: true
 		});
 		return () => {
-			window.removeEventListener("scroll", handleScroll);
+			window.removeEventListener("scroll", handleVisibility);
 		};
 	}, [
-		handleScroll
+		handleVisibility
+	]);
+	useEffect(() => {
+		router.events.on("routeChangeComplete", onRouteChange);
+		return () => {
+			router.events.off("routeChangeComplete", onRouteChange);
+		};
+	}, [
+		onRouteChange,
+		router.events
 	]);
 	const headerClassName = cx(styles.header, {
-		[styles.scroll]: onScroll
+		[styles.minimized]: isMinimized
 	});
 	return (
-		<header className={ headerClassName }>
+		<header className={ headerClassName } ref={ headerReference }>
 			<Laced>
 				<Navigation className={ styles.navigation }/>
 			</Laced>

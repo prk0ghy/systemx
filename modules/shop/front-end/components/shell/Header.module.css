@@ -1,5 +1,6 @@
 .header {
-	background-color: #161718;
+	backdrop-filter: blur(1rem);
+	background-color: hsla(0, 0%, 0%, 0.7);
 	color: white;
 	height: var(--header-height);
 	padding: 1rem 0;
@@ -8,8 +9,7 @@
 	transition: background-color 0.3s, transform 0.3s;
 	width: 100%;
 	z-index: 10;
-	&.scroll {
-		backdrop-filter: blur(1rem);
+	&.minimized {
 		background-color: hsl(0, 0%, 0%, 0.5);
 		transform: translateY(-100%);
 	}

@@ -1,3 +1,5 @@
+import AccountIcon from "components/shell/AccountIcon";
+import BurgerIcon from "components/shell/BurgerIcon";
 import cx from "classnames";
 import dynamic from "next/dynamic";
 import Link from "next/link";
@@ -11,8 +13,7 @@ const Navigation = ({ className }) => {
 	const [{
 		logoHeight,
 		logoURL,
-		logoWidth,
-		name
+		logoWidth
 	}] = useBrand();
 	return (
 		<nav className={ cx(styles.navigation, className) }>
@@ -40,11 +41,10 @@ const Navigation = ({ className }) => {
 							<CartIcon/>
 						</li>
 						<li className={ styles.item }>
-							<Link href={ routes.login.path }>
-								<a className={ styles.link }>
-									<span>Mein <b>{ name }</b></span>
-								</a>
-							</Link>
+							<AccountIcon/>
+						</li>
+						<li className={ styles.item }>
+							<BurgerIcon/>
 						</li>
 					</ul>
 				</li>

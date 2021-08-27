@@ -9,6 +9,7 @@
 		justify-content: space-between;
 		list-style-type: none;
 		& .item {
+			align-items: center;
 			display: flex;
 			height: 100%;
 			& .link {

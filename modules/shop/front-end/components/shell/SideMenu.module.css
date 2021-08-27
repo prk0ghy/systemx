@@ -1,0 +1,40 @@
+.box {
+	&:not(.open) {
+		--dismisser-background-color: transparent;
+		--dismisser-cursor: initial;
+		--side-menu-transform: translateX(100%);
+		pointer-events: none;
+	}
+	&.open {
+		--dismisser-background-color: hsla(0, 0%, 0%, 0.8);
+		--dismisser-cursor: pointer;
+		--side-menu-transform: translateX(0);
+		pointer-events: all;
+	}
+	& .dismisser {
+		background-color: var(--dismisser-background-color);
+		height: 100%;
+		left: 0;
+		position: fixed;
+		top: 0;
+		transition: background-color 0.4s;
+		width: 100%;
+		z-index: 99;
+		&:hover {
+			cursor: var(--dismisser-cursor);
+		}
+	}
+	& .side-menu {
+		background-color: hsla(0, 0%, 8%);
+		border-left: 0.1rem solid hsl(0, 0%, 100%, 0.2);
+		height: 100%;
+		min-width: 30rem;
+		padding: 1.5rem;
+		position: fixed;
+		right: 0;
+		top: 0;
+		transform: var(--side-menu-transform);
+		transition: transform 0.4s;
+		z-index: 100;
+	}
+}
