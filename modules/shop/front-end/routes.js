@@ -1,4 +1,8 @@
 export default {
+	cart: {
+		name: "Einkaufswagen",
+		path: "/cart"
+	},
 	home: {
 		name: "Startseite",
 		path: "/"

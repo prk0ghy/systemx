@@ -12,7 +12,7 @@ const CartIcon = () => {
 		)
 		: null;
 	return (
-		<Link href={ routes.login.path }>
+		<Link href={ routes.cart.path }>
 			<a className={ styles.cartIcon }>
 				<img
 					alt="Warenkorb"

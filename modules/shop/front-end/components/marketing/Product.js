@@ -58,7 +58,9 @@ const Product = ({
 				<div className={ styles.card }>
 					<h2 className={ styles.mobileName }>
 						<Laced>
-							<ImageText className={ styles.text }>{ name }</ImageText>
+							<ImageText className={ styles.text }>
+								<H>{ name }</H>
+							</ImageText>
 						</Laced>
 					</h2>
 					<h2 className={ styles.name }>
