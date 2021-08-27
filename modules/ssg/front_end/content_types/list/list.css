@@ -2,6 +2,10 @@ li {
 	line-height:1.2em;
 }
 
+main li {
+	overflow:hidden;
+}
+
 main ol,
 main ul {
 	margin-bottom:var(--content-padding-half);
