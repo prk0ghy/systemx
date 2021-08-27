@@ -110,7 +110,7 @@ iframe-wrap[iframe-type="video"] > iframe {
 section[content-type="embedding"] lazy-iframe,
 section[content-type="embedding"] iframe {
 	display: block;
-	background:#666;
+	background:#000;
 	width:100%;
 }
 

@@ -33,7 +33,7 @@ const showLazyIframe = ele => {
 	}
 
 	newEle.setAttribute("src",ele.getAttribute("src"));
-	newEle.classList.add("h5p-iframe");
+	if(String(ele.getAttribute("src")).indexOf("h5p") >= 0){newEle.classList.add("h5p-iframe");}
 	calculateAspectRatio(newEle);
 	iframeWrapper.append(newEle);
 	ele.parentElement.insertBefore(iframeWrapper,ele);
@@ -64,7 +64,8 @@ const showEmbeddingSections = container => {
 };
 
 const resizeEmbedding = ele => {
-	const ar = parseFloat(ele.getAttribute('aspect-ratio'));
+	const arRaw = ele.getAttribute('aspect-ratio');
+	const ar = arRaw ? parseFloat(arRaw) : 1.5;
 	ele.style.height = `${((ele.clientWidth / ar)|0)+1}px`;
 };
 

@@ -32,6 +32,9 @@
 						html.push(`<h2>${i+1}</h2>${tmp}`);
 					}
 				}
+				if(html.length === 0) {
+					html.push(`<div>Urheber: Digitale Lernwelten GmbH</div>`);
+				}
 				showModal(html.join("<hr/>"));
 			};
 
