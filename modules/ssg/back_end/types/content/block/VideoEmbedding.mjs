@@ -162,7 +162,7 @@ export default {
 		const separator = videoURL.includes("?")
 			? "&"
 			: "?";
-		const thirdPartyImageURL = this.getPreviewImageURL(videoURL) || imageURL;
+		const thirdPartyImageURL = imageURL || this.getPreviewImageURL(videoURL);
 		let downloadError = "";
 		let firstPartyImageURL = "";
 		try {
@@ -187,7 +187,7 @@ export default {
 					${Marker.render({ isNumbered })}
 					<figure figure-type="embedding">
 						<a href="${timedVideoURL}" class="embedding-link">
-							<img alt="${title}" height="${imageHeight}" src="${firstPartyImageURL}" width="${imageWidth}" aspect-ratio="${aspectRatio}">
+							<img alt="${title}" height="${imageHeight}" src="${firstPartyImageURL}" width="${imageWidth}" aspect-ratio="${aspectRatio / 100.0}">
 						</a>
 						${licenseHTML}
 						${captionHTML}

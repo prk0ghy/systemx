@@ -1,4 +1,4 @@
-/* global addHideElementContentHandler */
+/* global addHideElementContentHandler,continueWhenAllowed,embedsAllowed,canUseEmbeds */
 
 const calculateAspectRatio = (() => {
 	const plistGetf = (arr,key) => {
@@ -20,8 +20,29 @@ const calculateAspectRatio = (() => {
 	};
 })();
 
-const showLazyIframe = ele => {
+const isThirdPartyHref = url => {
+	const arr = url.split("/");
+	if(arr.length < 3){return true;}
+	if(url.indexOf("usesExternalSources=1") >= 0){return true;}
+	const whitelist = {
+		"h5p.test-dilewe.de": false,
+		"jura-museum-h5p.dilewe.de": false,
+		"h5p-hessen.test-dilewe.de": false
+	};
+	if(whitelist[arr[2]] !== undefined){return whitelist[arr[2]];}
+	return false;
+};
+
+const showLazyIframe = async ele => {
 	if(ele.classList.contains("hidden-embedding-placeholder")){return;}
+	if(!embedsAllowed() && isThirdPartyHref(ele.getAttribute("src"))){
+		ele.addEventListener("click", canUseEmbeds);
+		ele.classList.add("waiting-for-approval");
+		await continueWhenAllowed();
+		ele.removeEventListener("click", canUseEmbeds);
+		ele.classList.remove("waiting-for-approval");
+	}
+
 	const iframeWrapper = document.createElement("IFRAME-WRAPPER");
 	const newEle = document.createElement("IFRAME");
 	newEle.setAttribute("frameborder","0");

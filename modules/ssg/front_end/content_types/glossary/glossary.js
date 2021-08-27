@@ -1,4 +1,4 @@
-/* globals showModal */
+/* globals showModal,showEmbeddingSections */
 
 (() => {
 	const getLinkPath = href => {
@@ -26,7 +26,7 @@
 		entry.setAttribute("entry-href",getLinkPath(rawHref));
 		entry.innerHTML = `<modal-content>${content}</modal-content>`;
 		document.querySelector("main").appendChild(entry);
-		showModal(entry);
+		return showModal(entry);
 	};
 
 	const initGlossaryLink = a => {
@@ -35,11 +35,8 @@
 			e.preventDefault();
 			const href  = getLinkPath(a.href);
 			const entry = document.querySelector(`glossary-entry[entry-href="${href}"]`);
-			if(entry !== null){ // Just show the entry if it is already loaded, otherwise load it
-				showModal(entry);
-			}else{
-				loadGlossaryEntry(a.href);
-			}
+			const modal = entry === null ? await loadGlossaryEntry(a.href) : showModal(entry);
+			showEmbeddingSections(modal.querySelector("modal-content"));
 		});
 	};
 
