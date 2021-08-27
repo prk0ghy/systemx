@@ -1,11 +1,20 @@
 .shell {
 	--color-link: #5e7ff1;
 	--header-height: 7rem;
-	background-color: black;
-	display: grid;
-	grid-template-rows: auto 1fr auto;
-	min-height: 100vh;
+	--side-menu-width: 30rem;
 	& .content {
-		background-color: white;
+		background-color: black;
+		display: grid;
+		grid-template-rows: auto 1fr auto;
+		min-height: 100vh;
+		transform: translateX(0);
+		transition: transform 0.4s;
+		&.inactive {
+			--potential-scroll-bar-width: 2rem;
+			transform: translateX(calc(-1 * var(--side-menu-width) + var(--potential-scroll-bar-width)));
+		}
+		& .children {
+			background-color: white;
+		}
 	}
 }
