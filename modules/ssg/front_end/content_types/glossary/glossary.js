@@ -1,6 +1,6 @@
 /* globals showModal,showEmbeddingSections */
 
-(() => {
+const initGlossary = (() => {
 	const getLinkPath = href => {
 		return "/"+(String(href).split("/").slice(3).join("/"));
 	};
@@ -29,24 +29,33 @@
 		return showModal(entry);
 	};
 
-	const initGlossaryLink = a => {
-		a.classList.add("glossary-link");
-		a.addEventListener("click",async (e) => {
-			e.preventDefault();
-			const href  = getLinkPath(a.href);
-			const entry = document.querySelector(`glossary-entry[entry-href="${href}"]`);
-			const modal = entry === null ? await loadGlossaryEntry(a.href) : showModal(entry);
-			showEmbeddingSections(modal.querySelector("modal-content"));
-		});
+	const glossaryClickHandler = async e => {
+		e.preventDefault();
+		const a = e.target;
+		if(!a){return;}
+		const href  = getLinkPath(a.href);
+		const entry = document.querySelector(`glossary-entry[entry-href="${href}"]`);
+		const modal = entry === null ? await loadGlossaryEntry(a.href) : showModal(entry);
+		showEmbeddingSections(modal.querySelector("modal-content"));
 	};
 
-	const initGlossary = () => {
+	const initGlossaryLink = a => {
+		a.classList.add("glossary-link");
+		a.removeEventListener("click",glossaryClickHandler);
+		a.addEventListener("click",glossaryClickHandler);
+	};
+
+	const isGlossaryHref = href => {
+		const hrefArr = href.split("/");
+		return hrefArr && (hrefArr.length > 4) && (hrefArr[3] === "glossar");
+	};
+
+	return () => {
 		for(const link of document.querySelectorAll("a")){
-			const hrefArr = link.href.split("/");
-			if(hrefArr.length < 5){continue;}
-			if(hrefArr[3] !== "glossar"){continue;}
-			initGlossaryLink(link);
+			if(isGlossaryHref(link.href)){
+				initGlossaryLink(link);
+			}
 		}
 	};
-	setTimeout(initGlossary,0);
 })();
+setTimeout(initGlossary,0);

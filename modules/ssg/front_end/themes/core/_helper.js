@@ -1,5 +1,6 @@
 /* This File should contain little helper functions to be used around the codebase */
 /* exported getFirstParentSection,addHideElementContentHandler,hideElementContentHandler,openFullscreen,closeFullscreen,fileExtension,downloadData */
+/* global callOverlayCloseHandlers */
 
 const getFirstParentSection = ele => {
 	if(!ele){return null;}

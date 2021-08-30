@@ -2,9 +2,9 @@
 
 // We have to preserve the old scrollTop because we disable scrolling
 // while an overlay is acive.
-let oldScrollTop = 0;
+let oldScrollTop   = 0;
 let overlayElement = null;
-let overlayActive = false;
+let overlayActive  = false;
 const overlayCloseHandlers = [];
 
 const showOverlay = (blurException) => {

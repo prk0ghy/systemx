@@ -1,6 +1,15 @@
-/* globals PhotoSwipe, PhotoSwipeUI_Default, configuration */
+/* globals PhotoSwipe,PhotoSwipeUI_Default,configuration,initGlossary,overlayCloseHandlers */
 
 (() => {
+	let currentGallery;
+
+	const closeCurrentGallery = () => {
+		if(!currentGallery){return;}
+		currentGallery.close();
+		currentGallery = null;
+	};
+	overlayCloseHandlers.push(closeCurrentGallery);
+
 	const initPhotoswipe = () => {
 		const pswpMarkup = '<div class="pswp__bg"></div><div class="pswp__scroll-wrap"><div class="pswp__container"> <div class="pswp__item"></div><div class="pswp__item"></div><div class="pswp__item"></div></div><div class="pswp__ui pswp__ui--hidden"> <div class="pswp__top-bar"> <div class="pswp__counter"></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button> <button class="pswp__button pswp__button--share" title="Share"></button> <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button> <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button> <div class="pswp__preloader"> <div class="pswp__preloader__icn"> <div class="pswp__preloader__cut"> <div class="pswp__preloader__donut"></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"> <div class="pswp__share-tooltip"></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"> </button> <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"> </button> <div class="pswp__caption"> <div class="pswp__caption__center"></div></div></div></div>';
 		const ele = document.createElement("DIV");
@@ -128,10 +137,17 @@
 			gallery.addEventListener("click", e => e.preventDefault());
 			button.addEventListener("click",e => {
 				e.preventDefault();
-				const gal = new PhotoSwipe(pswpElement,PhotoSwipeUI_Default,items,options);
+				if(currentGallery){currentGallery.close();}
+				const gal = currentGallery = new PhotoSwipe(pswpElement,PhotoSwipeUI_Default,items,options);
 				gal.init();
-				gal.listen('close', () => button.classList.remove("active"));
-				gal.listen('beforeChange', () => setSlide(gal.getCurrentIndex()));
+				gal.listen('close', () => {
+					button.classList.remove("active");
+					currentGallery = null;
+				});
+				gal.listen('beforeChange', () => {
+					setSlide(gal.getCurrentIndex());
+					initGlossary();
+				});
 				button.classList.add("active");
 			});
 			previousSlideButton.addEventListener("click", () => setSlide(options.index - 1));
@@ -185,9 +201,14 @@
 			single.addEventListener("click", e => e.preventDefault());
 			button.addEventListener("click", e => {
 				e.preventDefault();
-				const gal = new PhotoSwipe(pswpElement,PhotoSwipeUI_Default,items,options);
+				if(currentGallery){currentGallery.close();}
+				const gal = currentGallery = new PhotoSwipe(pswpElement,PhotoSwipeUI_Default,items,options);
 				gal.init();
-				gal.listen('close', () => button.classList.remove("active"));
+				gal.listen('close', () => {
+					button.classList.remove("active");
+					currentGallery = null;
+				});
+				initGlossary();
 				button.classList.add("active");
 			});
 		});
