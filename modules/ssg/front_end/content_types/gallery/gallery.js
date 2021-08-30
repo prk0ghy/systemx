@@ -32,12 +32,13 @@
 			for(const figure of gallery.querySelectorAll('figure')){
 				const imgTag = figure.querySelector("img");
 				if(!imgTag){continue;}
-				const src   = imgTag.src;
+				const src   = imgTag.getAttribute("raw-width") || imgTag.getAttribute("src");
+				const msrc  = imgTag.getAttribute("src");
 				const w     = (imgTag.getAttribute("raw-width") | 0) || (imgTag.getAttribute("width") | 0);
 				const h     = (imgTag.getAttribute("raw-height")| 0) || (imgTag.getAttribute("height") | 0);
 				const figcaption = figure.querySelector("figcaption");
 				const title = figcaption ? figcaption.innerHTML : "";
-				items.push({src,w,h,title,figure,figcaption,imgTag});
+				items.push({src,w,h,msrc,title,figure,figcaption,imgTag});
 				captionWrap.append(figcaption);
 				figure.classList.add("hidden");
 				figcaption.classList.add("hidden");
@@ -62,7 +63,6 @@
 					return ret;
 				}
 			};
-			console.log(items);
 
 			const setSlideWrap = i => {
 				i = i|0;
@@ -149,9 +149,10 @@
 			{
 				const imgTag = single.querySelector("img");
 				if(imgTag === null){return;}
-				const src   = imgTag.getAttribute("raw-src");
-				const w     = imgTag.getAttribute("raw-width") |0;
-				const h     = imgTag.getAttribute("raw-height")|0;
+				const src   =  imgTag.getAttribute("raw-src") || imgTag.getAttribute("src");
+				const msrc  =  imgTag.getAttribute("src");
+				const w     = (imgTag.getAttribute("raw-width") | 0) || (imgTag.getAttribute("width"));
+				const h     = (imgTag.getAttribute("raw-height")| 0) || (imgTag.getAttribute("height"));
 				const title = figCaption ? figCaption.innerHTML : "";
 				items.push({src,w,h,title});
 			}
