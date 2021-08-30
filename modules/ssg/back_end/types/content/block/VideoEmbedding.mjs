@@ -175,13 +175,12 @@ export default {
 		const timedVideoURL = parameters
 			? `${videoURL}${separator}${parameters}`
 			: videoURL;
-		const imageMissingError = firstPartyImageURL
-			? ""
-			: EditorialError.render({
+		if(downloadError || (firstPartyImageURL === "")){
+			return EditorialError.render({
 				message: downloadError ? `There was an error while downloading the posterframe: ${downloadError}` : "The preview image for this video embedding is missing a URL."
 			});
+		}
 		return `
-			${imageMissingError}
 			<section content-type="embedding" ${contentTypeIDIf(id)} embedding-type="video">
 				<inner-content>
 					${Marker.render({ isNumbered })}
