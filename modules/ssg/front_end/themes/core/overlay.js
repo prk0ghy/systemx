@@ -1,4 +1,4 @@
-/* exported showOverlay,hideOverlay,overlayCloseHandlers */
+/* exported showOverlay,hideOverlay,overlayCloseHandlers,callOverlayCloseHandlers */
 
 // We have to preserve the old scrollTop because we disable scrolling
 // while an overlay is acive.
@@ -28,10 +28,14 @@ const showOverlay = (blurException) => {
 	}
 };
 
+const callOverlayCloseHandlers = () => {
+	for(const cb of overlayCloseHandlers){cb();}
+};
+
 const hideOverlay = () => {
 	if(!overlayActive){return;}
 	overlayElement.removeAttribute("open");
-	for(const cb of overlayCloseHandlers){cb();}
+	callOverlayCloseHandlers();
 
 	for(const child of document.querySelector("main").children){
 		child.classList.remove("overlay-blur");

@@ -69,6 +69,7 @@ const openFullscreen = element => {
 const isFullscreen = () => document.fullscreenElement !== null;
 
 const closeFullscreen = () => {
+	callOverlayCloseHandlers();
 	if(!isFullscreen()){return;}
 	if (document.exitFullscreen) {
 		document.exitFullscreen();
