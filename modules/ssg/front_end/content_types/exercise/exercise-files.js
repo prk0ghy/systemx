@@ -13,6 +13,7 @@
 			index:0,
 			bgOpacity: configuration.galleryBackgroundOpacity,
 			closeOnScroll: false,
+			shareEl: false,
 			getThumbBoundsFn:()=>{
 				const rect = imgTag.getBoundingClientRect();
 				const ret = {
