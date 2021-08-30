@@ -53,8 +53,8 @@ section[content-type="gallery"] .gallery-text p {
 
 section[content-type="gallery"] figure[figure-type="gallery"] img {
 	width:100%;
-	height:60vw;
-	max-height: 600px;
+	height:56vw;
+	max-height: 462px;
 	object-fit:cover;
 }
 
