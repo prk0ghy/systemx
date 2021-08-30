@@ -32,7 +32,7 @@
 			for(const figure of gallery.querySelectorAll('figure')){
 				const imgTag = figure.querySelector("img");
 				if(!imgTag){continue;}
-				const src   = imgTag.getAttribute("raw-width") || imgTag.getAttribute("src");
+				const src   = imgTag.getAttribute("raw-src") || imgTag.src;
 				const msrc  = imgTag.getAttribute("src");
 				const w     = (imgTag.getAttribute("raw-width") | 0) || (imgTag.getAttribute("width") | 0);
 				const h     = (imgTag.getAttribute("raw-height")| 0) || (imgTag.getAttribute("height") | 0);
@@ -149,12 +149,12 @@
 			{
 				const imgTag = single.querySelector("img");
 				if(imgTag === null){return;}
-				const src   =  imgTag.getAttribute("raw-src") || imgTag.getAttribute("src");
+				const src   =  imgTag.getAttribute("raw-src") || imgTag.src;
 				const msrc  =  imgTag.getAttribute("src");
 				const w     = (imgTag.getAttribute("raw-width") | 0) || (imgTag.getAttribute("width"));
 				const h     = (imgTag.getAttribute("raw-height")| 0) || (imgTag.getAttribute("height"));
 				const title = figCaption ? figCaption.innerHTML : "";
-				items.push({src,w,h,title});
+				items.push({src,msrc,w,h,title});
 			}
 
 			const options = {

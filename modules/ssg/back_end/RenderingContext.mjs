@@ -34,6 +34,9 @@ export const CleanEmbeddingHTML = html => html.replace("http://","https://")
 	.replace("</iframe>","</lazy-iframe>")
 	.replace(/<script.*<\/script>/,"");
 
+export const forceHTTPS = href => href.replace("http://","https://")
+	.replace(/^\/\//,"https://");
+
 export const escapeHTML = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 /*
 * The rendering context is a small set of properties that is useful for debugging.
@@ -51,6 +54,7 @@ export default class {
 	classIf = (...rest) => this.attributeIf("class", ...rest);
 	contentTypes = null;
 	escapeHTML = escapeHTML;
+	forceHTTPS = forceHTTPS;
 	CleanEmbeddingHTML = CleanEmbeddingHTML;
 	download = async url => {
 		const {filePath, htmlPath} = this.hints.getFilePath(url);
