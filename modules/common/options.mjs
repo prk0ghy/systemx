@@ -11,6 +11,7 @@ const options = {
 		galleryWrapAround: true,
 		galleryBackgroundOpacity: 0.95
 	},
+	favicon: "default",
 	disableMarkers: false,
 	distributionPath: "web",
 	downloadMedia: false,
@@ -41,13 +42,14 @@ const options = {
 				backgroundBlue:  "rgba(0,0,0,0)",
 				backgroundRed:   "rgba(0,0,0,0)",
 				backgroundGreen: "rgba(0,0,0,0)",
-				fontContent:   "Franklin",
-				fontHeadlines: "Franklin"
+				fontContent:     "Franklin",
+				fontHeadlines:   "Franklin"
 			}
 		},
 		lasub: {
 			graphqlEndpoint: "https://lasub.dilewe.de/api",
-			httpPort: 8042
+			httpPort: 8042,
+			favicon: "lasub"
 		},
 		leipzig: {
 			graphqlEndpoint: "https://archiv-buergerbewegung-leipzig.test-dilewe.de/api",

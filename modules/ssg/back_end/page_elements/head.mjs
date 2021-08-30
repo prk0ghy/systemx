@@ -1,6 +1,6 @@
 import * as css from "./css.mjs";
 import * as js from "./js.mjs";
-import { getResourcePath, resourceDirectoryName } from "../target.mjs";
+import { getTargetPath, getResourcePath, resourceDirectoryName } from "../target.mjs";
 import options from "../../../common/options.mjs";
 import crypto from "crypto";
 import fs from "fs";
@@ -69,6 +69,11 @@ export const buildHead = async targetName => {
 
 	const promises = [];
 	const resourcePath = getResourcePath(targetName);
+	const targetPath = getTargetPath(targetName);
+
+	promises.push(copyResource(path.join("modules", "ssg", "front_end", "themes", "core", "favicon", options.favicon), targetPath, "favicon.ico"));
+	promises.push(copyResource(path.join("modules", "ssg", "front_end", "themes", "core", "favicon", options.favicon), targetPath, "favicon.svg"));
+	promises.push(copyResource(path.join("modules", "ssg", "front_end", "themes", "core", "favicon", options.favicon), targetPath, "favicon-180.png"));
 
 	promises.push(copyResource(path.join("node_modules", "quill", "dist"), resourcePath, "quill.min.js"));
 	promises.push(copyResource(path.join("node_modules", "quill", "dist"), resourcePath, "quill.min.js.map"));
@@ -103,7 +108,6 @@ export const buildHead = async targetName => {
 	curHead += resourceTag('main.css');
 	curHead += configCSSVars(targetName);
 
-
 	curHead += resourceTag('quill.min.js');
 	curHead += resourceTag('photoswipe-ui-default.min.js');
 	curHead += resourceTag('photoswipe.min.js');
@@ -111,6 +115,8 @@ export const buildHead = async targetName => {
 	curHead += configJSVars();
 	curHead += resourceTag('main.js');
 
+	curHead += `<link rel="icon" href="/favicon.svg"/>`;
+	curHead += `<link rel="apple-touch-icon" href="/favicon-180.png"/>`;
 
 	headResources.set(targetName, curHead);
 };

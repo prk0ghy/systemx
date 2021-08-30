@@ -35,7 +35,7 @@ const getHomePageURI = entries => {
 const getTargetPathNew = targetName => path.join(options.distributionPath, `${targetName}.new`);
 const getTargetPathOld = targetName => path.join(options.distributionPath, `${targetName}.old`);
 const getTargetPathRaw = targetName => path.join(options.distributionPath, targetName);
-const getTargetPath    = targetName => options.cleanBuild ? getTargetPathNew(targetName) : getTargetPathRaw(targetName);
+export const getTargetPath = targetName => options.cleanBuild ? getTargetPathNew(targetName) : getTargetPathRaw(targetName);
 /*
 * Targets can make use of resources in HTML.
 * Resources can be of any file type; they don't have to be images.
