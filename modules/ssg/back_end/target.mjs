@@ -181,16 +181,62 @@ export const renderSingleEntry = async (targetName, uri) => {
 * Essentially, this is the heart of systemx.
 */
 export const buildEntries = async targetName => {
-	const entries = await getEntries();
-	const targetPath = getTargetPath(targetName);
-	const mediaPath = getMediaPath(targetName);
+	let warningHTML    = "";
+	const entries      = await getEntries();
+	const targetPath   = getTargetPath(targetName);
+	const mediaPath    = getMediaPath(targetName);
+	const thumbPath    = getThumbPath(targetName);
 	await mkdirp(mediaPath);
-	const thumbPath = getThumbPath(targetName);
 	await mkdirp(thumbPath);
-	let warningHTML = "";
-	const cmsContext = await getCMSContext(introspectCraft);
+	const cmsContext   = await getCMSContext(introspectCraft);
 	const contentTypes = await loadContentTypes();
-	const helperTypes = await loadHelperTypes();
+	const helperTypes  = await loadHelperTypes();
+	const globalRender = makeRenderer(contentTypes);
+	const globalContext = new RenderingContext({
+		cms: cmsContext,
+		globalRender,
+		hints: {
+			appendError: (html, context) => {
+				if (context.type !== "root") {
+					warningHTML += html;
+				}
+			},
+			shouldMakeThumbnail: path => {
+				switch(path.substring(path.lastIndexOf('.')+1).toLowerCase()){
+				case "jpg":
+				case "jpeg":
+				case "png":
+				case "webp":
+					return true;
+				default:
+					return false;
+				}
+			},
+			getFilePath: url => {
+				const urlObject = new URL(url.startsWith("//") ? `https:${url}` : url);
+				const hash = crypto.createHash("sha1");
+				hash.update(url,'utf-8');
+				const hashPrefix = hash.digest('hex');
+				checkHashCollision(url,hashPrefix);
+				const fileName = `${hashPrefix}_${decodeURIComponent(urlObject
+					.pathname
+					.substr(urlObject.pathname.lastIndexOf("/") + 1)
+				)}`;
+				const filePath = path.join(mediaPath, fileName);
+				const htmlPath = filePath.substr(targetPath.length);
+				const thumb = {
+					"filePath": path.join(thumbPath, fileName)
+				};
+				thumb.htmlPath = (thumbPath + thumb.filePath.substr(mediaPath.length)).substr(targetPath.length);
+
+				return {filePath, htmlPath, thumb};
+			}
+		},
+		types: {
+			content: contentTypes,
+			helper: helperTypes
+		}
+	});
 	await Promise.all(entries.map(async entry => {
 		const directory = await mkdirp(targetPath, entry.uri);
 		const outputFilePath = path.join(directory, "index.html");
@@ -203,62 +249,7 @@ export const buildEntries = async targetName => {
 		catch {
 			/* Doesn't matter if it fails, we just render a new file */
 		}
-		const globalRender = makeRenderer(contentTypes);
-		const html = await globalRender(entry, new RenderingContext({
-			cms: cmsContext,
-			globalRender,
-			hints: {
-				appendError: (() => {
-					let lastURI = null;
-					return (html, context) => {
-						if (context.type !== "root") {
-							if (lastURI !== entry.uri) {
-								warningHTML += `
-									<h1><a href="/${entry.uri}">${entry.uri}</a></h1>
-								`;
-							}
-							lastURI = entry.uri;
-							warningHTML += html;
-						}
-					};
-				})(),
-				shouldMakeThumbnail: path => {
-					switch(path.substring(path.lastIndexOf('.')+1).toLowerCase()){
-					case "jpg":
-					case "jpeg":
-					case "png":
-					case "webp":
-						return true;
-					default:
-						return false;
-					}
-				},
-				getFilePath: url => {
-					if(!url){return null;}
-					const urlObject = new URL(url.startsWith("//") ? `https:${url}` : url);
-					const hash = crypto.createHash("sha1");
-					hash.update(url,'utf-8');
-					const hashPrefix = hash.digest('hex');
-					checkHashCollision(url,hashPrefix);
-					const fileName = `${hashPrefix}_${decodeURIComponent(urlObject
-						.pathname
-						.substr(urlObject.pathname.lastIndexOf("/") + 1)
-					)}`;
-					const filePath = path.join(mediaPath, fileName);
-					const htmlPath = filePath.substr(targetPath.length);
-					const thumb = {
-						"filePath": path.join(thumbPath, fileName)
-					};
-					thumb.htmlPath = (thumbPath + thumb.filePath.substr(mediaPath.length)).substr(targetPath.length);
-
-					return {filePath, htmlPath, thumb};
-				}
-			},
-			types: {
-				content: contentTypes,
-				helper: helperTypes
-			}
-		}));
+		const html = await globalRender(entry, globalContext);
 		/* Remove target prefix and in case of Windows, replace blackslashes with forward slashes */
 		const uri = outputFilePath.substr(targetPath.length).replace(/\\/g, "/");
 		const wrappedHTML = await wrapWithApplicationShell(targetName, {
