@@ -11,6 +11,8 @@ export default {
 					${fragments.asset}
 				}
 				id
+				slug
+				typeHandle
 				title
 				titleOverride: title_override
 				vgWortPixel

@@ -53,3 +53,12 @@ section[content-type="error"]::after {
 		display: none;
 	}
 }
+
+.backend-link {
+	float:right;
+	font-size:0.8em;
+}
+
+.backend-link::before {
+	content: "\270E";
+}

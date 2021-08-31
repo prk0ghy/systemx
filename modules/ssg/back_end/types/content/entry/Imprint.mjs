@@ -4,6 +4,8 @@ export default {
 			fetch: ({ fragments }) => `
 				elements: ${fragments.elements}
 				id
+				slug
+				typeHandle
 				title
 			`
 		}]

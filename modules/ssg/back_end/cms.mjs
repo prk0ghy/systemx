@@ -145,6 +145,7 @@ export const getContext = async introspect => {
 	const cms = {
 		fragments: {},
 		introspection: await introspect(),
+		endPoint,
 		types
 	};
 	for (const [, {

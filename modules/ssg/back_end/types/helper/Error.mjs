@@ -5,12 +5,14 @@ export default {
 		title = "Error",
 		type
 	}, context) {
+		const backendLink = context.getBackendLink(context);
 		const editorialAttribute = isEditorial
 			? "is-editorial"
 			: "";
 		const output = `
 			<section content-type="error" ${editorialAttribute}>
 				<inner-content>
+					<a class="backend-link" href="${backendLink}" target="_blank">Edit entry</a>
 					<h6 class="title">${title}</h6>
 					<div class="type">${type}</div>
 					<p class="message">${message}</p>
