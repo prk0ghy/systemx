@@ -45,7 +45,6 @@ const makeThumbnail = (inPath, outPath, maxWidth, maxHeight) => {
 						console.log(`× - ${outPath}`);
 						return reject(err);
 					}else{
-						console.log(`✓ - ${outPath}`);
 						return resolve(true);
 					}
 				});

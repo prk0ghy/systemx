@@ -234,6 +234,7 @@ export const buildEntries = async targetName => {
 					}
 				},
 				getFilePath: url => {
+					if(!url){return null;}
 					const urlObject = new URL(url.startsWith("//") ? `https:${url}` : url);
 					const hash = crypto.createHash("sha1");
 					hash.update(url,'utf-8');

@@ -20,6 +20,7 @@ const agent = new https.Agent({
 const downloads = new Map();
 
 const download = (url,filePath) => {
+	if(!url){return null;}
 	/* Assume https */
 	if(url.startsWith("//")){return download(`https:${url}`,filePath);}
 	/* Avoid downloading the same asset multiple times */
@@ -42,7 +43,6 @@ const download = (url,filePath) => {
 					response.pipe(stream);
 					stream.on("finish", () => {
 						stream.close();
-						console.log(`✓ - ${url}`);
 						downloadsActive--;
 						workQueue();
 						return resolve(true);

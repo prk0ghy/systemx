@@ -57,6 +57,7 @@ export default class {
 	forceHTTPS = forceHTTPS;
 	CleanEmbeddingHTML = CleanEmbeddingHTML;
 	download = async url => {
+		if(!url){return null;}
 		const {filePath, htmlPath} = this.hints.getFilePath(url);
 		await Download(url,filePath);
 		return htmlPath;
