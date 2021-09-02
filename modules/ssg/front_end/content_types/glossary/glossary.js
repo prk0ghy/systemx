@@ -36,6 +36,7 @@ const initGlossary = (() => {
 		const href  = getLinkPath(a.href);
 		const entry = document.querySelector(`glossary-entry[entry-href="${href}"]`);
 		const modal = entry === null ? await loadGlossaryEntry(a.href) : showModal(entry);
+		setTimeout(initModalRights,0);
 		showEmbeddingSections(modal.querySelector("modal-content"));
 	};
 
@@ -48,6 +49,23 @@ const initGlossary = (() => {
 	const isGlossaryHref = href => {
 		const hrefArr = href.split("/");
 		return hrefArr && (hrefArr.length > 4) && (hrefArr[3] === "glossar");
+	};
+
+	const initModalRights = () => {
+		const licenseButtons = document.querySelectorAll("modal-content details.license > summary");
+		for(const license of licenseButtons){
+			const licenseContent = license.parentElement.lastElementChild;
+			if((licenseContent === null) || (licenseContent.innerHTML.trim().length === 0)){
+				license.classList.add("missing-attribution");
+			}
+			license.parentElement.setAttribute("open","");
+			license.addEventListener('click', OpenLicenseModal);
+		}
+	};
+	const OpenLicenseModal = e => {
+		e.preventDefault();
+		e.stopPropagation();
+		e.target.parentElement.classList.toggle("active");
 	};
 
 	return () => {
