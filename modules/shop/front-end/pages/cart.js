@@ -15,7 +15,6 @@ const Cart = () => {
 		<Page title="Einkaufswagen">
 			<BannerLayout headline="Einkaufswagen" height={ imprintPreviewHeight } image={ imprintPreviewURL } width={ imprintPreviewWidth }>
 				<TextContent>
-					<p>Hier ist der Einkaufswagen.</p>
 					<CartManager/>
 				</TextContent>
 			</BannerLayout>

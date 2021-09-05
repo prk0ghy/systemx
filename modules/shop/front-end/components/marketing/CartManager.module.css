@@ -1,2 +1,18 @@
 .cart-manager {
+	& h3 {
+		font-size: 4rem;
+	}
+	& .sum {
+		font-weight: 700;
+		padding: 2rem;
+		& > span {
+			float: right;
+		}
+		& ::after {
+			clear: both;
+			content: "";
+			display: block;
+			position: relative;
+		}
+	}
 }

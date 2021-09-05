@@ -1,0 +1,31 @@
+import styles from "./CartProduct.module.css";
+import { useCallback } from "react";
+import { useCart } from "contexts/Cart";
+const CartProduct = ({
+	id,
+	name,
+	caption,
+	price
+}) => {
+	const [, dispatch] = useCart();
+	const onClick = useCallback(() => {
+		dispatch({
+			data: {
+				id
+			},
+			type: "REMOVE_ITEM"
+		});
+	}, [
+		dispatch,
+		id
+	]);
+	return (
+		<div className={ styles.product }>
+			<div className={ styles.name }>{ name }</div>
+			<div className={ styles.caption }>{ caption }</div>
+			<div className={ styles.price }>&euro; { price }</div>
+			<div className={ styles.remove } onClick={ onClick }/>
+		</div>
+	);
+};
+export default CartProduct;

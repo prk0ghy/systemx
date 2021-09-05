@@ -1,0 +1,33 @@
+.product {
+	background: #b1c2b94d;
+	box-sizing: border-box;
+	display: block;
+	margin-bottom: 2rem;
+	min-height: 10rem;
+	padding: 2rem;
+	padding-bottom: 4rem;
+	position: relative;
+	& .name {
+		font-weight: 700;
+	}
+	& .caption {
+		margin-top: 1rem;
+	}
+	& .remove {
+		background: url(/mvet/ui/trash.svg) no-repeat;
+		background-size: contain;
+		cursor: pointer;
+		display: block;
+		height: 5rem;
+		position: absolute;
+		right: 1rem;
+		top: 2rem;
+		width: 5rem;
+	}
+	& .price {
+		bottom: 2rem;
+		font-weight: 700;
+		position: absolute;
+		right: 2rem;
+	}
+}

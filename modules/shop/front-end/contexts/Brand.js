@@ -15,7 +15,6 @@ export const {
 	useTracked: useBrand
 } = createContainer(() => {
 	const state = {
-		name: "mVet",
 		authenticationPreviewHeight: 1089,
 		authenticationPreviewURL: "/mvet/ui/authentication.jpg",
 		authenticationPreviewWidth: 1936,
@@ -28,6 +27,7 @@ export const {
 		logoHeight: 220,
 		logoURL: "/mvet/ui/logo.png",
 		logoWidth: 220,
+		name: "mVet",
 		privacyPreviewHeight: 1280,
 		privacyPreviewURL: "/mvet/ui/privacy.jpg",
 		privacyPreviewWidth: 1920,
