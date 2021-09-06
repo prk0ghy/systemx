@@ -1,3 +1,4 @@
+import { formatPrice } from "root/format";
 import styles from "./CartProduct.module.css";
 import { useCallback } from "react";
 import { useCart } from "contexts/Cart";
@@ -23,7 +24,7 @@ const CartProduct = ({
 		<div className={ styles.product }>
 			<div className={ styles.name }>{ name }</div>
 			<div className={ styles.caption }>{ caption }</div>
-			<div className={ styles.price }>&euro; { price }</div>
+			<div className={ styles.price }>{ formatPrice(price) }</div>
 			<div className={ styles.remove } onClick={ onClick }/>
 		</div>
 	);
