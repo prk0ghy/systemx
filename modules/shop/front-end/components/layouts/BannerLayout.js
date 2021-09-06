@@ -6,6 +6,7 @@ import styles from "./BannerLayout.module.css";
 const BannerLayout = ({
 	children,
 	className,
+	halfHeight = false,
 	headline,
 	height,
 	image,
@@ -19,7 +20,9 @@ const BannerLayout = ({
 			<div className={ styles.banner }>
 				<img
 					alt=""
-					className={ styles.image }
+					className={ [styles.image, halfHeight
+						? styles.halfHeight
+						: null].join(" ") }
 					height={ height }
 					src={ image }
 					width={ width }

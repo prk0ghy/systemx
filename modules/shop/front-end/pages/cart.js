@@ -13,7 +13,7 @@ const Cart = () => {
 	}] = useBrand();
 	return (
 		<Page title="Einkaufswagen">
-			<BannerLayout headline="Einkaufswagen" height={ imprintPreviewHeight } image={ imprintPreviewURL } width={ imprintPreviewWidth }>
+			<BannerLayout halfHeight height={ imprintPreviewHeight } image={ imprintPreviewURL } width={ imprintPreviewWidth }>
 				<TextContent>
 					<CheckoutManager/>
 				</TextContent>
