@@ -1,5 +1,5 @@
 import { formatPrice, H } from "root/format";
-import CartProduct from "./CartProduct.js";
+import CartProduct from "./CartProduct";
 import styles from "./CartManager.module.css";
 import { useCart } from "contexts/Cart";
 import { useProducts } from "contexts/Products";
@@ -23,10 +23,9 @@ const CartManager = () => {
 			<h3><H>Warenkorb</H></h3>
 			<br/>
 			{ cartItems.length
-				? cartItems
+				? [...cartItems, <div className={ styles.sum } key="shopping_cart_sum">Artikelsumme <span>{ formatPrice(sum) }</span></div>]
 				: "Zurzeit ist Ihr Warenkorb leer."
 			}
-			<div className={ styles.sum }>Artikelsumme <span>{ formatPrice(sum) }</span></div>
 		</div>
 	);
 };

@@ -6,5 +6,9 @@
 		& .radio {
 			margin-right: 1rem;
 		}
+		& label {
+			cursor: pointer;
+			user-select: none;
+		}
 	}
 }

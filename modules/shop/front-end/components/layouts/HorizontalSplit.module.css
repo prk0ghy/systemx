@@ -1,0 +1,21 @@
+.horizontal-split {
+	column-gap: 4rem;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr;
+	& > * {
+		position: relative;
+	}
+	& > *::before {
+		background: #9a9a9aad;
+		content: "";
+		display: block;
+		height: 100%;
+		left: -2.1rem;
+		position: absolute;
+		width: 0.2rem;
+	}
+	& > *:first-child::before {
+		display: none;
+	}
+}

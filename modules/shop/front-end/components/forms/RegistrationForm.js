@@ -1,13 +1,14 @@
-import AuthenticationForm from "components/forms/AuthenticationForm";
+import Button from "../inputs/Button";
 import CountrySelector from "components/inputs/CountrySelector";
+import Form from "components/forms/Form";
 import { Formik } from "formik";
 import Input from "components/inputs/Input";
 import RadioGroup from "components/inputs/RadioGroup";
-import styles from "./LoginForm.module.css";
+import styles from "./RegistrationForm.module.css";
 const RegistrationForm = () => {
 	const accountTypes = {
-		business: "Geschäftskunde",
-		personal: "Privatkunde"
+		personal: "Privatkunde",
+		business: "Geschäftskunde"
 	};
 	const initialValues = {
 		accountType: "personal",
@@ -25,63 +26,10 @@ const RegistrationForm = () => {
 			<Formik initialValues={ initialValues }>
 				{
 					({ values }) => (
-						<AuthenticationForm
-							description="Um ein Konto zu erstellen, füllen Sie das Registrierungsformular aus."
-							submit="Registrieren"
-							title="Registrierung"
-						>
-							<CountrySelector
-								autoComplete="country"
-								label="Land"
-								name="country"
-								required
-							/>
-							<RadioGroup
-								label="Kontotyp"
-								name="accountType"
-								options={ accountTypes }
-								required
-							/>
-							<Input
-								autoComplete="organization"
-								disabled={ values.accountType === "personal" }
-								label="Organisation"
-								name="organization"
-								required
-							/>
-							<Input
-								autoComplete="firstName"
-								label="Vorname"
-								name="firstName"
-								required
-							/>
-							<Input
-								autoComplete="lastName"
-								label="Nachname"
-								name="lastName"
-								required
-							/>
-							<Input
-								autoComplete="street-address"
-								label="Adresse"
-								name="streetAddress"
-								required
-							/>
-							<Input
-								autoComplete="postal-code"
-								label="Postleitzahl"
-								name="postalCode"
-								required
-							/>
-							<Input
-								autoComplete="address-level2"
-								label="Stadt"
-								name="city"
-								required
-							/>
+						<Form submit="Registrieren" title="Registrierung">
 							<Input
 								autoComplete="email"
-								label="E-Mail-Adresse"
+								label="E-Mail"
 								name="email"
 								required
 								type="email"
@@ -100,7 +48,28 @@ const RegistrationForm = () => {
 								required
 								type="password"
 							/>
-						</AuthenticationForm>
+							<RadioGroup
+								label="Kontotyp"
+								name="accountType"
+								options={ accountTypes }
+								required
+							/>
+							<Input
+								autoComplete="organization"
+								disabled={ values.accountType === "personal" }
+								label="Organisation"
+								name="organization"
+								required
+							/>
+							<CountrySelector
+								autoComplete="country"
+								label="Land"
+								name="country"
+								required
+							/>
+							<br/>
+							<Button className={ styles.submit } kind="primary" type="submit">Registrieren</Button>
+						</Form>
 					)
 				}
 			</Formik>

@@ -1,4 +1,5 @@
 .laced {
+	z-index: 1;
 	@media (--all) {
 		margin: 0 2rem;
 	}
