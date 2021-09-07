@@ -11,6 +11,10 @@
 			height: calc(50vh - var(--header-height));
 			object-position: top center;
 		}
+		& .image.auto-height {
+			height: auto;
+			object-position: top center;
+		}
 		& .headline {
 			color: white;
 			font-weight: var(--font-weight-black);

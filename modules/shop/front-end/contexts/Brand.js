@@ -34,7 +34,10 @@ export const {
 		subjectMatter: "Tiermedizin",
 		termsAndConditionsPreviewHeight: 1280,
 		termsAndConditionsPreviewURL: "/mvet/ui/terms-and-conditions.jpg",
-		termsAndConditionsPreviewWidth: 1920
+		termsAndConditionsPreviewWidth: 1920,
+		CheckoutPreviewHeight: 860,
+		CheckoutPreviewURL: "/mvet/ui/shopping.jpg",
+		CheckoutPreviewWidth: 1920
 	};
 	const dispatch = useReducer(reduce, null);
 	return [state, dispatch];

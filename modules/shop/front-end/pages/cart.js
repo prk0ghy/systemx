@@ -7,13 +7,13 @@ const CheckoutManager = dynamic(() => import("components/marketing/CheckoutManag
 });
 const Cart = () => {
 	const [{
-		imprintPreviewHeight,
-		imprintPreviewURL,
-		imprintPreviewWidth
+		CheckoutPreviewHeight,
+		CheckoutPreviewURL,
+		CheckoutPreviewWidth
 	}] = useBrand();
 	return (
 		<Page title="Einkaufswagen">
-			<BannerLayout halfHeight height={ imprintPreviewHeight } image={ imprintPreviewURL } width={ imprintPreviewWidth }>
+			<BannerLayout halfHeight height={ CheckoutPreviewHeight } image={ CheckoutPreviewURL } width={ CheckoutPreviewWidth }>
 				<TextContent>
 					<CheckoutManager/>
 				</TextContent>

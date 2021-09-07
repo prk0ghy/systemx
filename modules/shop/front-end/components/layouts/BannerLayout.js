@@ -7,6 +7,7 @@ const BannerLayout = ({
 	children,
 	className,
 	halfHeight = false,
+	autoHeight = false,
 	headline,
 	height,
 	image,
@@ -22,6 +23,8 @@ const BannerLayout = ({
 					alt=""
 					className={ [styles.image, halfHeight
 						? styles.halfHeight
+						: null, autoHeight
+						? styles.autoHeight
 						: null].join(" ") }
 					height={ height }
 					src={ image }
