@@ -30,7 +30,7 @@ const isThirdPartyHref = url => {
 		"h5p-hessen.test-dilewe.de": false
 	};
 	if(whitelist[arr[2]] !== undefined){return whitelist[arr[2]];}
-	return false;
+	return true;
 };
 
 const showLazyIframe = async ele => {
