@@ -68,7 +68,7 @@ export default class {
 		const link = `${entryContext.cms.endPoint.origin}/admin/entries/${entryContext.model.typeHandle}/${entryContext.model.id}-${entryContext.model.slug}`;
 		return link;
 	};
-	getEntryContext = () => this.parentContext.parentContext ? this.parentContext.getEntryContext() : this;
+	getEntryContext = () => this?.parentContext?.parentContext ? this.parentContext.getEntryContext() : this;
 	downloadWithThumb = async (url, imageSize) => {
 		if(this.isMock){ return {thumbHtmlPath: url, thumbSize: {width: 128, height: 128}, htmlPath: url};}
 		const {filePath, htmlPath, thumb} = this.hints.getFilePath(url);
