@@ -2,6 +2,19 @@ import { request, gql } from "graphql-request";
 import options from "../../../common/options.mjs";
 const navigationCache = new Map();
 /*
+* Flattens the page tree into an array.
+*/
+const flattenData = data => {
+	const flattened = [];
+	for (const child of data) {
+		flattened.push(child);
+		if (child.children) {
+			flattened.push(...flattenData(child.children));
+		}
+	}
+	return flattened;
+};
+/*
 * Requests all data needed to build the navigation from the server, given a target.
 */
 export const loadNavigation = async target => {
@@ -47,32 +60,23 @@ export const loadNavigation = async target => {
 		}
 		return entries;
 	};
-	navigationCache.set(target, fixLinks(result.entries));
-};
-/*
-* Flattens the page tree into an array.
-*/
-const flattenData = data => {
-	const flattened = [];
-	for (const child of data) {
-		flattened.push(child);
-		if (child.children) {
-			flattened.push(...flattenData(child.children));
-		}
-	}
-	return flattened;
+	const entries = fixLinks(result.entries);
+	const flattened = flattenData(entries);;
+	navigationCache.set(target, {
+		entries,
+		flattened
+	});
 };
 /*
 * Retrieves information about the current, next and previous entry.
 */
 const getPageData = (target, pageURI) => {
 	const data = navigationCache.get(target);
-	const flattened = flattenData(data);
-	const i = flattened.findIndex(page => page.uri === pageURI);
+	const i = data.flattened.findIndex(page => page.uri === pageURI);
 	return {
-		current: flattened[i],
-		next: flattened[i + 1],
-		previous: flattened[i - 1]
+		current: data.flattened[i],
+		next: data.flattened[i + 1],
+		previous: data.flattened[i - 1]
 	};
 };
 /*
@@ -125,7 +129,7 @@ export const getNavigationMenu = async (target, pageURI) => {
 		return `<h1>Error loading navigation</h1>`;
 	}
 	const navigationContent = navigationCache
-		.get(target)
+		.get(target).entries
 		.map(entry => buildNavigationMenuEntry(entry, pageURI))
 		.join("");
 	return `
