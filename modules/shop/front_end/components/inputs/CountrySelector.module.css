@@ -1,6 +1,13 @@
 .country-selector {
 	& .options {
 		color: black;
-		height: 3.5rem;
+		font-size: 2.5rem;
+		width: 100%;
+		height: 40px;
+		background-color: white;
+		border: .1rem solid #020202;
+		&:hover {
+			background-color: #orange;
+		}
 	}
 }
