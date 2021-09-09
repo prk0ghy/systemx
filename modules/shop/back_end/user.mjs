@@ -1,41 +1,18 @@
-import * as configuration from "./configuration.mjs";
-import { database, whenDatabaseIsOpened } from "./database.mjs";
+import database from "./database.mjs";
 import fs from "fs";
 import bcrypt from "bcrypt";
+
 const saltRounds = 10;
+
 export const getByName = name => database.get(`SELECT * FROM feuser WHERE name = ?`, [String(name)]);
 export const getByID = id => database.get(`SELECT * FROM feuser WHERE ID = ?`, Number.parseInt(id));
-export const getAll = () => database.all(`SELECT ID, name FROM feuser`, []);
-export const getActiveProducts = async id => {
-	const rows = await database.all(`SELECT name FROM feuser_product WHERE user = ?`, [Number.parseInt(id)]);
-	if (!rows) {
-		return [];
-	}
-	const res = [];
-	for (const row of rows) {
-		const product = configuration.getProduct(row.name);
-		if (!product) {
-			continue;
-		}
-		res[row.name] = product;
-	}
-	return res;
-};
-const addProducts = async (id, products) => {
-	const productList = [];
-	products.forEach(name => {
-		productList[name] = name;
-	});
-	// const activeProducts = await getActiveProducts(id);
-	for (const p in productList) {
-		await database.run("INSERT INTO feuser_product (user, name) VALUES (?, ?)", [id, p]);
-	}
-};
+
 export const add = async (name, email, password="") => {
 	const hash = await bcrypt.hash(password, saltRounds);
 	const row = await database.run("INSERT INTO feuser (name, password, email, passwordExpired) VALUES (?, ?, ?, 0)", [name, hash, email]);
 	return row.lastID;
 };
+
 export const deleteUser = id => database.run("DELETE FROM feuser WHERE ID = ?", id);
 export const changePW = async (id, pass) => {
 	const hash = await bcrypt.hash(pass, saltRounds);
@@ -55,7 +32,7 @@ export const tryLogin = async (name, pass) => {
 	return null;
 };
 
-whenDatabaseIsOpened(async () => {
+await (async () => {
 	await database.run(`
 		CREATE TABLE IF NOT EXISTS feuser(
 			ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
@@ -65,21 +42,11 @@ whenDatabaseIsOpened(async () => {
 			passwordExpired INTEGER DEFAULT 0
 		)
 	`);
-	await database.run(`
-		CREATE TABLE IF NOT EXISTS feuser_product(
-			ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-			user INTEGER NOT NULL,
-			name TEXT NOT NULL
-		)
-	`);
-	const data = await fs.promises.readFile("modules/shop/back_end/data/feuser.json");
+	const data = await fs.promises.readFile("modules/shop/back_end/data/user.json");
 	const rows = JSON.parse(data.toString());
 	rows.forEach(async row => {
 		const user = await getByName(row.name);
-		if (user) {
-			return;
-		}
-		const userID = await add(row.name, row.email, row.pass);
-		await addProducts(userID, row.products);
+		if (user) { return; }
+		await add(row.name, row.email, row.pass);
 	});
-});
+})();

@@ -1,5 +1,4 @@
 import * as resources from "./page_elements/resources.mjs";
-import { loadContentTypes, loadHelperTypes } from "./types.mjs";
 import { buildHead } from "./page_elements/head.mjs";
 import { formatHTML } from "./format.mjs";
 import crypto from "crypto";
@@ -7,6 +6,7 @@ import fs from "fs";
 import { loadNavigation } from "./page_elements/navigation.mjs";
 import Marker from "./types/helper/Marker.mjs";
 import { mkdirp } from "../../common/fileSystem.mjs";
+import loadModules from "../../common/loadModules.mjs";
 import options from "../../common/options.mjs";
 import path from "path";
 import query, { getContext as getCMSContext, introspectCraft } from "./cms.mjs";
@@ -153,8 +153,8 @@ export const renderSingleEntry = async (targetName, uri) => {
 		};
 	}
 	const cmsContext = await getCMSContext(introspectCraft);
-	const contentTypes = await loadContentTypes();
-	const helperTypes = await loadHelperTypes();
+	const contentTypes = await loadModules("modules/ssg/back_end/types/content");
+	const helperTypes = await loadModules("modules/ssg/back_end/types/helper");
 	const globalRender = makeRenderer(contentTypes);
 	const html = await globalRender(entry, new RenderingContext({
 		cms: cmsContext,
@@ -189,8 +189,8 @@ export const buildEntries = async targetName => {
 	await mkdirp(mediaPath);
 	await mkdirp(thumbPath);
 	const cmsContext   = await getCMSContext(introspectCraft);
-	const contentTypes = await loadContentTypes();
-	const helperTypes  = await loadHelperTypes();
+	const contentTypes = await loadModules("modules/ssg/back_end/types/content");
+	const helperTypes  = await loadModules("modules/ssg/back_end/types/helper");
 	const globalRender = makeRenderer(contentTypes);
 	const globalContext = new RenderingContext({
 		cms: cmsContext,

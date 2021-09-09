@@ -1,10 +1,10 @@
 import * as configuration from "./configuration.mjs";
-import * as feuser from "./feuser.mjs";
-import * as fesession from "./fesession.mjs";
+import * as feuser from "./user.mjs";
+import * as fesession from "./session.mjs";
 
 const resetRequests = {};
 
-const addReset = async name => {
+export const addReset = async name => {
 	const user = await feuser.getByName(name.trim());
 	if(user === undefined){return false;}
 	const hash = configuration.makeid(32);

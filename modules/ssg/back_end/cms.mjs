@@ -1,7 +1,7 @@
 import { gql } from "graphql-request";
+import loadModules from "../../common/loadModules.mjs";
 import request from "./rateLimiting.mjs";
 import options from "../../common/options.mjs";
-import { loadContentTypes } from "./types.mjs";
 const memoize = fn => {
 	const cache = new Map();
 	return (...inputs) => {
@@ -141,7 +141,7 @@ const query = async (queryFunction, {
 	.then(removeOriginFromURLs);
 export default query;
 export const getContext = async introspect => {
-	const contentTypes = await loadContentTypes();
+	const contentTypes = await loadModules("modules/ssg/back_end/types/content");
 	const cms = {
 		fragments: {},
 		introspection: await introspect(),

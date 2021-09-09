@@ -1,4 +1,4 @@
-import * as configuration from "./configuration.mjs";
+import * as Configuration from "../OLD/configuration.mjs";
 import http from "http";
 import https from "https";
 
@@ -22,7 +22,7 @@ const proxyDoRequest = (ctx,host) => new Promise((resolve, reject) => {
 		if (response.statusCode < 200 || response.statusCode >= 400) {
 			ctx.response.status = response.statusCode;
 			ctx.response.type = "text/html";
-			ctx.body = template.renderPageSimple("error",{code: response.statusCode},false,ctx);
+			ctx.body = "";//template.renderPageSimple("error",{code: response.statusCode},false,ctx);
 			resolve("");
 		}
 		if (response.statusCode >= 300 && response.statusCode <= 399) {
@@ -57,6 +57,6 @@ const proxyDoRequest = (ctx,host) => new Promise((resolve, reject) => {
 });
 
 const reqProxy = async ctx => {
-	await proxyDoRequest(ctx,configuration.getOrigin(ctx));
+	await proxyDoRequest(ctx,Configuration.getOrigin(ctx));
 };
 export default reqProxy;

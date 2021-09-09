@@ -61,7 +61,7 @@ export const loadNavigation = async target => {
 		return entries;
 	};
 	const entries = fixLinks(result.entries);
-	const flattened = flattenData(entries);;
+	const flattened = flattenData(entries);
 	navigationCache.set(target, {
 		entries,
 		flattened

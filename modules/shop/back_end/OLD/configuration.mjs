@@ -1,5 +1,5 @@
 import fs from "fs";
-import options from "../../common/options.mjs";
+import options from "../../../common/options.mjs";
 import path from "path";
 let configuration = {};
 const getHostname = host => {
@@ -7,15 +7,6 @@ const getHostname = host => {
 	return io < 0
 		? host
 		: host.substr(0, io);
-};
-export const makeid = length => {
-	let result = "";
-	const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-	const charactersLength = characters.length;
-	for (let i = 0; i < length; i++) {
-		result += characters.charAt(Math.floor(Math.random() * charactersLength));
-	}
-	return result;
 };
 export const prefixUrl = url => "/" + configuration.prefix + url;
 export const absoluteUrl = url => configuration.baseurl + prefixUrl(url);

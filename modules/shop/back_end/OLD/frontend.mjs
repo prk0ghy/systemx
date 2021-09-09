@@ -1,8 +1,4 @@
 import * as configuration from "./configuration.mjs";
-import * as feuser from "./feuser.mjs";
-import * as frontEndSession from "./fesession.mjs";
-import * as pwreset from "./pwreset.mjs";
-import * as shop from "./shop.mjs";
 
 const resetRequests = {};
 
@@ -164,6 +160,3 @@ const reqUserDeletePage = async context => {
 	context.body = await template.renderPage("userDelete", values, false, context);
 };
 
-export const handleRequest = async context => {
-
-};

@@ -4,7 +4,7 @@ import os from "os";
 import path from "path";
 const argv = minimist(process.argv.slice(2));
 const options = {
-	configurationPath: path.join(".systemx", "settings"),
+	configurationPath: ".systemx/settings",
 	cleanBuild: false,
 	cssVars: {},
 	jsVars: {
@@ -21,7 +21,7 @@ const options = {
 	skipNetwork: false,
 	startServer: false,
 	startShop: false,
-	storagePath: path.join(".systemx", "storage"),
+	storagePath: ".systemx/storage",
 	targets: {
 		bdv: {
 			graphqlEndpoint: "https://bdv.test-dilewe.de/api",
