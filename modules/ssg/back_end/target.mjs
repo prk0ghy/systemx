@@ -277,7 +277,7 @@ export const buildEntries = async targetName => {
 	catch {
 		/* Nothing we can do if it fails */
 	}
-	if (options.forceRendering) {
+	if (options.cleanBuild || options.forceRendering) {
 		const warningPath = path.join(targetPath, "warnings.html");
 		await fsp.writeFile(warningPath, await wrapWithApplicationShell(targetName, {
 			content: warningHTML || "<h1>No warnings<h1>",
