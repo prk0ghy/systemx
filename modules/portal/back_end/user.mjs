@@ -42,7 +42,7 @@ await (async () => {
 			passwordExpired INTEGER DEFAULT 0
 		)
 	`);
-	const data = await fs.promises.readFile("modules/shop/back_end/data/user.json");
+	const data = await fs.promises.readFile("modules/portal/back_end/data/user.json");
 	const rows = JSON.parse(data.toString());
 	rows.forEach(async row => {
 		const user = await getByName(row.name);

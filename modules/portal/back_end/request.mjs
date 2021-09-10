@@ -4,7 +4,7 @@ import * as Session from "./session.mjs";
 let handler = null;
 
 export const importHandlers = async () => {
-	handler = await loadModules("modules/shop/back_end/handler");
+	handler = await loadModules("modules/portal/back_end/handler");
 };
 
 const doSingleRequest = async (ctx, req, session) => {

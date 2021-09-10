@@ -19,7 +19,7 @@ export const getOrigin = ctx => {
 };
 export const printConfig = () => console.log(configuration);
 (() => {
-	const defaultData = fs.readFileSync("modules/shop/back_end/data/default_configuration.json");
+	const defaultData = fs.readFileSync("modules/portal/back_end/data/default_configuration.json");
 	configuration = JSON.parse(defaultData);
 	const localConfigurationPath = path.join(options.configurationPath, "shop.json");
 	if (fs.existsSync(localConfigurationPath)) {

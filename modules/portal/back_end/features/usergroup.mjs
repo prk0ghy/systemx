@@ -38,7 +38,7 @@ await (async () => {
 			name TEXT NOT NULL
 		)
 	`);
-	const data = await fs.promises.readFile("modules/shop/back_end/data/user.json");
+	const data = await fs.promises.readFile("modules/portal/back_end/data/user.json");
 	const rows = JSON.parse(data.toString());
 	rows.forEach(async row => {
 		const user = await User.getByName(row.name);
