@@ -1,15 +1,10 @@
+import filterAdd from "../filter.mjs";
 import * as Session from "../session.mjs";
 
-const handle = async (ctx, req, session) => {
-	if(session?.sessionID){
-		Session.stop(ctx,session.sessionID);
+filterAdd("logout",async (v,next) => {
+	if(v.ses?.sessionID){
+		Session.stop(v.ctx,v.ses.sessionID);
 	}
-	return {
-		response: {
-			error: false,
-			logout: true
-		},
-		session: {}
-	};
-};
-export default handle;
+	v.res.logout = true;
+	return await next(v);
+});

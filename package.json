@@ -80,7 +80,7 @@
 		"postinstall": "npm --prefix modules/portal/front_end install",
 		"test": "npm run test:back-end",
 		"test:back-end": "jest ./modules/ssg/back_end/test -- lasub",
-		"shop": "node ./index.mjs --start-shop"
+		"shop": "npm --prefix modules/portal/front_end run build && node ./index.mjs --start-shop"
 	},
 	"type": "module",
 	"version": "0.0.1"

@@ -32,9 +32,8 @@
 	"scripts": {
 		"build": "npm run download:fonts && next build",
 		"clean": "rm -rf .cache .next",
-		"dev": "npm run download:fonts:if-necessary; next dev",
-		"download:fonts": "get-google-fonts -i \"https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap\" -wo .cache/fonts -p ../.cache/fonts/",
-		"download:fonts:if-necessary": "[ ! -d .cache/fonts ] && npm run download:fonts || true",
+		"dev": "npm run download:fonts; next dev",
+		"download:fonts": "get-google-fonts -i \"https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap\" -qo .cache/fonts -p ../.cache/fonts/",
 		"lint": "next lint",
 		"start": "next start"
 	},

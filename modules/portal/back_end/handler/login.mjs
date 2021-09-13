@@ -1,29 +1,18 @@
+import filterAdd from "../filter.mjs";
 import * as User from "../user.mjs";
 import * as Session from "../session.mjs";
 
-const handle = async (ctx, req, session) => {
-	if(!req.username){return {error: "Login action needs a username field"};}
-	if(!req.password){return {error: "Login action needs a password field"};}
-	const user = await User.tryLogin(req.username,req.password);
+filterAdd("login",async (v,next) => {
+	if(!v.req.username){return {error: "Login action needs a username field"};}
+	if(!v.req.password){return {error: "Login action needs a password field"};}
+	const user = await User.tryLogin(v.req.username,v.req.password);
 	if(user){
-		const newSession = await Session.start(ctx);
+		const newSession = await Session.start(v.ctx);
 		newSession.user = user;
-		return {
-			response: {
-				error: false,
-				user
-			},
-			session: newSession
-		};
+		v.ses = newSession;
+		return await next(v);
 	}else {
-		return {
-			response: {
-				error: "Invalid Username/Password combination",
-				user
-			},
-			session
-		};
+		v.res.error = "Invalid Username/Password combination";
+		return v;
 	}
-
-};
-export default handle;
+});

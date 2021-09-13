@@ -1,4 +1,8 @@
 {
+	"env": {
+		"browser": true,
+		"es2015": true
+	},
 	"extends": [
 		"next/core-web-vitals",
 		"eslint:recommended",
@@ -7,6 +11,9 @@
 	],
 	"rules": {
 		"@next/next/no-img-element": "off",
-		"sort-keys": "off"
+		"sort-keys": "off",
+		"capitalized-comments": "off",
+		"no-multiple-empty-lines": "off",
+		"no-inline-comments": "off"
 	}
 }
