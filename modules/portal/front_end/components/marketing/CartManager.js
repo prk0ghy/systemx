@@ -1,3 +1,4 @@
+import { CSSTransition,	TransitionGroup } from "react-transition-group";
 import { formatPrice, H } from "root/format";
 import CartProduct from "./CartProduct";
 import styles from "./CartManager.module.css";
@@ -9,7 +10,16 @@ const CartManager = () => {
 	const cartItems = items.map(id => {
 		const item = products.find(product => product.id === id);
 		return (
-			<CartProduct key={ id } { ...item }/>
+			<CSSTransition
+				classNames={ {
+					exit: styles.itemExit,
+					exitActive: styles.itemExitActive
+				} }
+				key={ id }
+				timeout={ 500 }
+			>
+				<CartProduct key={ id } { ...item }/>
+			</CSSTransition>
 		);
 	});
 	const sum = items.map(id => {
@@ -22,10 +32,22 @@ const CartManager = () => {
 		<div className={ styles.cartManager }>
 			<h3><H>Warenkorb</H></h3>
 			<br/>
-			{ cartItems.length
-				? [...cartItems, <div className={ styles.sum } key="shopping_cart_sum">Artikelsumme <span>{ formatPrice(sum) }</span></div>]
-				: "Zurzeit ist Ihr Warenkorb leer."
-			}
+			<TransitionGroup className="todo-list">
+				{ cartItems.length
+					? [...cartItems, <div className={ styles.sum } key="shopping_cart_sum">Artikelsumme <span>{ formatPrice(sum) }</span></div>]
+					: [
+						<CSSTransition
+							classNames={ {
+								enter: styles.itemEnter,
+								enterActive: styles.itemEnterActive
+							} }
+							key="empty"
+							timeout={ 500 }
+						>
+							<span>Zurzeit ist Ihr Warenkorb leer.</span>
+						</CSSTransition>]
+				}
+			</TransitionGroup>
 		</div>
 	);
 };
