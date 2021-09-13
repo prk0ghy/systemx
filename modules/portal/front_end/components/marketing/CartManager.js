@@ -42,9 +42,9 @@ const CartManager = () => {
 								enterActive: styles.itemEnterActive
 							} }
 							key="empty"
-							timeout={ 500 }
+							timeout={ 50000 }
 						>
-							<span>Zurzeit ist Ihr Warenkorb leer.</span>
+							<span className={ styles.CartManager }>Zurzeit ist Ihr Warenkorb leer.</span>
 						</CSSTransition>]
 				}
 			</TransitionGroup>

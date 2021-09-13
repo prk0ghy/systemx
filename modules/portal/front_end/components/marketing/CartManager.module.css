@@ -1,4 +1,8 @@
 .cart-manager {
+	& span {
+		margin: 0;
+		padding: 0;
+	}
 	& h3 {
 		font-size: 4rem;
 	}
@@ -7,9 +11,10 @@
 		opacity: 0;
 	}
 	& .item-enter-active {
+		animation-duration: 1s;
+		animation-name: ani-enter;
 		font-size: 2.5rem;
 		opacity: 1;
-		transition: opacity 0.5s ease-in, font-size 0.5s ease-in;
 	}
 	& .item-exit {
 		opacity: 1;
@@ -30,5 +35,22 @@
 			display: block;
 			position: relative;
 		}
+	}
+}
+@keyframes ani-enter {
+	0% {
+		font-size: 0;
+		line-height: 0;
+		opacity: 0;
+	}
+	50% {
+		font-size: 0;
+		line-height: 0;
+		opacity: 0.1;
+	}
+	100% {
+		font-size: 2.5rem;
+		line-height: 3rem;
+		opacity: 1;
 	}
 }

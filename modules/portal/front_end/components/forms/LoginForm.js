@@ -4,7 +4,9 @@ import { useRefreshUserData, userLogin } from "root/api";
 import Button from "../inputs/Button";
 import Error from "../generics/Error";
 import Input from "components/inputs/Input";
+import routes from "root/routes";
 import styles from "./LoginForm.module.css";
+import TextLink from "components/generics/TextLink";
 const LoginForm = () => {
 	const currentErrors = useRef("");
 	const [refresh] = useRefreshUserData();
@@ -47,6 +49,7 @@ const LoginForm = () => {
 								type="password"
 								value={ values?.password }
 							/>
+							<TextLink align="right" className={ styles.description } href={ routes.resetPassword.path } title="Passwort zurücksetzen">Passwort vergessen?</TextLink>
 							<Button className={ styles.submit } kind="primary" type="submit">Login</Button>
 						</Form>
 					)
