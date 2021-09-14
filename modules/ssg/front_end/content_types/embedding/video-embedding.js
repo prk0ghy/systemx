@@ -1,4 +1,4 @@
-/* global addHideElementContentHandler,canUseEmbeds */
+/* global addHideElementContentHandler,canUseEmbeds, configuration */
 
 (()=>{
 	const decodeParam = g => {
@@ -57,6 +57,10 @@
 		const time = getParamValue('t',href)|0;
 		if(autoplay){
 			params.push('autoplay=1');
+		}
+		if(configuration.ytCaption) {
+			params.push('cc_load_policy=1');
+			params.push('cc_lang_pref=de');
 		}
 		if(time > 0){
 			params.push('start='+ytCalcStart(time));

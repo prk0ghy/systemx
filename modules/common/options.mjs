@@ -9,7 +9,8 @@ const options = {
 	cssVars: {},
 	jsVars: {
 		galleryWrapAround: true,
-		galleryBackgroundOpacity: 0.95
+		galleryBackgroundOpacity: 0.95,
+		ytCaption: false
 	},
 	favicon: "default",
 	disableMarkers: false,
@@ -36,7 +37,8 @@ const options = {
 			graphqlEndpoint: "https://systemx-jura-museum.test-dilewe.de/api",
 			httpPort: 8049,
 			jsVars: {
-				galleryWrapAround: false
+				galleryWrapAround: false,
+				ytCaption: true
 			},
 			cssVars: {
 				backgroundBlue:  "rgba(0,0,0,0)",
