@@ -31,6 +31,8 @@ export const get = ctx => {
 	return undefined;
 };
 
+export const getByID = ID => ID || sessions[ID];
+
 export const set = (ctx, session) => {
 	if(ctx === undefined){return;}
 	const cookie = ctx.cookies.get(configuration.get('sessionCookie'));

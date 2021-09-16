@@ -1,6 +1,6 @@
+import persistence, { save } from "root/persistence";
 import { createContainer } from "react-tracked";
 import { useReducer } from "react";
-import persistence, { save } from "root/persistence";
 const reduce = (state, action) => {
 	const { data } = action;
 	switch (action.type) {
@@ -44,5 +44,6 @@ export const {
 	Provider: CartProvider,
 	useTracked: useCart
 } = createContainer((...rest) => useReducer(reduce, persistence.contexts.cart || {
-	items: []
+	items: [],
+	...rest
 }));

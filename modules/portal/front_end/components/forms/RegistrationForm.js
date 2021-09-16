@@ -1,7 +1,6 @@
+import { Form, Formik } from "formik";
 import Button from "../inputs/Button";
 import CountrySelector from "components/inputs/CountrySelector";
-import Form from "components/forms/Form";
-import { Formik } from "formik";
 import Input from "components/inputs/Input";
 import RadioGroup from "components/inputs/RadioGroup";
 import styles from "./RegistrationForm.module.css";
@@ -26,7 +25,7 @@ const RegistrationForm = () => {
 			<Formik initialValues={ initialValues }>
 				{
 					({ values }) => (
-						<Form submit="Registrieren" title="Registrierung">
+						<Form className={ styles.form } submit="Registrieren" title="Registrierung">
 							<Input
 								autoComplete="email"
 								label="E-Mail"

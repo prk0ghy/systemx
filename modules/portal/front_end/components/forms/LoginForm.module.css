@@ -1,4 +1,8 @@
 .login-form {
+	& .form {
+		display: grid;
+		grid-gap: 2rem;
+	}
 	& .title {
 		font-size: 3.5rem;
 		margin-bottom: 2rem;

@@ -1,0 +1,6 @@
+.error {
+	background: #ffaa9988;
+	border: solid 0.2rem #ffaa99;
+	color: black;
+	padding: 0.25rem 0.5rem;
+}

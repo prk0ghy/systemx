@@ -10,6 +10,8 @@ filterAdd("login",async (v,next) => {
 		const newSession = await Session.start(v.ctx);
 		newSession.user = user;
 		v.ses = newSession;
+		v.res.login = true;
+		v.res.sessionID = newSession.sessionID;
 		return await next(v);
 	}else {
 		v.res.error = "Invalid Username/Password combination";

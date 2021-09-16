@@ -16,7 +16,7 @@ const start = async () => {
 	console.log(modules);
 	const application = new Koa();
 	const router      = new KoaRouter();
-	router.all("/portal-user", RequestHandler(filterBuildAll()));
+	router.all("/portal-user", RequestHandler(filterBuildAll(),{allowCORS: true}));
 	application
 		.use(koaBody())
 		// .use(koaMount(`/${configuration.get("prefix")}/resources`, new Koa().use(koaStatic(`web/${currentTarget}/resources`))))

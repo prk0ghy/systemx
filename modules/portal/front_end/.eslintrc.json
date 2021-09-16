@@ -14,6 +14,8 @@
 		"sort-keys": "off",
 		"capitalized-comments": "off",
 		"no-multiple-empty-lines": "off",
-		"no-inline-comments": "off"
+		"no-inline-comments": "off",
+		"object-property-newline": "off",
+		"object-curly-newline": "off"
 	}
 }
