@@ -12,7 +12,7 @@ export default async function wrapWithApplicationShell(targetName, {
 			<body>
 				<header>
 					<div id="header-left">
-						<button id="button-navigation"></button>
+						<button aria-label="menu" id="button-navigation"></button>
 					</div>
 					<div id="header-center">
 						${await getNavigationHeader(targetName, pageURI)}

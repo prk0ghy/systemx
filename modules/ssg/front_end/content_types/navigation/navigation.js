@@ -90,6 +90,7 @@ setTimeout(initNavBar, 0);
 			const parentLi = ele.parentElement;
 			const toggle = document.createElement("NAV-TOGGLE");
 			parentLi.prepend(toggle);
+			parentLi.setAttribute('aria-expanded', false);
 
 			toggle.addEventListener("click", () => {
 				if(ele.classList.contains("hidden")){

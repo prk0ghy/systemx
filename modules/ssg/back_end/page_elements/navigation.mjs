@@ -116,7 +116,7 @@ const buildNavigationMenuEntry = (entry, pageURI) => {
 		: "";
 	return `
 		<li${pageURI === entry.uri ? ` class="active"` : ""} page-id="${entry.id}">
-			<a href="${entry.uri}" page-url="${pageURI}">${entry.title}</a>
+			<a href="${entry.uri}" page-url="${pageURI}" role="treeitem">${entry.title}</a>
 			${childrenHTML}
 		</li>
 	`;
@@ -135,7 +135,7 @@ export const getNavigationMenu = async (target, pageURI) => {
 	return `
 		<aside id="navigation" style="display:none;">
 			<nav role="navigation">
-				<ul>${navigationContent}</ul>
+				<ul role="tree">${navigationContent}</ul>
 			</nav>
 		</aside>
 	`;
