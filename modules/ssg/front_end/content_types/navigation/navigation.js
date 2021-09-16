@@ -46,6 +46,7 @@ setTimeout(initNavBar, 0);
 			for(const chi of ele.children){
 				if(chi.tagName === "UL"){
 					chi.classList.remove("hidden");
+					chi.setAttribute('role', 'group');
 				}
 			}
 			showNavigationActive(ele.parentElement);
