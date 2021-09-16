@@ -134,7 +134,7 @@ export const getNavigationMenu = async (target, pageURI) => {
 		.join("");
 	return `
 		<aside id="navigation" style="display:none;">
-			<nav>
+			<nav role="navigation">
 				<ul>${navigationContent}</ul>
 			</nav>
 		</aside>

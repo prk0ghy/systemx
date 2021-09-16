@@ -8,20 +8,25 @@ const initNavBar = () => {
 	navBar.append(navCloseButton);
 	navCloseButton.addEventListener("click", () => {
 		navBar.classList.remove("active");
+		navBar.setAttribute('aria-hidden', true);
 		hideOverlay();
 	});
+	navBar.setAttribute('aria-hidden', true);
 
 	navButton.addEventListener("click", () => {
 		if (navBar.classList.contains("active")) {
 			navBar.classList.remove("active");
+			navBar.setAttribute('aria-hidden', true);
 			hideOverlay();
 		} else {
 			navBar.classList.add("active");
 			showOverlay(navBar);
+			navBar.setAttribute('aria-hidden', false);
 		}
 	});
 	overlayCloseHandlers.push(() => {
 		navBar.classList.remove("active");
+		navBar.setAttribute('aria-hidden', true);
 	});
 };
 setTimeout(initNavBar, 0);
@@ -90,9 +95,11 @@ setTimeout(initNavBar, 0);
 				if(ele.classList.contains("hidden")){
 					ele.classList.remove("hidden");
 					toggle.classList.add("active");
+					parentLi.setAttribute('aria-expanded', true);
 				} else {
 					ele.classList.add("hidden");
 					toggle.classList.remove("active");
+					parentLi.setAttribute('aria-expanded', false);
 				}
 			});
 		});
