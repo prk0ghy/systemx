@@ -22,6 +22,7 @@ export const loadNavigation = async target => {
 		fragment entriesFields on inhalt_inhalt_Entry {
 			id
 			title
+			title_override
 			uri
 		}
 		fragment recurseEntries on inhalt_inhalt_Entry {
@@ -84,7 +85,7 @@ const getPageData = (target, pageURI) => {
 */
 export const getNavigationHeader = async (target, pageURI) => {
 	const data = getPageData(target, pageURI);
-	const title = data.current?.title || "Lasub";
+	const title = data.current?.title_override || data.current?.title || "Lasub";
 	const previousTitle = data.previous?.title || "";
 	const previousURL = data.previous?.uri;
 	const nextTitle = data.next?.title || "";
@@ -116,7 +117,7 @@ const buildNavigationMenuEntry = (entry, pageURI) => {
 		: "";
 	return `
 		<li${pageURI === entry.uri ? ` class="active"` : ""} page-id="${entry.id}">
-			<a href="${entry.uri}" page-url="${pageURI}" role="treeitem">${entry.title}</a>
+			<a href="${entry.uri}" page-url="${pageURI}" role="treeitem">${entry.title_override || entry.title}</a>
 			${childrenHTML}
 		</li>
 	`;
