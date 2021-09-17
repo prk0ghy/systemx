@@ -1,19 +1,21 @@
 import { Form, Formik } from "formik";
 import { useCallback, useRef } from "react";
+import { useRefreshUserData, userLogin } from "root/api";
 import Button from "../inputs/Button";
 import Error from "../generics/Error";
 import Input from "components/inputs/Input";
 import styles from "./LoginForm.module.css";
-import { userLogin } from "root/api";
 const LoginForm = () => {
 	const currentErrors = useRef("");
+	const [refresh] = useRefreshUserData();
 	const doLogin = useCallback(
 		async vals => {
 			const res = await userLogin(vals.username, vals.password);
 			currentErrors.current = res.error
 				? <Error msg={ res.error }/>
 				: null;
-		}, []
+			refresh();
+		}, [refresh]
 	);
 	const initialValues = {
 		username: "",

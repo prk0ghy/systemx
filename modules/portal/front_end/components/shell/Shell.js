@@ -1,3 +1,4 @@
+import { AuthenticationProvider } from "contexts/Authentication";
 import { BrandProvider } from "contexts/Brand";
 import { BusProvider } from "contexts/Bus";
 import { CartProvider } from "contexts/Cart";
@@ -9,6 +10,8 @@ import { ProductsProvider } from "contexts/Products";
 import SideMenu from "components/shell/SideMenu";
 import styles from "./Shell.module.css";
 import { useBus } from "contexts/Bus";
+import { useEffect } from "react";
+import { useRefreshUserData } from "root/api";
 const MaybePayPalProvider = ({ children }) => {
 	const providerOptions = {
 		"client-id": process.env.NODE_ENV === "development"
@@ -31,6 +34,10 @@ const ShellContent = ({ children }) => {
 	const shellContentClassName = cx(styles.content, {
 		[styles.inactive]: isSideMenuOpen
 	});
+	const [refresh] = useRefreshUserData();
+	useEffect(() => {
+		refresh();
+	}, [refresh]);
 	return (
 		<div className={ styles.shell }>
 			<div className={ shellContentClassName }>
@@ -47,15 +54,17 @@ const ShellContent = ({ children }) => {
 const Shell = ({ children }) => (
 	<BrandProvider>
 		<ProductsProvider>
-			<CartProvider>
-				<BusProvider>
-					<MaybePayPalProvider>
-						<ShellContent>
-							{ children }
-						</ShellContent>
-					</MaybePayPalProvider>
-				</BusProvider>
-			</CartProvider>
+			<AuthenticationProvider>
+				<CartProvider>
+					<BusProvider>
+						<MaybePayPalProvider>
+							<ShellContent>
+								{ children }
+							</ShellContent>
+						</MaybePayPalProvider>
+					</BusProvider>
+				</CartProvider>
+			</AuthenticationProvider>
 		</ProductsProvider>
 	</BrandProvider>
 );

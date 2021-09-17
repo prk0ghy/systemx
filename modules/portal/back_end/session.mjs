@@ -31,11 +31,14 @@ export const get = ctx => {
 	return undefined;
 };
 
-export const getByID = ID => ID || sessions[ID];
+export const getByID = ID => sessions[ID] || {};
 
 export const set = (ctx, session) => {
 	if(ctx === undefined){return;}
 	const cookie = ctx.cookies.get(configuration.get('sessionCookie'));
+	if(typeof session === "string"){
+		console.trace();
+	}
 	if((cookie !== undefined) && (sessions[cookie] !== undefined)){
 		sessions[cookie] = session;
 	}

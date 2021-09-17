@@ -1,18 +1,11 @@
 .authentication-layout {
+	background: url(/mvet/ui/authentication.jpg) no-repeat;
+	background-size: cover;
 	color: black;
 	display: flex;
 	height: 100%;
 	justify-content: center;
 	margin-bottom: 4rem;
-	& .image {
-		height: 100vh;
-		object-fit: cover;
-		object-position: top center;
-		position: fixed;
-		top: 0;
-		width: 100vw;
-		z-index: 0;
-	}
 	& .container {
 		margin-top: 5rem;
 		width: 100%;

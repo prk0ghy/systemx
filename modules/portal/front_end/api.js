@@ -1,3 +1,5 @@
+import { useAuthentication } from "contexts/Authentication";
+import { useMemo } from "react";
 /* Those are hardcoded for now, would be much nicer
  * to define these in a config file though.
  */
@@ -34,7 +36,6 @@ const receiveResponse = async res => {
 		if (!promiseMap.has(id)) {
 			return;
 		}
-		console.log(obj);
 		const prom = promiseMap.get(id);
 		prom.resolve(res);
 	});
@@ -85,3 +86,13 @@ export const userLogout = () => doAPICall("logout", {});
 export const userGetInfo = () => doAPICall("userinfo", {});
 
 export default doAPICall;
+
+export const useRefreshUserData = () => {
+	const [, dispatch] = useAuthentication();
+	return useMemo(() => {
+		return [async () => {
+			const userData = await userGetInfo();
+			dispatch({ type: "SET_USER_DATA", data: { user: userData?.user } });
+		}];
+	}, [dispatch]);
+};
