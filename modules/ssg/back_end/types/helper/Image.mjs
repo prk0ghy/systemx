@@ -19,8 +19,9 @@ export default {
 		const {thumbHtmlPath, thumbSize, htmlPath} = await downloadWithThumb(asset.url,imageSize);
 		const thumbWidth  = thumbHtmlPath ? thumbSize?.width ? `width="${thumbSize.width}"` : "" : `width="${asset.width}`;
 		const thumbHeight = thumbHtmlPath ? thumbSize?.height ? `height="${thumbSize.height}"` : "" : `height="${asset.height}`;
+		const altText =  asset.description? `alt="${asset.description}"` : "";
 		return asset
-			? `<img src="${forceHTTPS(thumbHtmlPath || htmlPath)}" ${thumbWidth} ${thumbHeight} raw-src="${forceHTTPS(htmlPath)}" raw-width="${asset.width}" raw-height="${asset.height}" ${getFocalPoint(asset.focalPoint)}>`
+			? `<img src="${forceHTTPS(thumbHtmlPath || htmlPath)}" ${thumbWidth} ${thumbHeight} raw-src="${forceHTTPS(htmlPath)}" raw-width="${asset.width}" raw-height="${asset.height}" ${getFocalPoint(asset.focalPoint)} ${altText}>`
 			: "";
 	}
 };

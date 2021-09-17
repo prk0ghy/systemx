@@ -26,6 +26,7 @@ const globalFragments = {
 			license: lizenzart
 			source: quelle
 			creator: urheber
+			description: beschreibung
 		}
 	`,
 	elements: memoize(({ types }) => `
