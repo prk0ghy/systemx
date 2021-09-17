@@ -1,4 +1,4 @@
-image: node:lts
+image: node:lts-slim
 pipelines:
   default:
     - step:
@@ -8,8 +8,8 @@ pipelines:
         script:
           - npm install
           - npm run postinstall
-          - npm run eslint
-          - npm run stylelint
+          - npm run lint:js
+          - npm run lint:css
           - npm run test
     - parallel:
         - step:
@@ -18,35 +18,35 @@ pipelines:
             name: Build bettermarks
             script:
               - npm install
-              - npm run build:clean bettermarks
+              - npm run build bettermarks
         - step:
             caches:
               - node
             name: Build juramuseum
             script:
               - npm install
-              - npm run build:clean juramuseum
+              - npm run build juramuseum
         - step:
             caches:
               - node
             name: Build lasub
             script:
               - npm install
-              - npm run build:clean lasub
+              - npm run build lasub
         - step:
             caches:
               - node
             name: Build rdhessen
             script:
               - npm install
-              - npm run build:clean rdhessen
+              - npm run build rdhessen
         - step:
             caches:
               - node
             name: Build stifterverband
             script:
               - npm install
-              - npm run build:clean stifterverband
+              - npm run build stifterverband
     - step:
         name: Update editor previews if `master`
         deployment: preview
@@ -58,33 +58,3 @@ pipelines:
         trigger: manual
         script:
           - ssh -p 42 dev.dilewe.de /var/www/html/dilewe.de/systemx/scripts/rebuild-pages-release
-    - step:
-        name: Build Bettermarks
-        deployment: bettermarks
-        trigger: manual
-        script:
-          - ssh -p 42 dev.dilewe.de "cd /var/www/html/dilewe.de/systemx/ && npm run build:clean bettermarks"
-    - step:
-        name: Build Juramuseum
-        deployment: juramuseum
-        trigger: manual
-        script:
-          - ssh -p 42 dev.dilewe.de "cd /var/www/html/dilewe.de/systemx/ && npm run build:clean juramuseum"
-    - step:
-        name: Build Lasub
-        deployment: lasub
-        trigger: manual
-        script:
-          - ssh -p 42 dev.dilewe.de "cd /var/www/html/dilewe.de/systemx/ && npm run build:clean lasub"
-    - step:
-        name: Build RD Hessen
-        deployment: rdhessen
-        trigger: manual
-        script:
-          - ssh -p 42 dev.dilewe.de "cd /var/www/html/dilewe.de/systemx/ && npm run build:clean rdhessen"
-    - step:
-        name: Build Stifterverband
-        deployment: stifterverband
-        trigger: manual
-        script:
-          - ssh -p 42 dev.dilewe.de "cd /var/www/html/dilewe.de/systemx/ && npm run build:clean stifterverband"
