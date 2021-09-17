@@ -1,4 +1,4 @@
-image: node:lts-slim
+image: node:lts-alpine
 pipelines:
   default:
     - step:
