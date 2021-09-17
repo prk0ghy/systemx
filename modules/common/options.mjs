@@ -10,7 +10,8 @@ const options = {
 	jsVars: {
 		galleryWrapAround: true,
 		galleryBackgroundOpacity: 0.95,
-		ytCaption: false
+		ytCaption: false,
+		accessibility: false
 	},
 	favicon: "default",
 	disableMarkers: false,
@@ -38,7 +39,8 @@ const options = {
 			httpPort: 8049,
 			jsVars: {
 				galleryWrapAround: false,
-				ytCaption: true
+				ytCaption: true,
+				accessibility: true
 			},
 			cssVars: {
 				backgroundBlue:  "rgba(0,0,0,0)",

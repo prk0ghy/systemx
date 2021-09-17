@@ -1,3 +1,5 @@
+import options from "../../../../common/options.mjs";
+
 const getFocalPoint = focalPoint => {
 	if(!focalPoint)                      {return "";}
 	if(focalPoint.constructor !== Array) {return "";}
@@ -19,7 +21,12 @@ export default {
 		const {thumbHtmlPath, thumbSize, htmlPath} = await downloadWithThumb(asset.url,imageSize);
 		const thumbWidth  = thumbHtmlPath ? thumbSize?.width ? `width="${thumbSize.width}"` : "" : `width="${asset.width}`;
 		const thumbHeight = thumbHtmlPath ? thumbSize?.height ? `height="${thumbSize.height}"` : "" : `height="${asset.height}`;
-		const altText =  asset.description? `alt="${asset.description}"` : "";
+		let altText = "";
+		if (options.jsVars.accessibility) {
+			altText = asset.description? `alt="${asset.description}"` : "no-alt='no-alt'";
+		} else {
+			altText = asset.description? `alt="${asset.description}"` : "";
+		}
 		return asset
 			? `<img src="${forceHTTPS(thumbHtmlPath || htmlPath)}" ${thumbWidth} ${thumbHeight} raw-src="${forceHTTPS(htmlPath)}" raw-width="${asset.width}" raw-height="${asset.height}" ${getFocalPoint(asset.focalPoint)} ${altText}>`
 			: "";

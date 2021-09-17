@@ -17,6 +17,14 @@ img {
 	height:auto;
 }
 
+img[no-alt="no-alt"] {
+	filter: invert(1) brightness(40%);
+	mask-image: url(/resources/svg/no-alt.svg);
+	mask-size: cover;
+	mask-type: alpha;
+	mask-repeat: no-repeat;
+}
+
 iframe {
 	background:#000;
 }
