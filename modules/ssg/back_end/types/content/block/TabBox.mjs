@@ -135,6 +135,10 @@ export default {
 						${tabContents}
 						${tabSource}
 					</tab-box-content-wrap>
+					<tab-paging>
+						<previous-tab></previous-tab>
+						<next-tab></next-tab>
+					</tab-paging>
 				</inner-content>
 			</section>
 		`;
