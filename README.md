@@ -32,11 +32,3 @@ Just run `npm install` in order to install all the prerequisites and then use `n
 ## Linting
 Before commiting it is advisable to run `npm run lint`, since those tests will be run by the CI/CD
 pipeline again and it would be nice if the commit wouldn't fail in the pipeline, blocking an automatic roll-out.
-
-## How to Build and Deploy a LASUB Release
-```
-# Build a release on the dev server
-ssh dev.dilewe.de "cd /var/www/html/dilewe.de/systemx/ && npm run build:release"
-# Rsync it over to the live server and change the symlink
-ssh live.dilewe.de "cd /var/www/html/dilewe.de/module-sachsen/ && RELEASE=\`date \"+%Y%m%d\"\` && mkdir -p \"\$RELEASE\" && rsync -avhe ssh dev.dilewe.de:/var/www/html/dilewe.de/systemx/web/lasub/ ./\$RELEASE && ln -s \$RELEASE next && mv current last && mv next current"
-```
