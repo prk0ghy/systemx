@@ -25,47 +25,10 @@ const options = {
 	startShop: false,
 	storagePath: ".systemx/storage",
 	targets: {
-		bdv: {
-			graphqlEndpoint: "https://bdv.test-dilewe.de/api",
-			httpPort: 8056
-		},
-		bettermarks: {
-			graphqlEndpoint: "https://bm.test-dilewe.de/api",
-			httpPort: 8053
-		},
-		juramuseum: {
-			disableMarkers: true,
-			graphqlEndpoint: "https://systemx-jura-museum.test-dilewe.de/api",
-			httpPort: 8049,
-			jsVars: {
-				galleryWrapAround: false,
-				ytCaption: true,
-				accessibility: true
-			},
-			cssVars: {
-				backgroundBlue:  "rgba(0,0,0,0)",
-				backgroundRed:   "rgba(0,0,0,0)",
-				backgroundGreen: "rgba(0,0,0,0)",
-				fontContent:     "Franklin",
-				fontHeadlines:   "Franklin"
-			}
-		},
 		lasub: {
 			graphqlEndpoint: "https://lasub.dilewe.de/api",
 			httpPort: 8042,
 			favicon: "lasub"
-		},
-		leipzig: {
-			graphqlEndpoint: "https://archiv-buergerbewegung-leipzig.test-dilewe.de/api",
-			httpPort: 8052
-		},
-		rdhessen: {
-			graphqlEndpoint: "https://rdhessen.test-dilewe.de/api",
-			httpPort: 8048
-		},
-		stifterverband: {
-			graphqlEndpoint: "https://stifterverband.test-dilewe.de/api",
-			httpPort: 8050
 		}
 	}
 };
