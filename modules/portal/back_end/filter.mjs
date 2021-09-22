@@ -12,8 +12,14 @@ const filterReduce = (pipeline,next) => {
 	return filterReduce(pipeline,v => λ(v,next));
 };
 
+/* Filters without a filter of order==0 get ignored, this is so we can safely
+ * add on to filters defined in other filters and have the whole filter being
+ * ignored when a feature is put on the blacklist, for an example look at
+ * the userRegistration hook in userMeta.mjs
+ */
 export const filterBuild = name => {
-	if(name === "*"){return v => v;}
+	if(name === "*"){return null;}
+	if(!rawFilters[name] || rawFilters[name][0].length === 0){return null;}
 	const pipeline = [];
 	const wildcard = rawFilters['*'];
 	const specific = rawFilters[name];
@@ -30,7 +36,9 @@ export const filterBuild = name => {
 export const filterBuildAll = () => {
 	const ret = {};
 	for(const key of Object.keys(rawFilters)){
-		ret[key] = filterBuild(key);
+		const filter = filterBuild(key);
+		if(!filter){continue;}
+		ret[key] = filter;
 	}
 	return ret;
 };

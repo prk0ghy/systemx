@@ -8,6 +8,8 @@ export const getByName = name => DB.get(`SELECT * FROM User WHERE name = ?`, [St
 export const getByID = id => DB.get(`SELECT * FROM User WHERE ID = ?`, Number.parseInt(id));
 
 export const add = async (name, email, password="") => {
+	console.log(name);
+	console.log(password);
 	const hash = await bcrypt.hash(password, saltRounds);
 	const row = await DB.run("INSERT INTO User (name, password, email, passwordExpired) VALUES (?, ?, ?, 0)", [name, hash, email]);
 	return row.lastID;
@@ -27,6 +29,7 @@ export const tryLogin = async (name, pass) => {
 	console.log("Trying as "+name);
 	if (await bcrypt.compare(pass, row.password)) {
 		console.log("Logging in as "+name);
+		delete row.password;
 		return row;
 	}
 	return null;

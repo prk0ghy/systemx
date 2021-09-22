@@ -48,6 +48,7 @@ export const remove = async (userID, groups) => {
  * through the fileserver with a permission check.
  */
 const filterUserGroupGet = async (v,next) => {
+	if(!v?.res?.user?.ID){return await next(v);}
 	v.ses.user.groups = v.res.user.groups = await get(v.res.user.ID);
 	return await next(v);
 };

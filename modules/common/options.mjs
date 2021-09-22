@@ -21,6 +21,7 @@ const options = {
 	httpPort: 8042,
 	portalHttpPort: 8020,
 	sessionCookie: "Portal_Session_Token",
+	portalRegisterEmailRequired: false,
 	openBrowser: false,
 	skipNetwork: false,
 	startServer: false,

@@ -25,6 +25,13 @@ export const set = async (userID, key, value) => {
 	await DB.run("INSERT OR REPLACE INTO UserMeta (user, key, value) VALUES (?, ?, ?)", [userID, key, JSON.stringify(value)]);
 };
 
+export const setMany = async (userID, values) => {
+	if(!values){return;}
+	for(const key in values){
+		await set(userID, key, values[key]);
+	}
+};
+
 /* Not really all that useful, mostly used so we actually make use of the
  * imported user module, which is necessary so we get the right initialization order
  */
@@ -42,9 +49,19 @@ const filterMetadataGet = async (v,next) => {
 filterAdd("userInfoGet",filterMetadataGet,10);
 filterAdd("login",filterMetadataGet,10);
 
+/* Enable passing a `meta` value on to the userRegistration filter which can be used for
+ * adding the country or if the user is a business customer.
+ */
+filterAdd("userRegister",async (v,next) => {
+	if(!v.req.meta){return await next(v);}
+	console.log(v.req.meta);
+	await setMany(v.res.userID,v.req.meta);
+	return await next(v);
+},10);
+
 filterAdd("userMetaGet",async (v,next) => {
 	if(!v.req?.key){
-		v.res.error = "You have to provide a `key`";
+		v.res.error = "You have to provide a key";
 		return v;
 	}
 	if(!v.ses?.user?.ID){
@@ -58,7 +75,7 @@ filterAdd("userMetaGet",async (v,next) => {
 
 filterAdd("userMetaSet",async (v,next) => {
 	if(!v.req?.key){
-		v.res.error = "You have to provide a `key`";
+		v.res.error = "You have to provide a key";
 		return v;
 	}
 	if(!v.ses?.user?.ID){
