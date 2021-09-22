@@ -13,6 +13,7 @@ import query, { getContext as getCMSContext, introspectCraft } from "./cms.mjs";
 import { makeRenderer } from "./renderer.mjs";
 import RenderingContext from "./RenderingContext.mjs";
 import wrapWithApplicationShell from "./page.mjs";
+import supportMessage from "../../common/supportMessenger.mjs";
 export const resourceDirectoryName = "resources";
 const fsp = fs.promises;
 /*
@@ -176,12 +177,22 @@ export const renderSingleEntry = async (targetName, uri) => {
 		status: 200
 	};
 };
+const sendWarning = async (targetName,warning) => {
+	await supportMessage({
+		text: warning.message
+	});
+};
+const sendWarnings = async (targetName,warnings) => {
+	//warnings.forEach(sendWarning);
+	sendWarning(targetName,warnings[0]);
+};
 /*
 * This function fetches and then renders all "entries", which is CraftCMS-speak for pages.
 * Essentially, this is the heart of systemx.
 */
 export const buildEntries = async targetName => {
 	let warningHTML    = "";
+	const warnings     = [];
 	const entries      = await getEntries();
 	const targetPath   = getTargetPath(targetName);
 	const mediaPath    = getMediaPath(targetName);
@@ -196,9 +207,10 @@ export const buildEntries = async targetName => {
 		cms: cmsContext,
 		globalRender,
 		hints: {
-			appendError: (html, context) => {
+			appendError: (data, context) => {
 				if (context.type !== "root") {
-					warningHTML += html;
+					warningHTML += data.html;
+					warnings.push(data);
 				}
 			},
 			shouldMakeThumbnail: path => {
@@ -260,6 +272,7 @@ export const buildEntries = async targetName => {
 		const finalHTML = Marker.fill(wrappedHTML);
 		await fsp.writeFile(outputFilePath, formatHTML(finalHTML));
 	}));
+	await sendWarnings(targetName, warnings);
 	const homePageSourcePath = path.join(targetPath, await getHomePageURI(entries), "index.html");
 	const homePageDestinationPath = path.join(targetPath, "index.html");
 	try {

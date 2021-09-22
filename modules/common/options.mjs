@@ -29,6 +29,8 @@ const options = {
 	mailFrom: "test@dilewe.de",
 	startServer: false,
 	startShop: false,
+	slackToken: "",
+	slackChannel: "",
 	storagePath: ".systemx/storage",
 	targets: {
 		lasub: {

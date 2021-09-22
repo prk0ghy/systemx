@@ -19,7 +19,14 @@ export default {
 				</inner-content>
 			</section>
 		`;
-		context.hints.appendError?.(output, context);
+		context.hints.appendError?.({
+			message,
+			isEditorial,
+			title,
+			type,
+			backendLink,
+			html: output
+		}, context);
 		return output;
 	}
 };
