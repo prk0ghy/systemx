@@ -284,6 +284,10 @@ export const buildEntries = async targetName => {
 			pageTitle: "Render warnings"
 		}));
 	}
+	if (options.disallowRobots) {
+		const robotsPath = path.join(targetPath, "robots.txt");
+		await fsp.writeFile(robotsPath, "User-agent: *\nDisallow: /\n");
+	}
 };
 /*
 * When updating first we rename DIR to DIR.old, then when this succeeds we rename DIR.new to DIR

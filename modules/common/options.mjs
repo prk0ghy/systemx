@@ -15,6 +15,7 @@ const options = {
 	},
 	favicon: "default",
 	disableMarkers: false,
+	disallowRobots: false,
 	distributionPath: "web",
 	downloadMedia: false,
 	forceRendering: false,
@@ -31,7 +32,8 @@ const options = {
 		lasub: {
 			graphqlEndpoint: "https://lasub.dilewe.de/api",
 			httpPort: 8042,
-			favicon: "lasub"
+			favicon: "lasub",
+			disallowRobots: true
 		}
 	}
 };
