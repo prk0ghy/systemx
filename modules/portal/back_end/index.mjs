@@ -1,6 +1,5 @@
 import loadModules from "../../common/loadModules.mjs";
-import * as configuration from "./OLD/configuration.mjs";
-// import * as frontend from "./OLD/frontend.mjs";
+import Options from "../../common/options.mjs";
 import RequestHandler from "./request.mjs";
 import { filterBuildAll } from "./filter.mjs";
 import Koa from "koa";
@@ -27,7 +26,7 @@ const start = async () => {
 		.use(KoaMount(`/_next/static`, new Koa().use(KoaStatic("modules/portal/front_end/.next/static"))))
 		//.use(frontend.reqFilter)
 		//.use(proxy)
-		.listen(configuration.get("port"));
-	console.log(`Shop started: ${configuration.get("baseurl")}/`);
+		.listen(Options.portalHttpPort);
+	console.log(`Shop started: http://localhost:${Options.portalHttpPort}/`);
 };
 export default start;

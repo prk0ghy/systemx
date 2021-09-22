@@ -19,6 +19,8 @@ const options = {
 	downloadMedia: false,
 	forceRendering: false,
 	httpPort: 8042,
+	portalHttpPort: 8020,
+	sessionCookie: "Portal_Session_Token",
 	openBrowser: false,
 	skipNetwork: false,
 	startServer: false,

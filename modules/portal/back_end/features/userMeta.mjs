@@ -10,7 +10,6 @@ import * as User from "../user.mjs";
 export const getAll = async userID => {
 	const rows = await DB.all(`SELECT key,value FROM UserMeta WHERE user = ?`, userID);
 	const ret = {};
-	console.log(rows);
 	for(const row of rows){
 		ret[row.key] = JSON.parse(row.value);
 	}
