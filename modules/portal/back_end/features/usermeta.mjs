@@ -35,11 +35,13 @@ export const getUserAndMeta = async userID => {
 	return {...user,meta};
 };
 
-/* Add all metadata to each userinfo action */
-filterAdd("userInfoGet",async (v,next) => {
-	v.res.user.meta = await getAll(v.res.user.ID);
+const filterMetadataGet = async (v,next) => {
+	v.ses.user.meta = v.res.user.meta = await getAll(v.res.user.ID);
 	return await next(v);
-},10);
+};
+/* Add all metadata to each userinfo/login action */
+filterAdd("userInfoGet",filterMetadataGet,10);
+filterAdd("login",filterMetadataGet,10);
 
 filterAdd("userMetaGet",async (v,next) => {
 	if(!v.req?.key){
@@ -79,7 +81,7 @@ filterAdd("userMetaSet",async (v,next) => {
 await (async () => {
 	await DB.run(`
 		CREATE TABLE IF NOT EXISTS UserMeta(
-			user INTEGER REFERENCES User(ID) ON DELETE CASCADE ON UPDATE CASCADE,
+			user INTEGzER REFERENCES User(ID) ON DELETE CASCADE ON UPDATE CASCADE,
 			key TEXT NOT NULL,
 			value TEXT,
 			PRIMARY KEY (user, key)

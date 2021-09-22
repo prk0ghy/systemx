@@ -11,6 +11,7 @@ filterAdd("login",async (v,next) => {
 		newSession.user = user;
 		v.ses = newSession;
 		v.res.login = true;
+		v.res.user = user;
 		v.res.sessionID = newSession.sessionID;
 		return await next(v);
 	}else {
