@@ -83,7 +83,9 @@ const doAPICall = (action, v) => {
 
 export const userLogin = (username, password) => doAPICall("login", { username, password });
 export const userLogout = () => doAPICall("logout", {});
-export const userGetInfo = () => doAPICall("userinfo", {});
+export const userInfoGet = () => doAPICall("userInfoGet", {});
+export const userMetaGet = key => doAPICall("userMetaGet", { key });
+export const userMetaSet = (key, value) => doAPICall("userMetaSet", { key, value });
 
 export default doAPICall;
 
@@ -91,7 +93,7 @@ export const useRefreshUserData = () => {
 	const [, dispatch] = useAuthentication();
 	return useMemo(() => {
 		return [async () => {
-			const userData = await userGetInfo();
+			const userData = await userInfoGet();
 			dispatch({ type: "SET_USER_DATA", data: { user: userData?.user } });
 		}];
 	}, [dispatch]);

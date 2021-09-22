@@ -2,6 +2,13 @@
 	"email": "bennyschulenburg@gmx.de",
 	"name": "mbook@dilewe.de",
 	"pass": "test",
+	"meta": {
+		"country": "DE",
+		"isBusinessCustomer": true,
+		"test": [
+			{"asd": 12345}
+		]
+	},
 	"products": [
 		"kapitel1",
 		"kapitel3"
