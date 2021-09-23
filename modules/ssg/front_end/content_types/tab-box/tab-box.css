@@ -90,7 +90,7 @@ tab-box-source {
 [tab-box-type="mixed"] tab-paging {
 	display: grid;
 	grid-template-columns: var(--content-padding) 1.4em 1fr 1.4em var(--content-padding);
-	grid-template-rows: 1.2em 1fr;
+	grid-template-rows: 0.1em 1fr 1.2em;
 	grid-gap: 0;
 }
 

@@ -35,11 +35,15 @@
 			nextButton.addEventListener('click',() => {
 				const nextTab = getCurrentTab() + 1;
 				setTab(nextTab);
+				tabHeader[0].scrollIntoView(true);
+				window.scrollBy(0, -64);
 			});
 
 			previousButton.addEventListener('click',() => {
 				const previousButton = getCurrentTab() - 1;
 				setTab(previousButton);
+				tabHeader[0].scrollIntoView(true);
+				window.scrollBy(0, -64);
 			});
 
 			const removeAllActiveTabs = () => {
