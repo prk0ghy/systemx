@@ -89,16 +89,16 @@ tab-box-source {
 
 [tab-box-type="mixed"] tab-paging {
 	display: grid;
-	grid-template-columns: var(--content-padding) 1.4em 1fr 1.4em var(--content-padding);
-	grid-template-rows: 0.1em 1fr 1.2em;
+	grid-template-columns: var(--content-padding) 24px 1fr 24px var(--content-padding);
+	grid-template-rows: 0.1em 1fr 1em;
 	grid-gap: 0;
 }
 
 [tab-box-type="mixed"] tab-paging next-tab,
 [tab-box-type="mixed"] tab-paging previous-tab {
 	font-size: 1.4em;
-	height: 1.4em;
-	width: 1.4em;
+	height: 32px;
+	width: 32px;
 	display: inline-block;
 	background-repeat: no-repeat;
 	background-size: contain;
