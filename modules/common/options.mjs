@@ -25,6 +25,7 @@ const options = {
 	portalRegisterEmailRequired: false,
 	openBrowser: false,
 	skipNetwork: false,
+	mailFrom: "test@dilewe.de",
 	startServer: false,
 	startShop: false,
 	storagePath: ".systemx/storage",
