@@ -2,6 +2,7 @@ import finalHandler from "finalhandler";
 import http from "http";
 import options from "../../common/options.mjs";
 import path from "path";
+import logTracking from "./logTracking.mjs";
 import serveStatic from "serve-static";
 import { renderSingleEntry } from "./target.mjs";
 /*
@@ -39,6 +40,22 @@ export default targetName => {
 		const isDone = finalHandler(request, response);
 		if (request.url === "/robots.txt") {
 			response.end("User-agent: *\nDisallow: /\n");
+		}
+		else if (request.method === 'POST' && request.url ==='/stats') {
+			let json = '';
+
+			request.on('data', data => {
+				json += data.toString('utf8');
+			});
+
+			if (json.length > 1e6) { //if bigger than 1MB, kill
+				request.socket.destroy();
+			}
+
+			request.on('end', () => {
+				logTracking(json);
+				response.end("ok");
+			});
 		}
 		else if (isContentURI(request.url)) {
 			const {
