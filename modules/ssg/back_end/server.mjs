@@ -53,7 +53,14 @@ export default targetName => {
 			}
 
 			request.on('end', () => {
-				logTracking(json);
+				console.log(JSON.parse(json));
+				try {
+					const parsed = JSON.parse(json);
+					logTracking(parsed);
+				} catch(e) {
+					console.log(e); // error in the above string (in this case, yes)!
+				}
+				//logTracking();
 				response.end("ok");
 			});
 		}
