@@ -67,6 +67,7 @@
 				removeAllActiveTabs();
 				tabHeader[i].classList.add('active');
 				tabContent[i].classList.add('active');
+				showEmbeddingSections(tabContent[i]);
 			};
 		});
 	};

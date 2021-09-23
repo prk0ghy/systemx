@@ -87,15 +87,15 @@ tab-box-source {
 	line-height: 1.5em;
 }
 
-tab-paging {
+[tab-box-type="mixed"] tab-paging {
 	display: grid;
-	grid-template-columns: 1fr 1.4em 1.4em;
-	grid-template-rows: 1fr;
+	grid-template-columns: var(--content-padding) 1.4em 1fr 1.4em var(--content-padding);
+	grid-template-rows: 1.2em 1fr;
 	grid-gap: 0;
 }
 
-tab-paging next-tab,
-tab-paging previous-tab {
+[tab-box-type="mixed"] tab-paging next-tab,
+[tab-box-type="mixed"] tab-paging previous-tab {
 	font-size: 1.4em;
 	height: 1.4em;
 	width: 1.4em;
@@ -105,14 +105,15 @@ tab-paging previous-tab {
 	cursor: pointer;
 }
 
-tab-paging next-tab {
+[tab-box-type="mixed"] tab-paging next-tab {
 	background-image: url(/resources/svg/arrow-right.svg);
-	grid-area: 1 / 3 / 1 / 4;
+	grid-area: 2 / 4 / 2 / 5;
 }
 
-tab-paging previous-tab {
+[tab-box-type="mixed"] tab-paging previous-tab {
 	background-image: url(/resources/svg/arrow-left.svg);
-	grid-area: 1 / 2 / 1 / 3;
+	grid-area: 2 / 2 / 2 / 3;
+	justify-self: flex-end;
 }
 
 [tab-box-type="exercise"] tab-box-header {
