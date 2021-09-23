@@ -41,8 +41,7 @@ await (async () => {
 			ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
 			name TEXT UNIQUE NOT NULL,
 			password TEXT NOT NULL,
-			email TEXT,
-			passwordExpired INTEGER DEFAULT 0
+			email TEXT
 		)
 	`);
 	const data = await fs.promises.readFile("modules/portal/back_end/data/user.json");

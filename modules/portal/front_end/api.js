@@ -81,13 +81,12 @@ const doAPICall = (action, v) => {
 	return new Promise((resolve, reject) => promiseMap.set(id, { resolve, reject }));
 };
 
-export const userLogin = (username, password) => doAPICall("login", { username, password });
-export const userLogout = () => doAPICall("logout", {});
-export const userInfoGet = () => doAPICall("userInfoGet", {});
-export const userMetaGet = key => doAPICall("userMetaGet", { key });
-export const userMetaSet = (key, value) => doAPICall("userMetaSet", { key, value });
-export const userRegister = (username, email, password, meta) => doAPICall("userRegister", { username, email, password, meta });
-
+export const userLogin    = (username, password) => doAPICall("login", { username, password });
+export const userLogout   = () => doAPICall("logout", {});
+export const userInfoGet  = () => doAPICall("userInfoGet", {});
+export const userMetaGet  = key => doAPICall("userMetaGet", { key });
+export const userMetaSet  = (key, value) => doAPICall("userMetaSet", { key, value });
+export const userRegister = (username, email, password, meta = {}) => doAPICall("userRegister", { username, email, password, meta });
 export default doAPICall;
 
 export const useRefreshUserData = () => {

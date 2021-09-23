@@ -4,19 +4,32 @@ import * as User from "./user.mjs";
 
 const sessions = {};
 
+/* Stops the session associated with the Koa ctx */
 export const stop = (ctx,sessionID) => {
+	if(!sessionID){
+		const cookie = ctx.cookies.get(Options.sessionCookie);
+		if(cookie){ return stop(ctx,cookie); }
+	}
 	if(sessions[sessionID] !== undefined){
 		delete sessions[sessionID];
 		ctx.cookies.set(Options.sessionCookie,'');
 		return true;
 	}
-	//cart.empty();
 	return false;
 };
 
+/* Get a new, unique, session ID */
+const getSessionID = () => {
+	for(let i=0;i<32;i++){ // Should be unique after 32 tries, otherwise there is something wrong with MakeID
+		const sessionID = MakeID(64);
+		if(sessions[sessionID] === undefined){return sessionID;}
+	}
+	console.log("Error creating session ID");
+	return null;
+};
+
 export const start = ctx => {
-	let sessionID = MakeID(64);
-	while(sessions[sessionID] !== undefined){sessionID=MakeID(64);}
+	const sessionID = getSessionID();
 	sessions[sessionID] = {sessionID};
 	ctx.cookies.set(Options.sessionCookie,sessionID);
 	return sessions[sessionID];

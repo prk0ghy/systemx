@@ -1,7 +1,7 @@
 import loadModules from "../../common/loadModules.mjs";
 import Options from "../../common/options.mjs";
 import RequestHandler from "./request.mjs";
-import { filterBuildAll } from "./filter.mjs";
+import { buildAll as filterBuildAll } from "./filter.mjs";
 import Koa from "koa";
 import koaBody from "koa-body";
 import KoaRouter from "koa-router";
@@ -10,7 +10,6 @@ import KoaMount from "koa-mount";
 // import proxy from "./features/proxy.mjs";
 
 const start = async () => {
-	//configuration.printConfig();
 	const features    = await loadModules("modules/portal/back_end/features");
 	const modules     = await loadModules("modules/portal/back_end/handler");
 	console.log({...features,...modules});
@@ -19,7 +18,6 @@ const start = async () => {
 	router.all("/portal-user", RequestHandler(filterBuildAll(),{allowCORS: true}));
 	application
 		.use(koaBody())
-		// .use(koaMount(`/${configuration.get("prefix")}/resources`, new Koa().use(koaStatic(`web/${currentTarget}/resources`))))
 		.use(router.routes())
 		.use(KoaStatic("modules/portal/front_end/.next/server/pages"))
 		.use(KoaStatic("modules/portal/front_end/public"))
