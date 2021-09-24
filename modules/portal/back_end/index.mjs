@@ -1,5 +1,7 @@
 import loadModules from "../../common/loadModules.mjs";
 import Options from "../../common/options.mjs";
+import * as Template from "../../common/template.mjs";
+import Mail from "../../common/mail.mjs";
 import RequestHandler from "./request.mjs";
 import { buildAll as filterBuildAll } from "./filter.mjs";
 import Koa from "koa";
@@ -11,8 +13,8 @@ import KoaMount from "koa-mount";
 
 const start = async () => {
 	const features    = await loadModules("modules/portal/back_end/features");
-	const modules     = await loadModules("modules/portal/back_end/handler");
-	console.log({...features,...modules});
+	await Template.loadDir("modules/portal/back_end/templates/");
+	console.log(features);
 	const application = new Koa();
 	const router      = new KoaRouter();
 	router.all("/portal-user", RequestHandler(filterBuildAll(),{allowCORS: true}));

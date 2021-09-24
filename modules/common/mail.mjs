@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import Template from "./template.mjs";
 import Options from "./options.mjs";
 
 const sendMail = await (async () => {
@@ -13,10 +14,7 @@ const sendMail = await (async () => {
 		}
 	});
 
-	const send = async ({from=null,to,subject,text,html}) => {
-		if(from === null){
-			return send({from: Options.mailFrom,to,subject,text,html});
-		}
+	const sendRaw = async ({from=null,to,subject,text,html}) => {
 		const info = await transporter.sendMail({
 			from:    from,
 			to:      to,
@@ -24,9 +22,24 @@ const sendMail = await (async () => {
 			text:    text,
 			html:    html
 		});
-		console.log("Message sent: %s", info.messageId);
 		console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
 		return info;
+	};
+
+	const subjectRegex = /<title>([^<]*)<\/title>/;
+	const send = async ({from=null, to, template, values}) => {
+		if(from === null){
+			return send({from: Options.mailFrom, to, template, values});
+		}
+		const html = await Template(template+".html", values);
+		const text = await Template(template+".txt",  values);
+		const matches = html.match(subjectRegex);
+		if(matches.length < 2){
+			console.error("Couldn't find a valid <title> in "+template);
+			return;
+		}
+		const subject = String(matches[1]);
+		await sendRaw({from,to,subject,html,text});
 	};
 	return send;
 })();

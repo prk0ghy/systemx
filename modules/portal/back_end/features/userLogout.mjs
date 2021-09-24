@@ -1,7 +1,7 @@
 import filterAdd from "../filter.mjs";
 import * as Session from "../session.mjs";
 
-filterAdd("logout",async (v,next) => {
+filterAdd("userLogout",async (v,next) => {
 	if(v.ses?.sessionID){
 		Session.stop(v.ctx,v.ses.sessionID);
 	}

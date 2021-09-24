@@ -2,7 +2,7 @@ import filterAdd from "../filter.mjs";
 import * as User from "../user.mjs";
 import * as Session from "../session.mjs";
 
-filterAdd("login",async (v,next) => {
+filterAdd("userLogin",async (v,next) => {
 	if(!v.req.username){
 		v.res.error = "Login action needs a username field";
 		return v;

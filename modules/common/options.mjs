@@ -4,6 +4,7 @@ import os from "os";
 import path from "path";
 const argv = minimist(process.argv.slice(2));
 const options = {
+	absoluteDomain: "http://localhost:3000",
 	configurationPath: ".systemx/settings",
 	cleanBuild: false,
 	cssVars: {},

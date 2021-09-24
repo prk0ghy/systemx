@@ -11,16 +11,15 @@ export const add = async (name, email, password="") => {
 	console.log(name);
 	console.log(password);
 	const hash = await bcrypt.hash(password, saltRounds);
-	const row = await DB.run("INSERT INTO User (name, password, email, passwordExpired) VALUES (?, ?, ?, 0)", [name, hash, email]);
+	const row = await DB.run("INSERT INTO User (name, password, email) VALUES (?, ?, ?)", [name, hash, email]);
 	return row.lastID;
 };
 
-export const deleteUser = id => DB.run("DELETE FROM User WHERE ID = ?", id);
-export const changePW = async (id, pass) => {
+export const deleteSingle = id => DB.run("DELETE FROM User WHERE ID = ?", id);
+export const changePassword = async (id, pass) => {
 	const hash = await bcrypt.hash(pass, saltRounds);
-	await DB.run("UPDATE User SET password = ?, passwordExpired = 0 WHERE ID = ?", [hash, id]);
+	await DB.run("UPDATE User SET password = ? WHERE ID = ?", [hash, id]);
 };
-export const expirePW = id => DB.run("UPDATE User SET passwordExpired = 1 WHERE ID = ?", [id]);
 export const tryLogin = async (name, pass) => {
 	const row = await getByName(name);
 	if (!row) {

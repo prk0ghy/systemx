@@ -47,7 +47,7 @@ const filterMetadataGet = async (v,next) => {
 };
 /* Add all metadata to each userinfo/login action */
 filterAdd("userInfoGet",filterMetadataGet,10);
-filterAdd("login",filterMetadataGet,10);
+filterAdd("userLogin",filterMetadataGet,10);
 
 /* Enable passing a `meta` value on to the userRegistration filter which can be used for
  * adding the country or if the user is a business customer.

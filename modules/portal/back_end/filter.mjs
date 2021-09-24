@@ -32,7 +32,7 @@ const reduce = (pipeline,next) => {
  */
 export const build = name => {
 	if(name === "*"){return null;}
-	if(!rawFilters[name] || rawFilters[name][0].length === 0){return null;}
+	if(!rawFilters[name] || !rawFilters[name][0] || rawFilters[name][0].length === 0){return null;}
 	const pipeline = [];
 	const wildcard = rawFilters['*'];
 	const specific = rawFilters[name];

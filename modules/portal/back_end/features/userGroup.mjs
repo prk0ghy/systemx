@@ -54,7 +54,7 @@ const filterUserGroupGet = async (v,next) => {
 };
 /* Add all metadata to each userinfo/login action */
 filterAdd("userInfoGet",filterUserGroupGet,5);
-filterAdd("login",filterUserGroupGet,5);
+filterAdd("userLogin",filterUserGroupGet,5);
 
 /* Just the usual DB initialization coupled with adding default values, as per usual it is
  * quite important that we import the user module first, to ensure the proper order.
