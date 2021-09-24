@@ -12,7 +12,8 @@ const options = {
 		galleryWrapAround: true,
 		galleryBackgroundOpacity: 0.95,
 		ytCaption: false,
-		accessibility: false
+		accessibility: false,
+		trackingEndpoint: ""
 	},
 	favicon: "default",
 	disableMarkers: false,
@@ -22,6 +23,7 @@ const options = {
 	forceRendering: false,
 	httpPort: 8042,
 	portalHttpPort: 8020,
+	trackingHttpPort: 9090,
 	sessionCookie: "Portal_Session_Token",
 	portalRegisterEmailRequired: false,
 	openBrowser: false,
@@ -31,13 +33,18 @@ const options = {
 	startShop: false,
 	slackToken: "",
 	slackChannel: "",
+	startTracking: false,
 	storagePath: ".systemx/storage",
 	targets: {
 		lasub: {
 			graphqlEndpoint: "https://lasub.dilewe.de/api",
 			httpPort: 8042,
 			favicon: "lasub",
-			disallowRobots: true
+			disallowRobots: true,
+			startTracking: true,
+			jsVars: {
+				trackingEndpoint: "http://localhost:9090/stats"
+			}
 		}
 	},
 	portal: {

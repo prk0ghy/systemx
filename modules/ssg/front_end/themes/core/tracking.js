@@ -1,4 +1,5 @@
 /* this tracks the user and posts once per pageview */
+/* global configuration */
 
 /* this generates an unique for RFC4122 v4 standart */
 const generateGuid =() => {
@@ -21,10 +22,12 @@ const checkGuid = () => {
 };
 
 const trackClient = () => {
-	const url = "http://localhost:8042/stats";
+	const url = configuration.trackingEndpoint;
+	if(!url) {return;}
 	const data = {
 		guid : checkGuid(),
-		location : window.location.pathname
+		location : window.location.pathname,
+		domain : window.location.origin
 	};
 	fetch(url, {
 		method: "POST",
