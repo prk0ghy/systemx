@@ -28,6 +28,9 @@ const sendMail = await (async () => {
 
 	const subjectRegex = /<title>([^<]*)<\/title>/;
 	const send = async ({from=null, to, template, values}) => {
+		if(!to){
+			return false;
+		}
 		if(from === null){
 			return send({from: Options.mailFrom, to, template, values});
 		}

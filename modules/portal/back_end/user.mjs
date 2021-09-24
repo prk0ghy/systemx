@@ -15,10 +15,13 @@ export const add = async (name, email, password="") => {
 	return row.lastID;
 };
 
-export const deleteSingle = id => DB.run("DELETE FROM User WHERE ID = ?", id);
+export const remove = id => DB.run("DELETE FROM User WHERE ID = ?", id);
 export const changePassword = async (id, pass) => {
 	const hash = await bcrypt.hash(pass, saltRounds);
 	await DB.run("UPDATE User SET password = ? WHERE ID = ?", [hash, id]);
+};
+export const changeEmail = async (id, email) => {
+	await DB.run("UPDATE User SET email = ? WHERE ID = ?", [email, id]);
 };
 export const tryLogin = async (name, pass) => {
 	const row = await getByName(name);

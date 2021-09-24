@@ -84,12 +84,18 @@ const doAPICall = (action, v) => {
 export const userLogin    = (username, password) => doAPICall("userLogin", { username, password });
 export const userLogout   = () => doAPICall("userLogout", {});
 export const userInfoGet  = () => doAPICall("userInfoGet", {});
+export const userInfoSet  = ({ password = null, email = null }) => doAPICall("userInfoSet", { user: { password, email } });
 export const userMetaGet  = key => doAPICall("userMetaGet", { key });
 export const userMetaSet  = (key, value) => doAPICall("userMetaSet", { key, value });
 export const userRegister = (username, email, password, meta = {}) => doAPICall("userRegister", { username, email, password, meta });
+
 export const userPasswordResetRequest = username => doAPICall("userPasswordResetRequest", { username });
 export const userPasswordResetCheck   = resetHash => doAPICall("userPasswordResetCheck", { resetHash });
-export const userPasswordResetSubmit  = (resetHash, newPassword) => doAPICall("userPasswordResetCheck", { resetHash, newPassword });
+export const userPasswordResetSubmit  = (resetHash, newPassword) => doAPICall("userPasswordResetSubmit", { resetHash, newPassword });
+
+export const userDeleteRequest = () => doAPICall("userDeleteRequest", {});
+export const userDeleteCheck   = deleteHash => doAPICall("userDeleteCheck", { deleteHash });
+export const userDeleteSubmit  = deleteHash => doAPICall("userDeleteCheck", { deleteHash });
 export default doAPICall;
 
 export const useRefreshUserData = () => {

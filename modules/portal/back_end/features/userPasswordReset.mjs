@@ -8,12 +8,12 @@ const resetRequests = {};
 
 const add = async user => {
 	if(!user.email){return v;}
-	const hash = MakeID(32);
+	const hash = MakeID(64);
 	resetRequests[hash] = user.ID|0;
 	const values = {
 		userName: user.name,
 		userEmail: user.email,
-		resetLink: Options.absoluteDomain + "/pwreset/" + hash
+		resetLink: Options.absoluteDomain + "/userPasswordReset/" + hash
 	};
 	await Mail({to: user.email, template: "passwordResetMail", values});
 	return hash;

@@ -1,0 +1,3 @@
+{ v.userName }, you have requested for your account to be deleted.
+
+Visit the following link to completely delete your account: { v.deleteLink }, this action will be final and can not be reversed.

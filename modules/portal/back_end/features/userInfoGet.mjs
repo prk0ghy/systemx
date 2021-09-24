@@ -1,7 +1,7 @@
-import filterAdd from "../filter.mjs";
+import Filter from "../filter.mjs";
 import * as User from "../user.mjs";
 
-filterAdd("userInfoGet",async (v,next) => {
+Filter("userInfoGet",async (v,next) => {
 	const user = await User.getByID(v.ses?.user?.ID|0);
 	delete user?.password;
 	if(!user){
