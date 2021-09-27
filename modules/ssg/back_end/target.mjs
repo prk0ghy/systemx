@@ -178,12 +178,13 @@ export const renderSingleEntry = async (targetName, uri) => {
 	};
 };
 const sendWarning = async (targetName,warning) => {
+	const link = "\n<" + warning.backendLink + "|Edit Entry>";
 	await supportMessage({
-		text: warning.message
+		text: warning.message + link
 	});
 };
 const sendWarnings = async (targetName,warnings) => {
-	//warnings.forEach(sendWarning);
+	if (!warnings[0]) {return;}
 	sendWarning(targetName,warnings[0]);
 };
 /*
@@ -293,7 +294,7 @@ export const buildEntries = async targetName => {
 	if (options.cleanBuild || options.forceRendering) {
 		const warningPath = path.join(targetPath, "warnings.html");
 		await fsp.writeFile(warningPath, await wrapWithApplicationShell(targetName, {
-			content: warningHTML || "<h1>No warnings<h1>",
+			content: warningHTML || "<h2>No warnings</h2>",
 			pageTitle: "Render warnings"
 		}));
 	}
