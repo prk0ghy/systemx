@@ -1,7 +1,6 @@
 import http from "http";
 import options from "../common/options.mjs";
 import logTracking from "./logTracking.mjs";
-
 /*
 * Starts an HTTP server for target `targetName`.
 *
@@ -28,14 +27,12 @@ export default () => {
 			}
 
 			request.on('end', () => {
-				console.log(JSON.parse(json));
 				try {
 					const parsed = JSON.parse(json);
 					logTracking(parsed);
 				} catch(e) {
-					console.log(e); // error in the above string (in this case, yes)!
+					//do nothing on error
 				}
-				//logTracking();
 				response.end("ok");
 			});
 		}

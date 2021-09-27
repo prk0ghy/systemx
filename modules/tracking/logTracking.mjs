@@ -16,9 +16,14 @@ export const add = async (guid, location, domain) => {
 	await DB.run("INSERT INTO Tracks (time, guid, location, domain) VALUES (CURRENT_TIMESTAMP, ?, ?, ?)", [guid, location, domain]);
 };
 
-
 const logTracking = async data => {
-	if (data.guid !== null && data.location !== null && data.domain !== null) {
+	if(!data.guid) {return;}
+	if(!data.location) {return;}
+	if(!data.domain) {return;}
+	if(data.location.length > 1000) {return;}
+	const guidPattern = new RegExp(`^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$`, 'i');
+	const httpPattern = new RegExp(`https?:\/\/(?:w{1,3}\.)?[^\s.]+(?:\.[a-z]+)*(?::\d+)?(?![^<]*(?:<\/\w+>|\/?>))`);
+	if (guidPattern.test(data.guid) && httpPattern.test(data.domain)) {
 		await add(data.guid, data.location, data.domain);
 	}
 };
