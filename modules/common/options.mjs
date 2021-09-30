@@ -37,6 +37,19 @@ const options = {
 			favicon: "lasub",
 			disallowRobots: true
 		}
+	},
+	portal: {
+		mounts: [
+			{
+				url: "/lasub/kapitel1/",
+				localDir: "/home/benny/arbeit/systemx/web/lasub",
+				userGroup: "lasub"
+			},{
+				url: "/lasub/",
+				localDir: "/home/benny/arbeit/systemx/web/lasub",
+				userGroup: "lasub"
+			}
+		]
 	}
 };
 /*
