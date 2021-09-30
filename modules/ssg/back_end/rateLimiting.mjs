@@ -1,8 +1,7 @@
-import { request } from "graphql-request";
-
+import GraphQLRequest from "graphql-request";
+const { request } = GraphQLRequest;
 const requestQueue = [];
 let requestsActive = 0;
-
 function workQueue(){
 	for(let i=requestsActive;i<16;i++){
 		const top = requestQueue.pop();

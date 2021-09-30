@@ -1,5 +1,9 @@
-import { request, gql } from "graphql-request";
+import GraphQLRequest from "graphql-request";
 import options from "../../../common/options.mjs";
+const {
+	gql,
+	request
+} = GraphQLRequest;
 const navigationCache = new Map();
 /*
 * Flattens the page tree into an array.
