@@ -43,7 +43,7 @@ const options = {
 			disallowRobots: true,
 			startTracking: true,
 			jsVars: {
-				trackingEndpoint: "http://localhost:9090/stats"
+				trackingEndpoint: "https://tracking.dilewe.de/stats"
 			}
 		}
 	},
