@@ -40,11 +40,7 @@ const options = {
 			graphqlEndpoint: "https://lasub.dilewe.de/api",
 			httpPort: 8042,
 			favicon: "lasub",
-			disallowRobots: true,
-			startTracking: true,
-			jsVars: {
-				trackingEndpoint: "https://tracking.dilewe.de/stats"
-			}
+			disallowRobots: true
 		}
 	},
 	portal: {
