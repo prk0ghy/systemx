@@ -23,7 +23,12 @@ const fsp = fs.promises;
 const getHomePageURI = entries => {
 	const homeEntry = entries.find(entry => entry.references);
 	if (!homeEntry || !homeEntry.references.length) {
-		throw new Error("Could not determine home page");
+		console.warning("Could not determine home page, using the first one as a fallback, please fix this ASAP!!!");
+		const fallbackEntry = entries.find(entry => entry.__typename === "inhalt_inhalt_Entry" && entry.uri);
+		if(!fallbackEntry || !fallbackEntry.uri){
+			throw New Error("Could not determine home page, or get a Fallback.");
+		}
+		return fallbacKEntry.uri;
 	}
 	return homeEntry.references[0].uri;
 };
@@ -274,7 +279,7 @@ export const buildEntries = async targetName => {
 		await fsp.writeFile(outputFilePath, formatHTML(finalHTML));
 	}));
 	await sendWarnings(targetName, warnings);
-	const homePageSourcePath = path.join(targetPath, await getHomePageURI(entries), "index.html");
+	const homePageSourcePath = path.join(targetPath, await homePageURI, "index.html");
 	const homePageDestinationPath = path.join(targetPath, "index.html");
 	try {
 		const { smtime } = await fsp.stat(homePageSourcePath);
