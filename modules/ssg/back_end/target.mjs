@@ -26,7 +26,7 @@ const getHomePageURI = entries => {
 		console.warning("Could not determine home page, using the first one as a fallback, please fix this ASAP!!!");
 		const fallbackEntry = entries.find(entry => entry.__typename === "inhalt_inhalt_Entry" && entry.uri);
 		if(!fallbackEntry || !fallbackEntry.uri){
-			throw New Error("Could not determine home page, or get a Fallback.");
+			throw new Error("Could not determine home page, or get a Fallback.");
 		}
 		return fallbacKEntry.uri;
 	}
