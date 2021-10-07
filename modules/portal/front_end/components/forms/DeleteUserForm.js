@@ -1,5 +1,5 @@
-import Button from "../inputs/Button";
 import { Form, Formik } from "formik";
+import Button from "../inputs/Button";
 import Input from "components/inputs/Input";
 import styles from "./DeleteUserForm.module.css";
 const ResetPasswordForm = () => {

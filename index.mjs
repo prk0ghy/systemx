@@ -14,7 +14,7 @@ import startTracking from "./modules/tracking/index.mjs";
 	if (options.startShop) {
 		promises.push(startShop());
 	}
-	if (options.startTracking) {
+	if (options.startTracking && !options.cleanBuild) {
 		promises.push(startTracking());
 	}
 	await Promise.all(promises);
