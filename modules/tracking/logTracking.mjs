@@ -21,7 +21,7 @@ const logTracking = async data => {
 	if(!data.location) {return;}
 	if(!data.domain) {return;}
 	if(data.location.length > 1000) {return;}
-	const guidPattern = new RegExp(`^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$`, 'i');
+	const guidPattern = new RegExp(`^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$`);
 	const httpPattern = new RegExp(`https?:\/\/(?:w{1,3}\.)?[^\s.]+(?:\.[a-z]+)*(?::\d+)?(?![^<]*(?:<\/\w+>|\/?>))`);
 	if (guidPattern.test(data.guid) && httpPattern.test(data.domain)) {
 		await add(data.guid, data.location, data.domain);

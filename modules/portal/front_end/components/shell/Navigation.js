@@ -5,10 +5,36 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import routes from "root/routes";
 import styles from "./Navigation.module.css";
+import { useAuthentication } from "contexts/Authentication";
 import { useBrand } from "contexts/Brand";
 const CartIcon = dynamic(() => import("./CartIcon"), {
 	ssr: false
 });
+const NavigationItems = () => {
+	const [{ user }] = useAuthentication();
+	console.log(user);
+	const isLoggedIn = Boolean(user?.name);
+	return (
+		<>
+			<li className={ styles.item }>
+				<CartIcon/>
+			</li>
+			{
+				isLoggedIn
+					? (
+						<li className={ styles.item }>
+							<AccountIcon/>
+						</li>
+					)
+					: null
+			}
+			<li className={ styles.item }>
+				<BurgerIcon/>
+			</li>
+		</>
+	);
+};
+
 const Navigation = ({ className }) => {
 	const [{
 		logoHeight,
@@ -37,15 +63,7 @@ const Navigation = ({ className }) => {
 				</li>
 				<li className={ styles.item }>
 					<ul className={ styles.items }>
-						<li className={ styles.item }>
-							<CartIcon/>
-						</li>
-						<li className={ styles.item }>
-							<AccountIcon/>
-						</li>
-						<li className={ styles.item }>
-							<BurgerIcon/>
-						</li>
+						<NavigationItems/>
 					</ul>
 				</li>
 			</ul>

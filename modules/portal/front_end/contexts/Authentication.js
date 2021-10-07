@@ -4,7 +4,10 @@ const reduce = (state, action) => {
 	const { data } = action;
 	switch (action.type) {
 		case "SET_USER_DATA": {
-			return { state, user: data.user };
+			return {
+				...state,
+				user: data.user
+			};
 		}
 		default: {
 			throw new Error("Unknown authentication reduction");

@@ -103,7 +103,9 @@ export const useRefreshUserData = () => {
 	return useMemo(() => {
 		return [async () => {
 			const userData = await userInfoGet();
-			dispatch({ type: "SET_USER_DATA", data: { user: userData?.user } });
+			if (userData.user) {
+				dispatch({ type: "SET_USER_DATA", data: { user: userData.user } });
+			}
 		}];
 	}, [dispatch]);
 };
