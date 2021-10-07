@@ -1,6 +1,5 @@
 import { H } from "root/format";
 import LoginForm from "../forms/LoginForm";
-import LogoutForm from "../forms/LogoutForm";
 import RegistrationForm from "../forms/RegistrationForm";
 import styles from "./LoginRegistrationManager.module.css";
 import { useAuthentication } from "contexts/Authentication";
@@ -9,7 +8,7 @@ const LoginRegistrationManager = () => {
 	return (
 		<div className={ styles.checkoutManager }>
 			{ user
-				? <LogoutForm/>
+				? null
 				: (
 					<>
 						<h3><H>Alter Hase</H></h3>

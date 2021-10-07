@@ -3,6 +3,7 @@ import BurgerIcon from "components/shell/BurgerIcon";
 import cx from "classnames";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import LogoutIcon from "components/shell/LogoutIcon";
 import routes from "root/routes";
 import styles from "./Navigation.module.css";
 import { useAuthentication } from "contexts/Authentication";
@@ -24,6 +25,15 @@ const NavigationItems = () => {
 					? (
 						<li className={ styles.item }>
 							<AccountIcon/>
+						</li>
+					)
+					: null
+			}
+			{
+				isLoggedIn
+					? (
+						<li className={ styles.item }>
+							<LogoutIcon/>
 						</li>
 					)
 					: null

@@ -1,0 +1,14 @@
+.logout-icon {
+	background-color: transparent;
+	border: none;
+	height: 65%;
+	object-fit: contain;
+	width: 100%;
+	&:hover {
+		cursor: pointer;
+	}
+	& .exit-icon {
+		height: 100%;
+		width: 100%;
+	}
+}

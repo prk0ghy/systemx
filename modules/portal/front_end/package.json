@@ -1,5 +1,9 @@
 {
 	"dependencies": {
+		"@emotion/react": "^11.4.1",
+		"@emotion/styled": "^11.3.0",
+		"@mui/icons-material": "^5.0.3",
+		"@mui/material": "^5.0.3",
 		"@paypal/react-paypal-js": "^7.3.3",
 		"formik": "^2.2.9",
 		"hyphenated": "^1.2.0",
