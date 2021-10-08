@@ -3,12 +3,17 @@ import LoginForm from "../forms/LoginForm";
 import RegistrationForm from "../forms/RegistrationForm";
 import styles from "./LoginRegistrationManager.module.css";
 import { useAuthentication } from "contexts/Authentication";
+import UserProfileManager from "./UserProfileManager";
 const LoginRegistrationManager = () => {
 	const [{ user }] = useAuthentication();
 	return (
 		<div className={ styles.checkoutManager }>
 			{ user
-				? null
+				? (
+					<>
+						<UserProfileManager/>
+					</>
+				)
 				: (
 					<>
 						<h3><H>Alter Hase</H></h3>
