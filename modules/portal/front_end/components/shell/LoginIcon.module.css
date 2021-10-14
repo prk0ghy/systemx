@@ -1,0 +1,14 @@
+.login-icon {
+	background-color: transparent;
+	border: none;
+	height: 65%;
+	object-fit: contain;
+	width: 100%;
+	&:hover {
+		cursor: pointer;
+	}
+	& .start-icon {
+		height: 120%;
+		width: 100%;
+	}
+}
