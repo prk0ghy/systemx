@@ -1,0 +1,10 @@
+.user-profile {
+	margin: 0;
+	padding: 0;
+	& .icon {
+		width: 2.5rem;
+		height: 2.5rem;
+		margin: 0 1rem 0 0;
+		vertical-align: -23%;
+	}
+}
