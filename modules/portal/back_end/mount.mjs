@@ -3,10 +3,9 @@ import Options from "../../common/options.mjs";
 import Koa from "koa";
 import KoaStatic from "koa-static";
 import KoaMount from "koa-mount";
-
 /* Return a koa handler that redirects when a user is not
- * logged in or not in the right userGroup
- */
+* logged in or not in the right userGroup
+*/
 const mountPermissionCheck = mount => {
 	return async (ctx,next) => {
 		const ses = Session.get(ctx);
@@ -27,11 +26,11 @@ const mountPermissionCheck = mount => {
 		return await next(ctx);
 	};
 };
-
 const mountAll = app => {
 	for(const mount of Options.portal.mounts){
-		const handler = new Koa().use(mountPermissionCheck(mount))
-		                         .use(KoaStatic(mount.localDir));
+		const handler = new Koa()
+			.use(mountPermissionCheck(mount))
+			.use(KoaStatic(mount.localDir));
 		app.use(KoaMount(mount.url, handler));
 	}
 };

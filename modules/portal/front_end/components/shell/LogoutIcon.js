@@ -2,7 +2,6 @@ import { useRefreshUserData, userLogout } from "root/api";
 import Door from "@mui/icons-material/Logout";
 import styles from "./LogoutIcon.module.css";
 import { useCallback } from "react";
-
 const LogoutIcon = () => {
 	const [refresh] = useRefreshUserData();
 	const doLogout = useCallback(

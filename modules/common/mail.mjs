@@ -1,7 +1,6 @@
-import nodemailer from "nodemailer";
-import Template from "./template.mjs";
-import Options from "./options.mjs";
-
+// import nodemailer from "nodemailer";
+// import Template from "./template.mjs";
+// import Options from "./options.mjs";
 const sendMail = await (async () => {
 // 	const testAccount = await nodemailer.createTestAccount();
 // 	const transporter = nodemailer.createTransport({

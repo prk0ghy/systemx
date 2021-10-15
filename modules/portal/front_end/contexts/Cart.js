@@ -43,7 +43,6 @@ const reduce = (state, action) => {
 export const {
 	Provider: CartProvider,
 	useTracked: useCart
-} = createContainer((...rest) => useReducer(reduce, persistence.contexts.cart || {
-	items: [],
-	...rest
+} = createContainer(() => useReducer(reduce, persistence.contexts.cart || {
+	items: []
 }));

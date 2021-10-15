@@ -13,7 +13,6 @@ const CartIcon = dynamic(() => import("./CartIcon"), {
 });
 const NavigationItems = () => {
 	const [{ user }] = useAuthentication();
-	console.log(user);
 	const isLoggedIn = Boolean(user?.name);
 	return (
 		<>
@@ -44,7 +43,6 @@ const NavigationItems = () => {
 		</>
 	);
 };
-
 const Navigation = ({ className }) => {
 	const [{
 		logoHeight,

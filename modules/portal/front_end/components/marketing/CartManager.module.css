@@ -1,3 +1,20 @@
+@keyframes enter {
+	0% {
+		font-size: 0;
+		line-height: 0;
+		opacity: 0;
+	}
+	50% {
+		font-size: 0;
+		line-height: 0;
+		opacity: 0.1;
+	}
+	100% {
+		font-size: 2.5rem;
+		line-height: 3rem;
+		opacity: 1;
+	}
+}
 .cart-manager {
 	& span {
 		margin: 0;
@@ -12,7 +29,7 @@
 	}
 	& .item-enter-active {
 		animation-duration: 1s;
-		animation-name: ani-enter;
+		animation-name: enter;
 		font-size: 2.5rem;
 		opacity: 1;
 	}
@@ -36,21 +53,9 @@
 			position: relative;
 		}
 	}
-}
-@keyframes ani-enter {
-	0% {
-		font-size: 0;
-		line-height: 0;
-		opacity: 0;
-	}
-	50% {
-		font-size: 0;
-		line-height: 0;
-		opacity: 0.1;
-	}
-	100% {
-		font-size: 2.5rem;
-		line-height: 3rem;
-		opacity: 1;
+	& .actions {
+		align-items: center;
+		display: flex;
+		justify-content: flex-end;
 	}
 }

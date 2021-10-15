@@ -1,17 +1,9 @@
-import BannerLayout, { TextContent } from "components/layouts/BannerLayout";
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import { useCallback, useState } from "react";
 import Button from "components/inputs/Button";
-import Page from "components/shell/Page";
-import { useBrand } from "contexts/Brand";
+import styles from "./PaymentView.module.css";
 import { useBus } from "contexts/Bus";
 import { useCart } from "contexts/Cart";
-const Goodbye = () => (
-	<>
-		<p>Vielen Dank für Ihre Bestellung.</p>
-		<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy. At vero eos et accusam et justo duo dolores et ea rebum. Elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-	</>
-);
 const PaymentForm = ({ onApprove }) => {
 	const [{ isRejected: isInitialLoadRejected }] = usePayPalScriptReducer();
 	const [{ items }] = useCart();
@@ -43,10 +35,12 @@ const PaymentForm = ({ onApprove }) => {
 		);
 	}
 	return (
-		<PayPalButtons
-			createOrder={ createOrder }
-			onApprove={ captureOrder }
-		/>
+		<div className={ styles.buttons }>
+			<PayPalButtons
+				createOrder={ createOrder }
+				onApprove={ captureOrder }
+			/>
+		</div>
 	);
 };
 const ConsentForm = () => {
@@ -74,11 +68,6 @@ const PaymentConsentForm = ({ onApprove }) => {
 		: <ConsentForm/>;
 };
 const Checkout = () => {
-	const [{
-		CheckoutPreviewHeight,
-		CheckoutPreviewURL,
-		CheckoutPreviewWidth
-	}] = useBrand();
 	const [isCheckoutComplete, setIsCheckoutComplete] = useState(false);
 	const onApprove = useCallback(() => {
 		setIsCheckoutComplete(true);
@@ -86,17 +75,9 @@ const Checkout = () => {
 		setIsCheckoutComplete
 	]);
 	return (
-		<Page title="Kasse">
-			<BannerLayout autoHeight height={ CheckoutPreviewHeight } image={ CheckoutPreviewURL } width={ CheckoutPreviewWidth }>
-				<TextContent>
-					{
-						isCheckoutComplete
-							? <Goodbye/>
-							: <PaymentConsentForm onApprove={ onApprove }/>
-					}
-				</TextContent>
-			</BannerLayout>
-		</Page>
+		isCheckoutComplete
+			? null
+			: <PaymentConsentForm onApprove={ onApprove }/>
 	);
 };
 export default Checkout;
