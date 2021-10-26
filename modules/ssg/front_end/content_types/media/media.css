@@ -130,6 +130,7 @@ media-wrap[media-type="video"] > media-controls {
 figure[figure-type="hero-image"] > video {
 	max-height:500px;
 	object-fit:cover;
+	cursor: default;
 }
 
 media-wrap[media-type="video"]:fullscreen video {

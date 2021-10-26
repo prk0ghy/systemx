@@ -55,6 +55,8 @@
 		const vid = getParamValue('v',href);
 		const params = [];
 		const time = getParamValue('t',href)|0;
+		const start = getParamValue('start', href);
+		const end = getParamValue('end', href);
 		if(autoplay){
 			params.push('autoplay=1');
 		}
@@ -64,6 +66,12 @@
 		}
 		if(time > 0){
 			params.push('start='+ytCalcStart(time));
+		}
+		if (start > 0) {
+			params.push('start=' + start);
+		}
+		if (end > 0) {
+			params.push('end=' + end);
 		}
 		return `https://www.youtube-nocookie.com/embed/${vid}${params.length > 0 ? "?"+params.join('&') : ""}`;
 	};
