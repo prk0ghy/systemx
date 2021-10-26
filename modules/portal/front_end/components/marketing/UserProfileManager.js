@@ -1,5 +1,5 @@
 import { Form, Formik } from "formik";
-import { memo, useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { useRefreshUserData, userMetaSet } from "../../api.js";
 import Button from "../inputs/Button.js";
 import ButtonLink from "../inputs/ButtonLink.js";
@@ -18,15 +18,19 @@ const UserProfileManager = () => {
 	const isProfile = (window.location.pathname === "/login")
 		? "Benutzeroptionen"
 		: "zum Benutzerprofil";
-	const ToggleOptions = () => {
-		if (window.location.pathname === "/login") {
-			setOptions(value => !value);
-			setBusiness(false);
+	const ToggleOptions = useCallback(
+		() => {
+			if (window.location.pathname === "/login") {
+				setOptions(value => !value);
+				setBusiness(false);
+			}
+			else {
+				window.location.pathname = "/login";
+			}
+			refresh();
 		}
-		else {
-			window.location.pathname = "/login";
-		}
-	};
+		, [refresh]
+	);
 	const OptionButton = () => {
 		return (
 			<ButtonLink className={ styles.button } onClick={ ToggleOptions }>{ isProfile }</ButtonLink>
@@ -34,12 +38,18 @@ const UserProfileManager = () => {
 	};
 	const [country, setCountry] = useState(false);
 	const [business, setBusiness] = useState(false);
-	const ToggleCountry = () => {
-		setCountry(value => !value);
-	};
-	const ToggleBusiness = () => {
-		setBusiness(value => !value);
-	};
+	const ToggleCountry = useCallback(
+		() => {
+			setCountry(value => !value);
+			refresh();
+		}, [refresh]
+	);
+	const ToggleBusiness = useCallback(
+		() => {
+			setBusiness(value => !value);
+			refresh();
+		}, [refresh]
+	);
 	const accountTypes = {
 		personal: "Privatkunde",
 		business: "Geschäftskunde"
