@@ -59,6 +59,10 @@ const initGlossary = (() => {
 	};
 
 	const CloseGlossModal = () => {
+		const overlayBody = document.querySelector("body");
+		const overlayElement = document.querySelector("page-overlay");
+		overlayBody.classList.remove("modal-active");
+		overlayElement.removeAttribute("open");
 		const modals = document.querySelectorAll(".show-modal.visible");
 		modals.forEach(modal => {
 			modal.classList.remove("visible");
