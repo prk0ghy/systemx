@@ -6,6 +6,7 @@ import Laced from "components/generics/Laced";
 import styles from "./Product.module.css";
 import { useCallback } from "react";
 import { useCart } from "contexts/Cart";
+
 const Button = dynamic(() => import("components/inputs/Button"), {
 	ssr: false
 });
@@ -19,9 +20,12 @@ const Product = ({
 	previewURL,
 	previewWidth,
 	price,
-	startWithPreview
+	startWithPreview,
+	tagesb,
+	ToggleTagesb
 }) => {
 	const [{ items }, dispatch] = useCart();
+
 	const productClassName = cx(styles.product, {
 		[styles.startWithPreview]: startWithPreview
 	});
@@ -35,6 +39,7 @@ const Product = ({
 		: items.includes(id)
 			? "Aus dem Warenkorb"
 			: "In den Warenkorb";
+
 	const onClick = useCallback(() => {
 		if (!children) {
 			dispatch({
@@ -46,11 +51,15 @@ const Product = ({
 					: "ADD_ITEM"
 			});
 		}
+		else {
+			ToggleTagesb(id);
+		}
 	}, [
 		children,
 		dispatch,
 		id,
-		items
+		items,
+		ToggleTagesb
 	]);
 	return (
 		<div className={ productClassName }>
