@@ -21,7 +21,6 @@ const Product = ({
 	previewWidth,
 	price,
 	startWithPreview,
-	tagesb,
 	ToggleTagesb
 }) => {
 	const [{ items }, dispatch] = useCart();
