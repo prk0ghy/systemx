@@ -43,7 +43,13 @@ const initGlossary = (() => {
 			return OpenGlossModal(tempWrapper);
 		}
 		content.classList.add("show-modal");
-		content.offsetTop; // Sync CSS <-> JS
+		const storeBody = document.querySelector("body");
+		storeBody.setAttribute("data-scroll", window.pageYOffset);
+		const stored = parseInt(storeBody.dataset.scroll);
+		storeBody.style.transform = "translateY(-" + stored +"px)";
+		content.style.top = stored + window.innerHeight/2 + "px";
+
+		// content.offsetTop; // Sync CSS <-> JS
 		content.classList.add("visible");
 		if(content.querySelector("MODAL-CLOSE") === null){ // Only add a new button of there currently is no button
 			const buttonCloseModal = document.createElement("MODAL-CLOSE");
@@ -64,6 +70,8 @@ const initGlossary = (() => {
 		overlayBody.classList.remove("modal-active");
 		overlayElement.removeAttribute("open");
 		const modals = document.querySelectorAll(".show-modal.visible");
+		overlayBody.style.transform = "translateY(0)";
+		window.scrollTo(0, overlayBody.dataset.scroll);
 		modals.forEach(modal => {
 			modal.classList.remove("visible");
 			setTimeout(() => {
