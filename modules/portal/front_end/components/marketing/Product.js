@@ -6,6 +6,7 @@ import Laced from "components/generics/Laced";
 import styles from "./Product.module.css";
 import { useCallback } from "react";
 import { useCart } from "contexts/Cart";
+import { useRouter } from "next/router";
 
 const Button = dynamic(() => import("components/inputs/Button"), {
 	ssr: false
@@ -20,10 +21,10 @@ const Product = ({
 	previewURL,
 	previewWidth,
 	price,
-	startWithPreview,
-	ToggleTagesb
+	startWithPreview
 }) => {
 	const [{ items }, dispatch] = useCart();
+	const router = useRouter();
 
 	const productClassName = cx(styles.product, {
 		[styles.startWithPreview]: startWithPreview
@@ -51,14 +52,14 @@ const Product = ({
 			});
 		}
 		else {
-			ToggleTagesb(id);
+			router.push("/product/" + id);
 		}
 	}, [
 		children,
 		dispatch,
 		id,
 		items,
-		ToggleTagesb
+		router
 	]);
 	return (
 		<div className={ productClassName }>

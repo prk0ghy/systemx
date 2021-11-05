@@ -10,11 +10,13 @@ const CartManager = ({ onProceed }) => {
 	const [{ items }] = useCart();
 	const [{ products }] = useProducts();
 	const cartItems = items.map(id => {
-		const item = products.find(product => product.id === id);
-		const classNames = {
-			exit: styles.itemExit,
-			exitActive: styles.itemExitActive
-		};
+		let item = products.find(product => product.id === id);
+		if (!item) {
+			const step = products
+				.filter(product => product.children)[0]
+				.children;
+			item = step.find(product => product.id === id);
+		}
 		return (
 			<CSSTransition
 				classNames={ classNames }
@@ -26,7 +28,13 @@ const CartManager = ({ onProceed }) => {
 		);
 	});
 	const sum = items.map(id => {
-		const item = products.find(product => product.id === id);
+		let item = products.find(product => product.id === id);
+		if (!item) {
+			const step = products
+				.filter(product => product.children)[0]
+				.children;
+			item = step.find(product => product.id === id);
+		}
 		return item
 			? item.price
 			: 0;
