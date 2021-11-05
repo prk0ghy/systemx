@@ -4,8 +4,7 @@
 	display: block;
 	margin-bottom: 2rem;
 	min-height: 10rem;
-	padding: 2rem;
-	padding-bottom: 4rem;
+	padding: 2rem 2rem 6rem;
 	position: relative;
 	& .name {
 		font-weight: 700;
@@ -18,10 +17,10 @@
 		background-size: contain;
 		cursor: pointer;
 		display: block;
+		float: right;
 		height: 5rem;
-		position: absolute;
-		right: 1rem;
-		top: 2rem;
+		margin-bottom: 1rem;
+		margin-left: 1rem;
 		width: 5rem;
 	}
 	& .price {
