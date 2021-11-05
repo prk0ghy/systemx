@@ -10,15 +10,10 @@ const findProduct = (productTree, id) => {
 		return potentialMatch;
 	}
 	const newProductTree = productTree
-		.filter(product => product.children)
-		.flatMap(product => product.children, Infinity);
-	return findProduct(newProductTree, id);
-};
-
-const selectProduct = (productTree, id) => {
-	const potentialMatch = productTree.find(product => product.id === id);
-	if (potentialMatch) {
-		return (potentialMatch);
+		.filter(product => product.children);
+	for (let i = 0; i < newProductTree.length; i++) {
+		const newTree = newProductTree[i].children;
+		return findProduct(newTree, id);
 	}
 	return null;
 };
@@ -27,7 +22,7 @@ const Collection = () => {
 	const router = useRouter();
 	const { pid } = router.query;
 	const [{ products }] = useProducts();
-	const selection = selectProduct(products, pid);
+	const selection = findProduct(products, pid);
 
 	let headline = null;
 	let allChildren = null;

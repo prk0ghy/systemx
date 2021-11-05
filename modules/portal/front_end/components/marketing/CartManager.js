@@ -6,17 +6,27 @@ import styles from "./CartManager.module.css";
 import { useAuthentication } from "contexts/Authentication";
 import { useCart } from "contexts/Cart";
 import { useProducts } from "contexts/Products";
+
 const CartManager = ({ onProceed }) => {
+
+	const findProduct = (productTree, id) => {
+		const potentialMatch = productTree.find(product => product.id === id);
+		if (potentialMatch) {
+			return potentialMatch;
+		}
+		const newProductTree = productTree
+			.filter(product => product.children);
+		for (let i = 0; i < newProductTree.length; i++) {
+			const newTree = newProductTree[i].children;
+			return findProduct(newTree, id);
+		}
+		return null;
+	};
+
 	const [{ items }] = useCart();
 	const [{ products }] = useProducts();
 	const cartItems = items.map(id => {
-		let item = products.find(product => product.id === id);
-		if (!item) {
-			const step = products
-				.filter(product => product.children)[0]
-				.children;
-			item = step.find(product => product.id === id);
-		}
+		const item = findProduct(products, id);
 		return (
 			<CSSTransition
 				classNames={ classNames }
@@ -28,13 +38,7 @@ const CartManager = ({ onProceed }) => {
 		);
 	});
 	const sum = items.map(id => {
-		let item = products.find(product => product.id === id);
-		if (!item) {
-			const step = products
-				.filter(product => product.children)[0]
-				.children;
-			item = step.find(product => product.id === id);
-		}
+		const item = findProduct(products, id);
 		return item
 			? item.price
 			: 0;
