@@ -40,6 +40,9 @@
 			if(media.poster){
 				let postersource = media.getAttribute('poster');
 				posterframe = document.createElement("IMG");
+				posterframe.addEventListener("transitionend", () => {
+					posterframe.remove();
+				});
 				posterframe.src = postersource;
 				wrapper.prepend(posterframe);
 			}
@@ -102,7 +105,7 @@
 				refreshHideControlsTimeout();
 				media.play();
 				showStatusIcon('play');
-				wrapper.removeChild(posterframe);
+				posterframe.classList.add('fadeout');
 			} else {
 				playPauseButton.classList.remove('active');
 				controlsWrapper.classList.remove('hidden');

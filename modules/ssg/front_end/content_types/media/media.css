@@ -12,6 +12,12 @@ media-wrap > img {
 	top: 0;
 	width: 100%;
 	height: 100%;
+	opacity: 1;
+	transition: opacity 300ms;
+}
+
+media-wrap > img.fadeout {
+	opacity: 0;
 }
 
 section[content-type="video"] > inner-content > details > summary {
