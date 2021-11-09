@@ -34,6 +34,17 @@
 		const playPauseButton = document.createElement("MEDIA-PLAY-PAUSE");
 		controlsWrapperLeft.appendChild(playPauseButton);
 
+		let posterframe = null;
+	
+		if (media.tagName === "VIDEO"){
+			if(media.poster){
+				let postersource = media.getAttribute('poster');
+				posterframe = document.createElement("IMG");
+				posterframe.src = postersource;
+				wrapper.prepend(posterframe);
+			}
+		}
+
 		function showStatusIcon(iconName){
 			const statusIcon = document.createElement("MEDIA-STATUS-ICON");
 			statusIcon.setAttribute('icon-name',iconName);
@@ -52,7 +63,7 @@
 				const mpp = mp.parentElement;
 				if(mpp){
 					const mppfc = mpp.firstElementChild;
-					if(mppfc && mppfc.targName === 'IMG'){
+					if(mppfc && mppfc.tagName === 'IMG'){
 						media.parentElement.parentElement.firstElementChild.addEventListener("click", (e) => {
 							e.preventDefault();
 							playPauseButton.click();
@@ -91,6 +102,7 @@
 				refreshHideControlsTimeout();
 				media.play();
 				showStatusIcon('play');
+				wrapper.removeChild(posterframe);
 			} else {
 				playPauseButton.classList.remove('active');
 				controlsWrapper.classList.remove('hidden');
