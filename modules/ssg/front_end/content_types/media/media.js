@@ -52,7 +52,7 @@
 				const mpp = mp.parentElement;
 				if(mpp){
 					const mppfc = mpp.firstElementChild;
-					if(mppfc && mppfc.targName === 'IMG'){
+					if(mppfc && mppfc.tagName === 'IMG'){
 						media.parentElement.parentElement.firstElementChild.addEventListener("click", (e) => {
 							e.preventDefault();
 							playPauseButton.click();
