@@ -6,6 +6,14 @@ video {
 	outline: none;
 }
 
+media-wrap > img {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+
 section[content-type="video"] > inner-content > details > summary {
 	right: 64px;
 	bottom: 8px;
