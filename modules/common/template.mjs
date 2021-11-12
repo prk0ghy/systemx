@@ -1,3 +1,4 @@
+/* eslint no-eval: 0 */
 import fs from "fs";
 import path from "path";
 const fsp = fs.promises;

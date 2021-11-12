@@ -35,10 +35,10 @@
 		controlsWrapperLeft.appendChild(playPauseButton);
 
 		let posterframe = null;
-	
+
 		if (media.tagName === "VIDEO"){
 			if(media.poster){
-				let postersource = media.getAttribute('poster');
+				const postersource = media.getAttribute('poster');
 				posterframe = document.createElement("IMG");
 				posterframe.addEventListener("transitionend", () => {
 					posterframe.remove();

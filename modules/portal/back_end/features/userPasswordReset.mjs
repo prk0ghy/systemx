@@ -7,7 +7,7 @@ import MakeID from "../../../common/randomString.mjs";
 const resetRequests = {};
 
 const add = async user => {
-	if(!user.email){return v;}
+	if(!user.email){return false;}
 	const hash = MakeID(64);
 	resetRequests[hash] = user.ID|0;
 	const values = {

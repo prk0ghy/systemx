@@ -66,3 +66,13 @@ export const check = ctx => {
 	const cookie = ctx.cookies.get(Options.sessionCookie);
 	return (cookie !== undefined) && (sessions[cookie] !== undefined);
 };
+
+export const clear = sessionID => {
+	if(!sessionID){return false;} // Return immediatly in case of an invalid session
+	if(sessionID && sessionID?.cookies){ // If sessionID is actually a koa ctx, get the sessionID and continue with that
+		sessionID.cookies.clear(Options.sessionCookie);
+		return clear(sessionID?.cookies.get(Options.sessionCookie));
+	}
+	delete sessions[sessionID];
+	return true;
+};

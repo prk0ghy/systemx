@@ -1,4 +1,5 @@
 import * as User from "../user.mjs";
+import * as Session from "../session.mjs";
 import Mail from "../../../common/mail.mjs";
 import Options from "../../../common/options.mjs";
 import Filter from "../filter.mjs";
@@ -7,7 +8,7 @@ import MakeID from "../../../common/randomString.mjs";
 const deleteRequests = {};
 
 const add = async user => {
-	if(!user.email){return v;}
+	if(!user.email){return false;}
 	const hash = MakeID(64);
 	deleteRequests[hash] = user.ID|0;
 	const values = {
@@ -20,16 +21,16 @@ const add = async user => {
 };
 
 Filter("userDeleteRequest",async (v,next) => {
-    const user = await User.getByID(v.ses?.user?.ID|0);
+	const user = await User.getByID(v.ses?.user?.ID|0);
 	delete user?.password;
 	if(!user){
 		v.res.error = "Login first";
 		return v;
 	}
-    if(!user.email){
-        v.res.error = "Your account needs an associated E-Mail Address so we can send you a confirmation mail."
-        return v;
-    }
+	if(!user.email){
+		v.res.error = "Your account needs an associated E-Mail Address so we can send you a confirmation mail.";
+		return v;
+	}
 	v.res.userDeleteRequest = true;
 	await add(user);
 	return await next(v);
@@ -48,14 +49,15 @@ Filter("userDeleteSubmit",async (v,next) => {
 		v.res.error = "Couldn't find deleteHash";
 		return v;
 	}
-    if(userID !== v.ses?.user?.ID|0){
+	if(userID !== v.ses?.user?.ID|0){
 		v.res.error = "Please login first";
 		return v;
 	}
-	delete deleteRequests[hash]
+	delete deleteRequests[hash];
 	await User.remove(userID);
 	v.res.userDeleteSubmit = true;
-    sessionStorage.clear(ctx,v.ses.sessionID);
-    v.ses = {};
+	Session.clear(v.ctx);
+	Session.clear(v.ses.sessionID);
+	v.ses = {};
 	return await next(v);
 });

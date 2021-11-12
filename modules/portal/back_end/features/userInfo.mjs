@@ -29,11 +29,10 @@ Filter("userInfoSet", async (v, next) => {
 			v.res.user[key] = false;
 			break;
 		case "email":
-			await User.changeEmail(user.ID,v.req.user[key])
-			v.res.user[key] = v.req.user[key];
+			await User.changeEmail(user.ID,v.req.user[key]);
 			break;
 		case "password":
-			await User.changePassword(user.ID,v.req.user[key])
+			await User.changePassword(user.ID,v.req.user[key]);
 			v.res.user[key] = v.req.user[key];
 			break;
 		}
