@@ -1,14 +1,14 @@
 .grid {
 	display: grid;
-	grid-template-columns: 1fr 250px;
+	grid-template-columns: 1fr 20rem;
 	grid-template-rows: 1fr;
 	position: relative;
-		& .left {
-			grid-area: 1 / 1 / 2 / 2;
-		}
-		& .right {
-			grid-area: 1/2/2/3;
-		}
+	& .left {
+		grid-area: 1 / 1 / 2 / 2;
+	}
+	& .right {
+		grid-area: 1/2/2/3;
+	}
 	& .edit {
 		color: #0a409a;
 		height: 2.5rem;
@@ -20,9 +20,9 @@
 }
 .business-form, .country-form {
 	background: #ffffffee;
-	border: 1px solid;
+	border: 0.2rem solid;
 	left: 50%;
-	min-width: 320px;
+	min-width: 25rem;
 	padding: 2.5rem;
 	position: absolute;
 	top: 50%;

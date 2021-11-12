@@ -27,6 +27,10 @@ const CartManager = ({ onProceed }) => {
 	const [{ products }] = useProducts();
 	const cartItems = items.map(id => {
 		const item = findProduct(products, id);
+		const classNames = {
+			exit: styles.itemExit,
+			exitActive: styles.itemExitActive
+		};
 		return (
 			<CSSTransition
 				classNames={ classNames }

@@ -6,6 +6,7 @@ import ButtonLink from "../inputs/ButtonLink.js";
 import CountrySelector from "components/inputs/CountrySelector";
 import EditIcon from "@mui/icons-material/Edit";
 import { H } from "root/format";
+import Link from "next/link";
 import RadioGroup from "components/inputs/RadioGroup";
 import styles from "./UserProfileManager.module.css";
 import { useAuthentication } from "contexts/Authentication";
@@ -152,9 +153,9 @@ const UserProfileManager = () => {
 									}
 								</div>
 							</div>
-							<a className={ styles.link } href="/reset-password">Passwort zurücksetzen</a>
+							<Link className={ styles.link } href="/reset-password">Passwort zurücksetzen</Link>
 							<br/>
-							<a className={ styles.link } href="/delete-user">Benutzer löschen</a>
+							<Link className={ styles.link } href="/delete-user">Benutzer löschen</Link>
 							<br/>
 							<br/>
 							<ButtonLink className={ styles.button } onClick={ ToggleOptions }>zurück</ButtonLink>

@@ -9,7 +9,7 @@ const ButtonLink = ({
 }) => {
 	const buttonClassName = cx(styles.button, className);
 	return (
-		<a onClick={onClick} className={ buttonClassName } { ...rest }>
+		<a className={ buttonClassName } onClick={ onClick } { ...rest }>
 			{ children }
 		</a>
 	);

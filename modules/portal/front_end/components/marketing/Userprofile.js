@@ -1,5 +1,4 @@
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
-import EditIcon from "@mui/icons-material/Edit";
 import EmailIcon from "@mui/icons-material/Email";
 import { H } from "root/format";
 import LanguageIcon from "@mui/icons-material/Language";
