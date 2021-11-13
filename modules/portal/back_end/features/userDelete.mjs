@@ -14,7 +14,7 @@ const add = async user => {
 	const values = {
 		userName: user.name,
 		userEmail: user.email,
-		deleteLink: Options.absoluteDomain + "/userDelete/" + hash
+		deleteLink: Options.absoluteDomain + "/delete-user/" + hash
 	};
 	await Mail({to: user.email, template: "userDeleteMail", values});
 	return hash;

@@ -1,3 +1,3 @@
-{ v.userName }, you have requested for your account to be deleted.
+Hello, we have received a request for deletion of the account {{ userName }}.
 
-Visit the following link to completely delete your account: { v.deleteLink }, this action will be final and can not be reversed.
+Visit the following link to completely delete your account: {{ deleteLink }}, this action will be final and can not be reversed.

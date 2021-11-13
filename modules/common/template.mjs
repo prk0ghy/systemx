@@ -1,4 +1,3 @@
-/* eslint no-eval: 0 */
 import fs from "fs";
 import path from "path";
 const fsp = fs.promises;
@@ -41,9 +40,9 @@ export const buildRegions = async templateName => {
 	let lc = null;
 	for (let i = 0; i < template.length; ++i) {
 		const c = template.charAt(i);
-		if (c === "{" && lc !== "\\") {
+		if (c === "{" && lc === "{") {
 			if (++bracesDeep === 1){
-				regions[regions.length - 1].end = i;
+				regions[regions.length - 1].end = i-1;
 				regions.push({
 					evalText: true,
 					end: i + 1,
@@ -51,16 +50,15 @@ export const buildRegions = async templateName => {
 				});
 			}
 		}
-		if (c === "}" && lc !== "\\") {
+		if (c === "}" && lc === "}") {
 			if (--bracesDeep === 0){
-				regions[regions.length - 1].end = i;
+				regions[regions.length - 1].end = i-1;
 				regions.push({
 					end: i + 1,
 					evalText: false,
 					start: i + 1
 				});
-			}
-			else if (bracesDeep < 0) {
+			} else if (bracesDeep < 0) {
 				console.log("Something went wrong when trying to build " + templateName + ", we got negative brace depth, not something that should occur.");
 			}
 		}
@@ -82,8 +80,8 @@ const buildTemplate = async templateName => {
 	if(templateCache.has(templateName)){return templateCache.get(templateName);}
 	const regions = await buildRegions(templateName);
 	console.log(regions);
-	const λ = async () => regions.map(region => region.evalText
-		? eval(region.text)
+	const λ = async (v) => regions.map(region => region.evalText
+		? v[region.text.trim()] || ""
 		: region.text).join("");
 	templateCache.set(templateName,λ);
 	return λ;

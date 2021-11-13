@@ -95,7 +95,7 @@ export const userPasswordResetSubmit  = (resetHash, newPassword) => doAPICall("u
 
 export const userDeleteRequest = () => doAPICall("userDeleteRequest", {});
 export const userDeleteCheck   = deleteHash => doAPICall("userDeleteCheck", { deleteHash });
-export const userDeleteSubmit  = deleteHash => doAPICall("userDeleteCheck", { deleteHash });
+export const userDeleteSubmit  = deleteHash => doAPICall("userDeleteSubmit", { deleteHash });
 export default doAPICall;
 
 export const useRefreshUserData = () => {

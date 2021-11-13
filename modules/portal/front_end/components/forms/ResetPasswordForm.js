@@ -4,12 +4,13 @@ import Input from "components/inputs/Input";
 import routes from "root/routes";
 import styles from "./ResetPasswordForm.module.css";
 import TextLink from "components/generics/TextLink";
+
 const ResetPasswordForm = () => {
 	return (
 		<div className={ styles.registrationForm }>
-			<Formik>
+			<Formik initialValues={ { email: "" } }>
 				{
-					() => (
+					values => (
 						<Form submit="Registrieren" title="Passwort zurücksetzen">
 							<Input
 								autoComplete="email"
@@ -17,6 +18,7 @@ const ResetPasswordForm = () => {
 								name="email"
 								required
 								type="email"
+								value={ values?.email }
 							/>
 							<br/>
 							<p>Um Ihr Password zurückzusetzen geben Sie bitte Ihre Email Adresse ein.</p>

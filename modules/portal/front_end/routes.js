@@ -7,6 +7,10 @@ export default {
 		name: "Benutzer löschen",
 		path: "delete-user"
 	},
+	deleteUserSubmit: {
+		name: "Benutzer löschen",
+		path: "delete-user/[token]"
+	},
 	home: {
 		name: "Startseite",
 		path: "/"
