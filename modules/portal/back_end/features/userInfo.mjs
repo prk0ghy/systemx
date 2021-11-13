@@ -12,8 +12,6 @@ Filter("userInfoGet", async (v, next) => {
 });
 Filter("userInfoSet", async (v, next) => {
 	const user = await User.getByID(v.ses?.user?.ID | 0);
-	console.log(v);
-	console.log(user);
 	if(!user){
 		v.res.error = "Login first";
 		return v;

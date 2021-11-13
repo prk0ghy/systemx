@@ -29,7 +29,10 @@ const requestfilter = (filter,{
 			ses = tmp.ses;
 			ret.push(tmp.res);
 		}
-		Session.set(ctx,ses);
+		if(ses?.sessionID){
+			Session.set(ses?.sessionID,ses);
+			Session.setCookie(ctx,ses?.sessionID);
+		}
 		return ret;
 	};
 	return async ctx => {

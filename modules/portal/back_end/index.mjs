@@ -3,6 +3,7 @@ import Mount from "./mount.mjs";
 import Options from "../../common/options.mjs";
 import * as Template from "../../common/template.mjs";
 import RequestHandler from "./request.mjs";
+import * as Session from "./session.mjs";
 import { buildAll as filterBuildAll } from "./filter.mjs";
 import Koa from "koa";
 import koaBody from "koa-body";
@@ -15,7 +16,9 @@ const start = async () => {
 	console.log(features);
 	const app    = new Koa();
 	const router = new KoaRouter();
-	router.all("/portal-user", RequestHandler(filterBuildAll(),{allowCORS: true}));
+	const filters = filterBuildAll();
+	await Session.loadAll(filters);
+	router.all("/portal-user", RequestHandler(filters,{allowCORS: true}));
 	app
 		.use(koaBody())
 		.use(router.routes())

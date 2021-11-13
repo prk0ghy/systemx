@@ -6,5 +6,6 @@ filterAdd("userLogout",async (v,next) => {
 		Session.stop(v.ctx,v.ses.sessionID);
 	}
 	v.res.logout = true;
+	v.ses = {};
 	return await next(v);
 });

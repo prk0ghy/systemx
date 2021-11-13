@@ -105,6 +105,8 @@ export const useRefreshUserData = () => {
 			const userData = await userInfoGet();
 			if (userData.user) {
 				dispatch({ type: "SET_USER_DATA", data: { user: userData.user } });
+			}else{
+				dispatch({ type: "SET_USER_DATA", data: { } });
 			}
 		}];
 	}, [dispatch]);

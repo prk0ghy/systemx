@@ -97,7 +97,7 @@ filterAdd("userMetaSet",async (v,next) => {
 await (async () => {
 	await DB.run(`
 		CREATE TABLE IF NOT EXISTS UserMeta(
-			user INTEGzER REFERENCES User(ID) ON DELETE CASCADE ON UPDATE CASCADE,
+			user INTEGER REFERENCES User(ID) ON DELETE CASCADE ON UPDATE CASCADE,
 			key TEXT NOT NULL,
 			value TEXT,
 			PRIMARY KEY (user, key)
