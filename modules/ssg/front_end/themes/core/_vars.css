@@ -4,8 +4,8 @@
 	--content-padding-half: 32px;
 	--content-padding-quarter: 16px;
 	--content-padding-eight: 8px;
-	--font-headlines: jura, arial, serif;
-	--font-content: montserrat, sans-serif;
+	--font-headlines: jura, times, arial, serif, helvetica;
+	--font-content: montserrat, helvetica, arial, sans, sans-serif;
 	--text-color: #333;
 	--background-color: #fff;
 	--background-accent: #e3fbff;
