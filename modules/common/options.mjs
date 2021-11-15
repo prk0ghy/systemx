@@ -8,6 +8,7 @@ const options = {
 	configurationPath: ".systemx/settings",
 	cleanBuild: false,
 	cssVars: {},
+	siteName: "Lasub",
 	jsVars: {
 		galleryWrapAround: true,
 		galleryBackgroundOpacity: 0.95,
@@ -35,6 +36,7 @@ const options = {
 	slackChannel: "",
 	startTracking: false,
 	storagePath: ".systemx/storage",
+	title: "Lasub",
 	targets: {
 		lasub: {
 			graphqlEndpoint: "https://lasub.dilewe.de/api",

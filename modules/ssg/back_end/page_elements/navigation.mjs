@@ -89,7 +89,8 @@ const getPageData = (target, pageURI) => {
 */
 export const getNavigationHeader = async (target, pageURI) => {
 	const data = getPageData(target, pageURI);
-	const title = data.current?.title_override || data.current?.title || "Lasub";
+	console.log(options.jsVars);
+	const title = data.current?.title_override || data.current?.title || options.title || "Lasub";
 	const previousTitle = data.previous?.title || "";
 	const previousURL = data.previous?.uri;
 	const nextTitle = data.next?.title || "";
