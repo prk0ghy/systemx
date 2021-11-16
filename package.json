@@ -59,7 +59,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git@bitbucket.org:idlgbr/systemx.git"
+		"url": "git@github.com:Digitale-Lernwelten/systemx.git"
 	},
 	"scripts": {
 		"build": "node ./index.mjs --clean-build --",
@@ -67,7 +67,7 @@
 		"build:shop:frontend": "npm run build:shop:front-end",
 		"build:shop:front-end": "npm --prefix modules/portal/front_end run build",
 		"clean": "rm -rf dist web && npm --prefix modules/portal/front_end run clean",
-		"dev:ssg": "nodemon --ignore dist/ --ignore web/ ./index.mjs --quiet --skip-network --start-server",
+		"dev:ssg": "nodemon --ignore dist/ --ignore web/ ./index.mjs --quiet -- --skip-network --start-server",
 		"dev:shop": "trap 'kill 0' INT; npm run dev:shop:front-end & npm run dev:shop:back-end & wait;",
 		"dev:shop:back-end": "nodemon --ignore dist/ --ignore web/ ./index.mjs --quiet --skip-network --start-shop",
 		"dev:shop:front-end": "npm --prefix modules/portal/front_end run dev",
