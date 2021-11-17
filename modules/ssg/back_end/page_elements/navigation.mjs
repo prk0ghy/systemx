@@ -6,8 +6,8 @@ const {
 } = GraphQLRequest;
 const navigationCache = new Map();
 /*
-* Flattens the page tree into an array.
-*/
+ * Flattens the page tree into an array.
+ */
 const flattenData = data => {
 	const flattened = [];
 	for (const child of data) {
@@ -18,16 +18,37 @@ const flattenData = data => {
 	}
 	return flattened;
 };
+
+const sortEntries = entries => {
+	const sites = {};
+	/* First we find all the siteIds */
+	for(const entry of entries){
+		if(entry.siteId){
+			sites[entry.siteId] = true;
+		}
+	}
+
+	/* Then we filter and spread them together, preserving their order but keeping
+	 * entries with the same siteId by each other
+	 */
+	let ret = [];
+	for(const site in sites){
+		ret = [...ret,...entries.filter(e => e.siteId === (site|0)).map((e,i) => i ? e : {...e, firstForSiteId: true})];
+	}
+	return ret;
+};
 /*
-* Requests all data needed to build the navigation from the server, given a target.
-*/
+ * Requests all data needed to build the navigation from the server, given a target.
+ */
 export const loadNavigation = async target => {
 	const result = await request(options.graphqlEndpoint, gql([`
 		fragment entriesFields on inhalt_inhalt_Entry {
 			id
 			title
 			title_override
+			siteId
 			uri
+			url
 		}
 		fragment recurseEntries on inhalt_inhalt_Entry {
 			...entriesFields
@@ -48,24 +69,27 @@ export const loadNavigation = async target => {
 			}
 		}
 		query {
-			entries(level: 1, status: "live", type: "inhalt") {
+			entries(level: 1, status: "live", type: "inhalt", siteId: "*") {
 				...recurseEntries
 			}
 		}
 	`]));
+	const fixURL = url => url.split("/").slice(3).join("/");
 	const fixLinks = entries => {
 		if (!entries){
 			return null;
 		}
 		for (const child of entries) {
-			if (child.uri) {
+			if (child.url) {
+				child.uri = `/${fixURL(child.url)}/index.html`;
+			} else if (child.uri) {
 				child.uri = `/${child.uri}/index.html`;
 			}
 			fixLinks(child?.children);
 		}
 		return entries;
 	};
-	const entries = fixLinks(result.entries);
+	const entries = sortEntries(fixLinks(result.entries));
 	const flattened = flattenData(entries);
 	navigationCache.set(target, {
 		entries,
@@ -73,20 +97,20 @@ export const loadNavigation = async target => {
 	});
 };
 /*
-* Retrieves information about the current, next and previous entry.
-*/
+ * Retrieves information about the current, next and previous entry.
+ */
 const getPageData = (target, pageURI) => {
 	const data = navigationCache.get(target);
 	const i = data.flattened.findIndex(page => page.uri === pageURI);
 	return {
-		current: data.flattened[i],
-		next: data.flattened[i + 1],
-		previous: data.flattened[i - 1]
+		current:  data.flattened[i],
+		next:     data.flattened[i + 1]?.siteId === data.flattened[i]?.siteId && data.flattened[i + 1],
+		previous: data.flattened[i - 1]?.siteId === data.flattened[i]?.siteId && data.flattened[i - 1]
 	};
 };
 /*
-* Returns the HTML for our navigation header.
-*/
+ * Returns the HTML for our navigation header.
+ */
 export const getNavigationHeader = async (target, pageURI) => {
 	const data = getPageData(target, pageURI);
 	const title = data.current?.title_override || data.current?.title || options.title || "Lasub";
@@ -107,8 +131,8 @@ export const getNavigationHeader = async (target, pageURI) => {
 	`;
 };
 /*
-* Returns the HTML for a single entry for the navigation menu.
-*/
+ * Returns the HTML for a single entry for the navigation menu.
+ */
 const buildNavigationMenuEntry = (entry, pageURI) => {
 	const ulContent = entry.children
 		? entry.children
@@ -120,15 +144,15 @@ const buildNavigationMenuEntry = (entry, pageURI) => {
 		? `<ul>${ulContent}</ul>`
 		: "";
 	return `
-		<li${pageURI === entry.uri ? ` class="active"` : ""} page-id="${entry.id}">
+		<li${pageURI === entry.uri ? ` class="active"` : ""} page-id="${entry.id}" site-id="${entry.siteId}"${entry.firstForSiteId ? " first-for-site-id" : ""}>
 			<a href="${entry.uri}" page-url="${pageURI}" role="treeitem">${entry.title_override || entry.title}</a>
 			${childrenHTML}
 		</li>
 	`;
 };
 /*
-* Returns the HTML four our navigation menu.
-*/
+ * Returns the HTML four our navigation menu.
+ */
 export const getNavigationMenu = async (target, pageURI) => {
 	if (!navigationCache.has(target)) {
 		return `<h1>Error loading navigation</h1>`;

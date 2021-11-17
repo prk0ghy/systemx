@@ -33,40 +33,48 @@ export const makeRenderer = contentTypes => async (model, context, hints) => {
 		}
 		return [];
 	})();
-	if (contentType) {
-		const { map } = contentType.queries.get(type);
-		const effectiveModel = isEntryType && !context.isMock
-			? (await context.query(() => `
-				entry(id: ${model.id}) {
-					...on ${type} {
-						${contentType.queries.get(type).fetch(context.cms)}
+	try {
+		if (contentType) {
+			const { map } = contentType.queries.get(type);
+			const effectiveModel = isEntryType && !context.isMock
+				? (await context.query(() => `
+					entry(id: ${model.id}) {
+						...on ${type} {
+							${contentType.queries.get(type).fetch(context.cms)}
+						}
 					}
-				}
-			`)).entry
-			: model;
-		/*
-		* Nested content types may have structurally different models.
-		* Therefore, they can define a `map` function for each `__typename` in their `queries` section.
-		* This allows us to map the result of a query to a known structure prior to rendering it.
-		*/
-		const mappedModel = map && !context.isMock
-			? map(effectiveModel)
-			: effectiveModel;
-		return contentType.render(mappedModel, new RenderingContext({
-			hints,
-			model: mappedModel,
-			parentContext: context
-		}));
+				`)).entry
+				: model;
+			/*
+			* Nested content types may have structurally different models.
+			* Therefore, they can define a `map` function for each `__typename` in their `queries` section.
+			* This allows us to map the result of a query to a known structure prior to rendering it.
+			*/
+			const mappedModel = map && !context.isMock
+				? map(effectiveModel)
+				: effectiveModel;
+			return contentType.render(mappedModel, new RenderingContext({
+				hints,
+				model: mappedModel,
+				parentContext: context
+			}));
+		}
+		if (!warnedContentTypes.has(type)) {
+			console.warn(`Content type "${type}" is currently not supported.`);
+			warnedContentTypes.add(type);
+		}
+		return Error.render({
+			message: `This content type is not supported yet.`,
+			title: "Unsupported content type",
+			type
+		}, context);
+	} catch(err){
+		return Error.render({
+			message: `An Exception occured, please send this Link to your IT Support so we can fix this issue..`,
+			title: "Exception",
+			type
+		}, context);
 	}
-	if (!warnedContentTypes.has(type)) {
-		console.warn(`Content type "${type}" is currently not supported.`);
-		warnedContentTypes.add(type);
-	}
-	return Error.render({
-		message: `This content type is not supported yet.`,
-		title: "Unsupported content type",
-		type
-	}, context);
 };
 
 export const makeMockRenderer = async (contextOverrides = {}) => {

@@ -26,6 +26,24 @@ export default {
 				heroImageMobile: heroImagesMobile[0],
 				...rest
 			})
+		}],["startseite_startseite_Entry", {
+			fetch: ({ fragments }) => `
+				elements: ${fragments.elements}
+				heroImages: heroimage {
+					${fragments.asset}
+				}
+				id
+				slug
+				typeHandle
+				title
+			`,
+			map: ({
+				heroImages,
+				...rest
+			}) => ({
+				heroImage: heroImages[0],
+				...rest
+			})
 		}]
 	]),
 	async render({

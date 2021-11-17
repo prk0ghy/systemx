@@ -162,3 +162,8 @@ nav-close-button {
 		bottom:46px;
 	}
 }
+
+#navigation li + li[first-for-site-id] {
+	border-top:solid 1px var(--headerbar-color);
+	margin-top: var(--content-padding-half);
+}

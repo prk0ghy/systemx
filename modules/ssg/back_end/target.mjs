@@ -23,7 +23,17 @@ const fsp = fs.promises;
 const getHomePageURI = entries => {
 	const homeEntry = entries.find(entry => entry.references);
 	if (!homeEntry || !homeEntry.references.length) {
-		throw new Error("Could not determine home page");
+		const nextTry = entries.find(entry => entry.__typename === "startseite_startseite_Entry");
+		if(!nextTry || !nextTry.uri){
+			const lastGuess = entries.find(entry => entry.__typename === "inhalt_inhalt_Entry");
+			if(!lastGuess || !lastGuess.uri){
+				throw new Error("Could not determine home page");
+			}else{
+				return lastGuess.uri;
+			}
+		}else{
+			return nextTry.uri;
+		}
 	}
 	return homeEntry.references[0].uri;
 };
@@ -109,21 +119,30 @@ const renderAssets = async destination => {
 };
 const getEntries = async () => {
 	const { entries } = await query(() => `
-		entries {
+		entries(siteId: "*") {
 			__typename
 			dateUpdated
 			id
 			title
 			uid
 			uri
+			url
 			...on startseite_verweis_Entry {
 				references: starteintrag {
 					uri
+					url
 				}
 			}
 		}
 	`);
 	return entries;
+};
+
+const convertCraftURLToURI = url => `${url}`.replace(/index\.html$/,"");
+
+const findEntryByURI = (entries, uri) => {
+	const url = `/${uri}`.replace(/index\.html$/,"");
+	return entries.find(entry => entry.url === url);
 };
 /*
 * This functions renders a single entry and returns the complete HTML for it, including all warnings at the top.
@@ -133,11 +152,14 @@ const getEntries = async () => {
 export const renderSingleEntry = async (targetName, uri) => {
 	const loadNavigationPromise = loadNavigation(targetName);
 	const entries = await getEntries();
-	const homePageURI = getHomePageURI(entries);
-	const entry = entries.find(entry => entry.uri === uri) || entries.find(entry => entry.uri === homePageURI);
-	const effectiveURI = entry.uri;
+	//let entry = entries.find(entry => entry.uri === uri);
+	let entry = findEntryByURI(entries, uri);
+	if((uri === "") || (uri === "/") || (uri === "/index.html")){
+		const homePageURI = getHomePageURI(entries);
+		entry = entries.find(entry => entry.uri === homePageURI);
+	}
 	if (!entry) {
-		console.error(`404: ${effectiveURI}`);
+		console.error(`404: ${uri}`);
 		return {
 			html: await wrapWithApplicationShell(targetName, {
 				content: `
@@ -153,11 +175,12 @@ export const renderSingleEntry = async (targetName, uri) => {
 			status: 404
 		};
 	}
-	const cmsContext = await getCMSContext(introspectCraft);
+	const effectiveURI = convertCraftURLToURI(entry.url);
+	const cmsContext   = await getCMSContext(introspectCraft);
 	const contentTypes = await loadModules("modules/ssg/back_end/types/content");
-	const helperTypes = await loadModules("modules/ssg/back_end/types/helper");
+	const helperTypes  = await loadModules("modules/ssg/back_end/types/helper");
 	const globalRender = makeRenderer(contentTypes);
-	const html = await globalRender(entry, new RenderingContext({
+	const html         = await globalRender(entry, new RenderingContext({
 		cms: cmsContext,
 		globalRender,
 		types: {
@@ -169,7 +192,7 @@ export const renderSingleEntry = async (targetName, uri) => {
 	const wrappedHTML = await wrapWithApplicationShell(targetName, {
 		content: html,
 		pageTitle: entry.title,
-		pageURI: `/${effectiveURI}/index.html`
+		pageURI: `${effectiveURI}/index.html`
 	});
 	const finalHTML = Marker.fill(wrappedHTML);
 	return {
@@ -192,18 +215,18 @@ const sendWarnings = async (targetName,warnings) => {
 * Essentially, this is the heart of systemx.
 */
 export const buildEntries = async targetName => {
-	let warningHTML    = "";
-	const warnings     = [];
-	const entries      = await getEntries();
-	const targetPath   = getTargetPath(targetName);
-	const mediaPath    = getMediaPath(targetName);
-	const thumbPath    = getThumbPath(targetName);
+	let warningHTML     = "";
+	const warnings      = [];
+	const entries       = await getEntries();
+	const targetPath    = getTargetPath(targetName);
+	const mediaPath     = getMediaPath(targetName);
+	const thumbPath     = getThumbPath(targetName);
 	await mkdirp(mediaPath);
 	await mkdirp(thumbPath);
-	const cmsContext   = await getCMSContext(introspectCraft);
-	const contentTypes = await loadModules("modules/ssg/back_end/types/content");
-	const helperTypes  = await loadModules("modules/ssg/back_end/types/helper");
-	const globalRender = makeRenderer(contentTypes);
+	const cmsContext    = await getCMSContext(introspectCraft);
+	const contentTypes  = await loadModules("modules/ssg/back_end/types/content");
+	const helperTypes   = await loadModules("modules/ssg/back_end/types/helper");
+	const globalRender  = makeRenderer(contentTypes);
 	const globalContext = new RenderingContext({
 		cms: cmsContext,
 		globalRender,
@@ -251,7 +274,7 @@ export const buildEntries = async targetName => {
 		}
 	});
 	await Promise.all(entries.map(async entry => {
-		const directory = await mkdirp(targetPath, entry.uri);
+		const directory = await mkdirp(targetPath, convertCraftURLToURI(entry.url));
 		const outputFilePath = path.join(directory, "index.html");
 		try {
 			const { mtime } = await fsp.stat(outputFilePath);

@@ -20,63 +20,6 @@ const initGlossary = (() => {
 		return `<section content-type="error"><inner-content><h3>Der Glossareintrag konnte nicht geladen werden</h3></inner-content></section>`;
 	};
 
-	const showGlossOverlay = (blurException) => {
-		const overlayGlossElement = document.querySelector("PAGE-OVERLAY");
-		overlayGlossElement.setAttribute("open","open");
-		overlayGlossElement.classList.add("active");
-		document.body.classList.add("modal-active");
-		for(const child of document.querySelector("main").children){
-			if(child === blurException){
-				child.classList.remove("overlay-blur");
-			}else{
-				child.classList.add("overlay-blur");
-			}
-		}
-	};
-
-	const OpenGlossModal = (content) => {
-		if (typeof content === 'string' || content instanceof String){
-			const tempWrapper = document.createElement("TEMPORARY-MODAL");
-			tempWrapper.innerHTML = `<modal-content>${content}</modal-content>`;
-			document.body.append(tempWrapper);
-			return OpenGlossModal(tempWrapper);
-		}
-		content.classList.add("show-modal");
-		content.offsetTop; // Sync CSS <-> JS
-		content.classList.add("visible");
-		if(content.querySelector("MODAL-CLOSE") === null){ // Only add a new button of there currently is no button
-			const buttonCloseModal = document.createElement("MODAL-CLOSE");
-			buttonCloseModal.classList.add("MODAL-CLOSE");
-			buttonCloseModal.addEventListener("click",CloseGlossModal);
-			content.prepend(buttonCloseModal);
-		}
-		for(const child of document.querySelector("main").children){
-			child.classList.remove("overlay-blur");
-		}
-		showGlossOverlay(content);
-		return content;
-	};
-
-	const CloseGlossModal = () => {
-		const modals = document.querySelectorAll(".show-modal.visible");
-		modals.forEach(modal => {
-			modal.classList.remove("visible");
-			setTimeout(() => {
-				const parent = modal.parentElement;
-				if (parent.tagName === "DETAILS") {
-					parent.removeAttribute("open");
-				}
-				modal.classList.remove("show-modal");
-				if(modal.tagName === "TEMPORARY-MODAL"){
-					modal.remove();
-				}
-			}, 510);
-		});
-		for(const child of document.querySelector("main").children){
-			child.classList.remove("overlay-blur");
-		}
-	};
-
 	const loadGlossaryEntry = async rawHref => {
 		const content = await fetchGlossaryEntry(rawHref);
 		const entry = document.createElement("GLOSSARY-ENTRY");
