@@ -21,6 +21,7 @@ const findProduct = (productTree, id) => {
 		const newProduct = findProduct(newTree, id);
 		if (newProduct !== null) {
 			return newProduct;
+
 		}
 	}
 	return null;
