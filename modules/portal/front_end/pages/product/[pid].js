@@ -5,15 +5,23 @@ import { useProducts } from "../../contexts/Products";
 import { useRouter } from "next/router";
 
 const findProduct = (productTree, id) => {
+	if (!productTree) {
+		return null;
+	}
 	const potentialMatch = productTree.find(product => product.id === id);
 	if (potentialMatch) {
 		return potentialMatch;
 	}
-	const newProductTree = productTree
-		.filter(product => product.children);
-	for (let i = 0; i < newProductTree.length; i++) {
-		const newTree = newProductTree[i].children;
-		return findProduct(newTree, id);
+
+	for (let i = 0; i < productTree.length; i++) {
+		const newTree = productTree[i].children;
+		if (!newTree) {
+			continue;
+		}
+		const newProduct = findProduct(newTree, id);
+		if (newProduct !== null) {
+			return newProduct;
+		}
 	}
 	return null;
 };

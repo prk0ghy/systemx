@@ -59,6 +59,16 @@ const options = {
 		]
 	}
 };
+const mergeObjects = (a,b) => {
+	if((a === null) || (b === null)){return;}
+	for(const bk in b){
+		if(typeof a[bk] === 'object' && a[bk] !== null){
+			mergeObjects(a[bk],b[bk]);
+		}else{
+			a[bk] = b[bk];
+		}
+	}
+};
 /*
 * The last argument is the current target.
 * If nothing is specified, fall back to `lasub`
@@ -74,7 +84,7 @@ const loadConfigurationFile = path => {
 	try {
 		const fileContent = fs.readFileSync(path);
 		const configuration = JSON.parse(fileContent);
-		Object.assign(options, configuration);
+		mergeObjects(options, configuration);
 	}
 	catch {
 		/* If we can't read/parse the file, then we just continue */
@@ -126,7 +136,7 @@ for (const arg in argv) {
 /*
 * Assign target-specific options based on `currentTarget`
 */
-Object.assign(options, options, options?.targets[currentTarget]);
+mergeObjects(options, options?.targets[currentTarget]);
 /*
 * Do some sanity checks
 */
@@ -142,4 +152,5 @@ if (!currentTarget || !(options?.targets[currentTarget])){
 if (!options.graphqlEndpoint || !options.graphqlEndpoint.startsWith("http")) {
 	throw new Error(`No valid GraphQL endpoint specified, maybe an invalid/unknown target?`);
 }
+console.log(options);
 export default options;
