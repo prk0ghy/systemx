@@ -46,11 +46,13 @@
 				const w     = (imgTag.getAttribute("raw-width") | 0) || (imgTag.getAttribute("width") | 0);
 				const h     = (imgTag.getAttribute("raw-height")| 0) || (imgTag.getAttribute("height") | 0);
 				const figcaption = figure.querySelector("figcaption");
-				const title = figcaption ? figcaption.innerHTML : "";
-				items.push({src,w,h,msrc,title,figure,figcaption,imgTag});
-				captionWrap.append(figcaption);
-				figure.classList.add("hidden");
-				figcaption.classList.add("hidden");
+				if (figcaption) {
+					const title = figcaption ? figcaption.innerHTML : "";
+					items.push({src,w,h,msrc,title,figure,figcaption,imgTag});
+					captionWrap.append(figcaption);
+					figure.classList.add("hidden");
+					figcaption.classList.add("hidden");
+				}
 			}
 			items[0].figure.classList.remove("hidden");
 			items[0].figcaption.classList.remove("hidden");
