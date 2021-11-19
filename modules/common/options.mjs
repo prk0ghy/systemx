@@ -43,7 +43,13 @@ const options = {
 			httpPort: 8042,
 			favicon: "lasub",
 			disallowRobots: true
-		}
+		},
+		rdhessen: {
+                        graphqlEndpoint: "https://rdhessen.test-dilewe.de/api",
+                        httpPort: 8048,
+                        favicon: "rdhessen",
+                        title: "Infoportal Russlanddeutsche in Hessen"
+                },
 	},
 	portal: {
 		mounts: [
