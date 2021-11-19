@@ -20,6 +20,7 @@ export default {
 				id
 				isNumbered: nummerierung
 				tag: groesse
+				infoLink
 			`
 		}],
 		["quersliderInhalt_ueberschrift_BlockType", {
@@ -34,10 +35,12 @@ export default {
 		headline,
 		id,
 		isNumbered,
+		infoLink = "",
 		tag = "h3"
 	}, {
 		contentTypeIDIf,
 		helpers: {
+			InfoLink,
 			Marker
 		}
 	}) {
@@ -47,6 +50,7 @@ export default {
 			<section content-type="headline" ${contentTypeIDIf(id)}>
 				<inner-content>
 					${Marker.render({ isNumbered: isReallyNumbered })}
+					${InfoLink.render({infoLink}) }
 					<${hTag}>${headline}</${hTag}>
 				</inner-content>
 			</section>

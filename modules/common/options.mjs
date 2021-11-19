@@ -45,11 +45,11 @@ const options = {
 			disallowRobots: true
 		},
 		rdhessen: {
-                        graphqlEndpoint: "https://rdhessen.test-dilewe.de/api",
-                        httpPort: 8048,
-                        favicon: "rdhessen",
-                        title: "Infoportal Russlanddeutsche in Hessen"
-                },
+			graphqlEndpoint: "https://rdhessen.test-dilewe.de/api",
+			httpPort: 8048,
+			favicon: "rdhessen",
+			title: "Infoportal Russlanddeutsche in Hessen"
+		}
 	},
 	portal: {
 		mounts: [
@@ -158,5 +158,4 @@ if (!currentTarget || !(options?.targets[currentTarget])){
 if (!options.graphqlEndpoint || !options.graphqlEndpoint.startsWith("http")) {
 	throw new Error(`No valid GraphQL endpoint specified, maybe an invalid/unknown target?`);
 }
-console.log(options);
 export default options;

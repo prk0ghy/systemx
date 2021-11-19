@@ -143,6 +143,7 @@ export default {
 				imagePosition: bildposition
 				galleryIntroductionText: einleitungstextGallerie
 				isNumbered: nummerierung
+				infoLink
 				text
 			`
 		}],
@@ -205,6 +206,7 @@ export default {
 		images,
 		imageWidth,
 		imagePosition,
+		infoLink = "",
 		galleryIntroductionText,
 		isNumbered,
 		text
@@ -215,6 +217,7 @@ export default {
 		},
 		helpers: {
 			Image,
+			InfoLink,
 			License,
 			Marker
 		}
@@ -246,6 +249,7 @@ export default {
 				${galleryHTML}
 				<inner-content>
 					${Marker.render({ isNumbered })}
+					${InfoLink.render({infoLink})}
 					${figureHTML}
 					${galleryIntroductionHTML}
 					${text ?? ""}
