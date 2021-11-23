@@ -69,8 +69,10 @@ export const makeRenderer = contentTypes => async (model, context, hints) => {
 			type
 		}, context);
 	} catch(err){
+		console.error(err);
+		const msg = err.stack.replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll("\n","<br>");
 		return Error.render({
-			message: `An Exception occured, please send this Link to your IT Support so we can fix this issue..`,
+			message: `There was an error while rendering this page, please send this message to your IT department as it might help them fix this issue, thank you in advance!<br><br>${msg}`,
 			title: "Exception",
 			type
 		}, context);
