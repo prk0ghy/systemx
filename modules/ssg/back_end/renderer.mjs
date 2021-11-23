@@ -38,12 +38,12 @@ export const makeRenderer = contentTypes => async (model, context, hints) => {
 			const { map } = contentType.queries.get(type);
 			const effectiveModel = isEntryType && !context.isMock
 				? (await context.query(() => `
-					entry(id: ${model.id}) {
+					entry(id: ${model.id}, siteId: "*") {
 						...on ${type} {
 							${contentType.queries.get(type).fetch(context.cms)}
 						}
 					}
-				`)).entry
+				`)).entry || {}
 				: model;
 			/*
 			* Nested content types may have structurally different models.
