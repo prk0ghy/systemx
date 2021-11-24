@@ -1,0 +1,9 @@
+.form-actions {
+	display: flex;
+	justify-content: flex-end;
+	list-style: none;
+	margin-top: 0.8rem;
+	& .action > * {
+		min-width: 20rem;
+	}
+}

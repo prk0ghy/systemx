@@ -1,8 +1,10 @@
-import { Form, Formik } from "formik";
+import { Formik } from "formik";
 import { useCallback, useRef } from "react";
 import { useRefreshUserData, userLogin } from "root/api";
 import Button from "../inputs/Button";
 import Error from "../generics/Error";
+import Form from "components/forms/Form";
+import FormActions from "components/forms/FormActions";
 import Input from "components/inputs/Input";
 import routes from "root/routes";
 import styles from "./LoginForm.module.css";
@@ -10,15 +12,15 @@ import TextLink from "components/generics/TextLink";
 const LoginForm = () => {
 	const currentErrors = useRef("");
 	const [refresh] = useRefreshUserData();
-	const doLogin = useCallback(
-		async vals => {
-			const res = await userLogin(vals.username, vals.password);
-			currentErrors.current = res.error
-				? <Error msg={ res.error }/>
-				: null;
-			refresh();
-		}, [refresh]
-	);
+	const onSubmit = useCallback(async values => {
+		const response = await userLogin(values.username, values.password);
+		currentErrors.current = response.error
+			? <Error msg={ response.error }/>
+			: null;
+		refresh();
+	}, [
+		refresh
+	]);
 	const initialValues = {
 		username: "",
 		password: ""
@@ -27,30 +29,34 @@ const LoginForm = () => {
 		<div className={ styles.loginForm }>
 			<Formik
 				initialValues={ initialValues }
-				onSubmit={ doLogin }
+				onSubmit={ onSubmit }
 			>
 				{
 					({ values }) => (
-						<Form className={ styles.form } submit="Anmelden" title="Anmeldung">
+						<Form className={ styles.form } title="Anmeldung">
 							{ currentErrors.current }
 							<Input
 								autoComplete="email"
-								label="E-Mail"
+								label="E-Mail-Adresse"
 								name="username"
 								required
 								type="email"
 								value={ values?.username }
 							/>
-							<Input
-								autoComplete="current-password"
-								label="Passwort"
-								name="password"
-								required
-								type="password"
-								value={ values?.password }
-							/>
-							<TextLink align="right" className={ styles.description } href={ routes.resetPassword.path } title="Passwort zurücksetzen">Passwort vergessen?</TextLink>
-							<Button className={ styles.submit } kind="primary" type="submit">Login</Button>
+							<div>
+								<Input
+									autoComplete="current-password"
+									label="Passwort"
+									name="password"
+									required
+									type="password"
+									value={ values?.password }
+								/>
+								<TextLink align="right" className={ styles.description } href={ routes.resetPassword.path } title="Passwort zurücksetzen">Passwort vergessen?</TextLink>
+							</div>
+							<FormActions>
+								<Button kind="primary" type="submit">Anmelden</Button>
+							</FormActions>
 						</Form>
 					)
 				}

@@ -1,10 +1,23 @@
-import { Form, Formik } from "formik";
+import { Formik } from "formik";
+import { object, string } from "yup";
+import { useRefreshUserData, userRegister } from "root/api";
 import Button from "../inputs/Button";
 import CountrySelector from "components/inputs/CountrySelector";
+import Form from "components/forms/Form";
+import FormActions from "components/forms/FormActions";
 import Input from "components/inputs/Input";
 import RadioGroup from "components/inputs/RadioGroup";
 import styles from "./RegistrationForm.module.css";
+import { useCallback } from "react";
 const RegistrationForm = () => {
+	const [refresh] = useRefreshUserData();
+	const onSubmit = useCallback(async values => {
+		const response = await userRegister(values.username, values.email, values.password, values);
+		console.log(response);
+		refresh();
+	}, [
+		refresh
+	]);
 	const accountTypes = {
 		personal: "Privatkunde",
 		business: "Geschäftskunde"
@@ -13,22 +26,39 @@ const RegistrationForm = () => {
 		accountType: "personal",
 		country: "DE",
 		email: "",
-		firstName: "",
-		lastName: "",
 		organization: "",
 		password: "",
-		passwordRepeated: "",
-		postalCode: ""
+		passwordRepeated: ""
 	};
+	const requiredError = "Dies ist ein Pflichtfeld.";
+	const validationSchema = object().shape({
+		accountType: string()
+			.required(requiredError),
+		country: string()
+			.required(requiredError),
+		email: string()
+			.email("Diese E-Mail-Adresse is ungültig.")
+			.required(requiredError),
+		organization:
+			string(),
+		password: string()
+			.required(requiredError),
+		passwordRepeated: string()
+			.required(requiredError)
+	});
 	return (
 		<div className={ styles.registrationForm }>
-			<Formik initialValues={ initialValues }>
+			<Formik
+				initialValues={ initialValues }
+				onSubmit={ onSubmit }
+				validationSchema={ validationSchema }
+			>
 				{
 					({ values }) => (
-						<Form className={ styles.form } submit="Registrieren" title="Registrierung">
+						<Form className={ styles.form } title="Registrierung">
 							<Input
 								autoComplete="email"
-								label="E-Mail"
+								label="E-Mail-Adresse"
 								name="email"
 								required
 								type="email"
@@ -66,8 +96,9 @@ const RegistrationForm = () => {
 								name="country"
 								required
 							/>
-							<br/>
-							<Button className={ styles.submit } kind="primary" type="submit">Registrieren</Button>
+							<FormActions>
+								<Button className={ styles.submit } kind="primary" type="submit">Registrieren</Button>
+							</FormActions>
 						</Form>
 					)
 				}

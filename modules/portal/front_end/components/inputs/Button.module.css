@@ -5,9 +5,17 @@
 	color: white;
 	font-size: 2rem;
 	font-weight: var(--font-weight-light);
+	position: relative;
 	padding: 1.5rem 3rem;
 	&:hover {
 		cursor: pointer;
+		&::after {
+			background-color: hsla(0, 0%, 100%, 0.1);
+			content: "";
+			inset: 0;
+			position: absolute;
+			z-index: 0;
+		}
 	}
 	&:disabled {
 		opacity: 0.5;

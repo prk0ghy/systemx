@@ -2,7 +2,6 @@
 	color: var(--color-link);
 	&[align="right"] {
 		display: block;
-		margin-bottom: 1rem;
 		text-align: right;
 	}
 }

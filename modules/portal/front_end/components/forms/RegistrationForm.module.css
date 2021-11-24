@@ -1,11 +1,4 @@
 .registration-form {
-	& .submit {
-		margin-top: 7rem;
-		min-width: 30rem;
-		@media (--tablet) {
-			justify-self: flex-end;
-		}
-	}
 	& .description {
 		font-size: 2rem;
 		margin: 0;
