@@ -1,0 +1,15 @@
+.leftright {
+	& > *:first-child {
+		float: left;
+		width: 45%;
+	}
+	& > *:last-child {
+		float: right;
+		width: 45%;
+	}
+	&::after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+}

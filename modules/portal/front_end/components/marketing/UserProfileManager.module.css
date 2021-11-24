@@ -13,6 +13,7 @@
 		color: #0a409a;
 		height: 2.5rem;
 		width: 2.5rem;
+		cursor: pointer;
 	}
 }
 .link {
@@ -20,7 +21,7 @@
 }
 .business-form, .country-form {
 	background: #ffffffee;
-	border: 0.2rem solid;
+	box-shadow:0.2rem 0.2rem 0.5rem rgba(0,0,0,0.5);
 	left: 50%;
 	min-width: 25rem;
 	padding: 2.5rem;
