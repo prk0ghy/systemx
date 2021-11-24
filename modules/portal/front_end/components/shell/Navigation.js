@@ -1,5 +1,6 @@
 import AccountIcon from "components/shell/AccountIcon";
 import BurgerIcon from "components/shell/BurgerIcon";
+import Configuration from "../../config";
 import cx from "classnames";
 import dynamic from "next/dynamic";
 import Link from "next/link";
@@ -17,39 +18,46 @@ const NavigationItems = () => {
 	const isLoggedIn = Boolean(user?.name);
 	return (
 		<>
-			<li className={ styles.item }>
-				<CartIcon/>
-			</li>
-			{
-				isLoggedIn
-					? (
-						<li className={ styles.item }>
-							<AccountIcon/>
-						</li>
-					)
-					: null
+			{ Configuration?.shoppingCart?.enabled
+				? (
+					<li className={ styles.item }>
+						<CartIcon/>
+					</li>
+				)
+				: null
 			}
-			{
-				isLoggedIn
-					? (
-						<li className={ styles.item }>
-							<LogoutIcon/>
-						</li>
-					)
-					: null
+			{ isLoggedIn
+				? (
+					<li className={ styles.item }>
+						<AccountIcon/>
+					</li>
+				)
+				: null
 			}
-			{
-				isLoggedIn
-					? null
-					: (
-						<li className={ styles.item }>
-							<LoginIcon/>
-						</li>
-					)
+			{ isLoggedIn
+				? (
+					<li className={ styles.item }>
+						<LogoutIcon/>
+					</li>
+				)
+				: null
 			}
-			<li className={ styles.item }>
-				<BurgerIcon/>
-			</li>
+			{ isLoggedIn
+				? null
+				: (
+					<li className={ styles.item }>
+						<LoginIcon/>
+					</li>
+				)
+			}
+			{ Configuration?.burgerMenu?.enabled
+				? (
+					<li className={ styles.item }>
+						<BurgerIcon/>
+					</li>
+				)
+				: null
+			}
 		</>
 	);
 };

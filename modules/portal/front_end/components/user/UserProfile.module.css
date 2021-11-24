@@ -19,3 +19,9 @@
 		grid-area: "edit";
 	}
 }
+.link {
+	color: #0a409a;
+}
+.delete {
+	background-color: maroon;
+}

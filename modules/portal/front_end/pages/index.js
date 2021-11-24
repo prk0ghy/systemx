@@ -1,6 +1,6 @@
 import BannerLayout from "components/layouts/BannerLayout";
 import Page from "components/shell/Page";
-import ProductList from "components/marketing/ProductList";
+import ProductList from "components/product/ProductList";
 import styles from "./Home.module.css";
 import { useBrand } from "contexts/Brand";
 

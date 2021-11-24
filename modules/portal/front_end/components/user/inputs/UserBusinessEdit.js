@@ -1,10 +1,10 @@
 import { Form, Formik } from "formik";
 import { useCallback, useState } from "react";
 import { useRefreshUserData, userMetaSet } from "../../../api.js";
-import Button from "../Button.js";
+import Button from "../../inputs/Button.js";
 import EditIcon from "@mui/icons-material/Edit";
 import LeftRightGroup from "../../generics/LeftRightGroup.js";
-import RadioGroup from "../RadioGroup.js";
+import RadioGroup from "../../inputs/RadioGroup.js";
 import styles from "./UserBusinessEdit.module.css";
 import { useAuthentication } from "contexts/Authentication";
 const UserBusinessEdit = () => {

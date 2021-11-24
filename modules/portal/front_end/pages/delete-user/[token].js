@@ -1,5 +1,5 @@
 import AuthenticationLayout from "components/layouts/AuthenticationLayout";
-import DeleteUserConfirmForm from "components/userDelete/DeleteUserConfirmForm";
+import DeleteUserConfirmForm from "components/user/delete/DeleteUserConfirmForm";
 import Page from "components/shell/Page";
 import { useRouter } from "next/router";
 

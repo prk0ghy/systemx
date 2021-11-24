@@ -1,9 +1,12 @@
+import Card from "../generics/Card";
+import Configuration from "../../config.js";
 import { H } from "root/format";
 import LoginForm from "../forms/LoginForm";
 import RegistrationForm from "../forms/RegistrationForm";
 import styles from "./LoginRegistrationManager.module.css";
 import { useAuthentication } from "contexts/Authentication";
-import UserProfileManager from "./UserProfileManager";
+import UserContent from "./UserContent";
+import UserProfile from "./UserProfile";
 const LoginRegistrationManager = () => {
 	const [{ user }] = useAuthentication();
 	return (
@@ -11,20 +14,34 @@ const LoginRegistrationManager = () => {
 			{ user
 				? (
 					<>
-						<UserProfileManager/>
+						<Card>
+							<UserContent/>
+						</Card>
+						<br/>
+						<br/>
+						<Card>
+							<UserProfile/>
+						</Card>
 					</>
 				)
 				: (
-					<>
+					<Card>
 						<h3><H>Alter Hase</H></h3>
 						<br/>
 						<LoginForm/>
 						<br/>
-						<br/>
-						<h3><H>Ich bin neu hier</H></h3>
-						<br/>
-						<RegistrationForm/>
-					</>
+						{ Configuration?.registration?.enabled ?
+							(
+								<>
+									<br/>
+									<h3><H>Ich bin neu hier</H></h3>
+									<br/>
+									<RegistrationForm/>
+								</>
+							)
+							: null
+						}
+					</Card>
 				)
 			}
 		</div>

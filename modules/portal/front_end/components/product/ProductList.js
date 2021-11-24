@@ -1,4 +1,4 @@
-import Product from "components/marketing/Product";
+import Product from "components/product/Product";
 import styles from "./ProductList.module.css";
 import { useProducts } from "contexts/Products";
 const ProductList = () => {

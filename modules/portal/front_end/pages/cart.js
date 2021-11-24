@@ -2,7 +2,7 @@ import BannerLayout, { TextContent } from "components/layouts/BannerLayout";
 import dynamic from "next/dynamic";
 import Page from "components/shell/Page";
 import { useBrand } from "contexts/Brand";
-const CheckoutManager = dynamic(() => import("components/marketing/CheckoutManager"), {
+const CheckoutManager = dynamic(() => import("components/shop/CheckoutManager"), {
 	ssr: false
 });
 const Cart = () => {

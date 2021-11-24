@@ -1,6 +1,6 @@
 import CartManager from "./CartManager";
 import HorizontalSplit from "../layouts/HorizontalSplit";
-import LoginRegistrationManager from "./LoginRegistrationManager";
+import LoginRegistrationManager from "../user/LoginRegistrationManager";
 import PaymentView from "./PaymentView";
 import styles from "./CheckoutManager.module.css";
 import { useBus } from "contexts/Bus";
