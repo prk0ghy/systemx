@@ -117,7 +117,8 @@ const renderAssets = async destination => {
 	const assetDirectories = await resources.getAssetDirectories();
 	return Promise.all(assetDirectories.map(directory => renderDirectory(directory, destination)));
 };
-const getEntries = async () => {
+
+const getEntriesOLD = async () => {
 	const { entries } = await query(() => `
 		entries(siteId: "*") {
 			__typename
@@ -136,6 +137,27 @@ const getEntries = async () => {
 		}
 	`);
 	return entries;
+};
+const getEntriesNEW = async () => {
+	const { entries } = await query(() => `
+		entries(siteId: "*") {
+			__typename
+			dateUpdated
+			id
+			title
+			uid
+			uri
+			url
+		}
+	`);
+	return entries;
+};
+const getEntries = () => {
+	if(options.usesStartpageReference){
+		return getEntriesOLD();
+	}else{
+		return getEntriesNEW();
+	}
 };
 
 const convertCraftURLToURI = url => `${url}`.replace(/index\.html$/,"");

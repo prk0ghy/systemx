@@ -3,7 +3,7 @@ export default {
 		infoLink
 	}) {
 		return infoLink
-			? `<info-link><a target="_blank" href="${infoLink}">?</a></info-link>`
+			? `<info-link-wrap><info-link><a target="_blank" href="${infoLink}">?</a></info-link></info-link-wrap>`
 			: "";
 	}
 };

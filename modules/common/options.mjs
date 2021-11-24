@@ -27,6 +27,7 @@ const options = {
 	trackingHttpPort: 9090,
 	sessionCookie: "Portal_Session_Token",
 	portalRegisterEmailRequired: false,
+	usesStartpageReference: true,
 	openBrowser: false,
 	skipNetwork: false,
 	mailFrom: "test@dilewe.de",
@@ -44,24 +45,24 @@ const options = {
 			favicon: "lasub",
 			disallowRobots: true
 		},
-		"juramuseum": {
-                        disableMarkers: true,
+		juramuseum: {
+			disableMarkers: true,
 			favicon: "juramuseum",
-                        graphqlEndpoint: "https://systemx-jura-museum.test-dilewe.de/api",
-                        httpPort: 8049,
-                        jsVars: {
-                                galleryWrapAround: false,
-                                ytCaption: true,
-                                accessibility: false
-                        },
-                        cssVars: {
-                                backgroundBlue:  "rgba(0,0,0,0)",
-                                backgroundRed:   "rgba(0,0,0,0)",
-                                backgroundGreen: "rgba(0,0,0,0)",
-                                fontContent:     "Franklin",
-                                fontHeadlines:   "Franklin"
-                        }
-                },
+			graphqlEndpoint: "https://systemx-jura-museum.test-dilewe.de/api",
+			httpPort: 8049,
+			jsVars: {
+				galleryWrapAround: false,
+				ytCaption: true,
+				accessibility: false
+			},
+			cssVars: {
+				backgroundBlue:  "rgba(0,0,0,0)",
+				backgroundRed:   "rgba(0,0,0,0)",
+				backgroundGreen: "rgba(0,0,0,0)",
+				fontContent:     "Franklin",
+				fontHeadlines:   "Franklin"
+			}
+		},
 		rdhessen: {
 			graphqlEndpoint: "https://rdhessen.test-dilewe.de/api",
 			httpPort: 8048,
