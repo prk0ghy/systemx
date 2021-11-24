@@ -5,8 +5,8 @@
 	color: white;
 	font-size: 2rem;
 	font-weight: var(--font-weight-light);
-	position: relative;
 	padding: 1.5rem 3rem;
+	position: relative;
 	&:hover {
 		cursor: pointer;
 		&::after {

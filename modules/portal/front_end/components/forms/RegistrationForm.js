@@ -1,10 +1,10 @@
-import { Formik } from "formik";
 import { object, string } from "yup";
 import { useRefreshUserData, userRegister } from "root/api";
 import Button from "../inputs/Button";
 import CountrySelector from "components/inputs/CountrySelector";
 import Form from "components/forms/Form";
 import FormActions from "components/forms/FormActions";
+import { Formik } from "formik";
 import Input from "components/inputs/Input";
 import RadioGroup from "components/inputs/RadioGroup";
 import styles from "./RegistrationForm.module.css";

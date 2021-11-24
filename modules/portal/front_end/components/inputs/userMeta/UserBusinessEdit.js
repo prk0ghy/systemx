@@ -2,12 +2,12 @@ import { Form, Formik } from "formik";
 import { useCallback, useState } from "react";
 import { useRefreshUserData, userMetaSet } from "../../../api.js";
 import Button from "../Button.js";
-import CountrySelector from "components/inputs/CountrySelector";
 import EditIcon from "@mui/icons-material/Edit";
 import LeftRightGroup from "../../generics/LeftRightGroup.js";
-import styles from "./UserCountryEdit.module.css";
+import RadioGroup from "../RadioGroup.js";
+import styles from "./UserBusinessEdit.module.css";
 import { useAuthentication } from "contexts/Authentication";
-const UserCountryEdit = () => {
+const UserBusinessEdit = () => {
 	const [{ user }] = useAuthentication();
 	const [refresh] = useRefreshUserData();
 	const [modal, setModal] = useState(false);
@@ -17,33 +17,43 @@ const UserCountryEdit = () => {
 			refresh();
 		}, [refresh]
 	);
-	const setUserMetaCountry = useCallback(
+	const accountTypes = {
+		personal: "Privatkunde",
+		business: "Geschäftskunde"
+	};
+	const setUserMetaBusiness = useCallback(
 		async vals => {
-			await userMetaSet("country", vals.country);
+			let businessStatus = false;
+			if (vals.accountType === "business") {
+				businessStatus = true;
+			}
+			await userMetaSet("isBusinessCustomer", businessStatus);
 			refresh();
 			setModal(false);
 		}, [refresh]
 	);
 	const initialValues = {
-		country: user.meta.country
+		accountType: user?.meta?.isBusinessCustomer
+			? "business"
+			: "personal"
 	};
 	return (
 		<>
 			<p><a onClick={ ToggleModal }><EditIcon className={ styles.edit }/></a></p>
 			{ modal
 				? (
-					<div className={ styles.countryForm }>
+					<div className={ styles.businessForm }>
 						<Formik
 							initialValues={ initialValues }
-							onSubmit={ setUserMetaCountry }
+							onSubmit={ setUserMetaBusiness }
 						>
 							{
 								() => (
 									<Form className={ styles.form } submit="ändern" title="ändern">
-										<CountrySelector
-											autoComplete="country"
-											label="Land"
-											name="country"
+										<RadioGroup
+											label="Kontotyp"
+											name="accountType"
+											options={ accountTypes }
 											required
 										/>
 										<br/>
@@ -64,4 +74,4 @@ const UserCountryEdit = () => {
 		</>
 	);
 };
-export default UserCountryEdit;
+export default UserBusinessEdit;

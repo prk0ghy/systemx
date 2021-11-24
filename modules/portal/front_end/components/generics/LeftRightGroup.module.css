@@ -8,8 +8,8 @@
 		width: 45%;
 	}
 	&::after {
-		content: '';
-		display: block;
 		clear: both;
+		content: "";
+		display: block;
 	}
 }
