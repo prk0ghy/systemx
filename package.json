@@ -69,7 +69,7 @@
 		"clean": "rm -rf dist web && npm --prefix modules/portal/front_end run clean",
 		"dev:ssg": "nodemon --ignore dist/ --ignore web/ ./index.mjs --quiet -- --skip-network --start-server --",
 		"dev:shop": "trap 'kill 0' INT; npm run dev:shop:front-end & npm run dev:shop:back-end & wait;",
-		"dev:shop:back-end": "nodemon --ignore dist/ --ignore web/ ./index.mjs --quiet --skip-network --start-shop --",
+		"dev:shop:back-end": "nodemon --ignore dist/ --ignore web/ ./index.mjs --quiet --skip-network --start-shop",
 		"dev:shop:front-end": "npm --prefix modules/portal/front_end run dev",
 		"lint": "npm run lint:js; npm run lint:css",
 		"lint:js": "eslint './modules/**/*.mjs' './modules/**/*.js' --ignore-pattern 'modules/portal/front_end' --ignore-pattern 'modules/portal/back_end/OLD'; npm --prefix modules/portal/front_end run lint",
