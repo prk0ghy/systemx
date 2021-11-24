@@ -19,15 +19,8 @@
 .link {
 	color: #0a409a;
 }
-.business-form, .country-form {
-	background: #ffffffee;
-	box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.5);
-	left: 50%;
-	min-width: 25rem;
-	padding: 2.5rem;
-	position: absolute;
-	top: 50%;
-	transform: translate(-50%, -50%);
+.delete {
+	background-color: maroon;
 }
 .form {
 	margin: 0;

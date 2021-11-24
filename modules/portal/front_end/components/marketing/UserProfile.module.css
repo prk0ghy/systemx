@@ -7,4 +7,15 @@
 		vertical-align: -23%;
 		width: 2.5rem;
 	}
+	& > div {
+		display: grid;
+		grid: "value edit";
+		grid-template-columns: auto 4rem;
+	}
+	& > div:first-child {
+		grid-area: "value";
+	}
+	& > div:last-child {
+		grid-area: "edit";
+	}
 }

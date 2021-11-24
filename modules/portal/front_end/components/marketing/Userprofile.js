@@ -5,6 +5,8 @@ import LanguageIcon from "@mui/icons-material/Language";
 import PersonIcon from "@mui/icons-material/Person";
 import styles from "./UserProfile.module.css";
 import { useAuthentication } from "contexts/Authentication";
+import UserBusinessEdit from "../inputs/userMeta/UserBusinessEdit.js";
+import UserCountryEdit from "../inputs/userMeta/UserCountryEdit.js";
 
 const UserProfile = () => {
 	const [{ user }] = useAuthentication();
@@ -13,16 +15,27 @@ const UserProfile = () => {
 			{ user
 				? (
 					<section className={ styles.userProfile }>
-						<p><PersonIcon className={ styles.icon }/><H>{ user.name }</H></p>
-						<p><EmailIcon className={ styles.icon }/><H>{ user.email }</H></p>
-						<p><LanguageIcon className={ styles.icon }/><H>{ user.meta.country }</H></p>
-						<p><BusinessCenterIcon className={ styles.icon }/>
-							{
-								user.meta.isBusinessCustomer
-									? "Geschäftskunde"
-									: "Privatkunde"
-							}
-						</p>
+						<div>
+							<p><PersonIcon className={ styles.icon }/><H>{ user.name }</H></p>
+						</div>
+						<div>
+							<p><EmailIcon className={ styles.icon }/><H>{ user.email }</H></p>
+						</div>
+						<div>
+							<p><LanguageIcon className={ styles.icon }/><H>{ user.meta.country }</H></p>
+							<UserCountryEdit/>
+						</div>
+						<div>
+							<p>
+								<BusinessCenterIcon className={ styles.icon }/>
+								{
+									user?.meta?.isBusinessCustomer
+										? "Geschäftskunde"
+										: "Privatkunde"
+								}
+							</p>
+							<UserBusinessEdit/>
+						</div>
 					</section>
 				)
 				: null
