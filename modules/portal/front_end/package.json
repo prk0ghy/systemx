@@ -36,6 +36,7 @@
 	"private": true,
 	"scripts": {
 		"build": "npm run download:fonts && next build",
+		"export": "npm run download:fonts && next build && next export",
 		"clean": "rm -rf .cache .next",
 		"dev": "npm run download:fonts; next dev",
 		"windev": "next dev",

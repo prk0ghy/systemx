@@ -1,4 +1,4 @@
-import CartManager from "./CartManager";
+import CartManager from "./cart/CartManager";
 import HorizontalSplit from "../layouts/HorizontalSplit";
 import LoginRegistrationManager from "../user/LoginRegistrationManager";
 import PaymentView from "./PaymentView";

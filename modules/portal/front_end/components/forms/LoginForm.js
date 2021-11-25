@@ -9,7 +9,10 @@ import Input from "components/inputs/Input";
 import routes from "root/routes";
 import styles from "./LoginForm.module.css";
 import TextLink from "components/generics/TextLink";
+import { useRouter } from "next/router";
+
 const LoginForm = () => {
+	const router = useRouter();
 	const currentErrors = useRef("");
 	const [refresh] = useRefreshUserData();
 	const onSubmit = useCallback(async values => {
@@ -18,8 +21,10 @@ const LoginForm = () => {
 			? <Error msg={ response.error }/>
 			: null;
 		refresh();
+		router.push(`/`); // A little overview page would be nice, for now the start page has to be enough
 	}, [
-		refresh
+		refresh,
+		router
 	]);
 	const initialValues = {
 		username: "",

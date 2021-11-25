@@ -73,13 +73,15 @@ const options = {
 	portal: {
 		mounts: [
 			{
-				url: "/lasub/kapitel1/",
-				localDir: "/home/benny/arbeit/systemx/web/lasub",
-				userGroup: "lasub"
+				url: "/vogelinternistik2/",
+				//localDir: "/var/www/html/natter/vogelinternistik2/",
+				localDir: "/home/benny/arbeit/systemx/web/tagungsbaende/vogelinternistik2/",
+				userGroup: "vogelinternistik2"
 			},{
-				url: "/lasub/",
-				localDir: "/home/benny/arbeit/systemx/web/lasub",
-				userGroup: "lasub"
+				url: "/resources/",
+				//localDir: "/var/www/html/natter/vogelinternistik2/",
+				localDir: "/home/benny/arbeit/systemx/web/tagungsbaende/resources/",
+				userGroup: "vogelinternistik2"
 			}
 		]
 	}

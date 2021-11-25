@@ -6,6 +6,7 @@ import ProductButton from "components/product/ProductButton";
 import ProductButtonLink from "components/product/ProductButtonLink";
 import styles from "./Product.module.css";
 
+
 const Product = ({
 	caption,
 	children,

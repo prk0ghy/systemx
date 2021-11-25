@@ -15,17 +15,19 @@ const ProductButton = ({
 	const router = useRouter();
 	const [{ user }] = useAuthentication();
 	const [{ items }, dispatch] = useCart();
+	const hasAccess = Boolean(user?.groups[group]);
+
 	const shopButtonText = price
 		? items.includes(id)
 			? "Aus dem Warenkorb"
 			: "In den Warenkorb"
 		: "Bitte Einloggen";
-	const buttonText = user?.groups[group]
+	const buttonText = hasAccess
 		? "Inhalt ansehen"
 		: shopButtonText;
 
 	const onClick = useCallback(() => {
-		if (user?.groups[group]) {
+		if (hasAccess) {
 			window.location = contentUri;
 		}
 		else {
@@ -47,11 +49,10 @@ const ProductButton = ({
 		contentUri,
 		dispatch,
 		id,
+		hasAccess,
 		items,
-		user,
 		price,
-		router,
-		group
+		router
 	]);
 
 	return (

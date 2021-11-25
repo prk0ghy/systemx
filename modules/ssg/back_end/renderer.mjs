@@ -7,7 +7,6 @@ const warnedContentTypes = new Set([
 	* This content type is handled elsewhere and isn't necessary during rendering.
 	* Its only job is to determine which entry is supposed to be the home page.
 	*/
-	"startseite_verweis_Entry"
 ]);
 /*
 * "Rendering" a content type means transforming it to HTML.

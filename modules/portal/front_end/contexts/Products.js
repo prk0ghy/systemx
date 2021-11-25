@@ -15,7 +15,7 @@ export const {
 
 			Auch diesmal haben wir wieder versucht möglichst viele praxisrelevante Fälle aller Schwierigkeitsstufen zu kombinieren und natürlich ist auch das eine oder andere ausgefallene "Schmankerl" mit dabei.`,
 			id: "vogelinternistik_ii",
-			group: "vogelinternistik_ii",
+			group: "vogelinternistik2",
 			contentUri: "/vogelinternistik2/inhalt/startseite/index.html",
 			name: "Tagesseminar",
 			previewHeight: 863,

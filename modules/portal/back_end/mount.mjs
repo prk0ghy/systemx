@@ -10,17 +10,22 @@ const mountPermissionCheck = mount => {
 	return async (ctx,next) => {
 		const ses = Session.get(ctx);
 		if(!ses || !ses?.user?.groups){
-			return ctx.redirect("/login");
+			console.log("No session, or not groups");
+			return ctx.redirect("/");
 		}
 		if(Array.isArray(mount.userGroup)){
 			for(const group of mount.userGroup){
 				if(!ses.user.groups[group]){
-					return ctx.redirect("/shop");
+					console.log("Not in right groups");
+					return ctx.redirect("/");
 				}
 			}
 		}else{
 			if(!ses.user.groups[mount.userGroup]){
-				return ctx.redirect("/shop");
+				console.log(mount);
+				console.log(ses.user);
+				console.log("Not in right group");
+				return ctx.redirect("/");
 			}
 		}
 		return await next(ctx);

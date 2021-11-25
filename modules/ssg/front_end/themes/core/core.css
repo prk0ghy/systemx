@@ -121,3 +121,10 @@ button {
 @media screen and (max-width: 400px) {
 	body { font-size:1em; }
 }
+
+/* TEMPORARY FIX!!! Remove ASAP*/
+nav li[site-id="12"],
+nav li[site-id="2"] {
+	display:none;
+}
+/* /TEMPORARY FIX!!! Remove ASAP*/

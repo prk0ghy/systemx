@@ -1,7 +1,7 @@
 import { CSSTransition,	TransitionGroup } from "react-transition-group";
 import { formatPrice, H } from "root/format";
 import Button from "components/inputs/Button";
-import CartProduct from "../marketing/CartProduct";
+import CartProduct from "./CartProduct";
 import styles from "./CartManager.module.css";
 import { useAuthentication } from "contexts/Authentication";
 import { useCart } from "contexts/Cart";

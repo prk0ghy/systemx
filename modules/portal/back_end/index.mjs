@@ -22,9 +22,8 @@ const start = async () => {
 	app
 		.use(koaBody())
 		.use(router.routes())
-		.use(KoaStatic("modules/portal/front_end/.next/server/pages"))
-		.use(KoaStatic("modules/portal/front_end/public"))
-		.use(KoaMount(`/_next/static`, new Koa().use(KoaStatic("modules/portal/front_end/.next/static"))));
+		.use(KoaStatic("modules/portal/front_end/out",{extensions: ['html']}))
+		.use(KoaStatic("modules/portal/front_end/public"));
 	Mount(app);
 	//.use(frontend.reqFilter)
 	//.use(proxy)

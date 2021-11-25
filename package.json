@@ -78,7 +78,7 @@
 		"postinstall": "npm --prefix modules/portal/front_end install",
 		"test": "npm run test:back-end",
 		"test:back-end": "jest ./modules/ssg/back_end/test -- lasub",
-		"shop": "npm --prefix modules/portal/front_end run build && node ./index.mjs --start-shop",
+		"shop": "npm --prefix modules/portal/front_end run export && node ./index.mjs --start-shop",
 		"windev:shop:front-end": "npm --prefix modules/portal/front_end run windev",
 		"windev:shop": "npm-run-all --parallel windev:shop:front-end dev:shop:back-end"
 	},
