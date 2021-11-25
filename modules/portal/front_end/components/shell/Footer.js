@@ -1,13 +1,19 @@
+import Configuration from "../../config.js";
 import Laced from "components/generics/Laced";
 import Link from "next/link";
 import routes from "root/routes";
 import styles from "./Footer.module.css";
 const Footer = () => {
-	const footerRoutes = [
-		routes.imprint,
-		routes.privacy,
-		routes.termsAndConditions
-	];
+	const footerRoutes = [];
+	if (Configuration?.imprint?.enabled) {
+		footerRoutes.push(routes.imprint);
+	}
+	if (Configuration?.privacyPage?.enabled) {
+		footerRoutes.push(routes.privacy);
+	}
+	if (Configuration?.termsAndConditions?.enabled) {
+		footerRoutes.push(routes.termsAndConditions);
+	}
 	const items = footerRoutes.map(route => (
 		<li className={ styles.item } key={ route.path }>
 			<Link href={ route.path }>

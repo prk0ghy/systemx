@@ -13,6 +13,15 @@ const Configuration = {
 	},
 	shoppingCart: {
 		enabled: false
+	},
+	imprint: {
+		enabled: false
+	},
+	privacyPage: {
+		enabled: false
+	},
+	termsAndConditions: {
+		enabled: false
 	}
 };
 

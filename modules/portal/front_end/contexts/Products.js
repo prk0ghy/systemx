@@ -16,7 +16,7 @@ export const {
 			Auch diesmal haben wir wieder versucht möglichst viele praxisrelevante Fälle aller Schwierigkeitsstufen zu kombinieren und natürlich ist auch das eine oder andere ausgefallene "Schmankerl" mit dabei.`,
 			id: "vogelinternistik_ii",
 			group: "vogelinternistik_ii",
-			contentUri: "http://localhost:3000/test",
+			contentUri: "/vogelinternistik2/inhalt/startseite/index.html",
 			name: "Tagesseminar",
 			previewHeight: 863,
 			previewURL: "/mvet/products/bird.jpg",

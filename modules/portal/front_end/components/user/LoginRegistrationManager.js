@@ -15,18 +15,13 @@ const LoginRegistrationManager = () => {
 				? (
 					<>
 						<Card>
-							<UserContent/>
-						</Card>
-						<br/>
-						<br/>
-						<Card>
 							<UserProfile/>
 						</Card>
 					</>
 				)
 				: (
 					<Card>
-						<h3><H>Alter Hase</H></h3>
+						<h3><H>{ Configuration?.registration?.enabled ? "Alter Hase" : "Login" }</H></h3>
 						<br/>
 						<LoginForm/>
 						<br/>
