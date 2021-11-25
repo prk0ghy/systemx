@@ -22,6 +22,12 @@ const Configuration = {
 	},
 	termsAndConditions: {
 		enabled: false
+	},
+	userDelete: {
+		enabled: false
+	},
+	passwordReset: {
+		enabled: false
 	}
 };
 
