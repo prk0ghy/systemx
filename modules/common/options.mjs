@@ -74,13 +74,13 @@ const options = {
 		mounts: [
 			{
 				url: "/vogelinternistik2/",
-				//localDir: "/var/www/html/natter/vogelinternistik2/",
-				localDir: "/home/benny/arbeit/systemx/web/tagungsbaende/vogelinternistik2/",
+				localDir: "/var/www/html/dilewe.de/tagungsbaende/web/tagungsbaende/vogelinternistik2/",
+				//localDir: "/home/benny/arbeit/systemx/web/tagungsbaende/vogelinternistik2/",
 				userGroup: "vogelinternistik2"
 			},{
 				url: "/resources/",
-				//localDir: "/var/www/html/natter/vogelinternistik2/",
-				localDir: "/home/benny/arbeit/systemx/web/tagungsbaende/resources/",
+				localDir: "/var/www/html/dilewe.de/tagungsbaende/web/tagungsbaende/resources/",
+				//localDir: "/home/benny/arbeit/systemx/web/tagungsbaende/resources/",
 				userGroup: "vogelinternistik2"
 			}
 		]

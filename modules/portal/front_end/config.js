@@ -3,7 +3,7 @@
  */
 const Configuration = {
 	api: {
-		endpoint: "http://localhost:8020/portal-user"
+		endpoint: "/portal-user"
 	},
 	burgerMenu: {
 		enabled: false
