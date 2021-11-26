@@ -21,21 +21,12 @@ const fsp = fs.promises;
 * but since there is only a single target right now, we're hardcoding the home page.
 */
 const getHomePageURI = entries => {
-	const homeEntry = entries.find(entry => entry.references);
-	if (!homeEntry || !homeEntry.references.length) {
-		const nextTry = entries.find(entry => entry.__typename === "startseite_startseite_Entry");
-		if(!nextTry || !nextTry.uri){
-			const lastGuess = entries.find(entry => entry.__typename === "inhalt_inhalt_Entry");
-			if(!lastGuess || !lastGuess.uri){
-				throw new Error("Could not determine home page");
-			}else{
-				return lastGuess.uri;
-			}
-		}else{
-			return nextTry.uri;
-		}
+	const lastGuess = entries.find(entry => entry.__typename === "inhalt_inhalt_Entry");
+	if(!lastGuess || !lastGuess.uri){
+		throw new Error("Could not determine home page");
+	}else{
+		return lastGuess.uri;
 	}
-	return homeEntry.references[0].uri;
 };
 /*
 * Every project is a "target".
@@ -118,27 +109,7 @@ const renderAssets = async destination => {
 	return Promise.all(assetDirectories.map(directory => renderDirectory(directory, destination)));
 };
 
-const getEntriesOLD = async () => {
-	const { entries } = await query(() => `
-		entries(siteId: "*") {
-			__typename
-			dateUpdated
-			id
-			title
-			uid
-			uri
-			url
-			...on startseite_verweis_Entry {
-				references: starteintrag {
-					uri
-					url
-				}
-			}
-		}
-	`);
-	return entries;
-};
-const getEntriesNEW = async () => {
+const getEntries = async () => {
 	const { entries } = await query(() => `
 		entries(siteId: "*") {
 			__typename
@@ -151,13 +122,6 @@ const getEntriesNEW = async () => {
 		}
 	`);
 	return entries;
-};
-const getEntries = () => {
-	if(options.usesStartpageReference){
-		return getEntriesOLD();
-	}else{
-		return getEntriesNEW();
-	}
 };
 
 const convertCraftURLToURI = url => `${url}`.replace(/index\.html$/,"");
