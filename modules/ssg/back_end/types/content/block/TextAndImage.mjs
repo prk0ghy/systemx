@@ -222,40 +222,45 @@ export default {
 			Marker
 		}
 	}) {
+		const isReallyAGallery = !displayInOneLine && images?.length && images.length > 1;
 		const mappedImageWidth = this.getFigureWidth(imageWidth);
 		const mappedImagePosition = this.getFigurePosition(imagePosition);
-		const figureHTML = displayInOneLine || images?.length && images.length <= 1
-			? this.splitFigureRows((await Promise.all(
-				images?.map(async image => await this.renderFigure({
-					caption: image.caption,
-					imageHTML: await Image.render({ asset: image?.files?.[0], imageSize: mappedImageWidth }),
-					licenseHTML: await License.render({ asset: image?.files?.[0] }),
-					position: mappedImagePosition,
-					width: mappedImageWidth,
-					hideButtons
-				})))
-			)).join("")
-			: "";
-		const galleryHTML = !displayInOneLine && images?.length && images.length > 1
-			? await Gallery.render({
+
+		if(isReallyAGallery){
+			return await Gallery.render({
+				id,
+				galleryIntroductionText,
+				isNumbered,
 				images
-			})
-			: "";
-		const galleryIntroductionHTML = galleryIntroductionText
-			? `<gallery-introduction-text>${galleryIntroductionText}</gallery-introduction-text>`
-			: "";
-		return `
-			<section content-type="text-and-image" ${contentTypeIDIf(id)}>
-				${galleryHTML}
-				<inner-content>
-					${Marker.render({ isNumbered })}
-					${InfoLink.render({infoLink})}
-					${figureHTML}
-					${galleryIntroductionHTML}
-					${text ?? ""}
-				</inner-content>
-			</section>
-		`;
+			});
+		}else{
+			const figureHTML = displayInOneLine || images?.length && images.length <= 1
+				? this.splitFigureRows((await Promise.all(
+					images?.map(async image => await this.renderFigure({
+						caption: image.caption,
+						imageHTML: await Image.render({ asset: image?.files?.[0], imageSize: mappedImageWidth }),
+						licenseHTML: await License.render({ asset: image?.files?.[0] }),
+						position: mappedImagePosition,
+						width: mappedImageWidth,
+						hideButtons
+					})))
+				)).join("")
+				: "";
+			const galleryIntroductionHTML = galleryIntroductionText
+				? `<gallery-introduction-text>${galleryIntroductionText}</gallery-introduction-text>`
+				: "";
+			return `
+				<section content-type="text-and-image" ${contentTypeIDIf(id)}>
+					<inner-content>
+						${Marker.render({ isNumbered })}
+						${InfoLink.render({infoLink})}
+						${figureHTML}
+						${galleryIntroductionHTML}
+						${text ?? ""}
+					</inner-content>
+				</section>
+			`;
+		}
 	},
 	renderFigure({
 		caption,

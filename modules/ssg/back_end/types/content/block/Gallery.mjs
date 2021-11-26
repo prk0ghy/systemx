@@ -134,13 +134,16 @@ export default {
 	async render({
 		galleryIntroductionText,
 		id,
+		infoLink = null,
 		images,
-		isNumbered
+		isNumbered,
+		text = null
 	}, {
 		Error,
 		contentTypeIDIf,
 		helpers: {
 			Image,
+			InfoLink,
 			License,
 			Marker
 		}
@@ -170,11 +173,13 @@ export default {
 			<section content-type="gallery" ${contentTypeIDIf(id)}>
 				<inner-content>
 					${Marker.render({ isNumbered })}
+					${InfoLink.render({infoLink})}
 					<details>
 						<summary>${figures[0]}</summary>
 						${figures.slice(1).join("")}
 					</details>
 					${galleryIntroductionTextHTML}
+					${text ?? ""}
 				</inner-content>
 			</section>
 		`;
