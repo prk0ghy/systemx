@@ -60,7 +60,7 @@ const UserProfile = () => {
 							? (<ButtonLink className={ styles.delete } href="/delete-user">Benutzer löschen</ButtonLink>)
 							: null
 						}
-						<Button onClick={ doLogout } kind="primary">Logout</Button>
+						<Button kind="primary" onClick={ doLogout }>Logout</Button>
 					</section>
 				)
 				: null

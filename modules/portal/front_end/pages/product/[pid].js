@@ -38,23 +38,27 @@ const Collection = () => {
 			<li className={ styles.item } key={ product.id }>
 				<Product { ...product } startWithPreview={ i % 2 === 1 }/>
 			</li>
-		)) || <Product { ...selection}/>;
+		)) || <Product { ...selection }/>;
 	}
 
-	return selection ? (
-		<BannerLayout className={ styles.home } headline={ selection.name } height={ selection.previewHeight } image={ selection.previewURL } width={ selection.previewWidth }>
-			<Card>
-				<h2>{ selection?.caption }</h2>
-				<br/>
-				{ selection?.longDescription.split("\n").map(v => v?.trim() ? ( <p>{v}</p> ) : null) }
-			</Card>
-			<div className={ styles.productList }>
-				<ul className={ styles.items }>
-					{ productList }
-				</ul>
-			</div>
-		</BannerLayout>
-	)
+	return selection
+		? (
+			<BannerLayout className={ styles.home } headline={ selection.name } height={ selection.previewHeight } image={ selection.previewURL } width={ selection.previewWidth }>
+				<Card>
+					<h2>{ selection?.caption }</h2>
+					<br/>
+					{ selection?.longDescription.split("\n").map(v => v?.trim()
+						? (<p>{ v }</p>)
+						: null)
+					}
+				</Card>
+				<div className={ styles.productList }>
+					<ul className={ styles.items }>
+						{ productList }
+					</ul>
+				</div>
+			</BannerLayout>
+		)
 		: (
 			<AuthenticationLayout className={ styles.home } headline="404 - Produkt konnte nicht gefunden werden">
 				<Card>

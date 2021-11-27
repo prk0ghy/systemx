@@ -5,7 +5,6 @@ import LoginForm from "../forms/LoginForm";
 import RegistrationForm from "../forms/RegistrationForm";
 import styles from "./LoginRegistrationManager.module.css";
 import { useAuthentication } from "contexts/Authentication";
-import UserContent from "./UserContent";
 import UserProfile from "./UserProfile";
 const LoginRegistrationManager = () => {
 	const [{ user }] = useAuthentication();
@@ -21,12 +20,18 @@ const LoginRegistrationManager = () => {
 				)
 				: (
 					<Card>
-						<h3><H>{ Configuration?.registration?.enabled ? "Alter Hase" : "Login" }</H></h3>
+						<h3>
+							<H>{ Configuration?.registration?.enabled
+								? "Alter Hase"
+								: "Login"
+							}
+							</H>
+						</h3>
 						<br/>
 						<LoginForm/>
 						<br/>
-						{ Configuration?.registration?.enabled ?
-							(
+						{ Configuration?.registration?.enabled
+							? (
 								<>
 									<br/>
 									<h3><H>Ich bin neu hier</H></h3>

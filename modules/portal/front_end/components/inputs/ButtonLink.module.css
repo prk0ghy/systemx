@@ -3,10 +3,10 @@
 	border: none;
 	box-shadow: 0 0.3rem 0.6rem #00000047;
 	color: white;
-	display:inline-block;
-	margin-right: 2rem;
+	display: inline-block;
 	font-size: 2rem;
 	font-weight: var(--font-weight-light);
+	margin-right: 2rem;
 	padding: 1.5rem 3rem;
 	&:hover {
 		cursor: pointer;

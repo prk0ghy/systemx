@@ -11,7 +11,7 @@ const Button = dynamic(() => import("components/inputs/Button"), {
 const ProductButton = ({
 	product
 }) => {
-	const {id, group, contentUri, price} = product;
+	const { id, group, contentUri, price } = product;
 	const router = useRouter();
 	const [{ user }] = useAuthentication();
 	const [{ items }, dispatch] = useCart();
