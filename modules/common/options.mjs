@@ -71,6 +71,35 @@ const options = {
 		}
 	},
 	portal: {
+		frontEndVariables: {
+			api: {
+				endpoint: "http://localhost:8020/portal-user"
+			},
+			burgerMenu: {
+				enabled: false
+			},
+			registration: {
+				enabled: false
+			},
+			shoppingCart: {
+				enabled: false
+			},
+			imprint: {
+				enabled: false
+			},
+			privacyPage: {
+				enabled: false
+			},
+			termsAndConditions: {
+				enabled: false
+			},
+			userDelete: {
+				enabled: false
+			},
+			passwordReset: {
+				enabled: false
+			}
+		},
 		mounts: [
 			{
 				url: "/vogelinternistik2/",

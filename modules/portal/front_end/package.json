@@ -35,14 +35,15 @@
 	"name": "front-end",
 	"private": true,
 	"scripts": {
-		"build": "npm run download:fonts && next build",
-		"export": "npm run download:fonts && next build && next export",
+		"build": "npm run build:configuration && npm run download:fonts && next build",
+		"build:configuration": "node buildConfiguration.mjs",
 		"clean": "rm -rf .cache .next",
-		"dev": "npm run download:fonts; next dev",
-		"windev": "next dev",
+		"dev": "npm run build:configuration && npm run download:fonts; next dev",
 		"download:fonts": "[ -d \".cache/fonts/\" ] || get-google-fonts -i \"https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap\" -qo .cache/fonts -p ../.cache/fonts/",
-		"lint": "next lint",
-		"start": "next start"
+		"export": "npm run build && next export",
+		"lint": "npm run build:configuration && next lint",
+		"start": "npm run build:configuration && next start",
+		"windev": "npm run build:configuration && next dev"
 	},
 	"version": "0.0.1"
 }
