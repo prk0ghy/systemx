@@ -108,9 +108,8 @@ const options = {
 				userGroup: "vogelinternistik2"
 			},{
 				url: "/resources/",
-				localDir: "/var/www/html/dilewe.de/tagungsbaende/web/tagungsbaende/resources/",
+				localDir: "/var/www/html/dilewe.de/tagungsbaende/web/tagungsbaende/resources/"
 				//localDir: "/home/benny/arbeit/systemx/web/tagungsbaende/resources/",
-				userGroup: "vogelinternistik2"
 			},{
 				url: "/anaesthesie_reptilien/",
 				localDir: "/var/www/html/dilewe.de/tagungsbaende/web/tagungsbaende/anaesthesie_reptilien/",

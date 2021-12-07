@@ -21,7 +21,7 @@ const mountPermissionCheck = mount => {
 				}
 			}
 		}else{
-			if(!ses.user.groups[mount.userGroup]){
+			if(mount.userGroup && !ses.user.groups[mount.userGroup]){
 				console.log(mount);
 				console.log(ses.user);
 				console.log("Not in right group");
