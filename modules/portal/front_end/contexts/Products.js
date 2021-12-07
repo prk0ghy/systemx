@@ -22,7 +22,19 @@ export const {
 			previewURL: "/mvet/products/bird.jpg",
 			previewWidth: 1381,
 			price: null
-		}]
+		},{
+			caption: "Anästhesie und Analgesie bei Reptilien, Amphibien und Wirbellosen",
+			description: `Einzigartige Mischung aus Theorie und Praxis. Sabine Öfner und Hermann Kempf liefern Praxiswissen aus fast zwei Jahrzehnten einschlägiger Berufserfahrung.`,
+			longDescription: `Einzigartige Mischung aus Theorie und Praxis. Sabine Öfner und Hermann Kempf liefern Praxiswissen aus fast zwei Jahrzehnten einschlägiger Berufserfahrung.`,
+			id: "anaesthesie_reptilien",
+			group: "anaesthesie_reptilien",
+			contentUri: "/anaesthesie_reptilien/inhalt/startseite/index.html",
+			name: "Tagesseminar",
+			previewHeight: 863,
+			previewURL: "/mvet/products/lizard.jpg",
+			previewWidth: 1381,
+			price: null
+		},]
 	};
 	const dispatch = useReducer(reduce, null);
 	return [state, dispatch];
