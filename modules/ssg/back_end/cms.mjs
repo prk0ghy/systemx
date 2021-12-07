@@ -125,7 +125,7 @@ export const introspectMock = async () => {
 const maybeWrap = (query, enabled) => enabled
 	? `{ ${query} }`
 	: query;
-const endPoint = new URL(options.graphqlEndpoint);
+const endPoint = options.graphqlEndpoint;
 const types = {};
 /*
 * CraftCMS hard-codes the origin into all URLs which leads to funky behavior.

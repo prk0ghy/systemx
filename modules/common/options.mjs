@@ -5,6 +5,7 @@ import path from "path";
 const argv = minimist(process.argv.slice(2));
 const options = {
 	absoluteDomain: "http://localhost:3000",
+	administrationHttpPort: 5000,
 	configurationPath: ".systemx/settings",
 	cleanBuild: false,
 	cssVars: {},
@@ -33,6 +34,7 @@ const options = {
 	mailFrom: "test@dilewe.de",
 	startServer: false,
 	startShop: false,
+	startAdministration: false,
 	slackToken: "",
 	slackChannel: "",
 	startTracking: false,
@@ -68,6 +70,12 @@ const options = {
 			httpPort: 8048,
 			favicon: "rdhessen",
 			title: "Infoportal Russlanddeutsche in Hessen"
+		},
+		lasubAdministration: {
+			startTracking: false,
+			startServer: false,
+			startShop: false,
+			startAdministration: true
 		}
 	},
 	portal: {
@@ -209,7 +217,7 @@ if (options.downloadMedia && options.skipNetwork) {
 if (!currentTarget || !(options?.targets[currentTarget])){
 	throw new Error(`Not a valid target \`${currentTarget}\``);
 }
-if (!options.graphqlEndpoint || !options.graphqlEndpoint.startsWith("http")) {
+if ((options.startServer || options.cleanBuild) && (!options.graphqlEndpoint || !options.graphqlEndpoint.startsWith("http"))) {
 	throw new Error(`No valid GraphQL endpoint specified, maybe an invalid/unknown target?`);
 }
 export default options;
