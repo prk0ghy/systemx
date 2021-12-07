@@ -19,7 +19,7 @@ export default async function wrapWithApplicationShell(targetName, {
 					</div>
 					<div id="header-right">
 						<button id="button-settings"></button>
-					</dif>
+					</div>
 				</header>
 				${await getNavigationMenu(targetName, pageURI)}
 				${content}

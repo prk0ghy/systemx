@@ -38,7 +38,7 @@ const resourceTag = filename => {
 	if(ext === 'js'){
 		return `<script defer type=text/javascript src="${href}"></script>`;
 	} else if(ext === 'css'){
-		return `<link rel=stylesheet type=text/css href="${href}"></link>`;
+		return `<link rel=stylesheet type=text/css href="${href}">`;
 	}
 	// Ignore the rest
 	return '';
