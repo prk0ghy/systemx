@@ -133,7 +133,7 @@ export const getNavigationHeader = async (target, pageURI) => {
 /*
  * Returns the HTML for a single entry for the navigation menu.
  */
-const buildNavigationMenuEntry = (entry, pageURI) => {
+const buildNavigationMenuEntry = (entry, pageURI, curSiteId) => {
 	const ulContent = entry.children
 		? entry.children
 			.map(entry => buildNavigationMenuEntry(entry, pageURI))
@@ -143,7 +143,8 @@ const buildNavigationMenuEntry = (entry, pageURI) => {
 	const childrenHTML = ulContent.length
 		? `<ul>${ulContent}</ul>`
 		: "";
-	return `
+	return (entry.siteId !== curSiteId) && curSiteId
+		? "" : `
 		<li${pageURI === entry.uri ? ` class="active"` : ""} page-id="${entry.id}" site-id="${entry.siteId}"${entry.firstForSiteId ? " first-for-site-id" : ""}>
 			<a href="${entry.uri}" page-url="${pageURI}" role="treeitem">${entry.title_override || entry.title}</a>
 			${childrenHTML}
@@ -157,9 +158,13 @@ export const getNavigationMenu = async (target, pageURI) => {
 	if (!navigationCache.has(target)) {
 		return `<h1>Error loading navigation</h1>`;
 	}
-	const navigationContent = navigationCache
-		.get(target).entries
-		.map(entry => buildNavigationMenuEntry(entry, pageURI))
+	const data = navigationCache.get(target);
+	let curSiteId = null;
+	for(const e of data.entries){
+		if(e.uri === pageURI){curSiteId = e.siteId;}
+	}
+	const navigationContent = data.entries
+		.map(entry => buildNavigationMenuEntry(entry, pageURI, curSiteId))
 		.join("");
 	return `
 		<aside id="navigation" style="display:none;">

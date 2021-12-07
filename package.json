@@ -68,7 +68,7 @@
 		"build:shop:front-end": "npm --prefix modules/portal/front_end run build",
 		"clean": "rm -rf dist web && npm --prefix modules/portal/front_end run clean",
 		"dev:ssg": "nodemon --ignore dist/ --ignore web/ ./index.mjs --quiet -- --skip-network --start-server --",
-		"dev:shop": "trap 'kill 0' INT; npm run dev:shop:front-end & npm run dev:shop:back-end & wait;",
+		"dev:shop": "trap 'kill 0' INT; npm run dev:shop:front-end tagungsbaende & npm run dev:shop:back-end tagungsbaende & wait;",
 		"dev:shop:back-end": "nodemon --ignore dist/ --ignore web/ ./index.mjs --quiet --skip-network --start-shop",
 		"dev:shop:front-end": "npm --prefix modules/portal/front_end run dev",
 		"lint": "npm run lint:js; npm run lint:css",
@@ -78,7 +78,7 @@
 		"postinstall": "npm --prefix modules/portal/front_end install",
 		"test": "npm run test:back-end",
 		"test:back-end": "jest ./modules/ssg/back_end/test -- lasub",
-		"shop": "npm --prefix modules/portal/front_end run export && node ./index.mjs --start-shop",
+		"shop": "npm --prefix modules/portal/front_end run export && node ./index.mjs --start-shop --",
 		"windev:shop:front-end": "npm --prefix modules/portal/front_end run windev",
 		"windev:shop": "npm-run-all --parallel windev:shop:front-end dev:shop:back-end"
 	},

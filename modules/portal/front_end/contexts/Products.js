@@ -28,7 +28,7 @@ export const {
 			longDescription: `Einzigartige Mischung aus Theorie und Praxis. Sabine Öfner und Hermann Kempf liefern Praxiswissen aus fast zwei Jahrzehnten einschlägiger Berufserfahrung.`,
 			id: "anaesthesie_reptilien",
 			group: "anaesthesie_reptilien",
-			contentUri: "/anaesthesie_reptilien/inhalt/startseite/index.html",
+			contentUri: "/anaesthesie_reptilien/inhalt/herzlich-willkommen/index.html",
 			name: "Tagesseminar",
 			previewHeight: 863,
 			previewURL: "/mvet/products/lizard.jpg",

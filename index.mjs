@@ -14,9 +14,9 @@ import startTracking from "./modules/tracking/index.mjs";
 	if (options.startShop) {
 		promises.push(startShop());
 	}
+	console.log(options);
 	if (options.startTracking && !options.cleanBuild) {
 		promises.push(startTracking());
-		// Just commented it out for the first natter launch/test
 	}
 	await Promise.all(promises);
 })();

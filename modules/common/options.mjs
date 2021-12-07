@@ -73,7 +73,7 @@ const options = {
 	portal: {
 		frontEndVariables: {
 			api: {
-				endpoint: "http://localhost:8020/portal-user"
+				endpoint: "https://tagungsbaende.dilewe.de/portal-user"
 			},
 			burgerMenu: {
 				enabled: false

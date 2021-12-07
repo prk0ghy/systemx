@@ -21,7 +21,9 @@ const ProductButton = ({
 		? items.includes(id)
 			? "Aus dem Warenkorb"
 			: "In den Warenkorb"
-		: "Bitte Einloggen";
+		: user?.groups
+			? "Nicht verfügbar"
+			: "Bitte Einloggen";
 	const buttonText = hasAccess
 		? "Inhalt ansehen"
 		: shopButtonText;
