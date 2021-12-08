@@ -71,23 +71,23 @@ export const buildHead = async targetName => {
 	const resourcePath = getResourcePath(targetName);
 	const targetPath = getTargetPath(targetName);
 
-	promises.push(copyResource(path.join("modules", "ssg", "front_end", "themes", "core", "favicon", options.favicon), targetPath, "favicon.ico"));
-	promises.push(copyResource(path.join("modules", "ssg", "front_end", "themes", "core", "favicon", options.favicon), targetPath, "favicon.svg"));
-	promises.push(copyResource(path.join("modules", "ssg", "front_end", "themes", "core", "favicon", options.favicon), targetPath, "favicon-180.png"));
+	promises.push(copyResource(`modules/contentPipeline/front_end/themes/core/favicon/${options.favicon}`, targetPath, "favicon.ico"));
+	promises.push(copyResource(`modules/contentPipeline/front_end/themes/core/favicon/${options.favicon}`, targetPath, "favicon.svg"));
+	promises.push(copyResource(`modules/contentPipeline/front_end/themes/core/favicon/${options.favicon}`, targetPath, "favicon-180.png"));
 
-	promises.push(copyResource(path.join("node_modules", "quill", "dist"), resourcePath, "quill.min.js"));
-	promises.push(copyResource(path.join("node_modules", "quill", "dist"), resourcePath, "quill.min.js.map"));
-	promises.push(copyResource(path.join("node_modules", "quill", "dist"), resourcePath, "quill.snow.css"));
-	promises.push(copyResource(path.join("node_modules", "photoswipe", "dist"), resourcePath, "photoswipe-ui-default.min.js"));
-	promises.push(copyResource(path.join("node_modules", "photoswipe", "dist"), resourcePath, "photoswipe.min.js"));
-	promises.push(copyResource(path.join("node_modules", "photoswipe", "dist"), resourcePath, "photoswipe.css"));
-	promises.push(copyResource(path.join("node_modules", "photoswipe", "dist", "default-skin"), resourcePath, "default-skin.css"));
-	promises.push(copyResource(path.join("node_modules", "photoswipe", "dist", "default-skin"), resourcePath, "default-skin.svg"));
-	promises.push(copyResource(path.join("node_modules", "photoswipe", "dist", "default-skin"), resourcePath, "default-skin.png"));
-	promises.push(copyResource(path.join("node_modules", "photoswipe", "dist", "default-skin"), resourcePath, "preloader.gif"));
+	promises.push(copyResource("node_modules/quill/dist", resourcePath, "quill.min.js"));
+	promises.push(copyResource("node_modules/quill/dist", resourcePath, "quill.min.js.map"));
+	promises.push(copyResource("node_modules/quill/dist", resourcePath, "quill.snow.css"));
+	promises.push(copyResource("node_modules/photoswipe/dist", resourcePath, "photoswipe-ui-default.min.js"));
+	promises.push(copyResource("node_modules/photoswipe/dist", resourcePath, "photoswipe.min.js"));
+	promises.push(copyResource("node_modules/photoswipe/dist", resourcePath, "photoswipe.css"));
+	promises.push(copyResource("node_modules/photoswipe/dist/default-skin", resourcePath, "default-skin.css"));
+	promises.push(copyResource("node_modules/photoswipe/dist/default-skin", resourcePath, "default-skin.svg"));
+	promises.push(copyResource("node_modules/photoswipe/dist/default-skin", resourcePath, "default-skin.png"));
+	promises.push(copyResource("node_modules/photoswipe/dist/default-skin", resourcePath, "preloader.gif"));
 
-	const cssInline = await css.getInline();
-	const cssContent = await css.get();
+	const cssInline   = await css.getInline();
+	const cssContent  = await css.get();
 	const cssFilename = path.join(resourcePath, "main.css");
 	resourceNamedHashes.set("main.css", md5(cssContent));
 	promises.push(fsp.writeFile(cssFilename, cssContent));

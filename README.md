@@ -1,11 +1,18 @@
 # SystemX
-Static site generator and user portal for [Digitale Lernwelten](https://dilewe.de/) publications.
+Content management system for [Digitale Lernwelten](https://dilewe.de/) publications, created
+with the unique requirements and preferences of the (German) Education sector in mind. This
+caused us for example to completely firegap our final production artifacts from any running
+CMS system that might fail, become exploited or limit horizontal scalability. Additionally
+this approach makes it very easy for us to safeguard our users data (what we don't have, we can't loose).
 
 ## Users
 - [eLearning Module des Freistaats Sachsen](https://module-sachsen.dilewe.de/)
+- [Infoportal Russlanddeutsche in Hessen](https://russlanddeutsche-hessen.de/)
+- [Jura-Museum](https://mguide-jura-museum.de/)
+- [mVet - Portal für Tiermedizin](https://tagungsbaende.dilewe.de/)
 
 # Prerequisites
-- Node v14+
+- Node v16+ (current LTS)
 - NPM
 
 ## Windows
@@ -32,3 +39,31 @@ Just run `npm install` in order to install all the prerequisites and then use `n
 ## Linting
 Before commiting it is advisable to run `npm run lint`, since those tests will be run by the CI/CD
 pipeline again and it would be nice if the commit wouldn't fail in the pipeline, blocking an automatic roll-out.
+
+# Architecture / Modules
+SystemX is a collection of specialized modules, interacting with each other as needed.
+
+## Administration
+This module is used as a bridge between the CMS and the running production
+system, can trigger a deployment, do rollbacks or create users.
+
+## Common
+This directory contains a lot of miscellaneous subroutines that are useful to many other
+parts of the codebase, examples of this is options handling, or downloading files.
+
+## ContentPipeline
+This module is compiling content into other more useable forms, currently it mostly
+takes data from a Craft CMS Instance via GraphQL and produces HTML and associated
+assets, but will in the future be expanded to also consume from TYPO3 and XML as
+well as producing XML.
+
+## UserLogin
+This module is intended to restricting access to content produced via the ContentPipeline,
+allowing the purchase of said content as well as persisting user state and allowing for
+communcation and interaction between logged-in users in cases where we need a centralized
+system.
+
+## UserTracking
+This module is meant to be used as a minimally invasive user tracking, intended
+for situations where we have to keep count of page accesses but not intended 
+for analytics.

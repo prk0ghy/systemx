@@ -1,4 +1,5 @@
 import GraphQLRequest from "graphql-request";
+import { convertCraftURLToURI } from "../target.mjs";
 import options from "../../../common/options.mjs";
 const {
 	gql,
@@ -101,7 +102,8 @@ export const loadNavigation = async target => {
  */
 const getPageData = (target, pageURI) => {
 	const data = navigationCache.get(target);
-	const i = data.flattened.findIndex(page => page.uri === pageURI);
+	const url = convertCraftURLToURI(pageURI);
+	const i = data.flattened.findIndex(page => convertCraftURLToURI(page.url) === url);
 	return {
 		current:  data.flattened[i],
 		next:     data.flattened[i + 1]?.siteId === data.flattened[i]?.siteId && data.flattened[i + 1],

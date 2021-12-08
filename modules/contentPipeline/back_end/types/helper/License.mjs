@@ -1,4 +1,4 @@
-import { escapeHTML } from '../../RenderingContext.mjs';
+import { escapeHTML } from '../../renderingContext.mjs';
 
 const getLicenseHref = (license,terms) => {
 	if(!license){return false;}

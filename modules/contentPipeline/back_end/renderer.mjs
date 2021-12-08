@@ -1,7 +1,7 @@
 import loadModules from "../../common/loadModules.mjs";
 import Error from "./types/helper/Error.mjs";
 import { getContext as getCMSContext, introspectMock } from "./cms.mjs";
-import RenderingContext from "./RenderingContext.mjs";
+import RenderingContext from "./renderingContext.mjs";
 const warnedContentTypes = new Set([
 	/*
 	* This content type is handled elsewhere and isn't necessary during rendering.
@@ -80,8 +80,8 @@ export const makeRenderer = contentTypes => async (model, context, hints) => {
 
 export const makeMockRenderer = async (contextOverrides = {}) => {
 	const cmsContext   = await getCMSContext(introspectMock);
-	const contentTypes = await loadModules("modules/ssg/back_end/types/content");
-	const helperTypes  = await loadModules("modules/ssg/back_end/types/helper");
+	const contentTypes = await loadModules("modules/contentPipeline/back_end/types/content");
+	const helperTypes  = await loadModules("modules/contentPipeline/back_end/types/helper");
 	const globalRender = await makeRenderer(contentTypes);
 	const context      = new RenderingContext({
 		cms: cmsContext,

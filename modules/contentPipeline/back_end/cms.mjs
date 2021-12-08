@@ -2,6 +2,7 @@ import GraphQLRequest from "graphql-request";
 import loadModules from "../../common/loadModules.mjs";
 import request from "./rateLimiting.mjs";
 import options from "../../common/options.mjs";
+
 const { gql } = GraphQLRequest;
 const memoize = fn => {
 	const cache = new Map();
@@ -139,11 +140,11 @@ const query = async (queryFunction, {
 		.replace(/[\t]/g, "")
 		.replace(/[\n]/g, " ")
 		.trim()
-]))
-	.then(removeOriginFromURLs);
+])).then(removeOriginFromURLs);
+
 export default query;
 export const getContext = async introspect => {
-	const contentTypes = await loadModules("modules/ssg/back_end/types/content");
+	const contentTypes = await loadModules("modules/contentPipeline/back_end/types/content");
 	const cms = {
 		fragments: {},
 		introspection: await introspect(),

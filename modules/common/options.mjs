@@ -28,7 +28,6 @@ const options = {
 	trackingHttpPort: 9090,
 	sessionCookie: "Portal_Session_Token",
 	portalRegisterEmailRequired: false,
-	usesStartpageReference: true,
 	openBrowser: false,
 	skipNetwork: false,
 	mailFrom: "test@dilewe.de",

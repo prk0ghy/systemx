@@ -9,24 +9,22 @@ import Koa from "koa";
 import koaBody from "koa-body";
 import KoaRouter from "koa-router";
 import KoaStatic from "koa-static";
-import KoaMount from "koa-mount";
+
 const start = async () => {
-	const features    = await loadModules("modules/portal/back_end/features");
-	await Template.loadDir("modules/portal/back_end/templates/");
+	const features = await loadModules("modules/userLogin/back_end/features");
+	await Template.loadDir("modules/userLogin/back_end/templates/");
 	console.log(features);
-	const app    = new Koa();
-	const router = new KoaRouter();
+	const app     = new Koa();
+	const router  = new KoaRouter();
 	const filters = filterBuildAll();
 	await Session.loadAll(filters);
 	router.all("/portal-user", RequestHandler(filters,{allowCORS: true}));
 	app
 		.use(koaBody())
 		.use(router.routes())
-		.use(KoaStatic("modules/portal/front_end/out",{extensions: ['html']}))
-		.use(KoaStatic("modules/portal/front_end/public"));
+		.use(KoaStatic("modules/userLogin/front_end/out",{extensions: ['html']}))
+		.use(KoaStatic("modules/userLogin/front_end/public"));
 	Mount(app);
-	//.use(frontend.reqFilter)
-	//.use(proxy)
 	app.listen(Options.portalHttpPort);
 	console.log(`Shop started: http://localhost:${Options.portalHttpPort}/`);
 };

@@ -46,7 +46,7 @@ await (async () => {
 			email TEXT
 		)
 	`);
-	const data = await fs.promises.readFile("modules/portal/back_end/data/user.json");
+	const data = await fs.promises.readFile(`modules/userLogin/back_end/data/user.json`);
 	const rows = JSON.parse(data.toString());
 	rows.forEach(async row => {
 		const user = await getByName(row.name);
