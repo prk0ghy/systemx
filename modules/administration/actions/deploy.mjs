@@ -8,6 +8,7 @@ const asyncTimeout = (ms) => new Promise((resolve) => {
 const fakeProgress = async (jid) => {
     for(let i = 0; i < 100; i++){
         await asyncTimeout(1000);
+        if(jobs[jid].cancel){return;}
         jobs[jid].status = "running";
         jobs[jid].progress = i + 0.0;
     }
