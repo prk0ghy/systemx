@@ -3,9 +3,8 @@ None of these are set in stone, if you can argue your case good enough then
 these will change :)
 
 ## Software requirements
-You should only need node/npm/git for now, maybe ffmpeg/graphicsmagick in the
-future. The distros of choice for **production** systems are **Debian** and **Alpine Linux**, while development
-mostly happens on **Arch Linux**.
+You should only need node/npm/git for now, if you want to build releases you also need
+GraphicsMagick. The distros of choice for **production** systems are **Debian** and **Alpine Linux**, while development mostly happens on **Arch Linux**.
 
 ## Code/Documentation only in english
 This is mostly because discussing programming related topics in german turns

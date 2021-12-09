@@ -1,5 +1,5 @@
 import fs from "fs";
-import getPackageDirectory from "pkg-dir";
+import {packageDirectory} from "pkg-dir";
 import path from "path";
 import URL from "url";
 
@@ -34,7 +34,7 @@ const recurseDirectory = async (directory, types) => {
 
 const loadModules = async directoryName => {
 	const types = new Map();
-	const directory = path.join(await getPackageDirectory(), directoryName);
+	const directory = path.join(await packageDirectory(), directoryName);
 	await recurseDirectory(directory, types);
 	return types;
 };
