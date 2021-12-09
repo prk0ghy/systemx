@@ -7,6 +7,7 @@ const options = {
 	absoluteDomain: "http://localhost:3000",
 	administrationHttpPort: 5000,
 	configurationPath: ".systemx/settings",
+	deploymentDirectory: "/var/www/html/releases/",
 	cleanBuild: false,
 	cssVars: {},
 	siteName: "Lasub",
