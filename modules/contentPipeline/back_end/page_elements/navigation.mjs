@@ -75,7 +75,7 @@ export const loadNavigation = async target => {
 			}
 		}
 	`]));
-	const fixURL = url => url.split("/").slice(3).join("/");
+	const fixURL   = url => url.split("/").slice(3).join("/");
 	const fixLinks = entries => {
 		if (!entries){
 			return null;
@@ -90,7 +90,7 @@ export const loadNavigation = async target => {
 		}
 		return entries;
 	};
-	const entries = sortEntries(fixLinks(result.entries));
+	const entries   = sortEntries(fixLinks(result.entries));
 	const flattened = flattenData(entries);
 	navigationCache.set(target, {
 		entries,
@@ -102,8 +102,8 @@ export const loadNavigation = async target => {
  */
 const getPageData = (target, pageURI) => {
 	const data = navigationCache.get(target);
-	const url = convertCraftURLToURI(pageURI);
-	const i = data.flattened.findIndex(page => convertCraftURLToURI(page.url) === url);
+	const url  = convertCraftURLToURI(pageURI);
+	const i    = data.flattened.findIndex(page => convertCraftURLToURI(page.url) === url);
 	return {
 		current:  data.flattened[i],
 		next:     data.flattened[i + 1]?.siteId === data.flattened[i]?.siteId && data.flattened[i + 1],
@@ -114,13 +114,13 @@ const getPageData = (target, pageURI) => {
  * Returns the HTML for our navigation header.
  */
 export const getNavigationHeader = async (target, pageURI) => {
-	const data = getPageData(target, pageURI);
-	const title = data.current?.title_override || data.current?.title || options.title || "Lasub";
+	const data          = getPageData(target, pageURI);
+	const title         = data.current?.title_override || data.current?.title || options.title || "Lasub";
 	const previousTitle = data.previous?.title || "";
-	const previousURL = data.previous?.uri;
-	const nextTitle = data.next?.title || "";
-	const nextURL = data.next?.uri;
-	const previousTag = data.previous
+	const previousURL   = data.previous?.uri;
+	const nextTitle     = data.next?.title || "";
+	const nextURL       = data.next?.uri;
+	const previousTag   = data.previous
 		? "a"
 		: "button";
 	const nextTag = data.next
@@ -161,10 +161,7 @@ export const getNavigationMenu = async (target, pageURI) => {
 		return `<h1>Error loading navigation</h1>`;
 	}
 	const data = navigationCache.get(target);
-	let curSiteId = null;
-	for(const e of data.entries){
-		if(e.uri === pageURI){curSiteId = e.siteId;}
-	}
+	const curSiteId = data.entries.find(e => e.uri === pageURI);
 	const navigationContent = data.entries
 		.map(entry => buildNavigationMenuEntry(entry, pageURI, curSiteId))
 		.join("");

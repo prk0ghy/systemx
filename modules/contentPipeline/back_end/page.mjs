@@ -1,4 +1,5 @@
 import getHead from "./page_elements/head.mjs";
+import options from "../../common/options.mjs";
 import { getNavigationHeader, getNavigationMenu } from "./page_elements/navigation.mjs";
 export default async function wrapWithApplicationShell(targetName, {
 	pageTitle,
@@ -18,6 +19,7 @@ export default async function wrapWithApplicationShell(targetName, {
 						${await getNavigationHeader(targetName, pageURI)}
 					</div>
 					<div id="header-right">
+						${options.backLink ? `<a href="${options.backLink}" class="back-button">Zur&uuml;ck</a>` : ""}
 						<button id="button-settings"></button>
 					</div>
 				</header>

@@ -169,11 +169,30 @@ header h3 p {
 	}
 }
 
+
+#header-right > .back-button {
+	display:block;
+	color:transparent;
+	font-size:1px;
+	width:32px;
+	height:32px;
+	background:url("/resources/svg/exit.svg") no-repeat;
+}
+
 @media only screen and (max-width: 500px) {
 	header {
 		border-top: solid 2px var(--headerbar-color);
 		border-bottom: none;
 		height: 80px;
+	}
+
+	#header-right {
+		position: absolute;
+		float: none;
+		left: 0;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		margin-top:-2px;
 	}
 
 	#header-left {
@@ -183,7 +202,7 @@ header h3 p {
 		top: 50%;
 		transform: translate(-50%, -50%);
 	}
-
+	
 	#button-navigation {
 		margin-top: 3px;
 	}
@@ -201,6 +220,15 @@ header h3 p {
 		line-height: 40px;
 		position: absolute;
 		top: 50%;
+	}
+
+	#header-right > .back-button {
+		position:absolute;
+		left:calc(3em + 32px);
+		font-size:2em;
+		line-height:40px;
+		top:50%;
+		transform: translate(-50%, -50%);
 	}
 
 	#button-next {
