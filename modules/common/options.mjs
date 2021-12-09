@@ -122,7 +122,7 @@ const options = {
 				localDir: "/var/www/html/dilewe.de/tagungsbaende/web/tagungsbaende/anaesthesie_reptilien/",
 				//localDir: "/home/benny/arbeit/systemx/web/tagungsbaende/vogelinternistik2/",
 				userGroup: "anaesthesie_reptilien"
-			},
+			}
 		]
 	}
 };

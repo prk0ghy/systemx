@@ -29,13 +29,11 @@ export default () => {
 				try {
 					const data = JSON.parse(json);
 					console.log(data);
-					
 					response.end(JSON.stringify(dispatch(data)));
 				} catch(e) {
 					console.error(e);
 					response.end(JSON.stringify(`{status:"failure"}`));
 				}
-				
 			});
 		}else {
 			response.end("");

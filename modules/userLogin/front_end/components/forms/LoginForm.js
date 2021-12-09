@@ -21,7 +21,7 @@ const LoginForm = () => {
 			? <Error msg={ response.error }/>
 			: null;
 		refresh();
-		if(!response.error){
+		if (!response.error) {
 			router.push(`/`); // A little overview page would be nice, for now the start page has to be enough
 		}
 	}, [
