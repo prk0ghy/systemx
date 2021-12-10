@@ -105,10 +105,11 @@ nav nav-toggle {
 	top:0.65em;
 	width: 32px;
 	height: 32px;
-	background-image: url("/resources/svg/arrow-right.svg");
-	background-repeat: no-repeat;
-	background-clip: content-box;
-	background-size: 100%;
+	mask-image: url("/resources/svg/arrow-right.svg");
+	mask-repeat: no-repeat;
+	mask-clip: content-box;
+	mask-size: 100%;
+	background-color: var(--headerbar-color);
 	text-align:center;
 	cursor:pointer;
 	color:rgb(var(--highlight-color));
@@ -144,11 +145,11 @@ nav-close-button {
 	text-align:center;
 	cursor:pointer;
 	font-size:2em;
-	background-image: url(/resources/svg/close.svg);
-	background-position-x: center;
-	background-position-y: center;
-	background-repeat: no-repeat;
-	background-size: contain;
+	mask-image: url(/resources/svg/close.svg);
+	mask-position: center center;
+	mask-repeat: no-repeat;
+	mask-size: contain;
+	background-color: var(--headerbar-color);
 }
 
 @media only screen and (max-width: 800px) {

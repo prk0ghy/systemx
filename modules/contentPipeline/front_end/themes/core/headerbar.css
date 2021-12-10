@@ -13,7 +13,7 @@ header {
 }
 
 header::after {
-	content:'';
+	content:"";
 	position:relative;
 	clear:both;
 }
@@ -57,12 +57,13 @@ header::after {
 }
 
 #button-navigation {
-	background-image: url("/resources/svg/hamburger.svg");
-	background-repeat: no-repeat;
-	background-size: contain;
+	mask-image: url("/resources/svg/hamburger.svg");
+	mask-repeat: no-repeat;
+	mask-size: contain;
 	width: 32px;
 	position: relative;
 	top: 2px;
+	background-color: var(--headerbar-color);
 }
 
 #button-settings::after { content: "\e994"; }
@@ -75,19 +76,21 @@ button#button-next {
 #button-previous {
 	width: 32px;
 	height: 32px;
-	background-image: url("/resources/svg/arrow-left.svg");
-	background-repeat: no-repeat;
-	background-clip: content-box;
-	background-size: 100%;
+	mask-image: url("/resources/svg/arrow-left.svg");
+	mask-repeat: no-repeat;
+	mask-clip: content-box;
+	mask-size: 100%;
+	background-color: var(--headerbar-color);
 }
 
 #button-next {
 	width: 32px;
 	height: 32px;
-	background-image: url("/resources/svg/arrow-right.svg");
-	background-repeat: no-repeat;
-	background-clip: content-box;
-	background-size: 100%;
+	mask-image: url("/resources/svg/arrow-right.svg");
+	mask-repeat: no-repeat;
+	mask-clip: content-box;
+	mask-size: 100%;
+	background-color: var(--headerbar-color);
 }
 
 header h3 {
@@ -169,30 +172,11 @@ header h3 p {
 	}
 }
 
-
-#header-right > .back-button {
-	display:block;
-	color:transparent;
-	font-size:1px;
-	width:32px;
-	height:32px;
-	background:url("/resources/svg/exit.svg") no-repeat;
-}
-
 @media only screen and (max-width: 500px) {
 	header {
 		border-top: solid 2px var(--headerbar-color);
 		border-bottom: none;
 		height: 80px;
-	}
-
-	#header-right {
-		position: absolute;
-		float: none;
-		left: 0;
-		top: 50%;
-		transform: translate(-50%, -50%);
-		margin-top:-2px;
 	}
 
 	#header-left {
@@ -202,7 +186,7 @@ header h3 p {
 		top: 50%;
 		transform: translate(-50%, -50%);
 	}
-	
+
 	#button-navigation {
 		margin-top: 3px;
 	}
@@ -220,15 +204,6 @@ header h3 p {
 		line-height: 40px;
 		position: absolute;
 		top: 50%;
-	}
-
-	#header-right > .back-button {
-		position:absolute;
-		left:calc(3em + 32px);
-		font-size:2em;
-		line-height:40px;
-		top:50%;
-		transform: translate(-50%, -50%);
 	}
 
 	#button-next {
