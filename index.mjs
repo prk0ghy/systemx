@@ -8,6 +8,7 @@ import startAdministration from "./modules/administration/index.mjs";
 	await mkdirp(options.configurationPath);
 	await mkdirp(options.distributionPath);
 	await mkdirp(options.storagePath);
+	console.log(options);
 	const promises = [];
 	if (options.startServer || options.cleanBuild) {
 		promises.push(startSSG());
@@ -15,7 +16,6 @@ import startAdministration from "./modules/administration/index.mjs";
 	if (options.startShop) {
 		promises.push(startShop());
 	}
-	console.log(options);
 	if (options.startTracking && !options.cleanBuild) {
 		promises.push(startTracking());
 	}
