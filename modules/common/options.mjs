@@ -2,6 +2,8 @@ import fs from "fs";
 import minimist from "minimist";
 import os from "os";
 import path from "path";
+import DefaultTargets from "./defaultTargets.mjs";
+
 const argv = minimist(process.argv.slice(2));
 const options = {
 	absoluteDomain: "http://localhost:3000",
@@ -39,44 +41,7 @@ const options = {
 	startTracking: false,
 	storagePath: ".systemx/storage",
 	title: "Lasub",
-	targets: {
-		lasub: {
-			graphqlEndpoint: "https://lasub.dilewe.de/api",
-			httpPort: 8042,
-			favicon: "lasub",
-			disallowRobots: true
-		},
-		juramuseum: {
-			disableMarkers: true,
-			favicon: "juramuseum",
-			graphqlEndpoint: "https://systemx-jura-museum.test-dilewe.de/api",
-			httpPort: 8049,
-			jsVars: {
-				galleryWrapAround: false,
-				ytCaption: true,
-				accessibility: false
-			},
-			cssVars: {
-				backgroundBlue:  "rgba(0,0,0,0)",
-				backgroundRed:   "rgba(0,0,0,0)",
-				backgroundGreen: "rgba(0,0,0,0)",
-				fontContent:     "Franklin",
-				fontHeadlines:   "Franklin"
-			}
-		},
-		rdhessen: {
-			graphqlEndpoint: "https://rdhessen.test-dilewe.de/api",
-			httpPort: 8048,
-			favicon: "rdhessen",
-			title: "Infoportal Russlanddeutsche in Hessen"
-		},
-		lasubAdministration: {
-			startTracking: false,
-			startServer: false,
-			startShop: false,
-			startAdministration: true
-		}
-	},
+	targets: DefaultTargets,
 	portal: {
 		frontEndVariables: {
 			api: {
@@ -107,25 +72,12 @@ const options = {
 				enabled: false
 			}
 		},
-		mounts: [
-			{
-				url: "/vogelinternistik2/",
-				localDir: "/var/www/html/dilewe.de/tagungsbaende/web/tagungsbaende/vogelinternistik2/",
-				//localDir: "/home/benny/arbeit/systemx/web/tagungsbaende/vogelinternistik2/",
-				userGroup: "vogelinternistik2"
-			},{
-				url: "/resources/",
-				localDir: "/var/www/html/dilewe.de/tagungsbaende/web/tagungsbaende/resources/"
-				//localDir: "/home/benny/arbeit/systemx/web/tagungsbaende/resources/",
-			},{
-				url: "/anaesthesie_reptilien/",
-				localDir: "/var/www/html/dilewe.de/tagungsbaende/web/tagungsbaende/anaesthesie_reptilien/",
-				//localDir: "/home/benny/arbeit/systemx/web/tagungsbaende/vogelinternistik2/",
-				userGroup: "anaesthesie_reptilien"
-			}
-		]
+		mounts: []
 	}
 };
+/* Recursively merge a and b, returning a merged result. Values in b will overwrite
+ * what was in a if the keys match.
+ */
 const mergeObjects = (a,b) => {
 	if((a === null) || (b === null)){return;}
 	for(const bk in b){
@@ -137,16 +89,16 @@ const mergeObjects = (a,b) => {
 	}
 };
 /*
-* The last argument is the current target.
-* If nothing is specified, fall back to `lasub`
-*/
+ * The last argument is the current target.
+ * If nothing is specified, fall back to `lasub`
+ */
 export const currentTarget = argv._.length
 	? argv._[argv._.length - 1]
 	: "lasub";
 /*
-* Read a JSON-formatted configuration file from `path`,
-* then assign its values to the `options` object.
-*/
+ * Read a JSON-formatted configuration file from `path`,
+ * then assign its values to the `options` object.
+ */
 const loadConfigurationFile = path => {
 	try {
 		const fileContent = fs.readFileSync(path);
@@ -158,9 +110,9 @@ const loadConfigurationFile = path => {
 	}
 };
 /*
-* Read every file in a directory, without recursing,
-* and then pass each file to `loadConfigurationFile`.
-*/
+ * Read every file in a directory, without recursing,
+ * and then pass each file to `loadConfigurationFile`.
+ */
 const loadConfigurationDirectory = path => {
 	try {
 		fs.readdirSync(path)
@@ -177,8 +129,8 @@ loadConfigurationFile(path.join(process.env.XDG_CONFIG_HOME || path.join(os.home
 loadConfigurationFile(`${os.homedir()}/.systemx.conf`);
 loadConfigurationDirectory(`${os.homedir()}/.systemx.d`);
 /*
-* Environment variables can override configuration files
-*/
+ * Environment variables can override configuration files
+ */
 for (const env in process.env) {
 	const prefix = "SYSTEMX_";
 	if(!env.startsWith(prefix)) {
@@ -192,8 +144,8 @@ for (const env in process.env) {
 	}
 }
 /*
-* Command-line arguments have the highest priority
-*/
+ * Command-line arguments have the highest priority
+ */
 for (const arg in argv) {
 	const optionName = arg.replace(/-[a-z]/g, $1 => `${$1.slice(1).toUpperCase()}`);
 	if (Object.hasOwnProperty.call(options, optionName)) {
@@ -201,12 +153,12 @@ for (const arg in argv) {
 	}
 }
 /*
-* Assign target-specific options based on `currentTarget`
-*/
+ * Assign target-specific options based on `currentTarget`
+ */
 mergeObjects(options, options?.targets[currentTarget]);
 /*
-* Do some sanity checks
-*/
+ * Do some sanity checks
+ */
 if (options.forceRendering && options.skipNetwork) {
 	throw new Error(`Conflicting options \`forceRendering\` and \`skipNetwork\` specified. You can only choose one.`);
 }

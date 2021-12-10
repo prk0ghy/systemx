@@ -1,4 +1,4 @@
-import Configuration from "./config.js";
+import Configuration from "./config.js.js";
 import { useAuthentication } from "contexts/Authentication";
 import { useMemo } from "react";
 /* Those are hardcoded for now, would be much nicer
