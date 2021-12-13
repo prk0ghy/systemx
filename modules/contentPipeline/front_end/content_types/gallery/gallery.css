@@ -265,7 +265,7 @@ button[button-type="next-slide"]::before {
 	width: 100%;
 	height: 100%;
 	content: "";
-	background-color: var(--headerbar-color);
+	background-color: var(--dlw-blue);
 }
 
 button[button-type="next-slide"]::before {
@@ -306,7 +306,7 @@ button[button-type="fullscreen"]::after {
 	mask-clip: content-box;
 	mask-size: 80%;
 	mask-position: center center;
-	background-color: var(--headerbar-color);
+	background-color: var(--dlw-blue);
 }
 
 section[section-type="hero-image"] button[button-type="fullscreen"] {
