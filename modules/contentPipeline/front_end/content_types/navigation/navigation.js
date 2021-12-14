@@ -76,7 +76,16 @@ setTimeout(initNavBar, 0);
 						ulHidden.classList.remove("hidden");
 					}
 				}
+				const topLevel = document.querySelectorAll("nav > ul > li");
+				for (let i = 0; i < firstLevel.length; i++) {
+					topLevel[i].firstElementChild.classList.add("active");
+					const ulHidden = topLevel[i].querySelector("ul");
+					if (ulHidden !== null) {
+						ulHidden.classList.remove("hidden");
+					}
+				}
 			}
+
 			const activeEntry = document.querySelector("nav a.active");
 			const activeTopEntry = document.querySelector("nav li.active");
 			if (activeEntry !== null) {
