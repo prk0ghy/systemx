@@ -20,6 +20,19 @@ const flattenData = data => {
 	return flattened;
 };
 
+/* Returns the first part of a craft uri, which can be used to determine the siteId */
+const getUriPrefix = uri => String(uri).substring(0,1 + String(uri).indexOf("/",1));
+const findSiteId = (uri, sites) => sites[getUriPrefix(uri)] || sites[Object.keys(sites)[0]];
+
+const findSites = entries => {
+	const sites = {};
+	for(const entry of entries){
+		const prefix  = getUriPrefix(entry.uri);
+		sites[prefix] = entry.siteId;
+	}
+	return sites;
+}
+
 const sortEntries = entries => {
 	const sites = {};
 	/* First we find all the siteIds */
@@ -91,10 +104,13 @@ export const loadNavigation = async target => {
 		return entries;
 	};
 	const entries   = sortEntries(fixLinks(result.entries));
+	const sites     = findSites(entries);
+	console.log(sites);
 	const flattened = flattenData(entries);
 	navigationCache.set(target, {
 		entries,
-		flattened
+		flattened,
+		sites
 	});
 };
 /*
@@ -154,14 +170,14 @@ const buildNavigationMenuEntry = (entry, pageURI, curSiteId) => {
 	`;
 };
 /*
- * Returns the HTML four our navigation menu.
+ * Returns the HTML for the navigation menu.
  */
 export const getNavigationMenu = async (target, pageURI) => {
 	if (!navigationCache.has(target)) {
 		return `<h1>Error loading navigation</h1>`;
 	}
 	const data = navigationCache.get(target);
-	const curSiteId = data.entries.find(e => e.uri === pageURI);
+	const curSiteId = findSiteId(data,data.sites);
 	const navigationContent = data.entries
 		.map(entry => buildNavigationMenuEntry(entry, pageURI, curSiteId))
 		.join("");
