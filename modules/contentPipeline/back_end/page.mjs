@@ -4,6 +4,7 @@ import { getNavigationMenu } from "./page_elements/navigation.mjs";
 export default async function wrapWithApplicationShell(targetName, {
 	pageTitle,
 	pageURI,
+	entry,
 	content
 }) {
 	return `
@@ -11,7 +12,7 @@ export default async function wrapWithApplicationShell(targetName, {
 		<html lang="de">
 			<head>${await getHead(targetName, pageTitle)}</head>
 			<body>
-				<header>${await getHeader(targetName, pageURI)}</header>
+				<header>${await getHeader(targetName, pageURI, entry)}</header>
 				${await getNavigationMenu(targetName, pageURI)}
 				${content}
 			</body>

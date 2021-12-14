@@ -151,7 +151,7 @@ main > section[content-type="text-and-image"] > section[content-type="gallery"]:
 	width: 60px;
 	height: 60px;
 	background-color: #fff;
-	font-family: "icomoon";
+	font-family: icomoon;
 	color: #257DA7;
 	border-radius: 50%;
 	mask-repeat: no-repeat;
@@ -220,7 +220,7 @@ button[button-type="fullscreen"] {
 	z-index:30;
 	font-size: 1em;
 	line-height: 1em;
-	font-family: "icomoon";
+	font-family: icomoon;
 	padding: 0;
 }
 

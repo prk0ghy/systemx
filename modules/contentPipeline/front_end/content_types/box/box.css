@@ -25,12 +25,12 @@ section[content-type="box"] > inner-content > details > summary {
 }
 
 section[content-type="box"] > inner-content > details > summary::marker {
-	content: '';
+	content: "";
 	display: none;
 }
 
 section[content-type="box"] > inner-content > details > summary::-webkit-details-marker {
-	content: '';
+	content: "";
 	display: none;
 }
 

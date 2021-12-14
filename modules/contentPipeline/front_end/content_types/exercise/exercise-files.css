@@ -49,7 +49,7 @@ exercise-upload-button:hover {
 	color: white;
 }
 
-exercise-files input[type=file] {
+exercise-files input[type="file"] {
 	display:none;
 }
 

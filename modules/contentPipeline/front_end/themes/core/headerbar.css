@@ -112,6 +112,22 @@ header h3 p {
 	display:none !important;
 }
 
+#header-right > .edit-button,
+#header-right > .back-button {
+	display: inline-block;
+	color: transparent;
+	font-size: 1px;
+	width: 32px;
+	height: 32px;
+	margin-left: 8px;
+	background: url("/resources/svg/exit.svg") no-repeat;
+	background-size: contain;
+	vertical-align:top;
+}
+
+#header-right > .edit-button {
+	background-image: url("/resources/svg/edit.svg");
+}
 
 @media only screen and (max-width: 800px) {
 	header {
@@ -184,6 +200,24 @@ header h3 p {
 		float: none;
 		left: 50%;
 		top: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	#header-right {
+		position: absolute;
+		float: none;
+		left: 0;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		margin-top:-2px;
+	}
+
+	#header-right > .back-button {
+		position:absolute;
+		left:calc(3em + 32px);
+		font-size:2em;
+		line-height:40px;
+		top:50%;
 		transform: translate(-50%, -50%);
 	}
 

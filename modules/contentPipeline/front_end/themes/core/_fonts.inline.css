@@ -235,7 +235,7 @@
 }
 
 @font-face {
-	font-family: 'icomoon';
+	font-family: icomoon;
 	src:  url('/resources/fonts/icomoon.eot?5ii8n0');
 	src:  url('/resources/fonts/icomoon.eot?5ii8n0#iefix') format('embedded-opentype'),
 		url('/resources/fonts/icomoon.ttf?5ii8n0') format('truetype'),

@@ -165,7 +165,7 @@ export const renderSingleEntry = async (targetName, uri) => {
 	const contentTypes = await loadModules("modules/contentPipeline/back_end/types/content");
 	const helperTypes  = await loadModules("modules/contentPipeline/back_end/types/helper");
 	const globalRender = makeRenderer(contentTypes);
-	const html         = await globalRender(entry, new RenderingContext({
+	const content      = await globalRender(entry, new RenderingContext({
 		cms: cmsContext,
 		globalRender,
 		types: {
@@ -175,13 +175,13 @@ export const renderSingleEntry = async (targetName, uri) => {
 	}));
 	await loadNavigationPromise;
 	const wrappedHTML = await wrapWithApplicationShell(targetName, {
-		content: html,
+		content,
+		entry,
 		pageTitle: entry.title,
 		pageURI: `${effectiveURI}/index.html`
 	});
-	const finalHTML = Marker.fill(wrappedHTML);
 	return {
-		html: finalHTML,
+		html: Marker.fill(wrappedHTML),
 		status: 200
 	};
 };
@@ -270,11 +270,12 @@ export const buildEntries = async targetName => {
 		catch {
 			/* Doesn't matter if it fails, we just render a new file */
 		}
-		const html = await globalRender(entry, globalContext);
+		const content = await globalRender(entry, globalContext);
 		/* Remove target prefix and in case of Windows, replace blackslashes with forward slashes */
 		const uri = outputFilePath.substr(targetPath.length).replace(/\\/g, "/");
 		const wrappedHTML = await wrapWithApplicationShell(targetName, {
-			content: html,
+			content,
+			entry,
 			pageTitle: entry.title,
 			pageURI: uri
 		});

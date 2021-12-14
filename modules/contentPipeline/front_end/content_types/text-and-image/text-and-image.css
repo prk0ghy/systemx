@@ -19,7 +19,7 @@ section[content-type="text-and-image"] figcaption {
 }
 
 section[content-type="text-and-image"] figure-row figcaption {
-	padding: 0.3em 1em 2em 1em;
+	padding: 0.3em 1em 2em;
 }
 
 a.icon-button-360::before {

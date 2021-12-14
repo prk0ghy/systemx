@@ -106,12 +106,12 @@ tab-box-source {
 }
 
 [tab-box-type="mixed"] tab-paging next-tab {
-	background-image: url(/resources/svg/arrow-right.svg);
+	background-image: url("/resources/svg/arrow-right.svg");
 	grid-area: 2 / 4 / 2 / 5;
 }
 
 [tab-box-type="mixed"] tab-paging previous-tab {
-	background-image: url(/resources/svg/arrow-left.svg);
+	background-image: url("/resources/svg/arrow-left.svg");
 	grid-area: 2 / 2 / 2 / 3;
 	justify-self: flex-end;
 }

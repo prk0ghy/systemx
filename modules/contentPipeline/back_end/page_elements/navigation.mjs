@@ -31,7 +31,7 @@ const findSites = entries => {
 		sites[prefix] = entry.siteId;
 	}
 	return sites;
-}
+};
 
 const sortEntries = entries => {
 	const sites = {};
@@ -105,7 +105,6 @@ export const loadNavigation = async target => {
 	};
 	const entries   = sortEntries(fixLinks(result.entries));
 	const sites     = findSites(entries);
-	console.log(sites);
 	const flattened = flattenData(entries);
 	navigationCache.set(target, {
 		entries,
