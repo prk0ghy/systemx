@@ -120,13 +120,16 @@ header h3 p {
 	width: 32px;
 	height: 32px;
 	margin-left: 8px;
-	background: url("/resources/svg/exit.svg") no-repeat;
-	background-size: contain;
+	mask-image: url("/resources/svg/exit.svg");
+	mask-repeat: no-repeat;
+	mask-size: contain;
+	background-color: var(--headerbar-color);
 	vertical-align:top;
 }
 
 #header-right > .edit-button {
-	background-image: url("/resources/svg/edit.svg");
+	mask-image: url("/resources/svg/edit.svg");
+	background-color: var(--headerbar-color);
 }
 
 @media only screen and (max-width: 800px) {
