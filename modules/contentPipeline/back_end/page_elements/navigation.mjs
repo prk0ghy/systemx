@@ -6,6 +6,7 @@ const {
 	request
 } = GraphQLRequest;
 const navigationCache = new Map();
+let externalLinks = {};
 /*
  * Flattens the page tree into an array.
  */
@@ -88,6 +89,23 @@ export const loadNavigation = async target => {
 			}
 		}
 	`]));
+
+	/*
+ 	* Requests if there are external links
+ 	*/
+	externalLinks = await request(options.graphqlEndpoint, gql([`
+		fragment entriesFields on inhalt_externallink_Entry {
+			id
+			title
+			quelle
+		}
+		query {
+			entries(level: 1, status: "live", type: "externallink", siteId: "*") {
+				...entriesFields
+			}
+		}
+	`]));
+
 	const fixURL   = url => url.split("/").slice(3).join("/");
 	const fixLinks = entries => {
 		if (!entries){
@@ -151,6 +169,7 @@ export const getNavigationHeader = async (target, pageURI) => {
  * Returns the HTML for a single entry for the navigation menu.
  */
 const buildNavigationMenuEntry = (entry, pageURI, curSiteId) => {
+
 	const ulContent = entry.children
 		? entry.children
 			.map(entry => buildNavigationMenuEntry(entry, pageURI))
@@ -161,13 +180,28 @@ const buildNavigationMenuEntry = (entry, pageURI, curSiteId) => {
 		? `<ul>${ulContent}</ul>`
 		: "";
 	return (entry.siteId !== curSiteId) && curSiteId
-		? "" : `
+		? "" :`
 		<li${pageURI === entry.uri ? ` class="active"` : ""} page-id="${entry.id}" site-id="${entry.siteId}"${entry.firstForSiteId ? " first-for-site-id" : ""}>
 			<a href="${entry.uri}" page-url="${pageURI}" role="treeitem">${entry.title_override || entry.title}</a>
 			${childrenHTML}
 		</li>
-	`;
+		`;
 };
+
+/*
+ * Returns the HTML for external Links.
+ */
+const getExternalLinks = data => {
+	if (!data.entries) {return;}
+	let links = ``;
+	for (let i = 0; i < data.entries.length; i++) {
+		const entry = data.entries[i];
+		links += `<li class="externalLink"><a href="${entry.quelle}" target="_blank">${entry.title}</a></li>`;
+	}
+	return links;
+};
+
+
 /*
  * Returns the HTML for the navigation menu.
  */
@@ -180,10 +214,14 @@ export const getNavigationMenu = async (target, pageURI) => {
 	const navigationContent = data.entries
 		.map(entry => buildNavigationMenuEntry(entry, pageURI, curSiteId))
 		.join("");
+	const addedLinks = getExternalLinks(externalLinks);
 	return `
 		<aside id="navigation" style="display:none;">
 			<nav role="navigation">
-				<ul role="tree">${navigationContent}</ul>
+			<ul role="tree">
+				${addedLinks}
+				${navigationContent}
+			</ul>
 			</nav>
 		</aside>
 	`;

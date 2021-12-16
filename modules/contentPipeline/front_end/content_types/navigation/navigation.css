@@ -168,3 +168,7 @@ nav-close-button {
 	border-top:solid 1px var(--headerbar-color);
 	margin-top: var(--content-padding-half);
 }
+
+li.externalLink {
+	margin-bottom: -32px;
+}
