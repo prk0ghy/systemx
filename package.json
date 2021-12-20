@@ -77,7 +77,7 @@
 		"start": "node ./index.mjs --start-server --",
 		"postinstall": "npm --prefix modules/userLogin/front_end install",
 		"test": "npm run test:back-end",
-		"test:back-end": "jest ./modules/contentPipeline/back_end/test -- lasub",
+		"test:back-end": "NODE_OPTIONS=--experimental-vm-modules jest ./modules/contentPipeline/back_end/test -- lasub",
 		"shop": "npm --prefix modules/userLogin/front_end run export && node ./index.mjs --start-shop --",
 		"windev:shop:front-end": "npm --prefix modules/userLogin/front_end run windev",
 		"windev:shop": "npm-run-all --parallel windev:shop:front-end dev:shop:back-end"
