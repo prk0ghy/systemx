@@ -181,9 +181,6 @@ export const getNavigationMenu = async (target, pageURI) => {
 	const navigationContent = data.entries
 		.map(entry => buildNavigationMenuEntry(entry, pageURI, curSiteId))
 		.join("");
-	const navigationPrefix = options.navigationLinks.length
-		? `<ul role="list"></ul>`
-		: "";
 	return `
 		<aside id="navigation" style="display:none;">
 			<nav role="navigation">
