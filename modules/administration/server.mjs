@@ -39,5 +39,5 @@ export default () => {
 			response.end("");
 		}
 	});
-	server.listen(options.administrationHttpPort);
+	server.listen(options.httpPort);
 };

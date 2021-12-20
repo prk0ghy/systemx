@@ -2,11 +2,8 @@ import http from "http";
 import options from "../common/options.mjs";
 import logTracking from "./logTracking.mjs";
 /*
-* Starts an HTTP server for target `targetName`.
-*
-* This will serve all resources for this target and render entries on demand.
-* Ideally, this function is used for previews.
-*/
+ * Starts a HTTP Server responding to userTracking calls.
+ */
 export default () => {
 	const server = http.createServer(async (request, response) => {
 		if (request.url === "/robots.txt") {
@@ -37,5 +34,5 @@ export default () => {
 			});
 		}
 	});
-	server.listen(options.trackingHttpPort);
+	server.listen(options.httpPort);
 };

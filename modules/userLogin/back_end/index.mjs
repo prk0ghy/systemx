@@ -1,3 +1,5 @@
+import { promisify } from "util";
+import { exec } from "child_process";
 import loadModules from "../../common/loadModules.mjs";
 import Mount from "./mount.mjs";
 import Options from "../../common/options.mjs";
@@ -9,8 +11,21 @@ import Koa from "koa";
 import koaBody from "koa-body";
 import KoaRouter from "koa-router";
 import KoaStatic from "koa-static";
+const aExec = promisify(exec);
+
+// npm --prefix modules/userLogin/front_end run export
+const exportFrontend = async () => {
+	console.log("Exporting next.js Frontend");
+	const ret = await aExec("npm --prefix modules/userLogin/front_end run export");
+	if(ret.stderr){
+		console.error(ret);
+		throw new Error(`Error while exporting next.js Frontend`);
+	}
+	console.log("Done Exporting next.js Frontend");
+};
 
 const start = async () => {
+	await exportFrontend();
 	const features = await loadModules("modules/userLogin/back_end/features");
 	await Template.loadDir("modules/userLogin/back_end/templates/");
 	console.log(features);
@@ -25,7 +40,7 @@ const start = async () => {
 		.use(KoaStatic("modules/userLogin/front_end/out",{extensions: ['html']}))
 		.use(KoaStatic("modules/userLogin/front_end/public"));
 	Mount(app);
-	app.listen(Options.portalHttpPort);
-	console.log(`Shop started: http://localhost:${Options.portalHttpPort}/`);
+	app.listen(Options.httpPort);
+	console.log(`Shop started: http://localhost:${Options.httpPort}/`);
 };
 export default start;

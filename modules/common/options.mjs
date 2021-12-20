@@ -7,11 +7,13 @@ import DefaultTargets from "./defaultTargets.mjs";
 const argv = minimist(process.argv.slice(2));
 const options = {
 	absoluteDomain: "http://localhost:3000",
-	administrationHttpPort: 5000,
+	activeModule: "contentPipeline",
+	action: "build",
 	configurationPath: ".systemx/settings",
 	cleanBuild: false,
 	siteName: "Lasub",
 	navigationLinks: [],
+	verbose: false,
 	cssVars: {},
 	jsVars: {
 		galleryWrapAround: true,
@@ -27,19 +29,12 @@ const options = {
 	downloadMedia: false,
 	forceRendering: false,
 	httpPort: 8042,
-	portalHttpPort: 8020,
-	trackingHttpPort: 9090,
 	sessionCookie: "Portal_Session_Token",
 	portalRegisterEmailRequired: false,
-	openBrowser: false,
 	skipNetwork: false,
 	mailFrom: "test@dilewe.de",
-	startServer: false,
-	startShop: false,
-	startAdministration: false,
 	slackToken: "",
 	slackChannel: "",
-	startTracking: false,
 	storagePath: ".systemx/storage",
 	title: "Lasub",
 	targets: DefaultTargets,
@@ -80,14 +75,15 @@ const options = {
  * what was in a if the keys match.
  */
 const mergeObjects = (a,b) => {
-	if((a === null) || (b === null)){return;}
+	if((a === null) || (b === null)){return a;}
 	for(const bk in b){
 		if(typeof a[bk] === 'object' && a[bk] !== null){
-			mergeObjects(a[bk],b[bk]);
+			a[bk] = mergeObjects(a[bk],b[bk]);
 		}else{
 			a[bk] = b[bk];
 		}
 	}
+	return a;
 };
 /*
  * The last argument is the current target.
@@ -154,9 +150,10 @@ for (const arg in argv) {
 	}
 }
 /*
- * Assign target-specific options based on `currentTarget`
+ * Assign target-specific options based on `currentTarget`, by first splitting on "." we allow for unlimited nesting, with each
+ * sub-target starting out with it's parents options, but then having it's own options applied on top of that.
  */
-mergeObjects(options, options?.targets[currentTarget]);
+currentTarget.split(".").reduce((o,target) => mergeObjects(o, o?.targets[target]), options);
 /*
  * Do some sanity checks
  */
@@ -166,8 +163,8 @@ if (options.forceRendering && options.skipNetwork) {
 if (options.downloadMedia && options.skipNetwork) {
 	throw new Error(`Conflicting options \`downloadMedia\` and \`skipNetwork\` specified. You can only choose one.`);
 }
-if (!currentTarget || !(options?.targets[currentTarget])){
-	throw new Error(`Not a valid target \`${currentTarget}\``);
+if (currentTarget && !currentTarget.split(".").reduce((o,t) => o?.targets[t], options)) {
+	throw new Error(`Can't find target ${currentTarget}, please check your spelling and configuration files`);
 }
 if ((options.startServer || options.cleanBuild) && (!options.graphqlEndpoint || !options.graphqlEndpoint.startsWith("http"))) {
 	throw new Error(`No valid GraphQL endpoint specified, maybe an invalid/unknown target?`);

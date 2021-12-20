@@ -1,26 +1,25 @@
-import { mkdirp } from "./modules/common/fileSystem.mjs";
-import options from "./modules/common/options.mjs";
-import startSSG from "./modules/contentPipeline/back_end/index.mjs";
-import startShop from "./modules/userLogin/back_end/index.mjs";
-import startTracking from "./modules/userTracking/index.mjs";
-import startAdministration from "./modules/administration/index.mjs";
+import { mkdirp }     from "./modules/common/fileSystem.mjs";
+import options        from "./modules/common/options.mjs";
+import ContentServer  from "./modules/contentPipeline/back_end/index.mjs";
+import UserLogin      from "./modules/userLogin/back_end/index.mjs";
+import UserTracking   from "./modules/userTracking/index.mjs";
+import Administration from "./modules/administration/index.mjs";
+
 (async () => {
+	if(options.verbose){console.log(options);}
+
 	await mkdirp(options.configurationPath);
 	await mkdirp(options.distributionPath);
 	await mkdirp(options.storagePath);
-	console.log(options);
-	const promises = [];
-	if (options.startServer || options.cleanBuild) {
-		promises.push(startSSG());
+
+	switch(options.activeModule){
+	case "contentPipeline":
+		return await ContentServer(options.action);
+	case "userLogin":
+		return await UserLogin(options.action);
+	case "userTracking":
+		return await UserTracking(options.action);
+	case "administration":
+		return await Administration(options.action);
 	}
-	if (options.startShop) {
-		promises.push(startShop());
-	}
-	if (options.startTracking && !options.cleanBuild) {
-		promises.push(startTracking());
-	}
-	if (options.startAdministration) {
-		promises.push(startAdministration());
-	}
-	await Promise.all(promises);
 })();
