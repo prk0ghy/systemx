@@ -168,6 +168,7 @@ const buildNavigationMenuEntry = (entry, pageURI, curSiteId) => {
 		</li>
 	`;
 };
+const buildNavigationLink = link => `<li class="config-link"><a href="${link.href}" target="${link.target || "_blank"}">${link.text}</a></li>`;
 /*
  * Returns the HTML for the navigation menu.
  */
@@ -180,10 +181,16 @@ export const getNavigationMenu = async (target, pageURI) => {
 	const navigationContent = data.entries
 		.map(entry => buildNavigationMenuEntry(entry, pageURI, curSiteId))
 		.join("");
+	const navigationPrefix = options.navigationLinks.length
+		? `<ul role="list"></ul>`
+		: "";
 	return `
 		<aside id="navigation" style="display:none;">
 			<nav role="navigation">
-				<ul role="tree">${navigationContent}</ul>
+				<ul role="tree">
+					${options.navigationLinks.map(buildNavigationLink)}
+					${navigationContent}
+				</ul>
 			</nav>
 		</aside>
 	`;

@@ -10,8 +10,9 @@ const options = {
 	administrationHttpPort: 5000,
 	configurationPath: ".systemx/settings",
 	cleanBuild: false,
-	cssVars: {},
 	siteName: "Lasub",
+	navigationLinks: [],
+	cssVars: {},
 	jsVars: {
 		galleryWrapAround: true,
 		galleryBackgroundOpacity: 0.95,

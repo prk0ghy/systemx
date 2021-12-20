@@ -49,6 +49,7 @@ const defaultTargets = {
 		graphqlEndpoint: "https://rdhessen.test-dilewe.de/api",
 		httpPort: 8048,
 		favicon: "rdhessen",
+		navigationLinks: [{href: "https://mediathek.russlanddeutsche-hessen.de/", text: "Link zur Mediathek", target:"_blank"}],
 		title: "Infoportal Russlanddeutsche in Hessen"
 	},
 	stifterverband: {
