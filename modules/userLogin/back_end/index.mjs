@@ -17,10 +17,7 @@ const aExec = promisify(exec);
 const exportFrontend = async () => {
 	console.log("Exporting next.js Frontend");
 	const ret = await aExec("npm --prefix modules/userLogin/front_end run export");
-	if(ret.stderr){
-		console.error(ret);
-		throw new Error(`Error while exporting next.js Frontend`);
-	}
+	if(ret.stderr){console.error(ret);}
 	console.log("Done Exporting next.js Frontend");
 };
 
