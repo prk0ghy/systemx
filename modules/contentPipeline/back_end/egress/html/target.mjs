@@ -1,19 +1,19 @@
 import * as resources from "./page_elements/resources.mjs";
 import { buildHead } from "./page_elements/head.mjs";
-import { formatHTML } from "./format.mjs";
+import { formatHTML } from "../../../../common/format.mjs";
 import crypto from "crypto";
 import fs from "fs";
 import { loadNavigation } from "./page_elements/navigation.mjs";
-import Marker from "./types/helper/Marker.mjs";
-import { mkdirp } from "../../common/fileSystem.mjs";
-import loadModules from "../../common/loadModules.mjs";
-import options from "../../common/options.mjs";
+import Marker from "../../types/helper/Marker.mjs";
+import { mkdirp } from "../../../../common/fileSystem.mjs";
+import loadModules from "../../../../common/loadModules.mjs";
+import options from "../../../../common/options.mjs";
 import path from "path";
-import query, { getContext as getCMSContext, introspectCraft } from "./cms.mjs";
-import { makeRenderer } from "./renderer.mjs";
-import RenderingContext from "./renderingContext.mjs";
+import query, { getContext as getCMSContext, introspectCraft } from "../../ingress/graphql/cms.mjs";
+import { makeRenderer } from "../../renderer.mjs";
+import RenderingContext from "../../renderingContext.mjs";
 import wrapWithApplicationShell from "./page.mjs";
-import supportMessage from "../../common/supportMessenger.mjs";
+import supportMessage from "../../../../common/supportMessenger.mjs";
 export const resourceDirectoryName = "resources";
 const fsp = fs.promises;
 /*

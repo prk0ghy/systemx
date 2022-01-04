@@ -1,13 +1,8 @@
 import loadModules from "../../common/loadModules.mjs";
 import Error from "./types/helper/Error.mjs";
-import { getContext as getCMSContext, introspectMock } from "./cms.mjs";
+import { getContext as getCMSContext, introspectMock } from "./ingress/graphql/cms.mjs";
 import RenderingContext from "./renderingContext.mjs";
-const warnedContentTypes = new Set([
-	/*
-	* This content type is handled elsewhere and isn't necessary during rendering.
-	* Its only job is to determine which entry is supposed to be the home page.
-	*/
-]);
+
 /*
 * "Rendering" a content type means transforming it to HTML.
 * Usually, this function will be used by passing a CraftCMS model to it.
@@ -57,10 +52,6 @@ export const makeRenderer = contentTypes => async (model, context, hints) => {
 				model: mappedModel,
 				parentContext: context
 			}));
-		}
-		if (!warnedContentTypes.has(type)) {
-			console.warn(`Content type "${type}" is currently not supported.`);
-			warnedContentTypes.add(type);
 		}
 		return Error.render({
 			message: `This content type is not supported yet.`,

@@ -1,4 +1,5 @@
 import beautify from "js-beautify";
+
 export const formatBytes = bytes => {
 	const prefixes = ["Ki", "Mi", "Gi", "Ti"];
 	const [amount = bytes, prefix = ""] = (() => {
@@ -14,6 +15,7 @@ export const formatBytes = bytes => {
 	})();
 	return `${amount}\u202f${prefix}B`;
 };
+
 export const formatHTML = html => beautify.html(html, {
 	indent_size: "1",
 	indent_char: "\t",

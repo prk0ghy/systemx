@@ -3,7 +3,7 @@ import http from "http";
 import options from "../../common/options.mjs";
 import path from "path";
 import serveStatic from "serve-static";
-import { renderSingleEntry } from "./target.mjs";
+import { renderSingleEntry } from "./egress/html/target.mjs";
 /*
 * Content URIs correspond to rendered entries.
 * Resources like fonts are not considered content URIs.

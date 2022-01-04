@@ -1,7 +1,7 @@
 import GraphQLRequest from "graphql-request";
-import loadModules from "../../common/loadModules.mjs";
+import loadModules from "../../../../common/loadModules.mjs";
 import request from "./rateLimiting.mjs";
-import options from "../../common/options.mjs";
+import options from "../../../../common/options.mjs";
 
 const { gql } = GraphQLRequest;
 const memoize = fn => {

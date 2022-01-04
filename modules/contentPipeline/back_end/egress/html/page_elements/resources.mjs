@@ -1,16 +1,18 @@
 import fs from "fs";
+import autoprefixer from "autoprefixer";
+import postCSS from "postcss";
 
 const fsp = fs.promises;
 
-function fileExtension(filename) {
+const fileExtension = (filename) => {
 	return filename.substring(filename.lastIndexOf(".") + 1, filename.length) || filename;
-}
+};
 
-function isInline(filename) {
+const isInline = (filename) => {
 	return filename.indexOf(".inline.") !== -1;
-}
+};
 
-async function getFromPath(ext, prefix, inline) {
+const getFromPath = async (ext, prefix, inline) => {
 	try {
 		const names = await fsp.readdir(prefix);
 		let ret = "";
@@ -35,9 +37,9 @@ async function getFromPath(ext, prefix, inline) {
 		return ret;
 	}
 	catch (e) { return ""; }
-}
+};
 
-async function getFromContentTypes(ext, inline) {
+const getFromContentTypes = async (ext, inline) => {
 	try {
 		const names = await fsp.readdir("modules/contentPipeline/front_end/content_types/");
 		let ret = "";
@@ -49,9 +51,9 @@ async function getFromContentTypes(ext, inline) {
 		return ret;
 	}
 	catch (e) { return ""; }
-}
+};
 
-async function getFromThemes(ext, inline) {
+const getFromThemes = async (ext, inline) => {
 	try {
 		const names = await fsp.readdir("modules/contentPipeline/front_end/themes/");
 		let ret = "";
@@ -63,9 +65,9 @@ async function getFromThemes(ext, inline) {
 		return ret;
 	}
 	catch (e) { return ""; }
-}
+};
 
-export async function getAssetDirectories() {
+export const getAssetDirectories = async  () => {
 	const ret = [];
 
 	try {
@@ -91,10 +93,34 @@ export async function getAssetDirectories() {
 	catch (e) { /* Skip if no themes available */ }
 
 	return ret;
-}
+};
 
-export async function get(extension, inline = false) {
+export const get = async (extension, inline = false) => {
 	const theme = await getFromThemes(extension, inline);
 	const contentType = await getFromContentTypes(extension, inline);
 	return theme + contentType;
-}
+};
+
+export const getJS = async () => {
+	return get("js", false);
+};
+
+export const getInlineJS = async () => {
+	return get("js", false);
+};
+
+export const getCSS = async () => {
+	return processCSS(await get("css", false));
+};
+
+export const getInlineCSS = () => {
+	return get("css", true);
+};
+
+export const processCSS = async  (css) => {
+	const result = postCSS([ autoprefixer ]).process(css);
+	result.warnings().forEach(warning => {
+		console.warn(warning.toString());
+	});
+	return result.css;
+};

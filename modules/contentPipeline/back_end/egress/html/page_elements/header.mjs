@@ -1,5 +1,5 @@
 import { getNavigationHeader } from "./navigation.mjs";
-import options from "../../../common/options.mjs";
+import options from "../../../../../common/options.mjs";
 
 const getEditLink = entry => {
 	const craftPrefix = options.graphqlEndpoint.substring(0,options.graphqlEndpoint.lastIndexOf("/"));

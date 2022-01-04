@@ -1,4 +1,4 @@
-import * as target  from "./target.mjs";
+import * as target  from "./egress/html/target.mjs";
 import options, { currentTarget } from "../../common/options.mjs";
 import serve from "./server.mjs";
 

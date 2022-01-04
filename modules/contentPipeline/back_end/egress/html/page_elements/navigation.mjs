@@ -1,6 +1,7 @@
 import GraphQLRequest from "graphql-request";
 import { convertCraftURLToURI } from "../target.mjs";
-import options from "../../../common/options.mjs";
+import options from "../../../../../common/options.mjs";
+
 const {
 	gql,
 	request

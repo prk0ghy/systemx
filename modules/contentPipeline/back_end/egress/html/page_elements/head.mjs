@@ -1,7 +1,6 @@
-import * as css from "./css.mjs";
-import * as js from "./js.mjs";
+import {getInlineCSS, getCSS, getInlineJS, getJS} from "./resources.mjs";
 import { getTargetPath, getResourcePath, resourceDirectoryName } from "../target.mjs";
-import options from "../../../common/options.mjs";
+import options from "../../../../../common/options.mjs";
 import crypto from "crypto";
 import fs from "fs";
 import path from "path";
@@ -86,14 +85,15 @@ export const buildHead = async targetName => {
 	promises.push(copyResource("node_modules/photoswipe/dist/default-skin", resourcePath, "default-skin.png"));
 	promises.push(copyResource("node_modules/photoswipe/dist/default-skin", resourcePath, "preloader.gif"));
 
-	const cssInline   = await css.getInline();
-	const cssContent  = await css.get();
-	const cssFilename = path.join(resourcePath, "main.css");
+	const cssInline   = await getInlineCSS();
+	const cssContent  = await getCSS();
+	const cssFilename = `${resourcePath}/main.css`;
 	resourceNamedHashes.set("main.css", md5(cssContent));
 	promises.push(fsp.writeFile(cssFilename, cssContent));
 
-	const jsContent = await js.get();
-	const jsFilename = path.join(resourcePath, "main.js");
+	const jsInline = await getInlineJS();
+	const jsContent = await getJS();
+	const jsFilename = `${resourcePath}/main.js`;
 	resourceNamedHashes.set("main.js", md5(jsContent));
 	promises.push(fsp.writeFile(jsFilename, jsContent));
 
@@ -101,7 +101,6 @@ export const buildHead = async targetName => {
 	let curHead = '';
 	curHead += `<style>${cssInline}</style>`;
 	curHead += resourceTag('quill.snow.css');
-
 	curHead += resourceTag('photoswipe.css');
 	curHead += resourceTag('default-skin.css');
 
@@ -113,6 +112,7 @@ export const buildHead = async targetName => {
 	curHead += resourceTag('photoswipe.min.js');
 
 	curHead += configJSVars();
+	curHead += `<script>${jsInline}</script>`;
 	curHead += resourceTag('main.js');
 
 	curHead += `<link rel="icon" href="/favicon.svg"/>`;
