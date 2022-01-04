@@ -10,10 +10,13 @@ export default async function wrapWithApplicationShell(targetName, {
 	return `
 		<!doctype html>
 		<html lang="de">
-			<head>${await getHead(targetName, pageTitle)}</head>
+			<head>
+				<title>${pageTitle}</title>
+				${await getHead(targetName)}
+			</head>
 			<body>
-				<header>${await getHeader(targetName, pageURI, entry)}</header>
-				${await getNavigationMenu(targetName, pageURI)}
+				<header>${await getHeader(pageURI, entry)}</header>
+				${await getNavigationMenu(pageURI)}
 				${content}
 			</body>
 		</html>

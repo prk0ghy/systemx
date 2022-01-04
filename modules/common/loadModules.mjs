@@ -32,8 +32,7 @@ const recurseDirectory = async (directory, types) => {
 	}));
 };
 
-const loadModules = async directoryName => {
-	const types = new Map();
+const loadModules = async (directoryName, types = new Map()) => {
 	const directory = path.join(await packageDirectory(), directoryName);
 	await recurseDirectory(directory, types);
 	return types;

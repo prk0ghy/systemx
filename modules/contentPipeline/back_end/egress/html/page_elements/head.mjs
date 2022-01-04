@@ -121,7 +121,7 @@ export const buildHead = async targetName => {
 	headResources.set(targetName, curHead);
 };
 
-const getHead = async (targetName, pageTitle) => {
+const getHead = async targetName => {
 	if(!headResources.has(targetName)){
 		console.error("Trying to build pages before the head could be properly built");
 		console.log(headResources);
@@ -131,7 +131,6 @@ const getHead = async (targetName, pageTitle) => {
 		<meta charset="utf-8">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>${pageTitle}</title>
 		${headResources.get(targetName)}
 	`;
 };

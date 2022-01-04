@@ -3,7 +3,6 @@ import { buildHead } from "./page_elements/head.mjs";
 import { formatHTML } from "../../../../common/format.mjs";
 import crypto from "crypto";
 import fs from "fs";
-import { loadNavigation } from "./page_elements/navigation.mjs";
 import Marker from "../../types/helper/Marker.mjs";
 import { mkdirp } from "../../../../common/fileSystem.mjs";
 import loadModules from "../../../../common/loadModules.mjs";
@@ -136,7 +135,6 @@ const findEntryByURI = (entries, uri) => {
  * Should only be used as a preview for authors; production releases should use `buildEntries` instead.
  */
 export const renderSingleEntry = async (targetName, uri) => {
-	const loadNavigationPromise = loadNavigation(targetName);
 	const entries = await getEntries();
 	let entry = findEntryByURI(entries, uri);
 	if((uri === "") || (uri === "/") || (uri === "/index.html")){
@@ -173,7 +171,6 @@ export const renderSingleEntry = async (targetName, uri) => {
 			helper: helperTypes
 		}
 	}));
-	await loadNavigationPromise;
 	const wrappedHTML = await wrapWithApplicationShell(targetName, {
 		content,
 		entry,
@@ -386,7 +383,6 @@ export const build = async targetName => {
 
 	if (!options.skipNetwork) {
 		console.time("target#buildEntries");
-		await loadNavigation(targetName);
 		await buildEntries(targetName);
 		console.timeEnd("target#buildEntries");
 	}
