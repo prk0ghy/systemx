@@ -199,6 +199,25 @@ export default {
 			})
 		}]
 	]),
+	renderFigure({
+		caption,
+		imageHTML,
+		licenseHTML,
+		position,
+		hideButtons,
+		width
+	}) {
+		const captionHTML = caption
+			? `<figcaption>${caption}</figcaption>`
+			: "";
+		return `
+			<figure figure-position="${position}" figure-type="picture" figure-width="${width}" hide-buttons="${hideButtons ? 1 : 0}">
+				${imageHTML}
+				${licenseHTML}
+				${captionHTML}
+			</figure>
+		`;
+	},
 	async render({
 		displayInOneLine = false,
 		id,
@@ -256,29 +275,12 @@ export default {
 						${InfoLink.render({infoLink})}
 						${figureHTML}
 						${galleryIntroductionHTML}
-						${text ?? ""}
+						<div class="text-content">
+							${text ?? ""}
+						</div>
 					</inner-content>
 				</section>
 			`;
 		}
-	},
-	renderFigure({
-		caption,
-		imageHTML,
-		licenseHTML,
-		position,
-		hideButtons,
-		width
-	}) {
-		const captionHTML = caption
-			? `<figcaption>${caption}</figcaption>`
-			: "";
-		return `
-			<figure figure-position="${position}" figure-type="picture" figure-width="${width}" hide-buttons="${hideButtons ? 1 : 0}">
-				${imageHTML}
-				${licenseHTML}
-				${captionHTML}
-			</figure>
-		`;
 	}
 };
