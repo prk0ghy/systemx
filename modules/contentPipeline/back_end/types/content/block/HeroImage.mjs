@@ -18,6 +18,7 @@ export default {
 		["inhaltsbausteine_trennerbild_BlockType", {
 			fetch: cms => `
 				id
+				overlay: textOverlay
 				images: datei {
 					${cms.fragments.asset}
 				}
@@ -32,7 +33,8 @@ export default {
 		}]
 	]),
 	async render({
-		caption,
+		caption = "",
+		overlay = "",
 		id,
 		image
 	}, {
@@ -60,6 +62,9 @@ export default {
 		const captionHTML = caption
 			? `<figcaption>${caption}</figcaption>`
 			: "";
+		const overlayHTML = overlay
+			? `<figure-overlay>${overlay}</figure-overlay>`
+			: "";
 		return `
 			<section content-type="hero-image" ${contentTypeIDIf(id)}>
 				<inner-content>
@@ -67,6 +72,7 @@ export default {
 						${mediaHTML}
 						${licenseHTML}
 						${captionHTML}
+						${overlayHTML}
 					</figure>
 				</inner-content>
 			</section>
