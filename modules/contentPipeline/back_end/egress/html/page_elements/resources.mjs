@@ -106,7 +106,7 @@ export const getJS = async () => {
 };
 
 export const getInlineJS = async () => {
-	return get("js", false);
+	return get("js", true);
 };
 
 export const getCSS = async () => {
