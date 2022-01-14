@@ -15,14 +15,16 @@ const aExec = promisify(exec);
 
 // npm --prefix modules/userLogin/front_end run export
 const exportFrontend = async () => {
-	console.log("Exporting next.js Frontend");
-	const ret = await aExec("npm --prefix modules/userLogin/front_end run export");
+	console.log(`Exporting next.js Frontend ${process.cwd()}`);
+	const ret = await aExec("npm run export", {cwd: "modules/userLogin/front_end"});
 	if(ret.stderr){console.error(ret);}
 	console.log("Done Exporting next.js Frontend");
 };
 
 const start = async () => {
-	await exportFrontend();
+	if(Options.mode === "production"){
+		await exportFrontend();
+	}
 	const features = await loadModules("modules/userLogin/back_end/features");
 	await Template.loadDir("modules/userLogin/back_end/templates/");
 	console.log(features);

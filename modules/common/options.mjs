@@ -33,6 +33,7 @@ const options = {
 	portalRegisterEmailRequired: false,
 	skipNetwork: false,
 	mailFrom: "test@dilewe.de",
+	mode: "production",
 	slackToken: "",
 	slackChannel: "",
 	storagePath: ".systemx/storage",
@@ -142,6 +143,7 @@ for (const env in process.env) {
 }
 /*
  * Command-line arguments have the highest priority
+ * For example --mode="development" sets the mode option to development
  */
 for (const arg in argv) {
 	const optionName = arg.replace(/-[a-z]/g, $1 => `${$1.slice(1).toUpperCase()}`);
@@ -153,7 +155,7 @@ for (const arg in argv) {
  * Assign target-specific options based on `currentTarget`, by first splitting on "." we allow for unlimited nesting, with each
  * sub-target starting out with it's parents options, but then having it's own options applied on top of that.
  */
-currentTarget.split(".").reduce((o,target) => mergeObjects(o, o?.targets[target]), options);
+currentTarget.split(".").reduce((o,target) => mergeObjects(o, o.targets?.[target]), options);
 /*
  * Do some sanity checks
  */
@@ -163,7 +165,7 @@ if (options.forceRendering && options.skipNetwork) {
 if (options.downloadMedia && options.skipNetwork) {
 	throw new Error(`Conflicting options \`downloadMedia\` and \`skipNetwork\` specified. You can only choose one.`);
 }
-if (currentTarget && !currentTarget.split(".").reduce((o,t) => o?.targets[t], options)) {
+if (currentTarget && !currentTarget.split(".").reduce((o,t) => o.targets?.[t], options)) {
 	throw new Error(`Can't find target ${currentTarget}, please check your spelling and configuration files`);
 }
 if ((options.startServer || options.cleanBuild) && (!options.graphqlEndpoint || !options.graphqlEndpoint.startsWith("http"))) {
