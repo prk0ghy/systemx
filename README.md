@@ -34,7 +34,7 @@ errors due to the usage of ESM and other newer features found in this codebase.
 Running `npm install` or `npm install dev` after cloning should, as the command suggests, install everything you need in order to run SystemX
 
 ## Development
-Just run `npm install` in order to install all the prerequisites and then use `npm run dev:ssg` when working on the Content parts, or use `npm run dev:shop` when working on the portal.
+Just run `npm install` in order to install all the prerequisites and then use `npm run dev lasub.preview` when working on the Content parts, or use `npm run dev:shop` when working on the portal.
 
 ## Linting
 Before commiting it is advisable to run `npm run lint`, since those tests will be run by the CI/CD
@@ -65,5 +65,5 @@ system.
 
 ## UserTracking
 This module is meant to be used as a minimally invasive user tracking, intended
-for situations where we have to keep count of page accesses but not intended 
+for situations where we have to keep count of page accesses but not intended
 for analytics.
