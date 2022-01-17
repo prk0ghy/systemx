@@ -117,6 +117,9 @@ const defaultTargets = {
 			frontEndVariables: {
 				api: {
 					endpoint: "https://tagungsbaende.dilewe.de/portal-user"
+				},
+				userDelete: {
+					enabled: true
 				}
 			},mounts: [
 				{

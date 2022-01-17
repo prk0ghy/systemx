@@ -5,12 +5,10 @@ import routes from "root/routes";
 import styles from "./Footer.module.css";
 const Footer = () => {
 	const footerRoutes = [];
-	if (Configuration?.imprint?.enabled) {
-		footerRoutes.push(routes.imprint);
-	}
-	if (Configuration?.privacyPage?.enabled) {
-		footerRoutes.push(routes.privacy);
-	}
+
+	footerRoutes.push(routes.imprint);
+	footerRoutes.push(routes.privacy);
+
 	if (Configuration?.termsAndConditions?.enabled) {
 		footerRoutes.push(routes.termsAndConditions);
 	}

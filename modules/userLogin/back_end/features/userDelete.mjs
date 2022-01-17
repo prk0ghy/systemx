@@ -1,16 +1,20 @@
 import * as User from "../user.mjs";
 import * as Session from "../session.mjs";
+import Database from "../database.mjs";
 import Mail from "../../../common/mail.mjs";
 import Options from "../../../common/options.mjs";
 import Filter from "../filter.mjs";
 import MakeID from "../../../common/randomString.mjs";
 
-const deleteRequests = {};
+
+export const get = hash => Database.get(`SELECT * UserDeletionRequest User WHERE hash = ?`, hash);
 
 const add = async user => {
+	console.log(user);
 	if(!user.email){return false;}
 	const hash = MakeID(64);
-	deleteRequests[hash] = user.ID|0;
+	const row = await Database.run("INSERT INTO UserDeletionRequest (hash, user) VALUES (?, ?)", [hash, user.ID|0]);
+	console.log(row);
 	const values = {
 		userName: user.name,
 		userEmail: user.email,
@@ -20,13 +24,14 @@ const add = async user => {
 	return hash;
 };
 
-Filter("userDeleteRequest",async (v,next) => {
+Filter("userDeleteRequest", async (v,next) => {
 	const user = await User.getByID(v.ses?.user?.ID|0);
-	delete user?.password;
+	console.log(user);
 	if(!user){
 		v.res.error = "Login first";
 		return v;
 	}
+	delete user?.password;
 	if(!user.email){
 		v.res.error = "Your account needs an associated E-Mail Address so we can send you a confirmation mail.";
 		return v;
@@ -36,13 +41,13 @@ Filter("userDeleteRequest",async (v,next) => {
 	return await next(v);
 });
 
-Filter("userDeleteCheck",async (v,next) => {
+Filter("userDeleteCheck", async (v,next) => {
 	const hash = v.req.deleteHash;
 	v.res.deleteHashFound = deleteRequests[hash] !== undefined;
 	return await next(v);
 });
 
-Filter("userDeleteSubmit",async (v,next) => {
+Filter("userDeleteSubmit", async (v,next) => {
 	const hash = v.req.deleteHash;
 	const userID = deleteRequests[hash];
 	if(!userID){
@@ -61,3 +66,14 @@ Filter("userDeleteSubmit",async (v,next) => {
 	v.ses = {};
 	return await next(v);
 });
+
+await (async () => {
+	await Database.run(`
+		CREATE TABLE IF NOT EXISTS UserDeletionRequest (
+			hash TEXT NOT NULL,
+			user INTEGER NOT NULL REFERENCES User(ID) ON DELETE CASCADE ON UPDATE CASCADE,
+			PRIMARY KEY (hash)
+		);
+		CREATE INDEX idx_UserDeletionRequest_user ON UserDeletionRequest (hash);
+	`);
+})();
