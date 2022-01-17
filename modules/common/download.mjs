@@ -1,3 +1,7 @@
+/* Simple module exporting an async function that should be used when downloading since
+ * it also does rate limiting so as to not overload the client machine, which would end
+ * up slowing things down.
+ */
 import fs from "fs";
 import https from "https";
 
