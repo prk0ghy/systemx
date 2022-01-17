@@ -121,14 +121,14 @@ const defaultTargets = {
 			},mounts: [
 				{
 					url: "/resources/",
-					localDir: "/var/www/html/dilewe.de/tagungsbaende/web/tagungsbaende/resources/"
+					localDir: "/var/www/html/dilewe.de/systemx/web/tagungsbaende/resources/"
 				},{
 					url: "/vogelinternistik2/",
-					localDir: "/var/www/html/dilewe.de/tagungsbaende/web/tagungsbaende/vogelinternistik2/",
+					localDir: "/var/www/html/dilewe.de/systemx/web/tagungsbaende/vogelinternistik2/",
 					userGroup: "vogelinternistik2"
 				},{
 					url: "/anaesthesie_reptilien/",
-					localDir: "/var/www/html/dilewe.de/tagungsbaende/web/tagungsbaende/anaesthesie_reptilien/",
+					localDir: "/var/www/html/dilewe.de/systemx/web/tagungsbaende/anaesthesie_reptilien/",
 					userGroup: "anaesthesie_reptilien"
 				}
 			]
