@@ -6,6 +6,7 @@ import Options from "../../../common/options.mjs";
 import Filter from "../filter.mjs";
 import MakeID from "../../../common/randomString.mjs";
 
+const deleteRequests = {};
 
 export const get = hash => Database.get(`SELECT * UserDeletionRequest User WHERE hash = ?`, hash);
 
