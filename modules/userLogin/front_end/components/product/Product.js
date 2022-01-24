@@ -19,6 +19,7 @@ const Product = ({
 	previewURL,
 	previewWidth,
 	price,
+	color,
 	startWithPreview
 }) => {
 	const productClassName = cx(styles.product, {
@@ -32,7 +33,7 @@ const Product = ({
 	return (
 		<div className={ productClassName }>
 			<div className={ styles.row }>
-				<div className={ styles.card }>
+				<div className={ styles.card } style={ { backgroundColor: color } }>
 					<h2 className={ styles.mobileName }>
 						<Laced>
 							<ImageText className={ styles.text }>
