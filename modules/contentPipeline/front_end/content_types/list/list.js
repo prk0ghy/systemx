@@ -16,6 +16,11 @@
 			list.setAttribute("type","a");
 		}
 
+		// Set the second level of OL to the small Letter type
+		for(const secondList of document.querySelectorAll("section[content-type=text-and-image] ol ol")) {
+			secondList.setAttribute("type", "a");
+		}
+
 		// This should pretty much have the same functionality as normale OLs, only that we have
 		// separate elements which help with styling
 		for(const list of document.querySelectorAll("main ol")){
