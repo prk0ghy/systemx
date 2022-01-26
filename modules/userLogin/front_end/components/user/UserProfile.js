@@ -56,10 +56,7 @@ const UserProfile = () => {
 							? (<ButtonLink href="/reset-password">Passwort zurücksetzen</ButtonLink>)
 							: null
 						}
-						{ Configuration?.userDelete?.enabled
-							? (<ButtonLink className={ styles.delete } href="/delete-user">Benutzer löschen</ButtonLink>)
-							: null
-						}
+						<ButtonLink className={ styles.delete } href="/delete-user">Benutzer löschen</ButtonLink>
 						<Button kind="primary" onClick={ doLogout }>Logout</Button>
 					</section>
 				)

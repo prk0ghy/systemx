@@ -11,7 +11,7 @@ const deleteRequests = {};
 export const get = hash => Database.get(`SELECT * UserDeletionRequest User WHERE hash = ?`, hash);
 
 const add = async user => {
-	console.log(user);
+	console.log(`Deletion request for ${user.email}`);
 	if(!user.email){return false;}
 	const hash = MakeID(64);
 	const row = await Database.run("INSERT INTO UserDeletionRequest (hash, user) VALUES (?, ?)", [hash, user.ID|0]);

@@ -15,6 +15,12 @@ const options = {
 	navigationLinks: [],
 	verbose: false,
 	cssVars: {},
+	email: {
+		host: "smtp.server.local",
+		port: 465,
+		username: "test",
+		password: "test"
+	},
 	jsVars: {
 		galleryWrapAround: true,
 		galleryBackgroundOpacity: 0.95,
@@ -51,15 +57,6 @@ const options = {
 				enabled: false
 			},
 			shoppingCart: {
-				enabled: false
-			},
-			imprint: {
-				enabled: false
-			},
-			privacyPage: {
-				enabled: false
-			},
-			termsAndConditions: {
 				enabled: false
 			},
 			userDelete: {
