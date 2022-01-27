@@ -3,6 +3,7 @@ import { exec } from "child_process";
 import loadModules from "../../common/loadModules.mjs";
 import Mount from "./mount.mjs";
 import Options from "../../common/options.mjs";
+import Mail from "../../common/mail.mjs";
 import * as Template from "../../common/template.mjs";
 import RequestHandler from "./request.mjs";
 import * as Session from "./session.mjs";
@@ -27,7 +28,6 @@ const start = async () => {
 	}
 	const features = await loadModules("modules/userLogin/back_end/features");
 	await Template.loadDir("modules/userLogin/back_end/templates/");
-	console.log(features);
 	const app     = new Koa();
 	const router  = new KoaRouter();
 	const filters = filterBuildAll();

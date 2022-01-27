@@ -25,24 +25,20 @@ const sendRaw = ({from=null,to,subject,text,html}) => {
 };
 
 const subjectRegex = /<title>([^<]*)<\/title>/;
-const sendMail = async ({from=null, to, template, values}) => {
-	console.log("Sending!");
-	if(!to){
-		return false;
-	}
-	if(from === null){
-		return await sendMail({from: Options.mailFrom, to, template, values});
-	}
+const sendMail = async ({to, template, values}) => {
+	if(!to){return false;}
+	const from = Options.mailFrom;
 	const html = await Template(template+".html", values);
+	if(!html){return false;}
 	const text = await Template(template+".txt",  values);
+	if(!text){return false;}
 	const matches = html.match(subjectRegex);
-	if(matches.length < 2){
+	if(!matches || (matches.length < 2)){
 		console.error("Couldn't find a valid <title> in "+template);
 		return false;
 	}
 	const subject = String(matches[1]);
 	return await sendRaw({from,to,subject,html,text});
 };
-//console.log(await sendRaw({from:"tagungsbaende@dilewe.de", to: "bennyschulenburg@gmx.de", subject: "Test", text: "Test", html: "Test"}));
 
 export default sendMail;

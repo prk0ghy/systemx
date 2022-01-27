@@ -5,7 +5,7 @@ const templateCache = new Map();
 const templatePaths = {};
 export const loadDir = async directory => {
 	try {
-		const fileList = await fs.promises.readdir(directory, {
+		const fileList = await fsp.readdir(directory, {
 			withFileTypes: true
 		});
 		await Promise.all(fileList.map(async directoryEntry => {
@@ -87,7 +87,10 @@ const buildTemplate = async templateName => {
 	return λ;
 };
 export const render = async (templateName, v={}) => {
-	if(!templatePaths[templateName]){return templateName + " did not have template bound to it";}
+	if(!templatePaths[templateName]){
+		console.error(`Couldn't find a template for ${templateName}`)
+		return false;
+	}
 	const template = await buildTemplate(templateName);
 	return await template(v);
 };

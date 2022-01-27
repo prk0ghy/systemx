@@ -22,7 +22,7 @@ const ProductButton = ({
 			? "Aus dem Warenkorb"
 			: "In den Warenkorb"
 		: user?.groups
-			? "Nicht verfügbar"
+			? "Nicht freigeschaltet"
 			: "Bitte Einloggen";
 	const buttonText = hasAccess
 		? "Inhalt ansehen"

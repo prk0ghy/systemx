@@ -31,9 +31,9 @@ const Product = ({
 			<div className={ styles.price }>{ formatPrice(price) }</div>
 		);
 	return (
-		<div className={ productClassName }>
+		<div className={ productClassName } style={ { backgroundColor: color } }>
 			<div className={ styles.row }>
-				<div className={ styles.card } style={ { backgroundColor: color } }>
+				<div className={ styles.card }>
 					<h2 className={ styles.mobileName }>
 						<Laced>
 							<ImageText className={ styles.text }>

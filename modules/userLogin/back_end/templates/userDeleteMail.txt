@@ -1,3 +1,7 @@
-Hello, we have received a request for deletion of the account {{ userName }}.
+Guten Tag,
 
-Visit the following link to completely delete your account: {{ deleteLink }}, this action will be final and can not be reversed.
+Wir haben eine Anfrage erhalten, den Account {{ userName }} vollständig zu löschen. Noch wurde nichts an ihrem Account geändert, sollten Sie diese Anfrage nicht ausgelöst haben ignorieren Sie diese E-Mail einfach, wenn Sie ihren Account unwiderruflich löschen wollen, klicken Sie bitte auf den folgenden Link:
+
+{{ deleteLink }}
+
+© Digitale Lernwelten GmbH, Dominikanergasse 2, 85072 Eichstätt
