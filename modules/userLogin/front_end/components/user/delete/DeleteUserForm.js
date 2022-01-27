@@ -15,7 +15,6 @@ const DeleteUserForm = () => {
 		async vals => {
 			if (user && (vals.username === user.name)) {
 				const res = await userDeleteRequest(vals.username);
-				console.log(res);
 				setCurrentErrors(res.error
 					? <Error msg={ res.error }/>
 					: null);

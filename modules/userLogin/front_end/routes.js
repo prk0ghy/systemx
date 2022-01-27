@@ -35,6 +35,10 @@ export default {
 		name: "Passwort zurücksetzen",
 		path: "/reset-password"
 	},
+	resetPasswordSubmit: {
+		name: "Passwort zurücksetzen",
+		path: "reset-password/[token]"
+	},
 	termsAndConditions: {
 		name: "AGB",
 		path: "/terms-and-conditions"

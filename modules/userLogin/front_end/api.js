@@ -90,7 +90,7 @@ export const userMetaGet  = key => doAPICall("userMetaGet", { key });
 export const userMetaSet  = (key, value) => doAPICall("userMetaSet", { key, value });
 export const userRegister = (username, email, password, meta = {}) => doAPICall("userRegister", { username, email, password, meta });
 
-export const userPasswordResetRequest = username => doAPICall("userPasswordResetRequest", { username });
+export const userPasswordResetRequest = email => doAPICall("userPasswordResetRequest", { email });
 export const userPasswordResetCheck   = resetHash => doAPICall("userPasswordResetCheck", { resetHash });
 export const userPasswordResetSubmit  = (resetHash, newPassword) => doAPICall("userPasswordResetSubmit", { resetHash, newPassword });
 
