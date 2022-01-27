@@ -111,6 +111,15 @@ const defaultTargets = {
 			shop: {
 				activeModule: "userLogin",
 				httpPort: 8020
+			},
+			dev: {
+				portal: {
+					frontEndVariables: {
+						api: {
+							endpoint: "http://localhost:8020/portal-user"
+						}
+					}
+				}
 			}
 		},
 		portal: {

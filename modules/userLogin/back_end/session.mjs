@@ -71,9 +71,8 @@ export const check = ctx => {
 
 export const clear = sessionID => {
 	if(!sessionID){return false;} // Return immediatly in case of an invalid session
-	if(sessionID && sessionID?.cookies){ // If sessionID is actually a koa ctx, get the sessionID and continue with that
-		sessionID.cookies.clear(Options.sessionCookie);
-		return clear(sessionID?.cookies.get(Options.sessionCookie));
+	if(sessionID && sessionID?.cookies && sessionID?.cookies?.get){ // If sessionID is actually a koa ctx, get the sessionID and continue with that
+		return clear(sessionID?.cookies?.get(Options.sessionCookie));
 	}
 	delete sessions[sessionID];
 	DB.run(`DELETE FROM UserSession WHERE ID=?;`, [sessionID]);
@@ -107,7 +106,7 @@ export const loadAll = async filters => {
 			const ses = JSON.parse(row.value);
 			if(!ses?.user){return false;}
 			ses.user = await User.getByID(ses.user);
-			delete ses.user.password;
+			delete ses?.user?.password;
 			/* Run a fake request through userInfoGet so we get data from all activated filters,
 			 * we might have also just saved everything on the sqlite database, but this approach enables
 			 * us to change filters and/or fields without running into issues with stored sessions.

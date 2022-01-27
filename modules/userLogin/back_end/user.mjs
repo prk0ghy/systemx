@@ -15,7 +15,7 @@ export const add = async (name, email, password="") => {
 	return row.lastID;
 };
 
-export const remove = id => DB.run("DELETE FROM User WHERE ID = ?", id);
+export const remove = id => DB.run("DELETE FROM User WHERE ID = ?", [Number.parseInt(id)]);
 export const changePassword = async (id, pass) => {
 	const hash = await bcrypt.hash(pass, saltRounds);
 	await DB.run("UPDATE User SET password = ? WHERE ID = ?", [hash, id]);

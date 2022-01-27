@@ -6,9 +6,7 @@ import Options from "../../../common/options.mjs";
 import Filter from "../filter.mjs";
 import MakeID from "../../../common/randomString.mjs";
 
-const deleteRequests = {};
-
-export const get = hash => Database.get(`SELECT * UserDeletionRequest User WHERE hash = ?`, hash);
+export const get = hash => Database.get(`SELECT * FROM UserDeletionRequest User WHERE hash = ?`, hash);
 
 const add = async user => {
 	console.log(`Deletion request for ${user.email}`);
@@ -44,23 +42,23 @@ Filter("userDeleteRequest", async (v,next) => {
 
 Filter("userDeleteCheck", async (v,next) => {
 	const hash = v.req.deleteHash;
-	v.res.deleteHashFound = deleteRequests[hash] !== undefined;
+	v.res.deleteHashFound = Boolean(await get(hash));
 	return await next(v);
 });
 
 Filter("userDeleteSubmit", async (v,next) => {
 	const hash = v.req.deleteHash;
-	const userID = deleteRequests[hash];
-	if(!userID){
+	const { user } = await get(hash);
+	if(!user){
 		v.res.error = "Couldn't find deleteHash";
 		return v;
 	}
-	if(userID !== v.ses?.user?.ID|0){
+	if(user !== v.ses?.user?.ID|0){
 		v.res.error = "Please login first";
 		return v;
 	}
-	delete deleteRequests[hash];
-	await User.remove(userID);
+
+	await User.remove(user);
 	v.res.userDeleteSubmit = true;
 	Session.clear(v.ctx);
 	Session.clear(v.ses.sessionID);

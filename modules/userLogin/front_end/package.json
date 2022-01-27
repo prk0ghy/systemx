@@ -38,8 +38,9 @@
 	"scripts": {
 		"build": "npm run build:configuration && npm run download:fonts && next build",
 		"build:configuration": "node buildConfiguration.mjs -- tagungsbaende",
+		"build:configuration:dev": "node buildConfiguration.mjs -- tagungsbaende.dev",
 		"clean": "rm -rf .cache .next node_modules",
-		"dev": "npm run build:configuration && npm run download:fonts && next dev",
+		"dev": "npm run build:configuration:dev && npm run download:fonts && next dev",
 		"download:fonts": "get-google-fonts -i \"https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap\" -qo .cache/fonts -p ../.cache/fonts/",
 		"export": "npm run build && next export",
 		"lint": "npm run build:configuration && next lint",
