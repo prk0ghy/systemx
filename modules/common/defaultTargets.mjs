@@ -139,6 +139,10 @@ const defaultTargets = {
 					url: "/anaesthesie_reptilien/",
 					localDir: "/var/www/html/dilewe.de/systemx/web/tagungsbaende/anaesthesie_reptilien/",
 					userGroup: "anaesthesie_reptilien"
+				},{
+					url: "/vogelnarkose/",
+					localDir: "/var/www/html/dilewe.de/systemx/web/tagungsbaende/vogelnarkose/",
+					userGroup: "vogelnarkose"
 				}
 			]
 		}
