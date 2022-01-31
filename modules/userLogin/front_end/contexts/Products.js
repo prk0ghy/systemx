@@ -8,6 +8,20 @@ export const {
 	const state = {
 		products: [
 			{
+				caption: "Vogelnarkose",
+				description: `Praxisnahes Angebot zum Thema Anästhesie und Analgesie beim Vogelpatienten mit zahlreichen Anschauungsbeispielen.`,
+				longDescription: `Praxisnahes Angebot zum Thema Anästhesie und Analgesie beim Vogelpatienten mit zahlreichen Anschauungsbeispielen.`,
+				id: "vogelnarkose",
+				group: "vogelnarkose",
+				contentUri: "/vogelnarkose/inhalt/startseite/index.html",
+				name: "Tagesseminar",
+				previewHeight: 863,
+				previewURL: "/mvet/products/owl-sleeping.jpg",
+				previewWidth: 1381,
+				color: "#6C707B",
+				price: null
+			},
+			{
 				caption: "Exotenpraxis",
 				description: `Das umfangreiche Exotenpraxis-Kompendium bietet nicht nur wichtige Informationen zu zahlreichen Tierarten und Krankheitsbildern, sondern auch interessante Einblicke in allgemeine Praxisabläufe.`,
 				longDescription: `Das umfangreiche Exotenpraxis-Kompendium bietet nicht nur wichtige Informationen zu zahlreichen Tierarten und Krankheitsbildern, sondern auch interessante Einblicke in allgemeine Praxisabläufe.`,
