@@ -120,6 +120,20 @@ export const {
 				price: null
 			},
 			{
+				caption: "Bartagamen",
+				description: `Zum Schwerpunktthema Bartagamen findet sich hier eine Übersicht der verschiedenen Arten und ihrer Haltung sowie detailliert beschriebener Krankheitsbilder.`,
+				longDescription: `Zum Schwerpunktthema Bartagamen findet sich hier eine Übersicht der verschiedenen Arten und ihrer Haltung sowie detailliert beschriebener Krankheitsbilder.`,
+				id: "bartagamen",
+				group: "bartagamen",
+				contentUri: "/bartagamen/inhalt/einleitung/index.html",
+				name: "Tagesseminar",
+				previewHeight: 863,
+				previewURL: "/mvet/products/lizard-green.jpg",
+				previewWidth: 1381,
+				color: "#956820",
+				price: null
+			},
+			{
 				caption: "Vogelinternistik II",
 				description: `Mit Fällen zu den Schwerpunkten Neurologie, Dermatologie und Endokrinologie ergänzt sich das Angebot hervorragend mit dem ersten Teil.`,
 				longDescription: `Aufgrund der hohen Nachfrage haben wir unser beliebtes Tagesseminar "Internistik beim Vogelpatienten" in die zweite Runde geschickt.

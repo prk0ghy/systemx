@@ -143,6 +143,11 @@ const defaultTargets = {
 					url: "/vogelnarkose/",
 					localDir: "/var/www/html/dilewe.de/systemx/web/tagungsbaende/vogelnarkose/",
 					userGroup: "vogelnarkose"
+				},
+				{
+					url: "/bartagamen/",
+					localDir: "/var/www/html/dilewe.de/systemx/web/tagungsbaende/bartagamen/",
+					userGroup: "bartagamen"
 				}
 			]
 		}
