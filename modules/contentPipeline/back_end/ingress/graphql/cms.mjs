@@ -2,86 +2,11 @@ import GraphQLRequest from "graphql-request";
 import loadModules from "../../../../common/loadModules.mjs";
 import request from "./rateLimiting.mjs";
 import options from "../../../../common/options.mjs";
+import FS from "fs";
 
 const { gql } = GraphQLRequest;
-const memoize = fn => {
-	const cache = new Map();
-	return (...inputs) => {
-		const key = JSON.stringify(inputs);
-		if (cache.has(key)) {
-			return cache.get(key);
-		}
-		const result = fn(...inputs);
-		cache.set(key, result);
-		return result;
-	};
-};
-const globalFragments = {
-	asset: ({ introspection }) => `
-		height
-		url
-		width
-		mimeType
-		focalPoint
-		...on ${introspection.assetType} {
-			creativeCommonsTerms: rechtemodule
-			license: lizenzart
-			source: quelle
-			creator: urheber
-			description: beschreibung
-		}
-	`,
-	elements: memoize(({ types }) => `
-		inhaltsbausteine {
-			__typename
-			...on inhaltsbausteine_audioDatei_BlockType {
-				${types.inhaltsbausteine_audioDatei_BlockType}
-			}
-			...on inhaltsbausteine_aufgabe_BlockType {
-				${types.inhaltsbausteine_aufgabe_BlockType}
-			}
-			...on inhaltsbausteine_aufklappkasten_BlockType {
-				${types.inhaltsbausteine_aufklappkasten_BlockType}
-			}
-			...on inhaltsbausteine_download_BlockType {
-				${types.inhaltsbausteine_download_BlockType}
-			}
-			...on inhaltsbausteine_embeddedVideoAudio_BlockType {
-				${types.inhaltsbausteine_embeddedVideoAudio_BlockType}
-			}
-			...on inhaltsbausteine_galerie_BlockType {
-				${types.inhaltsbausteine_galerie_BlockType}
-			}
-			...on inhaltsbausteine_h5p_BlockType {
-				${types.inhaltsbausteine_h5p_BlockType}
-			}
-			...on inhaltsbausteine_heroimage_BlockType {
-				${types.inhaltsbausteine_heroimage_BlockType}
-			}
-			...on inhaltsbausteine_querslider_BlockType {
-				${types.inhaltsbausteine_querslider_BlockType}
-			}
-			...on inhaltsbausteine_tabelle_BlockType {
-				${types.inhaltsbausteine_tabelle_BlockType}
-			}
-			...on inhaltsbausteine_tabulator_BlockType {
-				${types.inhaltsbausteine_tabulator_BlockType}
-			}
-			...on inhaltsbausteine_textMitOhneBild_BlockType {
-				${types.inhaltsbausteine_textMitOhneBild_BlockType}
-			}
-			...on inhaltsbausteine_trennerbild_BlockType {
-				${types.inhaltsbausteine_trennerbild_BlockType}
-			}
-			...on inhaltsbausteine_ueberschrift_BlockType {
-				${types.inhaltsbausteine_ueberschrift_BlockType}
-			}
-			...on inhaltsbausteine_videoDatei_BlockType {
-				${types.inhaltsbausteine_videoDatei_BlockType}
-			}
-		}
-	`)
-};
+const globalFragments = {};
+
 /**
 * Sends a custom introspection query to the server, then returns an object that allows for high-level checks.
 * This, for instance, can be used to check whether or not a certain type exists.
@@ -152,25 +77,58 @@ export const getContext = async introspect => {
 		endPoint,
 		types
 	};
+	/* First we need to define the GraphQL query for assets, since this part is included in nearly every contentType */
+	cms.fragments.asset = globalFragments.asset = `
+		height
+		url
+		width
+		mimeType
+		focalPoint
+		...on ${cms.introspection.assetType} {
+			creativeCommonsTerms: rechtemodule
+			license: lizenzart
+			source: quelle
+			creator: urheber
+			description: beschreibung
+		}
+	`;
+
+	/* Then we determine each contentType available in the system and store a placeholder value for it,
+	 * so that we can detect if a contentType depends on another contentType that still has to be initialized */
+	let fetchQueue = [];
 	for (const [, {
 		module
 	}] of contentTypes.entries()) {
 		for (const [key, setup] of module.default.queries) {
-			if (Object.hasOwnProperty.call(cms.types, key)) {
-				continue;
+			cms.types[key] = "WRONG_ORDER-aαδω-順-💩";
+			fetchQueue.push([key, setup]);
+		}
+	}
+
+	/* Now we try and actually build the GraphQL queries, checking for the presence of this placeholder string on each iteration
+	 * and then trying the contentType in question again in the next loop. */
+	let lastLength = fetchQueue.length + 1;
+	while(fetchQueue.length){
+		if(fetchQueue.length >= lastLength){
+			throw new Error("fetchQueue does not shrink, this might be due to globalFragments having circular dependencies within their respective GraphQL fetch methods");
+		}
+		const workQueue = fetchQueue;
+		lastLength = workQueue.length;
+		fetchQueue = [];
+		for(const [key, setup] of workQueue){
+			const temp = setup.fetch(cms);
+			if(temp.includes("WRONG_ORDER-aαδω-順-💩")){
+				fetchQueue.push([key, setup]);
+			}else{
+				cms.types[key] = temp;
 			}
-			Object.defineProperty(cms.types, key, {
-				get: memoize(() => setup.fetch(cms))
-			});
 		}
 	}
-	for (const [key, value] of Object.entries(globalFragments)) {
-		if (Object.hasOwnProperty.call(cms.fragments, key)) {
-			continue;
-		}
-		Object.defineProperty(cms.fragments, key, {
-			get: memoize(() => value(cms))
-		});
-	}
+	cms.fragments.elements = cms.elements = globalFragments.elements = `
+	inhaltsbausteine {
+		__typename
+		${ Object.keys(cms.types).filter(k => k.startsWith("inhaltsbausteine_")).map(k => `...on ${k} { ${cms.types[k]} }`).join(" ") }
+	}`;
+
 	return cms;
 };

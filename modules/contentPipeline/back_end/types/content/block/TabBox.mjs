@@ -21,39 +21,7 @@ export default {
 					...on tabs_BlockType {
 						contents: quersliderInhalt {
 							__typename
-							...on quersliderInhalt_audioDatei_BlockType {
-								${types.quersliderInhalt_audioDatei_BlockType}
-							}
-							...on quersliderInhalt_aufgabe_BlockType {
-								${types.quersliderInhalt_aufgabe_BlockType}
-							}
-							...on quersliderInhalt_download_BlockType {
-								${types.quersliderInhalt_download_BlockType}
-							}
-							...on quersliderInhalt_embeddedVideoAudio_BlockType {
-								${types.quersliderInhalt_embeddedVideoAudio_BlockType}
-							}
-							...on quersliderInhalt_galerie_BlockType {
-								${types.quersliderInhalt_galerie_BlockType}
-							}
-							...on quersliderInhalt_h5p_BlockType {
-								${types.quersliderInhalt_h5p_BlockType}
-							}
-							...on quersliderInhalt_tabellen_BlockType {
-								${types.quersliderInhalt_tabellen_BlockType}
-							}
-							...on quersliderInhalt_tabulator_BlockType {
-								${types.quersliderInhalt_tabulator_BlockType}
-							}
-							...on quersliderInhalt_textMitOhneBild_BlockType {
-								${types.quersliderInhalt_textMitOhneBild_BlockType}
-							}
-							...on quersliderInhalt_ueberschrift_BlockType {
-								${types.quersliderInhalt_ueberschrift_BlockType}
-							}
-							...on quersliderInhalt_videoDatei_BlockType {
-								${types.quersliderInhalt_videoDatei_BlockType}
-							}
+							${Object.keys(types).filter(k => k.startsWith("quersliderInhalt_")).map(k => `... on ${k} { ${types[k]} }`)}
 						}
 						media: tabMedia {
 							${fragments.asset}
@@ -138,7 +106,7 @@ export default {
 							<previous-tab></previous-tab>
 							<next-tab></next-tab>
 						</tab-paging>
-					</tab-box-content-wrap>					
+					</tab-box-content-wrap>
 				</inner-content>
 			</section>
 		`;

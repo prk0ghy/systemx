@@ -1,75 +1,75 @@
 export default {
 	queries: new Map([
 		["aufgabeElemente_videoDatei_BlockType", {
-			fetch: cms => `
+			fetch: ({fragments}) => `
 				caption: videounterschrift
 				files: datei {
-					${cms.fragments.asset}
+					${fragments.asset}
 				}
 				id
 				posters: posterbild {
-					${cms.fragments.asset}
+					${fragments.asset}
 				}
 			`
 		}],
 		["aufklappAufgabenElemente_videoDatei_BlockType", {
-			fetch: cms => `
+			fetch: ({fragments}) => `
 				caption: videounterschrift
 				files: datei {
-					${cms.fragments.asset}
+					${fragments.asset}
 				}
 				id
 				posters: posterbild {
-					${cms.fragments.asset}
+					${fragments.asset}
 				}
 			`
 		}],
 		["aufklappElemente_videoDatei_BlockType", {
-			fetch: cms => `
+			fetch: ({fragments}) => `
 				caption: videounterschrift
 				files: datei {
-					${cms.fragments.asset}
+					${fragments.asset}
 				}
 				id
 				posters: posterbild {
-					${cms.fragments.asset}
+					${fragments.asset}
 				}
 			`
 		}],
 		["inhaltsbausteine_videoDatei_BlockType", {
-			fetch: cms => `
+			fetch: ({fragments}) => `
 				caption: videoUnterschrift
 				files: datei {
-					${cms.fragments.asset}
+					${fragments.asset}
 				}
 				id
 				isNumbered: nummerierung
 				posters: posterbild {
-					${cms.fragments.asset}
+					${fragments.asset}
 				}
 			`
 		}],
 		["quersliderAufgabenElemente_videoDatei_BlockType", {
-			fetch: cms => `
+			fetch: ({fragments}) => `
 				caption: videounterschrift
 				files: datei {
-					${cms.fragments.asset}
+					${fragments.asset}
 				}
 				id
 				posters: posterbild {
-					${cms.fragments.asset}
+					${fragments.asset}
 				}
 			`
 		}],
 		["quersliderInhalt_videoDatei_BlockType", {
-			fetch: cms => `
+			fetch: ({fragments}) => `
 				caption: videoUnterschrift
 				files: datei {
-					${cms.fragments.asset}
+					${fragments.asset}
 				}
 				id
 				posters: posterbild {
-					${cms.fragments.asset}
+					${fragments.asset}
 				}
 			`
 		}]

@@ -18,6 +18,7 @@ function workQueue(){
  * overload the Server.
  */
 export default (url,query) => {
+	console.log(query);
 	return new Promise((resolve,reject) => {
 		const call = async () => {
 			try {

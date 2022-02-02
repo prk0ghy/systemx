@@ -1,22 +1,5 @@
 export default {
 	queries: new Map([
-		["aufgabeElemente_download_BlockType", {
-			fetch: ({ fragments }) => `
-				description: beschreibung
-				files: datei {
-					${fragments.asset}
-				}
-				id
-				url: urldownload
-			`,
-			map: ({
-				files,
-				...rest
-			}) => ({
-				file: files[0],
-				...rest
-			})
-		}],
 		["aufklappElemente_download_BlockType", {
 			fetch: ({ fragments }) => `
 				description: beschreibung

@@ -52,7 +52,7 @@ export default {
 			fetch: cms => `
 				id
 				images: bilder {
-					${cms.fragments.asset}
+					${cms.fragments.asset || "WRONG_ORDER-aαδω"}
 				}
 				hideButtons
 				imageWidth: bildbreite
@@ -75,10 +75,10 @@ export default {
 			})
 		}],
 		["aufklappAufgabenElemente_textMitOhneBild_BlockType", {
-			fetch: cms => `
+			fetch: ({fragments}) => `
 				id
 				images: bilder {
-					${cms.fragments.asset}
+					${fragments.asset}
 				}
 				hideButtons
 				imageWidth: bildbreite
@@ -101,10 +101,10 @@ export default {
 			})
 		}],
 		["aufklappElemente_textMitOhneBild_BlockType", {
-			fetch: cms => `
+			fetch: ({fragments}) => `
 				id
 				images: bilder {
-					${cms.fragments.asset}
+					${fragments.asset}
 				}
 				hideButtons
 				imageWidth: bildbreite
@@ -127,14 +127,14 @@ export default {
 			})
 		}],
 		["inhaltsbausteine_textMitOhneBild_BlockType", {
-			fetch: cms => `
+			fetch: ({fragments}) => `
 				displayInOneLine: flex
 				id
 				images: bilder {
 					...on bilder_BlockType {
 						caption: bildunterschrift
 						files: datei {
-							${cms.fragments.asset}
+							${fragments.asset}
 						}
 					}
 				}
@@ -148,10 +148,10 @@ export default {
 			`
 		}],
 		["quersliderAufgabenElemente_textMitOhneBild_BlockType", {
-			fetch: cms => `
+			fetch: ({fragments}) => `
 				id
 				images: bilder {
-					${cms.fragments.asset}
+					${fragments.asset}
 				}
 				imageWidth: bildbreite
 				imagePosition: bildposition
@@ -173,10 +173,10 @@ export default {
 			})
 		}],
 		["quersliderInhalt_textMitOhneBild_BlockType", {
-			fetch: cms => `
+			fetch: ({fragments}) => `
 				id
 				images: bilder {
-					${cms.fragments.asset}
+					${fragments.asset}
 				}
 				hideButtons
 				imageWidth: bildbreite

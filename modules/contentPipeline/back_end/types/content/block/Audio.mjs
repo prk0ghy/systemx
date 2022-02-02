@@ -1,42 +1,42 @@
 export default {
 	queries: new Map([
 		["aufgabeElemente_audioDatei_BlockType", {
-			fetch: cms => `
+			fetch: ({fragments}) => `
 				audioFiles: audiodatei {
-					${cms.fragments.asset}
+					${fragments.asset}
 				}
 				caption: audiounterschrift
 				id
 			`
 		}],
 		["aufklappElemente_audioDatei_BlockType", {
-			fetch: cms => `
+			fetch: ({fragments}) => `
 				audioFiles: audiodatei {
-					${cms.fragments.asset}
+					${fragments.asset}
 				}
 				caption: audiounterschrift
 				id
 			`
 		}],
 		["quersliderInhalt_audioDatei_BlockType", {
-			fetch: cms => `
+			fetch: ({fragments}) => `
 				audioFiles: audio {
-					${cms.fragments.asset}
+					${fragments.asset}
 				}
 				caption: audiounterschrift
 				id
 			`
 		}],
 		["inhaltsbausteine_audioDatei_BlockType", {
-			fetch: cms => `
+			fetch: ({fragments}) => `
 				audioFiles: audio {
-					${cms.fragments.asset}
+					${fragments.asset}
 				}
 				caption: audiotext
 				id
 				isNumbered: nummerierung
 				posters: audiobild {
-					${cms.fragments.asset}
+					${fragments.asset}
 				}
 			`
 		}]

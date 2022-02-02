@@ -27,39 +27,7 @@ export default {
 					...on inhaltDesKastens_BlockType {
 						elements: aufklappElemente {
 							__typename
-							...on aufklappElemente_audioDatei_BlockType {
-								${types.aufklappElemente_audioDatei_BlockType}
-							}
-							...on aufklappElemente_aufgabe_BlockType {
-								${types.aufklappElemente_aufgabe_BlockType}
-							}
-							...on aufklappElemente_download_BlockType {
-								${types.aufklappElemente_download_BlockType}
-							}
-							...on aufklappElemente_embeddedVideoAudio_BlockType {
-								${types.aufklappElemente_embeddedVideoAudio_BlockType}
-							}
-							...on aufklappElemente_tabellen_BlockType {
-								${types.aufklappElemente_tabellen_BlockType}
-							}
-							...on aufklappElemente_tabulator_BlockType {
-								${types.aufklappElemente_tabulator_BlockType}
-							}
-							...on aufklappElemente_galerie_BlockType {
-								${types.aufklappElemente_galerie_BlockType}
-							}
-							...on aufklappElemente_h5p_BlockType {
-								${types.aufklappElemente_h5p_BlockType}
-							}
-							...on aufklappElemente_textMitOhneBild_BlockType {
-								${types.aufklappElemente_textMitOhneBild_BlockType}
-							}
-							...on aufklappElemente_ueberschrift_BlockType {
-								${types.aufklappElemente_ueberschrift_BlockType}
-							}
-							...on aufklappElemente_videoDatei_BlockType {
-								${types.aufklappElemente_videoDatei_BlockType}
-							}
+							${Object.keys(types).filter(k => k.startsWith("aufklappElemente_")).map(k => `... on ${k} { ${types[k]} }`)}
 						}
 					}
 				}

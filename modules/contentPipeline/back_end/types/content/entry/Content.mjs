@@ -1,3 +1,5 @@
+
+
 export default {
 	queries: new Map([
 		["inhalt_inhalt_Entry", {

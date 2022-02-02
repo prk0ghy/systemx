@@ -1,12 +1,12 @@
 export default {
 	queries: new Map([
 		["aufgabeElemente_galerie_BlockType", {
-			fetch: cms => `
+			fetch: ({fragments}) => `
 				captions: bildunterschriften {
 					text: col1
 				}
 				files: bilder {
-					${cms.fragments.asset}
+					${fragments.asset}
 				}
 				id
 				galleryIntroductionText: galerietext
@@ -24,12 +24,12 @@ export default {
 			})
 		}],
 		["aufklappAufgabenElemente_galerie_BlockType", {
-			fetch: cms => `
+			fetch: ({fragments}) => `
 				captions: bildunterschriften {
 					text: col1
 				}
 				files: bilder {
-					${cms.fragments.asset}
+					${fragments.asset}
 				}
 				id
 				galleryIntroductionText: galerietext
@@ -47,12 +47,12 @@ export default {
 			})
 		}],
 		["aufklappElemente_galerie_BlockType", {
-			fetch: cms => `
+			fetch: ({fragments}) => `
 				captions: bildunterschriften {
 					text: col1
 				}
 				files: bilder {
-					${cms.fragments.asset}
+					${fragments.asset}
 				}
 				id
 				galleryIntroductionText: galerietext
@@ -70,14 +70,14 @@ export default {
 			})
 		}],
 		["inhaltsbausteine_galerie_BlockType", {
-			fetch: cms => `
+			fetch: ({fragments}) => `
 				galleryIntroductionText: einleitungstextGallerie
 				id
 				images: bilder {
 					...on bilder_BlockType {
 						caption: bildunterschrift
 						files: datei {
-							${cms.fragments.asset}
+							${fragments.asset}
 						}
 					}
 				}
@@ -85,12 +85,12 @@ export default {
 			`
 		}],
 		["quersliderAufgabenElemente_galerie_BlockType", {
-			fetch: cms => `
+			fetch: ({fragments}) => `
 				captions: bildunterschriften_aufgabe {
 					text: col1
 				}
 				files: bilder_aufgabe {
-					${cms.fragments.asset}
+					${fragments.asset}
 				}
 				id
 				galleryIntroductionText: galerietext_aufgabe
@@ -108,12 +108,12 @@ export default {
 			})
 		}],
 		["quersliderInhalt_galerie_BlockType", {
-			fetch: cms => `
+			fetch: ({fragments}) => `
 				captions: bildunterschriften {
 					text: col1
 				}
 				files: bilder {
-					${cms.fragments.asset}
+					${fragments.asset}
 				}
 				id
 				galleryIntroductionText: galerietext

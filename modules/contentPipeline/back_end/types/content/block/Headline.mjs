@@ -1,12 +1,5 @@
 export default {
 	queries: new Map([
-		["aufgabeElemente_ueberschrift_BlockType", {
-			fetch: () => `
-				headline: ueberschrift
-				id
-				tag: groesse
-			`
-		}],
 		["aufklappElemente_ueberschrift_BlockType", {
 			fetch: () => `
 				headline: ueberschrift

@@ -6,21 +6,7 @@ export default {
 					...on aufklappAufgabenInhalt_BlockType {
 						elements: aufklappAufgabenElemente {
 							__typename
-							...on aufklappAufgabenElemente_embeddedVideoAudio_BlockType {
-								${types.aufklappAufgabenElemente_embeddedVideoAudio_BlockType}
-							}
-							...on aufklappAufgabenElemente_galerie_BlockType {
-								${types.aufklappAufgabenElemente_galerie_BlockType}
-							}
-							...on aufklappAufgabenElemente_h5p_BlockType {
-								${types.aufklappAufgabenElemente_h5p_BlockType}
-							}
-							...on aufklappAufgabenElemente_textMitOhneBild_BlockType {
-								${types.aufklappAufgabenElemente_textMitOhneBild_BlockType}
-							}
-							...on aufklappAufgabenElemente_videoDatei_BlockType {
-								${types.aufklappAufgabenElemente_videoDatei_BlockType}
-							}
+							${Object.keys(types).filter(k => k.startsWith("aufklappAufgabenElemente_")).map(k => `... on ${k} { ${types[k]} }`)}
 						}
 					}
 				}
@@ -43,24 +29,7 @@ export default {
 					...on quersliderAufgabenInhalt_BlockType {
 						elements: quersliderAufgabenElemente {
 							__typename
-							...on quersliderAufgabenElemente_galerie_BlockType {
-								${types.quersliderAufgabenElemente_galerie_BlockType}
-							}
-							...on quersliderAufgabenElemente_h5p_BlockType {
-								${types.quersliderAufgabenElemente_h5p_BlockType}
-							}
-							...on quersliderAufgabenElemente_tabellen_BlockType {
-								${types.quersliderAufgabenElemente_tabellen_BlockType}
-							}
-							...on quersliderAufgabenElemente_tabulator_BlockType {
-								${types.quersliderAufgabenElemente_tabulator_BlockType}
-							}
-							...on quersliderAufgabenElemente_textMitOhneBild_BlockType {
-								${types.quersliderAufgabenElemente_textMitOhneBild_BlockType}
-							}
-							...on quersliderAufgabenElemente_videoDatei_BlockType {
-								${types.quersliderAufgabenElemente_videoDatei_BlockType}
-							}
+							${Object.keys(types).filter(k => k.startsWith("quersliderAufgabenElemente_")).map(k => `... on ${k} { ${types[k]} }`)}
 						}
 					}
 				}
@@ -86,30 +55,7 @@ export default {
 					...on aufgabeInhalt_BlockType {
 						elements: aufgabeElemente {
 							__typename
-							...on aufgabeElemente_audioDatei_BlockType {
-								${types.aufgabeElemente_audioDatei_BlockType}
-							}
-							...on aufgabeElemente_embeddedVideoAudio_BlockType {
-								${types.aufgabeElemente_embeddedVideoAudio_BlockType}
-							}
-							...on aufgabeElemente_galerie_BlockType {
-								${types.aufgabeElemente_galerie_BlockType}
-							}
-							...on aufgabeElemente_h5p_BlockType {
-								${types.aufgabeElemente_h5p_BlockType}
-							}
-							...on aufgabeElemente_tabulator_BlockType {
-								${types.aufgabeElemente_tabulator_BlockType}
-							}
-							...on aufgabeElemente_tabellen_BlockType {
-								${types.aufgabeElemente_tabellen_BlockType}
-							}
-							...on aufgabeElemente_textMitOhneBild_BlockType {
-								${types.aufgabeElemente_textMitOhneBild_BlockType}
-							}
-							...on aufgabeElemente_videoDatei_BlockType {
-								${types.aufgabeElemente_videoDatei_BlockType}
-							}
+							${Object.keys(types).filter(k => k.startsWith("aufgabeElemente_")).map(k => `... on ${k} { ${types[k]} }`)}
 						}
 					}
 				}

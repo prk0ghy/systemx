@@ -1,10 +1,10 @@
 export default {
 	queries: new Map([
 		["inhaltsbausteine_heroimage_BlockType", {
-			fetch: cms => `
+			fetch: ({fragments}) => `
 				id
 				images: bild {
-					${cms.fragments.asset}
+					${fragments.asset}
 				}
 			`,
 			map: ({
@@ -16,11 +16,11 @@ export default {
 			})
 		}],
 		["inhaltsbausteine_trennerbild_BlockType", {
-			fetch: cms => `
+			fetch: ({fragments}) => `
 				id
 				overlay: textOverlay
 				images: datei {
-					${cms.fragments.asset}
+					${fragments.asset}
 				}
 			`,
 			map: ({
