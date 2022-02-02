@@ -11,7 +11,7 @@ const Button = dynamic(() => import("components/inputs/Button"), {
 const ProductButton = ({
 	product
 }) => {
-	const { id, group, contentUri, price } = product;
+	const { id, group, contentUri, price, comingSoon } = product;
 	const router = useRouter();
 	const [{ user }] = useAuthentication();
 	const [{ items }, dispatch] = useCart();
@@ -21,9 +21,11 @@ const ProductButton = ({
 		? items.includes(id)
 			? "Aus dem Warenkorb"
 			: "In den Warenkorb"
-		: user?.groups
-			? "Nicht freigeschaltet"
-			: "Bitte Einloggen";
+		: comingSoon
+			? "Kommt in Kürze"
+			: user?.groups
+				? "Nicht freigeschaltet"
+				: "Bitte Einloggen";
 	const buttonText = hasAccess
 		? "Inhalt ansehen"
 		: shopButtonText;

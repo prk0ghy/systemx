@@ -19,6 +19,7 @@ export const {
 				previewURL: "/mvet/products/owl-sleeping.jpg",
 				previewWidth: 1381,
 				color: "#6C707B",
+				comingSoon: false,
 				price: null
 			},
 			{

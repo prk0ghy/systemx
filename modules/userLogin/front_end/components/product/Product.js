@@ -10,6 +10,7 @@ import styles from "./Product.module.css";
 const Product = ({
 	caption,
 	children,
+	comingSoon,
 	contentUri,
 	group,
 	description,
@@ -55,7 +56,7 @@ const Product = ({
 									{ formattedPrice }
 									{	children
 										? <ProductButtonLink productId={ id }/>
-										: <ProductButton product={ { children, id, group, contentUri, price } }/>
+										: <ProductButton product={ { children, comingSoon, id, group, contentUri, price } }/>
 									}
 								</div>
 							</div>
