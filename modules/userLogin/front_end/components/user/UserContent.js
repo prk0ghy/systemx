@@ -1,9 +1,7 @@
 import { H } from "root/format";
 import styles from "./UserProfile.module.css";
-import { useAuthentication } from "contexts/Authentication";
 
 const UserContent = () => {
-	const [{ user }] = useAuthentication();
 	return (
 		<>
 			<section className={ styles.userProfile }>
