@@ -35,9 +35,13 @@ export default {
 			map: ({
 				helpVideos,
 				tabs,
+				type,
+				isNumbered,
 				...rest
 			}) => ({
 				helpVideo: helpVideos[0],
+				type,
+				isNumbered: ((type !== "stern_differenzierung") && isNumbered),
 				tabs: tabs.map(tab => Object.assign({}, tab, {
 					media: tab.media[0]
 				})),
@@ -61,6 +65,7 @@ export default {
 		},
 		render
 	}) {
+		const starSelection = ((type === 'stern_differenzierung') && type);
 		const tabHeaders = tabs.map((tab, index) => `
 			<tab-box-header
 				${classIf(index === 0, "active")}
@@ -92,6 +97,7 @@ export default {
 				content-type="tab-box"
 				${contentTypeIDIf(id)}
 				tab-box-type="${boxType}"
+				${attributeIf("star-selection",starSelection)}
 			>
 				<inner-content>
 					${Marker.render({ isNumbered })}

@@ -143,9 +143,19 @@ export default {
 				imagePosition: bildposition
 				galleryIntroductionText: einleitungstextGallerie
 				isNumbered: nummerierung
+				starSelection: stern_selection
 				infoLink
 				text
-			`
+			`,
+			map: ({
+				isNumbered,
+				starSelection,
+				...rest
+			}) => ({
+				starSelection,
+				isNumbered: (isNumbered && !starSelection),
+				...rest
+			})
 		}],
 		["quersliderAufgabenElemente_textMitOhneBild_BlockType", {
 			fetch: ({fragments}) => `
@@ -228,8 +238,10 @@ export default {
 		infoLink = "",
 		galleryIntroductionText,
 		isNumbered,
+		starSelection,
 		text
 	}, {
+		attributeIf,
 		contentTypeIDIf,
 		contentTypes: {
 			Gallery
@@ -269,7 +281,7 @@ export default {
 				? `<gallery-introduction-text>${galleryIntroductionText}</gallery-introduction-text>`
 				: "";
 			return `
-				<section content-type="text-and-image" ${contentTypeIDIf(id)}>
+				<section content-type="text-and-image" ${contentTypeIDIf(id)} ${attributeIf("star-selection",starSelection)}>
 					<inner-content>
 						${Marker.render({ isNumbered })}
 						${InfoLink.render({infoLink})}

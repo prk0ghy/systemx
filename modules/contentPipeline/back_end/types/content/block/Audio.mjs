@@ -35,10 +35,19 @@ export default {
 				caption: audiotext
 				id
 				isNumbered: nummerierung
+				starSelection: stern_selection
 				posters: audiobild {
 					${fragments.asset}
 				}
-			`
+			`,map: ({
+				isNumbered,
+				starSelection,
+				...rest
+			}) => ({
+				starSelection,
+				isNumbered: (isNumbered && !starSelection),
+				...rest
+			})
 		}]
 	]),
 	async render({
@@ -46,8 +55,10 @@ export default {
 		caption,
 		id,
 		isNumbered,
+		starSelection,
 		posters
 	}, {
+		attributeIf,
 		contentTypeIDIf,
 		download,
 		EditorialError,
@@ -81,7 +92,7 @@ export default {
 			});
 		}
 		return `
-			<section content-type="audio" ${contentTypeIDIf(id)}>
+			<section content-type="audio" ${contentTypeIDIf(id)} ${attributeIf('star-selection', starSelection)}>
 				<inner-content>
 					${Marker.render({ isNumbered })}
 					<figure figure-type="audio">

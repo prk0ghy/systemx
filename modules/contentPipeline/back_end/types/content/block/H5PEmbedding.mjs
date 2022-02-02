@@ -34,12 +34,17 @@ export default {
 				html: h5p
 				id
 				isNumbered: nummerierung
+				starSelection: stern_selection
 			`,
 			map: ({
 				helpVideos,
+				isNumbered,
+				starSelection,
 				...rest
 			}) => ({
 				helpVideo: helpVideos[0],
+				isNumbered: (isNumbered && !starSelection),
+				starSelection,
 				...rest
 			})
 		}],
@@ -66,8 +71,10 @@ export default {
 		helpVideo,
 		id,
 		isNumbered,
+		starSelection,
 		html
 	}, {
+		attributeIf,
 		contentTypeIDIf,
 		CleanEmbeddingHTML,
 		EditorialError,
@@ -89,7 +96,7 @@ export default {
 			message: "This embedding is missing the required embedding HTML."
 		});
 		return `
-			<section content-type="embedding" ${contentTypeIDIf(id)} embedding-type="h5p">
+			<section content-type="embedding" ${contentTypeIDIf(id)} ${attributeIf("star-selection",starSelection)} embedding-type="h5p">
 				<inner-content>
 					${Marker.render({ isNumbered })}
 					${await HelpVideo.render({ asset: helpVideo })}

@@ -113,6 +113,7 @@ export default {
 				end: ende
 				id
 				isNumbered: nummerierung
+				starSelection: stern_selection
 				start
 				videoData: urlDesVideos {
 					imageHeight
@@ -122,7 +123,15 @@ export default {
 					title
 					videoURL: url
 				}
-			`
+			`,map: ({
+				isNumbered,
+				starSelection,
+				...rest
+			}) => ({
+				starSelection,
+				isNumbered: (isNumbered && !starSelection),
+				...rest
+			})
 		}]
 	]),
 	async render({
@@ -130,6 +139,7 @@ export default {
 		end,
 		id,
 		isNumbered,
+		starSelection,
 		start,
 		videoData: {
 			imageHeight,
@@ -140,6 +150,7 @@ export default {
 			videoURL
 		}
 	}, {
+		attributeIf,
 		contentTypeIDIf,
 		download,
 		EditorialError,
@@ -181,7 +192,7 @@ export default {
 			});
 		}
 		return `
-			<section content-type="embedding" ${contentTypeIDIf(id)} embedding-type="video">
+			<section content-type="embedding" ${contentTypeIDIf(id)} ${attributeIf('star-selection', starSelection)} embedding-type="video">
 				<inner-content>
 					${Marker.render({ isNumbered })}
 					<figure figure-type="embedding">

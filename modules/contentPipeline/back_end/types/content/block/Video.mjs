@@ -44,10 +44,20 @@ export default {
 				}
 				id
 				isNumbered: nummerierung
+				starSelection: stern_selection
 				posters: posterbild {
 					${fragments.asset}
 				}
-			`
+			`,
+			map: ({
+				isNumbered,
+				starSelection,
+				...rest
+			}) => ({
+				starSelection,
+				isNumbered: (isNumbered && !starSelection),
+				...rest
+			})
 		}],
 		["quersliderAufgabenElemente_videoDatei_BlockType", {
 			fetch: ({fragments}) => `
@@ -79,8 +89,10 @@ export default {
 		files,
 		id,
 		isNumbered,
-		posters
+		posters,
+		starSelection
 	}, {
+		attributeIf,
 		contentTypeIDIf,
 		EditorialError,
 		helpers: {
@@ -107,7 +119,7 @@ export default {
 			posterURL
 		});
 		return `
-			<section content-type="video" ${contentTypeIDIf(id)}>
+			<section content-type="video" ${contentTypeIDIf(id)} ${attributeIf('star-selection', starSelection)}>
 				<inner-content>
 					${Marker.render({ isNumbered })}
 					<figure figure-type="video">

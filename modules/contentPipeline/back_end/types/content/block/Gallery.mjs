@@ -81,8 +81,18 @@ export default {
 						}
 					}
 				}
+				starSelection: stern_selection
 				isNumbered: nummerierung
-			`
+			`,
+			map: ({
+				isNumbered,
+				starSelection,
+				...rest
+			}) => ({
+				starSelection,
+				isNumbered: (isNumbered && !starSelection),
+				...rest
+			})
 		}],
 		["quersliderAufgabenElemente_galerie_BlockType", {
 			fetch: ({fragments}) => `
@@ -137,9 +147,11 @@ export default {
 		infoLink = null,
 		images,
 		isNumbered,
+		starSelection,
 		text = null
 	}, {
 		Error,
+		attributeIf,
 		contentTypeIDIf,
 		helpers: {
 			Image,
@@ -170,7 +182,7 @@ export default {
 			? `<div class="gallery-text">${galleryIntroductionText}</div>`
 			: "";
 		return `
-			<section content-type="gallery" ${contentTypeIDIf(id)}>
+			<section content-type="gallery" ${contentTypeIDIf(id)} ${attributeIf("star-selection",starSelection)}>
 				<inner-content>
 					${Marker.render({ isNumbered })}
 					${InfoLink.render({infoLink})}
