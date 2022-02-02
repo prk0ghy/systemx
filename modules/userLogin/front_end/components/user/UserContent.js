@@ -4,7 +4,6 @@ import { useAuthentication } from "contexts/Authentication";
 
 const UserContent = () => {
 	const [{ user }] = useAuthentication();
-	console.log(user);
 	return (
 		<>
 			<section className={ styles.userProfile }>

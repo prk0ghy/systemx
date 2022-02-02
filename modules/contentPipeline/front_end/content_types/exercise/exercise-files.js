@@ -54,7 +54,6 @@
 			const fileDownloadIndex = async i => {
 				const file = await fileGet(i);
 				if(file === null){return;}
-				console.log(file);
 				downloadData(file.name,file.content);
 			};
 
@@ -116,7 +115,6 @@
 					name: file.name,
 					type: file.type
 				};
-				console.log(obj);
 				const reader = new FileReader();
 				reader.addEventListener("load", () => {
 					obj.content = reader.result;

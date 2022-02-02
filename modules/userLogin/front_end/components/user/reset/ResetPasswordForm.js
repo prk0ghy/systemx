@@ -14,7 +14,6 @@ const ResetPasswordForm = () => {
 	const [requestSent, setRequestSent] = useState(false);
 	const doResetRequest = useCallback(
 		async vals => {
-			console.log(vals);
 			const res = await userPasswordResetRequest(vals.email);
 			setCurrentErrors(res.error
 				? <Error msg={ res.error }/>

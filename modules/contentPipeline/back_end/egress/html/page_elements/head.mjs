@@ -105,7 +105,7 @@ export const buildHead = async targetName => {
 	curHead += resourceTag('default-skin.css');
 
 	curHead += resourceTag('main.css');
-	curHead += configCSSVars(targetName);
+	curHead += configCSSVars();
 
 	curHead += resourceTag('quill.min.js');
 	curHead += resourceTag('photoswipe-ui-default.min.js');
@@ -124,7 +124,7 @@ export const buildHead = async targetName => {
 const getHead = async targetName => {
 	if(!headResources.has(targetName)){
 		console.error("Trying to build pages before the head could be properly built");
-		console.log(headResources);
+		console.error(headResources);
 		return '';
 	}
 	return `

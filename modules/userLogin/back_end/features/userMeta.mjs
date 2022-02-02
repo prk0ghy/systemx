@@ -54,7 +54,6 @@ filterAdd("userLogin",filterMetadataGet,10);
  */
 filterAdd("userRegister",async (v,next) => {
 	if(!v.req.meta){return await next(v);}
-	console.log(v.req.meta);
 	await setMany(v.res.userID,v.req.meta);
 	return await next(v);
 },10);

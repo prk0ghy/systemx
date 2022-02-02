@@ -27,7 +27,6 @@ const ResetPasswordConfirmForm = props => {
 	useEffect(() => {
 		(async () => {
 			const res = await userPasswordResetCheck(props.resetToken);
-			console.log(res);
 			setIsValid(res.resetHashFound);
 		})();
 	}, [refresh, props, setIsValid]);

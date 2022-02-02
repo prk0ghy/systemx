@@ -24,9 +24,7 @@ const requestfilter = (filter,{
 		if(!body?.requests){return [];}
 		const ret = [];
 		let ses = body.sessionID ? Session.getByID(body.sessionID) : Session.get(ctx);
-		console.log(body);
 		for(const req of body.requests){
-			console.log(req);
 			const tmp = await doSingleRequest({ctx,req,ses,res:{}});
 			ses = tmp.ses;
 			ret.push(tmp.res);

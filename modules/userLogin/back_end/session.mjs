@@ -24,7 +24,7 @@ const getSessionID = () => {
 		const sessionID = MakeID(64);
 		if(sessions[sessionID] === undefined){return sessionID;}
 	}
-	console.log("Error creating session ID");
+	console.error("Error creating session ID");
 	return null;
 };
 

@@ -55,7 +55,6 @@ const buildNavigationMenuEntry = (entry, pageURI, curSiteId) => {
 	const childrenHTML = ulContent.length
 		? `<ul>${ulContent}</ul>`
 		: "";
-	//console.log(`${(pageURI === entry.uri) ? "TRUE" : "FALSE"} pageURI: '${pageURI}' == '${entry.uri}' && ${curSiteId}`);
 	return (entry.siteId !== curSiteId) && curSiteId
 		? "" : `
 		<li${pageURI === entry.uri ? ` class="active"` : ""} page-id="${entry.id}" site-id="${entry.siteId}"${entry.firstForSiteId ? " first-for-site-id" : ""}>
