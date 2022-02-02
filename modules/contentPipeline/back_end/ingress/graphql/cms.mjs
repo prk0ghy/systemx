@@ -2,7 +2,6 @@ import GraphQLRequest from "graphql-request";
 import loadModules from "../../../../common/loadModules.mjs";
 import request from "./rateLimiting.mjs";
 import options from "../../../../common/options.mjs";
-import FS from "fs";
 
 const { gql } = GraphQLRequest;
 const globalFragments = {};

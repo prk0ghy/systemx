@@ -88,7 +88,7 @@ const buildTemplate = async templateName => {
 };
 export const render = async (templateName, v={}) => {
 	if(!templatePaths[templateName]){
-		console.error(`Couldn't find a template for ${templateName}`)
+		console.error(`Couldn't find a template for ${templateName}`);
 		return false;
 	}
 	const template = await buildTemplate(templateName);
