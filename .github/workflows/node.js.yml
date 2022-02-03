@@ -57,4 +57,4 @@ jobs:
       with:
         cache: 'npm'
     - run: npm ci
-    - run: npm run build -- ${{ matrix.target }}
+    - run: npm run test:integration ${{ matrix.target }}

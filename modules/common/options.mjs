@@ -14,6 +14,7 @@ const options = {
 	siteName: "Lasub",
 	navigationLinks: [],
 	verbose: false,
+	rethrowErrors: false,
 	cssVars: {},
 	email: {
 		host: "smtp.server.local",

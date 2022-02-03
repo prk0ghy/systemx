@@ -73,7 +73,8 @@
 		"start": "node ./index.mjs --",
 		"postinstall": "npm --prefix modules/userLogin/front_end install",
 		"test": "npm run test:back-end",
-		"test:back-end": "NODE_OPTIONS=--experimental-vm-modules jest ./modules/contentPipeline/back_end/test -- lasub"
+		"test:back-end": "NODE_OPTIONS=--experimental-vm-modules jest ./modules/contentPipeline/back_end/test -- lasub",
+		"test:integration": "node ./index.mjs --clean-build --rethrow-errors --"
 	},
 	"type": "module",
 	"version": "1.0.0"
