@@ -44,8 +44,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: ['lasub','rdhessen','juramuseum','tagungsbaende']
-        os: ['windows-latest','macos-latest','ubuntu-latest']
+        target: ['bdv','bm','juramuseum','lasub','leipzig','rdhessen','stifterverband','tagungsbaende','missio','geografie']
+        os: ['ubuntu-latest']
+        include:
+        - os: 'windows-latest'
+          target: 'lasub'
+        - os: 'macos-latest'
+          target: 'lasub'
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v2
