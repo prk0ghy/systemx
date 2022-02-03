@@ -11,9 +11,11 @@ const BurgerIcon = () => {
 		dispatch
 	]);
 	return (
-		<button className={ styles.burgerIcon } onClick={ toggleSideMenu } type="button">
-			☰
-		</button>
+		<li>
+			<button className={ styles.burgerIcon } onClick={ toggleSideMenu } type="button">
+				☰
+			</button>
+		</li>
 	);
 };
 export default BurgerIcon;

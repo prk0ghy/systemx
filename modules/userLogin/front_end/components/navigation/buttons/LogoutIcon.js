@@ -1,5 +1,6 @@
 import { useRefreshUserData, userLogout } from "root/api";
 import Door from "@mui/icons-material/Logout";
+import OnlyUsers from "components/user/OnlyUsers";
 import styles from "./LogoutIcon.module.css";
 import { useCallback } from "react";
 const LogoutIcon = () => {
@@ -12,9 +13,13 @@ const LogoutIcon = () => {
 		}, [refresh]
 	);
 	return (
-		<button className={ styles.logoutIcon } onClick={ doLogout } type="button">
-			<Door className={ styles.exitIcon }/>
-		</button>
+		<OnlyUsers>
+			<li>
+				<button className={ styles.logoutIcon } onClick={ doLogout } type="button">
+					<Door className={ styles.exitIcon }/>
+				</button>
+			</li>
+		</OnlyUsers>
 	);
 };
 export default LogoutIcon;

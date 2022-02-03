@@ -1,0 +1,5 @@
+.account-icon {
+	filter: brightness(100);
+	font-size: 4rem;
+	height: var(--navigation-height);
+}
