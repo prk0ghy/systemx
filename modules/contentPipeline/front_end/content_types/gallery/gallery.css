@@ -224,6 +224,11 @@ button[button-type="fullscreen"] {
 	padding: 0;
 }
 
+button[button-type="fullscreen"],
+.lightbox-bound {
+	cursor:zoom-in;
+}
+
 button[button-type="next-slide"],
 button[button-type="previous-slide"] {
 	height:44px;

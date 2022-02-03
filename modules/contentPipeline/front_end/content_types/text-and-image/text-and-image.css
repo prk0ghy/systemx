@@ -22,6 +22,10 @@ section[content-type="text-and-image"] figure-row figcaption {
 	padding: 0.3em 1em 2em;
 }
 
+section[content-type="text-and-image"] > inner-content > figure:not(:first-of-type) {
+	display:none;
+}
+
 a.icon-button-360::before {
 	content:"";
 	display:inline-block;

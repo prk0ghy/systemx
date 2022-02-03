@@ -243,9 +243,6 @@ export default {
 	}, {
 		attributeIf,
 		contentTypeIDIf,
-		contentTypes: {
-			Gallery
-		},
 		helpers: {
 			Image,
 			InfoLink,
@@ -253,46 +250,37 @@ export default {
 			Marker
 		}
 	}) {
-		const isReallyAGallery = !displayInOneLine && images?.length && images.length > 1;
 		const mappedImageWidth = this.getFigureWidth(imageWidth);
 		const mappedImagePosition = this.getFigurePosition(imagePosition);
 
-		if(isReallyAGallery){
-			return await Gallery.render({
-				id,
-				galleryIntroductionText,
-				isNumbered,
-				images
-			});
-		}else{
-			const figureHTML = displayInOneLine || images?.length && images.length <= 1
-				? this.splitFigureRows((await Promise.all(
-					images?.map(async image => await this.renderFigure({
-						caption: image.caption,
-						imageHTML: await Image.render({ asset: image?.files?.[0], imageSize: mappedImageWidth }),
-						licenseHTML: await License.render({ asset: image?.files?.[0] }),
-						position: mappedImagePosition,
-						width: mappedImageWidth,
-						hideButtons
-					})))
-				)).join("")
-				: "";
-			const galleryIntroductionHTML = galleryIntroductionText
-				? `<gallery-introduction-text>${galleryIntroductionText}</gallery-introduction-text>`
-				: "";
-			return `
-				<section content-type="text-and-image" ${contentTypeIDIf(id)} ${attributeIf("star-selection",starSelection)}>
-					<inner-content>
-						${Marker.render({ isNumbered })}
-						${InfoLink.render({infoLink})}
-						${figureHTML}
-						${galleryIntroductionHTML}
-						<div class="text-content">
-							${text ?? ""}
-						</div>
-					</inner-content>
-				</section>
-			`;
-		}
+		const figures = (await Promise.all(
+			images?.map(async image => await this.renderFigure({
+				caption: image.caption,
+				imageHTML: await Image.render({ asset: image?.files?.[0], imageSize: mappedImageWidth }),
+				licenseHTML: await License.render({ asset: image?.files?.[0] }),
+				position: mappedImagePosition,
+				width: mappedImageWidth,
+				hideButtons
+			})))
+		);
+		const figureHTML = displayInOneLine
+			? this.splitFigureRows(figures).join("")
+			: figures.join("");
+		const galleryIntroductionHTML = galleryIntroductionText
+			? `<gallery-introduction-text>${galleryIntroductionText}</gallery-introduction-text>`
+			: "";
+		return `
+			<section content-type="text-and-image" ${contentTypeIDIf(id)} ${attributeIf("star-selection",starSelection)}>
+				<inner-content>
+					${Marker.render({ isNumbered })}
+					${InfoLink.render({infoLink})}
+					${figureHTML}
+					${galleryIntroductionHTML}
+					<div class="text-content">
+						${text ?? ""}
+					</div>
+				</inner-content>
+			</section>
+		`;
 	}
 };

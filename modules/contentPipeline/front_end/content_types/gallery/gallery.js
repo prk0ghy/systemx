@@ -157,26 +157,36 @@
 		});
 	};
 
+	const lightboxCreateItem = (single,startFigure) => {
+		const imgTag = single.querySelector("img");
+		const figCaption = single.querySelector("figcaption");
+		if(imgTag === null){return null;}
+		const start = single === startFigure;
+		const src   =  imgTag.getAttribute("raw-src") || imgTag.src;
+		const msrc  =  imgTag.getAttribute("src");
+		const w     = (imgTag.getAttribute("raw-width") | 0) || (imgTag.getAttribute("width"));
+		const h     = (imgTag.getAttribute("raw-height")| 0) || (imgTag.getAttribute("height"));
+		const title = figCaption ? figCaption.innerHTML : "";
+		return {start,src,msrc,w,h,title};
+	};
+
 	const initLightbox = () => {
 		const pswpElement = document.getElementById("pswp");
-		const singles = document.querySelectorAll('figure[figure-type="picture"],figure[figure-type="hero-image"]');
+		const singles = document.querySelectorAll('figure[figure-type="picture"], figure[figure-type="hero-image"]');
 		const doNothingSpecial = e => {e.stopPropagation();};
 		singles.forEach(single => {
 			const items = [];
 			const figCaption = single.querySelector("figcaption");
-			{
-				const imgTag = single.querySelector("img");
-				if(imgTag === null){return;}
-				const src   =  imgTag.getAttribute("raw-src") || imgTag.src;
-				const msrc  =  imgTag.getAttribute("src");
-				const w     = (imgTag.getAttribute("raw-width") | 0) || (imgTag.getAttribute("width"));
-				const h     = (imgTag.getAttribute("raw-height")| 0) || (imgTag.getAttribute("height"));
-				const title = figCaption ? figCaption.innerHTML : "";
-				items.push({src,msrc,w,h,title});
+			const addItem = itm => items.push(lightboxCreateItem(itm,single));
+			if(single.parentElement.tagName === 'FIGURE-ROW'){
+				[...single.parentElement.parentElement.children].filter(e => e.tagName === 'FIGURE-ROW').forEach(row => [...row.children].forEach(addItem));
+			}else{
+				[...single.parentElement.children].filter(e => e.tagName === 'FIGURE').forEach(addItem);
 			}
+			const startIndex = items.findIndex(e => e.start);
 
 			const options = {
-				index:0,
+				index:Math.max(0,startIndex),
 				bgOpacity: configuration.galleryBackgroundOpacity,
 				closeOnScroll: false,
 				shareEl: false,
@@ -195,13 +205,13 @@
 			const button = document.createElement("BUTTON");
 			button.setAttribute("button-type","fullscreen");
 			single.insertBefore(button,figCaption);
+			single.classList.add("lightbox-bound");
 
 			for(const link of single.querySelectorAll("a")){
 				link.addEventListener("click",doNothingSpecial);
 			}
 
-			single.addEventListener("click", e => e.preventDefault());
-			button.addEventListener("click", e => {
+			const startGallery = e => {
 				e.preventDefault();
 				if(currentGallery){currentGallery.close();}
 				const gal = currentGallery = new PhotoSwipe(pswpElement,PhotoSwipeUI_Default,items,options);
@@ -212,7 +222,9 @@
 				});
 				initGlossary();
 				button.classList.add("active");
-			});
+			};
+			single.addEventListener("click", startGallery);
+			button.addEventListener("click", startGallery);
 		});
 	};
 	setTimeout(initPhotoswipe,0);
