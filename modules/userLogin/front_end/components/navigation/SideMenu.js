@@ -1,6 +1,6 @@
 import cx from "classnames";
 import { FocusOn } from "react-focus-on";
-import Library from "components/shell/Library";
+import Library from "./Library";
 import styles from "./SideMenu.module.css";
 import { useBus } from "contexts/Bus";
 import { useCallback } from "react";

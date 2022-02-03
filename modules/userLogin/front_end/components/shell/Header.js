@@ -6,7 +6,7 @@ import {
 } from "react";
 import cx from "classnames";
 import Laced from "components/generics/Laced";
-import Navigation from "components/shell/Navigation";
+import Navigation from "components/navigation/TopNavigation";
 import styles from "./Header.module.css";
 import { useRouter } from "next/router";
 const Header = () => {
