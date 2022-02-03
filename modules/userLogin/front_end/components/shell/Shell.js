@@ -7,7 +7,7 @@ import Footer from "components/shell/Footer";
 import Header from "components/shell/Header";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { ProductsProvider } from "contexts/Products";
-import SideMenu from "components/shell/SideMenu";
+import SideMenu from "components/navigation/SideMenu";
 import styles from "./Shell.module.css";
 import { useBus } from "contexts/Bus";
 import { useEffect } from "react";

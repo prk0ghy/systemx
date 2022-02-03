@@ -1,16 +1,17 @@
-import AccountIcon from "components/shell/AccountIcon";
-import BurgerIcon from "components/shell/BurgerIcon";
+import AccountIcon from "./icons/AccountIcon";
+import BurgerIcon from "./icons/BurgerIcon";
 import Configuration from "../../config";
 import cx from "classnames";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import LoginIcon from "components/shell/LoginIcon";
-import LogoutIcon from "components/shell/LogoutIcon";
+import LoginIcon from "./icons/LoginIcon";
+import LogoutIcon from "./icons/LogoutIcon";
 import routes from "root/routes";
-import styles from "./Navigation.module.css";
+import styles from "./TopNavigation.module.css";
 import { useAuthentication } from "contexts/Authentication";
 import { useBrand } from "contexts/Brand";
-const CartIcon = dynamic(() => import("./CartIcon"), {
+
+const CartIcon = dynamic(() => import("./icons/CartIcon"), {
 	ssr: false
 });
 const NavigationItems = () => {

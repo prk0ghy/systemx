@@ -1,6 +1,6 @@
 Guten Tag,
 
-Wir haben eine Anfrage erhalten, den Account {{ userName }} vollständig zu löschen. Noch wurde nichts an ihrem Account geändert, sollten Sie diese Anfrage nicht ausgelöst haben ignorieren Sie diese E-Mail einfach, wenn Sie ihren Account unwiderruflich löschen wollen, klicken Sie bitte auf den folgenden Link:
+Wir haben eine Anfrage erhalten, den Account {{ userName }} vollständig zu löschen. Noch wurde nichts an ihrem Account geändert, sollten Sie diese Anfrage nicht ausgelöst haben, ignorieren Sie diese E-Mail einfach, wenn Sie ihren Account unwiderruflich löschen wollen, klicken Sie bitte auf den folgenden Link:
 
 {{ deleteLink }}
 
