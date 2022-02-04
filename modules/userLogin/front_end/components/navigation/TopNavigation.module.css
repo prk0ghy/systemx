@@ -12,8 +12,8 @@
 		justify-content: space-between;
 		list-style-type: none;
 		& > li {
-			list-style-type: none;
 			height: var(--navigation-height);
+			list-style-type: none;
 		}
 	}
 	& .left {
