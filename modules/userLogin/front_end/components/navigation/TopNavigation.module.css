@@ -1,25 +1,28 @@
 .navigation {
-	--navigation-height: calc(var(--header-height) - 2rem);
-	display: table;
-	width: 100%;
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	grid-template-rows: calc(var(--header-height) - 2rem);
+	gap: 0px 0px;
+	grid-template-areas:
+    "left center right"; 
 	& .items {
 		align-items: center;
 		display: flex;
 		flex-wrap: nowrap;
 		gap: 2.6rem;
 		grid-auto-flow: column;
-		height: var(--navigation-height);
+		height: calc(var(--header-height) - 2rem);
 		justify-content: space-between;
 		list-style-type: none;
 		& > li {
 			list-style-type: none;
-			height: var(--navigation-height);
+			height: calc(var(--header-height) - 2rem);
 		}
 	}
 	& .left {
-		float: left;
+		grid-area: left;
 	}
 	& .right {
-		float: right;
+		grid-area: right;
 	}
 }
