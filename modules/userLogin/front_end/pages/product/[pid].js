@@ -7,7 +7,7 @@ import { useProducts } from "../../contexts/Products";
 import { useRouter } from "next/router";
 
 /* Using recursive reduce to walk the tree and return the first result matching id */
-const findProduct = (prods, id) => {
+export const findProduct = (prods, id) => {
 	if (!prods) {
 		return null;
 	}

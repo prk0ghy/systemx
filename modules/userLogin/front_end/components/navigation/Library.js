@@ -1,17 +1,35 @@
 import dynamic from "next/dynamic";
+import { findProduct } from "../../pages/product/[pid]";
 import styles from "./Library.module.css";
 import { useAuthentication } from "contexts/Authentication";
+import { useProducts } from "../../contexts/Products";
+
 
 const Library = () => {
 	const [{ user }] = useAuthentication();
+	const [{ products }] = useProducts();
+
+	let allGroups = null;
+	let groupList = null;
+
+	allGroups = user?.groups;
+
+	if (allGroups) {
+		const usergroups = Object.values(allGroups);
+		groupList = usergroups.map(d => (
+			<li key={ d }>
+				<a href={ findProduct(products, d).contentUri }>{ d }</a>
+			</li>
+		));
+	}
+
 	return (
 		<div className={ styles.library }>
 			<h3>Bibliothek</h3>
 			{ user
 				? (
 					<ul className={ styles.items }>
-						<li className={ styles.item }><a href="#">Lorem</a></li>
-						<li className={ styles.item }>Ipsum</li>
+						{ groupList }
 					</ul>
 				)
 				: null
