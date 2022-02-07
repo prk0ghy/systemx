@@ -18,7 +18,7 @@ const Library = () => {
 		const usergroups = Object.values(allGroups);
 		groupList = usergroups.map(d => (
 			<li key={ d }>
-				<a href={ findProduct(products, d).contentUri }>{ d }</a>
+				<a href={ findProduct(products, d).contentUri }>{ findProduct(products, d).name }</a>
 			</li>
 		));
 	}
