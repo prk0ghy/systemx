@@ -52,3 +52,28 @@ help-video[open] help-video-button {
 	opacity:0;
 	font-size:28em;
 }
+
+@media only screen and (max-width: 1062px) {
+	inner-content.contains-help-video {
+		padding-top: 3em;
+	}
+
+	help-video {
+		top: 0;
+		left: calc(100% - 3.5em);
+	}
+
+	a.marker {
+		position: relative;
+		display: inline-block;
+		left: 0;
+		margin-top: 0;
+		margin-bottom: 1em;
+	}
+}
+
+@media only screen and (max-width: 650px) {
+	help-video {
+		left: calc(100% - 2.8em);
+	}
+}

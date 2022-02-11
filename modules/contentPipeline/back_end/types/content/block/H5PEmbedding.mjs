@@ -95,11 +95,13 @@ export default {
 		const embeddingHTML = html || EditorialError.render({
 			message: "This embedding is missing the required embedding HTML."
 		});
+		const helpVideoTag = await HelpVideo.render({ asset: helpVideo });
+		const innerContentAttributes = (helpVideoTag === "") ? "" : ` class="contains-help-video"`;
 		return `
 			<section content-type="embedding" ${contentTypeIDIf(id)} ${attributeIf("star-selection",starSelection)} embedding-type="h5p">
-				<inner-content>
+				<inner-content${innerContentAttributes}>
 					${Marker.render({ isNumbered })}
-					${await HelpVideo.render({ asset: helpVideo })}
+					${helpVideoTag}
 					<figure figure-type="embedding">
 						${CleanEmbeddingHTML(embeddingHTML)}
 						${authorHTML}
