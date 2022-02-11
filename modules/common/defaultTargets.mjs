@@ -148,6 +148,11 @@ const defaultTargets = {
 					url: "/bartagamen/",
 					localDir: "/var/www/html/dilewe.de/systemx/web/tagungsbaende/bartagamen/",
 					userGroup: "bartagamen"
+				},
+				{
+					url: "/schlangen/",
+					localDir: "/var/www/html/dilewe.de/systemx/web/tagungsbaende/schlangen/",
+					userGroup: "schlangen"
 				}
 			]
 		}

@@ -8,6 +8,21 @@ export const {
 	const state = {
 		products: [
 			{
+				caption: "Winterschool",
+				description: `Die Winterschool Schlangen wird von einem umfangreichen Tagungsband begleitet – von der Artbestimmung über Haltung, Ernährung, Anatomie und Diagnostik bis zur Behandlung verschiedenster Erkrankungen.`,
+				longDescription: `Die Winterschool Schlangen wird von einem umfangreichen Tagungsband begleitet – von der Artbestimmung über Haltung, Ernährung, Anatomie und Diagnostik bis zur Behandlung verschiedenster Erkrankungen.`,
+				id: "schlangen",
+				group: "schlangen",
+				contentUri: "/schlangen/inhalt/startseite/index.html",
+				name: "Schlangen",
+				previewHeight: 863,
+				previewURL: "/mvet/products/snake.jpg",
+				previewWidth: 1381,
+				color: "#919C0A",
+				comingSoon: false,
+				price: null
+			},
+			{
 				caption: "Vogelnarkose",
 				description: `Praxisnahes Angebot zum Thema Anästhesie und Analgesie beim Vogelpatienten mit zahlreichen Anschauungsbeispielen.`,
 				longDescription: `Praxisnahes Angebot zum Thema Anästhesie und Analgesie beim Vogelpatienten mit zahlreichen Anschauungsbeispielen.`,
