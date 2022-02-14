@@ -57,7 +57,7 @@ const buildNavigationMenuEntry = (entry, pageURI, curSiteId) => {
 		: "";
 	return (entry.siteId !== curSiteId) && curSiteId
 		? "" : `
-		<li${pageURI === entry.uri ? ` class="active"` : ""} page-id="${entry.id}" site-id="${entry.siteId}"${entry.firstForSiteId ? " first-for-site-id" : ""}>
+		<li${pageURI === entry.uri ? ` class="active"` : ""} page-status="${entry.status || 'live'}" page-id="${entry.id}" site-id="${entry.siteId}"${entry.firstForSiteId ? " first-for-site-id" : ""}>
 			<a href="${entry.uri}" page-url="${pageURI}" role="treeitem">${entry.title_override || entry.title}</a>
 			${childrenHTML}
 		</li>

@@ -5,13 +5,13 @@ export default async function wrapWithApplicationShell(targetName, {
 	pageTitle,
 	pageURI,
 	language = "de",
+	status = "live",
 	entry,
 	content
 }) {
-	
 	return `
 		<!doctype html>
-		<html lang="${language}">
+		<html lang="${language}" page-status="${status}">
 			<head>
 				<title>${pageTitle}</title>
 				${await getHead(targetName)}

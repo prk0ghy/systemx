@@ -108,14 +108,19 @@ const renderAssets = async destination => {
 	return Promise.all(assetDirectories.map(directory => renderDirectory(directory, destination)));
 };
 
-const getEntries = async () => {
+const getEntries = async status_fields => {
 	const { entries } = await query(() => `
-		entries(siteId: "*") {
+		entries(siteId: "*", status:${status_fields}) {
 			__typename
 			dateUpdated
 			id
 			title
 			language
+			level
+			status
+			parent {
+				id
+			}
 			uid
 			uri
 			url
@@ -130,13 +135,30 @@ const findEntryByURI = (entries, uri) => {
 	const url = convertCraftURLToURI(uri);
 	return entries.find(entry => convertCraftURLToURI(entry.url) === url);
 };
+const getEntryByID = (entries, id) => {
+	return entries.find(entry => entry.id === id);
+};
+const getStatus = (entries, entry) => {
+	if(!entry){console.error(new Error("Can't determine status!"));}
+	if(entry.status !== "live"){
+		return entry.status;
+	}
+	if(!entry.parent){
+		if(entry.level === 1){
+			return entry.status;
+		}else{
+			return "disabled";
+		}
+	}
+	return getStatus(entries, getEntryByID(entries, entry.parent.id));
+};
 /*
  * This functions renders a single entry and returns the complete HTML for it, including all warnings at the top.
  *
  * Should only be used as a preview for authors; production releases should use `buildEntries` instead.
  */
 export const renderSingleEntry = async (targetName, uri) => {
-	const entries = await getEntries();
+	const entries = await getEntries('["disabled","live"]');
 	let entry = findEntryByURI(entries, uri);
 	if((uri === "") || (uri === "/") || (uri === "/index.html")){
 		const homePageURI = getHomePageURI(entries);
@@ -177,6 +199,7 @@ export const renderSingleEntry = async (targetName, uri) => {
 		content,
 		entry,
 		language : entry.language,
+		status: getStatus(entries,entry),
 		pageTitle: entry.title,
 		pageURI: `${effectiveURI}/index.html`
 	});
@@ -202,7 +225,7 @@ const sendWarnings = async (targetName,warnings) => {
 export const buildEntries = async targetName => {
 	let warningHTML     = "";
 	const warnings      = [];
-	const entries       = await getEntries();
+	const entries       = await getEntries(`"live"`);
 	const targetPath    = getTargetPath(targetName);
 	const mediaPath     = getMediaPath(targetName);
 	const thumbPath     = getThumbPath(targetName);

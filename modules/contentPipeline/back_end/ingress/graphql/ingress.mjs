@@ -65,27 +65,29 @@ export const getNavigation = () => {
 };
 
 const getNavigationReal = async () => {
+	const status_filter = options.cleanBuild ? `"live"` : `["disabled","live"]`;
 	const result = await request(options.graphqlEndpoint, gql([`
 		fragment entriesFields on inhalt_inhalt_Entry {
 			id
 			title
 			title_override
 			siteId
+			status
 			language
 			uri
 			url
 		}
 		fragment recurseEntries on inhalt_inhalt_Entry {
 			...entriesFields
-			children(status: "live", level: 2 ) {
+			children(status: ${status_filter}, level: 2 ) {
 				...entriesFields
-				children(status: "live", level: 3) {
+				children(status: ${status_filter}, level: 3) {
 					...entriesFields
-					children(status: "live", level: 4) {
+					children(status: ${status_filter}, level: 4) {
 						...entriesFields
-						children(status: "live", level: 5) {
+						children(status: ${status_filter}, level: 5) {
 							...entriesFields
-							children(status: "live", level: 6) {
+							children(status: ${status_filter}, level: 6) {
 								...entriesFields
 							}
 						}
@@ -94,7 +96,7 @@ const getNavigationReal = async () => {
 			}
 		}
 		query {
-			entries(level: 1, status: "live", type: "inhalt", siteId: "*") {
+			entries(level: 1, status: ${status_filter}, type: "inhalt", siteId: "*") {
 				...recurseEntries
 			}
 		}

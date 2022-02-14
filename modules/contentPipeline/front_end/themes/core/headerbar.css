@@ -262,3 +262,8 @@ header h3 p {
 		font-size: 2.3em;
 	}
 }
+
+html[page-status="disabled"] header {
+	background:rgba(255,220,0,0.25);
+	border-bottom:solid 1px #000;
+}
