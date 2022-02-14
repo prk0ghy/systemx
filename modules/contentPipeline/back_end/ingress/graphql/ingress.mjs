@@ -71,6 +71,7 @@ const getNavigationReal = async () => {
 			title
 			title_override
 			siteId
+			language
 			uri
 			url
 		}

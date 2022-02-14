@@ -115,6 +115,7 @@ const getEntries = async () => {
 			dateUpdated
 			id
 			title
+			language
 			uid
 			uri
 			url
@@ -171,9 +172,11 @@ export const renderSingleEntry = async (targetName, uri) => {
 			helper: helperTypes
 		}
 	}));
+
 	const wrappedHTML = await wrapWithApplicationShell(targetName, {
 		content,
 		entry,
+		language : entry.language,
 		pageTitle: entry.title,
 		pageURI: `${effectiveURI}/index.html`
 	});
