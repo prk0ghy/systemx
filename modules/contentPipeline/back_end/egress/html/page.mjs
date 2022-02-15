@@ -4,12 +4,14 @@ import { getNavigationMenu } from "./page_elements/navigation.mjs";
 export default async function wrapWithApplicationShell(targetName, {
 	pageTitle,
 	pageURI,
+	language = "de",
+	status = "live",
 	entry,
 	content
 }) {
 	return `
 		<!doctype html>
-		<html lang="de">
+		<html lang="${language}" page-status="${status}">
 			<head>
 				<title>${pageTitle}</title>
 				${await getHead(targetName)}

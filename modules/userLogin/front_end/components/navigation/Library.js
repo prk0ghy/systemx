@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 import styles from "./Library.module.css";
 import { useAuthentication } from "contexts/Authentication";
 
@@ -18,4 +19,4 @@ const Library = () => {
 		</div>
 	);
 };
-export default Library;
+export default dynamic(() => Promise.resolve(Library), { ssr: false });

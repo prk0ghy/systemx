@@ -66,6 +66,16 @@ nav li a {
 	font-weight: normal;
 }
 
+nav li[page-status="disabled"] a::before {
+	position: absolute;
+	content: "⬤";
+	color: orange;
+	font-size: 16px;
+	vertical-align: 22%;
+	position: absolute;
+	left: 70px;
+}
+
 nav li a p {
 	line-height: 1.2em;
 }
