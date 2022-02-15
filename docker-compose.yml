@@ -1,6 +1,6 @@
 # docker-compose.yml
 # https://github.com/urbantrout/craftcms
-version: '2.1'
+version: '3.8'
 
 services:
   nginx:
@@ -21,11 +21,14 @@ services:
       - mariadb
     # volumes:
       # - ./assets:/var/www/html/web/assets:z
-      # - ./backups:/var/www/html/storage/backups # Used for db restore on start.
+      # - ./.docker/sql/:/var/www/html/storage/backups # Used for db restore on start.
       # - ./templates:/var/www/html/templates # Craft CMS template files
       # - ./translations:/var/www/html/translations
       # - ./redactor:/var/www/html/config/redactor
     environment:
+      DEPENDENCIES: >- # additional composer packages
+        yiisoft/yii2-redis
+        craftcms/redactor:2.0.1
       CRAFTCMS_EMAIL: admin@company.com
       CRAFTCMS_USERNAME: admin
       CRAFTCMS_PASSWORD: adminadmin
@@ -47,7 +50,13 @@ services:
       DB_SCHEMA: public
       DB_DRIVER: mysql
       DB_PORT: 3306
-      DB_TABLE_PREFIX: ut
+      DB_TABLE_PREFIX: ""
+    healthcheck:
+      test: "curl --fail nginx/admin || exit 1"
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
 
   mariadb:
     image: mariadb:10.1
@@ -56,9 +65,22 @@ services:
       MYSQL_USER: craft
       MYSQL_PASSWORD: secret
       MYSQL_DATABASE: craft
+    ports:
+      - 3306:3306
     volumes:
       # Persistent data
       - dbdata:/var/lib/mysql
+      # - ./.docker/min_seed.sql:/docker-entrypoint-initdb.d/init.sql
+
+  field-seeder:
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    entrypoint: ["bash", "-c", "mysql -h mariadb -u root -proot -e \"use craft; show tables;\""]
+    depends_on:
+      craft:
+        condition: service_healthy
+    
 
   redis:
     image: redis:4-alpine
