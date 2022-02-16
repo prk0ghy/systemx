@@ -1,0 +1,21 @@
+contentColumnType: string
+fieldGroup: 242e30ba-c37e-4a0f-8fab-d6b6ed06b39e
+handle: starteintrag
+instructions: 'Hier kann ein Eintrag aus einer anderen Sektion definiert werde, der dann statt der Startseite angezeigt wird'
+name: Starteintrag
+searchable: true
+settings:
+  allowSelfRelations: false
+  limit: '1'
+  localizeRelations: false
+  selectionLabel: ''
+  showSiteMenu: true
+  source: null
+  sources:
+    - 'section:b2aac411-2f76-4c4a-988b-5f08030bcbc3'
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Entries

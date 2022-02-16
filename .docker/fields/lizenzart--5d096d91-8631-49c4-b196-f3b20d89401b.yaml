@@ -1,0 +1,89 @@
+contentColumnType: string
+fieldGroup: 9e8f7a71-e303-41fe-951f-0809543d5404
+handle: lizenzart
+instructions: ''
+name: Lizenzart
+searchable: true
+settings:
+  optgroups: true
+  options:
+    -
+      __assoc__:
+        -
+          - default
+          - ''
+        -
+          - label
+          - 'GNU Free Documentation License'
+        -
+          - value
+          - GFDL
+    -
+      __assoc__:
+        -
+          - default
+          - ''
+        -
+          - label
+          - 'Creative Commons license (CC 4.0)'
+        -
+          - value
+          - cc4
+    -
+      __assoc__:
+        -
+          - default
+          - ''
+        -
+          - label
+          - 'Creative Commons license (CC 3.0)'
+        -
+          - value
+          - cc3
+    -
+      __assoc__:
+        -
+          - default
+          - ''
+        -
+          - label
+          - 'Creative Commons license (CC 2.0)'
+        -
+          - value
+          - cc2
+    -
+      __assoc__:
+        -
+          - default
+          - ''
+        -
+          - label
+          - 'Creative Commons Zero (0)'
+        -
+          - value
+          - cc0
+    -
+      __assoc__:
+        -
+          - default
+          - 1
+        -
+          - label
+          - 'Public Domain (C)'
+        -
+          - value
+          - PD
+    -
+      __assoc__:
+        -
+          - default
+          - ''
+        -
+          - label
+          - 'all rights reserved ©'
+        -
+          - value
+          - arrc
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Dropdown

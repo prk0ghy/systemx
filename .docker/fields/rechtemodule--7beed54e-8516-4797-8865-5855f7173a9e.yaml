@@ -1,0 +1,56 @@
+contentColumnType: string
+fieldGroup: 9e8f7a71-e303-41fe-951f-0809543d5404
+handle: rechtemodule
+instructions: ''
+name: 'Creative Commons Rechtemodule'
+searchable: true
+settings:
+  multi: true
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - 'Namensnennung (BY)'
+        -
+          - value
+          - by
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - 'Nicht kommerziell (Non-Commercial)'
+        -
+          - value
+          - nc
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - 'Keine Bearbeitung (No Derivatives)'
+        -
+          - value
+          - nd
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - 'Weitergabe unter gleichen Bedingungen (SA)'
+        -
+          - value
+          - sa
+        -
+          - default
+          - ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Checkboxes

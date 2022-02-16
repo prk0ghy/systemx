@@ -1,0 +1,12 @@
+contentColumnType: string(255)
+fieldGroup: 9e8f7a71-e303-41fe-951f-0809543d5404
+handle: quelle
+instructions: ''
+name: Quelle
+searchable: true
+settings:
+  maxLength: 255
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Url

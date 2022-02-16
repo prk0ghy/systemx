@@ -1,0 +1,27 @@
+contentColumnType: text
+fieldGroup: 9f04a027-e99f-4039-ba6f-8c3cf8e63728
+handle: fn_beschreibung
+instructions: ''
+name: Beschreibung
+searchable: true
+settings:
+  availableTransforms: ''
+  availableVolumes: ''
+  cleanupHtml: true
+  columnType: text
+  configSelectionMode: choose
+  defaultTransform: ''
+  manualConfig: ''
+  purifierConfig: ''
+  purifyHtml: '1'
+  redactorConfig: erweitert.json
+  removeEmptyTags: '1'
+  removeInlineStyles: ''
+  removeNbsp: '1'
+  showHtmlButtonForNonAdmins: false
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: true
+  uiMode: enlarged
+translationKeyFormat: null
+translationMethod: site
+type: craft\redactor\Field

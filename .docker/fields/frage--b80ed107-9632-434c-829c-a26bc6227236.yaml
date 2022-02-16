@@ -1,0 +1,27 @@
+contentColumnType: text
+fieldGroup: 3be8de49-f91f-4c91-a2e6-74f8ec7e8320
+handle: frage
+instructions: ''
+name: Frage
+searchable: true
+settings:
+  availableTransforms: ''
+  availableVolumes: ''
+  cleanupHtml: true
+  columnType: text
+  configSelectionMode: choose
+  defaultTransform: ''
+  manualConfig: ''
+  purifierConfig: ''
+  purifyHtml: ''
+  redactorConfig: erweitert.json
+  removeEmptyTags: '1'
+  removeInlineStyles: ''
+  removeNbsp: '1'
+  showHtmlButtonForNonAdmins: false
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: true
+  uiMode: enlarged
+translationKeyFormat: null
+translationMethod: none
+type: craft\redactor\Field

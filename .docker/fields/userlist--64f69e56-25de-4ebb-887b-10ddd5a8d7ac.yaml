@@ -1,0 +1,21 @@
+contentColumnType: string
+fieldGroup: 3be8de49-f91f-4c91-a2e6-74f8ec7e8320
+handle: userlist
+instructions: ''
+name: Userlist
+searchable: true
+settings:
+  allowSelfRelations: false
+  limit: ''
+  localizeRelations: false
+  selectionLabel: ''
+  showSiteMenu: true
+  source: null
+  sources:
+    - 'group:7727f826-90c3-40e9-92ae-d08506109630'
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Users

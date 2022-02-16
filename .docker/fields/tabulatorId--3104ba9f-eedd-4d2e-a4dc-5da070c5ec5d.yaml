@@ -1,0 +1,18 @@
+contentColumnType: text
+fieldGroup: 3be8de49-f91f-4c91-a2e6-74f8ec7e8320
+handle: tabulatorId
+instructions: ''
+name: tabulator_id
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: ''
+  columnType: null
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

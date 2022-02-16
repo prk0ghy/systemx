@@ -1,0 +1,27 @@
+contentColumnType: text
+fieldGroup: 802146cd-8552-4db9-b8ec-3e060400e229
+handle: bildunterschrift
+instructions: ''
+name: 'Herobild - Bildunterschrift'
+searchable: false
+settings:
+  availableTransforms: ''
+  availableVolumes: '*'
+  cleanupHtml: true
+  columnType: text
+  configSelectionMode: choose
+  defaultTransform: ''
+  manualConfig: ''
+  purifierConfig: ''
+  purifyHtml: '1'
+  redactorConfig: erweitert.json
+  removeEmptyTags: '1'
+  removeInlineStyles: ''
+  removeNbsp: ''
+  showHtmlButtonForNonAdmins: '1'
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  uiMode: enlarged
+translationKeyFormat: null
+translationMethod: none
+type: craft\redactor\Field

@@ -1,0 +1,14 @@
+contentColumnType: string
+fieldGroup: 3be8de49-f91f-4c91-a2e6-74f8ec7e8320
+handle: antwortmatrix
+instructions: ''
+name: Antwortmatrix
+searchable: true
+settings:
+  contentTable: '{{%matrixcontent_antwortmatrix}}'
+  maxBlocks: ''
+  minBlocks: ''
+  propagationMethod: all
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

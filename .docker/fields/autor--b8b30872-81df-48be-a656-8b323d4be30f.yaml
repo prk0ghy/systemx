@@ -1,0 +1,20 @@
+contentColumnType: string
+fieldGroup: c9c94c56-57a6-4ff7-90ff-6fefa3fff67b
+handle: autor
+instructions: ''
+name: Autor/in
+searchable: true
+settings:
+  allowSelfRelations: false
+  limit: '3'
+  localizeRelations: false
+  selectionLabel: 'Autor hinzufügen'
+  showSiteMenu: true
+  source: null
+  sources: '*'
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Entries

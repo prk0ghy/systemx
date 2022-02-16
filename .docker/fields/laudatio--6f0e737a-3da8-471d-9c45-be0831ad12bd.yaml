@@ -1,0 +1,27 @@
+contentColumnType: text
+fieldGroup: c9c94c56-57a6-4ff7-90ff-6fefa3fff67b
+handle: laudatio
+instructions: ''
+name: Laudatio
+searchable: true
+settings:
+  availableTransforms: ''
+  availableVolumes: ''
+  cleanupHtml: true
+  columnType: text
+  configSelectionMode: choose
+  defaultTransform: ''
+  manualConfig: ''
+  purifierConfig: ''
+  purifyHtml: '1'
+  redactorConfig: erweitert.json
+  removeEmptyTags: '1'
+  removeInlineStyles: ''
+  removeNbsp: '1'
+  showHtmlButtonForNonAdmins: false
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: true
+  uiMode: enlarged
+translationKeyFormat: null
+translationMethod: site
+type: craft\redactor\Field

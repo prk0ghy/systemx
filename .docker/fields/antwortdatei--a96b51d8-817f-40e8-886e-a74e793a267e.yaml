@@ -1,0 +1,40 @@
+contentColumnType: string
+fieldGroup: 3be8de49-f91f-4c91-a2e6-74f8ec7e8320
+handle: antwortdatei
+instructions: ''
+name: Antwortdatei
+searchable: true
+settings:
+  allowSelfRelations: false
+  allowUploads: true
+  allowedKinds:
+    - audio
+    - image
+    - excel
+    - compressed
+    - pdf
+    - powerpoint
+    - text
+    - video
+    - word
+  defaultUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+  defaultUploadLocationSubpath: 'uploads/{author.username}'
+  limit: '1'
+  localizeRelations: false
+  previewMode: full
+  restrictFiles: '1'
+  selectionLabel: ''
+  showSiteMenu: true
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: true
+  singleUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+  singleUploadLocationSubpath: 'uploads/{author.username}'
+  source: null
+  sources: '*'
+  targetSiteId: null
+  useSingleFolder: true
+  validateRelatedElements: false
+  viewMode: list
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Assets

@@ -1,0 +1,18 @@
+contentColumnType: text
+fieldGroup: 9e8f7a71-e303-41fe-951f-0809543d5404
+handle: urheber
+instructions: ''
+name: Urheber
+searchable: true
+settings:
+  byteLimit: null
+  charLimit: null
+  code: ''
+  columnType: text
+  initialRows: 4
+  multiline: ''
+  placeholder: ''
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

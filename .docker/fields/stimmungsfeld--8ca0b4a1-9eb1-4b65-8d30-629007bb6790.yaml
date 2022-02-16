@@ -1,0 +1,19 @@
+contentColumnType: integer(10)
+fieldGroup: 3be8de49-f91f-4c91-a2e6-74f8ec7e8320
+handle: stimmungsfeld
+instructions: ''
+name: Stimmungsfeld
+searchable: true
+settings:
+  decimals: 0
+  defaultValue: null
+  max: null
+  min: '0'
+  prefix: ''
+  previewCurrency: null
+  previewFormat: decimal
+  size: null
+  suffix: ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Number

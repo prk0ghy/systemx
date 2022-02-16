@@ -1,0 +1,27 @@
+contentColumnType: text
+fieldGroup: 9866ab44-13d5-4c1b-849d-aeda6cd40661
+handle: editor
+instructions: ''
+name: 'Einfacher Editor'
+searchable: true
+settings:
+  availableTransforms: ''
+  availableVolumes: ''
+  cleanupHtml: true
+  columnType: text
+  configSelectionMode: choose
+  defaultTransform: ''
+  manualConfig: ''
+  purifierConfig: ''
+  purifyHtml: ''
+  redactorConfig: erweitert.json
+  removeEmptyTags: '1'
+  removeInlineStyles: ''
+  removeNbsp: '1'
+  showHtmlButtonForNonAdmins: false
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: true
+  uiMode: enlarged
+translationKeyFormat: null
+translationMethod: none
+type: craft\redactor\Field

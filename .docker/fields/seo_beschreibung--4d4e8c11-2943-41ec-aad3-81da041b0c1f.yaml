@@ -1,0 +1,18 @@
+contentColumnType: text
+fieldGroup: 07104aad-d5e2-461a-8321-356b8b947cb1
+handle: seo_beschreibung
+instructions: ''
+name: 'Seo Beschreibung'
+searchable: true
+settings:
+  byteLimit: null
+  charLimit: null
+  code: ''
+  columnType: text
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

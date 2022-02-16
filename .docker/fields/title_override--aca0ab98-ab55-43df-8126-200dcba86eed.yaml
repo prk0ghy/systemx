@@ -1,0 +1,18 @@
+contentColumnType: text
+fieldGroup: 802146cd-8552-4db9-b8ec-3e060400e229
+handle: title_override
+instructions: 'mit diesen Text wird der Entry-Titel immer überschrieben'
+name: 'ÜBERSCHREIBE TITEL'
+searchable: true
+settings:
+  byteLimit: null
+  charLimit: null
+  code: ''
+  columnType: null
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\PlainText
