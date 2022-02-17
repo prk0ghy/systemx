@@ -1,0 +1,151 @@
+field: 4af3b294-4ebe-4043-9f2c-63468570f33f
+fieldLayouts:
+  274b943c-819a-4d48-961e-b3326555d673:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: bfffd559-3bac-48d3-8b86-65b9da1437da
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 75
+          -
+            fieldUid: 637dff68-d200-4d12-9ce9-0a02963817c0
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 25
+          -
+            fieldUid: ba5d07cb-0ea3-49e5-9007-ad9d47d4f4e7
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 9467b2bb-b3b1-4839-9158-2536022018b8
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  637dff68-d200-4d12-9ce9-0a02963817c0:
+    contentColumnType: string
+    fieldGroup: null
+    handle: groesse
+    instructions: ''
+    name: __blank__
+    searchable: true
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - H2
+            -
+              - value
+              - h2
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - H3
+            -
+              - value
+              - h3
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - H4
+            -
+              - value
+              - h4
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - H5
+            -
+              - value
+              - h5
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  9467b2bb-b3b1-4839-9158-2536022018b8:
+    contentColumnType: string(255)
+    fieldGroup: null
+    handle: infoLink
+    instructions: ''
+    name: Infolink
+    searchable: false
+    settings:
+      maxLength: '255'
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Url
+  ba5d07cb-0ea3-49e5-9007-ad9d47d4f4e7:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: nummerierung
+    instructions: ''
+    name: Nummerierung
+    searchable: false
+    settings:
+      default: false
+      offLabel: Inaktiv
+      onLabel: Aktiv
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
+  bfffd559-3bac-48d3-8b86-65b9da1437da:
+    contentColumnType: text
+    fieldGroup: null
+    handle: ueberschrift
+    instructions: ''
+    name: __blank__
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: ueberschrift
+name: Überschrift
+sortOrder: 1

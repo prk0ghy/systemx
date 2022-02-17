@@ -1,0 +1,149 @@
+field: 35aaa38f-a3ed-435f-8616-1d9cbc7fc65c
+fieldLayouts:
+  30292080-e1ed-4992-a388-6416929fdb07:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: f9f124e7-02c6-458e-a8c4-a93becd14292
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 0c1d3300-70f6-424c-b886-56a3d8d6290c
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: d722f07c-4883-414d-9cfa-130ae70bcca7
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  0c1d3300-70f6-424c-b886-56a3d8d6290c:
+    contentColumnType: text
+    fieldGroup: null
+    handle: audiounterschrift
+    instructions: ''
+    name: Audiounterschrift
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  d722f07c-4883-414d-9cfa-130ae70bcca7:
+    contentColumnType: text
+    fieldGroup: null
+    handle: sprungmarken
+    instructions: ''
+    name: Sprungmarken
+    searchable: false
+    settings:
+      addRowLabel: 'Zeile hinzufügen'
+      columnType: text
+      columns:
+        __assoc__:
+          -
+            - col1
+            -
+              __assoc__:
+                -
+                  - heading
+                  - Zeit
+                -
+                  - handle
+                  - zeit
+                -
+                  - width
+                  - ''
+                -
+                  - type
+                  - time
+          -
+            - col2
+            -
+              __assoc__:
+                -
+                  - heading
+                  - Beschreibung
+                -
+                  - handle
+                  - beschreibung
+                -
+                  - width
+                  - ''
+                -
+                  - type
+                  - singleline
+      defaults:
+        -
+          __assoc__:
+            -
+              - col1
+              - null
+            -
+              - col2
+              - ''
+      maxRows: ''
+      minRows: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Table
+  f9f124e7-02c6-458e-a8c4-a93becd14292:
+    contentColumnType: string
+    fieldGroup: null
+    handle: audio
+    instructions: ''
+    name: Audio
+    searchable: true
+    settings:
+      allowSelfRelations: false
+      allowUploads: true
+      allowedKinds:
+        - audio
+      defaultUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: false
+      previewMode: full
+      restrictFiles: '1'
+      selectionLabel: ''
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: true
+      singleUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      singleUploadLocationSubpath: audios
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: true
+      validateRelatedElements: false
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+handle: audioDatei
+name: 'Audio (Datei)'
+sortOrder: 4

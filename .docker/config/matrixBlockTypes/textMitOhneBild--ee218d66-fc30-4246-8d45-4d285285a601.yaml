@@ -1,0 +1,272 @@
+field: 3a4e723a-d96b-4b9d-8228-3cffb91dba7e
+fieldLayouts:
+  9387bf86-82b0-47df-bb55-ebb4170bf975:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 5cd0e6a6-6275-465f-b37b-a77277293614
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: c381a3e3-ea78-4344-891d-736dd49058de
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 89fb6023-c9e1-4d16-9418-2d4d3541bcde
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 120d5d0f-167e-4fd2-abb2-a3cbea6f724b
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 25
+          -
+            fieldUid: 212ad730-f1e9-42ca-a86f-4db6933caa0b
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 25
+          -
+            fieldUid: 49c30d84-34fe-4539-8ba6-38a986132393
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 25
+          -
+            fieldUid: 6eac1529-fb66-4632-a1bb-cdfecbd1ea16
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  120d5d0f-167e-4fd2-abb2-a3cbea6f724b:
+    contentColumnType: string
+    fieldGroup: null
+    handle: bildbreite
+    instructions: ''
+    name: Bildbreite
+    searchable: false
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - 38.2%
+            -
+              - value
+              - '38.2'
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - 61.8%
+            -
+              - value
+              - '61.8'
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - 100%
+            -
+              - value
+              - '100'
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  212ad730-f1e9-42ca-a86f-4db6933caa0b:
+    contentColumnType: string
+    fieldGroup: null
+    handle: bildposition
+    instructions: ''
+    name: Bildposition
+    searchable: false
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - 'Links im Text'
+            -
+              - value
+              - linksImText
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - 'Rechts im Text'
+            -
+              - value
+              - rechtsImText
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  49c30d84-34fe-4539-8ba6-38a986132393:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: hideButtons
+    instructions: ''
+    name: 'Buttons ausblenden'
+    searchable: false
+    settings:
+      default: false
+      offLabel: null
+      onLabel: null
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
+  5cd0e6a6-6275-465f-b37b-a77277293614:
+    contentColumnType: text
+    fieldGroup: null
+    handle: text
+    instructions: ''
+    name: Text
+    searchable: false
+    settings:
+      availableTransforms: ''
+      availableVolumes: ''
+      cleanupHtml: true
+      columnType: text
+      configSelectionMode: choose
+      defaultTransform: ''
+      manualConfig: ''
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: erweitert.json
+      removeEmptyTags: '1'
+      removeInlineStyles: ''
+      removeNbsp: ''
+      showHtmlButtonForNonAdmins: '1'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      uiMode: enlarged
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\redactor\Field
+  6eac1529-fb66-4632-a1bb-cdfecbd1ea16:
+    contentColumnType: string(255)
+    fieldGroup: null
+    handle: infoLink
+    instructions: ''
+    name: Infolink
+    searchable: false
+    settings:
+      maxLength: '255'
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Url
+  89fb6023-c9e1-4d16-9418-2d4d3541bcde:
+    contentColumnType: text
+    fieldGroup: null
+    handle: bildunterschrift
+    instructions: ''
+    name: Bildunterschrift
+    searchable: false
+    settings:
+      availableTransforms: ''
+      availableVolumes: ''
+      cleanupHtml: true
+      columnType: text
+      configSelectionMode: choose
+      defaultTransform: ''
+      manualConfig: ''
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: erweitert.json
+      removeEmptyTags: '1'
+      removeInlineStyles: ''
+      removeNbsp: ''
+      showHtmlButtonForNonAdmins: '1'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      uiMode: enlarged
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\redactor\Field
+  c381a3e3-ea78-4344-891d-736dd49058de:
+    contentColumnType: string
+    fieldGroup: null
+    handle: bilder
+    instructions: ''
+    name: Bild
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      allowUploads: true
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: false
+      previewMode: full
+      restrictFiles: '1'
+      selectionLabel: ''
+      showSiteMenu: true
+      showUnpermittedFiles: true
+      showUnpermittedVolumes: true
+      singleUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      singleUploadLocationSubpath: bilder
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: true
+      validateRelatedElements: false
+      viewMode: large
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+handle: textMitOhneBild
+name: 'Text mit Bild'
+sortOrder: 1

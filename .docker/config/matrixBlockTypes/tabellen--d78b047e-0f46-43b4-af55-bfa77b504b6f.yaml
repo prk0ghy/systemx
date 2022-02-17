@@ -1,0 +1,132 @@
+field: 35aaa38f-a3ed-435f-8616-1d9cbc7fc65c
+fieldLayouts:
+  238f04e4-fc71-40d1-85f4-059ba7d50375:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 67109195-baf0-4322-9699-26b3cd8f10e5
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 2aba0a37-a49e-400e-9389-d83eca6f0890
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 4d17148a-bbc8-4727-ba31-2df218fe1586
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  2aba0a37-a49e-400e-9389-d83eca6f0890:
+    contentColumnType: text
+    fieldGroup: null
+    handle: tabelle
+    instructions: ''
+    name: 'Tabelle erstellen'
+    searchable: true
+    settings:
+      columnsAddRowLabel: Spalte
+      columnsInstructions: ''
+      columnsLabel: Spalte
+      rowsAddRowLabel: 'Zeile hinzufügen'
+      rowsInstructions: ''
+      rowsLabel: Zeilen
+    translationKeyFormat: null
+    translationMethod: none
+    type: supercool\tablemaker\fields\TableMakerField
+  4d17148a-bbc8-4727-ba31-2df218fe1586:
+    contentColumnType: text
+    fieldGroup: null
+    handle: quelle
+    instructions: ''
+    name: Quelle
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  67109195-baf0-4322-9699-26b3cd8f10e5:
+    contentColumnType: string
+    fieldGroup: null
+    handle: art
+    instructions: ''
+    name: Art
+    searchable: true
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - 'einfache Tabelle'
+            -
+              - value
+              - simple-table
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - 'mit Kopfzeile'
+            -
+              - value
+              - table-headrow
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - 'mit Kopfspalte'
+            -
+              - value
+              - table-headcolumn
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - 'Kopfzeile und Kopfspalte'
+            -
+              - value
+              - table-both
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+handle: tabellen
+name: Tabelle
+sortOrder: 9

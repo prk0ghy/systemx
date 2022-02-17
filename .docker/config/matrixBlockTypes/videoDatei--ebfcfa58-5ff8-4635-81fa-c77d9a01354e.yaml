@@ -1,0 +1,168 @@
+field: 35aaa38f-a3ed-435f-8616-1d9cbc7fc65c
+fieldLayouts:
+  9defca06-ae75-4132-a27c-3c4e1d61b51e:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: a9556a28-4e4b-404f-910e-65b826e9970d
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: f5c96d62-e77a-41c8-86c0-8020a6f1d5f5
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: b8efc773-e151-458a-93ec-ebcdb9f0f5c8
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 23168c04-e1b7-4f90-92f6-6480d13e327b
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  23168c04-e1b7-4f90-92f6-6480d13e327b:
+    contentColumnType: text
+    fieldGroup: null
+    handle: videoUnterschrift
+    instructions: ''
+    name: 'Video Unterschrift'
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  a9556a28-4e4b-404f-910e-65b826e9970d:
+    contentColumnType: string
+    fieldGroup: null
+    handle: videoformat
+    instructions: 'ist das video im querformat oder hochformat?'
+    name: Videoformat
+    searchable: false
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - querformat
+            -
+              - value
+              - landscape
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - hochformat
+            -
+              - value
+              - portrait
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  b8efc773-e151-458a-93ec-ebcdb9f0f5c8:
+    contentColumnType: string
+    fieldGroup: null
+    handle: posterbild
+    instructions: ''
+    name: Posterbild
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      allowUploads: true
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: false
+      previewMode: full
+      restrictFiles: '1'
+      selectionLabel: ''
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: true
+      singleUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      singleUploadLocationSubpath: bilder
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: true
+      validateRelatedElements: false
+      viewMode: large
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  f5c96d62-e77a-41c8-86c0-8020a6f1d5f5:
+    contentColumnType: string
+    fieldGroup: null
+    handle: datei
+    instructions: ''
+    name: Datei
+    searchable: true
+    settings:
+      allowSelfRelations: false
+      allowUploads: true
+      allowedKinds:
+        - video
+      defaultUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: false
+      previewMode: full
+      restrictFiles: '1'
+      selectionLabel: ''
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: true
+      singleUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      singleUploadLocationSubpath: videos
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: true
+      validateRelatedElements: false
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+handle: videoDatei
+name: 'Video (Datei)'
+sortOrder: 3

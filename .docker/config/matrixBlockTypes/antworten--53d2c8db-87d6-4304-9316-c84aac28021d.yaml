@@ -1,0 +1,68 @@
+field: 5d1c7d4e-07ec-41dc-a304-c7d3fbaddf58
+fieldLayouts:
+  c75cc358-4748-42b9-9560-e5d59570f785:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: d96ffd28-bce7-4ccd-a0e7-3f08b1aad6be
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: eb9b9571-3a3a-4330-8f38-76143c25567f
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  d96ffd28-bce7-4ccd-a0e7-3f08b1aad6be:
+    contentColumnType: text
+    fieldGroup: null
+    handle: frage
+    instructions: ''
+    name: Frage
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  eb9b9571-3a3a-4330-8f38-76143c25567f:
+    contentColumnType: text
+    fieldGroup: null
+    handle: antwort
+    instructions: ''
+    name: Antwort
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: antworten
+name: Antworten
+sortOrder: 1

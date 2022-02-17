@@ -1,0 +1,82 @@
+field: 4af3b294-4ebe-4043-9f2c-63468570f33f
+fieldLayouts:
+  c499854f-0f6a-41b1-baa8-3ee54d8fe9a6:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 89347901-5960-438d-a225-40cc0b59fc42
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: df847b7d-7738-4216-8191-02ea2fc80947
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  89347901-5960-438d-a225-40cc0b59fc42:
+    contentColumnType: text
+    fieldGroup: null
+    handle: textOverlay
+    instructions: ''
+    name: 'Text (overlay)'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  df847b7d-7738-4216-8191-02ea2fc80947:
+    contentColumnType: string
+    fieldGroup: null
+    handle: datei
+    instructions: ''
+    name: Datei
+    searchable: true
+    settings:
+      allowSelfRelations: false
+      allowUploads: true
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: false
+      previewMode: full
+      restrictFiles: '1'
+      selectionLabel: ''
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: true
+      singleUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      singleUploadLocationSubpath: bilder/
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: true
+      validateRelatedElements: false
+      viewMode: large
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+handle: trennerbild
+name: Trennerbild
+sortOrder: 7

@@ -1,0 +1,88 @@
+field: d3f1e620-b6eb-4fc6-bba6-0760fdb5b8f2
+fieldLayouts:
+  85991ce5-7a4b-41e2-8666-42287af4a9be:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 564a619c-0dd1-41d5-9f3a-5da79f0113be
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 415f926b-25a3-4296-bc42-4c3e117077cf
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  415f926b-25a3-4296-bc42-4c3e117077cf:
+    contentColumnType: mediumtext
+    fieldGroup: null
+    handle: bildunterschrift
+    instructions: ''
+    name: Bildunterschrift
+    searchable: true
+    settings:
+      availableTransforms: ''
+      availableVolumes: ''
+      cleanupHtml: true
+      columnType: mediumtext
+      configSelectionMode: choose
+      defaultTransform: ''
+      manualConfig: ''
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: erweitert.json
+      removeEmptyTags: '1'
+      removeInlineStyles: ''
+      removeNbsp: '1'
+      showHtmlButtonForNonAdmins: '1'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\redactor\Field
+  564a619c-0dd1-41d5-9f3a-5da79f0113be:
+    contentColumnType: string
+    fieldGroup: null
+    handle: datei
+    instructions: ''
+    name: Datei
+    searchable: true
+    settings:
+      allowSelfRelations: false
+      allowUploads: true
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: false
+      previewMode: full
+      restrictFiles: '1'
+      selectionLabel: ''
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: true
+      singleUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      singleUploadLocationSubpath: bilder/
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: true
+      validateRelatedElements: false
+      viewMode: large
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets

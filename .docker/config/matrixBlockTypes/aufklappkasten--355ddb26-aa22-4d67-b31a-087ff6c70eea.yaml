@@ -1,0 +1,284 @@
+field: 4af3b294-4ebe-4043-9f2c-63468570f33f
+fieldLayouts:
+  218c3c9c-141e-480c-82b5-45435e4a1bfc:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 523277b4-1077-4a0a-8e66-cfcf454be40c
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: bc296e89-401f-4eab-a20e-8c07d2e6e5a5
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 43958a64-a300-4f97-9f51-e7e97cef7ab1
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 366846c0-f3a0-4e15-8d0c-a9e254d38dc5
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 2c1ab209-a2f4-4d55-a837-4726b9f0de90
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 5649c044-e9ba-4e65-aff6-13bcabb98ec6
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 9e8cc511-24f1-449b-87d4-acf7c0331162
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  2c1ab209-a2f4-4d55-a837-4726b9f0de90:
+    contentColumnType: string
+    fieldGroup: null
+    handle: inhaltDesKastens
+    instructions: ''
+    name: __blank__
+    searchable: true
+    settings:
+      columns:
+        __assoc__:
+          -
+            - a6ca8dd3-3275-44ec-9e6c-68cf3996ce56
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+      contentTable: '{{%stc_14_inhaltdeskastens_1}}'
+      fieldLayout: matrix
+      maxRows: '1'
+      minRows: '1'
+      placeholderKey: null
+      propagationMethod: all
+      selectionLabel: ''
+      staticField: '1'
+    translationKeyFormat: null
+    translationMethod: site
+    type: verbb\supertable\fields\SuperTableField
+  366846c0-f3a0-4e15-8d0c-a9e254d38dc5:
+    contentColumnType: text
+    fieldGroup: null
+    handle: quellenangaben
+    instructions: ''
+    name: Quellenangaben
+    searchable: true
+    settings:
+      availableTransforms: ''
+      availableVolumes: ''
+      cleanupHtml: true
+      columnType: text
+      configSelectionMode: choose
+      defaultTransform: ''
+      manualConfig: ''
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: erweitert.json
+      removeEmptyTags: '1'
+      removeInlineStyles: ''
+      removeNbsp: ''
+      showHtmlButtonForNonAdmins: '1'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\redactor\Field
+  43958a64-a300-4f97-9f51-e7e97cef7ab1:
+    contentColumnType: text
+    fieldGroup: null
+    handle: zusammenfassung
+    instructions: ''
+    name: Unterüberschrift
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  523277b4-1077-4a0a-8e66-cfcf454be40c:
+    contentColumnType: string
+    fieldGroup: null
+    handle: Farbe
+    instructions: ''
+    name: __blank__
+    searchable: true
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - Blau
+            -
+              - value
+              - box-blau
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Grün
+            -
+              - value
+              - box-green
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Magenta
+            -
+              - value
+              - box-magenta
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Grau
+            -
+              - value
+              - box-grey
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Türkis
+            -
+              - value
+              - box-teal
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  5649c044-e9ba-4e65-aff6-13bcabb98ec6:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: nummerierung
+    instructions: ''
+    name: Nummerierung
+    searchable: false
+    settings:
+      default: true
+      offLabel: Inaktiv
+      onLabel: Aktiv
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
+  9e8cc511-24f1-449b-87d4-acf7c0331162:
+    contentColumnType: string
+    fieldGroup: null
+    handle: hilfsvideo
+    instructions: ''
+    name: Hilfsvideo
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      allowUploads: true
+      allowedKinds:
+        - video
+      defaultUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      defaultUploadLocationSubpath: help_videos
+      limit: '1'
+      localizeRelations: false
+      previewMode: full
+      restrictFiles: '1'
+      selectionLabel: ''
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: true
+      singleUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      singleUploadLocationSubpath: ''
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: false
+      validateRelatedElements: false
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  bc296e89-401f-4eab-a20e-8c07d2e6e5a5:
+    contentColumnType: text
+    fieldGroup: null
+    handle: boxHeader
+    instructions: ''
+    name: Überschrift
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: aufklappkasten
+name: Aufklappkasten
+sortOrder: 11

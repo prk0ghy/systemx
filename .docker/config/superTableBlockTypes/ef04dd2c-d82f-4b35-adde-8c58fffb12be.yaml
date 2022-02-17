@@ -1,0 +1,33 @@
+field: 5b888a96-8ec8-49a7-9677-19a59d02729a
+fieldLayouts:
+  afcff638-3dd5-48a1-bfc3-d9f9a9f7d584:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 3a4e723a-d96b-4b9d-8228-3cffb91dba7e
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  3a4e723a-d96b-4b9d-8228-3cffb91dba7e:
+    contentColumnType: string
+    fieldGroup: null
+    handle: aufgabeElemente
+    instructions: ''
+    name: 'Weiteres Element einfügen'
+    searchable: true
+    settings:
+      contentTable: '{{%matrixcontent_aufgabeelemente}}'
+      maxBlocks: ''
+      minBlocks: ''
+      propagationMethod: all
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Matrix

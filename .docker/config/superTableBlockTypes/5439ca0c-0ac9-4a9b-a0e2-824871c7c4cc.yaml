@@ -1,0 +1,122 @@
+field: 53bfaf25-e98b-48d0-bc7c-8cb86a6cffe8
+fieldLayouts:
+  35bd71d8-bab9-4b68-a715-f28e8764130a:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 8110a41a-7df5-46e8-9044-f856607c1ecb
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 9b77a06f-ae23-4b24-a903-a3234fdad15c
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 9736c379-25a8-4687-b2c0-c950b2ed3c1e
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  8110a41a-7df5-46e8-9044-f856607c1ecb:
+    contentColumnType: string
+    fieldGroup: null
+    handle: closedcaption
+    instructions: ''
+    name: 'Closed Caption'
+    searchable: false
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - subtitles
+            -
+              - value
+              - subtitles
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - captions
+            -
+              - value
+              - captions
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  9736c379-25a8-4687-b2c0-c950b2ed3c1e:
+    contentColumnType: string
+    fieldGroup: null
+    handle: src
+    instructions: ''
+    name: 'vtt Datei'
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      allowUploads: true
+      allowedKinds: null
+      defaultUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: false
+      previewMode: full
+      restrictFiles: ''
+      selectionLabel: ''
+      showSiteMenu: false
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      singleUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      singleUploadLocationSubpath: untertitel
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: true
+      validateRelatedElements: false
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  9b77a06f-ae23-4b24-a903-a3234fdad15c:
+    contentColumnType: text
+    fieldGroup: null
+    handle: srclang
+    instructions: 'de oder en ...'
+    name: Sprach
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText

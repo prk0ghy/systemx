@@ -1,0 +1,136 @@
+field: 4af3b294-4ebe-4043-9f2c-63468570f33f
+fieldLayouts:
+  a390bb4f-b81d-4f09-be17-d02b713b371c:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: b65b2c25-f97a-46f5-8dcc-e4dac0732051
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: a3c2c184-3254-48b4-9f07-7f862c3db4c3
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 83f113d1-6fab-49df-8afa-b7c50315fb42
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 372bbec6-e354-41db-82c2-d843fbefd997
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  372bbec6-e354-41db-82c2-d843fbefd997:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: nummerierung
+    instructions: ''
+    name: Nummerierung
+    searchable: false
+    settings:
+      default: true
+      offLabel: Inaktiv
+      onLabel: Aktiv
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
+  83f113d1-6fab-49df-8afa-b7c50315fb42:
+    contentColumnType: string(255)
+    fieldGroup: null
+    handle: urldownload
+    instructions: 'Alternativ kann auch eine URL für den Dateidownload angegeben werden, dabei das Dateifeld ignoriert'
+    name: 'Url des downloads (alternativ)'
+    searchable: true
+    settings:
+      maxLength: '255'
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Url
+  a3c2c184-3254-48b4-9f07-7f862c3db4c3:
+    contentColumnType: string
+    fieldGroup: null
+    handle: datei
+    instructions: ''
+    name: Datei
+    searchable: true
+    settings:
+      allowSelfRelations: false
+      allowUploads: true
+      allowedKinds:
+        - audio
+        - image
+        - excel
+        - html
+        - json
+        - javascript
+        - pdf
+        - powerpoint
+        - video
+        - word
+      defaultUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      defaultUploadLocationSubpath: download/
+      limit: '1'
+      localizeRelations: false
+      previewMode: full
+      restrictFiles: '1'
+      selectionLabel: ''
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: true
+      singleUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      singleUploadLocationSubpath: downloads/
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: true
+      validateRelatedElements: false
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  b65b2c25-f97a-46f5-8dcc-e4dac0732051:
+    contentColumnType: text
+    fieldGroup: null
+    handle: beschreibung
+    instructions: ''
+    name: Beschreibung
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: download
+name: Download
+sortOrder: 9

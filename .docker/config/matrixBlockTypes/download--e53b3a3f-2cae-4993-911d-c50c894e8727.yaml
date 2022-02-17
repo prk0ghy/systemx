@@ -1,0 +1,114 @@
+field: 35aaa38f-a3ed-435f-8616-1d9cbc7fc65c
+fieldLayouts:
+  f3db981a-c054-4c34-9585-66f2e099a6f6:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 6a38d12d-f2e7-484f-ac98-090b5aaf2e19
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: d8f65438-e71a-4277-b356-981039523ecb
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 736a2479-38db-4d22-9702-5b9283ae2a8a
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  6a38d12d-f2e7-484f-ac98-090b5aaf2e19:
+    contentColumnType: text
+    fieldGroup: null
+    handle: beschreibung
+    instructions: ''
+    name: Beschreibung
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  736a2479-38db-4d22-9702-5b9283ae2a8a:
+    contentColumnType: string(255)
+    fieldGroup: null
+    handle: urldownload
+    instructions: 'Alternativ kann auch eine URL für den Dateidownload angegeben werden, dabei das Dateifeld ignoriert'
+    name: 'Url des downloads (alternativ)'
+    searchable: true
+    settings:
+      maxLength: '255'
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Url
+  d8f65438-e71a-4277-b356-981039523ecb:
+    contentColumnType: string
+    fieldGroup: null
+    handle: datei
+    instructions: ''
+    name: Datei
+    searchable: true
+    settings:
+      allowSelfRelations: false
+      allowUploads: true
+      allowedKinds:
+        - audio
+        - image
+        - excel
+        - html
+        - json
+        - javascript
+        - compressed
+        - pdf
+        - powerpoint
+        - video
+        - word
+      defaultUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: false
+      previewMode: full
+      restrictFiles: '1'
+      selectionLabel: ''
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: true
+      singleUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      singleUploadLocationSubpath: downloads
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: true
+      validateRelatedElements: false
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+handle: download
+name: Download
+sortOrder: 7

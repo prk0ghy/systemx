@@ -27,13 +27,18 @@ USER www-data
 RUN composer create-project craftcms/craft /var/www/html
 RUN ./craft setup/security-key
 RUN composer require craftcms/redactor
+RUN composer require verbb/super-table
+RUN composer require supercool/tablemaker
+RUN composer require craftcms/aws-s3
+RUN composer require vaersaagod/matrixmate
+RUN composer require verbb/smith
+RUN composer require wrav/oembed
 
 
 USER root
 ADD ./.docker/start.sh /var/www/html/
 RUN chmod +x ./start.sh
-ADD ./.docker/fields/ /var/www/html/_config/fields
-ADD ./.docker/fieldGroups/ /var/www/html/_config/fieldGroups
-# ADD ./.docker/sections/ /var/www/html/_config/sections
+ADD ./.docker/config/ /var/www/html/_config/
+ADD ./.docker/routes.php /var/www/html/config/routes.php
 
 USER www-data

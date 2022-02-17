@@ -1,0 +1,188 @@
+field: 35aaa38f-a3ed-435f-8616-1d9cbc7fc65c
+fieldLayouts:
+  49cb7a34-b008-49b6-bfdf-dcf671eff12c:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 7acd7201-02ff-43fe-a433-15e05f708617
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 078487ae-b884-4c34-a248-05bd464f040a
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 25
+          -
+            fieldUid: 77f06186-0d5b-48cc-abd8-08ec67a5becc
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 25
+          -
+            fieldUid: 1697e78f-6e1d-4339-893a-768657b083b2
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 25
+          -
+            fieldUid: ac9788e6-2db6-452d-bfa6-9e8d0e3dcd52
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  078487ae-b884-4c34-a248-05bd464f040a:
+    contentColumnType: datetime
+    fieldGroup: null
+    handle: start
+    instructions: ''
+    name: start
+    searchable: false
+    settings:
+      max: null
+      min: null
+      minuteIncrement: '30'
+      showDate: false
+      showTime: true
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Date
+  1697e78f-6e1d-4339-893a-768657b083b2:
+    contentColumnType: string
+    fieldGroup: null
+    handle: untertitel
+    instructions: ''
+    name: __blank__
+    searchable: false
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - 'keine Untertitel'
+            -
+              - value
+              - none
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - deutsch
+            -
+              - value
+              - de
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - englisch
+            -
+              - value
+              - en
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - französisch
+            -
+              - value
+              - fr
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - spanisch
+            -
+              - value
+              - sp
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  77f06186-0d5b-48cc-abd8-08ec67a5becc:
+    contentColumnType: datetime
+    fieldGroup: null
+    handle: ende
+    instructions: ''
+    name: ende
+    searchable: false
+    settings:
+      max: null
+      min: null
+      minuteIncrement: '30'
+      showDate: false
+      showTime: true
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Date
+  7acd7201-02ff-43fe-a433-15e05f708617:
+    contentColumnType: text
+    fieldGroup: null
+    handle: urlDesStreams
+    instructions: 'Hier kann eine Vimeo oder YouTube URL eingegeben werden. NICHT der embedding code.'
+    name: 'URL desVideos'
+    searchable: true
+    settings:
+      url: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: wrav\oembed\fields\OembedField
+  ac9788e6-2db6-452d-bfa6-9e8d0e3dcd52:
+    contentColumnType: text
+    fieldGroup: null
+    handle: videoUnterschrift
+    instructions: ''
+    name: 'Video Unterschrift'
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: embeddedVideoAudio
+name: 'Video/Audio einbinden (z.B. Youtube, Vimeo etc.)'
+sortOrder: 5

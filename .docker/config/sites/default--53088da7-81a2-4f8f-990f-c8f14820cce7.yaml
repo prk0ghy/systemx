@@ -1,0 +1,9 @@
+baseUrl: http://systemx.test
+enabled: true
+handle: default
+hasUrls: true
+language: de
+name: 'systemx-test'
+primary: true
+siteGroup: 72c86875-883f-4b7a-a0f2-2195ce26335a
+sortOrder: 1

@@ -1,0 +1,255 @@
+field: 4af3b294-4ebe-4043-9f2c-63468570f33f
+fieldLayouts:
+  dd332a6e-5e77-498b-a740-13ca8abdd5e3:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: c55366a3-5ea6-4815-a0a8-332916798f67
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: c16083d4-033d-49c0-83b1-c625526838ff
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 25
+          -
+            fieldUid: 221ae885-8743-470a-aabf-f650eeb0bf04
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 25
+          -
+            fieldUid: fa966153-54c3-4121-886c-e564418d266b
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 25
+          -
+            fieldUid: b8a0576c-18de-495d-aa0f-4bd047ea4aa9
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: cbcfb8d8-8e4d-4efb-b0dd-90ce89c6f45d
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: aaff4864-7660-4f8b-b8db-9937b1440da4
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  221ae885-8743-470a-aabf-f650eeb0bf04:
+    contentColumnType: datetime
+    fieldGroup: null
+    handle: ende
+    instructions: ''
+    name: ende
+    searchable: false
+    settings:
+      max: null
+      min: null
+      minuteIncrement: '30'
+      showDate: false
+      showTime: true
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Date
+  aaff4864-7660-4f8b-b8db-9937b1440da4:
+    contentColumnType: string
+    fieldGroup: null
+    handle: stern_selection
+    instructions: ''
+    name: Stern-Modus
+    searchable: false
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - Standard
+            -
+              - value
+              - standard
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - Stern-Modus
+            -
+              - value
+              - stern
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  b8a0576c-18de-495d-aa0f-4bd047ea4aa9:
+    contentColumnType: text
+    fieldGroup: null
+    handle: videoUnterschrift
+    instructions: ''
+    name: 'Video Unterschrift'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  c16083d4-033d-49c0-83b1-c625526838ff:
+    contentColumnType: datetime
+    fieldGroup: null
+    handle: start
+    instructions: ''
+    name: start
+    searchable: false
+    settings:
+      max: null
+      min: null
+      minuteIncrement: '30'
+      showDate: false
+      showTime: true
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Date
+  c55366a3-5ea6-4815-a0a8-332916798f67:
+    contentColumnType: text
+    fieldGroup: null
+    handle: urlDesVideos
+    instructions: 'Hier kann eine Vimeo oder YouTube URL eingegeben werden. NICHT der embedding code.'
+    name: 'URL des Videos'
+    searchable: true
+    settings:
+      url: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: wrav\oembed\fields\OembedField
+  cbcfb8d8-8e4d-4efb-b0dd-90ce89c6f45d:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: nummerierung
+    instructions: ''
+    name: Nummerierung
+    searchable: false
+    settings:
+      default: true
+      offLabel: Inaktiv
+      onLabel: Aktiv
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
+  fa966153-54c3-4121-886c-e564418d266b:
+    contentColumnType: string
+    fieldGroup: null
+    handle: untertitel
+    instructions: ''
+    name: __blank__
+    searchable: false
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - 'keine Untertitel'
+            -
+              - value
+              - none
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - deutsch
+            -
+              - value
+              - de
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - englisch
+            -
+              - value
+              - en
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - französisch
+            -
+              - value
+              - fr
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - spanisch
+            -
+              - value
+              - es
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+handle: embeddedVideoAudio
+name: 'Video/Audio einbinden (z.B. Youtube, Vimeo etc.)'
+sortOrder: 5

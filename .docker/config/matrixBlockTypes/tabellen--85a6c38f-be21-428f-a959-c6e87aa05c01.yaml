@@ -1,0 +1,105 @@
+field: ab6348a4-5bdf-49af-91a3-b0782152a42c
+fieldLayouts:
+  08104860-b922-4c61-a9b3-10d9b8e8b4e8:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 6accc882-fccc-4d84-9010-81b71571e4db
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 6a74a31e-9504-41ea-8fc3-bc44490bbab6
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 6a69508b-bd3e-46e8-b3da-9fad1728a20d
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  6a69508b-bd3e-46e8-b3da-9fad1728a20d:
+    contentColumnType: text
+    fieldGroup: null
+    handle: tabelle_q
+    instructions: 'Hier kann eine eigene Tabelle angelegt werden'
+    name: tabelle
+    searchable: false
+    settings:
+      columnsAddRowLabel: 'Spalte hinzufügen'
+      columnsInstructions: 'Hier können die Spalten der Tabelle definiert werden'
+      columnsLabel: Spalte
+      rowsAddRowLabel: 'Zeile hinzufügen'
+      rowsInstructions: 'Hier können Zeilen zur Tabelle hinzugefügt werden'
+      rowsLabel: Zeile
+    translationKeyFormat: null
+    translationMethod: none
+    type: supercool\tablemaker\fields\TableMakerField
+  6a74a31e-9504-41ea-8fc3-bc44490bbab6:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: minwidth
+    instructions: ''
+    name: Mindesbreite
+    searchable: false
+    settings:
+      default: false
+      offLabel: null
+      onLabel: null
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
+  6accc882-fccc-4d84-9010-81b71571e4db:
+    contentColumnType: string
+    fieldGroup: null
+    handle: art_q
+    instructions: ''
+    name: Art
+    searchable: false
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - 'einfache Tabelle'
+            -
+              - value
+              - einfacheTabelle
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - 'mit Kopfzeile'
+            -
+              - value
+              - mitKopfzeile
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+handle: tabellen
+name: Tabellen
+sortOrder: 5

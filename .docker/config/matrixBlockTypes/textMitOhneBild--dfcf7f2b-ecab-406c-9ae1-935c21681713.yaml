@@ -1,0 +1,364 @@
+field: 4af3b294-4ebe-4043-9f2c-63468570f33f
+fieldLayouts:
+  8ab5c48b-c0b1-4686-b490-3bace433cf84:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 7f221b77-576b-49ef-ac19-69dc333baa33
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: af964f60-79a7-45dd-95eb-f08435716ca9
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 303d8cc9-0e84-4a86-b064-65e68e408f99
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 25
+          -
+            fieldUid: b446a6ee-d0df-4ebb-8aba-35fe8a944715
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 25
+          -
+            fieldUid: 929f286e-5e97-4ea1-985d-3f78665b60ec
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 25
+          -
+            fieldUid: 44423cb3-b484-4a17-8c8c-92569ca4b328
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 25
+          -
+            fieldUid: d6c56242-7f74-4116-a400-0077d18fa92e
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: aff2d083-0820-4f5e-8d1f-c4d0cb60956d
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: ad306d70-bb77-4587-9741-bca70d53da00
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: bc19bb9d-5cfd-4f63-9731-e8e7e6049aad
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  303d8cc9-0e84-4a86-b064-65e68e408f99:
+    contentColumnType: string
+    fieldGroup: null
+    handle: bildbreite
+    instructions: ''
+    name: __blank__
+    searchable: true
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - 38.2%
+            -
+              - value
+              - '38.2'
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - 61.8%
+            -
+              - value
+              - '61.8'
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - 100%
+            -
+              - value
+              - '100'
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  44423cb3-b484-4a17-8c8c-92569ca4b328:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: hideButtons
+    instructions: ''
+    name: 'Buttons ausblenden'
+    searchable: false
+    settings:
+      default: false
+      offLabel: null
+      onLabel: null
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
+  7f221b77-576b-49ef-ac19-69dc333baa33:
+    contentColumnType: text
+    fieldGroup: null
+    handle: text
+    instructions: ''
+    name: __blank__
+    searchable: true
+    settings:
+      availableTransforms: ''
+      availableVolumes: ''
+      cleanupHtml: true
+      columnType: text
+      configSelectionMode: choose
+      defaultTransform: ''
+      manualConfig: ''
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: erweitert.json
+      removeEmptyTags: '1'
+      removeInlineStyles: ''
+      removeNbsp: ''
+      showHtmlButtonForNonAdmins: '1'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      uiMode: enlarged
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\redactor\Field
+  929f286e-5e97-4ea1-985d-3f78665b60ec:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: flex
+    instructions: '(Mehrere hochgeladene Bilder werden als Galerie angezeigt, wenn dieser Schalter nicht aktiviert ist)'
+    name: 'Bilder nebeneinander'
+    searchable: false
+    settings:
+      default: false
+      offLabel: null
+      onLabel: null
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
+  ad306d70-bb77-4587-9741-bca70d53da00:
+    contentColumnType: string(255)
+    fieldGroup: null
+    handle: infoLink
+    instructions: ''
+    name: Infolink
+    searchable: false
+    settings:
+      maxLength: '255'
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Url
+  af964f60-79a7-45dd-95eb-f08435716ca9:
+    contentColumnType: string
+    fieldGroup: null
+    handle: bilder
+    instructions: ''
+    name: __blank__
+    searchable: true
+    settings:
+      columns:
+        __assoc__:
+          -
+            - 276eea4c-cca5-428e-816d-61a1c1ce7b49
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+          -
+            - ad5bccee-a4c3-4d4e-aa20-78f958eb8817
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+      contentTable: '{{%stc_12_bilder}}'
+      fieldLayout: row
+      maxRows: ''
+      minRows: ''
+      placeholderKey: null
+      propagationMethod: all
+      selectionLabel: 'Bild Hinzufügen'
+      staticField: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: verbb\supertable\fields\SuperTableField
+  aff2d083-0820-4f5e-8d1f-c4d0cb60956d:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: nummerierung
+    instructions: ''
+    name: Nummerierung
+    searchable: false
+    settings:
+      default: true
+      offLabel: Inaktiv
+      onLabel: Aktiv
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
+  b446a6ee-d0df-4ebb-8aba-35fe8a944715:
+    contentColumnType: string
+    fieldGroup: null
+    handle: bildposition
+    instructions: ''
+    name: __blank__
+    searchable: true
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - 'Links im Text'
+            -
+              - value
+              - linksImText
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - 'Rechts im Text'
+            -
+              - value
+              - rechtsImText
+            -
+              - default
+              - '1'
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  bc19bb9d-5cfd-4f63-9731-e8e7e6049aad:
+    contentColumnType: string
+    fieldGroup: null
+    handle: stern_selection
+    instructions: ''
+    name: Stern-Modus
+    searchable: false
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - Standard
+            -
+              - value
+              - standard
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - Stern-Modus
+            -
+              - value
+              - stern
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  d6c56242-7f74-4116-a400-0077d18fa92e:
+    contentColumnType: text
+    fieldGroup: null
+    handle: einleitungstextGallerie
+    instructions: 'wird nur bei einer Galerie als Einleitungstext dargestellt'
+    name: 'Einleitungstext Galerie'
+    searchable: true
+    settings:
+      availableTransforms: ''
+      availableVolumes: ''
+      cleanupHtml: true
+      columnType: text
+      configSelectionMode: choose
+      defaultTransform: ''
+      manualConfig: ''
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: erweitert.json
+      removeEmptyTags: '1'
+      removeInlineStyles: ''
+      removeNbsp: ''
+      showHtmlButtonForNonAdmins: '1'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      uiMode: enlarged
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\redactor\Field
+handle: textMitOhneBild
+name: 'Text mit/ohne Bild'
+sortOrder: 2

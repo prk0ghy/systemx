@@ -1,0 +1,183 @@
+field: 4af3b294-4ebe-4043-9f2c-63468570f33f
+fieldLayouts:
+  bb5d8eba-cd40-45c0-87a7-028b8db49f43:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: c69b33e0-0808-4058-9c25-13ef607c95ac
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 5a09fa3b-909c-4862-9356-45e053c5f341
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 25
+          -
+            fieldUid: d3f1e620-b6eb-4fc6-bba6-0760fdb5b8f2
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: f6eed7a3-1bc5-4a49-9224-0182e4e31ae1
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 3e941b47-76c6-4695-a6f0-279325b2820c
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  3e941b47-76c6-4695-a6f0-279325b2820c:
+    contentColumnType: string
+    fieldGroup: null
+    handle: stern_selection
+    instructions: ''
+    name: Stern-Modus
+    searchable: false
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - Standard
+            -
+              - value
+              - standard
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - Stern-Modus
+            -
+              - value
+              - stern
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  5a09fa3b-909c-4862-9356-45e053c5f341:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: flex
+    instructions: '(Mehrere hochgeladene Bilder werden als Galerie angezeigt, wenn dieser Schalter nicht aktiviert ist)'
+    name: 'Bilder nebeneinander'
+    searchable: false
+    settings:
+      default: false
+      offLabel: null
+      onLabel: null
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
+  c69b33e0-0808-4058-9c25-13ef607c95ac:
+    contentColumnType: text
+    fieldGroup: null
+    handle: einleitungstextGallerie
+    instructions: ''
+    name: 'Einleitungstext Gallerie'
+    searchable: true
+    settings:
+      availableTransforms: '*'
+      availableVolumes: '*'
+      cleanupHtml: true
+      columnType: text
+      configSelectionMode: choose
+      defaultTransform: ''
+      manualConfig: ''
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: erweitert.json
+      removeEmptyTags: '1'
+      removeInlineStyles: ''
+      removeNbsp: ''
+      showHtmlButtonForNonAdmins: ''
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: true
+      uiMode: enlarged
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\redactor\Field
+  d3f1e620-b6eb-4fc6-bba6-0760fdb5b8f2:
+    contentColumnType: string
+    fieldGroup: null
+    handle: bilder
+    instructions: ''
+    name: Bilder
+    searchable: true
+    settings:
+      columns:
+        __assoc__:
+          -
+            - 564a619c-0dd1-41d5-9f3a-5da79f0113be
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+          -
+            - 415f926b-25a3-4296-bc42-4c3e117077cf
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+      contentTable: '{{%stc_15_bilder}}'
+      fieldLayout: row
+      maxRows: ''
+      minRows: ''
+      placeholderKey: null
+      propagationMethod: all
+      selectionLabel: 'Bild hinzufügen'
+      staticField: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: verbb\supertable\fields\SuperTableField
+  f6eed7a3-1bc5-4a49-9224-0182e4e31ae1:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: nummerierung
+    instructions: ''
+    name: Nummerierung
+    searchable: false
+    settings:
+      default: true
+      offLabel: Inaktiv
+      onLabel: Aktiv
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
+handle: galerie
+name: Galerie
+sortOrder: 6

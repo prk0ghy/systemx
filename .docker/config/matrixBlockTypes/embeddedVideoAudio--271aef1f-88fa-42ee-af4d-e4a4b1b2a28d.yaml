@@ -1,0 +1,184 @@
+field: 3a4e723a-d96b-4b9d-8228-3cffb91dba7e
+fieldLayouts:
+  00a1825e-6c32-4bb5-aea0-539c75370a17:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 6365683d-9a67-4ed0-b959-78a61057775a
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: b76da2e7-68c8-4c1b-b4ad-35770adcb2c0
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 25
+          -
+            fieldUid: b6d15092-87d1-48b3-be7a-a8838a0958fb
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 25
+          -
+            fieldUid: 386f47c8-2c49-43c1-b6a4-c5c9f7650926
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 25
+          -
+            fieldUid: 8445f9c0-c0d4-46cd-84a6-e30d32684cc5
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  386f47c8-2c49-43c1-b6a4-c5c9f7650926:
+    contentColumnType: string
+    fieldGroup: null
+    handle: untertitel
+    instructions: ''
+    name: __blank__
+    searchable: false
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - 'kein Untertitel'
+            -
+              - value
+              - none
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - deutsch
+            -
+              - value
+              - de
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - englisch
+            -
+              - value
+              - en
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - französisch
+            -
+              - value
+              - fr
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - spanisch
+            -
+              - value
+              - es
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  6365683d-9a67-4ed0-b959-78a61057775a:
+    contentColumnType: text
+    fieldGroup: null
+    handle: urlDesStreams
+    instructions: ''
+    name: urldesVideos
+    searchable: false
+    settings:
+      url: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: wrav\oembed\fields\OembedField
+  8445f9c0-c0d4-46cd-84a6-e30d32684cc5:
+    contentColumnType: text
+    fieldGroup: null
+    handle: embedUnterschrift
+    instructions: ''
+    name: 'Video Unterschrift'
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  b6d15092-87d1-48b3-be7a-a8838a0958fb:
+    contentColumnType: time
+    fieldGroup: null
+    handle: ende
+    instructions: ''
+    name: ende
+    searchable: false
+    settings:
+      max: null
+      min: null
+      minuteIncrement: 30
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Time
+  b76da2e7-68c8-4c1b-b4ad-35770adcb2c0:
+    contentColumnType: time
+    fieldGroup: null
+    handle: start
+    instructions: ''
+    name: start
+    searchable: false
+    settings:
+      max: null
+      min: null
+      minuteIncrement: 30
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Time
+handle: embeddedVideoAudio
+name: 'embedded Video/Audio'
+sortOrder: 4

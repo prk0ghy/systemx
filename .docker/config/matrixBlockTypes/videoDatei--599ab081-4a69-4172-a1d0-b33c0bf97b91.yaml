@@ -1,0 +1,168 @@
+field: a6ca8dd3-3275-44ec-9e6c-68cf3996ce56
+fieldLayouts:
+  8b7c4a11-eea5-4d03-bfda-b35d51a5846d:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 14c81acb-0f42-4fa5-944f-1304c9ea3fc4
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 28b09c41-84a9-429e-b505-8fac3a934806
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 2be17035-6f60-460a-8720-ab6564567732
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 734dff90-d282-4e24-9996-d88d2d02641e
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  14c81acb-0f42-4fa5-944f-1304c9ea3fc4:
+    contentColumnType: string
+    fieldGroup: null
+    handle: videoformat
+    instructions: 'ist das Video quer- oder hochformat?'
+    name: Videoformat
+    searchable: false
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - querformat
+            -
+              - value
+              - landscape
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - hochformat
+            -
+              - value
+              - portrait
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  28b09c41-84a9-429e-b505-8fac3a934806:
+    contentColumnType: string
+    fieldGroup: null
+    handle: datei
+    instructions: ''
+    name: Video
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      allowUploads: true
+      allowedKinds:
+        - video
+      defaultUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: false
+      previewMode: full
+      restrictFiles: '1'
+      selectionLabel: ''
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: true
+      singleUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      singleUploadLocationSubpath: videos
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: true
+      validateRelatedElements: false
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  2be17035-6f60-460a-8720-ab6564567732:
+    contentColumnType: string
+    fieldGroup: null
+    handle: posterbild
+    instructions: ''
+    name: Posterbild
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      allowUploads: true
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: false
+      previewMode: full
+      restrictFiles: '1'
+      selectionLabel: ''
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: true
+      singleUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      singleUploadLocationSubpath: bilder
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: true
+      validateRelatedElements: false
+      viewMode: large
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  734dff90-d282-4e24-9996-d88d2d02641e:
+    contentColumnType: text
+    fieldGroup: null
+    handle: videounterschrift
+    instructions: ''
+    name: Videounterschrift
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: videoDatei
+name: 'Video (Datei'
+sortOrder: 3

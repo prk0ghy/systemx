@@ -1,0 +1,213 @@
+field: a6ca8dd3-3275-44ec-9e6c-68cf3996ce56
+fieldLayouts:
+  b01781a1-3d3b-41c6-9cea-576a76ae03b8:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: f650b476-7d10-45df-95e5-488eee7c2085
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 8fc0d214-35a9-4331-9828-9f12f0947c14
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 50
+          -
+            fieldUid: 8df9fc89-71c8-413d-8dd7-eb9554c18ba2
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 25
+          -
+            fieldUid: de6c284b-c7aa-4fc4-857e-217c604f97ac
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 95607923-f21d-4b67-a2be-205c0df3f4fd
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  8df9fc89-71c8-413d-8dd7-eb9554c18ba2:
+    contentColumnType: string
+    fieldGroup: null
+    handle: benutzereingabe
+    instructions: ''
+    name: Benutzereingabe
+    searchable: false
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - Texteingabe
+            -
+              - value
+              - texteingabe
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - Dateiupload
+            -
+              - value
+              - dateiupload
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - 'keine Eingabe'
+            -
+              - value
+              - ka
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  8fc0d214-35a9-4331-9828-9f12f0947c14:
+    contentColumnType: string
+    fieldGroup: null
+    handle: art
+    instructions: ''
+    name: Art
+    searchable: false
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - Aufgabe
+            -
+              - value
+              - aufgabe
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - Umfrage
+            -
+              - value
+              - umfrage
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  95607923-f21d-4b67-a2be-205c0df3f4fd:
+    contentColumnType: string
+    fieldGroup: null
+    handle: aufklappAufgabenInhalt
+    instructions: ''
+    name: __blank__
+    searchable: false
+    settings:
+      columns:
+        __assoc__:
+          -
+            - aad2b36a-0613-4642-a7fa-88355cec07dc
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+      contentTable: '{{%stc_39_aufklappaufgabeninhalt}}'
+      fieldLayout: matrix
+      maxRows: '1'
+      minRows: '1'
+      placeholderKey: null
+      propagationMethod: all
+      selectionLabel: ''
+      staticField: '1'
+    translationKeyFormat: null
+    translationMethod: site
+    type: verbb\supertable\fields\SuperTableField
+  de6c284b-c7aa-4fc4-857e-217c604f97ac:
+    contentColumnType: text
+    fieldGroup: null
+    handle: text
+    instructions: ''
+    name: Text
+    searchable: false
+    settings:
+      availableTransforms: ''
+      availableVolumes: ''
+      cleanupHtml: true
+      columnType: text
+      configSelectionMode: choose
+      defaultTransform: ''
+      manualConfig: ''
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: erweitert.json
+      removeEmptyTags: '1'
+      removeInlineStyles: ''
+      removeNbsp: ''
+      showHtmlButtonForNonAdmins: '1'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      uiMode: enlarged
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\redactor\Field
+  f650b476-7d10-45df-95e5-488eee7c2085:
+    contentColumnType: text
+    fieldGroup: null
+    handle: titelDerAufgabe
+    instructions: ''
+    name: 'Titel der Aufgabe'
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: aufgabe
+name: Aufgabe
+sortOrder: 9

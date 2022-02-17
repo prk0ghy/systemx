@@ -25,16 +25,19 @@ echo "installing craft"
     --site-url=http://systemx.test
 
 echo "installing plugins"
-./craft install/plugin redactor
+./craft plugin/install redactor
+./craft plugin/install super-table
+./craft plugin/install tablemaker
+./craft plugin/install aws-s3
+./craft plugin/install matrixmate
+./craft plugin/install smith
+./craft plugin/install oembed
 
 echo "applying project config"
 
-cp -r /var/www/html/_config/fieldGroups /var/www/html/config/project/
-./craft project-config/apply
-cp -r /var/www/html/_config/fields /var/www/html/config/project/
-./craft project-config/apply
+cp -r /var/www/html/_config/* /var/www/html/config/project/
 
-echo
+./craft project-config/apply 
 
 echo "running webserver on :8080"
 

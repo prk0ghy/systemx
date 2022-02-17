@@ -1,0 +1,138 @@
+field: a6ca8dd3-3275-44ec-9e6c-68cf3996ce56
+fieldLayouts:
+  466c5c67-9d2e-4bd1-951f-2356dd319263:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 790b176a-14ec-4c53-a8b2-1a17b6c550ba
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 25
+          -
+            fieldUid: bc1c5349-38c8-415d-8ce9-a327174eb34e
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 75
+        name: Content
+        sortOrder: 1
+fields:
+  790b176a-14ec-4c53-a8b2-1a17b6c550ba:
+    contentColumnType: text
+    fieldGroup: null
+    handle: format
+    instructions: 'jede Spalte benötigt eine Formatierung'
+    name: 'Spalten formatieren'
+    searchable: false
+    settings:
+      addRowLabel: 'Zeile hinzufügen'
+      columnType: text
+      columns:
+        __assoc__:
+          -
+            - col1
+            -
+              __assoc__:
+                -
+                  - heading
+                  - ''
+                -
+                  - handle
+                  - formatting
+                -
+                  - width
+                  - ''
+                -
+                  - type
+                  - select
+                -
+                  - options
+                  -
+                    -
+                      __assoc__:
+                        -
+                          - default
+                          - true
+                        -
+                          - label
+                          - Text
+                        -
+                          - value
+                          - text
+                    -
+                      __assoc__:
+                        -
+                          - default
+                          - false
+                        -
+                          - label
+                          - Zahl
+                        -
+                          - value
+                          - zahl
+                    -
+                      __assoc__:
+                        -
+                          - default
+                          - false
+                        -
+                          - label
+                          - Datum
+                        -
+                          - value
+                          - datum
+                    -
+                      __assoc__:
+                        -
+                          - default
+                          - false
+                        -
+                          - label
+                          - Sterne
+                        -
+                          - value
+                          - sterne
+                    -
+                      __assoc__:
+                        -
+                          - default
+                          - false
+                        -
+                          - label
+                          - Häckchen
+                        -
+                          - value
+                          - haeckchen
+      maxRows: ''
+      minRows: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Table
+  bc1c5349-38c8-415d-8ce9-a327174eb34e:
+    contentColumnType: text
+    fieldGroup: null
+    handle: spalten
+    instructions: ''
+    name: __blank__
+    searchable: false
+    settings:
+      columnsAddRowLabel: 'Spalte hinzufügen'
+      columnsInstructions: 'hier werden die Spalten erstellt'
+      columnsLabel: 'Spalten erstellen'
+      rowsAddRowLabel: 'Zeile hinzufügen'
+      rowsInstructions: 'Hier wird die Tabelle angezeigt, es lassen sich auch Zeilen hinzufügen'
+      rowsLabel: Tabelle
+    translationKeyFormat: null
+    translationMethod: none
+    type: supercool\tablemaker\fields\TableMakerField
+handle: tabulator
+name: 'interaktive Tabelle'
+sortOrder: 11

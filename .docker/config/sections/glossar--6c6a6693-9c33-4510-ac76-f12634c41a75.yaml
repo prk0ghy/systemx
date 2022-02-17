@@ -1,0 +1,23 @@
+enableVersioning: true
+handle: glossar
+name: Glossar
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primäre eintrag Seite'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  53088da7-81a2-4f8f-990f-c8f14820cce7:
+    enabledByDefault: true
+    hasUrls: true
+    template: x
+    uriFormat: 'glossar/{slug}'
+type: channel

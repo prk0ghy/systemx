@@ -1,0 +1,295 @@
+field: 4af3b294-4ebe-4043-9f2c-63468570f33f
+fieldLayouts:
+  dfe654d2-1390-40ed-b7bd-7e2ac4e9dc94:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: c268c5d2-d6cd-4b33-8e0b-f5ec77122223
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 9a68291a-3377-45a9-b57b-85b62240e78b
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 3065980c-deac-414b-b2a8-41ebb98b1657
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 524fc05b-8037-41dd-b0f4-231accde22ff
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: f7944cc1-7c3c-4c37-b0f9-b4f949047842
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: a600cf0e-b9c5-43df-819a-2fff81ec3555
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 0f3db9f1-5091-4d62-86c7-b3e861d6294c
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  0f3db9f1-5091-4d62-86c7-b3e861d6294c:
+    contentColumnType: string
+    fieldGroup: null
+    handle: stern_selection
+    instructions: ''
+    name: Stern-Modus
+    searchable: false
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - Standard
+            -
+              - value
+              - standard
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - Stern-Modus
+            -
+              - value
+              - stern
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  3065980c-deac-414b-b2a8-41ebb98b1657:
+    contentColumnType: string
+    fieldGroup: null
+    handle: audio
+    instructions: ''
+    name: Audio
+    searchable: true
+    settings:
+      allowSelfRelations: false
+      allowUploads: true
+      allowedKinds:
+        - audio
+      defaultUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: false
+      previewMode: full
+      restrictFiles: '1'
+      selectionLabel: ''
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: true
+      singleUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      singleUploadLocationSubpath: audios
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: true
+      validateRelatedElements: false
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  524fc05b-8037-41dd-b0f4-231accde22ff:
+    contentColumnType: text
+    fieldGroup: null
+    handle: audiounterschrift
+    instructions: 'BITTE LEER LASSEN!!!'
+    name: Audiounterschrift
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  9a68291a-3377-45a9-b57b-85b62240e78b:
+    contentColumnType: text
+    fieldGroup: null
+    handle: audiotext
+    instructions: Beschreibung
+    name: Audiotext
+    searchable: true
+    settings:
+      availableTransforms: '*'
+      availableVolumes: '*'
+      cleanupHtml: true
+      columnType: text
+      configSelectionMode: choose
+      defaultTransform: ''
+      manualConfig: ''
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: ''
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+      showHtmlButtonForNonAdmins: ''
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      uiMode: enlarged
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\redactor\Field
+  a600cf0e-b9c5-43df-819a-2fff81ec3555:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: nummerierung
+    instructions: ''
+    name: Nummerierung
+    searchable: false
+    settings:
+      default: true
+      offLabel: Inaktiv
+      onLabel: Aktiv
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
+  c268c5d2-d6cd-4b33-8e0b-f5ec77122223:
+    contentColumnType: string
+    fieldGroup: null
+    handle: audiobild
+    instructions: 'Bild zum Audio'
+    name: Audiobild
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      allowUploads: true
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      defaultUploadLocationSubpath: ''
+      limit: ''
+      localizeRelations: false
+      previewMode: full
+      restrictFiles: '1'
+      selectionLabel: ''
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      singleUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      singleUploadLocationSubpath: ''
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: false
+      validateRelatedElements: false
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  f7944cc1-7c3c-4c37-b0f9-b4f949047842:
+    contentColumnType: text
+    fieldGroup: null
+    handle: sprungmarken
+    instructions: ''
+    name: Sprungmarken
+    searchable: false
+    settings:
+      addRowLabel: 'Zeile hinzufügen'
+      columnType: text
+      columns:
+        __assoc__:
+          -
+            - col1
+            -
+              __assoc__:
+                -
+                  - heading
+                  - Zeit
+                -
+                  - handle
+                  - zeit
+                -
+                  - width
+                  - ''
+                -
+                  - type
+                  - time
+          -
+            - col2
+            -
+              __assoc__:
+                -
+                  - heading
+                  - Beschreibung
+                -
+                  - handle
+                  - beschreibung
+                -
+                  - width
+                  - ''
+                -
+                  - type
+                  - singleline
+      defaults:
+        -
+          __assoc__:
+            -
+              - col1
+              - null
+            -
+              - col2
+              - ''
+      maxRows: ''
+      minRows: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Table
+handle: audioDatei
+name: 'Audio (Datei)'
+sortOrder: 4

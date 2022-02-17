@@ -1,0 +1,138 @@
+field: 3a4e723a-d96b-4b9d-8228-3cffb91dba7e
+fieldLayouts:
+  5bd6aef2-185b-4d19-9ce4-9218b87af776:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 2ceef622-f521-4ee9-b599-4d51be37992f
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 25
+          -
+            fieldUid: b25333c7-7229-425a-83d3-3a1a03e39d37
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 75
+        name: Content
+        sortOrder: 1
+fields:
+  2ceef622-f521-4ee9-b599-4d51be37992f:
+    contentColumnType: text
+    fieldGroup: null
+    handle: format
+    instructions: 'jede Spalte benötigt eine Formatierung'
+    name: 'Spalten formatieren'
+    searchable: false
+    settings:
+      addRowLabel: 'Zeile hinzufügen'
+      columnType: text
+      columns:
+        __assoc__:
+          -
+            - col1
+            -
+              __assoc__:
+                -
+                  - heading
+                  - Formatierung
+                -
+                  - handle
+                  - formatting
+                -
+                  - width
+                  - ''
+                -
+                  - type
+                  - select
+                -
+                  - options
+                  -
+                    -
+                      __assoc__:
+                        -
+                          - default
+                          - true
+                        -
+                          - label
+                          - Text
+                        -
+                          - value
+                          - text
+                    -
+                      __assoc__:
+                        -
+                          - default
+                          - false
+                        -
+                          - label
+                          - Zahl
+                        -
+                          - value
+                          - zahl
+                    -
+                      __assoc__:
+                        -
+                          - default
+                          - false
+                        -
+                          - label
+                          - Datum
+                        -
+                          - value
+                          - datum
+                    -
+                      __assoc__:
+                        -
+                          - default
+                          - false
+                        -
+                          - label
+                          - Sterne
+                        -
+                          - value
+                          - sterne
+                    -
+                      __assoc__:
+                        -
+                          - default
+                          - false
+                        -
+                          - label
+                          - Häckchen
+                        -
+                          - value
+                          - haeckchen
+      maxRows: ''
+      minRows: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Table
+  b25333c7-7229-425a-83d3-3a1a03e39d37:
+    contentColumnType: text
+    fieldGroup: null
+    handle: spalten
+    instructions: ''
+    name: __blank__
+    searchable: false
+    settings:
+      columnsAddRowLabel: 'Spalte hinzufügen'
+      columnsInstructions: ''
+      columnsLabel: 'Spalten erstellen'
+      rowsAddRowLabel: 'Zeile hinzufügen'
+      rowsInstructions: 'Hier wird die Tabelle angezeigt, es lassen sich auch Zeilen hinzufügen'
+      rowsLabel: Tabelle
+    translationKeyFormat: null
+    translationMethod: none
+    type: supercool\tablemaker\fields\TableMakerField
+handle: tabulator
+name: 'interaktive Tabelle'
+sortOrder: 8

@@ -1,0 +1,169 @@
+field: 3a4e723a-d96b-4b9d-8228-3cffb91dba7e
+fieldLayouts:
+  e87d3f8a-bb1f-40f6-8e4e-56d8df8719fe:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: fa6b99b2-b225-4b8e-9ef9-0967d854fc0d
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 2f24794a-e2f4-47ea-852a-d566d9bd0c51
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 1a59417b-eb43-4861-87cb-02c619a63be7
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 561e0496-28f7-42da-9ec3-3c833df76ad2
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  1a59417b-eb43-4861-87cb-02c619a63be7:
+    contentColumnType: string
+    fieldGroup: null
+    handle: posterbild
+    instructions: ''
+    name: Posterbild
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      allowUploads: true
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: false
+      previewMode: full
+      restrictFiles: '1'
+      selectionLabel: ''
+      showSiteMenu: true
+      showUnpermittedFiles: true
+      showUnpermittedVolumes: true
+      singleUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      singleUploadLocationSubpath: bilder
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: true
+      validateRelatedElements: false
+      viewMode: large
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  2f24794a-e2f4-47ea-852a-d566d9bd0c51:
+    contentColumnType: string
+    fieldGroup: null
+    handle: datei
+    instructions: ''
+    name: Video
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      allowUploads: true
+      allowedKinds:
+        - image
+        - video
+      defaultUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: false
+      previewMode: full
+      restrictFiles: '1'
+      selectionLabel: ''
+      showSiteMenu: true
+      showUnpermittedFiles: true
+      showUnpermittedVolumes: true
+      singleUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      singleUploadLocationSubpath: videos
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: true
+      validateRelatedElements: false
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  561e0496-28f7-42da-9ec3-3c833df76ad2:
+    contentColumnType: text
+    fieldGroup: null
+    handle: videounterschrift
+    instructions: ''
+    name: Videounterschrift
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  fa6b99b2-b225-4b8e-9ef9-0967d854fc0d:
+    contentColumnType: string
+    fieldGroup: null
+    handle: videoformat
+    instructions: 'ist das Video quer- oder hochformat?'
+    name: Videoformat
+    searchable: false
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - querformat
+            -
+              - value
+              - landscape
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - hochformat
+            -
+              - value
+              - portrait
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+handle: videoDatei
+name: Video
+sortOrder: 2

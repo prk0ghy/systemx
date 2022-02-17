@@ -176,6 +176,16 @@ const defaultTargets = {
 				httpPort: 8064
 			}
 		}
+	},
+	docker: {
+		disallowRobots: true,
+		graphqlEndpoint: "http://localhost:8080/api",
+		targets: {
+			preview: {
+				action: 'preview',
+				httpPort: 8042
+			}
+		}
 	}
 };
 export default defaultTargets;

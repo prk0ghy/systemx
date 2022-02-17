@@ -1,0 +1,33 @@
+field: 2c1ab209-a2f4-4d55-a837-4726b9f0de90
+fieldLayouts:
+  c0271f4d-be33-4940-9425-37c4a1e75e1b:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: a6ca8dd3-3275-44ec-9e6c-68cf3996ce56
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  a6ca8dd3-3275-44ec-9e6c-68cf3996ce56:
+    contentColumnType: string
+    fieldGroup: null
+    handle: aufklappElemente
+    instructions: ''
+    name: Elemente
+    searchable: true
+    settings:
+      contentTable: '{{%matrixcontent_aufklappelemente}}'
+      maxBlocks: ''
+      minBlocks: ''
+      propagationMethod: all
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Matrix

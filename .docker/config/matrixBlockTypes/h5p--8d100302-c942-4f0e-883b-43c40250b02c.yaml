@@ -1,0 +1,214 @@
+field: 4af3b294-4ebe-4043-9f2c-63468570f33f
+fieldLayouts:
+  ffbcf1aa-2e84-4a77-b671-c72829fefdd8:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 38671871-9bd1-473b-9481-bcedc18e0fac
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 36025fe2-b8f8-4a68-87de-73a8a595d683
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 28ddb27b-de74-4dd6-b6f2-c5c32e0c0e2e
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: d36c7d75-0b14-4cc3-9309-a50a7e4bd95f
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 0fdfd76d-c194-4a15-b934-2b552cd39dcc
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: c9c5f0d5-7e7e-4583-bf97-548a14f7bc6c
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  0fdfd76d-c194-4a15-b934-2b552cd39dcc:
+    contentColumnType: text
+    fieldGroup: null
+    handle: urheber_h5p
+    instructions: ''
+    name: Urheber
+    searchable: false
+    settings:
+      availableTransforms: ''
+      availableVolumes: ''
+      cleanupHtml: true
+      columnType: text
+      configSelectionMode: choose
+      defaultTransform: ''
+      manualConfig: ''
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: Simple.json
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: ''
+      showHtmlButtonForNonAdmins: ''
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      uiMode: enlarged
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\redactor\Field
+  28ddb27b-de74-4dd6-b6f2-c5c32e0c0e2e:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: nummerierung
+    instructions: ''
+    name: Nummerierung
+    searchable: false
+    settings:
+      default: true
+      offLabel: Inaktiv
+      onLabel: Aktiv
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
+  36025fe2-b8f8-4a68-87de-73a8a595d683:
+    contentColumnType: text
+    fieldGroup: null
+    handle: unterschrift_h5p
+    instructions: ''
+    name: unterschrift
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  38671871-9bd1-473b-9481-bcedc18e0fac:
+    contentColumnType: text
+    fieldGroup: null
+    handle: h5p
+    instructions: "hier bitte den vollständigen embed Code angeben. Beispiel:\r\n<iframe src=\"https://h5p.test-dilewe.de/wp-admin/admin-ajax.php?action=h5p_embed&id=19\" width=\"958\" height=\"918\" frameborder=\"0\" allowfullscreen=\"allowfullscreen\"></iframe><script src=\"https://h5p.test-dilewe.de/wp-content/plugins/h5p/h5p-php-library/js/h5p-resizer.js\" charset=\"UTF-8\"></script>"
+    name: 'Freier Embed (H5P, Arte, etc...) iframe'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  c9c5f0d5-7e7e-4583-bf97-548a14f7bc6c:
+    contentColumnType: string
+    fieldGroup: null
+    handle: stern_selection
+    instructions: ''
+    name: Stern-Modus
+    searchable: false
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - Standard
+            -
+              - value
+              - standard
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - Stern-Modus
+            -
+              - value
+              - stern
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  d36c7d75-0b14-4cc3-9309-a50a7e4bd95f:
+    contentColumnType: string
+    fieldGroup: null
+    handle: hilfsvideo
+    instructions: ''
+    name: Hilfsvideo
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      allowUploads: true
+      allowedKinds:
+        - video
+      defaultUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      defaultUploadLocationSubpath: help_videos
+      limit: '1'
+      localizeRelations: false
+      previewMode: full
+      restrictFiles: '1'
+      selectionLabel: ''
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: true
+      singleUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      singleUploadLocationSubpath: help_videos
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: true
+      validateRelatedElements: false
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+handle: h5p
+name: 'iframe einbetten (z.B. H5P, Geogebra, etc. )'
+sortOrder: 15

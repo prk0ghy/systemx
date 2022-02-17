@@ -1,0 +1,258 @@
+field: 4af3b294-4ebe-4043-9f2c-63468570f33f
+fieldLayouts:
+  a0383c99-1a9f-4809-8035-e6c9718df086:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 0df769f4-b765-4989-8951-bc4313fccaed
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 25
+          -
+            fieldUid: 67a7cba4-93f8-4bfb-a778-b448b261cfcb
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 25
+          -
+            fieldUid: dea3a9be-19ab-485b-9b56-a11d02bbdc9f
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 1f4031b9-0f1e-4e3a-adbd-c8966fd73a81
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 50
+          -
+            fieldUid: 8a1cb85e-b537-4f17-91af-0c6d2d4d3ebc
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: c44a4c65-4d9c-4d9e-9266-4a3070334474
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: f1bd4769-0706-4e9c-8fee-4fbea008956e
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  0df769f4-b765-4989-8951-bc4313fccaed:
+    contentColumnType: string
+    fieldGroup: null
+    handle: videoformat
+    instructions: 'ist das video im querformat oder hochformat?'
+    name: Videoformat
+    searchable: true
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - querformat
+            -
+              - value
+              - landscape
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - hochformat
+            -
+              - value
+              - portrait
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  1f4031b9-0f1e-4e3a-adbd-c8966fd73a81:
+    contentColumnType: string
+    fieldGroup: null
+    handle: posterbild
+    instructions: 'Das Vorschaubild des Videos'
+    name: Posterbild
+    searchable: true
+    settings:
+      allowSelfRelations: false
+      allowUploads: true
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: false
+      previewMode: full
+      restrictFiles: '1'
+      selectionLabel: ''
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: true
+      singleUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      singleUploadLocationSubpath: bilder
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: true
+      validateRelatedElements: false
+      viewMode: large
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  67a7cba4-93f8-4bfb-a778-b448b261cfcb:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: autoplay
+    instructions: ''
+    name: Autoplay
+    searchable: false
+    settings:
+      default: false
+      offLabel: null
+      onLabel: null
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
+  8a1cb85e-b537-4f17-91af-0c6d2d4d3ebc:
+    contentColumnType: text
+    fieldGroup: null
+    handle: videoUnterschrift
+    instructions: 'Hier kann ein kurzer Text eingegeben werden, der unter dem Video angezeigt wird. Analog zur Bildunterschrift.'
+    name: 'Video Unterschrift'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  c44a4c65-4d9c-4d9e-9266-4a3070334474:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: nummerierung
+    instructions: ''
+    name: Nummerierung
+    searchable: false
+    settings:
+      default: true
+      offLabel: Inaktiv
+      onLabel: Aktiv
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
+  dea3a9be-19ab-485b-9b56-a11d02bbdc9f:
+    contentColumnType: string
+    fieldGroup: null
+    handle: datei
+    instructions: 'Hier kann eine Videodatei ausgewählt werden.'
+    name: Datei
+    searchable: true
+    settings:
+      allowSelfRelations: false
+      allowUploads: true
+      allowedKinds:
+        - video
+      defaultUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: false
+      previewMode: full
+      restrictFiles: '1'
+      selectionLabel: ''
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: true
+      singleUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      singleUploadLocationSubpath: videos
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: true
+      validateRelatedElements: false
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  f1bd4769-0706-4e9c-8fee-4fbea008956e:
+    contentColumnType: string
+    fieldGroup: null
+    handle: stern_selection
+    instructions: ''
+    name: Stern-Modus
+    searchable: false
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - Standard
+            -
+              - value
+              - standard
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - Stern-Modus
+            -
+              - value
+              - stern
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+handle: videoDatei
+name: 'Video (Datei)'
+sortOrder: 3

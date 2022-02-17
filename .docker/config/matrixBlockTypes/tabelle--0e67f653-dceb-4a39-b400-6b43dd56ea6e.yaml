@@ -1,0 +1,155 @@
+field: 4af3b294-4ebe-4043-9f2c-63468570f33f
+fieldLayouts:
+  d8657d73-bf2b-421e-b772-e911d7ac4a5b:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 8979e9a2-211f-4454-aecb-ac4970951812
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 5294e2d3-224b-4b59-809f-6c17189259ef
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: c770a43d-bcb0-4ac1-93b7-613f727d707f
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 24e219a5-66e0-4c53-b759-66ae5b398024
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  24e219a5-66e0-4c53-b759-66ae5b398024:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: nummerierung
+    instructions: ''
+    name: Nummerierung
+    searchable: false
+    settings:
+      default: true
+      offLabel: Inaktiv
+      onLabel: Aktiv
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
+  5294e2d3-224b-4b59-809f-6c17189259ef:
+    contentColumnType: text
+    fieldGroup: null
+    handle: tabelle
+    instructions: 'Hier kann eine eigene Tabelle angelegt werden.'
+    name: 'Tabelle erstellen'
+    searchable: true
+    settings:
+      columnsAddRowLabel: Spalte
+      columnsInstructions: 'Hier können die Spalten der Tabelle definiert werden'
+      columnsLabel: Spalte
+      rowsAddRowLabel: 'Zeile hinzufügen'
+      rowsInstructions: 'Hier können Zeilen zur Tabelle hinzugefügt werden'
+      rowsLabel: Zeilen
+    translationKeyFormat: null
+    translationMethod: none
+    type: supercool\tablemaker\fields\TableMakerField
+  8979e9a2-211f-4454-aecb-ac4970951812:
+    contentColumnType: string
+    fieldGroup: null
+    handle: art
+    instructions: ''
+    name: Art
+    searchable: true
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - 'einfache Tabelle'
+            -
+              - value
+              - simple-table
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - 'mit Kopfzeile'
+            -
+              - value
+              - table-headrow
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - 'mit Kopfspalte'
+            -
+              - value
+              - table-headcolumn
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - 'Kopfzeile und Kopfspalte'
+            -
+              - value
+              - table-both
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  c770a43d-bcb0-4ac1-93b7-613f727d707f:
+    contentColumnType: text
+    fieldGroup: null
+    handle: quelle
+    instructions: ''
+    name: Quelle
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: tabelle
+name: Tabelle
+sortOrder: 10

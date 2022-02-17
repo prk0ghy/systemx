@@ -1,0 +1,184 @@
+field: aad2b36a-0613-4642-a7fa-88355cec07dc
+fieldLayouts:
+  1e568af1-4038-4346-89a6-d2e8af8bb740:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 1aa13c58-fc9a-41e2-9ffc-956b5df30255
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 065029a5-cb16-479c-b4e6-c319be32dc52
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 25
+          -
+            fieldUid: c4c1bb3f-7ac9-421c-a8fc-c1ecb86b1f6d
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 25
+          -
+            fieldUid: 875d5189-384a-4b1b-8dd8-09693e097871
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: d9a54ea6-5f43-4c9f-a4f6-9d32eccc75f3
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  065029a5-cb16-479c-b4e6-c319be32dc52:
+    contentColumnType: time
+    fieldGroup: null
+    handle: start
+    instructions: ''
+    name: start
+    searchable: false
+    settings:
+      max: null
+      min: null
+      minuteIncrement: 30
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Time
+  1aa13c58-fc9a-41e2-9ffc-956b5df30255:
+    contentColumnType: text
+    fieldGroup: null
+    handle: urlDesStreams
+    instructions: ''
+    name: 'url des Videos'
+    searchable: false
+    settings:
+      url: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: wrav\oembed\fields\OembedField
+  875d5189-384a-4b1b-8dd8-09693e097871:
+    contentColumnType: string
+    fieldGroup: null
+    handle: untertitel
+    instructions: ''
+    name: __blank__
+    searchable: false
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - 'kein Untertitel'
+            -
+              - value
+              - none
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - deutsch
+            -
+              - value
+              - de
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - englisch
+            -
+              - value
+              - en
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - französisch
+            -
+              - value
+              - fr
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - spanisch
+            -
+              - value
+              - es
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  c4c1bb3f-7ac9-421c-a8fc-c1ecb86b1f6d:
+    contentColumnType: time
+    fieldGroup: null
+    handle: ende
+    instructions: ''
+    name: ende
+    searchable: false
+    settings:
+      max: null
+      min: null
+      minuteIncrement: 30
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Time
+  d9a54ea6-5f43-4c9f-a4f6-9d32eccc75f3:
+    contentColumnType: text
+    fieldGroup: null
+    handle: videoUnterschrift
+    instructions: ''
+    name: 'Video Unterschrift'
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: embeddedVideoAudio
+name: 'embedded Video/Audio'
+sortOrder: 3

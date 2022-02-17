@@ -1,0 +1,161 @@
+field: 4af3b294-4ebe-4043-9f2c-63468570f33f
+fieldLayouts:
+  d6363f80-d728-4e07-ad3e-ae68a7a83b36:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 9555e073-f0de-43d7-9636-55e3de1adf74
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 5cc2c7ce-9df1-4dec-9f2c-49060c466dea
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 8236d4f8-5637-4640-8928-7be9e794b3e1
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  5cc2c7ce-9df1-4dec-9f2c-49060c466dea:
+    contentColumnType: text
+    fieldGroup: null
+    handle: spalten_m
+    instructions: ''
+    name: __blank__
+    searchable: false
+    settings:
+      columnsAddRowLabel: 'Spalte hinzufügen'
+      columnsInstructions: 'hier werden die Spalten erstellt'
+      columnsLabel: 'Spalten erstellen'
+      rowsAddRowLabel: 'Zeile hinzufügen'
+      rowsInstructions: 'Hier wird die Tabelle angezeigt, es lassen sich auch Zeilen hinzufügen'
+      rowsLabel: Tabelle
+    translationKeyFormat: null
+    translationMethod: none
+    type: supercool\tablemaker\fields\TableMakerField
+  8236d4f8-5637-4640-8928-7be9e794b3e1:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: nummerierung
+    instructions: ''
+    name: Nummerierung
+    searchable: false
+    settings:
+      default: true
+      offLabel: Inaktiv
+      onLabel: Aktiv
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
+  9555e073-f0de-43d7-9636-55e3de1adf74:
+    contentColumnType: text
+    fieldGroup: null
+    handle: format_m
+    instructions: 'jede Spalte benötigt eine Formatierung'
+    name: 'Spalten formatieren'
+    searchable: false
+    settings:
+      addRowLabel: 'Zeile hinzufügen'
+      columnType: text
+      columns:
+        __assoc__:
+          -
+            - col1
+            -
+              __assoc__:
+                -
+                  - heading
+                  - ''
+                -
+                  - handle
+                  - formatting
+                -
+                  - width
+                  - ''
+                -
+                  - type
+                  - select
+                -
+                  - options
+                  -
+                    -
+                      __assoc__:
+                        -
+                          - default
+                          - true
+                        -
+                          - label
+                          - Text
+                        -
+                          - value
+                          - text
+                    -
+                      __assoc__:
+                        -
+                          - default
+                          - false
+                        -
+                          - label
+                          - Zahl
+                        -
+                          - value
+                          - zahl
+                    -
+                      __assoc__:
+                        -
+                          - default
+                          - false
+                        -
+                          - label
+                          - Datum
+                        -
+                          - value
+                          - datum
+                    -
+                      __assoc__:
+                        -
+                          - default
+                          - false
+                        -
+                          - label
+                          - Sterne
+                        -
+                          - value
+                          - sterne
+                    -
+                      __assoc__:
+                        -
+                          - default
+                          - false
+                        -
+                          - label
+                          - Häckchen
+                        -
+                          - value
+                          - haeckchen
+      maxRows: ''
+      minRows: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Table
+handle: tabulator
+name: 'interaktive Tabellen'
+sortOrder: 16

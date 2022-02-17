@@ -1,0 +1,105 @@
+field: 3a4e723a-d96b-4b9d-8228-3cffb91dba7e
+fieldLayouts:
+  2107ce46-388b-4ed1-8f06-421dc0a19193:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 28e47ef3-4441-4cfb-a43c-43d08c524527
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 286fba77-8de7-4009-86e1-1d51626edf60
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 1c494b82-e69d-4866-8cf6-73aa29d85746
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  1c494b82-e69d-4866-8cf6-73aa29d85746:
+    contentColumnType: text
+    fieldGroup: null
+    handle: urheber
+    instructions: ''
+    name: Urheber
+    searchable: false
+    settings:
+      availableTransforms: ''
+      availableVolumes: ''
+      cleanupHtml: true
+      columnType: text
+      configSelectionMode: choose
+      defaultTransform: ''
+      manualConfig: ''
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: Simple.json
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: ''
+      showHtmlButtonForNonAdmins: ''
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      uiMode: enlarged
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\redactor\Field
+  286fba77-8de7-4009-86e1-1d51626edf60:
+    contentColumnType: text
+    fieldGroup: null
+    handle: unterschrift
+    instructions: ''
+    name: __blank__
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  28e47ef3-4441-4cfb-a43c-43d08c524527:
+    contentColumnType: text
+    fieldGroup: null
+    handle: h5p
+    instructions: "hier bitte den vollständigen embed Code angeben. Beispiel:\r\n<iframe src=\"https://h5p.test-dilewe.de/wp-admin/admin-ajax.php?action=h5p_embed&id=19\" width=\"958\" height=\"918\" frameborder=\"0\" allowfullscreen=\"allowfullscreen\"></iframe><script src=\"https://h5p.test-dilewe.de/wp-content/plugins/h5p/h5p-php-library/js/h5p-resizer.js\" charset=\"UTF-8\"></script>"
+    name: 'Freier Embed (H5P, Arte, etc...) iframe'
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: h5p
+name: 'freier Embed'
+sortOrder: 6

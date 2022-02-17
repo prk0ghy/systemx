@@ -1,0 +1,20 @@
+enableVersioning: true
+handle: fussnoten
+name: Fußnoten
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primäre eintrag Seite'
+      -
+        - urlFormat
+        - '{url}'
+propagationMethod: all
+siteSettings:
+  53088da7-81a2-4f8f-990f-c8f14820cce7:
+    enabledByDefault: true
+    hasUrls: true
+    template: fussnoten/_entry
+    uriFormat: 'fussnoten/{slug}'
+type: channel
