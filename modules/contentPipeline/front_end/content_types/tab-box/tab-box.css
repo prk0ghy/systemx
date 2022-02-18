@@ -219,3 +219,16 @@ main > section[content-type="tab-box"] section[content-type="embedding"] {
 [content-type="tab-box"] > inner-content > details > section > p {
 	padding-top: var(--content-padding-half);
 }
+
+section[content-type="tab-box"] section[content-type="exercise"] > inner-content {
+	padding:0;
+}
+
+section[content-type="tab-box"] section[content-type="exercise"] exercise-content {
+	padding: var(--content-padding-half) var(--content-padding);
+}
+
+section[content-type="tab-box"] section[content-type="exercise"] + section[content-type="text-and-image"] .text-content,
+section[content-type="tab-box"] section[content-type="text-and-image"] + section[content-type="exercise"] exercise-content {
+	padding-top: 0;
+}
