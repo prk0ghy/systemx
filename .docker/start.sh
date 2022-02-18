@@ -39,6 +39,12 @@ cp -r /var/www/html/_config/* /var/www/html/config/project/
 
 ./craft project-config/apply 
 
+echo "upgrading to pro trial"
+
+yq -i '.system.edition = "pro"' /var/www/html/config/project/project.yaml
+
+./craft project-config/apply 
+
 echo "running webserver on :8080"
 
 php -S 0.0.0.0:8080 -t ./web

@@ -5,6 +5,7 @@ services:
     image: mariadb:latest
     container_name: mariadb
     ports:
+      # technically not needed
       - 3306:3306
     restart: always
     environment:
@@ -25,7 +26,6 @@ services:
       - systemx-craft
     command: ./start.sh
 
-    
 networks:
   systemx-craft:
     driver: bridge

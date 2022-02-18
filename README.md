@@ -67,3 +67,11 @@ system.
 This module is meant to be used as a minimally invasive user tracking, intended
 for situations where we have to keep count of page accesses but not intended
 for analytics.
+
+
+## Local CraftCMS instance
+To run a local craft instance run:
+```
+$> docker-compose up -d
+```
+It can take a few minutes to install.
