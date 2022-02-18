@@ -4,7 +4,7 @@
 	grid-template-rows: calc(var(--header-height) - 2rem);
 	gap: 0px 0px;
 	grid-template-areas:
-    "left center right"; 
+    "left center right";
 	& .items {
 		align-items: center;
 		display: flex;
