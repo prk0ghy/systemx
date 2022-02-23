@@ -78,6 +78,7 @@ setTimeout(initNavBar, 0);
 				}
 				const topLevel = document.querySelectorAll("nav > ul > li");
 				for (let i = 0; i < firstLevel.length; i++) {
+					if (!topLevel[i] || !topLevel[i].firstElementChild) { break; }
 					topLevel[i].firstElementChild.classList.add("active");
 					const ulHidden = topLevel[i].querySelector("ul");
 					if (ulHidden !== null) {

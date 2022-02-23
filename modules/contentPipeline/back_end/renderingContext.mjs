@@ -88,13 +88,13 @@ export default class {
 			...args,
 			isEditorial: true,
 			title: "Editorial action required",
-			type: this.type
+			type: args.type || this.type
 		}, this)
 	};
 	Error = {
 		render: ({ ...args }) => Error.render({
 			...args,
-			type: this.type
+			type: args.type || this.type
 		}, this)
 	};
 	helpers = null;

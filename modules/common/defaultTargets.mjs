@@ -82,6 +82,7 @@ const defaultTargets = {
 		favicon: "rdhessen",
 		navigationLinks: [{href: "https://mediathek.russlanddeutsche-hessen.de/", text: "Link zur Mediathek", target:"_blank"}],
 		title: "Infoportal Russlanddeutsche in Hessen",
+		vgWortRequired: true,
 		jsVars: {
 			trackingEndpoint: "https://tracking.dilewe.de/stats"
 		},
