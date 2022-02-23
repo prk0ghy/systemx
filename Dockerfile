@@ -35,7 +35,7 @@ RUN ./craft setup/security-key
 RUN composer require craftcms/redactor \
     verbb/super-table \
     supercool/tablemaker \
-    craftcms/aws-s3 \ 
+    craftcms/aws-s3 \
     vaersaagod/matrixmate \
     verbb/smith \
     wrav/oembed
