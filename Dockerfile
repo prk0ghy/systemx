@@ -32,13 +32,13 @@ USER www-data
 
 RUN composer create-project craftcms/craft /var/www/html
 RUN ./craft setup/security-key
-RUN composer require craftcms/redactor
-RUN composer require verbb/super-table
-RUN composer require supercool/tablemaker
-RUN composer require craftcms/aws-s3
-RUN composer require vaersaagod/matrixmate
-RUN composer require verbb/smith
-RUN composer require wrav/oembed
+RUN composer require craftcms/redactor \
+    verbb/super-table \
+    supercool/tablemaker \
+    craftcms/aws-s3 \ 
+    vaersaagod/matrixmate \
+    verbb/smith \
+    wrav/oembed
 
 # copy files to be seeded to temporary location
 USER root
