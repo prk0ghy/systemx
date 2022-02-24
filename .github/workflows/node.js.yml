@@ -72,7 +72,7 @@ jobs:
           channel-id: '${{ secrets.SLACKCHANNEL_TEST }}'
           # For posting a simple plain text message
           slack-message: |
-            GitHub Workflow result:
+            GitHub Workflow error :warning:
             integration: ${{ needs.integration.result }}
             lint: ${{ needs.lint.result }}
             test: ${{ needs.test.result }}
