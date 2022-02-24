@@ -71,14 +71,10 @@ jobs:
           channel-id: '${{ secrets.SLACKCHANNEL_TEST }}'
           # For posting a simple plain text message
           slack-message: |
-            GitHub build result:
-            integration:
-            ${{ needs.integration.result }}
-            lint:
-            ${{ needs.lint.result }}
-            test:
-            ${{ needs.test.result }}
-            on Run:
-            ${{ github.event.pull_request.html_url || github.event.head_commit.url }}
+            GitHub Workflow result:
+            integration: ${{ needs.integration.result }}
+            lint: ${{ needs.lint.result }}
+            test: ${{ needs.test.result }}
+            on commit : ${{ github.event.pull_request.html_url || github.event.head_commit.url }}
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACKTOKEN_SYSTEMX }}
