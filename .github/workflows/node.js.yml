@@ -69,7 +69,7 @@ jobs:
         uses: slackapi/slack-github-action@v1.18.0
         with: # Slack channel id, channel name, or user id to post message.
           # See also: https://api.slack.com/methods/chat.postMessage#channels
-          channel-id: '${{ secrets.SLACKCHANNEL_TEST }}'
+          channel-id: '${{ secrets.SLACKCHANNEL_PROD }}'
           # For posting a simple plain text message
           slack-message: |
             GitHub Workflow error :warning:
