@@ -45,7 +45,7 @@ export default {
 				...rest
 			}) => ({
 				starSelection,
-				isNumbered: (isNumbered && (starSelection === "standard")),
+				isNumbered: (isNumbered && ((starSelection === "standard") || (!starSelection))),
 				...rest
 			})
 		}]
