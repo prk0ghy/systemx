@@ -12,49 +12,70 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        script: ['lint:js','lint:css']
+        script: [ 'lint:js','lint:css' ]
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js
-      uses: actions/setup-node@v2
-      with:
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run ${{ matrix.script }}
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run ${{ matrix.script }}
   test:
     runs-on: ${{ matrix.os }}
     name: Unit tests ( Node ${{ matrix.node }} on ${{ matrix.os }})
     strategy:
       fail-fast: false
       matrix:
-        os: ['macos-latest','ubuntu-latest']
-        node: [16.x]
+        os: [ 'macos-latest','ubuntu-latest' ]
+        node: [ 16.x ]
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run test
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run test
   integration:
     name: Integration tests (build '${{ matrix.target }}' on ${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        target: ['bdv','bm','juramuseum','lasub','leipzig','rdhessen','stifterverband','tagungsbaende','missio','geografie']
-        os: ['ubuntu-latest']
+        target: [ 'bdv','bm','juramuseum','lasub','leipzig','rdhessen','stifterverband','tagungsbaende','missio','geografie' ]
+        os: [ 'ubuntu-latest' ]
         include:
-        - os: 'windows-latest'
-          target: 'lasub'
-        - os: 'macos-latest'
-          target: 'lasub'
+          - os: 'windows-latest'
+            target: 'lasub'
+          - os: 'macos-latest'
+            target: 'lasub'
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
-      with:
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run test:integration ${{ matrix.target }}
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run test:integration ${{ matrix.target }}
+  notify:
+    name: Notifications for this pipeline
+    runs-on: ubuntu-latest
+    if: ${{ failure() }}
+    needs: [integration, lint, test]
+    steps:
+      - name: Post Pipeline Fails to a Slack channel
+        id: slack
+        uses: slackapi/slack-github-action@v1.18.0
+        with: # Slack channel id, channel name, or user id to post message.
+          # See also: https://api.slack.com/methods/chat.postMessage#channels
+          channel-id: '${{ secrets.SLACKCHANNEL_PROD }}'
+          # For posting a simple plain text message
+          slack-message: |
+            GitHub Workflow error :warning:
+            integration: ${{ needs.integration.result }}
+            lint: ${{ needs.lint.result }}
+            test: ${{ needs.test.result }}
+            on commit : ${{ github.event.pull_request.html_url || github.event.head_commit.url }}
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACKTOKEN_SYSTEMX }}
