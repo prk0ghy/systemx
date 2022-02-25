@@ -180,6 +180,16 @@ const defaultTargets = {
 				httpPort: 8064
 			}
 		}
+	},
+	dev: {
+		graphqlEndpoint: "https://craft-dev.test-dilewe.de/api",
+		title: "Craft Dev",
+		targets: {
+			preview: {
+				action: 'preview',
+				httpPort: 4020
+			}
+		}
 	}
 };
 export default defaultTargets;
