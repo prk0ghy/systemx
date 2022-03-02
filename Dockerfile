@@ -30,15 +30,18 @@ RUN chown -R www-data:www-data /var/www/html/
 
 USER www-data
 
-RUN composer create-project craftcms/craft /var/www/html
-RUN ./craft setup/security-key
-RUN composer require craftcms/redactor \
-    verbb/super-table \
-    supercool/tablemaker \
-    craftcms/aws-s3 \
-    vaersaagod/matrixmate \
-    verbb/smith \
-    wrav/oembed
+RUN php -v && composer -V
+RUN composer create-project craftcms/craft=1.1.1 /var/www/html
+RUN rm composer.lock
+RUN composer require "craftcms/cms:3.5.19.1"
+RUN php craft setup/security-key
+RUN composer require "craftcms/redactor:2.8.2" \
+    "verbb/super-table:2.6.7" \
+    "supercool/tablemaker:dev-master" \
+    "craftcms/aws-s3:1.2.11" \
+    "vaersaagod/matrixmate:^1.3" \
+    "verbb/smith:1.1.9" \
+    "wrav/oembed:1.3.4"
 
 # copy files to be seeded to temporary location
 USER root

@@ -41,6 +41,11 @@ cp -r /var/www/html/_config/* /var/www/html/config/project/
 
 echo "upgrading to pro trial"
 
+# for some reason the 'undefined offset: 1' error isn't critical
+# and rebuilding the config fixes it?
+
+./craft project-config/rebuild
+
 yq -i '.system.edition = "pro"' /var/www/html/config/project/project.yaml
 
 ./craft project-config/apply 
