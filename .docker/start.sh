@@ -37,7 +37,7 @@ echo "applying project config"
 
 cp -r /var/www/html/_config/* /var/www/html/config/project/
 
-./craft project-config/apply 
+./craft project-config/apply
 
 echo "upgrading to pro trial"
 
@@ -48,6 +48,11 @@ echo "upgrading to pro trial"
 
 yq -i '.system.edition = "pro"' /var/www/html/config/project/project.yaml
 
+./craft project-config/apply
+
+echo "letting craft do some repair magic"
+
+./craft utils/repair/project-config
 ./craft project-config/apply 
 
 echo "running webserver on :8080"
