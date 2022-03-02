@@ -7,8 +7,6 @@
 
 	const initVgWortPixel = async () => {
 		if(!vgWortIsAllowed())  {return;}
-		if(vgWortPixel === null){return;}
-		if(vgWortPixel === "")  {return;}
 		await fetch(vgWortPixel, {cache: "no-store"});
 		//when we have the vgWortPixel, we add it to the DOM
 		if (vgWortPixel) {
@@ -25,5 +23,7 @@
 			}
 		}
 	};
-	setTimeout(initVgWortPixel,0);
+	if(window.vgWortPixel){
+		setTimeout(initVgWortPixel,0);
+	}
 })();

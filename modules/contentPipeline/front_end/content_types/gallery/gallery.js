@@ -183,7 +183,7 @@
 			}else{
 				[...single.parentElement.children].filter(e => e.tagName === 'FIGURE').forEach(addItem);
 			}
-			const startIndex = items.findIndex(e => e.start);
+			const startIndex = items.filter(e => e).findIndex(e => e.start);
 
 			const options = {
 				index:Math.max(0,startIndex),

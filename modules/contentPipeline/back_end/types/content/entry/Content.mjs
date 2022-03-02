@@ -1,3 +1,4 @@
+import options from "../../../../../common/options.mjs";
 
 
 export default {
@@ -41,6 +42,7 @@ export default {
 		vgWortPixel
 	}, {
 		contentTypeIDIf,
+		EditorialError,
 		contentTypes: {
 			Headline,
 			HeroImage
@@ -70,10 +72,18 @@ export default {
 			headline: titleOverride || title,
 			tag: "h1"
 		});
+		const activeVgWort = vgWortPixel
+			? `<script>const vgWortPixel = ${JSON.stringify(vgWortPixel)};</script>`
+			: options.vgWortRequired
+				? EditorialError.render({
+					message: `There is no VG-Wort-Pixel defined for this page, even though they are required, please add one before publishing.`,
+					type: "inhalt_inhalt_Entry"
+				})
+				: "";
 		return `
-			<script>const vgWortPixel = ${JSON.stringify(vgWortPixel)};</script>
 			<main content-type="content" ${contentTypeIDIf(id)}>
 				${heroImageWrap}
+				${activeVgWort}
 				${headlineHTML}
 				${children.join("")}
 			</main>

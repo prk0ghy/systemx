@@ -82,6 +82,10 @@ const defaultTargets = {
 		favicon: "rdhessen",
 		navigationLinks: [{href: "https://mediathek.russlanddeutsche-hessen.de/", text: "Link zur Mediathek", target:"_blank"}],
 		title: "Infoportal Russlanddeutsche in Hessen",
+		vgWortRequired: true,
+		jsVars: {
+			trackingEndpoint: "https://tracking.dilewe.de/stats"
+		},
 		targets: {
 			preview: {
 				action: 'preview',
@@ -184,6 +188,16 @@ const defaultTargets = {
 			preview: {
 				action: 'preview',
 				httpPort: 8042
+			}
+		}
+	},
+	dev: {
+		graphqlEndpoint: "https://craft-dev.test-dilewe.de/api",
+		title: "Craft Dev",
+		targets: {
+			preview: {
+				action: 'preview',
+				httpPort: 4020
 			}
 		}
 	}

@@ -1,3 +1,4 @@
+
 import fs from "fs";
 import minimist from "minimist";
 import os from "os";
@@ -15,6 +16,7 @@ const options = {
 	navigationLinks: [],
 	verbose: false,
 	rethrowErrors: false,
+	vgWortRequired: false,
 	cssVars: {},
 	email: {
 		host: "smtp.server.local",

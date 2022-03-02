@@ -41,7 +41,7 @@ export default {
 			}) => ({
 				helpVideo: helpVideos[0],
 				type,
-				isNumbered: ((type !== "stern_differenzierung") && isNumbered),
+				isNumbered: (isNumbered && (type !== "stern_differenzierung" || (!type))),
 				tabs: tabs.map(tab => Object.assign({}, tab, {
 					media: tab.media[0]
 				})),
