@@ -55,7 +55,18 @@ section[content-type="gallery"] figure[figure-type="gallery"] img {
 	width:100%;
 	height:56vw;
 	max-height: 462px;
-	object-fit:cover;
+}
+
+section[content-type="tab-box"] figure[figure-type="gallery"] img {
+	border: none;
+}
+
+section[content-type="gallery"] figure[figure-type="gallery"][display-mode="cover"] img {
+	object-fit: cover;
+}
+
+section[content-type="gallery"] figure[figure-type="gallery"][display-mode="contain"] img {
+	object-fit: contain;
 }
 
 section[content-type="gallery"] figcaption {
@@ -332,10 +343,6 @@ figure[figure-type="picture"] > button[button-type="fullscreen"] {
 figure[figure-type="picture"] > details.license > summary {
 	right:45px;
 	margin-top: -45px;
-}
-
-section[content-type="tab-box"] figure[figure-type="gallery"] img {
-	border: none;
 }
 
 button[button-type="fullscreen"].active::before {

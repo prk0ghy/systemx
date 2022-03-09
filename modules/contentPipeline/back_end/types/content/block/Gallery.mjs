@@ -8,8 +8,8 @@ export default {
 				files: bilder {
 					${fragments.asset}
 				}
-				id
 				galleryIntroductionText: galerietext
+				id
 			`,
 			map: ({
 				captions,
@@ -31,8 +31,8 @@ export default {
 				files: bilder {
 					${fragments.asset}
 				}
-				id
 				galleryIntroductionText: galerietext
+				id
 			`,
 			map: ({
 				captions,
@@ -54,8 +54,8 @@ export default {
 				files: bilder {
 					${fragments.asset}
 				}
-				id
 				galleryIntroductionText: galerietext
+				id
 			`,
 			map: ({
 				captions,
@@ -70,7 +70,8 @@ export default {
 			})
 		}],
 		["inhaltsbausteine_galerie_BlockType", {
-			fetch: ({fragments}) => `
+			fetch: ({ fragments }) => `
+				custom
 				galleryIntroductionText: einleitungstextGallerie
 				id
 				images: bilder {
@@ -81,29 +82,33 @@ export default {
 						}
 					}
 				}
-				starSelection: stern_selection
 				isNumbered: nummerierung
+				starSelection: stern_selection
 			`,
 			map: ({
+				custom,
 				isNumbered,
 				starSelection,
 				...rest
 			}) => ({
+				isNumbered: isNumbered && (starSelection === "standard" || !starSelection),
+				previewDisplayMode: custom === "standard" || !custom
+					? "cover"
+					: "contain",
 				starSelection,
-				isNumbered: (isNumbered && ((starSelection === "standard") || (!starSelection))),
 				...rest
 			})
 		}],
 		["quersliderAufgabenElemente_galerie_BlockType", {
-			fetch: ({fragments}) => `
+			fetch: ({ fragments }) => `
 				captions: bildunterschriften_aufgabe {
 					text: col1
 				}
 				files: bilder_aufgabe {
 					${fragments.asset}
 				}
-				id
 				galleryIntroductionText: galerietext_aufgabe
+				id
 			`,
 			map: ({
 				captions,
@@ -118,15 +123,15 @@ export default {
 			})
 		}],
 		["quersliderInhalt_galerie_BlockType", {
-			fetch: ({fragments}) => `
+			fetch: ({ fragments }) => `
 				captions: bildunterschriften {
 					text: col1
 				}
 				files: bilder {
 					${fragments.asset}
 				}
-				id
 				galleryIntroductionText: galerietext
+				id
 			`,
 			map: ({
 				captions,
@@ -147,12 +152,13 @@ export default {
 		infoLink = null,
 		images,
 		isNumbered,
+		previewDisplayMode = "cover",
 		starSelection,
 		text = null
 	}, {
-		Error,
 		attributeIf,
 		contentTypeIDIf,
+		Error,
 		helpers: {
 			Image,
 			InfoLink,
@@ -171,7 +177,7 @@ export default {
 				? `<figcaption>${image.caption}</figcaption>`
 				: `<figcaption></figcaption>`;
 			return `
-				<figure figure-type="gallery">
+				<figure display-mode="${previewDisplayMode}" figure-type="gallery">
 					${await Image.render({ asset: image.files[0], imageSize: 100 })}
 					${License.render({ asset: image.files[0] })}
 					${imageCaptionHTML}

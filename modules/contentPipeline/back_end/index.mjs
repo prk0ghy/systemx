@@ -8,7 +8,7 @@ const start = async (action) => {
 	await loadModules("modules/contentPipeline/back_end/egress");
 
 	await target.build(currentTarget);
-	if(action === "preview"){
+	if (action === "preview") {
 		serve(currentTarget);
 		console.log(`Content preview server started: http://localhost:${options.httpPort}/`);
 	}
