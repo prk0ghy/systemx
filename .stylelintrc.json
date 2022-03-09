@@ -1,5 +1,8 @@
 {
-	"extends": "stylelint-config-standard",
+	"extends": [
+		"stylelint-config-standard",
+		"stylelint-css-modules"
+	],
 	"rules": {
 		"color-hex-case": null,
 		"declaration-colon-newline-after": null,

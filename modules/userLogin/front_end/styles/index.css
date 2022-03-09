@@ -28,6 +28,7 @@
 		font-size: var(--font-size-500);
 		min-height: 100vh;
 		position: relative;
+		/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
 		& :global(#root) {
 			height: 100%;
 		}

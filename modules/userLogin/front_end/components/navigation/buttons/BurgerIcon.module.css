@@ -5,8 +5,8 @@
 	font-size: inherit;
 	height: var(--size);
 	transform: scale(2.5, 2.1);
-	width: var(--size);
 	vertical-align: -34%;
+	width: var(--size);
 	&:focus {
 		outline: 0;
 	}

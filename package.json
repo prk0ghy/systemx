@@ -47,6 +47,7 @@
 		"react-dom": "^17.0.2",
 		"stylelint": "^14.2.0",
 		"stylelint-config-standard": "^24.0.0",
+		"stylelint-css-modules": "^1.2.1",
 		"stylelint-order": "^5.0.0"
 	},
 	"license": "EUPL-1.2",
@@ -70,6 +71,7 @@
 		"lint": "npm run lint:js && npm run lint:css",
 		"lint:js": "eslint './modules/**/*.mjs' './modules/**/*.js' --ignore-pattern 'modules/userLogin/front_end' && npm --prefix modules/userLogin/front_end run lint",
 		"lint:css": "stylelint './modules/**/*.css'",
+		"lint:css:fix": "stylelint './modules/**/*.css' --fix",
 		"start": "node ./index.mjs --",
 		"postinstall": "npm --prefix modules/userLogin/front_end install",
 		"test": "npm run test:back-end",

@@ -10,7 +10,7 @@
 	&:hover {
 		cursor: pointer;
 		&::after {
-			background-color: hsla(0, 0%, 100%, 0.1);
+			background-color: hsla(0deg, 0%, 100%, 0.1);
 			content: "";
 			inset: 0;
 			position: absolute;
