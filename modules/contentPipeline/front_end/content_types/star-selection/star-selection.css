@@ -1,0 +1,189 @@
+section[star-selection] {
+	display: none;
+}
+
+/* remove block background since it overlaps with the star buttons */
+section[star-selection]::after {
+	display: none !important;
+}
+
+/* force visibility of help video since it is inside the section */
+section[with-stars] inner-content > help-video {
+	visibility: visible !important;
+}
+
+section[with-stars] inner-content {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+
+/* edge case for file uploads */
+section[with-stars] > inner-content > exercise-content {
+	width: 100%;
+}
+
+section[with-stars] > inner-content > .marker {
+	z-index: 501;
+	visibility: visible !important;
+}
+
+@media screen and (max-width: 820px) {
+	section[with-stars] inner-content {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+section[with-stars] inner-content > details {
+	width: 100%;
+}
+
+.bubble {
+	user-select: none;
+	width: 2em;
+	max-width: 2em;
+	height: 2em;
+	max-height: 2em;
+	cursor: pointer;
+	margin-bottom: 0.5em;
+}
+
+.bubble > img {
+	width: 2em;
+	height: 2em;
+}
+
+.bubble.star {
+	visibility: visible !important;
+	background-color: #d69834;
+	border-radius: 50%;
+	box-shadow: 1px 2px 4px 2px rgb(0 0 0 / 50%);
+}
+
+.bubble.star > img {
+	padding: 5px;
+	content: url("/resources/svg/star-star.svg");
+}
+
+
+.bubble.star.open {
+	background-color: unset;
+	border-radius: unset;
+	box-shadow: none;
+}
+
+.bubble.star.open > img {
+	padding: 0;
+	content: url("/resources/svg/star-open.svg");
+}
+
+.bubble.star.offset {
+	right: 2em;
+}
+
+
+.star-button-container {
+	user-select: none;
+	position: absolute;
+	height: fit-content;
+	top: 0;
+	right: -2em;
+	display: flex;
+	flex-direction: column;
+	z-index: 500;
+}
+
+.star-button-container.offset {
+	top: 2.5em;
+}
+
+
+@media only screen and (max-width: 820px) {
+	.star-button-container {
+		flex-direction: row-reverse;
+		width: fit-content;
+		right: 2.75em;
+	}
+
+	.star-button-container.offset {
+		right: 5em;
+	}
+
+	.bubble {
+		margin-left: 5px;
+	}
+}
+
+@media only screen and (max-width: 650px) {
+	.star-button-container {
+		flex-direction: row-reverse;
+		width: fit-content;
+		right: 1.75em;
+	}
+
+	.star-button-container.offset {
+		right: 4.5em;
+	}
+
+	.bubble {
+		margin-left: 5px;
+	}
+}
+
+
+@keyframes fade-in {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+.fadein {
+	animation-name: fade-in;
+	animation-duration: 0.5s;
+}
+
+
+@keyframes shift-in {
+	from { margin-top: -2em; }
+	to { margin-top: 0; }
+}
+
+.shift-in {
+	animation-name: shift-in;
+	animation-duration: 0.1s;
+}
+
+@media only screen and (max-width: 820px) {
+	@keyframes shift-in-mobile {
+		from { margin-right: -1em; }
+		to { margin-left: 0; }
+	}
+
+	.shift-in {
+		animation-name: shift-in-mobile;
+		animation-duration: 0.1s;
+	}
+}
+
+
+@keyframes blur {
+	from { filter: blur(0); }
+	to { filter: blur(3px); }
+}
+
+.blur {
+	animation-name: blur;
+	animation-duration: 1.5s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes unblur {
+	to { filter: blur(0); }
+	from { filter: blur(3px); }
+}
+
+.unblur {
+	animation-name: unblur;
+	animation-duration: 1.5s;
+	animation-fill-mode: forwards;
+}
