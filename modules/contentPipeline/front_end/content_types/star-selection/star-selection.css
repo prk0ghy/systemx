@@ -1,13 +1,20 @@
-section[star-selection] {
+section[star-selection="stern"] {
 	display: none;
 }
 
 /* remove block background since it overlaps with the star buttons */
-section[star-selection]::after {
+section[star-selection="stern"]::after {
 	display: none !important;
 }
 
+/* --disabled starmode-- delete the rule below for enabling */
+.star-button-container {
+	display: none;
+}
+
 /* force visibility of help video since it is inside the section */
+
+/* --disabled starmode--
 section[with-stars] inner-content > help-video {
 	visibility: visible !important;
 }
@@ -17,8 +24,11 @@ section[with-stars] inner-content {
 	flex-direction: row;
 	width: 100%;
 }
+--disabled starmode-- */
 
 /* edge case for file uploads */
+
+/* --disabled starmode--
 section[with-stars] > inner-content > exercise-content {
 	width: 100%;
 }
@@ -81,7 +91,6 @@ section[with-stars] inner-content > details {
 .bubble.star.offset {
 	right: 2em;
 }
-
 
 .star-button-container {
 	user-select: none;
@@ -187,3 +196,4 @@ section[with-stars] inner-content > details {
 	animation-duration: 1.5s;
 	animation-fill-mode: forwards;
 }
+--disabled starmode-- */
