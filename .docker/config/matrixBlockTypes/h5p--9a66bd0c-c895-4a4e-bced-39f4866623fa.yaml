@@ -23,7 +23,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 4a6756ad-3519-497a-baaf-e361088130e3
+            fieldUid: 29e1f558-8b06-43a8-bfa7-95dab48375c3
             instructions: null
             label: null
             required: false
@@ -34,12 +34,12 @@ fieldLayouts:
         name: Content
         sortOrder: 1
 fields:
-  4a6756ad-3519-497a-baaf-e361088130e3:
+  29e1f558-8b06-43a8-bfa7-95dab48375c3:
     contentColumnType: text
     fieldGroup: null
     handle: urheber_nested
     instructions: ''
-    name: urheber
+    name: Urheber
     searchable: false
     settings:
       availableTransforms: ''
@@ -51,7 +51,7 @@ fields:
       manualConfig: ''
       purifierConfig: ''
       purifyHtml: '1'
-      redactorConfig: ''
+      redactorConfig: Simple.json
       removeEmptyTags: '1'
       removeInlineStyles: '1'
       removeNbsp: ''

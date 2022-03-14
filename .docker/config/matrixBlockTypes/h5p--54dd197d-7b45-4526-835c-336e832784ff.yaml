@@ -23,7 +23,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 1c494b82-e69d-4866-8cf6-73aa29d85746
+            fieldUid: 6dbb71a1-4205-4a65-bfaa-4e53aa0f9184
             instructions: null
             label: null
             required: false
@@ -34,34 +34,6 @@ fieldLayouts:
         name: Content
         sortOrder: 1
 fields:
-  1c494b82-e69d-4866-8cf6-73aa29d85746:
-    contentColumnType: text
-    fieldGroup: null
-    handle: urheber
-    instructions: ''
-    name: Urheber
-    searchable: false
-    settings:
-      availableTransforms: ''
-      availableVolumes: ''
-      cleanupHtml: true
-      columnType: text
-      configSelectionMode: choose
-      defaultTransform: ''
-      manualConfig: ''
-      purifierConfig: ''
-      purifyHtml: '1'
-      redactorConfig: Simple.json
-      removeEmptyTags: '1'
-      removeInlineStyles: '1'
-      removeNbsp: ''
-      showHtmlButtonForNonAdmins: ''
-      showUnpermittedFiles: false
-      showUnpermittedVolumes: false
-      uiMode: enlarged
-    translationKeyFormat: null
-    translationMethod: none
-    type: craft\redactor\Field
   286fba77-8de7-4009-86e1-1d51626edf60:
     contentColumnType: text
     fieldGroup: null
@@ -100,6 +72,34 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\PlainText
+  6dbb71a1-4205-4a65-bfaa-4e53aa0f9184:
+    contentColumnType: text
+    fieldGroup: null
+    handle: urheber
+    instructions: ''
+    name: Urheber
+    searchable: false
+    settings:
+      availableTransforms: ''
+      availableVolumes: ''
+      cleanupHtml: true
+      columnType: text
+      configSelectionMode: choose
+      defaultTransform: ''
+      manualConfig: ''
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: Simple.json
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: ''
+      showHtmlButtonForNonAdmins: ''
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      uiMode: enlarged
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\redactor\Field
 handle: h5p
 name: 'freier Embed'
 sortOrder: 6

@@ -1,0 +1,9 @@
+format: null
+handle: lazy
+height: null
+interlace: none
+mode: crop
+name: lazy
+position: center-center
+quality: 10
+width: 100

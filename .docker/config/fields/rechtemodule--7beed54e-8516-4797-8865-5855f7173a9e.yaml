@@ -17,7 +17,7 @@ settings:
           - by
         -
           - default
-          - ''
+          - '1'
     -
       __assoc__:
         -
@@ -28,7 +28,7 @@ settings:
           - nc
         -
           - default
-          - ''
+          - '1'
     -
       __assoc__:
         -
@@ -50,7 +50,7 @@ settings:
           - sa
         -
           - default
-          - ''
+          - '1'
 translationKeyFormat: null
 translationMethod: none
 type: craft\fields\Checkboxes

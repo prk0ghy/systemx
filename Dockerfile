@@ -41,7 +41,7 @@ RUN composer require "craftcms/redactor:2.8.2" \
     "craftcms/aws-s3:1.2.11" \
     "vaersaagod/matrixmate:^1.3" \
     "verbb/smith:1.1.9" \
-    "wrav/oembed:1.3.4"
+    "wrav/oembed:1.3.15"
 
 # copy files to be seeded to temporary location
 USER root
@@ -49,5 +49,6 @@ ADD ./.docker/start.sh /var/www/html/
 RUN chmod +x ./start.sh
 ADD ./.docker/config/ /var/www/html/_config/
 ADD ./.docker/routes.php /var/www/html/config/routes.php
+ADD ./.docker/matrixmate.php /var/www/html/config/matrixmate.php
 
 USER www-data

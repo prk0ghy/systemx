@@ -59,7 +59,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: f1bd4769-0706-4e9c-8fee-4fbea008956e
+            fieldUid: 2fd8efac-d10d-4621-8a10-54e3f3f7160c
             instructions: null
             label: null
             required: false
@@ -138,6 +138,41 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Assets
+  2fd8efac-d10d-4621-8a10-54e3f3f7160c:
+    contentColumnType: string
+    fieldGroup: null
+    handle: stern_selection
+    instructions: ''
+    name: Sternmodus
+    searchable: false
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - Standard
+            -
+              - value
+              - standard
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - Stern-Modus
+            -
+              - value
+              - stern
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
   67a7cba4-93f8-4bfb-a778-b448b261cfcb:
     contentColumnType: boolean
     fieldGroup: null
@@ -218,41 +253,6 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Assets
-  f1bd4769-0706-4e9c-8fee-4fbea008956e:
-    contentColumnType: string
-    fieldGroup: null
-    handle: stern_selection
-    instructions: ''
-    name: Stern-Modus
-    searchable: false
-    settings:
-      optgroups: true
-      options:
-        -
-          __assoc__:
-            -
-              - label
-              - Standard
-            -
-              - value
-              - standard
-            -
-              - default
-              - '1'
-        -
-          __assoc__:
-            -
-              - label
-              - Stern-Modus
-            -
-              - value
-              - stern
-            -
-              - default
-              - ''
-    translationKeyFormat: null
-    translationMethod: none
-    type: craft\fields\Dropdown
 handle: videoDatei
 name: 'Video (Datei)'
 sortOrder: 3

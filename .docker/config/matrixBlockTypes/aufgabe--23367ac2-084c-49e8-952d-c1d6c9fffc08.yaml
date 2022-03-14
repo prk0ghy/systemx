@@ -150,7 +150,7 @@ fields:
                 -
                   - width
                   - ''
-      contentTable: '{{%stc_39_aufklappaufgabeninhalt}}'
+      contentTable: '{{%stc_56_aufklappaufgabeninhalt}}'
       fieldLayout: matrix
       maxRows: '1'
       minRows: '1'

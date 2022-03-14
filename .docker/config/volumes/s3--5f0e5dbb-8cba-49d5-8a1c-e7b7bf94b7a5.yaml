@@ -72,7 +72,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 53bfaf25-e98b-48d0-bc7c-8cb86a6cffe8
+            fieldUid: 7a536258-08a3-49a9-9301-f39ae9388993
             instructions: null
             label: null
             required: false
@@ -86,7 +86,7 @@ handle: s3
 hasUrls: true
 name: S3
 settings:
-  path: '@root/web/volume'
+  path: '@webroot/assets'
 sortOrder: 1
 type: craft\volumes\Local
-url: //bdv.test-dilewe.de/volume
+url: $ASSET_URL

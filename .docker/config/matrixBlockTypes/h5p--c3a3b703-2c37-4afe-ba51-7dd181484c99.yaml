@@ -23,7 +23,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 063d7fdc-ed41-463d-a771-576bd510b408
+            fieldUid: 8bd36857-ed92-428c-90c6-bb89bb0265a6
             instructions: null
             label: null
             required: false
@@ -34,7 +34,26 @@ fieldLayouts:
         name: Content
         sortOrder: 1
 fields:
-  063d7fdc-ed41-463d-a771-576bd510b408:
+  2b9be845-86fe-4c15-a8ed-d52bca6fe1d5:
+    contentColumnType: text
+    fieldGroup: null
+    handle: unterschrift
+    instructions: ''
+    name: __blank__
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  8bd36857-ed92-428c-90c6-bb89bb0265a6:
     contentColumnType: text
     fieldGroup: null
     handle: urheber_slider
@@ -62,25 +81,6 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\redactor\Field
-  2b9be845-86fe-4c15-a8ed-d52bca6fe1d5:
-    contentColumnType: text
-    fieldGroup: null
-    handle: unterschrift
-    instructions: ''
-    name: __blank__
-    searchable: false
-    settings:
-      byteLimit: null
-      charLimit: null
-      code: ''
-      columnType: null
-      initialRows: '4'
-      multiline: ''
-      placeholder: ''
-      uiMode: normal
-    translationKeyFormat: null
-    translationMethod: none
-    type: craft\fields\PlainText
   d404f0b5-293d-4960-936e-3dc2a44f7f44:
     contentColumnType: text
     fieldGroup: null

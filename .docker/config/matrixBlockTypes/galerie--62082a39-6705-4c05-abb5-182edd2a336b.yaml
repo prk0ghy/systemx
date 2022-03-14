@@ -23,6 +23,15 @@ fieldLayouts:
             warning: null
             width: 25
           -
+            fieldUid: 3416f31c-c4d5-4b74-b9ea-da47e233c682
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 25
+          -
             fieldUid: d3f1e620-b6eb-4fc6-bba6-0760fdb5b8f2
             instructions: null
             label: null
@@ -39,20 +48,69 @@ fieldLayouts:
             tip: null
             type: craft\fieldlayoutelements\CustomField
             warning: null
-            width: 100
+            width: 25
           -
-            fieldUid: 3e941b47-76c6-4695-a6f0-279325b2820c
+            fieldUid: 9dae2e43-694f-49af-88d8-e5988587a961
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
             warning: null
-            width: 100
+            width: 25
         name: Content
         sortOrder: 1
 fields:
-  3e941b47-76c6-4695-a6f0-279325b2820c:
+  3416f31c-c4d5-4b74-b9ea-da47e233c682:
+    contentColumnType: string
+    fieldGroup: null
+    handle: custom
+    instructions: ''
+    name: Anpassungen
+    searchable: false
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - Standard
+            -
+              - value
+              - standard
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - 'Auto Höhe'
+            -
+              - value
+              - auto
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  5a09fa3b-909c-4862-9356-45e053c5f341:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: flex
+    instructions: '(Mehrere hochgeladene Bilder werden als Galerie angezeigt, wenn dieser Schalter nicht aktiviert ist)'
+    name: 'Bilder nebeneinander'
+    searchable: false
+    settings:
+      default: false
+      offLabel: null
+      onLabel: null
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
+  9dae2e43-694f-49af-88d8-e5988587a961:
     contentColumnType: string
     fieldGroup: null
     handle: stern_selection
@@ -87,20 +145,6 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\Dropdown
-  5a09fa3b-909c-4862-9356-45e053c5f341:
-    contentColumnType: boolean
-    fieldGroup: null
-    handle: flex
-    instructions: '(Mehrere hochgeladene Bilder werden als Galerie angezeigt, wenn dieser Schalter nicht aktiviert ist)'
-    name: 'Bilder nebeneinander'
-    searchable: false
-    settings:
-      default: false
-      offLabel: null
-      onLabel: null
-    translationKeyFormat: null
-    translationMethod: none
-    type: craft\fields\Lightswitch
   c69b33e0-0808-4058-9c25-13ef607c95ac:
     contentColumnType: text
     fieldGroup: null
@@ -153,7 +197,7 @@ fields:
                 -
                   - width
                   - ''
-      contentTable: '{{%stc_15_bilder}}'
+      contentTable: '{{%stc_17_bilder}}'
       fieldLayout: row
       maxRows: ''
       minRows: ''

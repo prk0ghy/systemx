@@ -2,7 +2,7 @@ contentColumnType: text
 fieldGroup: 802146cd-8552-4db9-b8ec-3e060400e229
 handle: vgWortPixel
 instructions: ''
-name: 'VG Wort Pixel'
+name: 'VG-Wort Pixel'
 searchable: false
 settings:
   byteLimit: null

@@ -1,0 +1,41 @@
+contentColumnType: string
+fieldGroup: 802146cd-8552-4db9-b8ec-3e060400e229
+handle: untertitel
+instructions: ''
+name: Untertitel
+searchable: false
+settings:
+  columns:
+    __assoc__:
+      -
+        - a7f1b10a-d584-432b-9157-9aeb8f3f06b7
+        -
+          __assoc__:
+            -
+              - width
+              - 25%
+      -
+        - 9e4f6289-9ba3-4702-b421-b7bbf103bc92
+        -
+          __assoc__:
+            -
+              - width
+              - 25%
+      -
+        - 2ead38ca-20cf-4fce-8d5c-381a1d7d2416
+        -
+          __assoc__:
+            -
+              - width
+              - 50%
+  contentTable: '{{%stc_untertitel}}'
+  fieldLayout: table
+  maxRows: ''
+  minRows: ''
+  placeholderKey: null
+  propagationMethod: all
+  selectionLabel: ''
+  staticField: ''
+translationKeyFormat: null
+translationMethod: site
+type: verbb\supertable\fields\SuperTableField

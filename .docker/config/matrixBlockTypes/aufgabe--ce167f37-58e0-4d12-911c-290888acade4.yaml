@@ -229,7 +229,7 @@ fields:
                 -
                   - width
                   - ''
-      contentTable: '{{%stc_10_aufgabeinhalt}}'
+      contentTable: '{{%stc_7_aufgabeinhalt}}'
       fieldLayout: matrix
       maxRows: ''
       minRows: ''

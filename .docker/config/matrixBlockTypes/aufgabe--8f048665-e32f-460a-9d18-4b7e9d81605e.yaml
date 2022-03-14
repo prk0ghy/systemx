@@ -69,7 +69,7 @@ fields:
                 -
                   - width
                   - ''
-      contentTable: '{{%stc_25_querslideraufgabeninhalt}}'
+      contentTable: '{{%stc_51_querslideraufgabeninhalt}}'
       fieldLayout: matrix
       maxRows: '1'
       minRows: '1'

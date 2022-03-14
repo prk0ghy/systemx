@@ -59,7 +59,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: aaff4864-7660-4f8b-b8db-9937b1440da4
+            fieldUid: 54c2ccc0-308d-46ee-a6dc-53fdbe94ea35
             instructions: null
             label: null
             required: false
@@ -86,7 +86,7 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\Date
-  aaff4864-7660-4f8b-b8db-9937b1440da4:
+  54c2ccc0-308d-46ee-a6dc-53fdbe94ea35:
     contentColumnType: string
     fieldGroup: null
     handle: stern_selection

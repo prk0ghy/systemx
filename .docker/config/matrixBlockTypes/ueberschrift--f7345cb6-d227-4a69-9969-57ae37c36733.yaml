@@ -23,7 +23,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 237e46db-e5bb-4332-bd23-34ca9ee5c43a
+            fieldUid: c10e1dfa-4f25-40c9-ba71-dc0b048b0500
             instructions: null
             label: null
             required: false
@@ -34,19 +34,6 @@ fieldLayouts:
         name: Content
         sortOrder: 1
 fields:
-  237e46db-e5bb-4332-bd23-34ca9ee5c43a:
-    contentColumnType: string(255)
-    fieldGroup: null
-    handle: infoLink
-    instructions: ''
-    name: Infolink
-    searchable: false
-    settings:
-      maxLength: '255'
-      placeholder: ''
-    translationKeyFormat: null
-    translationMethod: none
-    type: craft\fields\Url
   a5ad4e4f-ae6c-489f-b9d5-a1bd5b33e0ab:
     contentColumnType: string
     fieldGroup: null
@@ -115,6 +102,19 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\Dropdown
+  c10e1dfa-4f25-40c9-ba71-dc0b048b0500:
+    contentColumnType: string(255)
+    fieldGroup: null
+    handle: infoLink
+    instructions: ''
+    name: Infolink
+    searchable: false
+    settings:
+      maxLength: '255'
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Url
   eba51c22-6181-4f80-a38a-43757c3ceb53:
     contentColumnType: text
     fieldGroup: null

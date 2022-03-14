@@ -50,7 +50,7 @@ fieldLayouts:
             warning: null
             width: 25
           -
-            fieldUid: 71eddfcd-9901-435b-a13a-11e687365f88
+            fieldUid: 812bfe9c-1254-4adb-83ab-7dd3ed266229
             instructions: null
             label: null
             required: false
@@ -59,7 +59,7 @@ fieldLayouts:
             warning: null
             width: 25
           -
-            fieldUid: 672323ab-408e-4449-b57c-a1d1839558a8
+            fieldUid: 5ca1aa31-c717-4d97-b7a5-d91fd16f5fe0
             instructions: null
             label: null
             required: false
@@ -116,7 +116,7 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\Dropdown
-  672323ab-408e-4449-b57c-a1d1839558a8:
+  5ca1aa31-c717-4d97-b7a5-d91fd16f5fe0:
     contentColumnType: string(255)
     fieldGroup: null
     handle: infoLink
@@ -129,7 +129,7 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\Url
-  71eddfcd-9901-435b-a13a-11e687365f88:
+  812bfe9c-1254-4adb-83ab-7dd3ed266229:
     contentColumnType: boolean
     fieldGroup: null
     handle: hideButtons

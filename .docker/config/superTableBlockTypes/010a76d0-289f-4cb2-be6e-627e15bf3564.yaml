@@ -32,7 +32,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: ff073ac7-3d2c-434c-aaf1-d83dd75b4a8f
+            fieldUid: 7b42d4fa-55e9-4655-89d5-bf1eccd4cf8f
             instructions: null
             label: null
             required: false
@@ -80,12 +80,47 @@ fields:
     searchable: true
     settings:
       contentTable: '{{%matrixcontent_quersliderinhalt}}'
-      maxBlocks: '2'
+      maxBlocks: '4'
       minBlocks: ''
       propagationMethod: all
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Matrix
+  7b42d4fa-55e9-4655-89d5-bf1eccd4cf8f:
+    contentColumnType: string
+    fieldGroup: null
+    handle: tabMedia
+    instructions: ''
+    name: 'Medien hinzufügen'
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      allowUploads: true
+      allowedKinds:
+        - audio
+        - image
+        - video
+      defaultUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: false
+      previewMode: full
+      restrictFiles: '1'
+      selectionLabel: ''
+      showSiteMenu: true
+      showUnpermittedFiles: true
+      showUnpermittedVolumes: true
+      singleUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
+      singleUploadLocationSubpath: audios-foerderfenster
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: true
+      validateRelatedElements: false
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
   d4db5f58-a7eb-40fc-9b9a-b68640320bd4:
     contentColumnType: text
     fieldGroup: null
@@ -105,37 +140,3 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\PlainText
-  ff073ac7-3d2c-434c-aaf1-d83dd75b4a8f:
-    contentColumnType: string
-    fieldGroup: null
-    handle: tabMedia
-    instructions: ''
-    name: 'Tab Medium'
-    searchable: false
-    settings:
-      allowSelfRelations: false
-      allowUploads: true
-      allowedKinds:
-        - audio
-        - video
-      defaultUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
-      defaultUploadLocationSubpath: ''
-      limit: '1'
-      localizeRelations: false
-      previewMode: full
-      restrictFiles: '1'
-      selectionLabel: ''
-      showSiteMenu: false
-      showUnpermittedFiles: false
-      showUnpermittedVolumes: false
-      singleUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
-      singleUploadLocationSubpath: audio
-      source: null
-      sources: '*'
-      targetSiteId: null
-      useSingleFolder: true
-      validateRelatedElements: false
-      viewMode: list
-    translationKeyFormat: null
-    translationMethod: site
-    type: craft\fields\Assets

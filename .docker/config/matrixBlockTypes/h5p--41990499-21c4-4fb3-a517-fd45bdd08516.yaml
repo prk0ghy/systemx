@@ -23,7 +23,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 71c0d301-0319-4837-897e-c91ef0d05c0a
+            fieldUid: eb64934c-7de3-4e8a-994a-b60e532bc92b
             instructions: null
             label: null
             required: false
@@ -53,7 +53,26 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\PlainText
-  71c0d301-0319-4837-897e-c91ef0d05c0a:
+  b73c4378-8251-47d2-96ce-e261f0526293:
+    contentColumnType: text
+    fieldGroup: null
+    handle: unterschrift
+    instructions: ''
+    name: __blank__
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  eb64934c-7de3-4e8a-994a-b60e532bc92b:
     contentColumnType: text
     fieldGroup: null
     handle: urheber
@@ -81,25 +100,6 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\redactor\Field
-  b73c4378-8251-47d2-96ce-e261f0526293:
-    contentColumnType: text
-    fieldGroup: null
-    handle: unterschrift
-    instructions: ''
-    name: __blank__
-    searchable: false
-    settings:
-      byteLimit: null
-      charLimit: null
-      code: ''
-      columnType: null
-      initialRows: '4'
-      multiline: ''
-      placeholder: ''
-      uiMode: normal
-    translationKeyFormat: null
-    translationMethod: none
-    type: craft\fields\PlainText
 handle: h5p
 name: 'freier Embed'
 sortOrder: 5

@@ -23,7 +23,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 7ad1b70e-d39d-4903-bd97-54aa55c0ffc4
+            fieldUid: 4c872a9c-890c-4e3b-9ba7-2eabc8c108a9
             instructions: null
             label: null
             required: false
@@ -102,12 +102,12 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\Dropdown
-  7ad1b70e-d39d-4903-bd97-54aa55c0ffc4:
+  4c872a9c-890c-4e3b-9ba7-2eabc8c108a9:
     contentColumnType: string(255)
     fieldGroup: null
     handle: infoLink
     instructions: ''
-    name: Infolink
+    name: InfoLink
     searchable: false
     settings:
       maxLength: '255'

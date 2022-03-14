@@ -87,7 +87,7 @@ fields:
                 -
                   - width
                   - ''
-      contentTable: '{{%stc_14_inhaltdeskastens_1}}'
+      contentTable: '{{%stc_5_inhaltdeskastens}}'
       fieldLayout: matrix
       maxRows: '1'
       minRows: '1'

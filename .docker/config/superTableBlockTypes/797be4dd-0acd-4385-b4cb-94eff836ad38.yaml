@@ -1,11 +1,11 @@
-field: 53bfaf25-e98b-48d0-bc7c-8cb86a6cffe8
+field: 7a536258-08a3-49a9-9301-f39ae9388993
 fieldLayouts:
-  35bd71d8-bab9-4b68-a715-f28e8764130a:
+  ecf4fcc3-e882-4128-a866-e46213d314f0:
     tabs:
       -
         elements:
           -
-            fieldUid: 8110a41a-7df5-46e8-9044-f856607c1ecb
+            fieldUid: a7f1b10a-d584-432b-9157-9aeb8f3f06b7
             instructions: null
             label: null
             required: false
@@ -14,7 +14,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 9b77a06f-ae23-4b24-a903-a3234fdad15c
+            fieldUid: 9e4f6289-9ba3-4702-b421-b7bbf103bc92
             instructions: null
             label: null
             required: false
@@ -23,7 +23,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 9736c379-25a8-4687-b2c0-c950b2ed3c1e
+            fieldUid: 2ead38ca-20cf-4fce-8d5c-381a1d7d2416
             instructions: null
             label: null
             required: false
@@ -34,42 +34,7 @@ fieldLayouts:
         name: Content
         sortOrder: 1
 fields:
-  8110a41a-7df5-46e8-9044-f856607c1ecb:
-    contentColumnType: string
-    fieldGroup: null
-    handle: closedcaption
-    instructions: ''
-    name: 'Closed Caption'
-    searchable: false
-    settings:
-      optgroups: true
-      options:
-        -
-          __assoc__:
-            -
-              - label
-              - subtitles
-            -
-              - value
-              - subtitles
-            -
-              - default
-              - '1'
-        -
-          __assoc__:
-            -
-              - label
-              - captions
-            -
-              - value
-              - captions
-            -
-              - default
-              - ''
-    translationKeyFormat: null
-    translationMethod: none
-    type: craft\fields\Dropdown
-  9736c379-25a8-4687-b2c0-c950b2ed3c1e:
+  2ead38ca-20cf-4fce-8d5c-381a1d7d2416:
     contentColumnType: string
     fieldGroup: null
     handle: src
@@ -101,12 +66,12 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Assets
-  9b77a06f-ae23-4b24-a903-a3234fdad15c:
+  9e4f6289-9ba3-4702-b421-b7bbf103bc92:
     contentColumnType: text
     fieldGroup: null
     handle: srclang
     instructions: 'de oder en ...'
-    name: Sprach
+    name: Sprache
     searchable: false
     settings:
       byteLimit: null
@@ -120,3 +85,38 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\PlainText
+  a7f1b10a-d584-432b-9157-9aeb8f3f06b7:
+    contentColumnType: string
+    fieldGroup: null
+    handle: closedcaption
+    instructions: ''
+    name: 'Closed Caption?'
+    searchable: false
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - subtitles
+            -
+              - value
+              - subtitles
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - captions
+            -
+              - value
+              - captions
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown

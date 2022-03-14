@@ -41,7 +41,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 0fdfd76d-c194-4a15-b934-2b552cd39dcc
+            fieldUid: 2c5d4a25-e9aa-482d-ac0f-3787e8f5b373
             instructions: null
             label: null
             required: false
@@ -50,7 +50,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: c9c5f0d5-7e7e-4583-bf97-548a14f7bc6c
+            fieldUid: cf47cf21-85a1-41b6-88a6-66ab4eded8ba
             instructions: null
             label: null
             required: false
@@ -61,12 +61,26 @@ fieldLayouts:
         name: Content
         sortOrder: 1
 fields:
-  0fdfd76d-c194-4a15-b934-2b552cd39dcc:
+  28ddb27b-de74-4dd6-b6f2-c5c32e0c0e2e:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: nummerierung
+    instructions: ''
+    name: Nummerierung
+    searchable: false
+    settings:
+      default: true
+      offLabel: Inaktiv
+      onLabel: Aktiv
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
+  2c5d4a25-e9aa-482d-ac0f-3787e8f5b373:
     contentColumnType: text
     fieldGroup: null
     handle: urheber_h5p
     instructions: ''
-    name: Urheber
+    name: Urheber/Quelle
     searchable: false
     settings:
       availableTransforms: ''
@@ -89,20 +103,6 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\redactor\Field
-  28ddb27b-de74-4dd6-b6f2-c5c32e0c0e2e:
-    contentColumnType: boolean
-    fieldGroup: null
-    handle: nummerierung
-    instructions: ''
-    name: Nummerierung
-    searchable: false
-    settings:
-      default: true
-      offLabel: Inaktiv
-      onLabel: Aktiv
-    translationKeyFormat: null
-    translationMethod: none
-    type: craft\fields\Lightswitch
   36025fe2-b8f8-4a68-87de-73a8a595d683:
     contentColumnType: text
     fieldGroup: null
@@ -141,7 +141,7 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\PlainText
-  c9c5f0d5-7e7e-4583-bf97-548a14f7bc6c:
+  cf47cf21-85a1-41b6-88a6-66ab4eded8ba:
     contentColumnType: string
     fieldGroup: null
     handle: stern_selection
@@ -211,4 +211,4 @@ fields:
     type: craft\fields\Assets
 handle: h5p
 name: 'iframe einbetten (z.B. H5P, Geogebra, etc. )'
-sortOrder: 15
+sortOrder: 14

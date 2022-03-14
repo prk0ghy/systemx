@@ -59,7 +59,7 @@ fieldLayouts:
             warning: null
             width: 25
           -
-            fieldUid: 124ff67b-e418-435c-8acf-9ad6e9b2c4a6
+            fieldUid: 402ce876-79dd-40cd-9a34-775efacdfbe5
             instructions: null
             label: null
             required: false
@@ -70,7 +70,7 @@ fieldLayouts:
         name: Content
         sortOrder: 1
 fields:
-  124ff67b-e418-435c-8acf-9ad6e9b2c4a6:
+  402ce876-79dd-40cd-9a34-775efacdfbe5:
     contentColumnType: string(255)
     fieldGroup: null
     handle: infoLink

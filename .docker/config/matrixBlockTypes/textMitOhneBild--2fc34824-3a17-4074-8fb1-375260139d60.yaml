@@ -50,7 +50,7 @@ fieldLayouts:
             warning: null
             width: 25
           -
-            fieldUid: cb981bc0-847a-4c35-a35e-4af0bf871679
+            fieldUid: 4e77c30a-1d3f-4b58-9d28-9615eb69312b
             instructions: null
             label: null
             required: false
@@ -59,7 +59,7 @@ fieldLayouts:
             warning: null
             width: 25
           -
-            fieldUid: 8f0f4acd-1b0c-4f31-99ce-9feb4ba08b16
+            fieldUid: 9f17e5a4-5f3a-4868-83a8-755be2b21edb
             instructions: null
             label: null
             required: false
@@ -103,6 +103,20 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Assets
+  4e77c30a-1d3f-4b58-9d28-9615eb69312b:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: hideButtons
+    instructions: ''
+    name: 'Buttons ausblenden'
+    searchable: false
+    settings:
+      default: false
+      offLabel: null
+      onLabel: null
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
   73237106-4fe2-4e8a-9884-6881a0fa7a3b:
     contentColumnType: text
     fieldGroup: null
@@ -131,19 +145,6 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\redactor\Field
-  8f0f4acd-1b0c-4f31-99ce-9feb4ba08b16:
-    contentColumnType: string(255)
-    fieldGroup: null
-    handle: infoLink
-    instructions: ''
-    name: Infolink
-    searchable: false
-    settings:
-      maxLength: '255'
-      placeholder: ''
-    translationKeyFormat: null
-    translationMethod: none
-    type: craft\fields\Url
   93ae788b-e74c-4e44-9667-c3d8c943158f:
     contentColumnType: string
     fieldGroup: null
@@ -190,6 +191,19 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\Dropdown
+  9f17e5a4-5f3a-4868-83a8-755be2b21edb:
+    contentColumnType: string(255)
+    fieldGroup: null
+    handle: infoLink
+    instructions: ''
+    name: Infolink
+    searchable: false
+    settings:
+      maxLength: '255'
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Url
   c1b00867-6fb3-442f-8c0d-68a94c67dde0:
     contentColumnType: mediumtext
     fieldGroup: null
@@ -218,20 +232,6 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\redactor\Field
-  cb981bc0-847a-4c35-a35e-4af0bf871679:
-    contentColumnType: boolean
-    fieldGroup: null
-    handle: hideButtons
-    instructions: ''
-    name: 'Buttons ausblenden'
-    searchable: false
-    settings:
-      default: false
-      offLabel: null
-      onLabel: null
-    translationKeyFormat: null
-    translationMethod: none
-    type: craft\fields\Lightswitch
   f30495f8-fa20-4069-94be-c63e1c19fc25:
     contentColumnType: string
     fieldGroup: null

@@ -50,7 +50,7 @@ fieldLayouts:
             warning: null
             width: 25
           -
-            fieldUid: 44423cb3-b484-4a17-8c8c-92569ca4b328
+            fieldUid: b9702dc7-748e-4589-b91b-dc18471c19b8
             instructions: null
             label: null
             required: false
@@ -77,7 +77,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: ad306d70-bb77-4587-9741-bca70d53da00
+            fieldUid: 93850b8d-b6d1-4952-bd72-c70854900f74
             instructions: null
             label: null
             required: false
@@ -86,7 +86,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: bc19bb9d-5cfd-4f63-9731-e8e7e6049aad
+            fieldUid: 3b0e0c78-b261-4737-b8f2-cedcf5abebef
             instructions: null
             label: null
             required: false
@@ -143,20 +143,52 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\Dropdown
-  44423cb3-b484-4a17-8c8c-92569ca4b328:
-    contentColumnType: boolean
+  3b0e0c78-b261-4737-b8f2-cedcf5abebef:
+    contentColumnType: string
     fieldGroup: null
-    handle: hideButtons
+    handle: stern_selection
     instructions: ''
-    name: 'Buttons ausblenden'
+    name: Sternmodus
     searchable: false
     settings:
-      default: false
-      offLabel: null
-      onLabel: null
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - Standard
+            -
+              - value
+              - standard
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - Operatoren
+            -
+              - value
+              - operatoren
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Sprache
+            -
+              - value
+              - sprache
+            -
+              - default
+              - ''
     translationKeyFormat: null
     translationMethod: none
-    type: craft\fields\Lightswitch
+    type: craft\fields\Dropdown
   7f221b77-576b-49ef-ac19-69dc333baa33:
     contentColumnType: text
     fieldGroup: null
@@ -199,12 +231,12 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\Lightswitch
-  ad306d70-bb77-4587-9741-bca70d53da00:
+  93850b8d-b6d1-4952-bd72-c70854900f74:
     contentColumnType: string(255)
     fieldGroup: null
     handle: infoLink
     instructions: ''
-    name: Infolink
+    name: InfoLink
     searchable: false
     settings:
       maxLength: '255'
@@ -236,7 +268,7 @@ fields:
                 -
                   - width
                   - ''
-      contentTable: '{{%stc_12_bilder}}'
+      contentTable: '{{%stc_16_bilder}}'
       fieldLayout: row
       maxRows: ''
       minRows: ''
@@ -296,41 +328,20 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\Dropdown
-  bc19bb9d-5cfd-4f63-9731-e8e7e6049aad:
-    contentColumnType: string
+  b9702dc7-748e-4589-b91b-dc18471c19b8:
+    contentColumnType: boolean
     fieldGroup: null
-    handle: stern_selection
+    handle: hideButtons
     instructions: ''
-    name: Stern-Modus
+    name: 'Buttons ausblenden'
     searchable: false
     settings:
-      optgroups: true
-      options:
-        -
-          __assoc__:
-            -
-              - label
-              - Standard
-            -
-              - value
-              - standard
-            -
-              - default
-              - '1'
-        -
-          __assoc__:
-            -
-              - label
-              - Stern-Modus
-            -
-              - value
-              - stern
-            -
-              - default
-              - ''
+      default: false
+      offLabel: null
+      onLabel: null
     translationKeyFormat: null
     translationMethod: none
-    type: craft\fields\Dropdown
+    type: craft\fields\Lightswitch
   d6c56242-7f74-4116-a400-0077d18fa92e:
     contentColumnType: text
     fieldGroup: null

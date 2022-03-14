@@ -50,7 +50,7 @@ fieldLayouts:
             warning: null
             width: 25
           -
-            fieldUid: 49c30d84-34fe-4539-8ba6-38a986132393
+            fieldUid: b2f70e93-19ee-4510-a6b9-30c26c3b1699
             instructions: null
             label: null
             required: false
@@ -59,7 +59,7 @@ fieldLayouts:
             warning: null
             width: 25
           -
-            fieldUid: 6eac1529-fb66-4632-a1bb-cdfecbd1ea16
+            fieldUid: 3b6cf94c-dc82-46fa-be08-c348bf4d9591
             instructions: null
             label: null
             required: false
@@ -151,20 +151,19 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\Dropdown
-  49c30d84-34fe-4539-8ba6-38a986132393:
-    contentColumnType: boolean
+  3b6cf94c-dc82-46fa-be08-c348bf4d9591:
+    contentColumnType: string(255)
     fieldGroup: null
-    handle: hideButtons
+    handle: infoLink
     instructions: ''
-    name: 'Buttons ausblenden'
+    name: Infolink
     searchable: false
     settings:
-      default: false
-      offLabel: null
-      onLabel: null
+      maxLength: '255'
+      placeholder: ''
     translationKeyFormat: null
     translationMethod: none
-    type: craft\fields\Lightswitch
+    type: craft\fields\Url
   5cd0e6a6-6275-465f-b37b-a77277293614:
     contentColumnType: text
     fieldGroup: null
@@ -193,19 +192,6 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\redactor\Field
-  6eac1529-fb66-4632-a1bb-cdfecbd1ea16:
-    contentColumnType: string(255)
-    fieldGroup: null
-    handle: infoLink
-    instructions: ''
-    name: Infolink
-    searchable: false
-    settings:
-      maxLength: '255'
-      placeholder: ''
-    translationKeyFormat: null
-    translationMethod: none
-    type: craft\fields\Url
   89fb6023-c9e1-4d16-9418-2d4d3541bcde:
     contentColumnType: text
     fieldGroup: null
@@ -234,6 +220,20 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\redactor\Field
+  b2f70e93-19ee-4510-a6b9-30c26c3b1699:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: hideButtons
+    instructions: ''
+    name: 'Buttons ausblenden'
+    searchable: false
+    settings:
+      default: false
+      offLabel: null
+      onLabel: null
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
   c381a3e3-ea78-4344-891d-736dd49058de:
     contentColumnType: string
     fieldGroup: null

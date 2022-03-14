@@ -134,7 +134,7 @@ fields:
       showUnpermittedFiles: true
       showUnpermittedVolumes: true
       singleUploadLocationSource: 'volume:5f0e5dbb-8cba-49d5-8a1c-e7b7bf94b7a5'
-      singleUploadLocationSubpath: audio
+      singleUploadLocationSubpath: audios
       source: null
       sources: '*'
       targetSiteId: null

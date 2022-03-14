@@ -14,7 +14,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: a295f37f-e124-44a3-bd35-b0efa1de3ab0
+            fieldUid: fbc4de69-d3a8-4227-9468-e6da181e9c9f
             instructions: null
             label: null
             required: false
@@ -23,7 +23,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: c21507c1-a27d-40a4-ad6d-34119fb8bf6e
+            fieldUid: fb8c4e56-c610-4ffd-8b9f-5f1656d903f7
             instructions: null
             label: null
             required: false
@@ -34,12 +34,12 @@ fieldLayouts:
         name: Content
         sortOrder: 1
 fields:
-  a295f37f-e124-44a3-bd35-b0efa1de3ab0:
+  c81b867e-77f8-4846-9525-6b164bff0d08:
     contentColumnType: text
     fieldGroup: null
-    handle: unterschrift_embed
-    instructions: ''
-    name: __blank__
+    handle: h5p_embed
+    instructions: "hier bitte den vollständigen embed Code angeben. Beispiel:\r\n<iframe src=\"https://h5p.test-dilewe.de/wp-admin/admin-ajax.php?action=h5p_embed&id=19\" width=\"958\" height=\"918\" frameborder=\"0\" allowfullscreen=\"allowfullscreen\"></iframe><script src=\"https://h5p.test-dilewe.de/wp-content/plugins/h5p/h5p-php-library/js/h5p-resizer.js\" charset=\"UTF-8\"></script>"
+    name: 'Freier Embed (H5P, Arte, etc...) iframe'
     searchable: false
     settings:
       byteLimit: null
@@ -53,7 +53,7 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\PlainText
-  c21507c1-a27d-40a4-ad6d-34119fb8bf6e:
+  fb8c4e56-c610-4ffd-8b9f-5f1656d903f7:
     contentColumnType: text
     fieldGroup: null
     handle: urheber_embed
@@ -81,12 +81,12 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\redactor\Field
-  c81b867e-77f8-4846-9525-6b164bff0d08:
+  fbc4de69-d3a8-4227-9468-e6da181e9c9f:
     contentColumnType: text
     fieldGroup: null
-    handle: h5p_embed
-    instructions: "hier bitte den vollständigen embed Code angeben. Beispiel:\r\n<iframe src=\"https://h5p.test-dilewe.de/wp-admin/admin-ajax.php?action=h5p_embed&id=19\" width=\"958\" height=\"918\" frameborder=\"0\" allowfullscreen=\"allowfullscreen\"></iframe><script src=\"https://h5p.test-dilewe.de/wp-content/plugins/h5p/h5p-php-library/js/h5p-resizer.js\" charset=\"UTF-8\"></script>"
-    name: 'Freier Embed (H5P, Arte, etc...) iframe'
+    handle: unterschrift_embed
+    instructions: ''
+    name: __blank__
     searchable: false
     settings:
       byteLimit: null

@@ -59,7 +59,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 0f3db9f1-5091-4d62-86c7-b3e861d6294c
+            fieldUid: d6945558-6d0e-4306-a566-dc3723b4d906
             instructions: null
             label: null
             required: false
@@ -70,41 +70,6 @@ fieldLayouts:
         name: Content
         sortOrder: 1
 fields:
-  0f3db9f1-5091-4d62-86c7-b3e861d6294c:
-    contentColumnType: string
-    fieldGroup: null
-    handle: stern_selection
-    instructions: ''
-    name: Stern-Modus
-    searchable: false
-    settings:
-      optgroups: true
-      options:
-        -
-          __assoc__:
-            -
-              - label
-              - Standard
-            -
-              - value
-              - standard
-            -
-              - default
-              - '1'
-        -
-          __assoc__:
-            -
-              - label
-              - Stern-Modus
-            -
-              - value
-              - stern
-            -
-              - default
-              - ''
-    translationKeyFormat: null
-    translationMethod: none
-    type: craft\fields\Dropdown
   3065980c-deac-414b-b2a8-41ebb98b1657:
     contentColumnType: string
     fieldGroup: null
@@ -232,6 +197,41 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Assets
+  d6945558-6d0e-4306-a566-dc3723b4d906:
+    contentColumnType: string
+    fieldGroup: null
+    handle: stern_selection
+    instructions: ''
+    name: Stern-Modus
+    searchable: false
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - Standard
+            -
+              - value
+              - standard
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - Stern-Modus
+            -
+              - value
+              - stern
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
   f7944cc1-7c3c-4c37-b0f9-b4f949047842:
     contentColumnType: text
     fieldGroup: null
