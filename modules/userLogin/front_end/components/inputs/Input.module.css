@@ -1,6 +1,6 @@
 .input {
 	& .field {
-		background-color: hsla(0, 0%, 100%, 0.5);
+		background-color: hsla(0deg, 0%, 100%, 0.5);
 		border: 0.1rem solid #020202;
 		color: black;
 		display: block;

@@ -9,6 +9,21 @@ export const {
 		products: [
 			{
 				caption: "Winterschool",
+				description: `Die Winterschool Tag- & Nachtgreifvögel wird von einem umfangreichen Tagungsband begleitet – von der Artbestimmung über Haltung, Ernährung, Anatomie und Diagnostik bis zur Behandlung verschiedenster Erkrankungen.`,
+				longDescription: `Die Winterschool Tag- & Nachtgreifvögel wird von einem umfangreichen Tagungsband begleitet – von der Artbestimmung über Haltung, Ernährung, Anatomie und Diagnostik bis zur Behandlung verschiedenster Erkrankungen.`,
+				id: "tagundnachtgreifvoegel",
+				group: "tagundnachtgreifvoegel",
+				contentUri: "/tagundnachtgreifvoegel/inhalt/startseite/index.html",
+				name: "Tag- und Nachtgreifvögel",
+				previewHeight: 863,
+				previewURL: "/mvet/products/owl.jpg",
+				previewWidth: 1381,
+				color: "#7E5C4C",
+				comingSoon: false,
+				price: null
+			},
+			{
+				caption: "Winterschool",
 				description: `Die Winterschool Schlangen wird von einem umfangreichen Tagungsband begleitet – von der Artbestimmung über Haltung, Ernährung, Anatomie und Diagnostik bis zur Behandlung verschiedenster Erkrankungen.`,
 				longDescription: `Die Winterschool Schlangen wird von einem umfangreichen Tagungsband begleitet – von der Artbestimmung über Haltung, Ernährung, Anatomie und Diagnostik bis zur Behandlung verschiedenster Erkrankungen.`,
 				id: "schlangen",

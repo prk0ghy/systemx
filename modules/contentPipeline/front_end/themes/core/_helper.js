@@ -1,5 +1,5 @@
 /* This File should contain little helper functions to be used around the codebase */
-/* exported getFirstParentSection,addHideElementContentHandler,hideElementContentHandler,openFullscreen,closeFullscreen,fileExtension,downloadData */
+/* exported getFirstParentSection,addHideElementContentHandler,hideElementContentHandler,openFullscreen,closeFullscreen,fileExtension,downloadData,scrollToElement */
 /* global callOverlayCloseHandlers */
 
 const getFirstParentSection = ele => {
@@ -81,4 +81,17 @@ const closeFullscreen = () => {
 	} else {
 		return;
 	}
+};
+
+/**
+ * @param {Element} element
+ * @param {number} elementOffset
+ */
+const scrollToElement = (element, elementOffset) => {
+	const pos = element.getBoundingClientRect().top;
+	const offset = pos + window.scrollY - elementOffset;
+	window.scrollTo({
+		top: offset,
+		behavior: 'smooth'
+	});
 };

@@ -1,0 +1,45 @@
+{
+	"folders": [
+		{
+			"path": "./",
+			"name": "systemx"
+		},
+		{
+			"path": "./modules/administration",
+			"name": "Administration"
+		},
+		{
+			"path": "./modules/common",
+			"name": "Common"
+		},
+		{
+			"path": "./modules/contentPipeline/front_end",
+			"name": "ContentPipeline Frontend"
+		},
+		{
+			"path": "./modules/contentPipeline/back_end",
+			"name": "ContentPipeline Backend"
+		},
+		{
+			"path": "./modules/userLogin/back_end",
+			"name": "UserLogin Backend"
+		},
+		{
+			"path": "./modules/userLogin/front_end",
+			"name": "UserLogin Frontend"
+		},
+		{
+			"path": "./modules/userTracking",
+			"name": "UserTracking"
+		},
+		{
+			"path": "./scripts",
+			"name": "Scripts"
+		},
+	],
+	"settings": {
+		"css.validate": false,
+		"less.validate": false,
+		"scss.validate": false
+	}
+}

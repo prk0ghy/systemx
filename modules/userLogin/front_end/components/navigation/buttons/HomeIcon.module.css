@@ -10,6 +10,7 @@
 		height: 100%;
 		& .image {
 			height: 100%;
+			/* stylelint-disable-next-line unit-allowed-list */
 			max-height: 50px;
 			width: auto;
 			&.cart {
