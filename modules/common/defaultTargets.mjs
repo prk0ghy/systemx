@@ -157,6 +157,11 @@ const defaultTargets = {
 					url: "/schlangen/",
 					localDir: "/var/www/html/dilewe.de/systemx/web/tagungsbaende/schlangen/",
 					userGroup: "schlangen"
+				},
+				{
+					url: "/tagundnachtgreifvoegel/",
+					localDir: "/var/www/html/dilewe.de/systemx/web/tagungsbaende/tagundnachtgreifvoegel/",
+					userGroup: "tagundnachtgreifvoegel"
 				}
 			]
 		}
