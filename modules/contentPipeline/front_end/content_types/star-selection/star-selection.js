@@ -94,7 +94,7 @@
 		}
 	};
 
-	setTimeout(initStarSelection, 0);
+	// setTimeout(initStarSelection, 0);
 
 	/**
 	 *
