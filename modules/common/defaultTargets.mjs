@@ -186,13 +186,27 @@ const defaultTargets = {
 			}
 		}
 	},
-	dev: {
+	craft_dev: {
 		graphqlEndpoint: "https://craft-dev.test-dilewe.de/api",
 		title: "Craft Dev",
 		targets: {
 			preview: {
 				action: 'preview',
 				httpPort: 4020
+			}
+		}
+	},
+	dev: {
+		disallowRobots: true,
+		favicon: "lasub",
+		graphqlEndpoint: "https://lasub.dilewe.de/api",
+		jsVars: {
+			galleryBackgroundOpacity: 0.95
+		},
+		targets: {
+			preview: {
+				action: 'preview',
+				httpPort: 9042
 			}
 		}
 	}
