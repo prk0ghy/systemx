@@ -2,6 +2,16 @@
 (() => {
 	const C_PROPERTY_KEY = "star-selection";
 	const C_FOR_SECTION_KEY = "for-star";
+	const C_VALID_STAR_MODES = ["stern", "operatoren", "sprache"];
+
+	/**
+	 * @param {HTMLElement} element
+	 * @returns {boolean}
+	 */
+	const isStarMode = (element) => {
+		return C_VALID_STAR_MODES.includes(element.getAttribute(C_PROPERTY_KEY));
+	};
+
 	/**
  	 * The top-offset used to scroll to star sections
      */
@@ -15,13 +25,16 @@
 		// find all sections without the property 'star-selection'
 		// who have sibling elements with the property
 		for (const section of sections) {
-			if (section.hasAttribute(C_PROPERTY_KEY)) {
+			if (isStarMode(section)) {
 				continue;
 			}
 			let nextSib = section.nextElementSibling;
 			const starElements = [];
 			// find siblings star element sibling
-			while(nextSib !== null && nextSib.hasAttribute(C_PROPERTY_KEY)) {
+			while(
+				nextSib !== null
+				&& isStarMode(nextSib)
+			) {
 				starElements.push(nextSib);
 				nextSib = nextSib.nextElementSibling;
 			}
@@ -94,7 +107,7 @@
 		}
 	};
 
-	// setTimeout(initStarSelection, 0);
+	setTimeout(initStarSelection, 0);
 
 	/**
 	 *
