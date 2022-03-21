@@ -3,16 +3,22 @@
 * https://www.npmjs.com/package/htmlparser2
 */
 import fs from "fs";
-import htmlparser2WritableStream from "htmlparser2";
-const WritableStream = new htmlparser2WritableStream();
-const filesystem = new fs;
-const parserStream = new WritableStream({
-	ontext(text) {
-		console.log("Streaming:", text);
-	},
-});
+import htmlparser2 from "htmlparser2";
+import { WritableStream } from "htmlparser2/lib/WritableStream";
 
-const htmlStream = filesystem.createReadStream("../modules/userLogin/back_end/templates/order.html");
-htmlStream.pipe(parserStream).on("finish", () => console.log("done"));
+let streamParam = {
+	ontext(text) {
+		console.log("Streaming:", JSON.stringify(text, null, 4));
+	},
+}
+
+let parserStream = new WritableStream(streamParam);
+
+const inputStream = fs.createReadStream("/Users/prk0ghy/Repositories/Digitale_Lernwelten/systemx/modules/userLogin/back_end/templates/passwordResetMail.html");
+
+inputStream.pipe(parserStream).on("finish", console.log());
+//parserStream.parseComplete(inputStream);
+
+
+fs.close(0);
 parserStream.end();
-filesystem.close();
