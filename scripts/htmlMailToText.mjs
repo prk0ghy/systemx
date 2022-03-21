@@ -4,27 +4,35 @@
 */
 import fs from "fs";
 import htmlparser2 from "htmlparser2";
-import * as constants from "constants";
-// import WritableStream from "htmlparser2";
 
-let streamParam = {
+let mailText = "";
+const parserStream = new htmlparser2.Parser({
 	ontext(text) {
-		console.log("Streaming:", JSON.stringify(text, null, 4));
-	},
+		//if (text != "") {
+		mailText += text;
+		//}
+	}, onclosetag() {
+		write_emailtext();
+	}
+});
+
+fs.readFile("/var/www/html/systemx/modules/userLogin/back_end/templates/passwordResetMail.html", (err, data) => {
+	if (err) {
+		throw err;
+	}
+	parserStream.write(data);
+	parserStream.end();
+});
+
+console.log(mailText);
+
+
+function write_emailtext() {
+	fs.writeFile("/var/www/html/systemx/modules/userLogin/back_end/templates/passwordResetMail.txt", mailText, err => {
+		if (err) {
+			throw err;
+		}
+	})
+	fs.close(0);
+	//fs.closeSync(0);
 }
-
-let parserStream = new htmlparser2.Parser(streamParam);
-function read(path, optoions, callback) {
-	console.log(data)
-};
-
-let inputStream;
-inputStream = fs.readFile("/Users/prk0ghy/Repositories/Digitale_Lernwelten/systemx/modules/userLogin/back_end/templates/passwordResetMail.html", read()
-)
-
-
-parserStream.write(inputStream);
-
-
-fs.close(0);
-parserStream.end();
