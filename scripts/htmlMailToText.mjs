@@ -4,7 +4,8 @@
 */
 import fs from "fs";
 import htmlparser2 from "htmlparser2";
-import { WritableStream } from "htmlparser2/lib/WritableStream";
+import * as constants from "constants";
+// import WritableStream from "htmlparser2";
 
 let streamParam = {
 	ontext(text) {
@@ -12,12 +13,17 @@ let streamParam = {
 	},
 }
 
-let parserStream = new WritableStream(streamParam);
+let parserStream = new htmlparser2.Parser(streamParam);
+function read(path, optoions, callback) {
+	console.log(data)
+};
 
-const inputStream = fs.createReadStream("/Users/prk0ghy/Repositories/Digitale_Lernwelten/systemx/modules/userLogin/back_end/templates/passwordResetMail.html");
+let inputStream;
+inputStream = fs.readFile("/Users/prk0ghy/Repositories/Digitale_Lernwelten/systemx/modules/userLogin/back_end/templates/passwordResetMail.html", read()
+)
 
-inputStream.pipe(parserStream).on("finish", console.log());
-//parserStream.parseComplete(inputStream);
+
+parserStream.write(inputStream);
 
 
 fs.close(0);
