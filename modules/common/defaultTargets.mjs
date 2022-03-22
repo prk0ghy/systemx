@@ -199,7 +199,7 @@ const defaultTargets = {
 	dev: {
 		disallowRobots: true,
 		favicon: "lasub",
-		graphqlEndpoint: "https://lasub.dilewe.de/api",
+		graphqlEndpoint: "https://develop-craft.test-dilewe.de/api",
 		jsVars: {
 			galleryBackgroundOpacity: 0.95
 		},
