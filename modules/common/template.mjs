@@ -79,7 +79,6 @@ export const buildRegions = async templateName => {
 const buildTemplate = async templateName => {
 	if(templateCache.has(templateName)){return templateCache.get(templateName);}
 	const regions = await buildRegions(templateName);
-	console.log(regions);
 	const λ = async (v) => regions.map(region => region.evalText
 		? v[region.text.trim()] || ""
 		: region.text).join("");

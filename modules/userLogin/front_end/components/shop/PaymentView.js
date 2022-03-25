@@ -1,49 +1,66 @@
+import dynamic from "next/dynamic";
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import { useCallback, useState } from "react";
+import { userCapturePayPalOrder, userCreatePayPalOrder } from "root/api";
 import Button from "components/inputs/Button";
+import routes from "root/routes";
 import styles from "./PaymentView.module.css";
 import { useBus } from "contexts/Bus";
 import { useCart } from "contexts/Cart";
+import { useInvoice } from "contexts/Invoice";
+import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
 const PaymentForm = ({ onApprove }) => {
+	const { t } = useTranslation("common");
 	const [{ isRejected: isInitialLoadRejected }] = usePayPalScriptReducer();
-	const [{ items }] = useCart();
+	const [{ items }, reduceCart] = useCart();
+	const [{ invoice }] = useInvoice();
+	const router = useRouter();
 	const captureOrder = useCallback(async ({ orderID }) => {
-		const isCaptured = await window.systemx?.captureOrder(orderID);
+		const { isCaptured } = await userCapturePayPalOrder(orderID);
 		if (isCaptured) {
 			onApprove();
+			reduceCart({
+				type: "CLEAR_ITEMS"
+			});
+			router.push(routes.orderComplete.path);
 		}
-	}, [
-		onApprove
-	]);
+	}, [reduceCart, router, onApprove]);
 	const createOrder = useCallback(async () => {
 		const itemIDs = Object.values(items);
-		const orderID = await window.systemx?.createOrder(itemIDs) || {};
-		return orderID;
-	}, [
-		items
-	]);
+		const ret = await userCreatePayPalOrder(itemIDs, invoice);
+		if (ret.error) {
+			throw ret;
+		}
+		return ret.orderID;
+	}, [items, invoice]);
 	if (isInitialLoadRejected) {
 		return (
-			<div>
-				<h3>PayPal konnte nicht erreicht werden.</h3>
-				<p>Bei der Verbindungsherstellung zu PayPal ist ein Fehler aufgetreten. Bitte überprüfen Sie folgende mögliche Ursachen.</p>
+			<div key="paypal-load-rejected">
+				<h3>{ t("payment|paypalError|title") }</h3>
+				<p>{ t("payment|paypalError|description") }</p>
 				<ul>
-					<li>Deaktivieren Sie Werbe- und Tracking-Blocker wie etwa uBlock Origin, AdBlock Plus, uMatrix oder NoScript.</li>
-					<li>Überprüfen Sie Ihre Firewall-Einstellungen.</li>
+					<li>{ t("payment|paypalError|hint") }</li>
+					<li>{ t("payment|paypalError|checkFirewall") }</li>
 				</ul>
 			</div>
 		);
 	}
 	return (
-		<div className={ styles.buttons }>
-			<PayPalButtons
-				createOrder={ createOrder }
-				onApprove={ captureOrder }
-			/>
+		<div className={ styles.buttons } key="paypal">
+			<div>
+				<h4>{ t("payment|choosePayment") }</h4>
+				<br/>
+				<PayPalButtons
+					createOrder={ createOrder }
+					onApprove={ captureOrder }
+				/>
+			</div>
 		</div>
 	);
 };
 const ConsentForm = () => {
+	const { t } = useTranslation("common");
 	const [, dispatch] = useBus();
 	const agree = useCallback(() => {
 		dispatch({
@@ -54,16 +71,16 @@ const ConsentForm = () => {
 	]);
 	return (
 		<div>
-			<p>Zur Zahlungsabwicklung verwenden wir den Dienst PayPal.</p>
-			<p>Mit dem Fortfahren erklären Sie Ihr Einverständnis, dass mit dem Anzeigen der nachfolgenden Zahlungsabwicklung personenbezogene Daten an PayPal übermittelt werden.</p>
-			<p>Weitere Details finden Sie in unserer Datenschutzerklärung.</p>
-			<Button kind="primary" onClick={ agree }>Ich stimme zu</Button>
+			<p>{ t("payment|paypal|provider") }</p>
+			<p>{ t("payment|paypal|agree") }</p>
+			<p>{ t("payment|paypal|privacy") }</p>
+			<Button kind="primary" onClick={ agree }>{ t("payment|paypal|iAgree") }</Button>
 		</div>
 	);
 };
 const PaymentConsentForm = ({ onApprove }) => {
-	const [{ hasOneTimePayPalConsent }] = useBus();
-	return hasOneTimePayPalConsent
+	const [{ hasPayPalConsent }] = useBus();
+	return hasPayPalConsent
 		? <PaymentForm onApprove={ onApprove }/>
 		: <ConsentForm/>;
 };
@@ -80,4 +97,6 @@ const Checkout = () => {
 			: <PaymentConsentForm onApprove={ onApprove }/>
 	);
 };
-export default Checkout;
+export default dynamic(() => Promise.resolve(Checkout), {
+	ssr: false
+});

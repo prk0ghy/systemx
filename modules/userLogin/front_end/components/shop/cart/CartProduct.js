@@ -6,7 +6,8 @@ const CartProduct = ({
 	id,
 	name,
 	caption,
-	price
+	price,
+	readOnly = false
 }) => {
 	const [, dispatch] = useCart();
 	const onClick = useCallback(() => {
@@ -22,7 +23,11 @@ const CartProduct = ({
 	]);
 	return (
 		<div className={ styles.product }>
-			<div className={ styles.remove } onClick={ onClick }/>
+			{
+				readOnly
+					? null
+					: <div className={ styles.remove } onClick={ onClick }/>
+			}
 			<div className={ styles.name }>{ name }</div>
 			<div className={ styles.caption }>{ caption }</div>
 			<div className={ styles.price }>{ formatPrice(price) }</div>

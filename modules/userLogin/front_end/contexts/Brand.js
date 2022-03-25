@@ -2,12 +2,12 @@ import { createContainer } from "react-tracked";
 import { useReducer } from "react";
 const reduce = (state, action) => {
 	switch (action.type) {
-		case "ADD_ITEM": {
-			return state;
-		}
-		default: {
-			throw new Error("Unknown brand reduction");
-		}
+	case "ADD_ITEM": {
+		return state;
+	}
+	default: {
+		throw new Error("Unknown brand reduction");
+	}
 	}
 };
 export const {
@@ -15,32 +15,59 @@ export const {
 	useTracked: useBrand
 } = createContainer(() => {
 	const state = {
-		authenticationPreviewHeight: 1089,
-		authenticationPreviewURL: "/mvet/ui/authentication.jpg",
-		authenticationPreviewWidth: 1936,
-		homePreviewHeight: 1076,
-		homePreviewURL: "/mvet/ui/home.jpg",
-		homePreviewWidth: 1920,
-		conferencePreviewHeight: 1076,
-		conferencePreviewURL: "/mvet/ui/home.jpg",
-		conferencePreviewWidth: 1920,
-		imprintPreviewHeight: 1078,
-		imprintPreviewURL: "/mvet/ui/imprint.jpg",
-		imprintPreviewWidth: 1920,
-		logoHeight: 220,
-		logoURL: "/mvet/ui/logo.png",
-		logoWidth: 220,
 		name: "mVet",
-		privacyPreviewHeight: 1280,
-		privacyPreviewURL: "/mvet/ui/privacy.jpg",
-		privacyPreviewWidth: 1920,
 		subjectMatter: "Tiermedizin",
-		termsAndConditionsPreviewHeight: 1280,
-		termsAndConditionsPreviewURL: "/mvet/ui/terms-and-conditions.jpg",
-		termsAndConditionsPreviewWidth: 1920,
-		CheckoutPreviewHeight: 860,
-		CheckoutPreviewURL: "/mvet/ui/shopping.jpg",
-		CheckoutPreviewWidth: 1920
+
+		pictures: {
+			authentication: {
+				src: "/mvet/ui/authentication.jpg",
+				height: 1089,
+				width: 1936
+			},
+			checkout: {
+				src: "/mvet/ui/shopping.jpg",
+				height: 860,
+				width: 1920,
+				objectPosition: "50% 0%"
+			},
+			conference: {
+				src: "/mvet/ui/home.jpg",
+				width: 1920,
+				height: 1076
+			},
+			home: {
+				src: "/mvet/ui/snek.jpg",
+				width: 1920,
+				height: 540
+			},
+			imprint: {
+				src: "/mvet/ui/imprint.jpg",
+				width: 1920,
+				height: 1078,
+				objectPosition: "66% 0%"
+			},
+			logo: {
+				src: "/mvet/ui/logo.svg",
+				width: 220,
+				height: 220
+			},
+			orderComplete: {
+				src: "/mvet/ui/complete.jpg",
+				width: 1920,
+				height: 1280,
+				objectPosition: "16% 50%"
+			},
+			privacy: {
+				src: "/mvet/ui/privacy.jpg",
+				width: 1920,
+				height: 1280
+			},
+			termsAndConditions: {
+				src: "/mvet/ui/terms-and-conditions.jpg",
+				width: 1920,
+				height: 1280
+			}
+		}
 	};
 	const dispatch = useReducer(reduce, null);
 	return [state, dispatch];

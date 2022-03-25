@@ -1,10 +1,21 @@
 .footer {
 	background-color: white;
-	font-size: 1.6rem;
-	font-weight: var(--font-weight-bold);
-	padding: 3rem 0;
+	box-shadow: var(--box-shadow-up);
+	font-weight: var(--font-weight-semi-bold);
+	z-index: 1;
+	@media (--all) {
+		font-size: 1.6rem;
+		padding: 1.3rem 0;
+	}
+	@media (--tablet) {
+	}
+	@media (--laptop) {
+		font-size: 3rem;
+		padding: 2rem 0;
+	}
 	& .items {
 		display: inline-grid;
+		grid-auto-flow: column;
 		grid-gap: 2rem 4rem;
 		list-style-type: none;
 		@media (--tablet) {
@@ -12,7 +23,7 @@
 		}
 		& .item {
 			& .link {
-				color: green;
+				color: var(--color-main);
 			}
 		}
 	}

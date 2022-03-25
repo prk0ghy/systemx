@@ -1,0 +1,10 @@
+img.image {
+	display: block;
+	height: 100%;
+	object-fit: cover;
+	object-position: 50% 50%;
+	width: 100%;
+	&.auto-height {
+		height: auto;
+	}
+}

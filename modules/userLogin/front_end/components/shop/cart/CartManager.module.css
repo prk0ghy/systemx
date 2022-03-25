@@ -20,8 +20,17 @@
 		margin: 0;
 		padding: 0;
 	}
-	& h3 {
-		font-size: 4rem;
+	& h3.cart-headline {
+		@media (--all) {
+			font-size: 2rem;
+		}
+		@media (--tablet) {
+		}
+		@media (--laptop) {
+			font-size: 4rem;
+		}
+		@media (--desktop) {
+		}
 	}
 	& .item-enter {
 		font-size: 0;
@@ -57,5 +66,8 @@
 		align-items: center;
 		display: flex;
 		justify-content: flex-end;
+	}
+	& .requires-login {
+		padding: 2rem;
 	}
 }

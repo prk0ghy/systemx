@@ -33,6 +33,12 @@ errors due to the usage of ESM and other newer features found in this codebase.
 # Installation
 Running `npm install` or `npm install dev` after cloning should, as the command suggests, install everything you need in order to run SystemX
 
+## Additional Requirements for userLogin Backend
+To run the `sqlite3` locally you need `node-gyp`:
+```
+$> npm install node-gyp -g node-gyp
+```
+
 ## Development
 Just run `npm install` in order to install all the prerequisites and then use `npm run dev lasub.preview` when working on the Content parts, or use `npm run dev:shop` when working on the portal.
 

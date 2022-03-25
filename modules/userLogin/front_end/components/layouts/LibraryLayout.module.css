@@ -1,0 +1,15 @@
+.library-layout {
+	background-image: url(/mvet/ui/Bibliothek.jpg);
+	background-repeat: no-repeat;
+	background-size: contain;
+	display: block;
+	padding-top: 31vw;
+	position: relative;
+	top: 0;
+	width: 100%;
+	& .image {
+		position: absolute;
+		right: 0;
+		top: -95px;
+	}
+}

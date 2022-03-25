@@ -25,4 +25,8 @@
 			max-width: 90rem;
 		}
 	}
+	&.reset-password {
+		background: url(/mvet/ui/reset.jpg) no-repeat;
+		background-size: cover;
+	}
 }

@@ -8,8 +8,9 @@ import routes from "root/routes";
 import styles from "./ResetPasswordForm.module.css";
 import TextLink from "../../generics/TextLink.js";
 import { userPasswordResetRequest } from "root/api";
-
+import { useTranslation } from "next-i18next";
 const ResetPasswordForm = () => {
+	const { t } = useTranslation("common");
 	const [currentErrors, setCurrentErrors] = useState("");
 	const [requestSent, setRequestSent] = useState(false);
 	const doResetRequest = useCallback(
@@ -21,39 +22,53 @@ const ResetPasswordForm = () => {
 			setRequestSent(!res.error);
 		}, [setCurrentErrors, setRequestSent]
 	);
-
 	return (
 		<Card>
 			<div className={ styles.registrationForm }>
 				{ !requestSent
 					? (
 						<Formik
-							initialValues={ { email: "" } }
+							initialValues={ {
+								email: ""
+							} }
 							onSubmit={ doResetRequest }
 						>
 							{
 								values => (
-									<Form submit="Zurücksetzen" title="Passwort zurücksetzen">
+									<Form submit="Zurücksetzen" title={ t("passwordReset") }>
 										{ currentErrors }
 										<Input
 											autoComplete="email"
-											label="E-Mail"
+											label={ t("emailAddress") }
 											name="email"
 											required
 											type="email"
 											value={ values?.email }
 										/>
 										<br/>
-										<p>Um Ihr Password zurückzusetzen geben Sie bitte Ihre Email Adresse ein.</p>
-										<TextLink align="right" className={ styles.description } href={ routes.login.path } title="Anmelden">zurück zum Login</TextLink>
+										<p>{ t("pwReset|enterEmail") }</p>
+										<TextLink
+											align="right"
+											className={ styles.description }
+											href={ routes.login.path }
+											title={ t("login") }
+										>
+											{ t("backToLogin") }
+										</TextLink>
 										<br/>
-										<Button className={ styles.submit } kind="primary" type="submit">Password zurücksetzen</Button>
+										<Button
+											className={ styles.submit }
+											kind="primary"
+											type="submit"
+										>
+											{ t("passwordReset") }
+										</Button>
 									</Form>
 								)
 							}
 						</Formik>
 					)
-					: <p>Wir haben Ihnen eine E-Mail mit einem bestätigungslink gesendet, bitte prüfen Sie auch in Ihrem Spam Ordner.</p>
+					: <p>{ t("pwReset|checkEmail") }</p>
 				}
 			</div>
 		</Card>

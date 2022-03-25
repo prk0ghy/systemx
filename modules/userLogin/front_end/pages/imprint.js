@@ -1,43 +1,51 @@
 import BannerLayout, { TextContent } from "components/layouts/BannerLayout";
-import Page from "components/shell/Page";
 import { useBrand } from "contexts/Brand";
+import { ShellContent } from "../components/shell/Shell";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
 const Imprint = () => {
-	const [{
-		imprintPreviewHeight,
-		imprintPreviewURL,
-		imprintPreviewWidth
-	}] = useBrand();
+	const [{ pictures }] = useBrand();
+	const { t } = useTranslation("common");
 	return (
-		<Page title="Impressum">
-			<BannerLayout headline="Impressum" height={ imprintPreviewHeight } image={ imprintPreviewURL } width={ imprintPreviewWidth }>
+		<ShellContent headerNoBlur title={ t("titles|imprint") }>
+			<BannerLayout headline={ t("titles|imprint") } picture={ pictures.imprint }>
 				<TextContent>
-					<h2>ANGABEN GEMÄSS § 5 TMG</h2>
+					<h2>{ t("imprint|title") }</h2>
 					<p/>
-					<p>Das Portal für Tiermedizin<br/>Hermann Kempf</p>
-					<p>Neuburger Straße 30<br/>86167 Augsburg</p>
-					<p>E-Mail: info@exotenpraxis-augsburg.de</p>
-					<p>Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:</p>
-					<p>DE287343298</p>
-					<h3>STREITSCHLICHTUNG:</h3>
+					<p>{ t("imprint|0") }</p>
+					<p>{ t("imprint|addr0") }</p>
+					<p>{ t("imprint|addr1") }</p>
+					<p>{ t("imprint|addr2") }</p>
+					<p>{ t("imprint|addr3") }</p>
+					<p>{ t("imprint|1") }</p>
+					<p>{ t("imprint|2") }</p>
+					<h3>{ t("imprint|3") }</h3>
 					<p/>
-					<p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
-					<h2>HAFTUNGSAUSSCHLUSS (DISCLAIMER)</h2>
+					<p>{ t("imprint|4") }</p>
+					<h2>{ t("imprint|5") }</h2>
 					<p/>
-					<h3>Haftung für Inhalte</h3>
+					<h3>{ t("imprint|6") }</h3>
 					<p/>
-					<p>Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
-					<p>Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p>
-					<h3>Haftung für Links</h3>
+					<p>{ t("imprint|7") }</p>
+					<p>{ t("imprint|8") }</p>
+					<h3>{ t("imprint|9") }</h3>
 					<p/>
-					<p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar.</p>
-					<p>Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</p>
-					<h3>Urheberrecht</h3>
+					<p>{ t("imprint|10") }</p>
+					<p>{ t("imprint|11") }</p>
+					<h3>{ t("imprint|12") }</h3>
 					<p/>
-					<p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.</p>
-					<p>Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.</p>
+					<p>{ t("imprint|13") }</p>
+					<p>{ t("imprint|14") }</p>
 				</TextContent>
 			</BannerLayout>
-		</Page>
+		</ShellContent>
 	);
 };
 export default Imprint;
+export async function getStaticProps({ locale }) {
+	return {
+		props: {
+			...(await serverSideTranslations(locale, ["common"]))
+		}
+	};
+}

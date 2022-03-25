@@ -1,0 +1,227 @@
+{
+    "description": "Beschreibung",
+    "my": "Mein",
+    "product": "mVet",
+    "ok": "OK",
+    "back": "Zurück",
+    "abort": "Abbrechen",
+    "login": "Anmelden",
+    "pleaseLogin": "Bitte Anmelden",
+    "Login": "Anmeldung",
+    "loggedInAs": "Sie sind angemeldet als:",
+    "notLoggedIn": "Sie sind nicht angemeldet",
+    "logout": "Abmelden",
+    "register": "Registrieren",
+    "registration": "Registrierung",
+    "thanksForRegistering": "Vielen Dank für Ihre Registrierung",
+    "emailAddress": "E-Mail Adresse",
+    "userName": "Benutzername",
+    "password": "Passwort",
+    "passwordRepeat": "Passwort wiederholen",
+    "accountType": "Kontotyp",
+    "country": "Land",
+    "passwordReset": "Passwort zurücksetzen",
+    "forgotPassword": "Passwort vergessen?",
+    "changePassword": "Passwort ändern",
+    "deleteUser": "Account löschen",
+    "personalCustomer": "Privatkunde",
+    "buisnessCustomer": "Geschäftskunde",
+    "billingAddress": "Rechnungsadresse",
+    "changeAccountType": "Kontotyp ändern",
+    "changeCountry": "Land ändern",
+    "success": "Erfolg",
+    "invalidRequest": "Ungültige Anfrage",
+    "yourInvalidRequest": "Ihre Anfrage ist ungültig.",
+    "checkingRequest": "Prüfen der Anfrage",
+    "backToLogin": "Zurück zur Anmeldung",
+    "toLibrary": "Zur Bibliothek",
+    "toAccount": "Zum Account",
+    "toShop": "Zum Shop",
+    "alreadyCustomer": "Bereits Kunde?",
+    "404default": "Die Seite konnte nicht gefunden werden",
+    "404product": "Das Produkt konnte nicht gefunden werden.",
+    "feedback": {
+        "email": {
+            "success": "E-Mail wurde erfolgreich versandt.",
+            "failure": "Es gab einen Fehler beim Versenden der E-Mail."
+        },
+        "input": {
+            "checkInput": "Bitte prüfen Sie ihre Eingabe"
+        }
+    },
+    "titles": {
+        "activation": "Account Aktivierung",
+        "cart": "Einkaufswagen",
+        "checkout": "Rechnungsdaten",
+        "deleteUser": "Account löschen",
+        "imprint": "Impressum",
+        "landing": "Startseite",
+        "library": "Bibliothek",
+        "login": "Anmelden",
+        "orderComplete": "Bestellung abgeschlossen",
+        "payment": "Zahlungsinformationen",
+        "privacy": "Datenschutz",
+        "register": "Registrierung",
+        "passwordReset": "Passwort zurücksetzen",
+        "termsAndConditions": "AGB's",
+        "userProfile": "Nutzerprofil",
+        "withdrawalPolicy": "Widerrufsbelehrung"
+    },
+    "library": {
+        "yourLibrary": "Ihre Bibliothek",
+        "noItems": "Noch stehen Ihnen keine Werke zur Verfügung.",
+        "loginRequired": "Bitte melden Sie sich zürst an damit Sie hier die Ihnen verfügbaren Werke aufgelistet bekommen."
+    },
+    "profile": {
+        "yourProfile": "Ihr Benutzerprofil"
+    },
+    "pwReset": {
+        "enterNew": "Bitte geben Sie ein neues Passwort ein:",
+        "changePassword": "Passwort ändern",
+        "success": "Ihr Password wurde erfolgreich geöndert.",
+        "enterEmail": "Um Ihr Password zurückzusetzen geben Sie bitte Ihre Email Adresse ein.",
+        "checkEmail": "Wir haben eine E-Mail mit einem Bestätigungslink gesendet, um Ihr Passwort zurückzusetzen. Bitte überprüfen Sie auch Ihren Spam-Ordner."
+    },
+    "delUser": {
+        "final": "Konto endgültig löschen",
+        "click": "Klicken Sie auf den folgenden Button um all ihre Daten zu löschen.",
+        "deleted": "Konto endgültig gelöscht",
+        "thanks": "Vielen Dank, für ihr Vertraün.",
+        "prompt": "Um Ihren Benutzer vollständig löschen zu lassen, geben Sie hier bitte zur Bestätigung Ihren Benutzernamen ein.",
+        "checkMail": "Sie sollten jeden Moment eine E-Mail mit einem Bestätigungslink erhalten."
+    },
+    "activation": {
+        "success": "Ihr Account wurde erfolgreich aktiviert.",
+        "redirect": "Sie werden in wenigen Sekunden zur Startseite weitergeleitet.",
+        "failure": "Es gab ein Problem bei der Aktivierung des Accounts.",
+        "support": "Bitte kontaktieren Sie uns per E-Mail unter folgender Adresse:",
+        "welcome": "Willkommen bei m-vet",
+        "checkMail": "Vielen Dank für die Registrierung auf m-vet.de! Wir haben eine E-Mail an {{email}} geschickt. Klicken Sie auf den Link in der E-Mail, um Ihr Benutzerkonto zu aktivieren. Bitte überprüfen Sie auch Ihren Spam-Ordner.",
+        "please": "Bitte aktivieren Sie ihren Account.",
+        "checkMailLogin" : "Es wurde eine E-Mail mit einem Aktivierungslink an <b>{{email}}</b> versandt. Wenn Sie keine E-Mail erhalten haben, können Sie sich hier erneut eine E-Mail zusenden.",
+        "resend": "E-Mail erneut senden",
+        "invalidateNotice": "Wenn Sie sich eine neü E-Mail zusenden, ist der Aktivierungslink aus der vorigen Mail automatisch <b>nicht mehr gültig</b>. Bitte verwenden Sie den aktüllen Aktivierungslink."
+    },
+    "misc": {
+        "imNewHere": "Ich bin neu hier",
+        "what": "Alter Hase"
+    },
+    "cart": {
+        "cart": "Warenkorb",
+        "sum": "Artikelsumme",
+        "emptyCart": "Zurzeit ist Ihr Warenkorb leer.",
+        "accountRequired": "Um zur Kasse fortzufahren, benötigen Sie ein Benutzerkonto.",
+        "toCheckout": "Zur Kasse",
+        "addToCart": "In den Warenkorb",
+        "removeFromCart": "Aus dem Warenkorb",
+        "availableShortly": "Kommt in Kürze",
+        "locked": "Nicht freigeschaltet",
+        "viewContent": "Inhalt ansehen"
+    },
+    "invoice": {
+        "addressRequired": "Bitte geben Sie ihre Rechnungsanschrift an",
+        "organisation": "Organisation",
+        "name": "Name",
+        "zipCode": "PLZ",
+        "city": "Stadt",
+        "back": "Zurück",
+        "agree": "Zustimmen"
+    },
+    "completedOrder": {
+        "thanks": "Vielen Dank für Ihre Bestellung. In kürze erhalten Sie eine email mit einer Bestellbestätigung und einem Zugangslink für die gebuchte Veranstaltung.",
+        "haveFun": "Wir wünschen viel Freude mit Ihrer Bestellung.",
+        "toLibrary": "Zur Ihrer Bibliothek"
+    },
+    "payment": {
+        "choosePayment": "Bitte wählen Sie eine Bezahlmethode aus",
+        "paypalError": {
+            "title": "PayPal konnte nicht erreicht werden.",
+            "description": "Bei der Verbindungsherstellung zu PayPal ist ein Fehler aufgetreten. Bitte überprüfen Sie folgende mögliche Ursachen.",
+            "hint": "Deaktivieren Sie Werbe- und Tracking-Blocker wie etwa uBlock Origin, AdBlock Plus, uMatrix oder NoScript.",
+            "checkFirewall": "Überprüfen Sie Ihre Firewall-Einstellungen."
+        },
+        "paypalNotice": {
+            "provider": "Zur Zahlungsabwicklung verwenden wir den Dienst PayPal.",
+            "agree": "Mit dem Fortfahren erklären Sie Ihr Einverständnis, dass mit dem Anzeigen der nachfolgenden Zahlungsabwicklung personenbezogene Daten an PayPal übermittelt werden.",
+            "privacy": "Weitere Details finden Sie in unserer Datenschutzerklärung.",
+            "iAgree": "Ich stimme zu"
+        }
+    },
+    "withdrawal": {
+        "withdrawalPolicy": "Widerrufsbelehrung",
+        "readHere": "Hier steht die Widerrufsbelehrung",
+        "disagree": "Ablehnen",
+        "agree": "Zustimmen"
+    },
+    "products": {
+        "particpate": "Teilnehmen",
+        "toSelection": "Zur Auswahl",
+        "event": "Veranstaltungen",
+        "proceedings": "Tagungsbände",
+        "includesProceedings": "Bei Teilnahme an einer Veranstaltung ist der zugehörige Tagungsband inklusive.",
+        "pastProceedings": "Hier finden Sie die Tagungsbände zu vergangenen und zukünftigen Veranstaltungen.",
+        "includes": "inklusive",
+        "proceeding": "Tagungsband",
+        "withoutTax": "ohne MwSt."
+    },
+    "formValidation": {
+        "required": "Dies ist ein Pflichtfeld.",
+        "invalidEmail": "Diese E-Mail-Adresse is ungültig.",
+        "passwordLength": "Bitte geben Sie ein Passwort ein welches mindestens 8 Zeichen lang ist",
+        "passwordMismatch": "Passwörter müssen übereinstimmen",
+        "selectCountry": "Bitte wählen Sie ein Land aus"
+    },
+    "imprint": {
+        "title": "ANGABEN GEMÄSS § 5 TMG",
+        "addr0": "Hermann Kempf",
+        "addr1": "Neuburger Straße 30",
+        "addr2": "86167 Augsburg",
+        "addr3": "E-Mail: info@exotenpraxis-augsburg.de",
+        "0": "Das Portal für Tiermedizin",
+        "1": "Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:",
+        "2": "DE287343298",
+        "3": "STREITSCHLICHTUNG:",
+        "4": "Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.",
+        "5": "HAFTUNGSAUSSCHLUSS (DISCLAIMER)",
+        "6": "Haftung für Inhalte",
+        "7": "Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.",
+        "8": "Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.",
+        "9": "Haftung für Links",
+        "10": "Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar.",
+        "11": "Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.",
+        "12": "Urheberrecht",
+        "13": "Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.",
+        "14": "Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen."
+    },
+    "privacy": {
+        "0": "Datenschutzerklärung für m-Vet.de",
+        "1": "1. Serverstatistiken (Logfiles)",
+        "2": "In den stets anfallenden Serverstatistiken (Server-Logfiles) werden die Daten gespeichert, die Ihr Browser automatisch übermittelt. Dies sind: Browsertyp und -version, Betriebssystem, IP-Adresse, anfragende Domain, Datum, Uhrzeit und abgerufene Seiten/Dateien, übertragene Datenmengen. Informationen dieser Art werden von uns anonymisiert und statistisch ausgewertet, um unsere Angebote und die dahinterstehende Technik zu optimieren. Es ist uns jedoch nicht möglich, diese Daten konkreten Personen zuzuordnen. Auch eine Zusammenführung dieser Daten mit anderen Datenqüllen wird von uns nicht vorgenommen. Eine Weitergabe dieser Daten an Dritte findet nicht statt.",
+        "3": "2. Erhebung und Verarbeitung personenbezogener Daten",
+        "4": "Wir halten uns an die Grundsätze der Datenvermeidung und Datensparsamkeit. Das Webangebot kann grundsätzlich ohne die Angabe von personenbezogenen Daten genutzt werden. Wo solche Daten (z.B. Name, Adresse oder E-Mail) doch erhoben werden, geschieht das auf Ihre Veranlassung und mit Ihrer ausdrücklichen Zustimmung, z. B. wenn Sie ein Produkt kaufen oder Kontakt mit uns aufnehmen. Ihre Angaben werden stets nur für den jeweils von Ihnen angegebenen Zweck verwendet.",
+        "5": "3. Cookies & Local Storage",
+        "6": "Die Seite tagungsbaende.dilewe.de kommt, solange Sie nicht eingeloggt sind, ohne den Einsatz von Cookies aus.",
+        "7": "Sobald Sie sich einloggen wird ein notwendiger Session-Cookie gesetzt ohne den die erforderlichen Funktionalitäten eines Benutzerprofils und Kaufprozesse nicht möglich wäre.&nbsp;",
+        "8": "4. Speicherdauer & Löschung von Nutzerdaten",
+        "9": "Das Kriterium für die Daür der Speicherung von personenbezogenen Daten ist die jeweilige gesetzliche Aufbewahrungsfrist. Nach Ablauf der Frist werden die entsprechenden Daten routinemäßig gelöscht, sofern sie nicht mehr zur Vertragserfüllung oder Vertragsanbahnung erforderlich sind.",
+        "10": "Der Anbieter verarbeitet und speichert personenbezogene Daten der betroffenen Person nur für den Zeitraum, der zur Erreichung des Speicherungszwecks erforderlich ist oder sofern dies durch den Europäischen Richtlinien- und Verordnungsgeber oder einen anderen Gesetzgeber in Gesetzen oder Vorschriften, welchen der für die Verarbeitung Verantwortliche unterliegt, vorgesehen wurde. Entfällt der Speicherungszweck oder läuft eine vom Europäischen Richtlinien- und Verordnungsgeber oder einem anderen zuständigen Gesetzgeber vorgeschriebene Speicherfrist ab, werden die personenbezogenen Daten entsprechend den gesetzlichen Vorschriften gesperrt oder gelöscht.",
+        "11": "5. Nutzerdatenanalyse (Matomo)",
+        "12": "Wir benutzen Matomo zur Webanalyse, ein Dienst der InnoCraft Ltd., 150 Willis St, 6011 Wellington, New Zealand, NZBN 6106769, („Matomo“) mittels Cookie-Technologie. Der Schutz Ihrer Daten ist uns wichtig, deshalb hosten wir Ihre Daten selbst und haben Matomo zusätzlich so konfiguriert, dass Ihre IP-Adresse ausschließlich gekürzt erfasst wird. Wir verarbeiten Ihre personenbezogenen Nutzungsdaten daher anonymisiert. Ein Rückschluss auf Ihre Person ist uns nicht möglich. Weitere Informationen zu den Nutzungsbedingungen von Matomo und den datenschutzrechtlichen Regelungen finden Sie unter: ",
+        "13": "6. Externe Inhalte",
+        "14": "Die Auslieferung der Inhalte bindet teilweise externe Inhalte als sogenannte “IFrames” ein. Dies wird beispielsweise zum einbinden von YouTube-Videos genutzt. Vor dem Aufbau einer Verbindung zu einem externen Dienst wird die Erlaubnis dafür eingeholt und, wo möglich, eine No Cookie-Domain eingesetzt, um die Privatsphäre der Nutzer zu erhöhen (z.B. bei YouTube).&nbsp;",
+        "15": "Wir machen darauf aufmerksam, dass die Betreiber der externen Inhalte die Daten ihrer Nutzerinnen und Nutzer (z.B. persönliche Informationen, IP-Adresse etc.) entsprechend ihrer Datenverwendungsrichtlinien abspeichern und für geschäftliche Zwecke nutzen. Wir haben keinen Einfluss auf die Datenerhebung und deren weitere Verwendung durch die Betreiber externer Webseiten. So bestehen keine Erkenntnisse darüber, in welchem Umfang, an welchem Ort und für welche Daür die Daten gespeichert werden, inwieweit die Betreiber bestehenden Löschpflichten nachkommen, welche Auswertungen und Verknüpfungen mit den Daten vorgenommen werden und an wen die Daten weitergegeben werden.",
+        "16": "7. H5P (Interaktionen)",
+        "17": "Für die Ausgabe von interaktiven Elementen verwendet m-vet.de die Technologie H5P. Dabei handelt es sich um ein Open-Source-Projekt aus Norwegen. Da wir von der Möglichkeit gebrauch machen, H5P selbst zu hosten, entstehen dabei keinerlei Daten, die an Dritte weitergeleitet werden.",
+        "18": "8. Open Source Projekt",
+        "19": "Das Front- und Backend ist eine quelloffene EUPL-1.2-lizensierte Software, welche auf GitHub entwickelt und veröffentlicht wird. Jede Änderung daran ist als Git-commit erfasst und der Öffentlichkeit zugänglich. Dies garantiert volle Transparenz, da jede Änderung verfolgt werden kann. Wir nehmen alle Sicherheitsaspekte ernst, wenn Sie Rückmeldungen oder Beiträge zur Sicherheit leisten wollen oder eine Sicherheitslücke vermuten, bitte melden Sie sich gerne vertraulich per E-Mail an",
+        "20": "9. Ansprechpartner für Datenschutzfragen",
+        "21": "Bei Fragen zur Erhebung, Verarbeitung oder Nutzung Ihrer personenbezogenen Daten, bei Auskünften, Berichtigung, Sperrung oder Löschung von Daten sowie Widerruf ggf. erteilter Einwilligungen können Sie sich jederzeit an uns wenden:",
+        "22": "Anbieter und Verantwortlicher im Sinne des Datenschutzgesetzes:",
+        "23": "Hermann Kempf",
+        "24": "Herrenbachstr. 57",
+        "25": "86161 Augsburg",
+        "26": "info@m-vet.de",
+        "27": "10. Änderungen unserer Datenschutzerklärung",
+        "28": "Um zu gewährleisten, dass unsere Datenschutzerklärung stets den aktuellen gesetzlichen Vorgaben entspricht, behalten wir uns jederzeit Änderungen vor. Das gilt auch für den Fall, dass die Datenschutzerklärung aufgrund technischer Anpassungen oder Erweiterungen der Website angepasst werden muss. Wir empfehlen deshalb, die Datenschutzerklärung in regelmäßigen Abständen erneut zu lesen."
+    }
+}

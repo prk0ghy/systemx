@@ -1,6 +1,18 @@
 .product-list {
 	& .items {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 30px;
+		margin-bottom: 3rem;
+		@media (--laptop) {
+			gap: 60px;
+		}
 		& .item {
+			list-style-type: none;
+			width: 100%;
+			@media (--laptop) {
+				width: 50%;
+			}
 			&:nth-child(4n + 1) {
 				--product-color: #c8563c;
 			}

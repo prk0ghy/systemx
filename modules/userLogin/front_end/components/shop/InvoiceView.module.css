@@ -1,0 +1,42 @@
+.form {
+	& .submit {
+		margin-top: 7rem;
+		min-width: 30rem;
+		@media (--tablet) {
+			justify-self: flex-end;
+		}
+	}
+	& .description {
+		font-size: 2rem;
+		margin: 0;
+		position: absolute;
+	}
+	& .postals {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 32px 12px;
+		justify-content: space-between;
+		& > div {
+			&:nth-child(2) {
+				flex-grow: 4;
+			}
+		}
+		& .zip {
+			width: 170px;
+		}
+		& .city {
+			max-width: none;
+			min-width: 320px;
+		}
+		& .country {
+			width: 240px;
+		}
+	}
+	& .actions {
+		display: flex;
+		justify-content: space-between;
+		& .cancel {
+			background-color: var(--color-yellow);
+		}
+	}
+}

@@ -1,20 +1,33 @@
 const path = require("path");
 const root = path.resolve(__dirname);
+const { i18n } = require("./next-i18next.config");
+const config = require("./config.js");
 module.exports = {
+	i18n,
 	eslint: {
 		ignoreDuringBuilds: true
 	},
+	async rewrites() {
+		const src = "/portal-user/:path";
+		const dest = `${config.api.endpoint.replace("portal-user", "")}:path`;
+		console.log(`proxying: ${src} => ${dest}`);
+		return [
+			{
+				source: src,
+				destination: dest
+			}
+		];
+	},
 	reactStrictMode: true,
-	webpack(configuration, {
-		webpack
-	}) {
+	webpack(configuration, { webpack }) {
 		configuration.plugins.push(new webpack.ProvidePlugin({
 			React: "react"
 		}));
 		configuration.resolve.alias.components = path.join(root, "components");
 		configuration.resolve.alias.contexts = path.join(root, "contexts");
 		configuration.resolve.alias.root = root;
-		const rules = configuration.module.rules
+		configuration.resolve.alias.userLoginCommon = path.join(root, "..", "common");
+		configuration.module.rules
 			.find(rule => typeof rule.oneOf === "object")
 			.oneOf.filter(rule => Array.isArray(rule.use))
 			.forEach(rule => {

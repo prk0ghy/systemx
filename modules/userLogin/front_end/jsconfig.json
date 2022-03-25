@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "components/*": [
+        "./components/*"
+      ],
+      "contexts/*": [
+        "./contexts/*"
+      ],
+      "root/*": [
+        "./*"
+      ],
+      "userLoginCommon/*": [
+        "../common/*"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "out",
+    ".cache",
+    ".next"
+  ]
+}

@@ -1,19 +1,21 @@
-import Product from "components/product/Product";
+import ProductBig from "components/product/ProductBig";
 import styles from "./ProductList.module.css";
 import { useProducts } from "contexts/Products";
+import Laced from "components/generics/Laced";
 const ProductList = () => {
 	const [{ products }] = useProducts();
 	const productList = products.map((product, i) => (
 		<li className={ styles.item } key={ product.id }>
-			<Product { ...product } startWithPreview={ i % 2 === 1 }/>
+			<ProductBig product={ product } startWithPreview={ i % 2 === 1 }/>
 		</li>
 	));
-
 	return (
 		<div className={ styles.productList }>
-			<ul className={ styles.items }>
-				{ productList }
-			</ul>
+			<Laced>
+				<ul className={ styles.items }>
+					{ productList }
+				</ul>
+			</Laced>
 		</div>
 	);
 };

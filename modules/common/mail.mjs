@@ -5,16 +5,16 @@ import Options from "./options.mjs";
 const transporter = nodemailer.createTransport({
 	host: Options.email.host,
 	port: Options.email.port,
-	secure: true,
+	secure: Options.mode === "production",
 	logger: true,
-	debug: true,
+	debug: Options.mode === "development",
 	auth: {
 		user: Options.email.username,
 		pass: Options.email.password
 	}
 });
 
-const sendRaw = ({from=null,to,subject,text,html}) => {
+export const sendRaw = ({from=null,to,subject,text,html}) => {
 	return transporter.sendMail({
 		from:    from,
 		to:      to,
@@ -25,7 +25,7 @@ const sendRaw = ({from=null,to,subject,text,html}) => {
 };
 
 const subjectRegex = /<title>([^<]*)<\/title>/;
-const sendMail = async ({to, template, values}) => {
+export const sendMail = async ({to, template, values}) => {
 	if(!to){return false;}
 	const from = Options.mailFrom;
 	const html = await Template(template+".html", values);

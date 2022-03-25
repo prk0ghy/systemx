@@ -1,5 +1,5 @@
 .product {
-	background: #b1c2b94d;
+	background: var(--color-green-light);
 	box-sizing: border-box;
 	display: block;
 	margin-bottom: 2rem;

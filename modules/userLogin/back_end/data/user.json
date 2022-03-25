@@ -2,6 +2,7 @@
 	"email": "rainer.zarth@dilewe.de",
 	"name": "rainer.zarth@dilewe.de",
 	"pass": "test",
+	"isActivated": true,
 	"meta": {
 		"country": "DE",
 		"isBusinessCustomer": true,
@@ -12,5 +13,34 @@
 	"groups": [
 		"vogelinternistik2"
 	]
-}
-]
+},{
+	"email": "bennyschulenburg@gmx.de",
+	"name": "bennyschulenburg@gmx.de",
+	"pass": "test",
+	"isActivated": true,
+	"meta": {
+		"country": "DE",
+		"isBusinessCustomer": true,
+		"test": [
+			{"asd": 12345}
+		]
+	},
+	"groups": [
+		"vogelinternistik2"
+	]
+},{
+	"email": "stefan.wintergerst@team-parallax.com",
+	"name": "stefan.wintergerst@team-parallax.com",
+	"pass": "test",
+	"isActivated": true,
+	"meta": {
+		"country": "DE",
+		"isBusinessCustomer": true,
+		"test": [
+			{"asd": 12345}
+		]
+	},
+	"groups": [
+		"vogelinternistik2"
+	]
+}]

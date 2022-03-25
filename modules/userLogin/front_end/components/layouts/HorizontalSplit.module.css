@@ -1,19 +1,60 @@
 .horizontal-split {
 	column-gap: 4rem;
 	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-template-rows: 1fr;
+	margin-bottom: 10px;
+	row-gap: 4rem;
+	@media (--all) {
+		grid-template-areas:
+			"top"
+			"bottom";
+		grid-template-columns: 1fr;
+		grid-template-rows: auto 1fr;
+	}
+	@media (--tablet) {
+	}
+	@media (--laptop) {
+		grid-template-areas: "left right";
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr;
+	}
+	& > div {
+		&:nth-child(1) {
+			@media (--all) {
+				grid-area: bottom;
+			}
+			@media (--tablet) {
+			}
+			@media (--laptop) {
+				grid-area: left;
+			}
+		}
+		&:nth-child(2) {
+			@media (--all) {
+				grid-area: top;
+			}
+			@media (--tablet) {
+			}
+			@media (--laptop) {
+				grid-area: right;
+			}
+		}
+	}
 	& > * {
 		position: relative;
 	}
 	& > *::before {
 		background: #9a9a9aad;
 		content: "";
-		display: block;
+		display: none;
 		height: 100%;
 		left: -2.1rem;
 		position: absolute;
 		width: 0.2rem;
+		@media (--tablet) {
+		}
+		@media (--laptop) {
+			display: block;
+		}
 	}
 	& > *:first-child::before {
 		display: none;

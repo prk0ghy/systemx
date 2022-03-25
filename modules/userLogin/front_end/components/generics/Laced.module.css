@@ -1,16 +1,66 @@
 .laced {
 	z-index: 1;
-	@media (--all) {
-		margin: 0 2rem;
-	}
-	@media (--tablet) {
-		margin: 0 4rem;
-	}
-	@media (--desktop) {
-		margin: 0 5rem;
-	}
 	& .content {
 		margin: 0 auto;
-		max-width: 172rem;
+		max-width: 190rem;
+		position: relative;
+		width: calc(100% - 3rem);
+		@media (--all) {
+			font-size: 2.5rem;
+		}
+		@media (--tablet) {
+		}
+		@media (--laptop) {
+			width: calc(100% - 18rem);
+		}
+		@media (--desktop) {
+			font-size: 3.7rem;
+		}
+		& h1 {
+			@media (--all) {
+				font-size: 2.5rem;
+			}
+			@media (--tablet) {
+				font-size: 2.5rem;
+			}
+			@media (--desktop) {
+				font-size: 3.7rem;
+			}
+		}
+		& h2 {
+			@media (--all) {
+				font-size: 2rem;
+			}
+			@media (--tablet) {
+				font-size: 2rem;
+			}
+			@media (--desktop) {
+				font-size: 3.7rem;
+			}
+		}
+		& h3 {
+			@media (--all) {
+				font-size: 1.7rem;
+			}
+			@media (--tablet) {
+				font-size: 1.7rem;
+			}
+			@media (--desktop) {
+				font-size: 3rem;
+			}
+		}
+		& p {
+			@media (--all) {
+				font-size: 1.5rem;
+				margin-bottom: 1.5rem;
+			}
+			@media (--tablet) {
+				font-size: 1.5rem;
+			}
+			@media (--desktop) {
+				font-size: 2.5rem;
+				margin-bottom: 3rem;
+			}
+		}
 	}
 }

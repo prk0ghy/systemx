@@ -1,0 +1,24 @@
+.icon {
+	background-repeat: no-repeat;
+	background-size: contain;
+	display: block;
+	grid-area: icon;
+	@media (--all) {
+		height: 30px;
+		width: 30px;
+	}
+	@media (--tablet) {
+		height: 36px;
+		width: 50px;
+	}
+	@media (--laptop) {
+		height: 72px;
+		width: 72px;
+	}
+}
+.date {
+	background-image: url(/mvet/ui/event.png);
+}
+.book {
+	background-image: url(/mvet/ui/book.png);
+}

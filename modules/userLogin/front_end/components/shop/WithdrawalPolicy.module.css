@@ -1,0 +1,28 @@
+@keyframes enter {
+	0% {
+		font-size: 0;
+		line-height: 0;
+		opacity: 0;
+	}
+	50% {
+		font-size: 0;
+		line-height: 0;
+		opacity: 0.1;
+	}
+	100% {
+		font-size: 2.5rem;
+		line-height: 3rem;
+		opacity: 1;
+	}
+}
+.withdrawal-policy {
+	margin: 2rem auto;
+	width: calc(100% - 2rem);
+	& .actions {
+		display: flex;
+		justify-content: space-between;
+		& .cancel {
+			background-color: var(--color-yellow);
+		}
+	}
+}

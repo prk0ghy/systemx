@@ -97,6 +97,14 @@ export const userPasswordResetSubmit  = (resetHash, newPassword) => doAPICall("u
 export const userDeleteRequest = () => doAPICall("userDeleteRequest", {});
 export const userDeleteCheck   = deleteHash => doAPICall("userDeleteCheck", { deleteHash });
 export const userDeleteSubmit  = deleteHash => doAPICall("userDeleteSubmit", { deleteHash });
+
+export const userActivationCheck = token => doAPICall("userActivationCheck", { hash: token });
+export const userActivationSubmit = token => doAPICall("userActivationSubmit", { activationHash: token });
+export const userActivationResend = () => doAPICall("userActivationResend", {});
+
+export const userCreatePayPalOrder = (cart, invoice) => doAPICall("userCreatePayPalOrder", { cart, invoice });
+export const userCapturePayPalOrder = orderID => doAPICall("userCapturePayPalOrder", { orderID });
+
 export default doAPICall;
 
 export const useRefreshUserData = () => {
@@ -105,10 +113,10 @@ export const useRefreshUserData = () => {
 		return [async () => {
 			const userData = await userInfoGet();
 			if (userData.user) {
-				dispatch({ type: "SET_USER_DATA", data: { user: userData.user } });
+				dispatch({ type: "SET_USER_DATA", data: { statusKnown: true, user: userData.user } });
 			}
 			else {
-				dispatch({ type: "SET_USER_DATA", data: { } });
+				dispatch({ type: "SET_USER_DATA", data: { statusKnown: true } });
 			}
 		}];
 	}, [dispatch]);

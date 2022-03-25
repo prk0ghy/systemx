@@ -1,40 +1,41 @@
-import Card from "../generics/Card";
-import Configuration from "../../config.js";
+import dynamic from "next/dynamic";
+import Card from "components/generics/Card";
+import Configuration from "root/config.js";
 import { H } from "root/format";
-import LoginForm from "../forms/LoginForm";
-import RegistrationForm from "../forms/RegistrationForm";
+import LoginForm from "components/user/LoginForm";
+import LogoutForm from "components/user/LogoutForm";
+import RegistrationForm from "components/user/RegistrationForm";
 import styles from "./LoginRegistrationManager.module.css";
 import { useAuthentication } from "contexts/Authentication";
-import UserProfile from "./UserProfile";
-const LoginRegistrationManager = () => {
+import { useTranslation } from "next-i18next";
+const LoginRegistrationManager = ({ loginHref }) => {
 	const [{ user }] = useAuthentication();
+	const { t } = useTranslation("common");
 	return (
 		<div className={ styles.checkoutManager }>
 			{ user
 				? (
-					<>
-						<Card>
-							<UserProfile/>
-						</Card>
-					</>
+					<Card>
+						<LogoutForm/>
+					</Card>
 				)
 				: (
 					<Card>
 						<h3>
 							<H>{ Configuration?.registration?.enabled
-								? "Alter Hase"
-								: "Login"
+								? t("misc|what")
+								: t("Login")
 							}
 							</H>
 						</h3>
 						<br/>
-						<LoginForm/>
+						<LoginForm loginHref={ loginHref }/>
 						<br/>
 						{ Configuration?.registration?.enabled
 							? (
 								<>
 									<br/>
-									<h3><H>Ich bin neu hier</H></h3>
+									<h3><H>{ t("what") }</H></h3>
 									<br/>
 									<RegistrationForm/>
 								</>
@@ -47,4 +48,6 @@ const LoginRegistrationManager = () => {
 		</div>
 	);
 };
-export default LoginRegistrationManager;
+export default dynamic(() => Promise.resolve(LoginRegistrationManager), {
+	ssr: false
+});

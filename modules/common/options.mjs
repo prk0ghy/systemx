@@ -54,22 +54,28 @@ const options = {
 				endpoint: "https://tagungsbaende.dilewe.de/portal-user"
 			},
 			burgerMenu: {
-				enabled: false
+				enabled: true
 			},
 			registration: {
-				enabled: false
+				enabled: true
 			},
 			shoppingCart: {
-				enabled: false
+				enabled: true
 			},
 			userDelete: {
-				enabled: false
+				enabled: true
 			},
 			passwordReset: {
-				enabled: false
+				enabled: true
 			}
 		},
 		mounts: []
+	},
+	shop: {
+		payPal: {
+			clientID: "Please set this value in a custom configuration file",
+			clientSecret: "Please set this value in a custom configuration file"
+		}
 	}
 };
 /* Recursively merge a and b, returning a merged result. Values in b will overwrite

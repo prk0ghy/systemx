@@ -7,10 +7,6 @@ export default {
 		name: "Benutzer löschen",
 		path: "delete-user"
 	},
-	deleteUserSubmit: {
-		name: "Benutzer löschen",
-		path: "delete-user/[token]"
-	},
 	home: {
 		name: "Startseite",
 		path: "/"
@@ -18,6 +14,10 @@ export default {
 	imprint: {
 		name: "Impressum",
 		path: "/imprint"
+	},
+	library: {
+		name: "Bibliothek",
+		path: "/library"
 	},
 	login: {
 		name: "Anmeldung",
@@ -35,9 +35,25 @@ export default {
 		name: "Passwort zurücksetzen",
 		path: "/reset-password"
 	},
-	resetPasswordSubmit: {
-		name: "Passwort zurücksetzen",
-		path: "reset-password/[token]"
+	userProfile: {
+		name: "Kundenkonto",
+		path: "/user-profile"
+	},
+	withdrawalPolicy: {
+		name: "Widerrufsbelehrung",
+		path: "/withdrawal-policy"
+	},
+	checkoutInvoice: {
+		name: "Rechnungsanschrift",
+		path: "/checkout-invoice"
+	},
+	orderComplete: {
+		name: "Bestellung abgeschlossen",
+		path: "order-complete"
+	},
+	payment: {
+		name: "Bezahlung",
+		path: "payment"
 	},
 	termsAndConditions: {
 		name: "AGB",

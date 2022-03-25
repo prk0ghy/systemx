@@ -1,0 +1,14 @@
+.home {
+	& .small {
+		font-size: 1.8rem;
+		@media (--all) {
+			font-size: 1.8rem;
+		}
+		@media (--tablet) {
+			font-size: 1.8rem;
+		}
+		@media (--desktop) {
+			font-size: 3.4rem;
+		}
+	}
+}

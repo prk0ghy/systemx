@@ -2,24 +2,14 @@ import Link from "next/link";
 import routes from "root/routes";
 import styles from "./HomeIcon.module.css";
 import { useBrand } from "contexts/Brand";
-
+import Picture from "../../generics/Picture";
 const HomeIcon = () => {
-	const [{
-		logoHeight,
-		logoURL,
-		logoWidth
-	}] = useBrand();
+	const [{ pictures }] = useBrand();
 	return (
 		<li className={ styles.item }>
 			<Link href={ routes.home.path }>
 				<a className={ styles.link }>
-					<img
-						alt="Logo"
-						className={ styles.image }
-						height={ logoHeight }
-						src={ logoURL }
-						width={ logoWidth }
-					/>
+					<Picture className={ styles.image } { ...pictures.logo }/>
 				</a>
 			</Link>
 		</li>

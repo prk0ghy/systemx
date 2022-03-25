@@ -1,5 +1,3 @@
-.buttons > * {
-	align-items: center;
-	display: flex;
-	justify-content: center;
+.buttons {
+	text-align: center;
 }

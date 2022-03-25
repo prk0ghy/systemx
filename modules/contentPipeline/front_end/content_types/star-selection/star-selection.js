@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* globals scrollToElement */
 (() => {
 	const C_PROPERTY_KEY = "star-selection";

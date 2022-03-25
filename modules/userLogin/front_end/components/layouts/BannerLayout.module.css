@@ -2,26 +2,26 @@
 	& .banner {
 		position: relative;
 		& .image {
-			height: calc(100vh - var(--header-height));
-			object-fit: cover;
-			object-position: center center;
-			width: 100%;
-		}
-		& .image.half-height {
-			height: calc(50vh - var(--header-height));
-			object-position: top center;
-		}
-		& .image.auto-height {
-			height: auto;
-			object-position: top center;
+			@media (--all) {
+				height: 56vw;
+			}
+			@media (--tablet) {
+				font-size: 7vw;
+				height: 50vh;
+			}
+			@media (--laptop) {
+			}
+			@media (--desktop) {
+			}
 		}
 		& .headline {
+			bottom: 2rem;
 			color: white;
 			font-weight: var(--font-weight-black);
 			position: absolute;
-			top: 5rem;
+			width: 100%;
 			@media (--all) {
-				font-size: 6vw;
+				font-size: 5vw;
 			}
 			@media (--tablet) {
 				font-size: 7vw;
@@ -30,11 +30,84 @@
 				font-size: 6vw;
 			}
 			@media (--desktop) {
-				font-size: 5vw;
+				font-size: 6rem;
+			}
+			& .headline-content {
+				width: 88vw;
+				@media (--all) {
+					font-size: 5rem;
+				}
+				@media (--tablet) {
+				}
+				@media (--laptop) {
+					font-size: 6rem;
+					width: 100%;
+				}
+				@media (--desktop) {
+				}
+				&.headline-right {
+					font-size: 3rem;
+					text-align: right;
+					@media (--tablet) {
+						font-size: 4.5rem;
+					}
+					@media (--laptop) {
+						font-size: 6rem;
+						width: 100%;
+					}
+					@media (--desktop) {
+					}
+				}
+			}
+			&.headline-right {
+				@media (--laptop) {
+					right: 9rem;
+				}
+			}
+		}
+		&.half-height {
+			overflow: hidden;
+			@media (--all) {
+				height: 162px;
+			}
+			@media (--tablet) {
+			}
+			@media (--laptop) {
+				height: 386px;
+			}
+		}
+		&.full-height {
+			overflow: hidden;
+			@media (--all) {
+			}
+			@media (--tablet) {
+			}
+			@media (--laptop) {
+			}
+			& .image {
+				height: calc(100vh - 10rem);
+				position: fixed;
+			}
+		}
+		&.no-top-margin {
+			margin-top: -30px;
+			@media (--laptop) {
+				margin-top: -70px;
 			}
 		}
 	}
 }
 .text-content {
-	margin-top: 10rem;
+	@media (--all) {
+		margin-top: 3rem;
+	}
+	@media (--tablet) {
+		margin-top: 3rem;
+	}
+	@media (--laptop) {
+		margin-top: 10rem;
+	}
+	@media (--desktop) {
+		margin-top: 10rem;
+	}
 }

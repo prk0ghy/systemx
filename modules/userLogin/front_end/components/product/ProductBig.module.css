@@ -1,0 +1,24 @@
+.product {
+	cursor: pointer;
+	position: relative;
+	& .picture {
+		aspect-ratio: 1/1;
+	}
+	& .card {
+		background-color: #ffffffd1;
+		bottom: 0;
+		color: var(--color-main);
+		/* stylelint-disable-next-line font-weight-notation */
+		font-weight: bold;
+		padding: 2.2rem 3.8rem;
+		position: absolute;
+		width: 100%;
+		@media (--tablet) {
+		}
+		@media (--laptop) {
+		}
+		@media (--desktop) {
+			font-size: 5rem;
+		}
+	}
+}

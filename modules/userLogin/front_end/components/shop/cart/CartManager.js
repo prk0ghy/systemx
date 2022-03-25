@@ -1,98 +1,64 @@
-import { CSSTransition,	TransitionGroup } from "react-transition-group";
+import dynamic from "next/dynamic";
 import { formatPrice, H } from "root/format";
 import Button from "components/inputs/Button";
 import CartProduct from "./CartProduct";
 import styles from "./CartManager.module.css";
 import { useAuthentication } from "contexts/Authentication";
 import { useCart } from "contexts/Cart";
-import { useProducts } from "contexts/Products";
-
-const CartManager = ({ onProceed }) => {
-
-	const findProduct = (productTree, id) => {
-		if (!productTree) {
-			return null;
-		}
-		const potentialMatch = productTree.find(product => product.id === id);
-		if (potentialMatch) {
-			return potentialMatch;
-		}
-		for (let i = 0; i < productTree.length; i++) {
-			const newTree = productTree[i].children;
-			if (!newTree) {
-				continue;
-			}
-			const newProduct = findProduct(newTree, id);
-			if (newProduct !== null) {
-				return newProduct;
-			}
-		}
-		return null;
-	};
-
+import { findProduct } from "userLoginCommon/product";
+import { useTranslation } from "next-i18next";
+const CartManager = ({
+	onProceed, readOnly = false
+}) => {
+	const { t } = useTranslation("common");
 	const [{ items }] = useCart();
-	const [{ products }] = useProducts();
 	const cartItems = items.map(id => {
-		const item = findProduct(products, id);
-		const classNames = {
-			exit: styles.itemExit,
-			exitActive: styles.itemExitActive
-		};
+		const item = findProduct(id);
 		return (
-			<CSSTransition
-				classNames={ classNames }
-				key={ id }
-				timeout={ 500 }
-			>
-				<CartProduct key={ id } { ...item }/>
-			</CSSTransition>
+			<CartProduct key={ id } { ...item } readOnly={ readOnly }/>
 		);
 	});
 	const sum = items.map(id => {
-		const item = findProduct(products, id);
+		const item = findProduct(id);
 		return item
 			? item.price
 			: 0;
 	}).reduce((a, b) => a + b, 0);
-	const emptyCartClassNames = {
-		enter: styles.itemEnter,
-		enterActive: styles.itemEnterActive
-	};
 	const [{ user }] = useAuthentication();
-	const disabled = !user
+	const disabled = !user || !cartItems.length
 		? "disabled"
 		: "";
 	return (
 		<div className={ styles.cartManager }>
-			<h3><H>Warenkorb</H></h3>
+			<h3 className={ styles.cartHeadline }><H>{ t("cart|cart") }</H></h3>
 			<br/>
-			<TransitionGroup className="todo-list">
-				{
-					cartItems.length
-						? [...cartItems, <div className={ styles.sum } key="shopping_cart_sum">Artikelsumme <span>{ formatPrice(sum) }</span></div>]
-						: [
-							<CSSTransition
-								classNames={ emptyCartClassNames }
-								key="empty"
-								timeout={ 50000 }
+			{
+				cartItems.length
+					? [...cartItems, <div className={ styles.sum } key="shopping_cart_sum">{ t("cart|sum") } <span>{ formatPrice(sum) }</span></div>]
+					: [<span className={ styles.cartManager } key="shopping_cart_empty">{ t("cart|emptyCart") }</span>]
+			}
+			{
+				!user && <p className={ styles.requiresLogin }>{ t("cart|accountRequired") }</p>
+			}
+			{
+				readOnly
+					? null
+					: (
+						<div className={ styles.actions }>
+							<Button
+								className={ styles.proceed }
+								disabled={ disabled }
+								kind="primary"
+								onClick={ onProceed }
 							>
-								<span className={ styles.cartManager }>Zurzeit ist Ihr Warenkorb leer.</span>
-							</CSSTransition>
-						]
-				}
-			</TransitionGroup>
-			<p>Um zur Kasse fortzufahren, benötigen Sie ein Benutzerkonto.</p>
-			<div className={ styles.actions }>
-				<Button
-					className={ styles.proceed }
-					disabled={ disabled }
-					kind="primary"
-					onClick={ onProceed }
-				>
-					Zur Kasse
-				</Button>
-			</div>
+								{ t("cart|toCheckout") }
+							</Button>
+						</div>
+					)
+			}
 		</div>
 	);
 };
-export default CartManager;
+export default dynamic(() => Promise.resolve(CartManager), {
+	ssr: false
+});

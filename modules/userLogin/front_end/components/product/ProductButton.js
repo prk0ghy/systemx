@@ -1,35 +1,31 @@
 import dynamic from "next/dynamic";
+import Button from "../inputs/Button";
 import { useAuthentication } from "contexts/Authentication";
 import { useCallback } from "react";
 import { useCart } from "contexts/Cart";
 import { useRouter } from "next/router";
-
-const Button = dynamic(() => import("components/inputs/Button"), {
-	ssr: false
-});
-
-const ProductButton = ({
-	product
-}) => {
-	const { id, group, contentUri, price, comingSoon } = product;
+import { useTranslation } from "next-i18next";
+const ProductButton = ({ product }) => {
+	const { t } = useTranslation("common");
+	const {
+		id, group, contentUri, price, comingSoon
+	} = product;
 	const router = useRouter();
 	const [{ user }] = useAuthentication();
 	const [{ items }, dispatch] = useCart();
 	const hasAccess = Boolean(user?.groups[group]);
-
 	const shopButtonText = price
 		? items.includes(id)
-			? "Aus dem Warenkorb"
-			: "In den Warenkorb"
+			? t("cart|removeFromCart")
+			: t("cart|addToCart")
 		: comingSoon
-			? "Kommt in Kürze"
+			? t("cart|availableShortly")
 			: user?.groups
-				? "Nicht freigeschaltet"
-				: "Bitte Einloggen";
+				? t("cart|locked")
+				: t("pleaseLogin");
 	const buttonText = hasAccess
-		? "Inhalt ansehen"
+		? t("cart|viewContent")
 		: shopButtonText;
-
 	const onClick = useCallback(() => {
 		if (hasAccess) {
 			window.location = contentUri;
@@ -58,9 +54,10 @@ const ProductButton = ({
 		price,
 		router
 	]);
-
 	return (
-		<Button onClick={ onClick }>{ buttonText }</Button>
+		<Button kind="primary" onClick={ onClick }>{ buttonText }</Button>
 	);
 };
-export default ProductButton;
+export default dynamic(() => Promise.resolve(ProductButton), {
+	ssr: false
+});

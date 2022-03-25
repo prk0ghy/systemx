@@ -14,18 +14,16 @@ import Administration from "./modules/administration/index.mjs";
 	await mkdirp(options.distributionPath);
 	await mkdirp(options.storagePath);
 
-	switch (options.activeModule){
-		case "contentPipeline": {
-			return await ContentServer(options.action);
-		}
-		case "userLogin": {
-			return await UserLogin(options.action);
-		}
-		case "userTracking": {
-			return await UserTracking(options.action);
-		}
-		case "administration": {
-			return await Administration(options.action);
-		}
+	console.log(`running ${options.activeModule}`);
+
+	switch(options.activeModule){
+	case "contentPipeline":
+		return await ContentServer(options.action);
+	case "userLogin":
+		return await UserLogin(options.action);
+	case "userTracking":
+		return await UserTracking(options.action);
+	case "administration":
+		return await Administration(options.action);
 	}
 })();

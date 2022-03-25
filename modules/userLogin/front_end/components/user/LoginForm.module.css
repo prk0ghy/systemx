@@ -1,0 +1,14 @@
+.login-form {
+	& .title {
+		font-size: 3.5rem;
+		margin-bottom: 2rem;
+	}
+	& .description {
+		color: #1c1c1c;
+		font-size: 1.6rem;
+	}
+	& ::placeholder {
+		color: #1c1c1c;
+		opacity: 0.9;
+	}
+}

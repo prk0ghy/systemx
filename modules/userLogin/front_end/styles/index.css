@@ -2,12 +2,22 @@
 * {
 	box-sizing: border-box;
 	color: inherit;
-	font-family: Montserrat, sans-serif;
+	font-family: Exo, sans-serif;
 	margin: 0;
 	padding: 0;
 }
 :root {
 	--color-negative: #c70d10;
+	--color-blue: #3e4162;
+	--color-blue-light: #8b91b1;
+	--color-orange: #d68301;
+	--color-yellow: #d4b702;
+	--color-grey: #718780;
+	--color-main: #12372b;
+	--color-green: #3b7a24;
+	--color-green-light: #82aa73;
+	--box-shadow: 0 3px 6px #00000054;
+	--box-shadow-up: 0 -3px 6px #00000054;
 	--font-weight-light: 300;
 	--font-weight-regular: 400;
 	--font-weight-medium: 500;

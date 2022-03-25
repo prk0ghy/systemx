@@ -7,7 +7,9 @@ import EditIcon from "@mui/icons-material/Edit";
 import LeftRightGroup from "../../generics/LeftRightGroup.js";
 import styles from "./UserCountryEdit.module.css";
 import { useAuthentication } from "contexts/Authentication";
+import { useTranslation } from "next-i18next";
 const UserCountryEdit = () => {
+	const { t } = useTranslation("common");
 	const [{ user }] = useAuthentication();
 	const [refresh] = useRefreshUserData();
 	const [modal, setModal] = useState(false);
@@ -39,17 +41,29 @@ const UserCountryEdit = () => {
 						>
 							{
 								() => (
-									<Form className={ styles.form } submit="ändern" title="ändern">
+									<Form className={ styles.form } submit="ändern" title={ t("changeCountry") }>
 										<CountrySelector
 											autoComplete="country"
-											label="Land"
+											label={ t("country") }
 											name="country"
 											required
 										/>
 										<br/>
 										<LeftRightGroup>
-											<Button className={ styles.submit } kind="primary" type="submit">OK</Button>
-											<Button className={ styles.cancel } kind="secondary" onClick={ ToggleModal }>Abbrechen</Button>
+											<Button
+												className={ styles.submit }
+												kind="primary"
+												type="submit"
+											>
+												{ t("ok") }
+											</Button>
+											<Button
+												className={ styles.cancel }
+												kind="secondary"
+												onClick={ ToggleModal }
+											>
+												{ t("abort") }
+											</Button>
 										</LeftRightGroup>
 									</Form>
 								)

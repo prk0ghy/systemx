@@ -22,7 +22,7 @@
 		"block-opening-brace-space-before": "always",
 		"color-hex-case": "lower",
 		"color-hex-length": "long",
-		"color-named": "always-where-possible",
+		"color-named": null,
 		"color-no-invalid-hex": true,
 		"comment-empty-line-before": "never",
 		"comment-no-empty": true,
@@ -30,7 +30,6 @@
 		"declaration-bang-space-after": "never",
 		"declaration-bang-space-before": "never",
 		"declaration-block-no-duplicate-properties": true,
-		"declaration-block-no-redundant-longhand-properties": true,
 		"declaration-block-no-shorthand-property-overrides": true,
 		"declaration-block-semicolon-newline-after": "always",
 		"declaration-block-semicolon-newline-before": "never-multi-line",
@@ -122,7 +121,7 @@
 		"selector-list-comma-newline-before": "never-multi-line",
 		"selector-list-comma-space-after": "always",
 		"selector-list-comma-space-before": "never",
-		"selector-no-qualifying-type": true,
+		"selector-no-qualifying-type": null,
 		"selector-no-vendor-prefix": true,
 		"selector-pseudo-class-case": "lower",
 		"selector-pseudo-class-no-unknown": [
@@ -151,7 +150,8 @@
 			"vh",
 			"vmax",
 			"vmin",
-			"vw"
+			"vw",
+			"px"
 		],
 		"unit-case": "lower",
 		"unit-no-unknown": true,

@@ -1,4 +1,7 @@
 import * as Session from "./session.mjs";
+import Logger from "./logger.mjs";
+import { getRestrictions } from "./filter.mjs";
+
 
 /* Build a KOA request filter using the filters passed along
  * (that should be built using filter.buildAll()).
@@ -6,26 +9,53 @@ import * as Session from "./session.mjs";
 const requestfilter = (filter,{
 	allowCORS = false
 }) => {
-	/* Handle a single request, should be treated as async since all filters are
+	const restrictions = getRestrictions();
+	/*
+	 * Handle a single request, should be treated as async since all filters are
 	 * async
 	 */
 	const doSingleRequest = v => {
-		if(!v.req)                {v.res.error = "Malformed request";    return v;}
-		if(!v.req.id)             {v.res.error = "Missing id field";     return v;}
+		Logger.info(`[ACTION]::[${v.req.id}] ${v.req.action}`);
+		if (!v.req) {
+			v.res.error = "Malformed request";
+			return v;
+		}
+		if (!v.req.id) {
+			v.res.error = "Missing id field";
+			return v;
+		}
 		v.res.id = v.req.id;
-		if(!v.req.action)         {v.res.error = "Missing action field"; return v;}
-		if(!filter[v.req.action]) {v.res.error = "Unknown action";       return v;}
+		if (!v.req.action) {
+			v.res.error = "Missing action field";
+			return v;
+		}
+		if (!filter[v.req.action]) {
+			v.res.error = "Unknown action";
+			return v;
+		}
+		const requestRestrictions = restrictions[v.req.action];
+		if (requestRestrictions && requestRestrictions.requiresActivation && !v.ses?.user?.isActivated) {
+			v.res.error = "Access Forbidden. Account requires activation";
+			return v;
+		}
 		return filter[v.req.action](v);
 	};
 	/* Run every RPC in body.requests through the specified filter, and thread
 	 * the session (ses) through every single call.
 	 */
 	const filterequests = async (ctx, body) => {
-		if(!body?.requests){return [];}
+		if (!body?.requests) {
+			return [];
+		}
 		const ret = [];
 		let ses = body.sessionID ? Session.getByID(body.sessionID) : Session.get(ctx);
 		for(const req of body.requests){
-			const tmp = await doSingleRequest({ctx,req,ses,res:{}});
+			const tmp = await doSingleRequest({
+				ctx,
+				req,
+				ses,
+				res: {}
+			});
 			ses = tmp.ses;
 			ret.push(tmp.res);
 		}
@@ -43,7 +73,7 @@ const requestfilter = (filter,{
 		}
 		ctx.body = {
 			error: false,
-			responses: await filterequests(ctx,ctx?.request?.body)
+			responses: await filterequests(ctx, ctx?.request?.body)
 		};
 	};
 };

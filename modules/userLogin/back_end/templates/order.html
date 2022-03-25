@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+	<head xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"></head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="format-detection" content="telephone=no"/>
+		<meta name="viewport" content="width=device-width">
+		<title>Ihre Bestellung Nummer {{ ID }}</title>
+	</head>
+	<body style="background-color: #fff; color:#444;">
+		<table class="bg-table" style="background-color: #f6f6f6; width: 100%; max-width:600px; margin:0 auto;">
+			<tbody>
+				<tr>
+					<td></td>
+					<td>
+						<table>
+							<tbody>
+								<tr><td colspan="5">&nbsp;</td></tr>
+								<tr>
+									<td>&nbsp;</td>
+									<td style="font-size: 20px; color: #444;">
+										<span>Guten Tag, </span>
+									</td>
+									<td>&nbsp;</td>
+								</tr>
+								<tr><td colspan="5">&nbsp;</td></tr>
+								<tr>
+									<td></td>
+									<td colspan="3" style="font-size: 20px; color: #444;">
+										<span>Wir haben ihre Bestellung für den Account <b>{{ userName }}</b> erhalten.</span>
+									</td>
+									<td></td>
+								</tr>
+								<tr><td colspan="5">&nbsp;</td></tr>
+								<tr><td colspan="5">&nbsp;</td></tr>
+								<tr>
+									<td></td>
+									<td colspan="3" style="font-size: 20px; color: #444;">
+										<span><b>Rechnung:</b></span>
+									</td>
+									<td></td>
+								</tr>
+								<tr><td colspan="5">&nbsp;</td></tr>
+								<tr style="font-size: 20px; color: #444;">
+									<td></td>
+									<td >
+										<span>Rechnungsdatum:</span>
+									</td>
+									<td style="text-align: right;">
+										<span style="text-align: right;">{{creationDate}}</span>
+									</td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr style="font-size: 20px; color: #444;">
+									<td></td>
+									<td >
+										<span>Rechnungsnummer:</span>
+									</td>
+									<td style="text-align: right;">
+										<span>{{ID}}</span>
+									</td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr style="font-size: 20px; color: #444;">
+									<td></td>
+									<td >
+										<span>Organisation</span>
+									</td>
+									<td style="text-align: right;">
+										<span>{{organisation}}</span>
+									</td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr style="font-size: 20px; color: #444;">
+									<td></td>
+									<td >
+										<span>Name</span>
+									</td>
+									<td style="text-align: right;">
+										<span>{{name}}</span>
+									</td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr style="font-size: 20px; color: #444;">
+									<td></td>
+									<td >
+										<span>Anschrift</span>
+									</td>
+									<td style="text-align: right;">
+										<span>{{address}}</span>
+									</td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr style="font-size: 20px; color: #444;">
+									<td></td>
+									<td >
+										<span>PLZ</span>
+									</td>
+									<td style="text-align: right;">
+										<span>{{zip}}</span>
+									</td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr style="font-size: 20px; color: #444;">
+									<td></td>
+									<td >
+										<span>Ort</span>
+									</td>
+									<td style="text-align: right;">
+										<span>{{city}}</span>
+									</td>
+									<td></td>
+									<td></td>
+								</tr>
+								{{productTable}}
+								<tr><td colspan="5" style="border-top: solid 1px #444; line-height: 2px;">&nbsp;</td></tr>
+								<tr>
+									<td></td>
+									<td >
+										<span>Summe ohne MwSt.: </span>
+									</td>
+									<td style="text-align: right;">
+										<span>{{priceSubtotal}}</span>
+									</td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td >
+										<span>Anzurechnende MwSt.: </span>
+									</td>
+									<td style="text-align: right;">
+										<span>{{priceTaxes}}</span>
+									</td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr style="font-size: 20px; color: #444;">
+									<td></td>
+									<td >
+										<span>Summe</span>
+									</td>
+									<td style="text-align: right;">
+										<span style="text-decoration: underline;">{{priceTotal}}</span>
+									</td>
+									<td></td>
+									<td></td>
+								</tr>
+								<!-- Brauchen wir das? Ist ja alles PayPal
+								<tr><td colspan="5">&nbsp;</td></tr>
+								<tr style="font-size: 20px; color: #444;">
+									<td></td>
+									<td >
+										<span>Zahlungsart</span>
+									</td>
+									<td style="text-align: right;">
+										<span>{{order.type}}</span>
+									</td>
+									<td></td>
+									<td></td>
+								</tr>
+								-->
+								<tr><td colspan="5">&nbsp;</td></tr>
+								<tr>
+									<td></td>
+									<td colspan="5" style="font-size: 20px; text-align: center; color: #444;">
+										<span>Vielen Dank für Ihre Bestellung!</span>
+									</td>
+									<td></td>
+								</tr>
+								<tr><td colspan="5">&nbsp;</td></tr>
+								<tr>
+									<td></td>
+									<td colspan="3" style="font-size: 18px; text-align: center; color: #444;">
+										<span>Sollten Sie Probleme oder Frage haben, so kontaktieren Sie uns per E-Mail unter folgender Adresse: <a href="mailto:info@dilewe.de" style="color:#0a409a">info@dilewe.de</a></span>
+									</td>
+									<td></td>
+								</tr>
+								<tr><td colspan="5">&nbsp;</td></tr>
+							</tbody>
+						</table>
+					</td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>

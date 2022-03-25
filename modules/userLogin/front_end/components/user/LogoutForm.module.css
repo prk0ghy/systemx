@@ -1,0 +1,27 @@
+.user-profile {
+	margin: 0;
+	padding: 0;
+	& .icon {
+		height: 2.5rem;
+		margin: 0 1rem 0 0;
+		vertical-align: -23%;
+		width: 2.5rem;
+	}
+	& > div {
+		display: grid;
+		grid: "value edit";
+		grid-template-columns: auto 4rem;
+	}
+	& > div:first-child {
+		grid-area: "value";
+	}
+	& > div:last-child {
+		grid-area: "edit";
+	}
+}
+.link {
+	color: #0a409a;
+}
+.delete {
+	background-color: maroon;
+}

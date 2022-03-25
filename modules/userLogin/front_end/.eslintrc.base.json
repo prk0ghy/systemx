@@ -10,9 +10,7 @@
 		"camelcase": [2, {
 			"properties": "always"
 		}],
-		"capitalized-comments": [2, "always", {
-			"ignorePattern": "webpack"
-		}],
+		"capitalized-comments": 0,
 		"comma-dangle": [2, "never"],
 		"comma-style": [2, "last"],
 		"comma-spacing": [2, {
@@ -154,13 +152,8 @@
 		}],
 		"radix": [2, "as-needed"],
 		"semi": [2, "always"],
-		"sort-imports": [2, {
-			"ignoreCase": true
-		}],
-		"sort-keys": [2, "asc", {
-			"caseSensitive": false,
-			"natural": true
-		}],
+		"sort-imports": 0,
+		"sort-keys": 0,
 		"space-before-blocks": [2, "always"],
 		"space-before-function-paren": [2, {
 			"anonymous": "always",

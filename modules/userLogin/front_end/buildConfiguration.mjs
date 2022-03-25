@@ -1,3 +1,6 @@
 import configuration from "../../common/options.mjs";
 import fs from "fs";
-fs.promises.writeFile("config.js", `export default ${JSON.stringify(configuration.portal.frontEndVariables)};`);
+fs.promises.writeFile(
+    "config.js", 
+    `module.exports = ${JSON.stringify(configuration.portal.frontEndVariables, null, 4)};`
+);

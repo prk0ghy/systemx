@@ -1,4 +1,4 @@
-import "wicg-inert";
+import { appWithTranslation } from "next-i18next";
 import "../styles/index.css";
 import Shell from "components/shell/Shell";
 const Application = ({
@@ -9,4 +9,4 @@ const Application = ({
 		<Component { ...pageProps }/>
 	</Shell>
 );
-export default Application;
+export default appWithTranslation(Application);

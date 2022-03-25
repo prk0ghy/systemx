@@ -25,6 +25,10 @@
 			"name": "UserLogin Backend"
 		},
 		{
+			"path": "./modules/userLogin/common",
+			"name": "UserLogin Common"
+		},
+		{
 			"path": "./modules/userLogin/front_end",
 			"name": "UserLogin Frontend"
 		},

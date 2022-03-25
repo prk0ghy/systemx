@@ -1,0 +1,10 @@
+.library-item {
+	cursor: pointer;
+	margin-bottom: 1rem;
+	& a {
+		cursor: pointer;
+	}
+	& label {
+		cursor: pointer;
+	}
+}

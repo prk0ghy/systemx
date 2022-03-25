@@ -5,8 +5,15 @@
 	color: white;
 	font-size: 2rem;
 	font-weight: var(--font-weight-light);
-	padding: 1.5rem 3rem;
 	position: relative;
+	@media (--all) {
+		padding: 1rem 2rem;
+	}
+	@media (--tablet) {
+	}
+	@media (--desktop) {
+		padding: 1.5rem 3rem;
+	}
 	&:hover {
 		cursor: pointer;
 		&::after {
@@ -24,6 +31,23 @@
 		}
 	}
 	&.primary {
-		background-color: #0a409a;
+		background-color: var(--color-main);
+		color: #ffffff;
+		font-weight: 600;
+	}
+	&.secondary {
+		background-color: var(--color-green);
+		color: #ffffff;
+		font-weight: 600;
+	}
+	&.tertiary {
+		background-color: var(--color-orange);
+		color: #ffffff;
+		font-weight: 600;
+	}
+	&.quaternary {
+		background-color: var(--color-yellow);
+		color: #ffffff;
+		font-weight: 600;
 	}
 }

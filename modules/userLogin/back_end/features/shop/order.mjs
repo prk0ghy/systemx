@@ -1,5 +1,5 @@
 import * as User from "../../user.mjs";
-import DB from "../../database.mjs";
+import DB, { Insert } from "../../database.mjs";
 import Filter from "../../filter.mjs";
 import { add as userGroupAdd } from "../user/group.mjs";
 import { findProduct } from "../../../common/product.js";
@@ -16,14 +16,14 @@ const {
 	}
 } = options;
 
-const getSingle = async ID => {
+export const getSingle = async ID => {
 	const order = await DB.get(`SELECT * FROM ShopOrder WHERE ID = ?`, ID);
 	if(order){
 		order.products = await DB.all("SELECT * FROM ShopOrderItem WHERE shopOrder = ?", ID);
 	}
 	return order;
 };
-const getSingleByPayPalOrderID = async orderID => {
+export const getSingleByPayPalOrderID = async orderID => {
 	const res = await DB.get(`SELECT ID FROM ShopOrder WHERE payPalOrderID = ?`, orderID);
 	if(!res){return res;}
 	return await getSingle(res.ID);
@@ -33,22 +33,32 @@ const insertItem = ( shopOrder, productID, quantity, priceSingle ) => {
 	const values = [shopOrder, productID, quantity, priceSingle];
 	return DB.run("INSERT INTO ShopOrderItem (shopOrder, productID, quantity, priceSingle) VALUES (?, ?, ?, ?)", values);
 };
-const insertInvoice = (shopOrder, data) => {
-	const keys = ["shopOrder", "email", "phone", "company", "name", "address", "zip", "city", "country"];
-	const values = [shopOrder, data.email, data.phone, data.company, data.name, data.address, data.zip, data.city, data.country];
-	return DB.run(`INSERT INTO ShopOrderInvoice (${keys.join(",")}) VALUES (${keys.map(() => "?").join(",")}</> )})`, values);
-};
-const insert = async ( cart, invoiceData, payPalOrderID, priceTotal, priceTaxes, user ) => {
+
+const insert = async ( cart, payPalOrderID, priceTotal, priceTaxes, user, invoice ) => {
 	const priceSubtotal = priceTotal - priceTaxes;
 	const creationTimestamp = Math.floor(Date.now() / 1000);
-	const values = [user.ID, creationTimestamp ,payPalOrderID, priceTotal, priceTaxes, priceSubtotal];
-	const res = await DB.run("INSERT INTO ShopOrder (user, creationTimestamp, payPalOrderID, priceTotal, priceTaxes, priceSubtotal) VALUES (?, ?, ?, ?, ?, ?)", values);
+	const vals = {
+		user: user.ID,
+		email: user.email,
+		accountType: invoice.accountType,
+		organization: invoice.organization,
+		name: invoice.name,
+		address: invoice.address,
+		zip: invoice.zip,
+		city: invoice.city,
+		country: invoice.country,
+		creationTimestamp,
+		payPalOrderID,
+		priceTotal,
+		priceTaxes,
+		priceSubtotal
+	};
+	const res = await Insert("ShopOrder", vals);
 	const ID = res.lastID;
 	if(!ID){return ID;}
 	for(const product of cart){
 		await insertItem(ID, product.id, 1, product.price );
 	}
-	await insertInvoice(ID, invoiceData);
 	return ID;
 };
 const updateStatus = async ( ID, status ) => {
@@ -63,16 +73,20 @@ const client = new PayPal.core.PayPalHttpClient(environment);
 
 Filter("userCreatePayPalOrder", async (v, next) => {
 	const user = await User.getByID(v.ses?.user?.ID | 0);
-	delete user?.password;
 	if (!user){
 		v.res.error = "Session not found";
 		return v;
 	}
-	const { cart } = v.req;
+	const { cart, invoice } = v.req;
 	if (!cart) {
 		v.res.error = "Cart not found";
 		return v;
 	}
+	if (!invoice) {
+		v.res.error = "Invoice is required";
+		return v;
+	}
+	console.log(invoice);
 	const products = cart.map(findProduct);
 	if (products.some(product => !product || !product.price)) {
 		v.res.error = "Invalid product data";
@@ -98,14 +112,13 @@ Filter("userCreatePayPalOrder", async (v, next) => {
 		return v;
 	}
 	v.res.orderID = result.id;
-	const shopOrderID = await insert(products, result.id, priceTotal, 0, user);
+	const shopOrderID = await insert(products, result.id, priceTotal, 0, user, invoice);
 	v.res.shopOrderID = shopOrderID;
 	return await next(v);
-});
+}, 0, { requiresActivation: true});
 
 Filter("userCapturePayPalOrder", async (v, next) => {
 	const user = await User.getByID(v.ses?.user?.ID | 0);
-	delete user?.password;
 	if (!user) {
 		v.res.error = "Session not found";
 		return v;
@@ -133,14 +146,25 @@ Filter("userCapturePayPalOrder", async (v, next) => {
 	}
 	await userGroupAdd(user.ID, order.products.map(p => p.productID));
 	v.res.isCaptured = true;
+	v.res.orderID = order.ID;
 	return await next(v);
-});
+}, 0, { requiresActivation: true});
 
 await (async () => {
 	await DB.run(`
 		CREATE TABLE IF NOT EXISTS ShopOrder (
 			ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-			user INTEGER NOT NULL REFERENCES User(ID) ON UPDATE CASCADE,
+			user INTEGER NOT NULL REFERENCES User(ID) ON DELETE CASCADE ON UPDATE CASCADE,
+			email TEXT NOT NULL,
+
+			accountType TEXT NOT NULL,
+			organization TEXT NOT NULL,
+			name TEXT NOT NULL,
+			address TEXT NOT NULL,
+			zip TEXT NOT NULL,
+			city TEXT NOT NULL,
+			country TEXT NOT NULL,
+
 			payPalOrderID TEXT NOT NULL,
 			status TEXT DEFAULT "CREATED",
 			creationTimestamp INTEGER DEFAULT 0,
@@ -157,26 +181,6 @@ await (async () => {
 			productID TEXT NOT NULL,
 			quantity INTEGER DEFAULT 1,
 			priceSingle DECIMAL(8, 2) NOT NULL
-		);
-	`);
-	await DB.run(`
-		CREATE TABLE IF NOT EXISTS ShopOrderInvoice (
-			ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-			shopOrder INTEGER NOT NULL REFERENCES ShopOrder(ID) ON DELETE CASCADE ON UPDATE CASCADE,
-			creationTimestamp INTEGER,
-
-			email TEXT NOT NULL,
-			phone TEXT NOT NULL,
-			company TEXT NOT NULL,
-			name TEXT NOT NULL,
-			address TEXT NOT NULL,
-			zip TEXT NOT NULL,
-			city TEXT NOT NULL,
-			country TEXT NOT NULL,
-
-			priceTotal DECIMAL(8, 2) NOT NULL,
-			priceTaxes DECIMAL(8, 2) NOT NULL,
-			priceSubtotal DECIMAL(8, 2) NOT NULL
 		);
 	`);
 })();

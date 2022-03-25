@@ -1,24 +1,30 @@
 import BannerLayout, { TextContent } from "components/layouts/BannerLayout";
 import dynamic from "next/dynamic";
-import Page from "components/shell/Page";
 import { useBrand } from "contexts/Brand";
+import { ShellContent } from "../components/shell/Shell";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
 const CheckoutManager = dynamic(() => import("components/shop/CheckoutManager"), {
 	ssr: false
 });
 const Cart = () => {
-	const [{
-		CheckoutPreviewHeight,
-		CheckoutPreviewURL,
-		CheckoutPreviewWidth
-	}] = useBrand();
+	const [{ pictures }] = useBrand();
+	const { t } = useTranslation("common");
 	return (
-		<Page title="Einkaufswagen">
-			<BannerLayout halfHeight height={ CheckoutPreviewHeight } image={ CheckoutPreviewURL } width={ CheckoutPreviewWidth }>
+		<ShellContent title={ t("titles|cart") }>
+			<BannerLayout halfHeight picture={ pictures.checkout }>
 				<TextContent>
 					<CheckoutManager/>
 				</TextContent>
 			</BannerLayout>
-		</Page>
+		</ShellContent>
 	);
 };
 export default Cart;
+export async function getStaticProps({ locale }) {
+	return {
+		props: {
+			...(await serverSideTranslations(locale, ["common"]))
+		}
+	};
+}

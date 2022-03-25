@@ -7,7 +7,9 @@ import Input from "components/inputs/Input";
 import styles from "./DeleteUserForm.module.css";
 import { useAuthentication } from "contexts/Authentication";
 import { userDeleteRequest } from "root/api";
+import { useTranslation } from "next-i18next";
 const DeleteUserForm = () => {
+	const { t } = useTranslation("common");
 	const [{ user }] = useAuthentication();
 	const [currentErrors, setCurrentErrors] = useState("");
 	const [requestSent, setRequestSent] = useState(false);
@@ -15,47 +17,55 @@ const DeleteUserForm = () => {
 		async vals => {
 			if (user && (vals.username === user.name)) {
 				const res = await userDeleteRequest(vals.username);
+				console.log(res.error);
 				setCurrentErrors(res.error
 					? <Error msg={ res.error }/>
 					: null);
 				setRequestSent(!res.error);
 			}
 			else {
-				setCurrentErrors(<><Error msg="Bitte prüfen Sie ihre Eingabe"/><br/></>);
+				setCurrentErrors(<><Error msg={ t("feedback|input|checkInput") }/><br/></>);
 			}
-		}, [user, setCurrentErrors, setRequestSent]
+		}, [user, setCurrentErrors, setRequestSent, t]
 	);
-
 	return (
 		<Card>
 			<div className={ styles.deleteUserForm }>
 				{ !requestSent
 					? (
 						<Formik
-							initialValues={ { username: "" } }
+							initialValues={ {
+								username: ""
+							} }
 							onSubmit={ doDeleteRequest }
 						>
 							{
 								values => (
-									<Form submit="deleteUser" title="Benutzer löschen">
+									<Form submit="deleteUser" title={ t("deleteUser") }>
 										{ currentErrors }
 										<Input
 											autoComplete="username"
-											label="Benuztername"
+											label={ t("userName") }
 											name="username"
 											required
 											type="text"
 											value={ values?.username }
 										/>
 										<br/>
-										<p>Um Ihren Benutzer vollst&auml;ndig löschen zu lassen, geben Sie hier bitte zur best&auml;tigung Ihren Benutzernamen ein.</p>
-										<Button className={ styles.submit } kind="primary" type="submit">Benutzer löschen</Button>
+										<p>{ t("delUser|prompt") }</p>
+										<Button
+											className={ styles.submit }
+											kind="primary"
+											type="submit"
+										>
+											{ t("deleteUser") }
+										</Button>
 									</Form>
 								)
 							}
 						</Formik>
 					)
-					:	<p>Sie sollten jeden Moment eine E-Mail mit einem Best&auml;tigungslink erhalten.</p>
+					:	<p>{ t("delUser|checkMail") }</p>
 				}
 			</div>
 		</Card>

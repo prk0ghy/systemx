@@ -1,0 +1,56 @@
+.banner-container {
+	height: 100%;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	& .laced {
+		align-items: flex-start;
+		display: flex;
+		flex-wrap: wrap;
+		height: 100%;
+		margin: 0 auto;
+		max-width: 190rem;
+		position: relative;
+		width: calc(100% - 3rem);
+		@media (--laptop) {
+			width: calc(100% - 18rem);
+		}
+		& .image {
+			height: 50px;
+			margin-top: 19vw;
+			opacity: 0.8;
+			width: 50px;
+			@media (--tablet) {
+				height: 100px;
+				margin-top: 18rem;
+				width: 100px;
+			}
+		}
+		& .big {
+			color: white;
+			font-size: 6rem;
+			font-weight: 500;
+			margin-top: 20vw;
+			opacity: 0.8;
+			@media (--all) {
+				font-size: 3.5rem;
+			}
+			@media (--tablet) {
+				font-size: 11rem;
+				margin-top: 16rem;
+			}
+		}
+	}
+}
+.text {
+	color: var(--color-main);
+	margin: 0 auto;
+	max-width: 190rem;
+	padding: 3rem 0;
+	position: relative;
+	width: calc(100% - 3rem);
+	@media (--laptop) {
+		font-size: 4.4rem;
+		width: calc(100% - 18rem);
+	}
+}

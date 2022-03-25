@@ -1,15 +1,33 @@
-const rawFilters = {"*":{}};
+import { isEmptyObject } from "./util.mjs";
 
-/* Adds a filter λ to a named action, it is important that
+const rawFilters = {
+	"*": {}
+};
+
+const rawRestrictions = {};
+
+/**
+ * Adds a filter λ to a named action, it is important that
  * there is at least one λ of the default order 0, otherwise
  * the whole filter will be skipped. It is also possible to add
  * multiple filters to the same order, though then their order
  * within the same value is undefined.
+ * @param {string} name
+ * @param {(v, next) => Promise<void>} fun
+ * @param {number?} order
+ * @param {Object?} requiresActivation
  */
-export const add = (name,fun,order=0) => {
-	if(!rawFilters[name]){rawFilters[name] = {};}
-	if(!rawFilters[name][order]){rawFilters[name][order] = [];}
+export const add = (name, fun, order = 0, restrictions = {}) => {
+	if (!rawFilters[name]) {
+		rawFilters[name] = {};
+	}
+	if (!rawFilters[name][order]) {
+		rawFilters[name][order] = [];
+	}
 	rawFilters[name][order].push(fun);
+	if (!isEmptyObject(restrictions)) {
+		rawRestrictions[name] = restrictions;
+	}
 };
 export default add;
 
@@ -31,17 +49,25 @@ const reduce = (pipeline,next) => {
  * the userRegistration hook in userMeta.mjs
  */
 export const build = name => {
-	if(name === "*"){return null;}
-	if(!rawFilters[name] || !rawFilters[name][0] || rawFilters[name][0].length === 0){return null;}
+	if (name === "*") {
+		return null;
+	}
+	if (!rawFilters[name] || !rawFilters[name][0] || rawFilters[name][0].length === 0) {
+		return null;
+	}
 	const pipeline = [];
 	const wildcard = rawFilters['*'];
 	const specific = rawFilters[name];
 	const keys     = Object.keys(wildcard)
 		.concat(Object.keys(specific))
-		.sort((a,b) => Math.sign(parseInt(a) - parseInt(b)));
+		.sort((a, b) => Math.sign(parseInt(a) - parseInt(b)));
 	for(const key of keys){
-		if(wildcard[key]){pipeline.push(...wildcard[key]);}
-		if(specific[key]){pipeline.push(...specific[key]);}
+		if (wildcard[key]) {
+			pipeline.push(...wildcard[key]);
+		}
+		if (specific[key]) {
+			pipeline.push(...specific[key]);
+		}
 	}
 	return reduce(pipeline,v => v);
 };
@@ -53,8 +79,12 @@ export const buildAll = () => {
 	const ret = {};
 	for(const key of Object.keys(rawFilters)){
 		const filter = build(key);
-		if(!filter){continue;}
+		if (!filter) {
+			continue;
+		}
 		ret[key] = filter;
 	}
 	return ret;
 };
+
+export const getRestrictions = () => rawRestrictions;

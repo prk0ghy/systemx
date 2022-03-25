@@ -7,7 +7,9 @@ import LeftRightGroup from "../../generics/LeftRightGroup.js";
 import RadioGroup from "../../inputs/RadioGroup.js";
 import styles from "./UserBusinessEdit.module.css";
 import { useAuthentication } from "contexts/Authentication";
+import { useTranslation } from "next-i18next";
 const UserBusinessEdit = () => {
+	const { t } = useTranslation("common");
 	const [{ user }] = useAuthentication();
 	const [refresh] = useRefreshUserData();
 	const [modal, setModal] = useState(false);
@@ -18,8 +20,8 @@ const UserBusinessEdit = () => {
 		}, [refresh]
 	);
 	const accountTypes = {
-		personal: "Privatkunde",
-		business: "Geschäftskunde"
+		personal: t("personalCustomer"),
+		business: t("buisnessCustomer")
 	};
 	const setUserMetaBusiness = useCallback(
 		async vals => {
@@ -49,17 +51,29 @@ const UserBusinessEdit = () => {
 						>
 							{
 								() => (
-									<Form className={ styles.form } submit="ändern" title="ändern">
+									<Form className={ styles.form } submit="ändern" title={ t("changeAccountType") }>
 										<RadioGroup
-											label="Kontotyp"
+											label={ t("accountType") }
 											name="accountType"
 											options={ accountTypes }
 											required
 										/>
 										<br/>
 										<LeftRightGroup>
-											<Button className={ styles.submit } kind="primary" type="submit">OK</Button>
-											<Button className={ styles.cancel } kind="secondary" onClick={ ToggleModal }>Abbrechen</Button>
+											<Button
+												className={ styles.submit }
+												kind="primary"
+												type="submit"
+											>
+												{ t("ok") }
+											</Button>
+											<Button
+												className={ styles.cancel }
+												kind="secondary"
+												onClick={ ToggleModal }
+											>
+												{ t("abort") }
+											</Button>
 										</LeftRightGroup>
 									</Form>
 								)

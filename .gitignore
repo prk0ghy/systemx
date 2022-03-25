@@ -45,3 +45,6 @@ Thumbs.db
 *.app
 *.exe
 *.war
+
+# Swap files
+*.kate-swp

@@ -1,0 +1,402 @@
+.details {
+	align-items: start;
+	display: grid;
+	gap: 0 0;
+	grid-auto-flow: row;
+	justify-items: start;
+	width: 100%;
+	@media (--all) {
+		grid-template-areas:
+			"img img img"
+			". . ."
+			". title ."
+			". . ."
+			". Icons ."
+			". . ."
+			". price ."
+			". . ."
+			". link ."
+			". backlink ."
+			". . ."
+			". description .";
+		grid-template-columns: 12px auto 12px;
+		grid-template-rows: auto 12px auto 32px auto 54px auto 44px 60px auto 50px auto;
+	}
+	@media (--tablet) {
+		grid-template-areas:
+			"img . . ."
+			"img . title title"
+			"img . . ."
+			"img . Icons Icons"
+			"img . price price"
+			"img . link link"
+			". . . ."
+			"description description description description"
+			". . . ."
+			"backlink backlink backlink backlink"
+			". . . .";
+		grid-template-columns: 44% 25px 1fr 1fr;
+		grid-template-rows: 44px auto 32px auto 40px auto 60px auto 20px 50px 20px;
+	}
+	@media (--laptop) {
+		grid-template-areas:
+			"img . . ."
+			"img . title title"
+			"img . . ."
+			"img . Icons Icons"
+			"img . description description"
+			"img . . ."
+			"img . price price"
+			"img . link backlink"
+			"img . . .";
+		grid-template-columns: 44% 44px 1fr 1fr;
+		grid-template-rows: 44px min-content 32px 128px auto 60px 50px 120px 20px;
+	}
+	& .img {
+		grid-area: img;
+		height: 100%;
+		object-fit: cover;
+		width: 100%;
+		@media (--tablet) {
+		}
+		@media (--laptop) {
+			grid-area: initial;
+			height: calc(100vh - 10rem);
+			object-fit: cover;
+		}
+	}
+	& .title {
+		grid-area: title;
+		place-self: start start;
+		& h1 {
+			color: var(--color-main);
+			font-size: 2rem;
+			font-weight: 700;
+			@media (--all) {
+			}
+			@media (--tablet) {
+				font-size: 2.5rem;
+			}
+			@media (--laptop) {
+				font-size: 4rem;
+			}
+		}
+	}
+	& .book-title {
+		grid-area: title;
+		& h1 {
+			color: var(--color-main);
+			display: inline-block;
+			font-size: 2rem;
+			font-weight: 700;
+			@media (--all) {
+			}
+			@media (--tablet) {
+				font-size: 2.5rem;
+			}
+			@media (--laptop) {
+				font-size: 4rem;
+			}
+			&::before {
+				background-image: url(/mvet/ui/book.svg);
+				background-repeat: no-repeat;
+				background-size: contain;
+				content: "";
+				display: inline-block;
+				margin-right: 16px;
+				position: relative;
+				vertical-align: -20%;
+				@media (--all) {
+					height: 26px;
+					width: 50px;
+				}
+				@media (--tablet) {
+					height: 30px;
+					vertical-align: -16%;
+					width: 50px;
+				}
+				@media (--laptop) {
+					height: 64px;
+					vertical-align: -35%;
+					width: 92px;
+				}
+			}
+		}
+	}
+	/* stylelint-disable-next-line selector-class-pattern */
+	& .Icons {
+		display: grid;
+		gap: 0 0;
+		grid-area: Icons;
+		grid-auto-flow: row;
+		grid-template-areas: "date-icon date book book-text";
+		grid-template-rows: 1fr;
+		width: 100%;
+		@media (--all) {
+			grid-template-columns: 36px auto 24px 144px;
+		}
+		@media (--tablet) {
+			grid-template-columns: 42px auto 24px 166px;
+			margin-right: 4rem;
+			width: calc(100% - 4rem);
+		}
+		@media (--laptop) {
+		}
+		@media (--desktop) {
+			grid-template-columns: 96px auto 40px 310px;
+		}
+		& .date-icon {
+			background-image: url(/mvet/ui/date.svg);
+			background-repeat: no-repeat;
+			background-size: contain;
+			display: block;
+			grid-area: date-icon;
+			margin-bottom: 2rem;
+			@media (--all) {
+				height: 32px;
+				width: 32px;
+			}
+			@media (--tablet) {
+				height: 38px;
+				width: 38px;
+			}
+			@media (--desktop) {
+				height: 78px;
+				width: 72.5px;
+			}
+		}
+		& .date {
+			color: var(--color-orange);
+			font-weight: 600;
+			grid-area: date;
+			max-width: 300px;
+			@media (--all) {
+				font-size: 1.8rem;
+				margin-top: 0;
+			}
+			@media (--tablet) {
+			}
+			@media (--desktop) {
+				font-size: 3.5rem;
+				margin-top: 1rem;
+			}
+		}
+		& .book {
+			background-image: url(/mvet/ui/book.svg);
+			background-repeat: no-repeat;
+			background-size: contain;
+			display: block;
+			grid-area: book;
+			margin-top: 0.2rem;
+			position: relative;
+			@media (--all) {
+				height: 32px;
+				width: 40px;
+			}
+			@media (--tablet) {
+				height: 32px;
+				width: 50px;
+			}
+			@media (--desktop) {
+				height: 64px;
+				margin-top: 1rem;
+				width: 92px;
+			}
+			&::before {
+				background-image: url(/mvet/ui/plus.svg);
+				background-repeat: no-repeat;
+				background-size: contain;
+				content: "";
+				display: block;
+				left: -30px;
+				position: absolute;
+				top: 18px;
+				@media (--all) {
+					height: 10px;
+					left: -14px;
+					top: 10px;
+					width: 10px;
+				}
+				@media (--tablet) {
+				}
+				@media (--desktop) {
+					height: 22px;
+					left: -30px;
+					top: 18px;
+					width: 22px;
+				}
+			}
+		}
+		& .book-text {
+			color: var(--color-main);
+			display: flex;
+			font-size: 3rem;
+			font-weight: 400;
+			gap: 8px;
+			grid-area: book-text;
+			line-height: 3rem;
+			@media (--all) {
+				font-size: 1.5rem;
+				line-height: 1.5rem;
+			}
+			@media (--tablet) {
+				font-size: 1.8rem;
+				line-height: 1.8rem;
+			}
+			@media (--desktop) {
+				font-size: 3rem;
+				gap: 16px;
+				line-height: 3rem;
+			}
+			& span {
+				margin-top: 0;
+				@media (--desktop) {
+					margin-top: 1rem;
+				}
+			}
+		}
+	}
+	& .description {
+		color: var(--color-main);
+		grid-area: description;
+		padding: 0 1rem 0 0;
+		@media (--all) {
+			font-size: 1.5rem;
+			line-height: 3rem;
+			margin: 0 0 2rem;
+		}
+		@media (--tablet) {
+			margin: 0 auto;
+			width: calc(100% - 8rem);
+		}
+		@media (--laptop) {
+			font-size: 2.5rem;
+			line-height: 3rem;
+			margin: 0;
+			width: calc(100% - 4rem);
+		}
+		& h2 {
+			color: var(--color-main);
+			font-weight: 600;
+			margin-bottom: 1rem;
+			@media (--all) {
+				font-size: 2rem;
+			}
+			@media (--tablet) {
+			}
+			@media (--laptop) {
+				font-size: 3rem;
+			}
+		}
+	}
+	& .price {
+		color: var(--color-main);
+		font-size: 3.7rem;
+		font-weight: 700;
+		grid-area: price;
+		@media (--all) {
+			font-size: 2.5rem;
+			justify-self: center;
+		}
+		@media (--tablet) {
+			align-self: end;
+			font-size: 2.5rem;
+			justify-self: end;
+			margin-right: 4rem;
+		}
+		@media (--laptop) {
+			font-size: 3.7rem;
+			justify-self: start;
+		}
+		& .mwst {
+			@media (--all) {
+				font-size: 1.6rem;
+				line-height: 2.6rem;
+			}
+			@media (--tablet) {
+				font-size: 1.6rem;
+				line-height: 2.6rem;
+			}
+			@media (--laptop) {
+				font-size: 2.7rem;
+				line-height: 3.7rem;
+			}
+		}
+	}
+	& .button {
+		grid-area: link;
+		@media (--all) {
+			justify-self: center;
+		}
+		@media (--tablet) {
+			align-self: end;
+			justify-self: end;
+			margin-right: 4rem;
+		}
+		@media (--laptop) {
+			justify-self: start;
+		}
+		& button {
+			padding: 1rem 2rem;
+			@media (--laptop) {
+				padding: 1.5rem 3rem;
+			}
+		}
+	}
+	& .backbutton {
+		align-self: center;
+		grid-area: backlink;
+		justify-self: center;
+		margin-right: 0;
+		@media (--laptop) {
+			align-self: end;
+			justify-self: end;
+			margin-right: 4rem;
+		}
+	}
+	&.info-book {
+		@media (--all) {
+			grid-template-areas:
+				"img img img"
+				". . ."
+				". title ."
+				". . ."
+				". price ."
+				". . ."
+				". link ."
+				". . ."
+				". description ."
+				". . ."
+				". backlink ."
+				". . .";
+			grid-template-columns: 12px auto 12px;
+			grid-template-rows: auto 12px auto 54px auto 44px auto 50px auto 20px auto 20px;
+		}
+		@media (--tablet) {
+			grid-template-areas:
+				"img . . ."
+				"img . title title"
+				"img . . ."
+				"img . Icons Icons"
+				"img . price price"
+				"img . link backlink"
+				". . . ."
+				"description description description description";
+			grid-template-columns: 44% 25px 1fr 1fr;
+			grid-template-rows: 44px auto 120px auto auto 60px 50px auto;
+		}
+		@media (--laptop) {
+			grid-template-areas:
+				"img . . ."
+				"img . title title"
+				"img . . ."
+				"img . description description"
+				"img . . ."
+				"img . price price"
+				"img . link backlink"
+				"img . . .";
+			grid-template-columns: 44% 44px 1fr 1fr;
+			grid-template-rows: 44px auto 32px auto 60px 50px 120px 20px;
+		}
+	}
+}

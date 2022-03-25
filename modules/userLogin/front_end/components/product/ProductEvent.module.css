@@ -1,0 +1,205 @@
+.event {
+	box-shadow: 0 3px 6px #00000054;
+	display: grid;
+	font-size: 1.5rem;
+	gap: 0 0;
+	grid-template-areas:
+		"img img . . ."
+		"img img . icon name "
+		"img img . more more "
+		"img img . date date "
+		"img img . . ."
+		". price price button button";
+	grid-template-columns: 24px 100px 8px 32px auto;
+	grid-template-rows: 14px auto auto auto auto 75px;
+	margin: 0 0 1rem;
+	width: 100%;
+	@media (--tablet) {
+		grid-area: right;
+		grid-template-areas:
+			"img . . . . ."
+			"img . icon name name name"
+			"img . more more more more"
+			"img . date date date date"
+			"img . price price . button"
+			"img . . . . .";
+		grid-template-columns: 210px 14px 44px 8px auto 380px;
+		grid-template-rows: 14px auto auto 1fr 30px 14px;
+	}
+	@media (--laptop) {
+		font-size: 3rem;
+		grid-template-areas:
+			"img . . . ."
+			"img . name name name"
+			"img . more more more"
+			"img . icon date date"
+			"img . price price button"
+			"img . . . .";
+		grid-template-columns: 320px 28px 78px auto 380px;
+		grid-template-rows: 24px auto auto auto auto 24px;
+	}
+	& .img {
+		aspect-ratio: 1/1;
+		grid-area: img;
+		width: 100%;
+	}
+	& .name {
+		align-self: start;
+		color: var(--color-main);
+		font-weight: 700;
+		grid-area: name;
+		line-height: 2.5rem;
+		overflow: hidden;
+		@media (--all) {
+			font-size: 1.5rem;
+		}
+		@media (--tablet) {
+			font-size: 2.5rem;
+			line-height: 3.5rem;
+		}
+		@media (--laptop) {
+		}
+		&:hover {
+			cursor: pointer;
+			text-decoration: underline;
+		}
+	}
+	& .more {
+		color: var(--color-main);
+		cursor: pointer;
+		font-weight: 400;
+		grid-area: more;
+		margin-bottom: 1.4rem;
+		position: relative;
+		@media (--all) {
+			font-size: 1.2rem;
+		}
+		@media (--tablet) {
+			font-size: 1.2rem;
+		}
+		@media (--laptop) {
+			font-size: 2.5rem;
+		}
+		&::before {
+			border-color: #00000000 #00000000 #00000000 var(--color-main);
+			border-style: solid;
+			border-width: 6px 0 6px 10px;
+			content: "";
+			display: inline-block;
+			filter: drop-shadow(0 3px 6px #00000029);
+			height: 0;
+			margin-right: 0.6rem;
+			vertical-align: -12%;
+			width: 0;
+			@media (--tablet) {
+			}
+			@media (--laptop) {
+				border-width: 12px 0 12px 20px;
+				vertical-align: -8%;
+			}
+		}
+	}
+	& .icon {
+		margin-bottom: 1.4rem;
+		margin-top: 0.3rem;
+		@media (--tablet) {
+			margin-top: 0;
+		}
+	}
+	& .date {
+		color: #d68301;
+		font-weight: 500;
+		grid-area: date;
+		margin-bottom: 1.4rem;
+		@media (--all) {
+			align-self: end;
+		}
+		@media (--tablet) {
+			align-self: start;
+		}
+		@media (--laptop) {
+		}
+	}
+	& .price {
+		align-self: center;
+		color: var(--color-main);
+		display: inline;
+		font-weight: 700;
+		grid-area: price;
+		line-height: 3rem;
+		white-space: nowrap;
+		@media (--tablet) {
+			align-self: end;
+		}
+		@media (--laptop) {
+		}
+	}
+	& button {
+		align-self: center;
+		background-color: var(--color-main);
+		border: none;
+		box-shadow: 0 3px 6px #00000047;
+		color: white;
+		font-size: 1.5rem;
+		grid-area: button;
+		height: 28px;
+		text-align: center;
+		@media (--all) {
+			font-size: 1.5rem;
+			height: 28px;
+			justify-self: end;
+			line-height: 2px;
+			margin-right: 1.8rem;
+			max-width: 188px;
+			padding: 4px 12px;
+		}
+		@media (--tablet) {
+		}
+		@media (--laptop) {
+			align-self: end;
+			font-size: 3rem;
+			height: 42px;
+			line-height: 16px;
+			max-width: 360px;
+			padding: 1.5rem 3rem;
+		}
+	}
+	&[is-book="true"] {
+		font-size: 1.5rem;
+		grid-template-areas:
+			"img img . . ."
+			"img img . icon name"
+			"img img . more more"
+			"img img . date date"
+			"img img . . ."
+			". price price button button";
+		grid-template-columns: 24px 100px 8px 32px auto;
+		grid-template-rows: 14px auto auto auto auto 75px;
+		@media (--tablet) {
+			grid-template-areas:
+				"img . . . . ."
+				"img . icon name name name"
+				"img . more more more more"
+				"img . price price . button"
+				"img . . . . .";
+			grid-template-columns: 210px 14px 58px 8px auto 380px;
+			grid-template-rows: 14px auto 1fr 30px 14px;
+		}
+		@media (--laptop) {
+			font-size: 3rem;
+			grid-template-areas:
+				"img . . . ."
+				"img . name name name"
+				"img . more more more"
+				"img . icon date date"
+				"img . price price button"
+				"img . . . .";
+			grid-template-columns: 320px 28px 78px auto 380px;
+			grid-template-rows: 24px auto auto auto auto 24px;
+		}
+		& button {
+			background-color: var(--color-green);
+			color: white;
+		}
+	}
+}

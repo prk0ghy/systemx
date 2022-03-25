@@ -25,10 +25,10 @@
 		}
 	}
 	& .side-menu {
-		background-color: hsla(0deg, 0%, 8%);
-		border-left: 0.1rem solid hsl(0deg, 0%, 100%, 0.2);
+		background-color: hsl(0, 0%, 100%);
+		border-left: 0.1rem solid hsl(0, 0%, 100%, 0.2);
 		height: 100%;
-		padding: 1.5rem;
+		padding: 0;
 		position: fixed;
 		right: 0;
 		top: 0;

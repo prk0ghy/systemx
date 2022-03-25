@@ -1,30 +1,32 @@
 import BannerLayout from "components/layouts/BannerLayout";
-import Page from "components/shell/Page";
 import ProductList from "components/product/ProductList";
-import styles from "./Home.module.css";
+import styles from "./index.module.css";
 import { useBrand } from "contexts/Brand";
-
+import { ShellContent } from "../components/shell/Shell";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
 const Home = () => {
-
 	const [{
-		homePreviewHeight,
-		homePreviewURL,
-		homePreviewWidth,
+		pictures,
 		subjectMatter
 	}] = useBrand();
+	const { t } = useTranslation("common");
 	const headline = (
-		<>
-			<div className={ styles.small }>Das Portal für</div>
-			<div>{ subjectMatter }</div>
-		</>
+		<div>Das Portal für { subjectMatter } - Besondere Tiere brauchen besondere Tierärzte</div>
 	);
-
 	return (
-		<Page title="Startseite">
-			<BannerLayout className={ styles.home } headline={ headline } height={ homePreviewHeight } image={ homePreviewURL } width={ homePreviewWidth }>
+		<ShellContent title={ t("titles|landing") }>
+			<BannerLayout autoHeight className={ styles.home } headline={ headline } picture={ pictures.home } showLogo>
 				<ProductList/>
 			</BannerLayout>
-		</Page>
+		</ShellContent>
 	);
 };
 export default Home;
+export async function getStaticProps({ locale }) {
+	return {
+		props: {
+			...(await serverSideTranslations(locale, ["common"]))
+		}
+	};
+}

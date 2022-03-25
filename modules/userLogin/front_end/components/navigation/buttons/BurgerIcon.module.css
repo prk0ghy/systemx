@@ -2,11 +2,9 @@
 	--size: 4rem;
 	background-color: transparent;
 	border: none;
-	font-size: inherit;
-	height: var(--size);
-	transform: scale(2.5, 2.1);
-	vertical-align: -34%;
-	width: var(--size);
+	display: block;
+	font-size: 3.6rem;
+	letter-spacing: -3px;
 	&:focus {
 		outline: 0;
 	}
@@ -15,5 +13,8 @@
 	}
 	&:hover {
 		cursor: pointer;
+	}
+	& .fat {
+		font-weight: var(--font-weight-bold);
 	}
 }

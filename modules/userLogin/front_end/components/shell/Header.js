@@ -1,45 +1,44 @@
 import {
-	useCallback,
-	useEffect,
-	useRef,
-	useState
+	useCallback, useEffect, useRef, useState
 } from "react";
 import cx from "classnames";
 import Laced from "components/generics/Laced";
 import Navigation from "components/navigation/TopNavigation";
 import styles from "./Header.module.css";
+import { useBus } from "../../contexts/Bus";
 import { useRouter } from "next/router";
-const Header = () => {
+const Header = ({
+	backgroundColor = `var(--color-main)`,
+	noBlur = false
+}) => {
 	const headerReference = useRef();
 	const router = useRouter();
-	const [isMinimized, setIsMinimized] = useState(false);
-	const [hasNavigated, setHasNavigated] = useState(false);
+	const [{ isMinimized }, dispatch] = useBus();
+	const setIsMinimized = useCallback(minimize => {
+		if (minimize) {
+			dispatch({
+				type: "CLOSE_HEADER"
+			});
+		}
+		else {
+			dispatch({
+				type: "OPEN_HEADER"
+			});
+		}
+	}, [
+		dispatch
+	]);
 	const [lastScrollPosition, setLastScrollPosition] = useState(0);
 	const handleVisibility = useCallback(() => {
 		const limitY = 300;
 		const y = window.scrollY;
 		const isThresholdPassed = y >= limitY;
 		const isLastScrollDirectionDown = lastScrollPosition < y;
-		const shouldMinimize = hasNavigated || isThresholdPassed && isLastScrollDirectionDown;
+		const shouldMinimize = isThresholdPassed && isLastScrollDirectionDown;
 		setIsMinimized(shouldMinimize);
 		setLastScrollPosition(y);
 		headerReference.current.inert = shouldMinimize;
-	}, [
-		hasNavigated,
-		lastScrollPosition
-	]);
-	const onRouteChange = useCallback(() => {
-		setHasNavigated(true);
-		const reset = () => {
-			setHasNavigated(false);
-			window.removeEventListener("scroll", reset);
-		};
-		window.addEventListener("scroll", reset, {
-			passive: true
-		});
-	}, [
-		setHasNavigated
-	]);
+	}, [lastScrollPosition, setIsMinimized]);
 	useEffect(() => {
 		window.addEventListener("scroll", handleVisibility, {
 			passive: true
@@ -47,23 +46,26 @@ const Header = () => {
 		return () => {
 			window.removeEventListener("scroll", handleVisibility);
 		};
-	}, [
-		handleVisibility
-	]);
+	}, [handleVisibility]);
+	const onRouteChange = useCallback(() => {
+		setIsMinimized(false);
+	}, [setIsMinimized]);
 	useEffect(() => {
 		router.events.on("routeChangeComplete", onRouteChange);
 		return () => {
 			router.events.off("routeChangeComplete", onRouteChange);
 		};
-	}, [
-		onRouteChange,
-		router.events
-	]);
+	}, [onRouteChange, router.events]);
 	const headerClassName = cx(styles.header, {
-		[styles.minimized]: isMinimized
+		[styles.minimized]: isMinimized,
+		[styles.noBlur]: noBlur
 	});
 	return (
-		<header className={ headerClassName } ref={ headerReference }>
+		<header
+			className={ headerClassName } ref={ headerReference } style={ {
+				backgroundColor
+			} }
+		>
 			<Laced>
 				<Navigation className={ styles.navigation }/>
 			</Laced>

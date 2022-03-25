@@ -186,14 +186,55 @@ const defaultTargets = {
 			}
 		}
 	},
-	dev: {
-		graphqlEndpoint: "https://craft-dev.test-dilewe.de/api",
-		title: "Craft Dev",
+	mvet: {
+		absoluteDomain: "https://mvet.test-dilewe.de",
+		backLink: "https://mvet.test-dilewe.de/",
+		graphqlEndpoint: "https://redaktion-tagungsbaende.test-dilewe.de/api",
+		mailFrom: "mvet@dilewe.de",
+		usesStartpageReference: false,
+		title: "mVet",
 		targets: {
-			preview: {
-				action: 'preview',
-				httpPort: 4020
+			shop: {
+				activeModule: "userLogin",
+				httpPort: 9020
+			},
+			dev: {
+				portal: {
+					frontEndVariables: {
+						api: {
+							endpoint: "http://localhost:8020/portal-user"
+						}
+					}
+				}
 			}
+		},
+		portal: {
+			frontEndVariables: {
+				api: {
+					endpoint: "https://mvet.test-dilewe.de/portal-user"
+				}
+			},mounts: [
+				{
+					url: "/resources/",
+					localDir: "/var/www/html/test-dilewe.de/mvet/web/mvet/resources/"
+				},{
+					url: "/vogelinternistik2/",
+					localDir: "/var/www/html/test-dilewe.de/mvet/web/mvet/vogelinternistik2/",
+					userGroup: "vogelinternistik2"
+				},{
+					url: "/anaesthesie_reptilien/",
+					localDir: "/var/www/html/test-dilewe.de/mvet/web/mvet/anaesthesie_reptilien/",
+					userGroup: "anaesthesie_reptilien"
+				},{
+					url: "/vogelnarkose/",
+					localDir: "/var/www/html/test-dilewe.de/mvet/web/mvet/vogelnarkose/",
+					userGroup: "vogelnarkose"
+				},{
+					url: "/bartagamen/",
+					localDir: "/var/www/html/test-dilewe.de/mvet/web/mvet/bartagamen/",
+					userGroup: "bartagamen"
+				}
+			]
 		}
 	}
 };

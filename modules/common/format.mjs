@@ -35,3 +35,7 @@ export const formatHTML = html => beautify.html(html, {
 	e4x: false,
 	indent_empty_lines: false
 });
+
+export const formatPrice = price => !price
+	? ""
+	: `€ ${price.toFixed(2)}\u{202f}`.replace(".", ",");
