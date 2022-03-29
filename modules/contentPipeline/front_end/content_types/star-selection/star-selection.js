@@ -2,7 +2,7 @@
 (() => {
 	const C_PROPERTY_KEY = "star-selection";
 	const C_FOR_SECTION_KEY = "for-star";
-	const C_VALID_STAR_MODES = ["stern", "operatoren", "sprache"];
+	const C_VALID_STAR_MODES = ["stern", "true"];
 
 	/**
 	 * @param {HTMLElement} element

@@ -2,11 +2,7 @@ section[star-selection="stern"] {
 	display: none;
 }
 
-section[star-selection="operatoren"] {
-	display: none;
-}
-
-section[star-selection="sprache"] {
+section[star-selection="true"] {
 	display: none;
 }
 
@@ -15,11 +11,7 @@ section[star-selection="stern"]::after {
 	display: none !important;
 }
 
-section[star-selection="operatoren"]::after {
-	display: none !important;
-}
-
-section[star-selection="sprache"]::after {
+section[star-selection="true"]::after {
 	display: none !important;
 }
 
