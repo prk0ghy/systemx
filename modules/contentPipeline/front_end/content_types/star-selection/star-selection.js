@@ -76,7 +76,7 @@
 				container.appendChild(s);
 			});
 			let isOpen = false;
-			setVisibility(section, "visible");
+			//setVisibility(section, "visible");
 			starButton.onclick = () => {
 				isOpen = !isOpen;
 				starButtons.forEach(s => {
@@ -87,9 +87,12 @@
 					resetStarElements(starElements);
 					// if the section is hidden, add a fade animation
 					if (!isVisible(section)) {
-						section.classList.add("fadein");
+						//because fade in is an animation now, we just want to apply it to the star-selection=true elements
+						if (section.getAttribute("star-selection")) {
+							section.classList.add("fadein");
+						}
 					}
-					setVisibility(section, "visible");
+					//setVisibility(section, "visible");
 					starButton.classList.remove("open");
 					unblurAllSections();
 				} else {
@@ -140,7 +143,11 @@
 		const isLastSection = starElements[starElements.length - 1].nextElementSibling === null;
 		return starElements.map(starElement => {
 			const a =  document.createElement("a");
-			const ct = starElement.getAttribute("content-type");
+			let ct = starElement.getAttribute("content-type");
+			// we need to differ the embed-ct between h5p and video
+			if (ct === "embedding") {
+				ct = starElement.getAttribute("embedding-type");
+			}
 			a.setAttribute("content-type", ct);
 			a.classList.add("bubble");
 			a.style.visibility = "hidden";
@@ -150,22 +157,30 @@
 			a.onclick = () => {
 				// reset all other star elements
 				starElements.filter(se => !se.isSameNode(starElement)).forEach(se => {
-					se.style.display = null;
+					se.classList.remove("star-active");
 					se.style.top = null;
 				});
-				if (starElement.style.display === "block") {
+				if (starElement.classList.contains("star-active")) {
 					return;
 				} else {
 					starElement.classList.add("fadein");
 					blurSections(section.id);
-					starElement.style.display = "block";
+					starElement.classList.add("star-active");
+					// we need to dispatch a resize event, if the star-element is an embed
+					if (starElement.getAttribute("content-type") === "embedding") {
+						//somehow the event needs to be triggered with some delay of 10ms
+						setTimeout(() => {
+							window.dispatchEvent(new Event("resize"));
+						}, 10);
+					}
 					// if the parent section is the last one we need to offset it slightly less
 					// for some reason
 					starElement.style.top = `-${!isLastSection ? offset : offset - 25}px`;
 					// add bottom margin if the element is smaller than the original section
 					const computedOffset = offset - (starElement.offsetHeight > offset ? 0 : starElement.offsetHeight) - 100;
 					starElement.style.marginBottom = `-${computedOffset}px`;
-					setVisibility(section, "hidden");
+					//we dont want to hide it
+					//setVisibility(section, "hidden");
 					scrollToElement(section, C_SCROLL_OFFSET);
 				}
 			};
@@ -192,7 +207,7 @@
 	 */
 	const resetStarElements = (starElements) => {
 		starElements.forEach(starElement => {
-			starElement.style.display = null;
+			starElement.classList.remove("star-active");
 			starElement.style.top = null;
 			starElement.classList.remove("unblur", "blur");
 		});
@@ -252,7 +267,7 @@
 	 * @param {string} contentType
 	 * @returns
 	 */
-	const getIconFromContentType = (contentType) => {
+	const getIconFromContentType = contentType => {
 		let title = "";
 		let icon = "";
 		switch(contentType) {
@@ -260,7 +275,11 @@
 			icon = "text";
 			title = "Text / Bild";
 			break;
-		case "embedding":
+		case "h5p" :
+			icon = "quest";
+			title = "Interaktion";
+			break;
+		case "video":
 			icon = "video";
 			title = "Video";
 			break;
@@ -269,6 +288,11 @@
 			title = "Audio";
 			break;
 		case "image": {
+			icon = "image";
+			title = "Bild(er)";
+			break;
+		}
+		case "gallery": {
 			icon = "image";
 			title = "Bild(er)";
 			break;
