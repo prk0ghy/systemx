@@ -29,12 +29,7 @@ section[star-selection="true"] > inner-content {
 	padding: 2rem 2rem 1rem;
 	border: #d69834 1px solid;
 	max-width: calc(var(--content-width) - 2rem);
-}
-
-section[with-stars] inner-content {
-	display: flex;
-	flex-direction: row;
-	width: 100%;
+	z-index: 1;
 }
 
 /* remove block background since it overlaps with the star buttons */
