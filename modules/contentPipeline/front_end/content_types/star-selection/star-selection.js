@@ -69,15 +69,14 @@
 				container.classList.add("offset");
 			}
 			container.appendChild(starButton);
-			// account for various content paddings/margins
-			const absHeight = section.offsetHeight + 64 + 25 + (isMobile() ? -96 : 0);
-			const starButtons = createStarButtons(starElements, absHeight, section);
+			const starButtons = createStarButtons(starElements, section);
 			starButtons.forEach(s => {
 				container.appendChild(s);
 			});
 			let isOpen = false;
 			//setVisibility(section, "visible");
 			starButton.onclick = () => {
+				//first reset all star buttons and star elements
 				isOpen = !isOpen;
 				starButtons.forEach(s => {
 					s.classList.toggle("shift-in");
@@ -87,14 +86,12 @@
 					resetStarElements(starElements);
 					// if the section is hidden, add a fade animation
 					if (!isVisible(section)) {
-						//because fade in is an animation now, we just want to apply it to the star-selection=true elements
+						//because fade in is an animation now, we just want to apply it to the star-selection elements
 						if (section.getAttribute("star-selection")) {
 							section.classList.add("fadein");
 						}
 					}
-					//setVisibility(section, "visible");
 					starButton.classList.remove("open");
-					unblurAllSections();
 				} else {
 					starButton.classList.add("open");
 					section.classList.remove("unblur");
@@ -135,12 +132,10 @@
 
 	/**
 	 * @param {Element[]} starElements
-	 * @param {number} offset
 	 * @param {Element} section
 	 * @returns {Element[]}
 	 */
-	const createStarButtons = (starElements, offset, section) => {
-		const isLastSection = starElements[starElements.length - 1].nextElementSibling === null;
+	const createStarButtons = (starElements, section) => {
 		return starElements.map(starElement => {
 			const a =  document.createElement("a");
 			let ct = starElement.getAttribute("content-type");
@@ -160,28 +155,30 @@
 					se.classList.remove("star-active");
 					se.style.top = null;
 				});
+				// also reset all star-buttons
 				if (starElement.classList.contains("star-active")) {
 					return;
 				} else {
 					starElement.classList.add("fadein");
-					blurSections(section.id);
 					starElement.classList.add("star-active");
+					// check for mobile resolution
+					const margin = isMobile ? 0 : 68;
+					console.log(isMobile);
+					starElement.style.top = `-${section.offsetHeight + margin}px`;
+					// we want the difference from section and star element, so the star elements dont overlap
+					starElement.style.marginBottom = `-${section.offsetHeight + margin}px`;
+					scrollToElement(section, C_SCROLL_OFFSET);
 					// we need to dispatch a resize event, if the star-element is an embed
-					if (starElement.getAttribute("content-type") === "embedding") {
-						//somehow the event needs to be triggered with some delay of 10ms
+					if (starElement.getAttribute("embedding-type") === "h5p") {
+						//somehow the event needs to be triggered with some delay or else it wont work fully
 						setTimeout(() => {
 							window.dispatchEvent(new Event("resize"));
-						}, 10);
+						}, 20);
+						//and we need to apply the new height to the margin-bottom again, but ww also need to wait for the browser
+						setTimeout(() => {
+							starElement.style.marginBottom = `-${section.offsetHeight + margin}px`;
+						}, 100);
 					}
-					// if the parent section is the last one we need to offset it slightly less
-					// for some reason
-					starElement.style.top = `-${!isLastSection ? offset : offset - 25}px`;
-					// add bottom margin if the element is smaller than the original section
-					const computedOffset = offset - (starElement.offsetHeight > offset ? 0 : starElement.offsetHeight) - 100;
-					starElement.style.marginBottom = `-${computedOffset}px`;
-					//we dont want to hide it
-					//setVisibility(section, "hidden");
-					scrollToElement(section, C_SCROLL_OFFSET);
 				}
 			};
 			return a;
@@ -212,33 +209,6 @@
 			starElement.classList.remove("unblur", "blur");
 		});
 	};
-
-	/**
-	 * Blur all sections except the section with the given id
-	 * and sections which are star-element siblings for the given id
-	 * @param {string} exceptId
-	 */
-	const blurSections = (exceptId) => {
-		sections
-			.filter(s => s.id !== exceptId)
-			.filter(s => s.getAttribute(C_FOR_SECTION_KEY) !== exceptId)
-			.forEach(s => {
-				s.classList.add("blur");
-			});
-	};
-
-	/**
-	 * un-blur all sections.
-	 */
-	const unblurAllSections = () => {
-		sections
-			.filter(s => s.classList.contains("blur"))
-			.forEach(s => {
-				s.classList.remove("blur");
-				s.classList.add("unblur");
-			});
-	};
-
 
 	/**
 	 * Determine if a 'text-and-image' section should use the image or text icon.
