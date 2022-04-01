@@ -162,8 +162,8 @@
 					starElement.classList.add("fadein");
 					starElement.classList.add("star-active");
 					// check for mobile resolution
-					const margin = isMobile ? 0 : 68;
-					console.log(isMobile);
+					const margin = isMobile()? 0 : 68;
+					console.log(margin);
 					starElement.style.top = `-${section.offsetHeight + margin}px`;
 					// we want the difference from section and star element, so the star elements dont overlap
 					starElement.style.marginBottom = `-${section.offsetHeight + margin}px`;
