@@ -26,7 +26,7 @@ jobs:
     name: Notifications for this pipeline
     runs-on: ubuntu-latest
     if: ${{ failure() }}
-    needs: [integration, lint, test]
+    needs: [lint]
     steps:
       - name: Post Pipeline Fails to a Slack channel
         id: slack
