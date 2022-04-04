@@ -1,12 +1,12 @@
 [Unit]
 After=network-online.target
-Description=The systemx develop preview
+Description=The systemx preview
 Requires=network-online.target
 StartLimitBurst=25
 StartLimitIntervalSec=60
 
 [Service]
-ExecStart=npm start --prefix=/var/www/html/test-dilewe.de/dev/ -- %I
+ExecStart=npm start --prefix=/var/www/html/dilewe.de/systemx/ -- %I
 Restart=on-failure
 User=www-data
 
