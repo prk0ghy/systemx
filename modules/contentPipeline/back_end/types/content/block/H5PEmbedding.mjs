@@ -43,7 +43,7 @@ export default {
 				...rest
 			}) => ({
 				helpVideo: helpVideos[0],
-				isNumbered: (isNumbered && ((starSelection === "standard") || (!starSelection))),
+				isNumbered: (isNumbered && ((starSelection === "false") || (!starSelection))),
 				starSelection,
 				...rest
 			})

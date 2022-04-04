@@ -33,7 +33,7 @@ export const makeRenderer = contentTypes => async (model, context, hints) => {
 			const { map } = contentType.queries.get(type);
 			const effectiveModel = isEntryType && !context.isMock
 				? (await context.query(() => `
-					entry(id: ${model.id}, siteId: "*") {
+					entry(id: ${model.id}, siteId: "*", status: ["disabled","live"]) {
 						...on ${type} {
 							${contentType.queries.get(type).fetch(context.cms)}
 						}

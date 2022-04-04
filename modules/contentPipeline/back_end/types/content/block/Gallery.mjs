@@ -91,7 +91,7 @@ export default {
 				starSelection,
 				...rest
 			}) => ({
-				isNumbered: isNumbered && (starSelection === "standard" || !starSelection),
+				isNumbered: isNumbered && (starSelection === "false" || !starSelection),
 				previewDisplayMode: custom === "standard" || !custom
 					? "cover"
 					: "contain",
