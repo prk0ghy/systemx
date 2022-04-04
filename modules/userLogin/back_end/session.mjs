@@ -1,6 +1,6 @@
 import DB from "./database.mjs";
-import MakeID from "../../common/randomString.mjs";
-import Options from "../../common/options.mjs";
+import MakeID from "systemx-common/randomString.mjs";
+import Options from "systemx-common/options.mjs";
 import * as User from "./user.mjs";
 
 const sessions = {};

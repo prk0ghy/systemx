@@ -1,8 +1,8 @@
-import loadModules from "../../common/loadModules.mjs";
+import loadModules from "systemx-common/loadModules.mjs";
 import Error from "./types/helper/Error.mjs";
 import { getContext as getCMSContext, introspectMock } from "./ingress/graphql/cms.mjs";
 import RenderingContext from "./renderingContext.mjs";
-import options from "../../common/options.mjs";
+import options from "systemx-common/options.mjs";
 
 /*
 * "Rendering" a content type means transforming it to HTML.
@@ -74,8 +74,8 @@ export const makeRenderer = contentTypes => async (model, context, hints) => {
 
 export const makeMockRenderer = async (contextOverrides = {}) => {
 	const cmsContext   = await getCMSContext(introspectMock);
-	const contentTypes = await loadModules("modules/contentPipeline/back_end/types/content");
-	const helperTypes  = await loadModules("modules/contentPipeline/back_end/types/helper");
+	const contentTypes = await loadModules("./types/content");
+	const helperTypes  = await loadModules("./types/helper");
 	const globalRender = await makeRenderer(contentTypes);
 	const context      = new RenderingContext({
 		cms: cmsContext,

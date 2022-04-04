@@ -5,7 +5,7 @@ import CartProduct from "./CartProduct";
 import styles from "./CartManager.module.css";
 import { useAuthentication } from "contexts/Authentication";
 import { useCart } from "contexts/Cart";
-import { findProduct } from "userLoginCommon/product";
+import { findProduct } from "user-login-common/product";
 import { useTranslation } from "next-i18next";
 const CartManager = ({
 	onProceed, readOnly = false

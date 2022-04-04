@@ -1,5 +1,5 @@
 import * as Session from "./session.mjs";
-import Options from "../../common/options.mjs";
+import Options from "systemx-common/options.mjs";
 import Koa from "koa";
 import KoaStatic from "koa-static";
 import KoaMount from "koa-mount";

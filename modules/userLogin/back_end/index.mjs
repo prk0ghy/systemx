@@ -1,7 +1,7 @@
-import loadModules from "../../common/loadModules.mjs";
+import loadModules from "systemx-common/loadModules.mjs";
 import Mount from "./mount.mjs";
-import Options from "../../common/options.mjs";
-import * as Template from "../../common/template.mjs";
+import Options from "systemx-common/options.mjs";
+import * as Template from "systemx-common/template.mjs";
 import RequestHandler from "./request.mjs";
 import * as Session from "./session.mjs";
 import { buildAll as filterBuildAll } from "./filter.mjs";
@@ -12,8 +12,8 @@ import Logger from "./logger.mjs";
 
 const start = async () => {
 	Logger.debug(`running in ${Options.mode} mode`);
-	await loadModules("modules/userLogin/back_end/features");
-	await Template.loadDir("modules/userLogin/back_end/templates/");
+	await loadModules("./features");
+	await Template.loadDir("./templates");
 	const app     = new Koa();
 	const router  = new KoaRouter();
 	const filters = filterBuildAll();

@@ -1,7 +1,7 @@
 import GraphQLRequest from "graphql-request";
-import loadModules from "../../../../common/loadModules.mjs";
+import loadModules from "systemx-common/loadModules.mjs";
 import request from "./rateLimiting.mjs";
-import options from "../../../../common/options.mjs";
+import options from "systemx-common/options.mjs";
 
 const { gql } = GraphQLRequest;
 const globalFragments = {};
@@ -69,7 +69,7 @@ const query = async (queryFunction, {
 
 export default query;
 export const getContext = async introspect => {
-	const contentTypes = await loadModules("modules/contentPipeline/back_end/types/content");
+	const contentTypes = await loadModules("./types/content");
 	const cms = {
 		fragments: {},
 		introspection: await introspect(),

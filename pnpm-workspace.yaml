@@ -1,0 +1,9 @@
+packages:
+  - 'modules/common'
+  - 'modules/administration'
+  - 'modules/userTracking'
+  - 'modules/contentPipeline/back_end'
+  - 'modules/contentPipeline/front_end'
+  - 'modules/userLogin/front_end'
+  - 'modules/userLogin/back_end'
+  - 'modules/userLogin/common'

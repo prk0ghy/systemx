@@ -3,7 +3,7 @@ import styles from "./ProductDetails.module.css";
 import ProductButton from "components/product/ProductButton";
 import Picture from "components/generics/Picture";
 import { formatPrice } from "root/format";
-import { getParentCategory } from "userLoginCommon/product";
+import { getParentCategory } from "user-login-common/product";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 const ProductDetails = ({ product }) => {

@@ -1,10 +1,10 @@
 import * as User from "../../user.mjs";
 import * as Session from "../../session.mjs";
 import Database from "../../database.mjs";
-import Mail from "../../../../common/mail.mjs";
-import Options from "../../../../common/options.mjs";
+import Mail from "systemx-common/mail.mjs";
+import Options from "systemx-common/options.mjs";
 import Filter from "../../filter.mjs";
-import MakeID from "../../../../common/randomString.mjs";
+import MakeID from "systemx-common/randomString.mjs";
 import Logger from "../../logger.mjs";
 
 export const get = hash => Database.get(`SELECT * FROM UserDeletionRequest WHERE hash = ?`, hash);

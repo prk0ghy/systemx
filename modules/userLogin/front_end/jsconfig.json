@@ -10,9 +10,6 @@
       ],
       "root/*": [
         "./*"
-      ],
-      "userLoginCommon/*": [
-        "../common/*"
       ]
     }
   },

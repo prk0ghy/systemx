@@ -1,11 +1,11 @@
 import * as target  from "./egress/html/target.mjs";
-import options, { currentTarget } from "../../common/options.mjs";
-import loadModules from "../../common/loadModules.mjs";
+import options, { currentTarget } from "systemx-common/options.mjs";
 import serve from "./server.mjs";
+import loadModules from "systemx-common/loadModules.mjs";
 
 const start = async (action) => {
-	await loadModules("modules/contentPipeline/back_end/ingress");
-	await loadModules("modules/contentPipeline/back_end/egress");
+	await loadModules("./ingress");
+	await loadModules("./egress");
 
 	await target.build(currentTarget);
 	if (action === "preview") {

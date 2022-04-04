@@ -1,4 +1,4 @@
-import makeid from "../../common/randomString.mjs";
+import makeid from "systemx-common/randomString.mjs";
 import { jobs } from "../job.mjs";
 
 const asyncTimeout = (ms) => new Promise((resolve) => {

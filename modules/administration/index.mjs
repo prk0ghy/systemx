@@ -1,4 +1,4 @@
-import options, { currentTarget } from "../common/options.mjs";
+import options, { currentTarget } from "systemx-common/options.mjs";
 import serve from "./server.mjs";
 
 const start = async () => {

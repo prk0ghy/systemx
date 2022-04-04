@@ -1,18 +1,18 @@
 import * as resources from "./page_elements/resources.mjs";
 import { buildHead } from "./page_elements/head.mjs";
-import { formatHTML } from "../../../../common/format.mjs";
+import { formatHTML } from "systemx-common/format.mjs";
 import crypto from "crypto";
 import fs from "fs";
 import Marker from "../../types/helper/Marker.mjs";
-import { mkdirp } from "../../../../common/fileSystem.mjs";
-import loadModules from "../../../../common/loadModules.mjs";
-import options from "../../../../common/options.mjs";
+import { mkdirp } from "systemx-common/fileSystem.mjs";
+import loadModules from "systemx-common/loadModules.mjs";
+import options from "systemx-common/options.mjs";
 import path from "path";
 import query, { getContext as getCMSContext, introspectCraft } from "../../ingress/graphql/cms.mjs";
 import { makeRenderer } from "../../renderer.mjs";
 import RenderingContext from "../../renderingContext.mjs";
 import wrapWithApplicationShell from "./page.mjs";
-import supportMessage from "../../../../common/supportMessenger.mjs";
+import supportMessage from "systemx-common/supportMessenger.mjs";
 export const resourceDirectoryName = "resources";
 const fsp = fs.promises;
 /*
@@ -183,8 +183,8 @@ export const renderSingleEntry = async (targetName, uri) => {
 	}
 	const effectiveURI = convertCraftURLToURI(entry.url);
 	const cmsContext   = await getCMSContext(introspectCraft);
-	const contentTypes = await loadModules("modules/contentPipeline/back_end/types/content");
-	const helperTypes  = await loadModules("modules/contentPipeline/back_end/types/helper");
+	const contentTypes = await loadModules("./types/content");
+	const helperTypes  = await loadModules("./types/helper");
 	const globalRender = makeRenderer(contentTypes);
 	const content      = await globalRender(entry, new RenderingContext({
 		cms: cmsContext,
@@ -232,8 +232,8 @@ export const buildEntries = async targetName => {
 	await mkdirp(mediaPath);
 	await mkdirp(thumbPath);
 	const cmsContext    = await getCMSContext(introspectCraft);
-	const contentTypes  = await loadModules("modules/contentPipeline/back_end/types/content");
-	const helperTypes   = await loadModules("modules/contentPipeline/back_end/types/helper");
+	const contentTypes  = await loadModules("./types/content");
+	const helperTypes   = await loadModules("./types/helper");
 	const globalRender  = makeRenderer(contentTypes);
 	const globalContext = new RenderingContext({
 		cms: cmsContext,

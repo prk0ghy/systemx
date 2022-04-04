@@ -1,6 +1,6 @@
 import {getInlineCSS, getCSS, getInlineJS, getJS} from "./resources.mjs";
 import { getTargetPath, getResourcePath, resourceDirectoryName } from "../target.mjs";
-import options from "../../../../../common/options.mjs";
+import options from "systemx-common/options.mjs";
 import crypto from "crypto";
 import fs from "fs";
 import path from "path";

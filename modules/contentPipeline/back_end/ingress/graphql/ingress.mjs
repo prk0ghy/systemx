@@ -1,5 +1,5 @@
 import GraphQLRequest from "graphql-request";
-import options from "../../../../common/options.mjs";
+import options from "systemx-common/options.mjs";
 
 const {
 	gql,

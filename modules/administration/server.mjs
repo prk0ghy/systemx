@@ -1,5 +1,5 @@
 import http from "http";
-import options from "../common/options.mjs";
+import options from "systemx-common/options.mjs";
 import dispatch from "./job.mjs";
 
 /*

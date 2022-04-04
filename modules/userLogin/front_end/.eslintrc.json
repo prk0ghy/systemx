@@ -27,8 +27,7 @@
 				"map": [
 					["components", "./components"],
 					["contexts", "./contexts"],
-					["root", "./"],
-					["userLoginCommon", "../common"]
+					["root", "./"]
 				]
 			}
 		}	

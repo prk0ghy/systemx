@@ -7,7 +7,7 @@ import routes from "root/routes";
 import styles from "./Library.module.css";
 import NeverUsers from "../user/NeverUsers";
 import OnlyUsers from "../user/OnlyUsers";
-import { findProduct } from "userLoginCommon/product";
+import { findProduct } from "user-login-common/product";
 import { useAuthentication } from "contexts/Authentication";
 import { useRouter } from "next/router";
 import { useCallback } from "react";

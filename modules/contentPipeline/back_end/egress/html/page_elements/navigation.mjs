@@ -1,6 +1,6 @@
 import { convertCraftURLToURI } from "../target.mjs";
 import { getNavigation } from "../../../ingress/ingress.mjs";
-import options from "../../../../../common/options.mjs";
+import options from "systemx-common/options.mjs";
 
 /* Returns the first part of a craft uri, which can be used to determine the siteId */
 const getUriPrefix = uri => String(uri).substring(0,1 + String(uri).indexOf("/",1));

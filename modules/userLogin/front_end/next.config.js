@@ -26,7 +26,6 @@ module.exports = {
 		configuration.resolve.alias.components = path.join(root, "components");
 		configuration.resolve.alias.contexts = path.join(root, "contexts");
 		configuration.resolve.alias.root = root;
-		configuration.resolve.alias.userLoginCommon = path.join(root, "..", "common");
 		configuration.module.rules
 			.find(rule => typeof rule.oneOf === "object")
 			.oneOf.filter(rule => Array.isArray(rule.use))

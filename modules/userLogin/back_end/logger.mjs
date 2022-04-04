@@ -1,4 +1,4 @@
-import Options from "../../common/options.mjs";
+import Options from "systemx-common/options.mjs";
 
 class Logger {
 

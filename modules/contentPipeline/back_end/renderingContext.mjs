@@ -1,7 +1,7 @@
 import Error from "./types/helper/Error.mjs";
-import options from "../../common/options.mjs";
-import Download from "../../common/download.mjs";
-import {default as Thumbnail, getImageSize} from "../../common/thumbnail.mjs";
+import options from "systemx-common/options.mjs";
+import Download from "systemx-common/download.mjs";
+import {default as Thumbnail, getImageSize} from "systemx-common/thumbnail.mjs";
 import query from "./ingress/graphql/cms.mjs";
 /*
 * Types should be able to call `render` without providing their context,

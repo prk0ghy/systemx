@@ -1,10 +1,10 @@
 import Filter from "../../filter.mjs";
-import Template from "../../../../common/template.mjs";
-import Options from "../../../../common/options.mjs";
+import Template from "systemx-common/template.mjs";
+import Options from "systemx-common/options.mjs";
 import * as User from "../../user.mjs";
-import { formatPrice } from "../../../../common/format.mjs";
-import { findProduct } from "../../../common/product.js";
-import { sendRaw } from "../../../../common/mail.mjs";
+import { formatPrice } from "systemx-common/format.mjs";
+import { findProduct } from "systemx-common/product.js";
+import { sendRaw } from "systemx-common/mail.mjs";
 import { getSingle } from "./order.mjs";
 import { convert } from "html-to-text";
 

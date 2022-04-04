@@ -1,0 +1,27 @@
+{
+  "name": "systemx-common",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ./*.mjs",
+    "lint:fix": "eslint ./*.mjs"
+  },
+  "author": "Digitale Lernwelten GmbH",
+  "license": "EUPL-1.2",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "gm": "^1.23.1",
+    "minimist": "^1.2.6",
+    "nodemailer": "^6.7.3",
+    "pkg-dir": "^6.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.8",
+    "@babel/eslint-parser": "^7.17.0",
+    "@babel/plugin-proposal-class-properties": "^7.16.7",
+    "@babel/preset-env": "^7.16.11",
+    "eslint": "^8.12.0"
+  }
+}

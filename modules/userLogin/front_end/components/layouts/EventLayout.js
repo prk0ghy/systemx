@@ -1,6 +1,6 @@
 import styles from "./EventLayout.module.css";
 import Badge from "../navigation/Badge";
-import { findProduct } from "userLoginCommon/product";
+import { findProduct } from "user-login-common/product";
 const EventLayout = () => {
 	const schools = findProduct("tagungsbaende");
 	const EventList = schools.children.map(event => {

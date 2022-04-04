@@ -1,0 +1,25 @@
+{
+  "name": "user-tracking",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ./*.mjs",
+    "lint:fix": "eslint ./*.mjs"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sqlite": "^4.0.25",
+    "sqlite3": "^5.0.2",
+    "systemx-common": "workspace:*"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.8",
+    "@babel/eslint-parser": "^7.17.0",
+    "@babel/plugin-proposal-class-properties": "^7.16.7",
+    "@babel/preset-env": "^7.16.11",
+    "eslint": "^8.12.0"
+  }
+}

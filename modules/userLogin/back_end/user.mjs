@@ -1,7 +1,7 @@
 import DB from "./database.mjs";
 import fs from "fs";
 import bcrypt from "bcrypt";
-import options from "../../common/options.mjs";
+import options from "systemx-common/options.mjs";
 import Logger from "./logger.mjs";
 
 const saltRounds = 10;
@@ -109,7 +109,7 @@ await (async () => {
 		return;
 	}
 	Logger.debug("seeding development user data");
-	const data = await fs.promises.readFile(`modules/userLogin/back_end/data/user.json`);
+	const data = await fs.promises.readFile(`./data/user.json`);
 	const rows = JSON.parse(data.toString());
 	rows.forEach(async row => {
 		const user = await getByName(row.name);

@@ -1,0 +1,22 @@
+{
+	"extends": [
+		"stylelint-config-standard"
+	],
+	"rules": {
+		"color-hex-case": null,
+		"declaration-colon-newline-after": null,
+		"declaration-colon-space-after": null,
+		"indentation": "tab",
+		"no-empty-source": null,
+		"max-empty-lines": null,
+		"selector-type-no-unknown": null,
+		"selector-list-comma-newline-after": null,
+		"font-family-no-missing-generic-family-keyword": null,
+		"string-quotes": null,
+		"alpha-value-notation": null,
+		"max-line-length": null,
+		"color-function-notation": null,
+		"declaration-block-no-redundant-longhand-properties": null,
+		"selector-class-pattern": null
+	}
+}

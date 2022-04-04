@@ -1,8 +1,8 @@
 import filterAdd from "../../filter.mjs";
-import Options from "../../../../common/options.mjs";
+import Options from "systemx-common/options.mjs";
 import * as User from "../../user.mjs";
-import sendMail from "../../../../common/mail.mjs";
-import MakeID from "../../../../common/randomString.mjs";
+import sendMail from "systemx-common/mail.mjs";
+import MakeID from "systemx-common/randomString.mjs";
 import Database from "../../database.mjs";
 
 filterAdd("userRegister",async (v,next) => {

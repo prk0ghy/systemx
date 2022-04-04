@@ -8,7 +8,7 @@ import DefaultTargets from "./defaultTargets.mjs";
 const argv = minimist(process.argv.slice(2));
 const options = {
 	absoluteDomain: "http://localhost:3000",
-	activeModule: "contentPipeline",
+	activeModule: "userLogin",
 	action: "build",
 	configurationPath: ".systemx/settings",
 	cleanBuild: false,
@@ -19,8 +19,8 @@ const options = {
 	vgWortRequired: false,
 	cssVars: {},
 	email: {
-		host: "smtp.server.local",
-		port: 465,
+		host: "localhost",
+		port: 1025,
 		username: "test",
 		password: "test"
 	},
@@ -37,7 +37,7 @@ const options = {
 	distributionPath: "web",
 	downloadMedia: false,
 	forceRendering: false,
-	httpPort: 8042,
+	httpPort: 8020,
 	sessionCookie: "Portal_Session_Token",
 	portalRegisterEmailRequired: false,
 	skipNetwork: false,
