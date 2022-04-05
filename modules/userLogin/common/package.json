@@ -7,8 +7,8 @@
   "author": "Digitale Lernwelten GmbH",
   "main": "product.js",
   "scripts": {
-    "lint": "eslint ./**/*.js",
-    "lint:fix": "eslint ./**/*.js --fix",
+    "lint": "eslint ./**/*.mjs",
+    "lint:fix": "eslint ./**/*.mjs --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
