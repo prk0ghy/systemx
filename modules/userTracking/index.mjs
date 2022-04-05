@@ -1,8 +1,12 @@
-import options, { currentTarget } from "systemx-common/options.mjs";
-import serve from "./server.mjs";
+import 'dotenv/config';
+import serve from './server.mjs';
+import {createDBSchema} from './logTracking.mjs';
 
 const start = async () => {
-	serve(currentTarget);
-	console.log(`UserTracking started: http://localhost:${options.httpPort}/`);
+	await createDBSchema();
+	const target = process.env.USER_TRACKING_TARGET;
+	serve(target);
+	console.log(`user-tracking: http://localhost:${parseInt(process.env.USER_TRACKING_PORT, 10)}/ for target: ${target}`);
 };
-export default start;
+
+await start();

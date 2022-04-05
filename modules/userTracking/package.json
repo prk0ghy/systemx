@@ -6,11 +6,14 @@
   "author": "Digitale Lernwelten GmbH",
   "main": "index.js",
   "scripts": {
+    "start": "node ./index.mjs",
+    "user-tracking": "pnpm start",
     "lint": "eslint ./*.mjs",
     "lint:fix": "eslint ./*.mjs --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "dotenv": "^16.0.0",
     "sqlite": "^4.0.25",
     "sqlite3": "^5.0.2",
     "systemx-common": "workspace:*"
@@ -20,6 +23,7 @@
     "@babel/eslint-parser": "^7.17.0",
     "@babel/plugin-proposal-class-properties": "^7.16.7",
     "@babel/preset-env": "^7.16.11",
-    "eslint": "^8.12.0"
+    "eslint": "^8.12.0",
+    "eslint-config-xo": "^0.40.0"
   }
 }

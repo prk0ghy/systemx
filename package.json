@@ -36,7 +36,8 @@
 		"start": "node ./index.mjs --",
 		"test": "npm run test:back-end",
 		"test:back-end": "NODE_OPTIONS=--experimental-vm-modules jest ./modules/contentPipeline/back_end/test -- lasub",
-		"test:integration": "node ./index.mjs --clean-build --rethrow-errors --"
+		"test:integration": "node ./index.mjs --clean-build --rethrow-errors --",
+		"user-tracking": "pnpm run -r --if-present user-tracking"
 	},
 	"dependencies": {},
 	"devDependencies": {
