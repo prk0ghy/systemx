@@ -1,8 +1,12 @@
-import options, { currentTarget } from "systemx-common/options.mjs";
-import serve from "./server.mjs";
+import 'dotenv/config';
+import serve from './server.mjs';
 
 const start = async () => {
-	serve(currentTarget);
-	console.log(`Administration started: http://localhost:${options.httpPort}/`);
+	const target = process.env.ADMINISTRATION_TARGET;
+	serve(target);
+	console.log(
+		`Administration started: http://localhost:${parseInt(process.env.ADMINISTRATION_PORT, 10)}/ with target: ${target}`,
+	);
 };
-export default start;
+
+await start();

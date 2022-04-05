@@ -7,11 +7,14 @@
   "author": "Digitale Lernwelten GmbH",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint ./**/*.mjs",
-    "lint:fix": "eslint ./**/*.mjs --fix",
+    "start": "node ./index.mjs",
+    "administration": "pnpm run start",
+    "lint": "eslint *.mjs ./**/*.mjs",
+    "lint:fix": "eslint *.mjs ./**/*.mjs --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "dotenv": "^16.0.0",
     "systemx-common": "workspace:*"
   },
   "devDependencies": {
@@ -19,6 +22,7 @@
     "@babel/eslint-parser": "^7.17.0",
     "@babel/plugin-proposal-class-properties": "^7.16.7",
     "@babel/preset-env": "^7.16.11",
-    "eslint": "^8.12.0"
+    "eslint": "^8.12.0",
+    "eslint-config-xo": "^0.40.0"
   }
 }

@@ -14,9 +14,12 @@ importers:
       '@babel/eslint-parser': ^7.17.0
       '@babel/plugin-proposal-class-properties': ^7.16.7
       '@babel/preset-env': ^7.16.11
+      dotenv: ^16.0.0
       eslint: ^8.12.0
+      eslint-config-xo: ^0.40.0
       systemx-common: workspace:*
     dependencies:
+      dotenv: 16.0.0
       systemx-common: link:../common
     devDependencies:
       '@babel/core': 7.17.8
@@ -24,6 +27,7 @@ importers:
       '@babel/plugin-proposal-class-properties': 7.16.7_@babel+core@7.17.8
       '@babel/preset-env': 7.16.11_@babel+core@7.17.8
       eslint: 8.12.0
+      eslint-config-xo: 0.40.0_eslint@8.12.0
 
   modules/common:
     specifiers:

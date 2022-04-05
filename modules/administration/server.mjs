@@ -1,6 +1,5 @@
-import http from "http";
-import options from "systemx-common/options.mjs";
-import dispatch from "./job.mjs";
+import http from 'http';
+import dispatch from './job.mjs';
 
 /*
 * Starts an HTTP server for target `targetName`.
@@ -10,8 +9,8 @@ import dispatch from "./job.mjs";
 */
 export default () => {
 	const server = http.createServer(async (request, response) => {
-		if (request.url === "/robots.txt") {
-			response.end("User-agent: *\nDisallow: /\n");
+		if (request.url === '/robots.txt') {
+			response.end('User-agent: *\nDisallow: /\n');
 		} else if (request.method === 'POST') {
 			response.setHeader('Access-Control-Allow-Origin', '*');
 			response.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
@@ -20,7 +19,7 @@ export default () => {
 
 			request.on('data', data => {
 				json += data.toString('utf8');
-				if (json.length > 1e6) { //if bigger than 1MB, kill
+				if (json.length > 1e6) { // If bigger than 1MB, kill
 					request.socket.destroy();
 				}
 			});
@@ -30,14 +29,14 @@ export default () => {
 					const data = JSON.parse(json);
 					console.log(data);
 					response.end(JSON.stringify(dispatch(data)));
-				} catch(e) {
+				} catch (e) {
 					console.error(e);
-					response.end(JSON.stringify(`{status:"failure"}`));
+					response.end(JSON.stringify('{status:"failure"}'));
 				}
 			});
-		}else {
-			response.end("");
+		} else {
+			response.end('');
 		}
 	});
-	server.listen(options.httpPort);
+	server.listen(parseInt(process.env.ADMINISTRATION_PORT, 10));
 };
