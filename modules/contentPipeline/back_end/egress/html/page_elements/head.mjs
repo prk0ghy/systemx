@@ -1,9 +1,9 @@
 import {getInlineCSS, getCSS, getInlineJS, getJS} from "./resources.mjs";
 import { getTargetPath, getResourcePath, resourceDirectoryName } from "../target.mjs";
-import options from "systemx-common/options.mjs";
 import crypto from "crypto";
 import fs from "fs";
 import path from "path";
+import config from "../../../config.mjs";
 
 const fsp = fs.promises;
 const resourceNamedHashes = new Map();
@@ -44,17 +44,34 @@ const resourceTag = filename => {
 };
 
 const configJSVars = () => {
+	const opts = {
+		galleryWrapAround: config.galleryWrap,
+		galleryBackgroundOpacity: config.backgroundOpacity,
+		ytCaption: config.ytCaption,
+		accessibility: config.accessibility,
+		trackingEndpoint: config.trackingEndpoint
+	};
 	return `<script type="text/javascript">
-	const configuration = ${JSON.stringify(options.jsVars)};
+	const configuration = ${JSON.stringify(opts)};
 	</script>`;
 };
 
 const configCSSVars = () => {
 	const vars = [];
-	for(const k in options.cssVars){
-		const cssName = `--${k.replace(/[A-Z]/g, c => `-${c.toLowerCase()}`)}`;
-		const v = options.cssVars[k];
-		vars.push(`${cssName}: ${v};\n`);
+	const cssEnv = Object.keys(process.env)
+		.filter(k => k.startsWith("CONTENT_PIPELINE_CSS_"));
+	const cssVars = cssEnv.map(c => {
+		const idx = c.lastIndexOf("_");
+		const key = c.substring(idx);
+		const val = process.env[c];
+		return {
+			key,
+			val
+		};
+	});
+	for(const {key, val} in cssVars){
+		const cssName = `--${key.toLowerCase()}`;
+		vars.push(`${cssName}: ${val};\n`);
 	}
 	return `<style>
 	:root {
@@ -70,9 +87,9 @@ export const buildHead = async targetName => {
 	const resourcePath = getResourcePath(targetName);
 	const targetPath = getTargetPath(targetName);
 
-	promises.push(copyResource(`modules/contentPipeline/front_end/themes/core/favicon/${options.favicon}`, targetPath, "favicon.ico"));
-	promises.push(copyResource(`modules/contentPipeline/front_end/themes/core/favicon/${options.favicon}`, targetPath, "favicon.svg"));
-	promises.push(copyResource(`modules/contentPipeline/front_end/themes/core/favicon/${options.favicon}`, targetPath, "favicon-180.png"));
+	promises.push(copyResource(`../front_end/themes/core/favicon/${config.favicon}`, targetPath, "favicon.ico"));
+	promises.push(copyResource(`../front_end/themes/core/favicon/${config.favicon}`, targetPath, "favicon.svg"));
+	promises.push(copyResource(`../front_end/themes/core/favicon/${config.favicon}`, targetPath, "favicon-180.png"));
 
 	promises.push(copyResource("node_modules/quill/dist", resourcePath, "quill.min.js"));
 	promises.push(copyResource("node_modules/quill/dist", resourcePath, "quill.min.js.map"));

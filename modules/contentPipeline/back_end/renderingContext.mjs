@@ -1,8 +1,8 @@
 import Error from "./types/helper/Error.mjs";
-import options from "systemx-common/options.mjs";
 import Download from "systemx-common/download.mjs";
 import {default as Thumbnail, getImageSize} from "systemx-common/thumbnail.mjs";
 import query from "./ingress/graphql/cms.mjs";
+import config from "./config.mjs";
 /*
 * Types should be able to call `render` without providing their context,
 * as it makes content types much easier to use.
@@ -115,10 +115,10 @@ export default class {
 		this.types = types || parentContext.types;
 		this.cms = cms || parentContext.cms;
 		this.contentTypes = contextualize(this.types.content)(this);
-		this.download = options.downloadMedia
+		this.download = config.downloadMedia
 			? parentContext?.download || this.download
 			: url => url;
-		this.downloadWithThumb = options.downloadMedia
+		this.downloadWithThumb = config.downloadMedia
 			? parentContext?.downloadWithThumb || this.downloadWithThumb
 			: url => {return {thumbHtmlPath: url, htmlPath: url};};
 		this.globalRender = globalRender || parentContext.globalRender;

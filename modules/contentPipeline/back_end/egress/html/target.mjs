@@ -6,13 +6,13 @@ import fs from "fs";
 import Marker from "../../types/helper/Marker.mjs";
 import { mkdirp } from "systemx-common/fileSystem.mjs";
 import loadModules from "systemx-common/loadModules.mjs";
-import options from "systemx-common/options.mjs";
 import path from "path";
 import query, { getContext as getCMSContext, introspectCraft } from "../../ingress/graphql/cms.mjs";
 import { makeRenderer } from "../../renderer.mjs";
 import RenderingContext from "../../renderingContext.mjs";
 import wrapWithApplicationShell from "./page.mjs";
 import supportMessage from "systemx-common/supportMessenger.mjs";
+import config from "../../config.mjs";
 export const resourceDirectoryName = "resources";
 const fsp = fs.promises;
 /*
@@ -33,10 +33,10 @@ const getHomePageURI = entries => {
  *
  * This function determines the path to that directory.
  */
-const getTargetPathNew = targetName => path.join(options.distributionPath, `${targetName}.new`);
-const getTargetPathOld = targetName => path.join(options.distributionPath, `${targetName}.old`);
-const getTargetPathRaw = targetName => path.join(options.distributionPath, targetName);
-export const getTargetPath = targetName => options.cleanBuild ? getTargetPathNew(targetName) : getTargetPathRaw(targetName);
+const getTargetPathNew = targetName => path.join(config.distributionPath, `${targetName}.new`);
+const getTargetPathOld = targetName => path.join(config.distributionPath, `${targetName}.old`);
+const getTargetPathRaw = targetName => path.join(config.distributionPath, targetName);
+export const getTargetPath = targetName => config.cleanBuild ? getTargetPathNew(targetName) : getTargetPathRaw(targetName);
 /*
  * Targets can make use of resources in HTML.
  * Resources can be of any file type; they don't have to be images.
@@ -286,7 +286,7 @@ export const buildEntries = async targetName => {
 		const outputFilePath = path.join(directory, "index.html");
 		try {
 			const { mtime } = await fsp.stat(outputFilePath);
-			if (!options.forceRendering && Date.parse(mtime) > Date.parse(entry.dateUpdated)) {
+			if (!config.forceRendering && Date.parse(mtime) > Date.parse(entry.dateUpdated)) {
 				return;
 			}
 		}
@@ -312,7 +312,7 @@ export const buildEntries = async targetName => {
 		const { smtime } = await fsp.stat(homePageSourcePath);
 		try {
 			const { dmtime } = await fsp.stat(homePageDestinationPath);
-			if (options.forceRendering || Date.parse(smtime) > Date.parse(dmtime)) {
+			if (config.forceRendering || Date.parse(smtime) > Date.parse(dmtime)) {
 				await fsp.copyFile(homePageSourcePath, homePageDestinationPath);
 			}
 		}
@@ -323,14 +323,14 @@ export const buildEntries = async targetName => {
 	catch {
 		/* Nothing we can do if it fails */
 	}
-	if (options.cleanBuild || options.forceRendering) {
+	if (config.cleanBuild || config.forceRendering) {
 		const warningPath = path.join(targetPath, "warnings.html");
 		await fsp.writeFile(warningPath, await wrapWithApplicationShell(targetName, {
 			content: warningHTML || "<h2>No warnings</h2>",
 			pageTitle: "Render warnings"
 		}));
 	}
-	if (options.disallowRobots) {
+	if (config.disallowRobots) {
 		const robotsPath = path.join(targetPath, "robots.txt");
 		await fsp.writeFile(robotsPath, "User-agent: *\nDisallow: /\n");
 	}
@@ -389,7 +389,7 @@ const atomicRename = async targetName => {
  * Builds a target, given its name.
  */
 export const build = async targetName => {
-	if(options.cleanBuild){
+	if(config.cleanBuild){
 		try {
 			await fsp.rm(getTargetPathNew(targetName),{recursive: true});
 		} catch {
@@ -407,12 +407,12 @@ export const build = async targetName => {
 	await renderAssets(resourcePath);
 	console.timeEnd("target#renderAssets");
 
-	if (!options.skipNetwork) {
+	if (!config.skipNetwork) {
 		console.time("target#buildEntries");
 		await buildEntries(targetName);
 		console.timeEnd("target#buildEntries");
 	}
-	if(options.cleanBuild){
+	if(config.cleanBuild){
 		console.log("atomicRename");
 		await atomicRename(targetName);
 	}

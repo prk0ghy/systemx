@@ -1,7 +1,7 @@
 import GraphQLRequest from "graphql-request";
 import loadModules from "systemx-common/loadModules.mjs";
 import request from "./rateLimiting.mjs";
-import options from "systemx-common/options.mjs";
+import config from "../../config.mjs";
 
 const { gql } = GraphQLRequest;
 const globalFragments = {};
@@ -50,13 +50,13 @@ export const introspectMock = async () => {
 const maybeWrap = (query, enabled) => enabled
 	? `{ ${query} }`
 	: query;
-const endPoint = options.graphqlEndpoint;
+const endPoint = config.gqlEndpoint;
 const types = {};
 /*
 * CraftCMS hard-codes the origin into all URLs which leads to funky behavior.
 * In order to avoid this, we remove the origin from all URLs.
 */
-const origin = options.graphqlEndpoint.substr(0,options.graphqlEndpoint.indexOf("/",8));
+const origin = config.gqlEndpoint.substr(0,config.gqlEndpoint.indexOf("/",8));
 const removeOriginFromURLs = response => JSON.parse(JSON.stringify(response).split(`${origin}/`).join("/"));
 const query = async (queryFunction, {
 	raw

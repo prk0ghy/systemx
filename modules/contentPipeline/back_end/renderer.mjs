@@ -2,7 +2,7 @@ import loadModules from "systemx-common/loadModules.mjs";
 import Error from "./types/helper/Error.mjs";
 import { getContext as getCMSContext, introspectMock } from "./ingress/graphql/cms.mjs";
 import RenderingContext from "./renderingContext.mjs";
-import options from "systemx-common/options.mjs";
+import config from "./config.mjs";
 
 /*
 * "Rendering" a content type means transforming it to HTML.
@@ -60,7 +60,7 @@ export const makeRenderer = contentTypes => async (model, context, hints) => {
 			type
 		}, context);
 	} catch(err){
-		if(options.rethrowErrors){
+		if(config.rethrowErrors){
 			throw err;
 		}
 		const msg = `${err?.message || ""}\n\n${err?.stack || ""}`.replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll("\n","<br>");

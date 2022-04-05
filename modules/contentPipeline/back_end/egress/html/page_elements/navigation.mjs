@@ -1,6 +1,6 @@
 import { convertCraftURLToURI } from "../target.mjs";
 import { getNavigation } from "../../../ingress/ingress.mjs";
-import options from "systemx-common/options.mjs";
+import config from "../../../config.mjs";
 
 /* Returns the first part of a craft uri, which can be used to determine the siteId */
 const getUriPrefix = uri => String(uri).substring(0,1 + String(uri).indexOf("/",1));
@@ -25,7 +25,7 @@ const getPageData = async pageURI => {
  */
 export const getNavigationHeader = async pageURI => {
 	const data          = await getPageData(pageURI);
-	const title         = data.current?.title_override || data.current?.title || options.title || "Lasub";
+	const title         = data.current?.title_override || data.current?.title || config.title || "Lasub";
 	const previousTitle = data.previous?.title || "";
 	const previousURL   = data.previous?.uri;
 	const nextTitle     = data.next?.title || "";
@@ -78,7 +78,7 @@ export const getNavigationMenu = async uri => {
 		<aside id="navigation" style="display:none;">
 			<nav role="navigation">
 				<ul role="tree">
-					${options.navigationLinks.map(buildNavigationLink)}
+					${config.navigationLinks.map(buildNavigationLink)}
 					${navigationContent}
 				</ul>
 			</nav>

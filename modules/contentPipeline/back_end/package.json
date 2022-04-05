@@ -12,15 +12,20 @@
   "scripts": {
     "lint": "eslint ./**/*.mjs",
     "lint:fix": "eslint ./**/*.mjs --fix",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./index.mjs",
+    "content-pipeline": "pnpm run start"
   },
   "dependencies": {
     "autoprefixer": "^10.4.4",
+    "dotenv": "^16.0.0",
     "finalhandler": "^1.2.0",
     "graphql": "^16.3.0",
     "graphql-request": "^4.2.0",
+    "photoswipe": "^4.1.3",
     "postcss": "^8.4.12",
-    "server-static": "^2.0.5",
+    "quill": "^1.3.7",
+    "serve-static": "^1.15.0",
     "systemx-common": "workspace:*"
   },
   "devDependencies": {
@@ -28,6 +33,8 @@
     "@babel/eslint-parser": "^7.17.0",
     "@babel/plugin-proposal-class-properties": "^7.16.7",
     "@babel/preset-env": "^7.16.11",
-    "eslint": "^8.12.0"
+    "cheerio": "^1.0.0-rc.10",
+    "eslint": "^8.12.0",
+    "jest": "^27.5.1"
   }
 }

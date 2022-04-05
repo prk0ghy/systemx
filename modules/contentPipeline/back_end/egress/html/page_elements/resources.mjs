@@ -41,11 +41,11 @@ const getFromPath = async (ext, prefix, inline) => {
 
 const getFromContentTypes = async (ext, inline) => {
 	try {
-		const names = await fsp.readdir("modules/contentPipeline/front_end/content_types/");
+		const names = await fsp.readdir("../front_end/content_types/");
 		let ret = "";
 		for (const name of names) {
 			if(name.substr(0,1) === "."){continue;}
-			const prefix = "modules/contentPipeline/front_end/content_types/" + name + "/";
+			const prefix = "../front_end/content_types/" + name + "/";
 			ret += await getFromPath(ext, prefix, inline);
 		}
 		return ret;
@@ -55,11 +55,11 @@ const getFromContentTypes = async (ext, inline) => {
 
 const getFromThemes = async (ext, inline) => {
 	try {
-		const names = await fsp.readdir("modules/contentPipeline/front_end/themes/");
+		const names = await fsp.readdir("../front_end/themes/");
 		let ret = "";
 		for (const name of names) {
 			if(name.substr(0,1) === "."){continue;}
-			const prefix = "modules/contentPipeline/front_end/themes/" + name + "/";
+			const prefix = "../front_end/themes/" + name + "/";
 			ret += await getFromPath(ext, prefix, inline);
 		}
 		return ret;
@@ -71,10 +71,10 @@ export const getAssetDirectories = async  () => {
 	const ret = [];
 
 	try {
-		const names = await fsp.readdir("modules/contentPipeline/front_end/themes/");
+		const names = await fsp.readdir("../front_end/themes/");
 		for (const name of names) {
 			if(name.substr(0,1) === "."){continue;}
-			const prefix = "modules/contentPipeline/front_end/themes/" + name + "/";
+			const prefix = "../front_end/themes/" + name + "/";
 			ret.push(prefix);
 		}
 		return ret;
@@ -82,10 +82,10 @@ export const getAssetDirectories = async  () => {
 	catch (e) { /* Skip if no themes available */ }
 
 	try {
-		const names = await fsp.readdir("modules/contentPipeline/front_end/content_types/");
+		const names = await fsp.readdir("../front_end/content_types/");
 		for (const name of names) {
 			if(name.substr(0,1) === "."){continue;}
-			const prefix = "modules/contentPipeline/front_end/content_types/" + name + "/";
+			const prefix = "../front_end/content_types/" + name + "/";
 			ret.push(prefix);
 		}
 		return ret;

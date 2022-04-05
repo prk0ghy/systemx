@@ -1,4 +1,4 @@
-import options from "../../../../common/options.mjs";
+import config from "../../config.mjs";
 
 const getFocalPoint = focalPoint => {
 	if(!focalPoint)                      {return "";}
@@ -22,7 +22,7 @@ export default {
 		const thumbWidth  = thumbHtmlPath ? thumbSize?.width ? `width="${thumbSize.width}"` : "" : `width="${asset.width}`;
 		const thumbHeight = thumbHtmlPath ? thumbSize?.height ? `height="${thumbSize.height}"` : "" : `height="${asset.height}`;
 		let altText = "";
-		if (options.jsVars.accessibility) {
+		if (config.accessibility) {
 			altText = asset.description? `alt="${asset.description}"` : "no-alt='no-alt'";
 		} else {
 			altText = asset.description? `alt="${asset.description}"` : "";

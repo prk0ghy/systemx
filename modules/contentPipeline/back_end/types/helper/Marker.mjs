@@ -1,4 +1,4 @@
-import options from "../../../../common/options.mjs";
+import config from "../../config.mjs";
 export default {
 	fill(html) {
 		let i = 0;
@@ -12,7 +12,7 @@ export default {
 			renderMarkers = true
 		}
 	}) {
-		return !options.disableMarkers && isNumbered && renderMarkers
+		return !config.disableMarkers && isNumbered && renderMarkers
 			? `<a class="marker"></a>`
 			: "";
 	}

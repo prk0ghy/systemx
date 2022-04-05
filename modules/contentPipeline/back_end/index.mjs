@@ -1,16 +1,22 @@
+import "dotenv/config";
 import * as target  from "./egress/html/target.mjs";
-import options, { currentTarget } from "systemx-common/options.mjs";
 import serve from "./server.mjs";
 import loadModules from "systemx-common/loadModules.mjs";
+import config from "./config.mjs";
 
-const start = async (action) => {
+const start = async () => {
 	await loadModules("./ingress");
 	await loadModules("./egress");
 
-	await target.build(currentTarget);
-	if (action === "preview") {
-		serve(currentTarget);
-		console.log(`Content preview server started: http://localhost:${options.httpPort}/`);
+	await target.build(config.target);
+	if (config.enablePreview) {
+		console.log("running in preview mode");
+		serve(config.target);
+		console.log(`Content preview server started: http://localhost:${config.port}/`);
 	}
 };
-export default start;
+try {
+	await start();
+} catch (error) {
+	console.log(error);
+}

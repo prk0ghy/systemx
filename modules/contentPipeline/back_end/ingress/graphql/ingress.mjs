@@ -1,5 +1,5 @@
 import GraphQLRequest from "graphql-request";
-import options from "systemx-common/options.mjs";
+import config from "../../config.mjs";
 
 const {
 	gql,
@@ -65,8 +65,8 @@ export const getNavigation = () => {
 };
 
 const getNavigationReal = async () => {
-	const status_filter = options.cleanBuild ? `"live"` : `["disabled","live"]`;
-	const result = await request(options.graphqlEndpoint, gql([`
+	const status_filter = config.cleanBuild ? `"live"` : `["disabled","live"]`;
+	const result = await request(config.gqlEndpoint, gql([`
 		fragment entriesFields on inhalt_inhalt_Entry {
 			id
 			title

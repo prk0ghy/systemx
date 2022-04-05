@@ -1,5 +1,4 @@
-import options from "../../../../../common/options.mjs";
-
+import config from "../../../config.mjs";
 
 export default {
 	queries: new Map([
@@ -74,7 +73,7 @@ export default {
 		});
 		const activeVgWort = vgWortPixel
 			? `<script>const vgWortPixel = ${JSON.stringify(vgWortPixel)};</script>`
-			: options.vgWortRequired
+			: config.vgRequired
 				? EditorialError.render({
 					message: `There is no VG-Wort-Pixel defined for this page, even though they are required, please add one before publishing.`,
 					type: "inhalt_inhalt_Entry"

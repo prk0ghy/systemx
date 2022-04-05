@@ -1,0 +1,23 @@
+export default {
+	port: parseInt(process.env.CONTENT_PIPELINE_PORT),
+	enablePreview: process.env.CONTENT_PIPELINE_ENABLE_PREVIEW === "true",
+	gqlEndpoint: process.env.CONTENT_PIPELINE_GRAPHQL_ENDPOINT,
+	favicon: process.env.CONTENT_PIPELINE_FAVICON,
+	title: process.env.CONTENT_PIPELINE_TITLE,
+	target: process.env.CONTENT_PIPELINE_TARGET,
+	backlink: process.env.CONTENT_PIPELINE_BACK_LINK,
+	rethrowErrors: process.env.CONTENT_PIPELINE_RETHROW_ERRORS === "true",
+	downloadMedia: process.env.CONTENT_PIPELINE_DOWNLOAD_MEDIA === "true",
+	distributionPath: process.env.CONTENT_PIPELINE_DISTRIBUTION_PATH,
+	cleanBuild: process.env.CONTENT_PIPELINE_CLEAN_BUILD === "true",
+	forceRendering: process.env.CONTENT_PIPELINE_FORCE_RENDERING === "true",
+	disallowRobots: process.env.CONTENT_PIPELINE_DISALLOW_ROBOTS === "true",
+	disableMarkers: process.env.CONTENT_PIPELINE_DISABLE_MARKERS === "true",
+	vgRequired: process.env.CONTENT_PIPELINE_VG_REQUIRED === "true",
+	accessibility: process.env.CONTENT_PIPELINE_ACCESSIBILITY === "true",
+	ytCaption: process.env.CONTENT_PIPELINE_YT_CAPTION === "true",
+	galleryWrap: process.env.CONTENT_PIPELINE_GALLERY_WRAP === "true",
+	backgroundOpacity: parseFloat(process.env.CONTENT_PIPELINE_BACKGROUND_OPACITY),
+	trackingEndpoint: process.env.CONTENT_PIPELINE_TRACKING_ENDPOINT,
+	navigationLinks: JSON.parse(process.env.CONTENT_PIPELINE_NAVIGATION_LINKS)
+};

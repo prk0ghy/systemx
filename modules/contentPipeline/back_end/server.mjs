@@ -1,9 +1,9 @@
 import finalHandler from "finalhandler";
 import http from "http";
-import options from "systemx-common/options.mjs";
 import path from "path";
 import serveStatic from "serve-static";
 import { renderSingleEntry } from "./egress/html/target.mjs";
+import config from "./config.mjs";
 /*
 * Content URIs correspond to rendered entries.
 * Resources like fonts are not considered content URIs.
@@ -32,7 +32,7 @@ const toCraftCMSSlug = pathName => {
 * Ideally, this function is used for previews.
 */
 export default targetName => {
-	const serve = serveStatic(path.join(options.distributionPath, targetName), {
+	const serve = serveStatic(path.join(config.distributionPath, targetName), {
 		index: "index.html"
 	});
 	const server = http.createServer(async (request, response) => {
@@ -52,5 +52,5 @@ export default targetName => {
 			serve(request, response, isDone);
 		}
 	});
-	server.listen(options.httpPort);
+	server.listen(config.port);
 };
