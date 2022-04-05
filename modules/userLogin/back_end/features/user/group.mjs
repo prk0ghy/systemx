@@ -68,7 +68,7 @@ await (async () => {
 		);
 		CREATE INDEX idx_UserGrouping_user ON UserGrouping (user);
 	`);
-	const data = await fs.promises.readFile("modules/userLogin/back_end/data/user.json");
+	const data = await fs.promises.readFile("./data/user.json");
 	const rows = JSON.parse(data.toString());
 	rows.forEach(async row => {
 		const user = await User.getByName(row.name);

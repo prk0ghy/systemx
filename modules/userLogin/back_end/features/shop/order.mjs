@@ -2,7 +2,7 @@ import * as User from "../../user.mjs";
 import DB, { Insert } from "../../database.mjs";
 import Filter from "../../filter.mjs";
 import { add as userGroupAdd } from "../user/group.mjs";
-import { findProduct } from "systemx-common/product.js";
+import { findProduct } from "user-login-common/product.mjs";
 import options from "systemx-common/options.mjs";
 import PayPal from "@paypal/checkout-server-sdk";
 

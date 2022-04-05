@@ -23,7 +23,8 @@
     "koa-static": "^5.0.0",
     "sqlite": "^4.0.25",
     "sqlite3": "^5.0.2",
-    "systemx-common": "workspace:*"
+    "systemx-common": "workspace:*",
+    "user-login-common": "workspace:*"
   },
   "devDependencies": {
     "@babel/core": "^7.17.8",

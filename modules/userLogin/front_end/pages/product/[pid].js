@@ -2,7 +2,7 @@ import ProductChildren from "components/product/ProductChildren";
 import ProductDetails from "components/product/ProductDetails";
 import NotFound from "./../404";
 import { ShellContent } from "components/shell/Shell";
-import { findProduct } from "user-login-common/product";
+import { findProduct } from "user-login-common/product.mjs";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 const ProductPage = ({ productID }) => {

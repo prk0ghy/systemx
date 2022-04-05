@@ -8,7 +8,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint ./**/*.mjs",
-    "lint:fix": "eslint ./**/*.mjs",
+    "lint:fix": "eslint ./**/*.mjs --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {

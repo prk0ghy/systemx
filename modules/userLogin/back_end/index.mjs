@@ -26,4 +26,7 @@ const start = async () => {
 	app.listen(Options.httpPort);
 	Logger.info(`Shop started: http://localhost:${Options.httpPort}/`);
 };
-export default start;
+// export default start;
+(async() => {
+	await start();
+})();

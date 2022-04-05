@@ -3,7 +3,7 @@ import Template from "systemx-common/template.mjs";
 import Options from "systemx-common/options.mjs";
 import * as User from "../../user.mjs";
 import { formatPrice } from "systemx-common/format.mjs";
-import { findProduct } from "systemx-common/product.js";
+import { findProduct } from "user-login-common/product.mjs";
 import { sendRaw } from "systemx-common/mail.mjs";
 import { getSingle } from "./order.mjs";
 import { convert } from "html-to-text";

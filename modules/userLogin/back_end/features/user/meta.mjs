@@ -104,7 +104,7 @@ await (async () => {
 		);
 		CREATE INDEX idx_UserMeta_user ON UserMeta (user);
 	`);
-	const data = await fs.promises.readFile("modules/userLogin/back_end/data/user.json");
+	const data = await fs.promises.readFile("./data/user.json");
 	const rows = JSON.parse(data.toString());
 	await Promise.all(rows.map(async row => {
 		if(!row.meta){ return; }

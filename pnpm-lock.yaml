@@ -34,12 +34,14 @@ importers:
       axios: ^0.26.1
       eslint: ^8.12.0
       gm: ^1.23.1
+      js-beautify: ^1.14.2
       minimist: ^1.2.6
       nodemailer: ^6.7.3
       pkg-dir: ^6.0.1
     dependencies:
       axios: 0.26.1
       gm: 1.23.1
+      js-beautify: 1.14.2
       minimist: 1.2.6
       nodemailer: 6.7.3
       pkg-dir: 6.0.1
@@ -113,6 +115,7 @@ importers:
       sqlite: ^4.0.25
       sqlite3: ^5.0.2
       systemx-common: workspace:*
+      user-login-common: workspace:*
     dependencies:
       '@paypal/checkout-server-sdk': 1.0.3
       bcrypt: 5.0.1
@@ -125,6 +128,7 @@ importers:
       sqlite: 4.0.25
       sqlite3: 5.0.2
       systemx-common: link:../../common
+      user-login-common: link:../common
     devDependencies:
       '@babel/core': 7.17.8
       '@babel/eslint-parser': 7.17.0_@babel+core@7.17.8+eslint@8.12.0
@@ -179,7 +183,8 @@ importers:
       react-stroller: ^1.8.0
       react-tracked: ^1.7.6
       scheduler: ^0.21.0
-      systemx: file:../../..
+      stylelint: ^14.6.1
+      stylelint-order: ^5.0.0
       systemx-common: workspace:*
       typescript: ^4.6.3
       user-login-common: workspace:*
@@ -202,7 +207,6 @@ importers:
       react-focus-on: 3.5.4_react@17.0.2
       react-stroller: 1.8.0_react@17.0.2
       react-tracked: 1.7.8_78ced11a21e50d14717af3b55a8da527
-      systemx: link:../../..
       systemx-common: link:../../common
       user-login-common: link:../common
       wicg-inert: 3.1.1
@@ -223,6 +227,8 @@ importers:
       postcss-inject: 1.0.2
       postcss-nesting: 8.0.1_postcss@8.4.12
       scheduler: 0.21.0
+      stylelint: 14.6.1
+      stylelint-order: 5.0.0_stylelint@14.6.1
       typescript: 4.6.3
 
   modules/userTracking:
@@ -3142,6 +3148,13 @@ packages:
   /concat-map/0.0.1:
     resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=}
 
+  /config-chain/1.1.13:
+    resolution: {integrity: sha512-qj+f8APARXHrM0hraqXYb2/bOVSV4PvJQlNZ/DVj0QrmNM2q2euizkeuVckQ57J+W0mRH6Hvi+k50M4Jul2VRQ==}
+    dependencies:
+      ini: 1.3.8
+      proto-list: 1.2.4
+    dev: false
+
   /connect-route/0.1.5:
     resolution: {integrity: sha1-48IYMZ0uiKiprgsOD+Cacpw5dEo=}
     engines: {node: '>= 0.4.0'}
@@ -3764,6 +3777,16 @@ packages:
     dependencies:
       jsbn: 0.1.1
       safer-buffer: 2.1.2
+
+  /editorconfig/0.15.3:
+    resolution: {integrity: sha512-M9wIMFx96vq0R4F+gRpY3o2exzb8hEj/n9S8unZtHSvYjibBp/iMufSzvmOcV/laG0ZtuTVGtiJggPOSW2r93g==}
+    hasBin: true
+    dependencies:
+      commander: 2.20.3
+      lru-cache: 4.1.5
+      semver: 5.7.1
+      sigmund: 1.0.1
+    dev: false
 
   /ee-first/1.1.1:
     resolution: {integrity: sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=}
@@ -5677,6 +5700,17 @@ packages:
       '@types/node': 17.0.23
       merge-stream: 2.0.0
       supports-color: 8.1.1
+    dev: false
+
+  /js-beautify/1.14.2:
+    resolution: {integrity: sha512-H85kX95a53os+q1OCqtYe8AXAmgy3BvtysA/V83S3fdhznm6WlUpGi14DqSPbKFsL3dXZFXYl7YQwW9U1+76ng==}
+    engines: {node: '>=10'}
+    hasBin: true
+    dependencies:
+      config-chain: 1.1.13
+      editorconfig: 0.15.3
+      glob: 7.2.0
+      nopt: 5.0.0
     dev: false
 
   /js-tokens/4.0.0:
@@ -7632,6 +7666,10 @@ packages:
     resolution: {integrity: sha512-IJUkICM5dP5znhCckHSv30Q4b5/JA5enCtkRHYaOVOAocnH/1BQEYTC5NMfT3AVl/iXKdr3aqQbQn9DxyWknwA==}
     dev: false
 
+  /proto-list/1.2.4:
+    resolution: {integrity: sha1-IS1b/hMYMGpCD2QCuOJv85ZHqEk=}
+    dev: false
+
   /proxy-compare/2.1.0:
     resolution: {integrity: sha512-wapJ3h/w8fRSyPEG0y2WMV+tf9xwvj3nxM6aHVuPEOwKs/t5xLSKZb44ubNTiqq2T6lmEMHEWGMTaU2L6ddaFA==}
     dev: false
@@ -8473,6 +8511,10 @@ packages:
       call-bind: 1.0.2
       get-intrinsic: 1.1.1
       object-inspect: 1.12.0
+
+  /sigmund/1.0.1:
+    resolution: {integrity: sha1-P/IfGYytIXX587eBhT/ZTQ0ZtZA=}
+    dev: false
 
   /signal-exit/3.0.7:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}

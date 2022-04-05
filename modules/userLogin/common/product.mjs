@@ -1,4 +1,4 @@
-import products from "./productList.js";
+import products from "./productList.mjs";
 
 (() => {
 	const visited = {};
