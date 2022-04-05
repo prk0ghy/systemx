@@ -2,22 +2,15 @@
   "name": "user-login-back-end",
   "version": "1.0.0",
   "description": "",
+  "keywords": [],
+  "license": "EUPL-1.2",
+  "author": "Digitale Lernwelten GmbH",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ./**/*.mjs",
     "lint:fix": "eslint ./**/*.mjs --fix",
-    "mvet:dev": "node ./index.mjs --mode=development -- tagungsbaende.shop"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@babel/core": "^7.17.8",
-    "@babel/eslint-parser": "^7.17.0",
-    "@babel/plugin-proposal-class-properties": "^7.16.7",
-    "@babel/preset-env": "^7.16.11",
-    "eslint": "^8.12.0"
+    "mvet:dev": "node ./index.mjs --mode=development -- tagungsbaende.shop",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "@paypal/checkout-server-sdk": "^1.0.3",
@@ -31,5 +24,12 @@
     "sqlite": "^4.0.25",
     "sqlite3": "^5.0.2",
     "systemx-common": "workspace:*"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.8",
+    "@babel/eslint-parser": "^7.17.0",
+    "@babel/plugin-proposal-class-properties": "^7.16.7",
+    "@babel/preset-env": "^7.16.11",
+    "eslint": "^8.12.0"
   }
 }

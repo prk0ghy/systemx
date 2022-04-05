@@ -1,4 +1,23 @@
 {
+	"name": "user-login-front-end",
+	"version": "0.0.1",
+	"private": true,
+	"license": "EUPL-1.2",
+	"author": "Digitale Lernwelten GmbH",
+	"scripts": {
+		"build": "npm run build:configuration && npm run download:fonts && next build",
+		"build:configuration": "node buildConfiguration.mjs -- mvet",
+		"build:configuration:dev": "node buildConfiguration.mjs -- mvet.dev",
+		"clean": "rm -rf .cache .next node_modules config.js",
+		"dev": "npm run build:configuration:dev && npm run download:fonts && next dev",
+		"download:fonts": "get-google-fonts -i \"https://fonts.googleapis.com/css?family=Exo:100,200,300,400,500,600,700,800,900&display=swap\" -qo .cache/fonts -p ../.cache/fonts/",
+		"export": "npm run build && next export",
+		"lint": "npm run build:configuration && next lint",
+		"lint:fix": "npm run build:configuration && next lint --fix",
+		"mvet:dev": "pnpm run dev",
+		"start": "npm run build:configuration && next start",
+		"windev": "npm run build:configuration && next dev"
+	},
 	"dependencies": {
 		"@emotion/react": "^11.7.1",
 		"@emotion/styled": "^11.6.0",
@@ -17,10 +36,10 @@
 		"react-stroller": "^1.8.0",
 		"react-tracked": "^1.7.6",
 		"systemx": "file:../../..",
-		"wicg-inert": "^3.1.1",
-		"yup": "^0.32.11",
 		"systemx-common": "workspace:*",
-		"user-login-common": "workspace:*"
+		"user-login-common": "workspace:*",
+		"wicg-inert": "^3.1.1",
+		"yup": "^0.32.11"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.17.8",
@@ -39,22 +58,5 @@
 		"postcss-nesting": "^8.0.1",
 		"scheduler": "^0.21.0",
 		"typescript": "^4.6.3"
-	},
-	"name": "user-login-front-end",
-	"private": true,
-	"scripts": {
-		"build": "npm run build:configuration && npm run download:fonts && next build",
-		"build:configuration": "node buildConfiguration.mjs -- mvet",
-		"build:configuration:dev": "node buildConfiguration.mjs -- mvet.dev",
-		"clean": "rm -rf .cache .next node_modules config.js",
-		"dev": "npm run build:configuration:dev && npm run download:fonts && next dev",
-		"download:fonts": "get-google-fonts -i \"https://fonts.googleapis.com/css?family=Exo:100,200,300,400,500,600,700,800,900&display=swap\" -qo .cache/fonts -p ../.cache/fonts/",
-		"export": "npm run build && next export",
-		"lint": "npm run build:configuration && next lint",
-		"lint:fix": "npm run build:configuration && next lint --fix",
-		"start": "npm run build:configuration && next start",
-		"windev": "npm run build:configuration && next dev",
-		"mvet:dev": "pnpm run dev"
-	},
-	"version": "0.0.1"
+	}
 }

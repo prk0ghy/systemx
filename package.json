@@ -1,38 +1,15 @@
 {
-	"author": "Digitale Lernwelten GmbH",
-	"dependencies": {
-	},
-	"description": "Static site generator for CraftCMS, powered by GraphQL",
-	"devDependencies": {
-		"husky": "^7.0.4"
-	},
-	"license": "EUPL-1.2",
-	"main": "index.mjs",
 	"name": "systemx",
+	"version": "1.0.0",
+	"description": "Static site generator for CraftCMS, powered by GraphQL",
 	"repository": {
 		"type": "git",
 		"url": "git@github.com:Digitale-Lernwelten/systemx.git"
 	},
-	"scripts": {
-		"plint": "pnpm run -r lint",
-		"preinstall": "npx only-allow pnpm",
-		"prepare": "husky install",
-		"build": "node ./index.mjs --clean-build --",
-		"build:release": "node ./index.mjs --download-media --clean-build --",
-		"build:shop:front-end": "npm --prefix modules/userLogin/front_end run build",
-		"clean": "rm -rf dist web node_modules; npm --prefix modules/userLogin/front_end run clean",
-		"dev": "nodemon --ignore dist/ --ignore web/ ./index.mjs --quiet -- --skip-network --mode=\"development\" --SYSTEMX --",
-		"dev:shop": "nodemon --ignore dist/ --ignore web/ --ignore ./modules/userLogin/front_end/out --ignore ./modules/userLogin/front_end/config.js ./scripts/dev_shop.mjs --",
-		"prod:shop": "nodemon --ignore dist/ --ignore web/ --ignore ./modules/userLogin/front_end/out --ignore ./modules/userLogin/front_end/config.js ./scripts/prod_shop.mjs --",
-		"lint": "pnpm run -r --stream --if-present --aggregate-output lint",
-		"start": "node ./index.mjs --",
-		"test": "npm run test:back-end",
-		"test:back-end": "NODE_OPTIONS=--experimental-vm-modules jest ./modules/contentPipeline/back_end/test -- lasub",
-		"test:integration": "node ./index.mjs --clean-build --rethrow-errors --",
-		"mvet:dev": "pnpm run -r --parallel mvet:dev"
-	},
+	"license": "EUPL-1.2",
+	"author": "Digitale Lernwelten GmbH",
 	"type": "module",
-	"version": "1.0.0",
+	"main": "index.mjs",
 	"workspaces": [
 		"modules/common",
 		"modules/userTracking",
@@ -42,5 +19,27 @@
 		"modules/userLogin/front_end",
 		"modules/userLogin/back_end",
 		"modules/userLogin/common"
-	]
+	],
+	"scripts": {
+		"build": "node ./index.mjs --clean-build --",
+		"build:release": "node ./index.mjs --download-media --clean-build --",
+		"build:shop:front-end": "npm --prefix modules/userLogin/front_end run build",
+		"clean": "rm -rf dist web node_modules; npm --prefix modules/userLogin/front_end run clean",
+		"dev": "nodemon --ignore dist/ --ignore web/ ./index.mjs --quiet -- --skip-network --mode=\"development\" --SYSTEMX --",
+		"dev:shop": "nodemon --ignore dist/ --ignore web/ --ignore ./modules/userLogin/front_end/out --ignore ./modules/userLogin/front_end/config.js ./scripts/dev_shop.mjs --",
+		"preinstall": "npx only-allow pnpm",
+		"lint": "pnpm run -r --stream --if-present --aggregate-output lint",
+		"mvet:dev": "pnpm run -r --parallel mvet:dev",
+		"plint": "pnpm run -r lint",
+		"prepare": "husky install",
+		"prod:shop": "nodemon --ignore dist/ --ignore web/ --ignore ./modules/userLogin/front_end/out --ignore ./modules/userLogin/front_end/config.js ./scripts/prod_shop.mjs --",
+		"start": "node ./index.mjs --",
+		"test": "npm run test:back-end",
+		"test:back-end": "NODE_OPTIONS=--experimental-vm-modules jest ./modules/contentPipeline/back_end/test -- lasub",
+		"test:integration": "node ./index.mjs --clean-build --rethrow-errors --"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"husky": "^7.0.4"
+	}
 }

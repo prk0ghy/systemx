@@ -2,23 +2,23 @@
   "name": "content-pipeline-back-end",
   "version": "1.0.0",
   "description": "",
+  "keywords": [],
+  "license": "EUPL-1.2",
+  "author": "Digitale Lernwelten GmbH",
   "main": "index.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ./**/*.mjs",
-    "lint:fix": "eslint ./**/*.mjs --fix"
+    "lint:fix": "eslint ./**/*.mjs --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "autoprefixer": "^10.4.4",
     "finalhandler": "^1.2.0",
-    "graphql-request": "^4.2.0",
     "graphql": "^16.3.0",
+    "graphql-request": "^4.2.0",
     "postcss": "^8.4.12",
     "server-static": "^2.0.5",
     "systemx-common": "workspace:*"

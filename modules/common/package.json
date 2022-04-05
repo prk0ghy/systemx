@@ -2,14 +2,14 @@
   "name": "systemx-common",
   "version": "1.0.0",
   "description": "",
+  "license": "EUPL-1.2",
+  "author": "Digitale Lernwelten GmbH",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ./*.mjs",
-    "lint:fix": "eslint ./*.mjs"
+    "lint:fix": "eslint ./*.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Digitale Lernwelten GmbH",
-  "license": "EUPL-1.2",
   "dependencies": {
     "axios": "^0.26.1",
     "gm": "^1.23.1",

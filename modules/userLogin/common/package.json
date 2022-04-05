@@ -2,15 +2,15 @@
   "name": "user-login-common",
   "version": "1.0.0",
   "description": "",
+  "keywords": [],
+  "license": "EUPL-1.2",
+  "author": "Digitale Lernwelten GmbH",
   "main": "product.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ./**/*.js",
-    "lint:fix": "eslint ./**/*.js --fix"
+    "lint:fix": "eslint ./**/*.js --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.17.8",
     "@babel/eslint-parser": "^7.17.0",
