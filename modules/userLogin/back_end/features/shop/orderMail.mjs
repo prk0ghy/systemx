@@ -1,6 +1,5 @@
 import Filter from "../../filter.mjs";
 import Template from "systemx-common/template.mjs";
-import Options from "systemx-common/options.mjs";
 import * as User from "../../user.mjs";
 import { formatPrice } from "systemx-common/format.mjs";
 import { findProduct } from "user-login-common/product.mjs";
@@ -36,7 +35,7 @@ export const sendInvoiceMail = async orderID => {
 		creationDate: new Date(order.creationTimestamp * 1000).toLocaleString('de-DE'),
 		productTable: (await Promise.all(order.products.map(renderProduct))).join("")
 	};
-	const from = Options.mailFrom;
+	const from = process.env.SYSTEMX_MAIL_FROM;
 	const to = user.email;
 	const html = await Template("order.html", data);
 	const matches = String(html).match(subjectRegex);

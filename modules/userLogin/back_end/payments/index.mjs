@@ -1,12 +1,18 @@
 import { database, whenDatabaseIsOpened } from "../database.mjs";
 import { makeOrderData } from "./payPal.mjs";
 import PayPal from "@paypal/checkout-server-sdk";
+import config from "../config.mjs";
 
 const environment = process.env.NODE_ENV === "production"
 	? PayPal.core.LiveEnvironment
 	: PayPal.core.SandboxEnvironment;
 
-const client =  new PayPal.core.PayPalHttpClient(new environment(process.env.PAYPAL_CLIENT_ID, process.env.PAYPAL_CLIENT_SECRET));
+const client =  new PayPal.core.PayPalHttpClient(
+	new environment(
+		config.userLogin.paypal.clientId,
+		config.userLogin.paypal.clientSecret
+	)
+);
 
 export const captureOrder = async (shopOrderID, payPalOrderID) => {
 	const request = new PayPal.orders.OrdersCaptureRequest(payPalOrderID);

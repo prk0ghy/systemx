@@ -4,6 +4,8 @@ import * as User from "../../user.mjs";
 import sendMail from "systemx-common/mail.mjs";
 import MakeID from "systemx-common/randomString.mjs";
 import Database from "../../database.mjs";
+import config from "../../config.mjs";
+import logger from "../../logger.mjs";
 
 filterAdd("userRegister",async (v,next) => {
 	if (!v.req.username) {
@@ -40,6 +42,7 @@ filterAdd("userRegister",async (v,next) => {
 	} catch (error) {
 		v.res.error = "Failed to send Activation Email";
 		User.remove(newUser.ID);
+		logger.error(error.message);
 		return v;
 	}
 	v.res.userID = newUserID;
@@ -97,7 +100,7 @@ const addPendingActivation = async(user) => {
 	const hash = MakeID(64);
 	const values = {
 		email: user.name,
-		activationLink: `${Options.absoluteDomain}/activate?token=${hash}`
+		activationLink: `${config.userLogin.domain}/activate?token=${hash}`
 	};
 	await Database.run(
 		"INSERT INTO UserActivation (hash, user, time) VALUES (?, ?, CURRENT_TIMESTAMP)", [hash, user.ID]

@@ -1,18 +1,18 @@
 import sqlite3 from "sqlite3";
 import { open } from "sqlite";
 import { mkdirp } from "systemx-common/fileSystem.mjs";
-import options from "systemx-common/options.mjs";
 import Logger from "./logger.mjs";
-
-await mkdirp(options.storagePath);
+import config from "./config.mjs";
 
 const schemaVersion = 0;
 
 const createDatabase = async () => {
+	await mkdirp(config.userLogin.storagePath);
 	const db = await open({
 		driver: sqlite3.Database,
-		filename: options.storagePath + "/local_data.sqlite"
+		filename: config.userLogin.storagePath + "/local_data.sqlite"
 	});
+	Logger.info(`using ${config.userLogin.storagePath}`);
 	// required for cascading
 	// disabled by default
 	// https://www.sqlite.org/foreignkeys.html#fk_enable

@@ -3,7 +3,6 @@ import { useMemo } from "react";
 /* Those are hardcoded for now, would be much nicer
  * to define these in a config file though.
  */
-const portalAPIEndpoint = process.env.endpoint;
 const localStorageID = "Portal_Session_Token";
 
 let sessionID = null;
@@ -42,7 +41,7 @@ const receiveResponse = async res => {
 };
 /* Send off the whole call queue and empty it afterwards. */
 const sendCallQueue = () => {
-	fetch(portalAPIEndpoint, {
+	fetch("/api/portal-user", {
 		method: "POST",
 		mode: "cors",
 		cache: "no-cache",

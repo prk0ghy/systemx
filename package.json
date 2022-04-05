@@ -40,7 +40,6 @@
 		"user-tracking": "pnpm run -r --if-present user-tracking",
 		"administration": "pnpm run -r --if-present administration"
 	},
-	"dependencies": {},
 	"devDependencies": {
 		"husky": "^7.0.4"
 	}

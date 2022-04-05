@@ -7,14 +7,15 @@
   "author": "Digitale Lernwelten GmbH",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint ./**/*.mjs",
-    "lint:fix": "eslint ./**/*.mjs --fix",
+    "lint": "eslint *.mjs ./**/*.mjs",
+    "lint:fix": "eslint *.mjs ./**/*.mjs --fix",
     "mvet:dev": "node ./index.mjs --mode=development -- tagungsbaende.shop",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "@paypal/checkout-server-sdk": "^1.0.3",
     "bcrypt": "^5.0.1",
+    "dotenv": "^16.0.0",
     "html-to-text": "^8.1.0",
     "koa": "^2.13.4",
     "koa-body": "^4.2.0",

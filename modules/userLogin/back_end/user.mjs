@@ -1,8 +1,8 @@
 import DB from "./database.mjs";
 import fs from "fs";
 import bcrypt from "bcrypt";
-import options from "systemx-common/options.mjs";
 import Logger from "./logger.mjs";
+import config from "./config.mjs";
 
 const saltRounds = 10;
 
@@ -105,7 +105,7 @@ await (async () => {
 			isActivated BOOLEAN
 		)
 	`);
-	if (options.mode !== "development") {
+	if (config.mode !== "development") {
 		return;
 	}
 	Logger.debug("seeding development user data");

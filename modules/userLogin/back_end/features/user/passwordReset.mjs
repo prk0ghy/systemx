@@ -1,10 +1,10 @@
 import * as User from "../../user.mjs";
 import Database from "../../database.mjs";
 import Mail from "systemx-common/mail.mjs";
-import Options from "systemx-common/options.mjs";
 import Filter from "../../filter.mjs";
 import MakeID from "systemx-common/randomString.mjs";
 import Logger from "../../logger.mjs";
+import config from "../../config.mjs";
 
 export const get = hash => Database.get(`SELECT * FROM UserResetRequest WHERE hash = ?`, hash);
 export const remove = hash => Database.run("DELETE FROM UserResetRequest WHERE hash = ?", hash);
@@ -19,7 +19,7 @@ const add = async user => {
 	const values = {
 		userName: user.name,
 		userEmail: user.email,
-		resetLink: Options.absoluteDomain + "/reset-password?token=" + hash
+		resetLink: config.userLogin.domain + "/reset-password?token=" + hash
 	};
 	await Mail({to: user.email, template: "passwordResetMail", values});
 	return hash;

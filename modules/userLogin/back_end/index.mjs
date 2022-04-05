@@ -1,6 +1,6 @@
+import "dotenv/config";
 import loadModules from "systemx-common/loadModules.mjs";
 import Mount from "./mount.mjs";
-import Options from "systemx-common/options.mjs";
 import * as Template from "systemx-common/template.mjs";
 import RequestHandler from "./request.mjs";
 import * as Session from "./session.mjs";
@@ -9,24 +9,22 @@ import Koa from "koa";
 import koaBody from "koa-body";
 import KoaRouter from "koa-router";
 import Logger from "./logger.mjs";
+import config from "./config.mjs";
 
 const start = async () => {
-	Logger.debug(`running in ${Options.mode} mode`);
+	Logger.debug(`running in ${config.mode} mode`);
 	await loadModules("./features");
 	await Template.loadDir("./templates");
 	const app     = new Koa();
 	const router  = new KoaRouter();
 	const filters = filterBuildAll();
 	await Session.loadAll(filters);
-	router.all("/portal-user", RequestHandler(filters,{allowCORS: true}));
+	router.all("/portal-user", RequestHandler(filters,{allowCORS: false}));
 	app
 		.use(koaBody())
 		.use(router.routes());
 	Mount(app);
-	app.listen(Options.httpPort);
-	Logger.info(`Shop started: http://localhost:${Options.httpPort}/`);
+	app.listen(config.userLogin.port);
+	Logger.info(`Shop started: http://localhost:${config.userLogin.port}/`);
 };
-// export default start;
-(async() => {
-	await start();
-})();
+await start();

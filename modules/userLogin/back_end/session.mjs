@@ -1,20 +1,20 @@
 import DB from "./database.mjs";
 import MakeID from "systemx-common/randomString.mjs";
-import Options from "systemx-common/options.mjs";
 import * as User from "./user.mjs";
+import config from "./config.mjs";
 
 const sessions = {};
 
 /* Stops the session associated with the Koa ctx */
 export const stop = (ctx,sessionID) => {
 	if(!sessionID){
-		const cookie = ctx.cookies.get(Options.sessionCookie);
+		const cookie = ctx.cookies.get(config.userLogin.cookieName);
 		if(cookie){ return stop(ctx,cookie); }
 	}
 	if(sessions[sessionID] !== undefined){
 		clear(sessionID);
 	}
-	ctx.cookies.set(Options.sessionCookie,'');
+	ctx.cookies.set(config.userLogin.cookieName,'');
 	return true;
 };
 
@@ -31,13 +31,13 @@ const getSessionID = () => {
 export const start = ctx => {
 	const sessionID = getSessionID();
 	sessions[sessionID] = {sessionID};
-	ctx.cookies.set(Options.sessionCookie,sessionID);
+	ctx.cookies.set(config.userLogin.cookieName, sessionID);
 	return sessions[sessionID];
 };
 
 export const get = ctx => {
 	if(ctx === undefined){return undefined;}
-	const cookie = ctx.cookies.get(Options.sessionCookie);
+	const cookie = ctx.cookies.get(config.userLogin.cookieName);
 	if((cookie !== undefined) && (sessions[cookie] !== undefined)){
 		return sessions[cookie];
 	}
@@ -55,7 +55,7 @@ export const set = (sessionID, value) => {
 
 export const setCookie = (ctx, sessionID) => {
 	if(!ctx || !sessionID || !sessions[sessionID]){return false;}
-	ctx.cookies.set(Options.sessionCookie,sessionID);
+	ctx.cookies.set(config.userLogin.cookieName, sessionID);
 	return true;
 };
 
@@ -65,14 +65,14 @@ export const getUser = ctx => {
 };
 
 export const check = ctx => {
-	const cookie = ctx.cookies.get(Options.sessionCookie);
+	const cookie = ctx.cookies.get(config.userLogin.cookieName);
 	return (cookie !== undefined) && (sessions[cookie] !== undefined);
 };
 
 export const clear = sessionID => {
 	if(!sessionID){return false;} // Return immediatly in case of an invalid session
 	if(sessionID && sessionID?.cookies && sessionID?.cookies?.get){ // If sessionID is actually a koa ctx, get the sessionID and continue with that
-		return clear(sessionID?.cookies?.get(Options.sessionCookie));
+		return clear(sessionID?.cookies?.get(config.userLogin.cookieName));
 	}
 	delete sessions[sessionID];
 	DB.run(`DELETE FROM UserSession WHERE ID=?;`, [sessionID]);
@@ -82,8 +82,8 @@ export const clear = sessionID => {
 export const persist = sessionID => {
 	if(!sessionID){return false;} // Return immediatly in case of an invalid session
 	if(sessionID && sessionID?.cookies){ // If sessionID is actually a koa ctx, get the sessionID and continue with that
-		sessionID.cookies.clear(Options.sessionCookie);
-		return persist(sessionID?.cookies.get(Options.sessionCookie));
+		sessionID.cookies.clear(config.userLogin.cookieName);
+		return persist(sessionID?.cookies.get(config.userLogin.cookieName));
 	}
 	if(!sessions[sessionID]){return false;}
 	const userID = sessions[sessionID]?.user?.ID;

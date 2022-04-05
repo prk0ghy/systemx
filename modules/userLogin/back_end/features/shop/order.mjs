@@ -3,18 +3,9 @@ import DB, { Insert } from "../../database.mjs";
 import Filter from "../../filter.mjs";
 import { add as userGroupAdd } from "../user/group.mjs";
 import { findProduct } from "user-login-common/product.mjs";
-import options from "systemx-common/options.mjs";
 import PayPal from "@paypal/checkout-server-sdk";
+import config from "../../config.mjs";
 
-const {
-	mode,
-	shop: {
-		payPal: {
-			clientID,
-			clientSecret
-		}
-	}
-} = options;
 
 export const getSingle = async ID => {
 	const order = await DB.get(`SELECT * FROM ShopOrder WHERE ID = ?`, ID);
@@ -66,9 +57,9 @@ const updateStatus = async ( ID, status ) => {
 	return DB.run("UPDATE ShopOrder SET status = ?, updateTimestamp = ? WHERE ID = ?", [status, updateTimestamp, ID]);
 };
 
-const environment = mode === "production"
-	? new PayPal.core.LiveEnvironment(clientID, clientSecret)
-	: new PayPal.core.SandboxEnvironment(clientID, clientSecret);
+const environment = process.env.SYSTEMX_MODE === "production"
+	? new PayPal.core.LiveEnvironment(config.userLogin.paypal.clientId, config.userLogin.paypal.clientSecret)
+	: new PayPal.core.SandboxEnvironment(config.userLogin.paypal.clientId, config.userLogin.paypal.clientSecret);
 const client = new PayPal.core.PayPalHttpClient(environment);
 
 Filter("userCreatePayPalOrder", async (v, next) => {

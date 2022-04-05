@@ -2,10 +2,10 @@ import * as User from "../../user.mjs";
 import * as Session from "../../session.mjs";
 import Database from "../../database.mjs";
 import Mail from "systemx-common/mail.mjs";
-import Options from "systemx-common/options.mjs";
 import Filter from "../../filter.mjs";
 import MakeID from "systemx-common/randomString.mjs";
 import Logger from "../../logger.mjs";
+import config from "../../config.mjs";
 
 export const get = hash => Database.get(`SELECT * FROM UserDeletionRequest WHERE hash = ?`, hash);
 
@@ -20,7 +20,7 @@ const add = async user => {
 	const values = {
 		userName: user.name,
 		userEmail: user.email,
-		deleteLink: Options.absoluteDomain + "/delete-user?token=" + hash
+		deleteLink: config.userLogin.domain + "/delete-user?token=" + hash
 	};
 	await Mail({to: user.email, template: "userDeleteMail", values});
 	return hash;

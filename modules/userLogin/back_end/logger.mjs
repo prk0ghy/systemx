@@ -1,5 +1,4 @@
-import Options from "systemx-common/options.mjs";
-
+import config from "./config.mjs";
 class Logger {
 
 	constructor() {
@@ -12,7 +11,7 @@ class Logger {
 	};
 
 	debug = (...message) => {
-		if (Options.mode === "development") {
+		if (config.mode === "development") {
 			console.log(`[DEBUG]: `, ...message);
 		}
 	};
