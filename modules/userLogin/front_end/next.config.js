@@ -1,7 +1,6 @@
 const path = require("path");
 const root = path.resolve(__dirname);
 const { i18n } = require("./next-i18next.config");
-const config = require("./config.js");
 module.exports = {
 	i18n,
 	eslint: {
@@ -9,8 +8,15 @@ module.exports = {
 	},
 	async rewrites() {
 		const src = "/portal-user/:path";
-		const dest = `${config.api.endpoint.replace("portal-user", "")}:path`;
+		const dest = `${process.env.endpoint.replace("portal-user", "")}:path`;
 		console.log(`proxying: ${src} => ${dest}`);
+		console.log(`[API_ENDPOINT]: ${process.env.endpoint}`);
+		console.log(`[ENABLE_BURGER_MENU]: ${process.env.enableBurgerMenu}`);
+		console.log(`[ENABLE_REGISTRATION]: ${process.env.enableRegistration}`);
+		console.log(`[ENABLE_SHOPPING_CART]: ${process.env.enableShoppingCart}`);
+		console.log(`[ENABLE_USER_DELETE]: ${process.env.enableUserDelete}`);
+		console.log(`[ENABLE_PASSWORD_RESET]: ${process.env.enablePasswordReset}`);
+		console.log(`[ENABLE_TOC]: ${process.env.enableToC}`);
 		return [
 			{
 				source: src,

@@ -1,7 +1,6 @@
 import persistence, { save } from "root/persistence";
 import { createContainer } from "react-tracked";
 import { useReducer } from "react";
-
 const reduce = (state, action) => {
 	const { data } = action;
 	switch (action.type) {

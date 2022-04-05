@@ -1,5 +1,4 @@
 import dynamic from "next/dynamic";
-import Configuration from "../../../config";
 import Link from "next/link";
 import routes from "root/routes";
 import styles from "./CartIcon.module.css";
@@ -20,7 +19,7 @@ const CartIcon = () => {
 			</div>
 		)
 		: null;
-	return Configuration?.shoppingCart.enabled && (items.length > 0)
+	return process.env.enableShoppingCart === "true" && (items.length > 0)
 		? (
 			<li>
 				<Link href={ routes.cart.path }>

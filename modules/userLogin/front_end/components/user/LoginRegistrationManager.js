@@ -1,6 +1,5 @@
 import dynamic from "next/dynamic";
 import Card from "components/generics/Card";
-import Configuration from "root/config.js";
 import { H } from "root/format";
 import LoginForm from "components/user/LoginForm";
 import LogoutForm from "components/user/LogoutForm";
@@ -22,7 +21,7 @@ const LoginRegistrationManager = ({ loginHref }) => {
 				: (
 					<Card>
 						<h3>
-							<H>{ Configuration?.registration?.enabled
+							<H>{ process.env.enableRegistration === "true"
 								? t("misc|what")
 								: t("Login")
 							}
@@ -31,7 +30,7 @@ const LoginRegistrationManager = ({ loginHref }) => {
 						<br/>
 						<LoginForm loginHref={ loginHref }/>
 						<br/>
-						{ Configuration?.registration?.enabled
+						{ process.env.enableRegistration === "true"
 							? (
 								<>
 									<br/>

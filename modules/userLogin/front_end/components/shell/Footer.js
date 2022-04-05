@@ -1,4 +1,3 @@
-import Configuration from "../../config.js";
 import Laced from "components/generics/Laced";
 import Link from "next/link";
 import routes from "root/routes";
@@ -13,7 +12,7 @@ const Footer = () => {
 		"imprint",
 		"privacy"
 	];
-	if (Configuration?.termsAndConditions?.enabled) {
+	if (process.env.enableToC === "true") {
 		footerRoutes.push(routes.termsAndConditions);
 		i18nKeys.push("termsAndConditions");
 	}

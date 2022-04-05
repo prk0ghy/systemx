@@ -17,4 +17,6 @@ const reduce = (state, action) => {
 export const {
 	Provider: AuthenticationProvider,
 	useTracked: useAuthentication
-} = createContainer(() => useReducer(reduce, { user: null }));
+} = createContainer(() => useReducer(reduce, {
+	user: null
+}));

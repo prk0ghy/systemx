@@ -17,7 +17,6 @@ export const {
 	const state = {
 		name: "mVet",
 		subjectMatter: "Tiermedizin",
-
 		pictures: {
 			authentication: {
 				src: "/mvet/ui/authentication.jpg",

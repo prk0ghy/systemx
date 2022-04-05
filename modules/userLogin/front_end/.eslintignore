@@ -1,6 +1,4 @@
 api.js
-buildConfiguration.mjs
 format.js
 persistence.js
 routes.js
-config.js

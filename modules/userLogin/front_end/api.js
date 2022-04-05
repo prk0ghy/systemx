@@ -1,10 +1,9 @@
-import Configuration from "./config.js";
 import { useAuthentication } from "contexts/Authentication";
 import { useMemo } from "react";
 /* Those are hardcoded for now, would be much nicer
  * to define these in a config file though.
  */
-const portalAPIEndpoint = Configuration.api.endpoint;
+const portalAPIEndpoint = process.env.endpoint;
 const localStorageID = "Portal_Session_Token";
 
 let sessionID = null;

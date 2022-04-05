@@ -1,6 +1,5 @@
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import ButtonLink from "../inputs/ButtonLink.js";
-import Configuration from "../../config.js";
 import dynamic from "next/dynamic";
 import EmailIcon from "@mui/icons-material/Email";
 import { H } from "root/format";
@@ -43,7 +42,7 @@ const UserProfile = () => {
 							<UserBusinessEdit/>
 						</div>
 						<br/>
-						{ Configuration?.passwordReset?.enabled
+						{ process.env.enablePasswordReset === "true"
 							? (<ButtonLink href="/reset-password">{ t("passwordReset") }</ButtonLink>)
 							: null
 						}
