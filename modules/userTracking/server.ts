@@ -1,12 +1,12 @@
 import http from 'http';
-import {logTracking} from './logTracking.mjs';
-/*
- * Starts a HTTP Server responding to userTracking calls.
- */
-export default () => {
-	const server = http.createServer(async (request, response) => {
+import * as sqlite3 from 'sqlite3';
+import config from './config';
+import {ITrackingData, logTracking} from './logTracking';
+
+export const server = (db: sqlite3.Database): void => {
+	const httpServer = http.createServer(async (request, response) => {
 		if (request.url === '/robots.txt') {
-			response.end('User-agent: *\nDisallow: /\n');
+			response.end('User-Agent: *\nDisallow: /\n');
 		} else if (request.method === 'POST' && request.url === '/stats') {
 			response.setHeader('Access-Control-Allow-Origin', '*');
 			response.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
@@ -24,7 +24,7 @@ export default () => {
 			request.on('end', () => {
 				try {
 					const parsed = JSON.parse(json);
-					logTracking(parsed);
+					logTracking(db, parsed as ITrackingData);
 				} catch (e) {
 					// Do nothing on error
 					console.log(e);
@@ -34,5 +34,5 @@ export default () => {
 			});
 		}
 	});
-	server.listen(parseInt(process.env.USER_TRACKING_PORT, 10));
+	httpServer.listen(config.port);
 };

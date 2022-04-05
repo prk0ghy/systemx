@@ -6,7 +6,7 @@ on:
   push:
 
 jobs:
-  lint:
+  lint-test:
     runs-on: ubuntu-latest
     name: Linting
     strategy:
@@ -22,11 +22,12 @@ jobs:
           cache: 'pnpm'
       - run: pnpm i
       - run: pnpm lint
+      - run: pnpm test:types
   notify:
     name: Notifications for this pipeline
     runs-on: ubuntu-latest
     if: ${{ failure() }}
-    needs: [lint]
+    needs: [lint-test]
     steps:
       - name: Post Pipeline Fails to a Slack channel
         id: slack
