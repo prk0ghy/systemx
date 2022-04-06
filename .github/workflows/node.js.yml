@@ -9,8 +9,6 @@ jobs:
   lint-test:
     runs-on: ubuntu-latest
     name: Linting
-    strategy:
-      fail-fast: false
     steps:
       - uses: actions/checkout@v2
       - uses: pnpm/action-setup@v2.0.1
@@ -23,6 +21,7 @@ jobs:
       - run: pnpm i
       - run: pnpm lint
       - run: pnpm test:types
+      - run: pnpm test:unit
   notify:
     name: Notifications for this pipeline
     runs-on: ubuntu-latest

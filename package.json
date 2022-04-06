@@ -38,6 +38,7 @@
 		"test:back-end": "NODE_OPTIONS=--experimental-vm-modules jest ./modules/contentPipeline/back_end/test -- lasub",
 		"test:integration": "node ./index.mjs --clean-build --rethrow-errors --",
 		"test:types": "pnpm run -r --if-present test:types",
+		"test:unit": "pnpm run -r --if-present test:unit",
 		"user-tracking": "pnpm run -r --if-present user-tracking",
 		"administration": "pnpm run -r --if-present administration",
 		"content-pipeline": "pnpm run -r --if-present content-pipeline"
