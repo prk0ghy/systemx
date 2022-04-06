@@ -48,3 +48,6 @@ Thumbs.db
 
 # Swap files
 *.kate-swp
+
+*.env
+*.sqlite

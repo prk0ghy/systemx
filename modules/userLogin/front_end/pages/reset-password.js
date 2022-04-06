@@ -13,7 +13,7 @@ const ResetPassword = () => {
 		<ShellContent title={ t("titles|passwordReset") }>
 			<AuthenticationLayout resetPassword>
 				{ token
-					? <ResetPasswordConfirmForm resetToken={ token }/>
+					? <ResetPasswordConfirmForm token={ token }/>
 					: <ResetPasswordForm/>
 				}
 			</AuthenticationLayout>

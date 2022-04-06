@@ -6,6 +6,7 @@ import MakeID from "systemx-common/randomString.mjs";
 import Database from "../../database.mjs";
 import config from "../../config.mjs";
 import logger from "../../logger.mjs";
+import {remove} from "../../user.mjs";
 
 filterAdd("userRegister",async (v,next) => {
 	if (!v.req.username) {
@@ -65,6 +66,18 @@ filterAdd("userActivationCheck", async(v, next) => {
 		return v;
 	}
 	const res = await getActivation(hash);
+	if (!res) {
+		v.res.activationHashFound = false;
+		return v;
+	}
+	const validDate = new Date(res.validUntil);
+	const now = new Date().getDate();
+	if (validDate < now) {
+		v.res.error = "Activation Link has expired";
+		await deleteActivation(res.hash);
+		await remove(res.user);
+		return v;
+	}
 	v.res.activationHashFound = Boolean(res);
 	return await next(v);
 });
@@ -84,7 +97,6 @@ filterAdd("userActivationSubmit", async(v, next) => {
 
 filterAdd("userActivationResend", async(v, next) => {
 	const activationRequests = await getUserActivationRequests(v.ses.user.ID);
-	console.log(activationRequests);
 	for (const req of activationRequests) {
 		await deleteActivation(req.hash);
 	}
@@ -102,8 +114,12 @@ const addPendingActivation = async(user) => {
 		email: user.name,
 		activationLink: `${config.userLogin.domain}/activate?token=${hash}`
 	};
+	const now = new Date();
+	const res = now.setDate(now.getDate() + 1);
+	const validUntil = new Date(res);
+	values.validUntil = validUntil.toLocaleString("de-DE");
 	await Database.run(
-		"INSERT INTO UserActivation (hash, user, time) VALUES (?, ?, CURRENT_TIMESTAMP)", [hash, user.ID]
+		"INSERT INTO UserActivation (hash, user, time, validUntil) VALUES (?, ?, CURRENT_TIMESTAMP, ?)", [hash, user.ID, validUntil]
 	);
 	await sendMail({
 		to: user.email,
@@ -119,6 +135,7 @@ await (async () => {
 			hash TEXT NOT NULL,
 			user INTEGER NOT NULL REFERENCES User(ID) ON DELETE CASCADE ON UPDATE CASCADE,
 			time DATETIME NOT NULL,
+			validUntil DATETIME NOT NULL,
 			PRIMARY KEY (hash)
 		);
 		CREATE INDEX idx_UserActivation_user ON UserActivation (hash);

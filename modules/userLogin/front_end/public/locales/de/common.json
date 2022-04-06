@@ -98,9 +98,9 @@
         "welcome": "Willkommen bei m-vet",
         "checkMail": "Vielen Dank für die Registrierung auf m-vet.de! Wir haben eine E-Mail an {{email}} geschickt. Klicken Sie auf den Link in der E-Mail, um Ihr Benutzerkonto zu aktivieren. Bitte überprüfen Sie auch Ihren Spam-Ordner.",
         "please": "Bitte aktivieren Sie ihren Account.",
-        "checkMailLogin" : "Es wurde eine E-Mail mit einem Aktivierungslink an <b>{{email}}</b> versandt. Wenn Sie keine E-Mail erhalten haben, können Sie sich hier erneut eine E-Mail zusenden.",
+        "checkMailLogin" : "Es wurde eine E-Mail mit einem Aktivierungslink an {{email}} versandt. Wenn Sie keine E-Mail erhalten haben, können Sie sich hier erneut eine E-Mail zusenden.",
         "resend": "E-Mail erneut senden",
-        "invalidateNotice": "Wenn Sie sich eine neü E-Mail zusenden, ist der Aktivierungslink aus der vorigen Mail automatisch <b>nicht mehr gültig</b>. Bitte verwenden Sie den aktüllen Aktivierungslink."
+        "invalidateNotice": "Wenn Sie sich eine neue E-Mail zusenden, ist der Aktivierungslink aus der vorigen Mail automatisch nicht mehr gültig. Bitte verwenden Sie den aktuellen Aktivierungslink."
     },
     "misc": {
         "imNewHere": "Ich bin neu hier",

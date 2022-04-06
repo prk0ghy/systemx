@@ -10,17 +10,26 @@ const ActivateAccount = props => {
 	const [isActivated, setIsActivated] = useState(false);
 	const { token } = props;
 	useEffect(() => {
+		if (!token) {
+			return;
+		}
 		(async () => {
 			try {
 				const resp = await userActivationCheck(token);
+				if (resp.error) {
+					throw resp.error;
+				}
 				setIsValidToken(resp.activationHashFound);
 				if (resp.activationHashFound) {
 					const submitResponse = await userActivationSubmit(token);
+					if (submitResponse.error) {
+						throw submitResponse.error;
+					}
 					setIsActivated(submitResponse.userActivated);
 				}
 			}
-			catch (error) {
-				setError(error);
+			catch (apiError) {
+				setError(apiError);
 			}
 		})();
 	}, [token]);
@@ -42,6 +51,7 @@ const ActivateAccount = props => {
 							<>
 								<h2>{ t("invalidRequest") }</h2>
 								<p>{ t("yourInvalidRequest") }</p>
+								{ error && <>{ error }</> }
 							</>
 						)
 						: (
@@ -64,7 +74,6 @@ const ActivateAccount = props => {
 							</>
 						)
 				}
-				{ error && <>{ error }</> }
 			</div>
 		</Card>
 	);

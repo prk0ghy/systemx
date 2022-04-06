@@ -196,6 +196,11 @@ const defaultTargets = {
 		mailFrom: 'mvet@dilewe.de',
 		usesStartpageReference: false,
 		title: 'mVet',
+	},
+	// eslint-disable-next-line camelcase
+	craft_dev: {
+		graphqlEndpoint: 'https://craft-dev.test-dilewe.de/api',
+		title: 'Craft Dev',
 		targets: {
 			shop: {
 				activeModule: 'userLogin',

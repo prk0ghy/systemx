@@ -1,34 +1,56 @@
-section[star-selection="stern"] {
+section[star-selection="stern"],
+section[star-selection="true"] {
 	display: none;
+}
+
+.fadein > inner-content {
+	animation: fade-in 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* some browser dont support backdrop filter */
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+	section[star-selection="stern"] inner-content,
+	section[star-selection="true"] inner-content {
+		backdrop-filter: blur(10px);
+	}
+}
+
+/* fallback into transparency */
+@supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+	section[star-selection="stern"] inner-content,
+	section[star-selection="true"] inner-content {
+		background-color: rgba(255, 255, 255, 0.9);
+	}
+}
+
+section[star-selection="stern"] > inner-content,
+section[star-selection="true"] > inner-content {
+	box-shadow: 0 10px 15px 10px rgb(0 0 0 / 15%);
+	padding: 2rem 2rem 1rem;
+	border: #d69834 1px solid;
+	max-width: calc(var(--content-width) - 2rem);
+	z-index: 10;
 }
 
 /* remove block background since it overlaps with the star buttons */
-section[star-selection="stern"]::after {
+section[star-selection="stern"]::after,
+section[star-selection="true"]::after {
 	display: none !important;
 }
 
-/* --disabled starmode-- delete the rule below for enabling */
-.star-button-container {
-	display: none;
+/* we need to use a class for visibiliy, no inline style */
+section[star-selection="stern"].star-active,
+section[star-selection="true"].star-active {
+	display: block;
 }
 
 /* force visibility of help video since it is inside the section */
 
-/* --disabled starmode--
 section[with-stars] inner-content > help-video {
 	visibility: visible !important;
 }
 
-section[with-stars] inner-content {
-	display: flex;
-	flex-direction: row;
-	width: 100%;
-}
---disabled starmode-- */
-
 /* edge case for file uploads */
-
-/* --disabled starmode--
 section[with-stars] > inner-content > exercise-content {
 	width: 100%;
 }
@@ -36,13 +58,6 @@ section[with-stars] > inner-content > exercise-content {
 section[with-stars] > inner-content > .marker {
 	z-index: 501;
 	visibility: visible !important;
-}
-
-@media screen and (max-width: 820px) {
-	section[with-stars] inner-content {
-		display: flex;
-		flex-direction: column;
-	}
 }
 
 section[with-stars] inner-content > details {
@@ -85,7 +100,7 @@ section[with-stars] inner-content > details {
 
 .bubble.star.open > img {
 	padding: 0;
-	content: url("/resources/svg/star-open.svg");
+	content: url("/resources/svg/star-close.svg");
 }
 
 .bubble.star.offset {
@@ -117,6 +132,7 @@ section[with-stars] inner-content > details {
 
 	.star-button-container.offset {
 		right: 5em;
+		top: 0;
 	}
 
 	.bubble {
@@ -133,6 +149,7 @@ section[with-stars] inner-content > details {
 
 	.star-button-container.offset {
 		right: 4.5em;
+		top: 0;
 	}
 
 	.bubble {
@@ -142,15 +159,9 @@ section[with-stars] inner-content > details {
 
 
 @keyframes fade-in {
-	from { opacity: 0; }
-	to { opacity: 1; }
+	0% { transform: translateX(-100vw); }
+	100% { transform: translateX(0); }
 }
-
-.fadein {
-	animation-name: fade-in;
-	animation-duration: 0.5s;
-}
-
 
 @keyframes shift-in {
 	from { margin-top: -2em; }
@@ -159,7 +170,7 @@ section[with-stars] inner-content > details {
 
 .shift-in {
 	animation-name: shift-in;
-	animation-duration: 0.1s;
+	animation-duration: 0.3s;
 }
 
 @media only screen and (max-width: 820px) {
@@ -196,4 +207,4 @@ section[with-stars] inner-content > details {
 	animation-duration: 1.5s;
 	animation-fill-mode: forwards;
 }
---disabled starmode-- */
+
