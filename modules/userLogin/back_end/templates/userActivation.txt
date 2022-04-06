@@ -6,6 +6,8 @@ Sie haben sich erfolgreich auf m-vet.de registriert. Um Ihr Benutzerkonto zu akt
 
 Sobald Ihr Benutzerkonto aktiviert ist, können Sie sich unter Angabe Ihrer E-Mail-Adresse {{ email }} und dem von Ihnen vergebenen Passwort anmelden.
 
+Der Link ist gültig bis {{ validUntil }}.
+
 Sollten Sie Fragen oder Probleme haben, kontaktieren Sie uns per E-Mail unter folgender Adresse: support@m-vet.de.
 
 © Digitale Lernwelten GmbH, Dominikanergasse 2, 85072 Eichstätt

@@ -17,22 +17,40 @@ const ResetPasswordConfirmForm = props => {
 	const [showForm, setShowForm] = useState(true);
 	const [refresh] = useRefreshUserData();
 	const [isValid, setIsValid] = useState(undefined);
+	const { token } = props;
 	const doResetRequest = useCallback(
 		async vals => {
-			const res = await userPasswordResetSubmit(props.token, vals.password);
-			setErrors(res.error
-				? <Error msg={ res.error }/>
-				: null);
-			setShowForm(Boolean(res?.error));
-			refresh();
-		}, [refresh, props]
+			const res = await userPasswordResetSubmit(token, vals.password);
+			if (res.error) {
+				setErrors(<Error msg={ res.error }/>);
+				setShowForm(false);
+			}
+			else {
+				setShowForm(true);
+				refresh();
+				if (res.userPasswordResetSubmit) {
+					window.location.href = localStorage.getItem("Portal_Session_Token")
+						? "/"
+						: "/login";
+				}
+			}
+		}, [refresh, token]
 	);
 	useEffect(() => {
+		if (!token) {
+			return;
+		}
 		(async () => {
-			const res = await userPasswordResetCheck(props.token);
-			setIsValid(res.resetHashFound);
+			const res = await userPasswordResetCheck(token);
+			if (res.error) {
+				setErrors(<Error msg={ res.error }/>);
+				setIsValid(false);
+			}
+			else {
+				setIsValid(res.resetHashFound);
+			}
 		})();
-	}, [refresh, props, setIsValid]);
+	}, [token, setIsValid]);
 	return (
 		<Card>
 			<div className={ styles.form }>
@@ -72,7 +90,7 @@ const ResetPasswordConfirmForm = props => {
 									<>
 										<h2>{ t("success") }</h2>
 										<br/>
-										<p>{ t("pwReset|sucess") }</p>
+										<p>{ t("pwReset|success") }</p>
 									</>
 								)
 							}
@@ -85,6 +103,7 @@ const ResetPasswordConfirmForm = props => {
 									<h2>{ t("invalidRequest") }</h2>
 									<br/>
 									<p>{ t("yourInvalidRequest") }</p>
+									{ currentErrors && currentErrors }
 								</>
 							)
 							: <p>{ t("checkingRequest") }</p>

@@ -9,17 +9,24 @@ import Logger from "../../logger.mjs";
 export const get = hash => Database.get(`SELECT * FROM UserResetRequest WHERE hash = ?`, hash);
 export const remove = hash => Database.run("DELETE FROM UserResetRequest WHERE hash = ?", hash);
 
+const getUserPasswordResetRequests = async(userId) => {
+	return await Database.all("SELECT * FROM UserResetRequest WHERE user = ?", userId);
+};
 const add = async user => {
 	if (!user.email) {
 		Logger.warn(`received password reset request for user without email: `, user);
 		return false;
 	}
 	const hash = MakeID(64);
-	await Database.run("INSERT INTO UserResetRequest (hash, user, time) VALUES (?, ?, CURRENT_TIMESTAMP)", [hash, user.ID|0]);
+	const now = new Date();
+	const res = now.setDate(now.getDate() + 1);
+	const validUntil = new Date(res);
+	await Database.run("INSERT INTO UserResetRequest (hash, user, time, validUntil) VALUES (?, ?, CURRENT_TIMESTAMP, ?)", [hash, user.ID|0, validUntil]);
 	const values = {
 		userName: user.name,
 		userEmail: user.email,
-		resetLink: Options.absoluteDomain + "/reset-password?token=" + hash
+		resetLink: `${Options.absoluteDomain}/reset-password?token=${hash}`,
+		validUntil: validUntil.toLocaleString("de-DE")
 	};
 	await Mail({to: user.email, template: "passwordResetMail", values});
 	return hash;
@@ -27,13 +34,18 @@ const add = async user => {
 
 Filter("userPasswordResetRequest",async (v,next) => {
 	const user = await User.getByName(String(v.req.email));
+	const userPasswordResetRequests = await getUserPasswordResetRequests(user.ID);
+	// expire all other requests
+	for (const upr of userPasswordResetRequests) {
+		await remove(upr.hash);
+	}
 	v.res.userPasswordResetRequest = true;
 	if(!user){
 		return v;
 	}
 	await add(user);
 	return await next(v);
-}, 0, { requiresActivation: true});
+});
 
 Filter("userPasswordResetCheck",async (v,next) => {
 	const hash = v.req?.resetHash;
@@ -42,9 +54,20 @@ Filter("userPasswordResetCheck",async (v,next) => {
 		return v;
 	}
 	const res = await get(hash);
+	if (!res) {
+		v.res.resetHashFound = false;
+		return v;
+	}
+	const validDate = new Date(res.validUntil);
+	const now = new Date().getDate();
+	if (validDate < now) {
+		v.res.error = "Password-Reset Link has expired";
+		// await remove(res.hash);
+		return v;
+	}
 	v.res.resetHashFound = Boolean(res);
 	return await next(v);
-}, 0, { requiresActivation: true});
+});
 
 Filter("userPasswordResetSubmit",async (v,next) => {
 	const hash = v.req.resetHash;
@@ -58,7 +81,7 @@ Filter("userPasswordResetSubmit",async (v,next) => {
 	await remove(hash);
 	v.res.userPasswordResetSubmit = true;
 	return await next(v);
-}, 0, { requiresActivation: true});
+});
 
 await (async () => {
 	await Database.run(`
@@ -66,6 +89,7 @@ await (async () => {
 			hash TEXT NOT NULL,
 			user INTEGER NOT NULL REFERENCES User(ID) ON DELETE CASCADE ON UPDATE CASCADE,
 			time DATETIME NOT NULL,
+			validUntil DATETIME NOT NULL,
 			PRIMARY KEY (hash)
 		);
 		CREATE INDEX idx_UserResetRequest_user ON UserResetRequest (hash);
