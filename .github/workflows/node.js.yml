@@ -6,9 +6,9 @@ on:
   push:
 
 jobs:
-  lint-test:
+  lint:
     runs-on: ubuntu-latest
-    name: Linting
+    name: lint
     steps:
       - uses: actions/checkout@v2
       - uses: pnpm/action-setup@v2.0.1
@@ -20,13 +20,26 @@ jobs:
           cache: 'pnpm'
       - run: pnpm i
       - run: pnpm lint
+  test:
+    runs-on: ubuntu-latest
+    name: test
+    steps:
+      - uses: actions/checkout@v2
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 7.0.0-rc.2
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          cache: 'pnpm'
+      - run: pnpm i
       - run: pnpm test:types
       - run: pnpm test:unit
   notify:
     name: Notifications for this pipeline
     runs-on: ubuntu-latest
     if: ${{ failure() }}
-    needs: [lint-test]
+    needs: [lint, test]
     steps:
       - name: Post Pipeline Fails to a Slack channel
         id: slack
