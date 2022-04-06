@@ -20,6 +20,13 @@ export default async function wrapWithApplicationShell(targetName, {
 				<header>${await getHeader(pageURI, entry)}</header>
 				${await getNavigationMenu(pageURI)}
 				${content}
+				<svg style="display: none;">
+					<defs>
+						<filter id="blur">
+							<feGaussianBlur stdDeviation="5" />
+						</filter>
+					</defs>
+				</svg>
 			</body>
 		</html>
 	`;

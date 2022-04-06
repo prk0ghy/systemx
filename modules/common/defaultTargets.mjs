@@ -192,7 +192,11 @@ const defaultTargets = {
 		graphqlEndpoint: "https://redaktion-tagungsbaende.test-dilewe.de/api",
 		mailFrom: "mvet@dilewe.de",
 		usesStartpageReference: false,
-		title: "mVet",
+		title: "mVet"
+	},
+	craft_dev: {
+		graphqlEndpoint: "https://craft-dev.test-dilewe.de/api",
+		title: "Craft Dev",
 		targets: {
 			shop: {
 				activeModule: "userLogin",
@@ -235,6 +239,20 @@ const defaultTargets = {
 					userGroup: "bartagamen"
 				}
 			]
+		}
+	},
+	dev: {
+		disallowRobots: true,
+		favicon: "lasub",
+		graphqlEndpoint: "https://develop-craft.test-dilewe.de/api",
+		jsVars: {
+			galleryBackgroundOpacity: 0.95
+		},
+		targets: {
+			preview: {
+				action: 'preview',
+				httpPort: 9042
+			}
 		}
 	}
 };

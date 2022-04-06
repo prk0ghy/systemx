@@ -112,3 +112,8 @@ const resizeEmbeddings = () => {
 	setTimeout(initLazyIframes,0);
 	window.addEventListener('resize', resizeEmbeddings);
 })();
+
+//because the resizing should trigger once after all ressources are loaded
+window.addEventListener("load", () => {
+	setTimeout(() => { window.dispatchEvent(new Event("resize")); }, 0);
+});
