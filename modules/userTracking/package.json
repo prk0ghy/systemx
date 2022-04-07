@@ -1,17 +1,18 @@
 {
   "name": "user-tracking",
   "version": "1.0.0",
-  "description": "",
+  "description": "A small service for tracking page access.",
   "license": "EUPL-1.2",
   "author": "Digitale Lernwelten GmbH",
-  "main": "index.js",
+  "main": "src/index.ts",
   "scripts": {
     "start": "ts-node ./src/index.ts",
     "user-tracking": "pnpm start",
     "lint": "eslint ./src/**/*.ts",
     "lint:fix": "eslint ./src/**/*.ts --fix",
     "test:unit": "jest",
-    "test:types": "tsc --noEmit"
+    "test:types": "tsc --noEmit",
+    "test": "pnpm run test:types && pnpn run test:unit"
   },
   "dependencies": {
     "dotenv": "^16.0.0",

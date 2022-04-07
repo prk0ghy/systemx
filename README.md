@@ -12,8 +12,9 @@ this approach makes it very easy for us to safeguard our users data (what we don
 - [mVet - Portal für Tiermedizin](https://tagungsbaende.dilewe.de/)
 
 # Prerequisites
-- Node v16+ (current LTS)
-- NPM
+- [Node v16+](https://nodejs.org/en/)
+- [`pnpm`](https://pnpm.io/)
+
 
 ## Windows
 When developing for SystemX on windows, you need to install the latest *Node.js*
@@ -31,20 +32,24 @@ already, just make sure that node is at least v14, otherwise, you will get
 errors due to the usage of ESM and other newer features found in this codebase.
 
 # Installation
-Running `npm install` or `npm install dev` after cloning should, as the command suggests, install everything you need in order to run SystemX
-
-## Additional Requirements for userLogin Backend
-To run the `sqlite3` locally you need `node-gyp`:
+Run:
+```bash
+$> pnpm i # or pnpm install
 ```
-$> npm install node-gyp -g node-gyp
+in the root directory of the repository will install dependencies
+and run any post-install scripts necessary for each module.
+
+
+# Linting
+Run:
+```bash
+$> pnpm lint
 ```
-
-## Development
-Just run `npm install` in order to install all the prerequisites and then use `npm run dev lasub.preview` when working on the Content parts, or use `npm run dev:shop` when working on the portal.
-
-## Linting
-Before commiting it is advisable to run `npm run lint`, since those tests will be run by the CI/CD
-pipeline again and it would be nice if the commit wouldn't fail in the pipeline, blocking an automatic roll-out.
+to detect linting errors.
+```bash
+$> pnpm lint:fix
+```
+to let eslint/stylelint attempt to fix any errors automatically.
 
 # Architecture / Modules
 SystemX is a collection of specialized modules, interacting with each other as needed.
