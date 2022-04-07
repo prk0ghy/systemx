@@ -8,14 +8,12 @@ const Footer = () => {
 	const footerRoutes = [];
 	footerRoutes.push(routes.imprint);
 	footerRoutes.push(routes.privacy);
+	footerRoutes.push(routes.termsAndConditions);
 	const i18nKeys = [
 		"imprint",
-		"privacy"
+		"privacy",
+		"termsAndConditions"
 	];
-	if (process.env.enableToC === "true") {
-		footerRoutes.push(routes.termsAndConditions);
-		i18nKeys.push("termsAndConditions");
-	}
 	const items = footerRoutes.map((route, i) => (
 		<li className={ styles.item } key={ route.path }>
 			<Link href={ route.path }>

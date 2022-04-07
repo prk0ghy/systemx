@@ -21,26 +21,19 @@ const LoginRegistrationManager = ({ loginHref }) => {
 				: (
 					<Card>
 						<h3>
-							<H>{ process.env.enableRegistration === "true"
-								? t("misc|what")
-								: t("Login")
-							}
+							<H>
+								{ t("Login") }
 							</H>
 						</h3>
 						<br/>
 						<LoginForm loginHref={ loginHref }/>
 						<br/>
-						{ process.env.enableRegistration === "true"
-							? (
-								<>
-									<br/>
-									<h3><H>{ t("what") }</H></h3>
-									<br/>
-									<RegistrationForm/>
-								</>
-							)
-							: null
-						}
+						<>
+							<br/>
+							<h3><H>{ t("what") }</H></h3>
+							<br/>
+							<RegistrationForm/>
+						</>
 					</Card>
 				)
 			}

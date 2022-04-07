@@ -19,7 +19,7 @@ const CartIcon = () => {
 			</div>
 		)
 		: null;
-	return process.env.enableShoppingCart === "true" && (items.length > 0)
+	return (items.length > 0)
 		? (
 			<li>
 				<Link href={ routes.cart.path }>

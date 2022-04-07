@@ -42,10 +42,7 @@ const UserProfile = () => {
 							<UserBusinessEdit/>
 						</div>
 						<br/>
-						{ process.env.enablePasswordReset === "true"
-							? (<ButtonLink href="/reset-password">{ t("passwordReset") }</ButtonLink>)
-							: null
-						}
+						<ButtonLink href="/reset-password">{ t("passwordReset") }</ButtonLink>
 						<ButtonLink className={ styles.delete } href="/delete-user">{ t("deleteUser") }</ButtonLink>
 					</section>
 				)

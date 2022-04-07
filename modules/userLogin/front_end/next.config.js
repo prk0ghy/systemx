@@ -7,21 +7,21 @@ module.exports = {
 		ignoreDuringBuilds: true
 	},
 	async rewrites() {
-		const src = "/api/portal-user";
-		const dest = process.env.apiEndpoint;
+		const apiSrc = "/api/portal-user";
+		const apiDest = process.env.USER_LOGIN_UI_API_ENDPOINT;
 		const contentSrc = "/content/:path*";
-		const contentDest = `${process.env.contentEndpoint}:path`;
-		console.log(`proxying: ${src} => ${dest}`);
+		const contentDest = `${process.env.USER_LOGIN_UI_CONTENT_ENDPOINT}/:path`;
+		console.log(`proxying: ${apiSrc} => ${apiDest}`);
 		console.log(`proxying: ${contentSrc} => ${contentDest}`);
 		return {
 			beforeFiles: [
 				{
-					source: src,
-					destination: dest
+					source: apiSrc,
+					destination: apiDest
 				},
 				{
-					source: "/content/:path*",
-					destination: "http://localhost:8020/:path*"
+					source: contentSrc,
+					destination: contentDest
 				}
 			]
 		};
