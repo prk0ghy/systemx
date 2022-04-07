@@ -93,8 +93,8 @@ export default {
 		}
 		return `
 			<section content-type="audio" ${contentTypeIDIf(id)} ${attributeIf('star-selection', starSelection)}>
+				${Marker.render({ isNumbered })}
 				<inner-content>
-					${Marker.render({ isNumbered })}
 					<figure figure-type="audio">
 						${poster}
 						<audio controls src="${await download(src)}"></audio>

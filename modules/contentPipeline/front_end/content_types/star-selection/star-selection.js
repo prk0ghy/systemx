@@ -61,7 +61,7 @@
 				starElement.setAttribute(C_FOR_SECTION_KEY, section.id);
 			}
 
-			const hasHelpVideo = section.querySelectorAll("inner-content > help-video").length > 0;
+			const hasHelpVideo = section.querySelectorAll("help-video").length > 0;
 			const starButton = createStarButton();
 			const container = document.createElement("div");
 			container.classList.add("star-button-container");
@@ -92,18 +92,32 @@
 						}
 					}
 					starButton.classList.remove("open");
+					recalcAllElements();
+					//stop all medias for that section
+					starElements.forEach(starElement => {
+						stopAllMedia(starElement);
+					});
 				} else {
 					starButton.classList.add("open");
 					section.classList.remove("unblur");
 					resetStarElements(starElements);
+					//only when not in mobile (star buttons vertical)
+					const starSize = (starButtons.length + (hasHelpVideo? 2 : 1)) * 64;
+					if (!isMobile()) {
+						if(starSize > section.offsetHeight) {
+							section.style.marginBottom = starSize - section.offsetHeight + 32 + "px";
+						}
+					}
+					recalcAllElements();
 				}
 				if (isOpen) {
 					starButton.classList.add("open");
 				} else {
 					starButton.classList.remove("open");
+					section.style.marginBottom = 0;
 				}
 			};
-			section.firstElementChild.appendChild(container);
+			section.appendChild(container);
 		}
 	};
 
@@ -150,10 +164,11 @@
 			a.innerHTML = getImage(icon, title);
 			a.setAttribute("title", title);
 			a.onclick = () => {
-				// reset all other star elements
+				// reset all other star elements and stop media form playing
 				starElements.filter(se => !se.isSameNode(starElement)).forEach(se => {
 					se.classList.remove("star-active");
 					se.style.top = null;
+					stopAllMedia(se);
 				});
 				// also reset all star-buttons
 				if (starElement.classList.contains("star-active")) {
@@ -161,12 +176,7 @@
 				} else {
 					starElement.classList.add("fadein");
 					starElement.classList.add("star-active");
-					// check for mobile resolution
-					const margin = isMobile()? 0 : 68;
-					console.log(margin);
-					starElement.style.top = `-${section.offsetHeight + margin}px`;
-					// we want the difference from section and star element, so the star elements dont overlap
-					starElement.style.marginBottom = `-${section.offsetHeight + margin}px`;
+
 					scrollToElement(section, C_SCROLL_OFFSET);
 					// we need to dispatch a resize event, if the star-element is an embed
 					if (starElement.getAttribute("embedding-type") === "h5p") {
@@ -174,11 +184,10 @@
 						setTimeout(() => {
 							window.dispatchEvent(new Event("resize"));
 						}, 20);
-						//and we need to apply the new height to the margin-bottom again, but ww also need to wait for the browser
-						setTimeout(() => {
-							starElement.style.marginBottom = `-${section.offsetHeight + margin}px`;
-						}, 100);
 					}
+					// at last recalculate all elements
+					// sometimes, when the Contenttype self is smaller than the list of star buttons
+					recalcAllElements();
 				}
 			};
 			return a;
@@ -277,7 +286,99 @@
 		};
 	};
 
+	/**
+	 * @param {element} element
+	 * @returns {element} or rekrusive funktion
+	 */
+	const getHasStarSection = starElement => {
+		if (!starElement){return null;}
+		const sibling = starElement.previousElementSibling;
+		if (!sibling){return null;}
+		if (sibling.hasAttribute("with-stars")) {
+			return sibling;
+		}
+		return getHasStarSection(sibling);
+	};
+
+	const recalcAllElements = () => {
+		const margin = isMobile()? 60 : 0;
+		const openStars = document.querySelectorAll(".star-active");
+		if (openStars.length > 0) {
+			openStars.forEach( (openStar, i) => {
+				const section = getHasStarSection(openStar);
+				if (!section) { return; }
+				openStar.style.top = `${section.offsetTop + margin}px`;
+				setTimeout(() => {
+					openStar.style.top = `${section.offsetTop + margin}px`;
+					let hs;
+					//need to init, if resolution is mobile
+					let hst = 0;
+					if (openStar.offsetHeight > section.offsetHeight) {
+						hs = openStar.offsetHeight - section.offsetHeight + margin;
+					}
+					// check for mobile resolution
+					if (!isMobile()) {
+						const starlength = parseInt(section.getAttribute("with-stars"));
+						const hasHelpVideo = section.querySelectorAll("help-video").length > 0;
+						const starSize = (starlength + (hasHelpVideo? 2 : 1)) * 64;
+						if(starSize > section.offsetHeight) {
+							hst = starSize - section.offsetHeight + margin;
+						}
+					}
+					// sometimes, when the Contenttype self is smaller than the list of star buttons
+					section.style.marginBottom = ((hs > hst)? hs : hst) + "px";
+				}, (i + 1) * 300);
+			});
+		}
+	};
+
+	/**
+	 * @param {element} element
+	 * @param {string} contentType
+	 * @returns
+	 */
+	const stopMedia = (starElement,ct) => {
+		if (!starElement || !ct) {return;}
+		if (starElement.getAttribute("content-type") === ct) {
+			const mediaFrame = starElement.querySelector(ct);
+			if (mediaFrame) {
+				mediaFrame.pause();
+				mediaFrame.currentTime = 0;
+			}
+		}
+	};
+
+	/**
+	 * @param {element} element
+	 * @returns
+	 */
+	const stopAllMedia = starElement => {
+		if (!starElement) { return;}
+		if (starElement.getAttribute("embedding-type") === "video") {
+			const videoFrame = starElement.querySelector("iframe-wrap");
+			if (videoFrame) {
+				videoFrame.remove();
+				const link = starElement.querySelector("a.embedding-link");
+				link.classList.remove("hidden-video-placeholder");
+			}
+		}
+		stopMedia(starElement,"video");
+		stopMedia(starElement,"audio");
+	};
+
+	//we need this global timer to reset it
+	let timer;
+	//on resize, we wait 100ms before we recalculate all starElements and dont spam the script
+	window.addEventListener("resize", ()=>{
+		//clearig all other resize steps
+		clearTimeout(timer);
+		timer = setTimeout(() => {
+			recalcAllElements();
+		}, 100);
+	});
+
+	//edited, because there are many changes on 1062px
 	const isMobile = () => {
-		return window.innerWidth <= 820;
+		return window.innerWidth <= 1062;
 	};
 })();

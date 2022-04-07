@@ -271,9 +271,9 @@ export default {
 			: "";
 		return `
 			<section content-type="text-and-image" ${contentTypeIDIf(id)} ${attributeIf("star-selection",starSelection)}>
+				${Marker.render({ isNumbered })}
+				${InfoLink.render({infoLink})}
 				<inner-content>
-					${Marker.render({ isNumbered })}
-					${InfoLink.render({infoLink})}
 					${figureHTML}
 					${galleryIntroductionHTML}
 					<div class="text-content">

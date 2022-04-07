@@ -189,9 +189,9 @@ export default {
 			: "";
 		return `
 			<section content-type="gallery" ${contentTypeIDIf(id)} ${attributeIf("star-selection",starSelection)}>
+				${Marker.render({ isNumbered })}
+				${InfoLink.render({infoLink})}
 				<inner-content>
-					${Marker.render({ isNumbered })}
-					${InfoLink.render({infoLink})}
 					<details>
 						<summary>${figures[0]}</summary>
 						${figures.slice(1).join("")}

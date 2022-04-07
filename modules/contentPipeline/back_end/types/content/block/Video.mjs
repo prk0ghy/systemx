@@ -120,8 +120,8 @@ export default {
 		});
 		return `
 			<section content-type="video" ${contentTypeIDIf(id)} ${attributeIf('star-selection', starSelection)}>
+				${Marker.render({ isNumbered })}
 				<inner-content>
-					${Marker.render({ isNumbered })}
 					<figure figure-type="video">
 						${videoHTML}
 						${captionHTML}

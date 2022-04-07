@@ -114,9 +114,9 @@ export default {
 		const elementsHTML = (await Promise.all((content.elements || []).map(element => render(element)))).join("");
 		return `
 			<section content-type="exercise" ${contentTypeIDIf(id)}>
+				${Marker.render({ isNumbered })}
+				${await HelpVideo.render({ asset: helpVideo })}
 				<inner-content>
-					${Marker.render({ isNumbered })}
-					${await HelpVideo.render({ asset: helpVideo })}
 					<exercise-content>
 						${titleHTML}
 						${textHTML ?? ""}

@@ -33,6 +33,7 @@
 	--dlw-blue-dark: #1E3E51;
 	--support-slider-main-color: #00a99d;
 	--support-slider-background-color: #f9fbfc;
+	--shadow-box: 1px 2px 4px 2px rgb(0 0 0 / 50%);
 }
 
 @media screen and (max-width: 650px) {

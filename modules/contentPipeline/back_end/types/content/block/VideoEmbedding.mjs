@@ -193,11 +193,12 @@ export default {
 		}
 		return `
 			<section content-type="embedding" ${contentTypeIDIf(id)} ${attributeIf('star-selection', starSelection)} embedding-type="video">
+				${Marker.render({ isNumbered })}
 				<inner-content>
-					${Marker.render({ isNumbered })}
 					<figure figure-type="embedding">
 						<a href="${timedVideoURL}" class="embedding-link">
-							<img alt="${title}" height="${imageHeight}" src="${firstPartyImageURL}" width="${imageWidth}" aspect-ratio="${aspectRatio / 100.0}">
+							<img alt="${title}" height="${imageHeight}" src="${firstPartyImageURL}" width="${imageWidth}"
+								style="aspect-ratio:${"1/" + aspectRatio / 100.0}; object-fit: cover">
 						</a>
 						${licenseHTML}
 						${captionHTML}

@@ -77,8 +77,8 @@ export default {
 		}
 		return `
 			<section content-type="download" ${contentTypeIDIf(id)}>
+				${Marker.render({ isNumbered })}
 				<inner-content>
-					${Marker.render({ isNumbered })}
 					<download-wrap>
 						<download-text>
 							<p>${description}</p>

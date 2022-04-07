@@ -72,7 +72,7 @@ main > section:first-child {
 
 .marker {
 	position: absolute;
-	left: -2em;
+	left: calc(((100% - var(--content-width))/2) - 1em);
 	background: transparent;
 	color: #BFBFBF;
 	border-radius: 50%;
