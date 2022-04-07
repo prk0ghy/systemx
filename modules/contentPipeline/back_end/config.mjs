@@ -1,14 +1,14 @@
 export default {
-	port: parseInt(process.env.CONTENT_PIPELINE_PORT),
+	port: parseInt(process.env.CONTENT_PIPELINE_PORT ?? "8020"),
 	enablePreview: process.env.CONTENT_PIPELINE_ENABLE_PREVIEW === "true",
-	gqlEndpoint: process.env.CONTENT_PIPELINE_GRAPHQL_ENDPOINT,
-	favicon: process.env.CONTENT_PIPELINE_FAVICON,
-	title: process.env.CONTENT_PIPELINE_TITLE,
-	target: process.env.CONTENT_PIPELINE_TARGET,
-	backlink: process.env.CONTENT_PIPELINE_BACK_LINK,
+	gqlEndpoint: process.env.CONTENT_PIPELINE_GRAPHQL_ENDPOINT ?? "",
+	favicon: process.env.CONTENT_PIPELINE_FAVICON ?? "default",
+	title: process.env.CONTENT_PIPELINE_TITLE ?? "title",
+	target: process.env.CONTENT_PIPELINE_TARGET ?? "target",
+	backlink: process.env.CONTENT_PIPELINE_BACK_LINK ?? "",
 	rethrowErrors: process.env.CONTENT_PIPELINE_RETHROW_ERRORS === "true",
 	downloadMedia: process.env.CONTENT_PIPELINE_DOWNLOAD_MEDIA === "true",
-	distributionPath: process.env.CONTENT_PIPELINE_DISTRIBUTION_PATH,
+	distributionPath: process.env.CONTENT_PIPELINE_DISTRIBUTION_PATH ?? "./web",
 	cleanBuild: process.env.CONTENT_PIPELINE_CLEAN_BUILD === "true",
 	forceRendering: process.env.CONTENT_PIPELINE_FORCE_RENDERING === "true",
 	disallowRobots: process.env.CONTENT_PIPELINE_DISALLOW_ROBOTS === "true",
@@ -17,7 +17,7 @@ export default {
 	accessibility: process.env.CONTENT_PIPELINE_ACCESSIBILITY === "true",
 	ytCaption: process.env.CONTENT_PIPELINE_YT_CAPTION === "true",
 	galleryWrap: process.env.CONTENT_PIPELINE_GALLERY_WRAP === "true",
-	backgroundOpacity: parseFloat(process.env.CONTENT_PIPELINE_BACKGROUND_OPACITY),
-	trackingEndpoint: process.env.CONTENT_PIPELINE_TRACKING_ENDPOINT,
-	navigationLinks: JSON.parse(process.env.CONTENT_PIPELINE_NAVIGATION_LINKS)
+	backgroundOpacity: parseFloat(process.env.CONTENT_PIPELINE_BACKGROUND_OPACITY ?? "0.0"),
+	trackingEndpoint: process.env.CONTENT_PIPELINE_TRACKING_ENDPOINT ?? "",
+	navigationLinks: JSON.parse(process.env.CONTENT_PIPELINE_NAVIGATION_LINKS ?? "[]")
 };
