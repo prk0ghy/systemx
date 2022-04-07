@@ -2,3 +2,4 @@ api.js
 format.js
 persistence.js
 routes.js
+node_modules/

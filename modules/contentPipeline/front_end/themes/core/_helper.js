@@ -10,7 +10,7 @@ const getFirstParentSection = ele => {
 
 const fileExtension = filename => {
 	const i = filename.lastIndexOf(".");
-	return i < 0 ? "" : filename.substr(i+1).toLowerCase();
+	return i < 0 ? "" : filename.substring(i+1).toLowerCase();
 };
 
 /* Download some content immediatly */

@@ -56,7 +56,7 @@ const types = {};
 * CraftCMS hard-codes the origin into all URLs which leads to funky behavior.
 * In order to avoid this, we remove the origin from all URLs.
 */
-const origin = config.gqlEndpoint.substr(0,config.gqlEndpoint.indexOf("/",8));
+const origin = config.gqlEndpoint.substring(0,config.gqlEndpoint.indexOf("/",8));
 const removeOriginFromURLs = response => JSON.parse(JSON.stringify(response).split(`${origin}/`).join("/"));
 const query = async (queryFunction, {
 	raw

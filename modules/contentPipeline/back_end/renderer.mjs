@@ -84,7 +84,7 @@ export const makeMockRenderer = async (contextOverrides = {}) => {
 				const urlObject = new URL(url.startsWith("//") ? `https:${url}` : url);
 				const fileName = `${decodeURIComponent(urlObject
 					.pathname
-					.substr(urlObject.pathname.lastIndexOf("/") + 1)
+					.substring(urlObject.pathname.lastIndexOf("/") + 1)
 				)}`;
 				const filePath = `media/${fileName}`;
 				const htmlPath = filePath;

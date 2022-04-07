@@ -264,14 +264,14 @@ export const buildEntries = async targetName => {
 				checkHashCollision(url,hashPrefix);
 				const fileName = `${hashPrefix}_${decodeURIComponent(urlObject
 					.pathname
-					.substr(urlObject.pathname.lastIndexOf("/") + 1)
+					.substring(urlObject.pathname.lastIndexOf("/") + 1)
 				)}`;
 				const filePath = path.join(mediaPath, fileName);
-				const htmlPath = filePath.substr(targetPath.length);
+				const htmlPath = filePath.substring(targetPath.length);
 				const thumb = {
 					"filePath": path.join(thumbPath, fileName)
 				};
-				thumb.htmlPath = (thumbPath + thumb.filePath.substr(mediaPath.length)).substr(targetPath.length);
+				thumb.htmlPath = (thumbPath + thumb.filePath.substring(mediaPath.length)).substring(targetPath.length);
 
 				return {filePath, htmlPath, thumb};
 			}
@@ -295,7 +295,7 @@ export const buildEntries = async targetName => {
 		}
 		const content = await globalRender(entry, globalContext);
 		/* Remove target prefix and in case of Windows, replace blackslashes with forward slashes */
-		const uri = outputFilePath.substr(targetPath.length).replace(/\\/g, "/");
+		const uri = outputFilePath.substring(targetPath.length).replace(/\\/g, "/");
 		const wrappedHTML = await wrapWithApplicationShell(targetName, {
 			content,
 			entry,

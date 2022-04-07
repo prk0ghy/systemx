@@ -26,7 +26,7 @@
 		for(let i=0;i<m.length;i++){
 			const cstr = String(m[i]);
 			const unit = cstr.charAt(cstr.length-1).toLowerCase();
-			const count = (cstr.substr(0,cstr.length-1))|0;
+			const count = (cstr.substring(0,cstr.length-1))|0;
 			if(unit === 's'){
 				ret += count;
 			}

@@ -18,7 +18,7 @@ const getFromPath = async (ext, prefix, inline) => {
 		let ret = "";
 
 		for (const name of names.sort()) {
-			if(name.substr(0,1) === "."){continue;}
+			if(name.substring(0,1) === "."){continue;}
 			const filePath = prefix + name;
 			if (fileExtension(filePath).toLowerCase() !== ext) {
 				continue;
@@ -44,7 +44,7 @@ const getFromContentTypes = async (ext, inline) => {
 		const names = await fsp.readdir("../front_end/content_types/");
 		let ret = "";
 		for (const name of names) {
-			if(name.substr(0,1) === "."){continue;}
+			if(name.substring(0,1) === "."){continue;}
 			const prefix = "../front_end/content_types/" + name + "/";
 			ret += await getFromPath(ext, prefix, inline);
 		}
@@ -58,7 +58,7 @@ const getFromThemes = async (ext, inline) => {
 		const names = await fsp.readdir("../front_end/themes/");
 		let ret = "";
 		for (const name of names) {
-			if(name.substr(0,1) === "."){continue;}
+			if(name.substring(0,1) === "."){continue;}
 			const prefix = "../front_end/themes/" + name + "/";
 			ret += await getFromPath(ext, prefix, inline);
 		}
@@ -73,7 +73,7 @@ export const getAssetDirectories = async  () => {
 	try {
 		const names = await fsp.readdir("../front_end/themes/");
 		for (const name of names) {
-			if(name.substr(0,1) === "."){continue;}
+			if(name.substring(0,1) === "."){continue;}
 			const prefix = "../front_end/themes/" + name + "/";
 			ret.push(prefix);
 		}
@@ -84,7 +84,7 @@ export const getAssetDirectories = async  () => {
 	try {
 		const names = await fsp.readdir("../front_end/content_types/");
 		for (const name of names) {
-			if(name.substr(0,1) === "."){continue;}
+			if(name.substring(0,1) === "."){continue;}
 			const prefix = "../front_end/content_types/" + name + "/";
 			ret.push(prefix);
 		}

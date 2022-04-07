@@ -80,7 +80,7 @@ export const buildRegions = async templateName => {
 		start,
 	}) => ({
 		evalText,
-		text: template.substr(start, end - start),
+		text: template.substring(start, end - start),
 	}));
 };
 
