@@ -17,7 +17,7 @@ const LibraryItem = ({
 			{ showImage
 				? <Badge picture={ preview }/>
 				: (
-					<Link href={ contentUri }>
+					<Link href={ `/content${contentUri}` }>
 						<a>
 							<label>{ name }</label>
 						</a>

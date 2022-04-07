@@ -33,7 +33,6 @@ const start = async () => {
 		try {
 			await db.manager.save(entry);
 			resp.sendStatus(200);
-			return;
 		} catch (error) {
 			console.error(`error: ${(error as Error).message}`);
 			resp.sendStatus(400);

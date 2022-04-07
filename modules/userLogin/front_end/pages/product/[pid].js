@@ -9,7 +9,7 @@ const ProductPage = ({ productID }) => {
 	// Const router = useRouter();
 	const product = findProduct(productID);
 	const { t } = useTranslation("common");
-	return !product
+	return product === null
 		? <NotFound msg={ t("404product") }/>
 		: (
 			<ShellContent headerBackgroundColor="var(--color-main)" title={ product.name }>

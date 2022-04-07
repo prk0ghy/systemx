@@ -17,6 +17,7 @@ const Library = () => {
 	const [{ user }] = useAuthentication();
 	const router = useRouter();
 	const items = Object.values(user?.groups || {}).map(d => {
+		console.log(d);
 		const p = findProduct(d);
 		return <LibraryItem key={ d } product={ p }/>;
 	});

@@ -24,9 +24,10 @@ export const loadDir = async directory => {
 			templatePaths[templateName] = path.join(directory, fileName);
 			return fileName;
 		}));
+	// eslint-disable-next-line no-unused-vars
 	} catch (error) {
 		/* If we can't read the directory, we just skip it */
-		console.log(error);
+		// console.log(error);
 	}
 };
 

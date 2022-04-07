@@ -8,14 +8,23 @@ module.exports = {
 	},
 	async rewrites() {
 		const src = "/api/portal-user";
-		const dest = process.env.endpoint;
+		const dest = process.env.apiEndpoint;
+		const contentSrc = "/content/:path*";
+		const contentDest = `${process.env.contentEndpoint}:path`;
 		console.log(`proxying: ${src} => ${dest}`);
-		return [
-			{
-				source: src,
-				destination: dest
-			}
-		];
+		console.log(`proxying: ${contentSrc} => ${contentDest}`);
+		return {
+			beforeFiles: [
+				{
+					source: src,
+					destination: dest
+				},
+				{
+					source: "/content/:path*",
+					destination: "http://localhost:8020/:path*"
+				}
+			]
+		};
 	},
 	reactStrictMode: true,
 	webpack(configuration, { webpack }) {

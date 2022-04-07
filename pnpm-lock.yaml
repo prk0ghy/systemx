@@ -128,6 +128,7 @@ importers:
       html-to-text: ^8.1.0
       koa: ^2.13.4
       koa-body: ^4.2.0
+      koa-logger: ^3.2.1
       koa-mount: ^4.0.0
       koa-router: ^10.1.1
       koa-static: ^5.0.0
@@ -142,6 +143,7 @@ importers:
       html-to-text: 8.1.0
       koa: 2.13.4
       koa-body: 4.2.0
+      koa-logger: 3.2.1
       koa-mount: 4.0.0
       koa-router: 10.1.1
       koa-static: 5.0.0
@@ -5681,6 +5683,10 @@ packages:
     engines: {node: '>=10.17.0'}
     dev: true
 
+  /humanize-number/0.0.2:
+    resolution: {integrity: sha1-EcCvakcWQ2M1iFiASPF5lUFInBg=}
+    dev: false
+
   /husky/7.0.4:
     resolution: {integrity: sha512-vbaCKN2QLtP/vD4yvs6iz6hBEo6wkSzs8HpRah1Z6aGmF2KW5PdYuAd7uX5a+OyBZHBhd+TFLqgjUgytQr4RvQ==}
     engines: {node: '>=12'}
@@ -6809,6 +6815,16 @@ packages:
       koa-compose: 4.1.0
     dev: false
 
+  /koa-logger/3.2.1:
+    resolution: {integrity: sha512-MjlznhLLKy9+kG8nAXKJLM0/ClsQp/Or2vI3a5rbSQmgl8IJBQO0KI5FA70BvW+hqjtxjp49SpH2E7okS6NmHg==}
+    engines: {node: '>= 7.6.0'}
+    dependencies:
+      bytes: 3.1.2
+      chalk: 2.4.2
+      humanize-number: 0.0.2
+      passthrough-counter: 1.0.0
+    dev: false
+
   /koa-mount/4.0.0:
     resolution: {integrity: sha512-rm71jaA/P+6HeCpoRhmCv8KVBIi0tfGuO/dMKicbQnQW/YJntJ6MnnspkodoA4QstMVEZArsCphmd0bJEtoMjQ==}
     engines: {node: '>= 7.6.0'}
@@ -7841,6 +7857,10 @@ packages:
   /parseurl/1.3.3:
     resolution: {integrity: sha512-CiyeOxFT/JZyN5m0z9PfXw4SCBJ6Sygz1Dpl0wqjlhDEGGBP1GnsUVEL0p63hoG1fcj3fHynXi9NYO4nWOL+qQ==}
     engines: {node: '>= 0.8'}
+    dev: false
+
+  /passthrough-counter/1.0.0:
+    resolution: {integrity: sha1-GWfZ5m2lcrXAI8eH2xEqOHqxZvo=}
     dev: false
 
   /path-browserify/0.0.1:
