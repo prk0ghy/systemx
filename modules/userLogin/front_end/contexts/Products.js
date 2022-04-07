@@ -8,6 +8,21 @@ export const {
 	const state = {
 		products: [
 			{
+				caption: "56. Arbeitstagung der AG ARK Schwerpunktthema \"Warane\"",
+				description: `Erwerben Sie mit einem Mausklick das mProceeding zur 56. Arbeitstagung der AG ARK mit dem Schwerpunktthema “Warane”.`,
+				longDescription: `Erwerben Sie mit einem Mausklick das mProceeding zur 56. Arbeitstagung der AG ARK mit dem Schwerpunktthema “Warane”. Im mProceeding finden Sie alle Zusammenfassungen der Tagungsbeiträge, sowie die beantworteten Fragen unserer Referent_innen, die im Rahmen der Veranstaltung gestellt wurden.`,
+				id: "warane",
+				group: "warane",
+				contentUri: "/warane/inhalt/startseite/index.html",
+				name: "Warane",
+				previewHeight: 863,
+				previewURL: "/mvet/products/goanna.jpg",
+				previewWidth: 1381,
+				color: "#07100F",
+				comingSoon: false,
+				price: null
+			},
+			{
 				caption: "Winterschool",
 				description: `Die Winterschool Tag- & Nachtgreifvögel wird von einem umfangreichen Tagungsband begleitet – von der Artbestimmung über Haltung, Ernährung, Anatomie und Diagnostik bis zur Behandlung verschiedenster Erkrankungen.`,
 				longDescription: `Die Winterschool Tag- & Nachtgreifvögel wird von einem umfangreichen Tagungsband begleitet – von der Artbestimmung über Haltung, Ernährung, Anatomie und Diagnostik bis zur Behandlung verschiedenster Erkrankungen.`,

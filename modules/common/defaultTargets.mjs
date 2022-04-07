@@ -162,6 +162,11 @@ const defaultTargets = {
 					url: "/tagundnachtgreifvoegel/",
 					localDir: "/var/www/html/dilewe.de/systemx/web/tagungsbaende/tagundnachtgreifvoegel/",
 					userGroup: "tagundnachtgreifvoegel"
+				},
+				{
+					url: "/warane/",
+					localDir: "/var/www/html/dilewe.de/systemx/web/tagungsbaende/warane/",
+					userGroup: "warane"
 				}
 			]
 		}
