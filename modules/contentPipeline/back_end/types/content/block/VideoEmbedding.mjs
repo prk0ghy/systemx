@@ -1,3 +1,5 @@
+import options from "../../../../../common/options.mjs";
+
 export default {
 	toSeconds(timestamp) {
 		if (!timestamp) {
@@ -174,6 +176,7 @@ export default {
 			? "&"
 			: "?";
 		const thirdPartyImageURL = imageURL || this.getPreviewImageURL(videoURL);
+		const aspectRatioOverride = options.ytAspectRatio || ("1/" + aspectRatio / 100.0);
 		let downloadError = "";
 		let firstPartyImageURL = "";
 		try {
@@ -198,7 +201,7 @@ export default {
 					<figure figure-type="embedding">
 						<a href="${timedVideoURL}" class="embedding-link">
 							<img alt="${title}" height="${imageHeight}" src="${firstPartyImageURL}" width="${imageWidth}"
-								style="aspect-ratio:${"1/" + aspectRatio / 100.0}; object-fit: cover">
+								style="aspect-ratio:${aspectRatioOverride}; object-fit: cover">
 						</a>
 						${licenseHTML}
 						${captionHTML}

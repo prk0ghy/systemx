@@ -107,6 +107,7 @@ const defaultTargets = {
 		graphqlEndpoint: "https://redaktion-tagungsbaende.test-dilewe.de/api",
 		usesStartpageReference: false,
 		title: "mVet",
+		ytAspectRatio: "4/3",
 		targets: {
 			preview: {
 				action: 'preview',

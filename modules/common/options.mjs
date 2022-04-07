@@ -17,6 +17,7 @@ const options = {
 	verbose: false,
 	rethrowErrors: false,
 	vgWortRequired: false,
+	ytAspectRatio: false,
 	cssVars: {},
 	email: {
 		host: "smtp.server.local",
