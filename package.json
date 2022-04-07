@@ -29,7 +29,6 @@
 		"dev:shop": "nodemon --ignore dist/ --ignore web/ --ignore ./modules/userLogin/front_end/out --ignore ./modules/userLogin/front_end/config.js ./scripts/dev_shop.mjs --",
 		"preinstall": "npx only-allow pnpm",
 		"lint": "pnpm run -r --stream --if-present --aggregate-output lint",
-		"mvet:dev": "pnpm run -r --parallel mvet:dev",
 		"plint": "pnpm run -r lint",
 		"prepare": "husky install",
 		"prod:shop": "nodemon --ignore dist/ --ignore web/ --ignore ./modules/userLogin/front_end/out --ignore ./modules/userLogin/front_end/config.js ./scripts/prod_shop.mjs --",
@@ -39,6 +38,8 @@
 		"test:integration": "node ./index.mjs --clean-build --rethrow-errors --",
 		"test:types": "pnpm run -r --if-present test:types",
 		"test:unit": "pnpm run -r --if-present test:unit",
+		"mvet:dev": "pnpm run -r --parallel --if-present mvet:dev",
+		"mvet:prod": "pnpm run -r --parallel --if-present mvet:prod",
 		"user-tracking": "pnpm run -r --if-present user-tracking",
 		"administration": "pnpm run -r --if-present administration",
 		"content-pipeline": "pnpm run -r --if-present content-pipeline"

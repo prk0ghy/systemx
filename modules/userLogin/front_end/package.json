@@ -17,6 +17,7 @@
 		"lint": "pnpm run lint:js && pnpm run lint:css",
 		"lint:fix": "pnpm run lint:js:fix && pnpm run lint:css:fix",
 		"mvet:dev": "pnpm run dev",
+		"mvet:prod": "pnpm run build && pnpm start",
 		"start": "next start",
 		"windev": "next dev"
 	},

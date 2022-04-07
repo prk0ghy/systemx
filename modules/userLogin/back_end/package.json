@@ -9,7 +9,8 @@
   "scripts": {
     "lint": "eslint *.mjs ./**/*.mjs",
     "lint:fix": "eslint *.mjs ./**/*.mjs --fix",
-    "mvet:dev": "node ./index.mjs --mode=development -- tagungsbaende.shop",
+    "mvet:dev": "node ./index.mjs",
+    "mvet:prod": "node ./index.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {

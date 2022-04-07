@@ -10,7 +10,7 @@ module.exports = {
 		const apiSrc = "/api/portal-user";
 		const apiDest = process.env.USER_LOGIN_UI_API_ENDPOINT;
 		const contentSrc = "/content/:path*";
-		const contentDest = `${process.env.USER_LOGIN_UI_CONTENT_ENDPOINT}/:path`;
+		const contentDest = `${process.env.USER_LOGIN_UI_CONTENT_ENDPOINT}/:path*`;
 		console.log(`proxying: ${apiSrc} => ${apiDest}`);
 		console.log(`proxying: ${contentSrc} => ${contentDest}`);
 		return {
