@@ -1,4 +1,4 @@
-/* globals scrollToElement */
+/* globals scrollToElement, showEmbeddingSections,hideElementContentHandler */
 (() => {
 	const C_PROPERTY_KEY = "star-selection";
 	const C_FOR_SECTION_KEY = "for-star";
@@ -50,15 +50,22 @@
 			// mark section to have star siblings
 			section.setAttribute("with-stars", starElements.length);
 			section.id = sectionIdCounter++;
-			// remove markers from star elements
+			//remove infolink
+			const infoLink = section.querySelector("info-link-wrap");
+			if (infoLink) {
+				infoLink.remove();
+			}
+			// remove markers from star elements (should be done in backend)
 			for (const starElement of starElements) {
-				const markers = Array.from(starElement.querySelectorAll("inner-content > a.marker"));
+				const markers = Array.from(starElement.querySelectorAll("a.marker"));
 				const marker = markers.pop();
 				if (marker) {
 					marker.remove();
 				}
 				// mark the section as a star element sibling for the parent section
 				starElement.setAttribute(C_FOR_SECTION_KEY, section.id);
+				//make all embedded things lazy
+				hideElementContentHandler(starElement);
 			}
 
 			const hasHelpVideo = section.querySelectorAll("help-video").length > 0;
@@ -176,14 +183,19 @@
 				} else {
 					starElement.classList.add("fadein");
 					starElement.classList.add("star-active");
-
 					scrollToElement(section, C_SCROLL_OFFSET);
 					// we need to dispatch a resize event, if the star-element is an embed
 					if (starElement.getAttribute("embedding-type") === "h5p") {
+						showEmbeddingSections(starElement.querySelector("figure"));
 						//somehow the event needs to be triggered with some delay or else it wont work fully
-						setTimeout(() => {
-							window.dispatchEvent(new Event("resize"));
-						}, 20);
+						const reInitH5p = () => {
+							for (let i = 0; i < 4; i++) {
+								setTimeout(() => {
+									window.dispatchEvent(new Event("resize"));
+								}, 300 * i); //it fires the resize more often, because we dont know, when its loaded
+							}
+						};
+						window.addEventListener("load", reInitH5p());
 					}
 					// at last recalculate all elements
 					// sometimes, when the Contenttype self is smaller than the list of star buttons

@@ -30,6 +30,7 @@ const options = {
 		galleryBackgroundOpacity: 0.95,
 		ytCaption: false,
 		accessibility: false,
+		educBanner: false,
 		trackingEndpoint: ""
 	},
 	favicon: "default",

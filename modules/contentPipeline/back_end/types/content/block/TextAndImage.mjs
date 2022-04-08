@@ -150,10 +150,12 @@ export default {
 			map: ({
 				starSelection,
 				isNumbered,
+				infoLink,
 				...rest
 			}) => ({
 				starSelection,
 				isNumbered: (isNumbered && ((starSelection === false) || (!starSelection))),
+				infoLink: (starSelection === false)? infoLink : "",
 				...rest
 			})
 		}],

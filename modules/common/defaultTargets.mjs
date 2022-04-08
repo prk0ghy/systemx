@@ -84,7 +84,8 @@ const defaultTargets = {
 		title: "Infoportal Russlanddeutsche in Hessen",
 		vgWortRequired: true,
 		jsVars: {
-			trackingEndpoint: "https://tracking.dilewe.de/stats"
+			trackingEndpoint: "https://tracking.dilewe.de/stats",
+			educBanner: true
 		},
 		targets: {
 			preview: {
