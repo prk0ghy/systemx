@@ -10,6 +10,7 @@ button[button-type="cancel"] {
 	padding: 0.5em;
 	margin-left:1em;
 	transition: background-color 200ms;
+	line-height: 1rem;
 }
 
 button[button-type="accept"] {

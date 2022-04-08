@@ -21,9 +21,9 @@ const canUseTeacher = () => new Promise(resolve => {
 	if(teacherTrue()){ resolve(true); return; }
 	hideOverlay();
 
-	const modal = showModal(`<p>Hiermit bestätige ich, dass ich SchülerIn oder LehrerIn bin.</p>
+	const modal = showModal(`<p style="text-align: right;">Hiermit bestätige ich, dass ich SchülerIn oder LehrerIn bin.</p>
 		<div id="privacy-btn-wrap">
-		<button button-type="accept">Akzeptieren</button>
+		<button button-type="accept">bestätigen</button>
 		</div>`);
 	const acceptButton = modal.querySelector(`button[button-type="accept"]`);
 	acceptButton.addEventListener("click", async () => {
