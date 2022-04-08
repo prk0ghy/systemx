@@ -35,5 +35,6 @@ const canUseTeacher = () => new Promise(resolve => {
 });
 
 if (configuration.educBanner) {
-	setTimeout(canUseTeacher,0);
+	//somehow we only can start it  if everything is loaded
+	window.addEventListener("load", canUseTeacher);
 }
