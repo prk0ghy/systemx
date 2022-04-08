@@ -149,7 +149,7 @@ section[star-selection="true"][content-type="video"] inner-content > details > s
 	right: calc(((100% - var(--content-width))/2) - 1em);
 	display: flex;
 	flex-direction: column;
-	z-index: 500;
+	z-index: 1001;
 }
 
 .star-button-container.offset {
