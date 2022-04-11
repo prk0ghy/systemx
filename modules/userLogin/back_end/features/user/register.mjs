@@ -1,5 +1,4 @@
 import filterAdd from "../../filter.mjs";
-import Options from "systemx-common/options.mjs";
 import * as User from "../../user.mjs";
 import sendMail from "systemx-common/mail.mjs";
 import MakeID from "systemx-common/randomString.mjs";
@@ -30,11 +29,9 @@ filterAdd("userRegister",async (v,next) => {
 		v.res.error = "Your password needs to consist of at least 8 letters.";
 		return v;
 	}
-	if (Options.portalRegisterEmailRequired) {
-		if (!v.req.email) {
-			v.res.error = "You need an E-Mail Address.";
-			return v;
-		}
+	if (!v.req.email) {
+		v.res.error = "You need an E-Mail Address.";
+		return v;
 	}
 	const newUserID = await User.add(v.req.username, v.req.email, v.req.password, false);
 	const newUser = await User.getByID(newUserID);

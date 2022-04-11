@@ -1,9 +1,8 @@
 import axios from 'axios';
-import options from './options.mjs';
 
 const postMessage = async msg => {
-	const {slackToken} = options;
-	const {slackChannel} = options;
+	const slackToken = process.env.SYSTEMX_SLACK_TOKEN;
+	const slackChannel = process.env.SYSTEMX_SLACK_CHANNEL;
 	const url = 'https://slack.com/api/chat.postMessage';
 
 	if (!slackToken) {
