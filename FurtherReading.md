@@ -47,3 +47,77 @@ this causes command line options like
 
 # Gruppe hinzufügen
 = Zeile mit userID und gruppenname in tabelle "UserGrouping" einfügen.
+
+## Add a new Product to the userLogin Module
+
+in file:
+`/var/www/html/systemx/modules/userLogin/front_end/contexts/Products.js`
+--> Add new json object
+i.e. in Array products:
+```JavaScript
+			{
+				caption: "Vogelnarkose",
+				description: `Praxisnahes Angebot zum Thema Anästhesie und Analgesie beim Vogelpatienten mit zahlreichen Anschauungsbeispielen.`,
+				longDescription: `Praxisnahes Angebot zum Thema Anästhesie und Analgesie beim Vogelpatienten mit zahlreichen Anschauungsbeispielen.`,
+				id: "vogelnarkose",
+				group: "vogelnarkose",
+				contentUri: "/vogelnarkose/inhalt/startseite/index.html",
+				name: "Tagesseminar",
+				previewHeight: 863,
+				previewURL: "/mvet/products/owl-sleeping.jpg",
+				previewWidth: 1381,
+				color: "#6C707B",
+				comingSoon: false,
+				price: null
+			},
+```
+
+
+# How to deploy a target
+
+systemx@<defaulttarget>.<defaultmodule>.service
+
+--> deploys a service from `modules/common/defaultTargets.mjs`
+
+i.e. tagungsbände
+
+```JavaScript
+
+	tagungsbaende: {
+		backLink: "https://tagungsbaende.dilewe.de/",
+		graphqlEndpoint: "https://redaktion-tagungsbaende.test-dilewe.de/api",
+		usesStartpageReference: false,
+		title: "mVet",
+		targets: {
+			preview: {
+				action: 'preview',
+				httpPort: 8051
+			},
+			shop: {
+				activeModule: "userLogin",
+				httpPort: 8020
+			},
+			dev: {
+				portal: {
+					frontEndVariables: {
+						api: {
+							endpoint: "http://localhost:8020/portal-user"
+						}
+					}
+				}
+			}
+		},
+```
+
+to deploy the "contentPipeline" with setting preview mode (dynamic site):
+
+`ln -s /var/www/html/systemx/systemx@.service /ets/systemd/system/systemx@tagunsbaende.preview.system`
+
+
+## contentPipeline Modes
+
+### Previewe mode
+--> when a user clicks on a site it will be generated from a GraphQL query
+
+### Static mode
+--> All sites will be built from graphql, the content will not change when editing in the graphql source
