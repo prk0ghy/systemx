@@ -5,7 +5,9 @@ import os from "os";
 import path from "path";
 import DefaultTargets from "./defaultTargets.mjs";
 
+// Create a new Constant "argv" that returns a
 const argv = minimist(process.argv.slice(2));
+
 const options = {
 	absoluteDomain: "http://localhost:3000",
 	activeModule: "contentPipeline",

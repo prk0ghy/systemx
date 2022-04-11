@@ -52,7 +52,7 @@ export const getResourcePath = targetName => path.join(getTargetPath(targetName)
 const getMediaPath = targetName => path.join(getResourcePath(targetName), "media");
 const getThumbPath = targetName => path.join(getResourcePath(targetName), "thumb");
 /*
- * Just a precaution against hash collision that might occur, unlikely but would be good to know if it dies occur
+ * Just a precaution against hash collision that might occur, unlikely but would be good to know if it does occur
  */
 const checkHashCollision = (() => {
 	const collisionMap = new Map();
