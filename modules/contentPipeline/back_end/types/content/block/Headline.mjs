@@ -41,9 +41,9 @@ export default {
 		const isReallyNumbered = isNumbered && tag === "h1";
 		return `
 			<section content-type="headline" ${contentTypeIDIf(id)}>
+				${Marker.render({ isNumbered: isReallyNumbered })}
+				${InfoLink.render({infoLink}) }
 				<inner-content>
-					${Marker.render({ isNumbered: isReallyNumbered })}
-					${InfoLink.render({infoLink}) }
 					<${hTag}>${headline}</${hTag}>
 				</inner-content>
 			</section>

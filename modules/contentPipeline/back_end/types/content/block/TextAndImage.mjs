@@ -150,10 +150,12 @@ export default {
 			map: ({
 				starSelection,
 				isNumbered,
+				infoLink,
 				...rest
 			}) => ({
 				starSelection,
 				isNumbered: (isNumbered && ((starSelection === false) || (!starSelection))),
+				infoLink: (starSelection === false)? infoLink : "",
 				...rest
 			})
 		}],
@@ -271,9 +273,9 @@ export default {
 			: "";
 		return `
 			<section content-type="text-and-image" ${contentTypeIDIf(id)} ${attributeIf("star-selection",starSelection)}>
+				${Marker.render({ isNumbered })}
+				${InfoLink.render({infoLink})}
 				<inner-content>
-					${Marker.render({ isNumbered })}
-					${InfoLink.render({infoLink})}
 					${figureHTML}
 					${galleryIntroductionHTML}
 					<div class="text-content">

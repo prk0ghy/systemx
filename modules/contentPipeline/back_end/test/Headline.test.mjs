@@ -38,7 +38,7 @@ it("renders `inhaltsbausteine_ueberschrift_BlockType`", async () => {
 	expect(section.length).toBe(1);
 	expect(section.attr("content-type")).toBe("headline");
 	expect(section.children("inner-content").length).toBe(1);
-	expect(section.children().length).toBe(1);
+	expect(section.children().length).toBe(2);
 	expect($(".marker").length).toBe(1);
 	const hEle = $("h1");
 	expect(hEle.length).toBe(1);

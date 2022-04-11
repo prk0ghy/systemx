@@ -15,7 +15,7 @@ it("renders `inhaltsbausteine_videoDatei_BlockType`", async () => {
 	expect(section.length).toBe(1);
 	expect(section.attr("content-type")).toBe("video");
 	expect(section.children("inner-content").length).toBe(1);
-	expect(section.children().length).toBe(1);
+	expect(section.children().length).toBe(2);
 	expect($(".marker").length).toBe(1);
 	expect($(".marker").text()).toBe("");
 	const figure = $(`figure[figure-type="video"]`);

@@ -16,7 +16,7 @@ it("renders `inhaltsbausteine_download_BlockType`", async () => {
 	expect(section.length).toBe(1);
 	expect(section.attr("content-type")).toBe("download");
 	expect(section.children("inner-content").length).toBe(1);
-	expect(section.children().length).toBe(1);
+	expect(section.children().length).toBe(2);
 	expect($("download-wrap").length).toBe(1);
 	expect($("download-wrap download-text").length).toBe(1);
 	expect($("download-wrap download-icon").length).toBe(1);

@@ -99,9 +99,9 @@ export default {
 				tab-box-type="${boxType}"
 				${attributeIf("star-selection",starSelection)}
 			>
+				${Marker.render({ isNumbered })}
+				${await HelpVideo.render({ asset: helpVideo })}
 				<inner-content>
-					${Marker.render({ isNumbered })}
-					${await HelpVideo.render({ asset: helpVideo })}
 					<tab-box-header-wrap>
 						${tabHeaders}
 					</tab-box-header-wrap>

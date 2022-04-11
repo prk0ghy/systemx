@@ -76,8 +76,8 @@ export default {
 			: "";
 		return `
 			<section content-type="table" ${contentTypeIDIf(id)} table-type="${tableType}">
+				${Marker.render({ isNumbered })}
 				<inner-content>
-					${Marker.render({ isNumbered })}
 					<figure figure-type="table">
 						${tableHTML}
 						${captionHTML}

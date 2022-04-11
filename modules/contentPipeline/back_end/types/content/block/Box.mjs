@@ -83,9 +83,9 @@ export default {
 		return `
 			${editorialWarning}
 			<section box-type="${boxType}" content-type="box" ${contentTypeIDIf(id)}>
+				${Marker.render({ isNumbered })}
+				${await HelpVideo.render({ asset: helpVideo })}
 				<inner-content>
-					${Marker.render({ isNumbered })}
-					${await HelpVideo.render({ asset: helpVideo })}
 					<details class="box-wrap">
 						<summary>
 							<box-caption>

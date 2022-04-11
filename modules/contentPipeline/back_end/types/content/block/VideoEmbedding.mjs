@@ -1,3 +1,5 @@
+import options from "../../../../../common/options.mjs";
+
 export default {
 	toSeconds(timestamp) {
 		if (!timestamp) {
@@ -174,6 +176,7 @@ export default {
 			? "&"
 			: "?";
 		const thirdPartyImageURL = imageURL || this.getPreviewImageURL(videoURL);
+		const aspectRatioOverride = options.ytAspectRatio || ("1/" + aspectRatio / 100.0);
 		let downloadError = "";
 		let firstPartyImageURL = "";
 		try {
@@ -193,11 +196,12 @@ export default {
 		}
 		return `
 			<section content-type="embedding" ${contentTypeIDIf(id)} ${attributeIf('star-selection', starSelection)} embedding-type="video">
+				${Marker.render({ isNumbered })}
 				<inner-content>
-					${Marker.render({ isNumbered })}
 					<figure figure-type="embedding">
 						<a href="${timedVideoURL}" class="embedding-link">
-							<img alt="${title}" height="${imageHeight}" src="${firstPartyImageURL}" width="${imageWidth}" aspect-ratio="${aspectRatio / 100.0}">
+							<img alt="${title}" height="${imageHeight}" src="${firstPartyImageURL}" width="${imageWidth}"
+								style="aspect-ratio:${aspectRatioOverride}; object-fit: cover">
 						</a>
 						${licenseHTML}
 						${captionHTML}

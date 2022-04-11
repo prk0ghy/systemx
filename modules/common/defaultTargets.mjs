@@ -84,7 +84,8 @@ const defaultTargets = {
 		title: "Infoportal Russlanddeutsche in Hessen",
 		vgWortRequired: true,
 		jsVars: {
-			trackingEndpoint: "https://tracking.dilewe.de/stats"
+			trackingEndpoint: "https://tracking.dilewe.de/stats",
+			educBanner: true
 		},
 		targets: {
 			preview: {
@@ -107,6 +108,7 @@ const defaultTargets = {
 		graphqlEndpoint: "https://redaktion-tagungsbaende.test-dilewe.de/api",
 		usesStartpageReference: false,
 		title: "mVet",
+		ytAspectRatio: "4/3",
 		targets: {
 			preview: {
 				action: 'preview',
@@ -162,6 +164,11 @@ const defaultTargets = {
 					url: "/tagundnachtgreifvoegel/",
 					localDir: "/var/www/html/dilewe.de/systemx/web/tagungsbaende/tagundnachtgreifvoegel/",
 					userGroup: "tagundnachtgreifvoegel"
+				},
+				{
+					url: "/warane/",
+					localDir: "/var/www/html/dilewe.de/systemx/web/tagungsbaende/warane/",
+					userGroup: "warane"
 				}
 			]
 		}

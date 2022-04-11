@@ -17,6 +17,7 @@ const options = {
 	verbose: false,
 	rethrowErrors: false,
 	vgWortRequired: false,
+	ytAspectRatio: false,
 	cssVars: {},
 	email: {
 		host: "smtp.server.local",
@@ -29,6 +30,7 @@ const options = {
 		galleryBackgroundOpacity: 0.95,
 		ytCaption: false,
 		accessibility: false,
+		educBanner: false,
 		trackingEndpoint: ""
 	},
 	favicon: "default",

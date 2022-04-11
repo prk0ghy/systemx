@@ -5,7 +5,7 @@
 		boxes.forEach(box => {
 			const boxType = box.getAttribute('tab-box-type');
 			if(boxType === "support"){return;}
-			const innerContent = box.firstElementChild;
+			const innerContent = box.querySelector("inner-content");
 			const tabHeader  = innerContent.querySelectorAll("tab-box-header");
 			const tabContent = innerContent.querySelectorAll("tab-box-content");
 			showEmbeddingSections(innerContent.querySelector("tab-box-content.active"));

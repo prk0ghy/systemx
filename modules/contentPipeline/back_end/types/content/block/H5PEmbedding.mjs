@@ -99,9 +99,9 @@ export default {
 		const innerContentAttributes = (helpVideoTag === "") ? "" : ` class="contains-help-video"`;
 		return `
 			<section content-type="embedding" ${contentTypeIDIf(id)} ${attributeIf("star-selection",starSelection)} embedding-type="h5p">
+				${Marker.render({ isNumbered })}
+				${helpVideoTag}
 				<inner-content${innerContentAttributes}>
-					${Marker.render({ isNumbered })}
-					${helpVideoTag}
 					<figure figure-type="embedding">
 						${CleanEmbeddingHTML(embeddingHTML)}
 						${authorHTML}
