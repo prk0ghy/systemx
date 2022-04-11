@@ -8,6 +8,21 @@ export const {
 	const state = {
 		products: [
 			{
+				caption: "Tagesseminar",
+				description: `Praxisnahes Angebot zum Thema Reptilieninternistik von der Dermatologie über verschiedene Erkrankungen bis zu Stoffwechselstörungen.`,
+				longDescription: `Praxisnahes Angebot zum Thema Reptilieninternistik von der Dermatologie über verschiedene Erkrankungen bis zu Stoffwechselstörungen.`,
+				id: "reptilieninternistik",
+				group: "reptilieninternistik",
+				contentUri: "/reptilieninternistik/inhalt/erster-eintrag/index.html",
+				name: "Reptilieninternistik",
+				previewHeight: 863,
+				previewURL: "/mvet/products/chameleon2.jpg",
+				previewWidth: 1381,
+				color: "#C08E17",
+				comingSoon: false,
+				price: null
+			},
+			{
 				caption: "56. Arbeitstagung der AG ARK Schwerpunktthema \"Warane\"",
 				description: `Erwerben Sie mit einem Mausklick das mProceeding zur 56. Arbeitstagung der AG ARK mit dem Schwerpunktthema “Warane”.`,
 				longDescription: `Erwerben Sie mit einem Mausklick das mProceeding zur 56. Arbeitstagung der AG ARK mit dem Schwerpunktthema “Warane”. Im mProceeding finden Sie alle Zusammenfassungen der Tagungsbeiträge, sowie die beantworteten Fragen unserer Referent_innen, die im Rahmen der Veranstaltung gestellt wurden.`,

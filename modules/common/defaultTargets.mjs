@@ -169,6 +169,11 @@ const defaultTargets = {
 					url: "/warane/",
 					localDir: "/var/www/html/dilewe.de/systemx/web/tagungsbaende/warane/",
 					userGroup: "warane"
+				},
+				{
+					url: "/reptilieninternistik/",
+					localDir: "/var/www/html/dilewe.de/systemx/web/tagungsbaende/reptilieninternistik/",
+					userGroup: "reptilieninternistik"
 				}
 			]
 		}
